@@ -3,15 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Biz Systems | Operations & Consultations</title>
+
+<!-- Local Geographic Engine Optimization Rules -->
+<title>Simple Biz Systems | Small Business Websites & Tool Setup Kingsland TX</title>
+<meta name="description" content="Simple, field-ready tools and high-speed websites engineered for small businesses in Kingsland, Marble Falls, Llano, and the Texas Hill Country. Setup options include local neighbor discounts, bartering, and community-supported builds.">
+<meta name="keywords" content="web developer Kingsland TX, business tools Marble Falls, contractor software Llano, small business website Texas Hill Country, simple lead tracker, employee scheduling spreadsheet">
+
+<!-- JSON-LD Local Business Schema Markup for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Simple Biz Systems",
+  "description": "Simple, field-ready web tools and fast websites engineered for small local businesses and service contractors in the Texas Hill Country.",
+  "url": "https://www.simplebizsystems.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kingsland",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "Kingsland"},
+    {"@type": "AdministrativeArea", "name": "Marble Falls"},
+    {"@type": "AdministrativeArea", "name": "Llano"}
+  ],
+  "priceRange": "$"
+}
+</script>
+
 <style>
   :root { 
-    --primary: #2c3e50; 
+    --primary: #1e272e; 
     --accent: #e67e22; 
-    --bg: #f8f9fa; 
-    --dark: #1e272e; 
+    --bg: #f5f6fa; 
+    --text-dark: #2f3640; 
     --white: #ffffff; 
     --border: #dcdde1; 
+    --local-green: #27ae60;
   }
   
   body { 
@@ -19,254 +48,243 @@
     background: var(--bg); 
     margin: 0; 
     padding: 0; 
-    color: var(--dark); 
+    color: var(--text-dark); 
     line-height: 1.6;
   }
 
-  /* UTILITY REUSABLES */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  .section-padding { padding: 80px 0; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+  .section-padding { padding: 60px 0; }
   .text-center { text-align: center; }
   
-  /* HERO SECTION */
+  /* LOCAL HEADER NOTIFICATION */
+  .local-banner {
+    background: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .local-banner span { color: var(--accent); }
+
+  /* HERO AREA */
   .hero { 
-    background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%); 
-    color: var(--white); 
-    padding: 100px 0 80px 0; 
-    border-bottom: 5px solid var(--accent);
+    background: var(--white);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
   }
   .hero h1 { 
-    font-size: 2.8rem; 
+    font-size: 2.4rem; 
     font-weight: 900; 
-    margin: 0 0 20px 0; 
-    letter-spacing: -0.5px; 
+    margin: 0 0 15px 0; 
+    color: var(--primary);
     line-height: 1.2;
   }
   .hero p { 
-    font-size: 1.25rem; 
-    opacity: 0.9; 
-    max-width: 700px; 
-    margin: 0 auto 35px auto; 
-    font-weight: 400;
+    font-size: 1.15rem; 
+    max-width: 650px; 
+    margin: 0 auto 30px auto; 
+    color: #57606f;
   }
-  .btn-primary { 
+  
+  /* UTILITY APPS SECTION */
+  .tool-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+  .tool-card { 
+    background: var(--white); 
+    padding: 25px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  }
+  .tool-card h3 { margin-top: 0; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+  .tool-tag { display: inline-block; background: #f1f2f6; color: var(--primary); font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
+
+  /* COMMUNITY / NEIGHBORLY TERMS */
+  .community-box {
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 50px;
+    border-left: 5px solid var(--accent);
+  }
+  .community-box h3 { margin-top: 0; font-size: 1.5rem; font-weight: 800; color: var(--white); }
+  .badge-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+  .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+
+  /* INTAKE CONNECTOR BOX */
+  .contact-panel { background: var(--white); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-top: 50px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; }
+  @media(max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
+  
+  .form-field { display: flex; flex-direction: column; }
+  .form-field label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; color: var(--primary); }
+  .form-input { padding: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; }
+  .form-input:focus { outline: none; border-color: var(--accent); }
+  
+  .btn-submit { 
     background: var(--accent); 
     color: var(--white); 
-    text-decoration: none; 
-    padding: 16px 36px; 
+    border: none; 
+    padding: 15px 30px; 
+    font-size: 1rem; 
+    font-weight: 800; 
     border-radius: 6px; 
-    font-weight: 800; 
-    display: inline-block; 
-    letter-spacing: 0.5px; 
-    transition: transform 0.2s, background-color 0.2s;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    cursor: pointer; 
+    margin-top: 20px;
+    width: 100%;
+    transition: background 0.2s;
   }
-  .btn-primary:hover { 
-    background: #d35400; 
-    transform: translateY(-2px);
-  }
-
-  /* VALUES / PHILOSOPHY */
-  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-  .pillar-card { background: var(--white); padding: 30px; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-  .pillar-card h3 { margin-top: 0; color: var(--primary); font-weight: 800; font-size: 1.25rem; }
-  .pillar-icon { color: var(--accent); font-size: 1.8rem; font-weight: 900; margin-bottom: 15px; }
-
-  /* PORTFOLIO SHOWCASE */
-  .showcase { background: #f1f2f6; }
-  .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; margin-top: 50px; }
-  @media(max-width: 500px) { .app-grid { grid-template-columns: 1fr; } }
-  
-  .app-card { 
-    background: var(--white); 
-    border-radius: 12px; 
-    overflow: hidden; 
-    border: 1px solid var(--border); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.04);
-    display: flex;
-    flex-direction: column;
-  }
-  .app-header { 
-    background: var(--primary); 
-    color: var(--white); 
-    padding: 20px 25px; 
-    font-weight: 800; 
-    font-size: 1.1rem; 
-    letter-spacing: 0.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .app-tag { background: var(--accent); font-size: 0.65rem; padding: 4px 8px; border-radius: 4px; font-weight: 900; }
-  .app-body { padding: 30px; flex-grow: 1; }
-  .app-body h4 { margin: 0 0 10px 0; color: var(--primary); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
-  .app-body p { margin: 0 0 20px 0; font-size: 0.95rem; color: #57606f; }
-  
-  /* CONSULTATION FORM SECTION */
-  .consultation-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-top: 50px; }
-  @media(max-width: 850px) { .consultation-layout { grid-template-columns: 1fr; gap: 40px; } }
-  
-  .info-sidebar h3 { font-size: 1.8rem; color: var(--primary); font-weight: 800; margin-top: 0; }
-  .bullet-list { list-style: none; padding: 0; margin: 25px 0; }
-  .bullet-list li { padding-left: 25px; position: relative; margin-bottom: 15px; font-size: 1rem; color: #4b5563; }
-  .bullet-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 900; }
-
-  .intake-form { background: var(--white); padding: 35px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-  .form-group { margin-bottom: 20px; }
-  .form-group label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; letter-spacing: 0.5px; }
-  .form-control { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; box-sizing: border-box; font-family: inherit; transition: border-color 0.2s; }
-  .form-control:focus { outline: none; border-color: var(--primary); background: #fffdfa; }
-  
-  .btn-submit { width: 100%; background: var(--primary); color: var(--white); border: none; padding: 16px; border-radius: 6px; font-weight: 800; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: background-color 0.2s; }
-  .btn-submit:hover { background: #1a252f; }
+  .btn-submit:hover { background: #d35400; }
+  .btn-submit:disabled { background: #7f8c8d; cursor: not-allowed; }
 </style>
 </head>
 <body>
 
+  <!-- LOCAL CALIBRATION NOTIFICATION -->
+  <div class="local-banner">
+    📍 Proudly Serving the Texas Hill Country. Local Terms &amp; Barter Available for <span>Kingsland • Marble Falls • Llano</span>
+  </div>
+
+  <!-- HERO HEADER -->
   <section class="hero text-center">
     <div class="container">
-      <h1>Stop Paying for Over-Complicated Software.<br>Run Your Business on the Tools You Already Own.</h1>
-      <p>We design field-ready websites, custom team interfaces, and automated operations pipelines built directly into your Google Workspace backend. No expensive monthly software costs. No fluff.</p>
-      <a href="#consultation" class="btn-primary">BOOK A FREE 15-MINUTE SYSTEMS AUDIT</a>
+      <h1>Simple, Field-Ready Web Tools<br>Built for Small Local Businesses</h1>
+      <p>Stop overpaying for software bundles with monthly fees. We construct straightforward websites and team tools that sync cleanly with the free Google apps you already own.</p>
     </div>
   </section>
 
-  <section class="section-padding">
-    <div class="container">
-      <div class="text-center">
-        <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 0;">The "Simple Biz" Blueprint</h2>
-        <p style="color: #57606f; max-width: 600px; margin: 10px auto 0 auto;">We focus strictly on teams with fewer than 10 employees to eliminate operational chaos without adding overhead.</p>
+  <!-- UTILITY SHOWCASE -->
+  <section class="container section-padding">
+    <div class="text-center">
+      <h2 style="font-size: 1.75rem; margin: 0; font-weight: 800;">Straightforward Systems That Keep Crews &amp; Leads Organized</h2>
+      <p style="color: #636e72; margin: 5px 0 0 0;">Custom-built frameworks deployed directly onto your hardware setup with zero permanent overhead costs.</p>
+    </div>
+
+    <div class="tool-showcase">
+      <!-- APP ONE -->
+      <div class="tool-card">
+        <span class="tool-tag">Crew Logistics</span>
+        <h3>Simple Shift Manager</h3>
+        <p>A straightforward daily scheduling board. Keep track of staff assignments, detail specific site tasks, and give field technicians clear task directions on their phones without group chat chaos.</p>
+      </div>
+      <!-- APP TWO -->
+      <div class="tool-card">
+        <span class="tool-tag">Sales Pipeline</span>
+        <h3>Closed-Loop Lead Tracker</h3>
+        <p>A quick-capture intake form combined with a clean visual pipeline dashboard. Designed to record new customer opportunities on location in 15 seconds so potential business never drops off your notepad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY BARTER & LOCAL DISCOUNT RULES -->
+  <section class="container">
+    <div class="community-box">
+      <h3>The Hill Country Neighbors Policy</h3>
+      <p style="margin: 0 0 20px 0; opacity: 0.9; font-size: 1.05rem;">If your business operates right here locally along the Llano River or the lakes, we keep our terms direct and community-focused. You don't need a huge corporate tech budget to get organized.</p>
+      
+      <div class="badge-row">
+        <div class="badge" style="border-color: var(--local-green); color: #2ecc71;">✓ Local Discount Activated</div>
+        <div class="badge">✓ Barter &amp; Trade Considerations</div>
+        <div class="badge">✓ Pro-Bono/Free Services for Special Circumstances</div>
       </div>
       
-      <div class="pillars">
-        <div class="pillar-card">
-          <div class="pillar-icon">🗄️</div>
-          <h3>Single Source of Truth</h3>
-          <p>Your data belongs to you, not a software company. We pipe your operational tools straight into secure Google Sheets you completely control.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🛠️</div>
-          <h3>Field-Ready Infrastructure</h3>
-          <p>No high-altitude tech trends. We engineer high-contrast, mobile-optimized interfaces built for service trucks, trade sites, and busy crews.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">⚡</div>
-          <h3>Instant Deployments</h3>
-          <p>By maximizing the Google platform you already pay for, we bypass months of heavy development and deploy live systems within days.</p>
-        </div>
-      </div>
+      <p style="margin: 25px 0 0 0; font-size: 0.9rem; opacity: 0.8; font-style: italic;">
+        *Need help getting a trade truck organized or setting up a basic service page but money is tight this quarter? Let's talk anyway. If you offer a local trade service or help support our community infrastructure, we are happy to trade services or build tools for free to help you get steady on your feet.
+      </p>
     </div>
   </section>
 
-  <section class="section-padding showcase">
-    <div class="container">
-      <div class="text-center">
-        <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary); margin: 0;">Google-Powered Application Ecosystem</h2>
-        <p style="color: #57606f; max-width: 600px; margin: 10px auto 0 auto;">Take a look under the hood at the customized workflow integrations we build from scratch.</p>
-      </div>
-
-      <div class="app-grid">
-        <div class="app-card">
-          <div class="app-header">
-            <span>SIMPLE SHIFT COMMAND</span>
-            <span class="app-tag">LOGISTICS ENGINE</span>
+  <!-- CONNECTION INTAKE PANEL -->
+  <section class="container section-padding" style="padding-bottom: 100px;">
+    <div class="contact-panel">
+      <h3 style="margin: 0; font-weight: 800; font-size: 1.5rem;">Tell Us What Tool Your Shop Needs</h3>
+      <p style="margin: 5px 0 0 0; color: #636e72;">Drop your details below. No sales pitches or long multi-page presentations—just neighbor-to-neighbor problem solving.</p>
+      
+      <form onsubmit="processLocalSubmission(event)">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="biz-name">Your Business Name</label>
+            <input type="text" id="biz-name" class="form-input" placeholder="e.g., Llano River Plumbing" required>
           </div>
-          <div class="app-body">
-            <h4>The Bottleneck</h4>
-            <p>Owners losing hours tracking crew coordinates, texting daily shift assignments, or updating whiteboard checklists.</p>
-            <h4>The Solution</h4>
-            <p>An administrative scheduling panel paired with an isolated mobile field view. Managers allocate crews with single-tap selections, and teams access individualized job site tasks on the ground.</p>
+          <div class="form-field">
+            <label for="biz-location">Your Town / Location</label>
+            <input type="text" id="biz-location" class="form-input" placeholder="e.g., Kingsland, TX" required>
           </div>
-        </div>
-
-        <div class="app-card">
-          <div class="app-header">
-            <span>CLOSED-LOOP LEAD TRACKER</span>
-            <span class="app-tag">SALES PIPELINE</span>
+          <div class="form-field">
+            <label for="contact-info">Phone Number or Email</label>
+            <input type="text" id="contact-info" class="form-input" placeholder="e.g., 325-555-0199" required>
           </div>
-          <div class="app-body">
-            <h4>The Bottleneck</h4>
-            <p>Incoming phone bids, quote follow-ups, and field inquiries slipping through the cracks on paper pads or messy text chains.</p>
-            <h4>The Solution</h4>
-            <p>A modern Kanban-style board featuring an accelerated 15-second "Quick-Capture" mobile intake form. Tracks potential projects safely through custom stages directly to a closed status.</p>
+          <div class="form-field">
+            <label for="trade-interest">Are you interested in the Local Discount or Barter?</label>
+            <select id="trade-interest" class="form-input">
+              <option value="Standard Local Build Discount">Standard Local Build Discount</option>
+              <option value="Interested in Barter / Service Trade">Interested in Barter / Service Trade</option>
+              <option value="Special Circumstance / Pro-Bono Help">Special Circumstance / Pro-Bono Help</option>
+            </select>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="consultation" class="section-padding">
-    <div class="container">
-      <div class="consultation-layout">
         
-        <div class="info-sidebar">
-          <h3>Systems Audits & Small Business Consultations</h3>
-          <p>We analyze the mechanics of your daily operations to remove friction and uncover leakages in your revenue loop.</p>
-          <ul class="bullet-list">
-            <li><b>Workflow Isolation:</b> We pin down exactly where documentation slows down or handoffs fail.</li>
-            <li><b>Asset Maximization:</b> We structure your existing accounts to eliminate duplicate platform costs.</li>
-            <li><b>Custom Engineering:</b> We design tailor-fit solutions specific to your local market vertical.</li>
-          </ul>
-          <p style="font-size: 0.9rem; color: #7f8c8d; border-left: 3px solid var(--accent); padding-left: 15px; margin-top: 30px;">
-            "We don't sell software bundles you don't need. We construct clean paths for the work you're already doing."
-          </p>
+        <div class="form-field" style="margin-top: 20px;">
+          <label for="problem-description">What's the main issue slowing down your day-to-day operations?</label>
+          <textarea id="problem-description" class="form-input" rows="4" placeholder="e.g., I need a simple webpage for my trucks, or I am tired of texting schedules manually to my crew..." required></textarea>
         </div>
-
-        <div class="intake-form">
-          <h4 style="margin: 0 0 20px 0; font-size: 1.2rem; font-weight: 800; color: var(--primary);">Request an Operational Audit</h4>
-          
-          <form onsubmit="handleFormSubmit(event)">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" placeholder="John Smith" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="business">Company Name & Industry</label>
-              <input type="text" id="business" class="form-control" placeholder="Smith & Sons Mechanical" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="size">Team Size (Employees)</label>
-              <select id="size" class="form-control">
-                <option value="1-3">1 - 3 Employees</option>
-                <option value="4-9">4 - 9 Employees</option>
-                <option value="10+">10+ Employees</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="headache">Your Biggest System Bottleneck</label>
-              <textarea id="headache" class="form-control" rows="4" placeholder="e.g., Scheduling field staff takes too long / Leads are dropping out of the pipeline..." required></textarea>
-            </div>
-            
-            <button type="submit" class="btn-submit">SUBMIT STRATEGY REQUEST</button>
-          </form>
-        </div>
-
-      </div>
+        
+        <button type="submit" class="btn-submit">SEND SYSTEM REQUEST</button>
+      </form>
     </div>
   </section>
 
+  <!-- DATABASE DATA CAPTURE HOOKS -->
   <script>
-    function handleFormSubmit(e) {
+    // Google Apps Script Web App URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
+
+    function processLocalSubmission(e) {
       e.preventDefault();
       
-      // Collect parameters for future database integration
-      const submission = {
-        name: document.getElementById('name').value,
-        business: document.getElementById('business').value,
-        size: document.getElementById('size').value,
-        headache: document.getElementById('headache').value
+      const submitButton = e.target.querySelector('.btn-submit');
+      const originalText = submitButton.innerText;
+      
+      // Visual feedback: lock interface inputs safely during processing
+      submitButton.innerText = "SENDING REQUEST...";
+      submitButton.disabled = true;
+      
+      const details = {
+        business: document.getElementById('biz-name').value,
+        location: document.getElementById('biz-location').value,
+        contact: document.getElementById('contact-info').value,
+        interest: document.getElementById('trade-interest').value,
+        problem: document.getElementById('problem-description').value
       };
       
-      console.log("Consultation Request Logged:", submission);
-      alert("Strategy request logged successfully. We will reach out to schedule your 15-minute audit.");
-      
-      // Reset layout values safely
-      document.getElementById('name').value = '';
-      document.getElementById('business').value = '';
-      document.getElementById('headache').value = '';
+      // Fire payload data directly to your designated Google Sheet app script
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(details)
+      })
+      .then(() => {
+        alert("Got your request, neighbor! We will look over your workflow challenge and get in touch shortly.");
+        
+        // Clean out form fields safely upon successful network delivery
+        document.getElementById('biz-name').value = '';
+        document.getElementById('biz-location').value = '';
+        document.getElementById('contact-info').value = '';
+        document.getElementById('problem-description').value = '';
+      })
+      .catch(error => {
+        console.error("Error logging lead data directly:", error);
+        alert("Something went wrong. Please check your connection or try again.");
+      })
+      .finally(() => {
+        // Unlock submit interface parameters safely
+        submitButton.innerText = originalText;
+        submitButton.disabled = false;
+      });
     }
   </script>
 </body>
