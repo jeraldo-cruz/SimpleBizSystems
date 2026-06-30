@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Simple Biz Systems Texas Hill Country</title>
+<meta name="description" content="Meet Simple Biz Systems. We build straightforward, no-monthly-fee websites and tools for small businesses in Kingsland, Marble Falls, and Llano.">
+<style>
+  :root { 
+    --primary: #1e272e; 
+    --accent: #e67e22; 
+    --bg: #f5f6fa; 
+    --text-dark: #2f3640; 
+    --white: #ffffff; 
+    --border: #dcdde1; 
+  }
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.6;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  .section-padding { padding: 60px 0; }
+  
+  /* SIMPLE NAV BAR */
+  .nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 15px 0; }
+  .nav-container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
+  .nav-links a { text-decoration: none; color: #636e72; font-weight: 700; margin-left: 20px; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .profile-section { background: var(--white); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-top: 40px; }
+  h1 { font-size: 2.2rem; color: var(--primary); margin-top: 0; font-weight: 900; }
+  h2 { font-size: 1.4rem; color: var(--primary); font-weight: 800; margin-top: 30px; }
+  
+  .story-p { font-size: 1.1rem; color: #2f3640; }
+  .bullet-list { list-style: none; padding: 0; }
+  .bullet-list li { padding-left: 20px; position: relative; margin-bottom: 12px; }
+  .bullet-list li::before { content: "▪"; position: absolute; left: 0; color: var(--accent); }
+  
+  .cta-box { background: #f1f2f6; border-radius: 6px; padding: 25px; margin-top: 40px; text-align: center; }
+  .btn-back { display: inline-block; background: var(--primary); color: var(--white); text-decoration: none; padding: 12px 24px; font-weight: 800; border-radius: 6px; margin-top: 15px; }
+  .btn-back:hover { background: #2c3e50; }
+</style>
+</head>
+<body>
+
+  <!-- NAVIGATION LAYER -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Simple Biz Systems</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" style="color: var(--accent);">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT LAYER -->
+  <main class="container section-padding">
+    <div class="profile-section">
+      <h1>Our Mission &amp; Approach</h1>
+      <p class="story-p"><strong>Simple Biz Systems</strong> was built out of a direct frustration with modern business software. Too many tools on the market today are engineered for massive enterprise corporations with dedicated IT teams. They are packed with bloated features, confusing dashboards, and heavy recurring monthly fees that chip away at a small business's margins.</p>
+      
+      <p>We take a different approach. We believe independent local contractors, family-owned shops, and regional trade crews don't need massive software bundles—they need simple digital tools that work reliably on a phone out in the field.</p>
+
+      <h2>The "Zero-Overhead" Philosophy</h2>
+      <p>Instead of charging you a monthly subscription to use our platform, we construct websites and logistics tools directly onto the digital accounts you already own. By utilizing free, secure frameworks like Google Sheets, we build powerful data backends for your company with <strong>exactly $0 per month in long-term hosting overhead.</strong></p>
+
+      <h2>Proudly Serving the Texas Hill Country</h2>
+      <p>Because we operate right here in the community, our terms are straightforward and neighborly. We understand that cash flow fluctuates for local service crews, which is why we proudly support our target towns with specific community policies:</p>
+      
+      <ul class="bullet-list">
+        <li><strong>Geographic Discounts:</strong> Steep rate deductions automatically applied for any independent business operating within Kingsland, Marble Falls, or Llano.</li>
+        <li><strong>Barter &amp; Trade Agreements:</strong> We gladly trade our web development and automation setups for local trade services, equipment access, or inventory utility.</li>
+        <li><strong>Community Support:</strong> Under special circumstances where a local shop or vital trade helper is struggling to organize their operations, we can step in to provide free setups to help get them on stable footing.</li>
+      </ul>
+
+      <div class="cta-box">
+        <h3 style="margin:0; font-weight:800;">Need a simple tracking system or service page?</h3>
+        <p style="margin:5px 0 0 0; color:#636e72;">Let's find a straightforward way to solve your operations bottleneck.</p>
+        <a href="index.html#contact-panel" class="btn-back">Go To Request Form</a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
