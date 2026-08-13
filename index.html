@@ -4,19 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Local Geographic Engine Optimization Rules -->
-<title>Simple Biz Systems | Small Business Websites & Tool Setup Kingsland TX</title>
-<meta name="description" content="Simple, field-ready tools and high-speed websites engineered for small businesses in Kingsland, Marble Falls, Llano, and the Texas Hill Country. Setup options include local neighbor discounts, bartering, and community-supported builds.">
-<meta name="keywords" content="web developer Kingsland TX, business tools Marble Falls, contractor software Llano, small business website Texas Hill Country, simple lead tracker, employee scheduling spreadsheet">
+<!-- Local Geographic & Strategic SEO Rules -->
+<title>Simple Biz Systems | Unbundle Expensive Software | Kingsland TX</title>
+<meta name="description" content="Stop paying monthly software rent. Simple Biz Systems unbundles expensive SaaS subscriptions like ServiceTitan & Housecall Pro into custom, zero-license Google tools for small businesses in Kingsland, Marble Falls, and Llano, TX.">
+<meta name="keywords" content="unbundle software Kingsland TX, business tools Marble Falls, contractor software Llano, replace ServiceTitan, replace Housecall Pro, small business website Texas Hill Country, simple lead tracker, custom Google Apps Script">
 
-<!-- JSON-LD Local Business Schema Markup for Search Engines -->
+<!-- JSON-LD Local Business Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Simple Biz Systems",
-  "description": "Simple, field-ready web tools and fast websites engineered for small local businesses and service contractors in the Texas Hill Country.",
+  "description": "Custom, zero-license software tools and clean websites engineered for small businesses in the Texas Hill Country.",
   "url": "https://www.simplebizsystems.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Jeraldo Cruz",
+    "sameAs": "https://www.linkedin.com/in/jeraldo-cruz/"
+  },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Kingsland",
@@ -26,7 +31,8 @@
   "areaServed": [
     {"@type": "AdministrativeArea", "name": "Kingsland"},
     {"@type": "AdministrativeArea", "name": "Marble Falls"},
-    {"@type": "AdministrativeArea", "name": "Llano"}
+    {"@type": "AdministrativeArea", "name": "Llano"},
+    {"@type": "AdministrativeArea", "name": "Granite Shoals"}
   ],
   "priceRange": "$"
 }
@@ -41,6 +47,7 @@
     --white: #ffffff; 
     --border: #dcdde1; 
     --local-green: #27ae60;
+    --card-bg: #ffffff;
   }
   
   body { 
@@ -68,24 +75,43 @@
     border-bottom: 3px solid var(--accent);
   }
   .local-banner span { color: var(--accent); }
-  <!-- NAVIGATION LAYER -->
-  <nav style="background: var(--white); border-bottom: 1px solid var(--border); padding: 15px 0;">
-    <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
-      <a href="index.html" style="font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem;">Simple Biz Systems</a>
-      <div style="font-weight: 700; font-size: 0.95rem;">
-        <a href="index.html" style="text-decoration: none; color: var(--accent); margin-left: 20px;">Home</a>
-        <a href="about.html" style="text-decoration: none; color: #636e72; margin-left: 20px;">About</a>
-      </div>
-    </div>
-  </nav>
+  
+  /* NAVIGATION BAR STYLING */
+  .nav { 
+    background: var(--white); 
+    border-bottom: 1px solid var(--border); 
+    padding: 15px 0; 
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .logo { 
+    font-weight: 900; 
+    color: var(--primary); 
+    text-decoration: none; 
+    font-size: 1.2rem; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: #636e72; 
+    font-weight: 700; 
+    margin-left: 20px; 
+    font-size: 0.95rem; 
+  }
+  .nav-links a:hover { 
+    color: var(--accent); 
+  }
+
   /* HERO AREA */
   .hero { 
     background: var(--white);
     padding: 80px 0;
     border-bottom: 1px solid var(--border);
-}
+  }
   .hero h1 { 
-    font-size: 2.4rem; 
+    font-size: 2.5rem; 
     font-weight: 900; 
     margin: 0 0 15px 0; 
     color: var(--primary);
@@ -93,38 +119,78 @@
   }
   .hero p { 
     font-size: 1.15rem; 
-    max-width: 650px; 
+    max-width: 700px; 
     margin: 0 auto 30px auto; 
     color: #57606f;
   }
   
   /* UTILITY APPS SECTION */
-  .tool-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+  .tool-showcase { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    margin-top: 40px; 
+  }
+  
   .tool-card { 
     background: var(--white); 
     padding: 25px; 
     border-radius: 8px; 
     border: 1px solid var(--border);
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
-  .tool-card h3 { margin-top: 0; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
-  .tool-tag { display: inline-block; background: #f1f2f6; color: var(--primary); font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
+  .tool-card h3 { margin: 0 0 5px 0; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+  .tool-tag { display: inline-block; background: #f1f2f6; color: var(--primary); font-size: 0.65rem; padding: 3px 8px; border-radius: 4px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; align-self: flex-start; }
 
-  /* COMMUNITY / NEIGHBORLY TERMS */
-  .community-box {
-    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-    color: var(--white);
-    padding: 40px;
-    border-radius: 12px;
-    margin-top: 50px;
-    border-left: 5px solid var(--accent);
+  /* PRICING & SUPPORT SECTION */
+  .price-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
   }
-  .community-box h3 { margin-top: 0; font-size: 1.5rem; font-weight: 800; color: var(--white); }
-  .badge-row { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-  .badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+  .price-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 35px 25px;
+    position: relative;
+  }
+  .price-card.featured {
+    border: 2px solid var(--accent);
+  }
+  .price-card h3 { margin: 0; font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+  
+  .rate-box {
+    margin: 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+  }
+  .rate-box:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .rate-label { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #7f8c8d; letter-spacing: 0.5px; }
+  .price-amt { font-size: 2.2rem; font-weight: 900; color: var(--primary); line-height: 1.1; margin: 4px 0; }
+  .price-amt span { font-size: 0.9rem; color: #7f8c8d; font-weight: 400; }
 
-  /* INTAKE CONNECTOR BOX */
-  .contact-panel { background: var(--white); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-top: 50px; }
+  .price-features { list-style: none; padding: 0; margin: 20px 0 0 0; text-align: left; font-size: 0.9rem; }
+  .price-features li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+  .price-features li::before { content: "✓"; position: absolute; left: 0; color: var(--local-green); font-weight: bold; }
+
+  /* SOFTWARE AUDIT INTAKE FORM */
+  .audit-panel { 
+    background: var(--white); 
+    border: 2px solid var(--accent); 
+    padding: 40px; 
+    border-radius: 12px; 
+    margin-top: 50px; 
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px; }
   @media(max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
   
@@ -137,139 +203,230 @@
     background: var(--accent); 
     color: var(--white); 
     border: none; 
-    padding: 15px 30px; 
-    font-size: 1rem; 
+    padding: 16px 30px; 
+    font-size: 1.05rem; 
     font-weight: 800; 
     border-radius: 6px; 
     cursor: pointer; 
     margin-top: 20px;
     width: 100%;
     transition: background 0.2s;
+    text-transform: uppercase;
   }
   .btn-submit:hover { background: #d35400; }
   .btn-submit:disabled { background: #7f8c8d; cursor: not-allowed; }
+
+  /* FOOTER */
+  footer { background: var(--primary); color: var(--white); padding: 40px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; }
+  footer a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
 
-  <!-- LOCAL CALIBRATION NOTIFICATION -->
+  <!-- LOCAL HEADER NOTIFICATION -->
   <div class="local-banner">
-    📍 Proudly Serving the Texas Hill Country. Local Terms &amp; Barter Available for <span>Kingsland • Marble Falls • Llano</span>
+    📍 Proudly Based in Kingsland, TX • Serving <span>Kingsland, Marble Falls &amp; Llano</span>
   </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Simple Biz Systems</a>
+      <div class="nav-links">
+        <a href="index.html" style="color: var(--accent);">Home</a>
+        <a href="about.html">About &amp; Founder</a>
+        <a href="#audit-panel" style="background: var(--accent); color: var(--white); padding: 6px 12px; border-radius: 4px; font-size: 0.85rem;">Audit My Software Fees</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- HERO HEADER -->
   <section class="hero text-center">
     <div class="container">
-      <h1>Simple, Field-Ready Web Tools<br>Built for Small Local Businesses</h1>
-      <p>Stop overpaying for software bundles with monthly fees. We construct straightforward websites and team tools that sync cleanly with the free Google apps you already own.</p>
+      <h1>Stop Paying Monthly Rent<br>for Software You Only Half-Use</h1>
+      <p>We unbundle expensive SaaS platforms into simple, custom tools built directly into your own Google Workspace. You get full data ownership, simple setup fees, and zero forced platform taxes.</p>
     </div>
   </section>
 
   <!-- UTILITY SHOWCASE -->
   <section class="container section-padding">
     <div class="text-center">
-      <h2 style="font-size: 1.75rem; margin: 0; font-weight: 800;">Straightforward Systems That Keep Crews &amp; Leads Organized</h2>
-      <p style="color: #636e72; margin: 5px 0 0 0;">Custom-built frameworks deployed directly onto your hardware setup with zero permanent overhead costs.</p>
+      <h2 style="font-size: 1.75rem; margin: 0; font-weight: 800;">Our Core Three Custom Tool Templates</h2>
+      <p style="color: #636e72; margin: 5px 0 0 0;">Streamlined replacements for bloated dispatch, estimation, and tracking software.</p>
     </div>
 
     <div class="tool-showcase">
       <!-- APP ONE -->
       <div class="tool-card">
-        <span class="tool-tag">Crew Logistics</span>
-        <h3>Simple Shift Manager</h3>
-        <p>A straightforward daily scheduling board. Keep track of staff assignments, detail specific site tasks, and give field technicians clear task directions on their phones without group chat chaos.</p>
+        <span class="tool-tag">Replaces Scheduling Suites</span>
+        <h3>Simple Shift Team Hub</h3>
+        <p style="margin-top: 15px;">A straightforward daily dispatch and scheduling board. Track crew assignments, outline site tasks, and give field techs clear mobile directions without paying per-user seat fees.</p>
       </div>
+      
       <!-- APP TWO -->
       <div class="tool-card">
-        <span class="tool-tag">Sales Pipeline</span>
+        <span class="tool-tag">Replaces Pricing Software</span>
+        <h3>Job Profit Estimator</h3>
+        <p style="margin-top: 15px;">An on-site pricing worksheet engineered for rapid field quotes. Input materials, labor hours, and overhead margins to generate target prices and text formal quotes directly from the driveway.</p>
+      </div>
+
+      <!-- APP THREE -->
+      <div class="tool-card">
+        <span class="tool-tag">Replaces Complex CRMs</span>
         <h3>Closed-Loop Lead Tracker</h3>
-        <p>A quick-capture intake form combined with a clean visual pipeline dashboard. Designed to record new customer opportunities on location in 15 seconds so potential business never drops off your notepad.</p>
+        <p style="margin-top: 15px;">A quick-capture intake form paired with a clean visual pipeline sheet. Records new client opportunities in 15 seconds on active job sites so leads never slip through the cracks.</p>
       </div>
     </div>
   </section>
 
-  <!-- COMMUNITY BARTER & LOCAL DISCOUNT RULES -->
-  <section class="container">
-    <div class="community-box">
-      <h3>The Hill Country Neighbors Policy</h3>
-      <p style="margin: 0 0 20px 0; opacity: 0.9; font-size: 1.05rem;">If your business operates right here locally along the Llano River or the lakes, we keep our terms direct and community-focused. You don't need a huge corporate tech budget to get organized.</p>
-      
-      <div class="badge-row">
-        <div class="badge" style="border-color: var(--local-green); color: #2ecc71;">✓ Local Discount Activated</div>
-        <div class="badge">✓ Barter &amp; Trade Considerations</div>
-        <div class="badge">✓ Pro-Bono/Free Services for Special Circumstances</div>
+  <!-- SOFTWARE REPLACEMENT AUDIT FORM (PRIMARY HOOK) -->
+  <section id="audit-panel" class="container" style="padding: 20px 0;">
+    <div class="audit-panel">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <h3 style="margin: 0; font-weight: 900; font-size: 1.6rem; color: var(--primary);">💡 The Software Subscription Audit</h3>
+        <span style="background: #fff5eb; color: var(--accent); font-size: 0.8rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; border: 1px solid var(--accent);">Zero-Risk Proposal</span>
       </div>
+      <p style="margin: 8px 0 0 0; color: #636e72;">Tell us what software is draining your monthly budget. We will evaluate your workflow and tell you if we can build a simpler, custom version in Google Sheets that eliminates your monthly bill.</p>
       
-      <p style="margin: 25px 0 0 0; font-size: 0.9rem; opacity: 0.8; font-style: italic;">
-        *Need help getting a trade truck organized or setting up a basic service page but money is tight this quarter? Let's talk anyway. If you offer a local trade service or help support our community infrastructure, we are happy to trade services or build tools for free to help you get steady on your feet.
-      </p>
-    </div>
-  </section>
-
-  <!-- CONNECTION INTAKE PANEL -->
-  <section class="container section-padding" style="padding-bottom: 100px;">
-    <div class="contact-panel">
-      <h3 style="margin: 0; font-weight: 800; font-size: 1.5rem;">Tell Us What Tool Your Shop Needs</h3>
-      <p style="margin: 5px 0 0 0; color: #636e72;">Drop your details below. No sales pitches or long multi-page presentations—just neighbor-to-neighbor problem solving.</p>
-      
-      <form onsubmit="processLocalSubmission(event)">
+      <form onsubmit="processAuditSubmission(event)">
         <div class="form-grid">
           <div class="form-field">
             <label for="biz-name">Your Business Name</label>
-            <input type="text" id="biz-name" class="form-input" placeholder="e.g., Llano River Plumbing" required>
+            <input type="text" id="biz-name" class="form-input" placeholder="e.g., Highland Lakes HVAC" required>
           </div>
           <div class="form-field">
-            <label for="biz-location">Your Town / Location</label>
-            <input type="text" id="biz-location" class="form-input" placeholder="e.g., Kingsland, TX" required>
+            <label for="contact-info">Phone or Email</label>
+            <input type="text" id="contact-info" class="form-input" placeholder="e.g., 325-555-0199 or name@domain.com" required>
           </div>
           <div class="form-field">
-            <label for="contact-info">Phone Number or Email</label>
-            <input type="text" id="contact-info" class="form-input" placeholder="e.g., 325-555-0199" required>
+            <label for="current-software">What software are you paying too much for?</label>
+            <input type="text" id="current-software" class="form-input" placeholder="e.g., ServiceTitan, Housecall Pro, Monday.com, Jobber..." required>
           </div>
           <div class="form-field">
-            <label for="trade-interest">Are you interested in the Local Discount or Barter?</label>
-            <select id="trade-interest" class="form-input">
-              <option value="Standard Local Build Discount">Standard Local Build Discount</option>
-              <option value="Interested in Barter / Service Trade">Interested in Barter / Service Trade</option>
-              <option value="Special Circumstance / Pro-Bono Help">Special Circumstance / Pro-Bono Help</option>
-            </select>
+            <label for="monthly-cost">Estimated Monthly Cost ($)</label>
+            <input type="text" id="monthly-cost" class="form-input" placeholder="e.g., $250/mo, $400/mo" required>
           </div>
         </div>
         
         <div class="form-field" style="margin-top: 20px;">
-          <label for="problem-description">What's the main issue slowing down your day-to-day operations?</label>
-          <textarea id="problem-description" class="form-input" rows="4" placeholder="e.g., I need a simple webpage for my trucks, or I am tired of texting schedules manually to my crew..." required></textarea>
+          <label for="essential-features">What are the 2 or 3 core features your team actually uses daily?</label>
+          <textarea id="essential-features" class="form-input" rows="3" placeholder="e.g., We only use it to text quotes to clients, track daily crew schedules, and log client contact info..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-submit">SEND SYSTEM REQUEST</button>
+        <button type="submit" class="btn-submit">Request My Software Replacement Audit</button>
       </form>
     </div>
   </section>
 
-  <!-- DATABASE DATA CAPTURE HOOKS -->
+  <!-- PRICING & SUPPORT STRUCTURE -->
+  <section class="container section-padding">
+    <div class="text-center">
+      <h2 style="font-size: 1.75rem; margin: 0; font-weight: 800;">True Ownership + On-Demand Local Support</h2>
+      <p style="color: #636e72; margin: 5px 0 0 0;">You own your data and code outright. Pay for setup once, and choose support only if you want it.</p>
+    </div>
+
+    <div class="price-showcase">
+      <!-- TIER 1: DIY BLUEPRINTS -->
+      <div class="price-card">
+        <h3>Do-It-Yourself Blueprints</h3>
+        
+        <div class="rate-box">
+          <div class="rate-label">Per Individual Tool</div>
+          <div class="price-amt">$99 <span>/ flat setup</span></div>
+        </div>
+        
+        <div class="rate-box" style="background: #f8f9fa; padding: 10px; border-radius: 6px; border: 1px solid var(--border);">
+          <div class="rate-label" style="color: var(--accent);">Complete Core Three Package</div>
+          <div class="price-amt" style="font-size: 1.8rem;">$199 <span>/ package</span></div>
+        </div>
+        
+        <ul class="price-features">
+          <li>Pre-formatted Google Sheet database templates</li>
+          <li>Raw front-end HTML &amp; JavaScript code packages</li>
+          <li>3-step deployment guide for self-installation</li>
+          <li>Lifetime tool usage with zero recurring fees</li>
+        </ul>
+      </div>
+
+      <!-- TIER 2: DONE FOR YOU CUSTOM SETUP -->
+      <div class="price-card featured">
+        <div style="position:absolute; top:-12px; right:15px; background:var(--accent); color:white; font-size:0.65rem; padding:3px 10px; border-radius:10px; font-weight:800; text-transform:uppercase;">Best Value</div>
+        <h3>Done-For-You Custom Build</h3>
+        
+        <div class="rate-box">
+          <div class="rate-label">Per Individual Tool</div>
+          <div class="price-amt">$450 <span>/ flat setup</span></div>
+        </div>
+        
+        <div class="rate-box" style="background: #fff5eb; padding: 10px; border-radius: 6px; border: 1px solid rgba(230,126,34,0.3);">
+          <div class="rate-label" style="color: var(--accent);">Full Core Three Setup + Site</div>
+          <div class="price-amt" style="font-size: 1.8rem; color: var(--primary);">$1,250 <span>/ package</span></div>
+        </div>
+        
+        <ul class="price-features">
+          <li>Custom workflow build tailored to your exact business operations</li>
+          <li>Full script &amp; webhook deployment on your Google Workspace</li>
+          <li>Logo, branding, and mobile crew interface configuration</li>
+          <li>Live 1-on-1 walk-through, setup validation, and team testing</li>
+          <li>Optional monthly care &amp; maintenance plans available</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOMETOWN NEIGHBOR HANDSHAKE SECTION -->
+  <section class="container">
+    <div style="background: linear-gradient(135deg, #1e272e 0%, #2c3e50 100%); color: var(--white); padding: 40px; border-radius: 12px; border-left: 6px solid var(--accent);">
+      <h3 style="margin-top: 0; font-size: 1.6rem; font-weight: 900; color: var(--white);">🤝 The Highland Lakes Neighbor Handshake</h3>
+      <p style="margin: 10px 0 20px 0; opacity: 0.95; font-size: 1.05rem; line-height: 1.7;">
+        We live and work right here in <strong>Kingsland</strong>. If you run a local trade, service shop, or independent operation along the lakes, we keep our terms direct, transparent, and community-focused.
+      </p>
+      
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 25px;">
+        <span style="background: rgba(39, 174, 96, 0.2); border: 1px solid var(--local-green); color: #2ecc71; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800;">✓ Kingsland &amp; Hill Country Rates</span>
+        <span style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">✓ Open to Local Trade / Barter</span>
+        <span style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">✓ Zero Forced Subscriptions</span>
+      </div>
+      
+      <p style="margin: 0; font-size: 0.95rem; opacity: 0.85; font-style: italic;">
+        *Need your dispatch scheduling or estimate tool sorted out, but prefer to talk shop or trade local services instead of cash? Let's meet up, grab a coffee or cold drink, and shake on it.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="font-weight: 700; margin-bottom: 5px;">Simple Biz Systems • Kingsland, TX 78639</p>
+      <p style="opacity: 0.8; margin-top: 0;">Unbundling bloated software for Kingsland, Marble Falls, Llano, and Granite Shoals.</p>
+      <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">
+        Founded by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- DATA CAPTURE HOOK -->
   <script>
-    // Google Apps Script Web App URL
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
 
-    function processLocalSubmission(e) {
+    function processAuditSubmission(e) {
       e.preventDefault();
       
       const submitButton = e.target.querySelector('.btn-submit');
       const originalText = submitButton.innerText;
       
-      // Visual feedback: lock interface inputs safely during processing
-      submitButton.innerText = "SENDING REQUEST...";
+      submitButton.innerText = "TRANSMITTING AUDIT REQUEST...";
       submitButton.disabled = true;
       
       const details = {
+        formType: "audit_request",
         business: document.getElementById('biz-name').value,
-        location: document.getElementById('biz-location').value,
         contact: document.getElementById('contact-info').value,
-        interest: document.getElementById('trade-interest').value,
-        problem: document.getElementById('problem-description').value
+        software: document.getElementById('current-software').value,
+        cost: document.getElementById('monthly-cost').value,
+        features: document.getElementById('essential-features').value
       };
       
-      // Fire payload data directly to your designated Google Sheet app script
       fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors", 
@@ -277,20 +434,18 @@
         body: JSON.stringify(details)
       })
       .then(() => {
-        alert("Got your request, neighbor! We will look over your workflow challenge and get in touch shortly.");
-        
-        // Clean out form fields safely upon successful network delivery
+        alert("✅ AUDIT REQUEST RECEIVED: We will evaluate your current software setup and get back to you shortly with a custom unbundling proposal!");
         document.getElementById('biz-name').value = '';
-        document.getElementById('biz-location').value = '';
         document.getElementById('contact-info').value = '';
-        document.getElementById('problem-description').value = '';
+        document.getElementById('current-software').value = '';
+        document.getElementById('monthly-cost').value = '';
+        document.getElementById('essential-features').value = '';
       })
       .catch(error => {
-        console.error("Error logging lead data directly:", error);
-        alert("Something went wrong. Please check your connection or try again.");
+        console.error("Transmission error:", error);
+        alert("Transmission error. Please check your network connection.");
       })
       .finally(() => {
-        // Unlock submit interface parameters safely
         submitButton.innerText = originalText;
         submitButton.disabled = false;
       });
