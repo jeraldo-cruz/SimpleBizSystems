@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Simple Biz Systems Texas Hill Country</title>
-<meta name="description" content="Meet Simple Biz Systems. We build straightforward, no-monthly-fee websites and tools for small businesses in Kingsland, Marble Falls, and Llano.">
+
+<title>About &amp; Founder | Jeraldo Cruz | Simple Biz Systems</title>
+<meta name="description" content="Learn about Jeraldo Cruz, founder of Simple Biz Systems in Kingsland, TX. Over a decade of operations, systems engineering, and tool building applied directly to small business growth.">
+
 <style>
   :root { 
     --primary: #1e272e; 
@@ -14,78 +16,114 @@
     --white: #ffffff; 
     --border: #dcdde1; 
   }
+  
   body { 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
     background: var(--bg); 
     margin: 0; 
     padding: 0; 
     color: var(--text-dark); 
-    line-height: 1.6;
+    line-height: 1.7;
   }
-  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+  .container { max-width: 850px; margin: 0 auto; padding: 0 20px; }
   .section-padding { padding: 60px 0; }
   
-  /* SIMPLE NAV BAR */
   .nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 15px 0; }
   .nav-container { display: flex; justify-content: space-between; align-items: center; }
   .logo { font-weight: 900; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
   .nav-links a { text-decoration: none; color: #636e72; font-weight: 700; margin-left: 20px; font-size: 0.95rem; }
   .nav-links a:hover { color: var(--accent); }
 
-  .profile-section { background: var(--white); border: 1px solid var(--border); padding: 40px; border-radius: 12px; margin-top: 40px; }
-  h1 { font-size: 2.2rem; color: var(--primary); margin-top: 0; font-weight: 900; }
-  h2 { font-size: 1.4rem; color: var(--primary); font-weight: 800; margin-top: 30px; }
+  .profile-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
   
-  .story-p { font-size: 1.1rem; color: #2f3640; }
-  .bullet-list { list-style: none; padding: 0; }
-  .bullet-list li { padding-left: 20px; position: relative; margin-bottom: 12px; }
-  .bullet-list li::before { content: "▪"; position: absolute; left: 0; color: var(--accent); }
-  
-  .cta-box { background: #f1f2f6; border-radius: 6px; padding: 25px; margin-top: 40px; text-align: center; }
-  .btn-back { display: inline-block; background: var(--primary); color: var(--white); text-decoration: none; padding: 12px 24px; font-weight: 800; border-radius: 6px; margin-top: 15px; }
-  .btn-back:hover { background: #2c3e50; }
+  .badge {
+    display: inline-block;
+    background: #f1f2f6;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0077b5;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+  .linkedin-btn:hover { background: #005582; }
+
+  footer { background: var(--primary); color: var(--white); padding: 40px 0; margin-top: 80px; text-align: center; font-size: 0.9rem; }
 </style>
 </head>
 <body>
 
-  <!-- NAVIGATION LAYER -->
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">Simple Biz Systems</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="about.html" style="color: var(--accent);">About</a>
+        <a href="about.html" style="color: var(--accent);">About &amp; Founder</a>
       </div>
     </div>
   </nav>
 
-  <!-- CONTENT LAYER -->
   <main class="container section-padding">
-    <div class="profile-section">
-      <h1>Our Mission &amp; Approach</h1>
-      <p class="story-p"><strong>Simple Biz Systems</strong> was built out of a direct frustration with modern business software. Too many tools on the market today are engineered for massive enterprise corporations with dedicated IT teams. They are packed with bloated features, confusing dashboards, and heavy recurring monthly fees that chip away at a small business's margins.</p>
-      
-      <p>We take a different approach. We believe independent local contractors, family-owned shops, and regional trade crews don't need massive software bundles—they need simple digital tools that work reliably on a phone out in the field.</p>
+    <span class="badge">Systems Architecture &amp; Operations</span>
+    <h1 style="font-size: 2.3rem; font-weight: 900; margin: 0 0 10px 0; color: var(--primary);">Meet the Founder</h1>
+    <p style="font-size: 1.1rem; color: #636e72; margin-top: 0;">Bringing high-level operational engineering directly to local Hill Country businesses.</p>
 
-      <h2>The "Zero-Overhead" Philosophy</h2>
-      <p>Instead of charging you a monthly subscription to use our platform, we construct websites and logistics tools directly onto the digital accounts you already own. By utilizing free, secure frameworks like Google Sheets, we build powerful data backends for your company with <strong>exactly $0 per month in long-term hosting overhead.</strong></p>
-
-      <h2>Proudly Serving the Texas Hill Country</h2>
-      <p>Because we operate right here in the community, our terms are straightforward and neighborly. We understand that cash flow fluctuates for local service crews, which is why we proudly support our target towns with specific community policies:</p>
+    <div class profile-card>
+      <h2 style="margin-top: 0; color: var(--primary); font-size: 1.6rem; font-weight: 800;">Jeraldo Cruz</h2>
+      <p style="font-weight: 700; color: var(--accent); margin-top: -5px;">Founder &amp; Principal Systems Builder</p>
       
-      <ul class="bullet-list">
-        <li><strong>Geographic Discounts:</strong> Steep rate deductions automatically applied for any independent business operating within Kingsland, Marble Falls, or Llano.</li>
-        <li><strong>Barter &amp; Trade Agreements:</strong> We gladly trade our web development and automation setups for local trade services, equipment access, or inventory utility.</li>
-        <li><strong>Community Support:</strong> Under special circumstances where a local shop or vital trade helper is struggling to organize their operations, we can step in to provide free setups to help get them on stable footing.</li>
+      <p>For over a decade, I’ve built systems, streamlined operations, and solved complex logistics problems across senior operations management, network operations support, and technical inventory environments.</p>
+
+      <p>Throughout my career—managing high-volume supply chains, operations teams, and critical technical infrastructure—one pattern kept repeating itself: <strong>Software gets bloated, expensive, and overly complicated.</strong></p>
+
+      <p>When I looked at what local independent contractors and small shop owners were being forced to pay for software like ServiceTitan, Housecall Pro, or complex CRMs, I saw a massive problem. Hardworking business owners were paying $200 to $500 every single month for giant software packages when they only actually used two or three core functions.</p>
+
+      <h3 style="color: var(--primary); font-size: 1.25rem; font-weight: 800; margin-top: 30px;">Why Simple Biz Systems Exists</h3>
+      <p>I started <strong>Simple Biz Systems</strong> right here in Kingsland, Texas, to give small business owners a better option: <strong>Unbundled Software</strong>.</p>
+
+      <ul>
+        <li><strong>No Forced Rents:</strong> We build tools into your own Google Workspace account so you own your data outright.</li>
+        <li><strong>Lean Workflows:</strong> We build only what your team actually uses on the job site—no clutter, no confusion.</li>
+        <li><strong>Local Accountability:</strong> You get a dedicated systems partner located right in the Highland Lakes area.</li>
       </ul>
 
-      <div class="cta-box">
-        <h3 style="margin:0; font-weight:800;">Need a simple tracking system or service page?</h3>
-        <p style="margin:5px 0 0 0; color:#636e72;">Let's find a straightforward way to solve your operations bottleneck.</p>
-        <a href="index.html#contact-panel" class="btn-back">Go To Request Form</a>
-      </div>
+      <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener" class="linkedin-btn">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.239-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        Verify Background on LinkedIn
+      </a>
     </div>
   </main>
+
+  <footer>
+    <div class="container">
+      <p style="font-weight: 700; margin-bottom: 5px;">Simple Biz Systems • Kingsland, TX 78639</p>
+      <p style="opacity: 0.8; margin-top: 0;"><a href="index.html" style="color: var(--accent); text-decoration: none;">Return to Homepage &amp; Software Audit</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
