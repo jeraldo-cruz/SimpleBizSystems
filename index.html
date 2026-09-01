@@ -482,23 +482,23 @@
       <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Send us a quick message</h3>
       <p style="margin: 6px 0 0 0; color: var(--text-muted);">Have a question or want to lower your monthly software costs? Drop your info below and we will get back to you directly.</p>
       
-      <form onsubmit="processMessageSubmission(event)">
+      <form id="leadForm" onsubmit="processMessageSubmission(event)">
         <div class="form-grid">
           <div class="form-field">
-            <label for="user-name">Your name</label>
-            <input type="text" id="user-name" class="form-input" placeholder="e.g., John Smith" required>
+            <label for="client_name">Your name</label>
+            <input type="text" id="client_name" name="name" class="form-input" placeholder="e.g., John Smith" required>
           </div>
           <div class="form-field">
-            <label for="user-location">Your town or city</label>
-            <input type="text" id="user-location" class="form-input" placeholder="e.g., Kingsland, Marble Falls, Llano" required>
+            <label for="client_location">Your town or city</label>
+            <input type="text" id="client_location" name="location" class="form-input" placeholder="e.g., Kingsland, Marble Falls, Llano" required>
           </div>
           <div class="form-field">
-            <label for="user-contact">Phone number or email</label>
-            <input type="text" id="user-contact" class="form-input" placeholder="e.g., 325-555-0199 or name@domain.com" required>
+            <label for="client_contact">Phone number or email</label>
+            <input type="text" id="client_contact" name="contact" class="form-input" placeholder="e.g., 325-555-0199 or name@domain.com" required>
           </div>
           <div class="form-field">
-            <label for="user-interest">What are you interested in?</label>
-            <select id="user-interest" class="form-input">
+            <label for="client_interest">What are you interested in?</label>
+            <select id="client_interest" name="interest" class="form-input">
               <option value="Replacing an expensive software program">Replacing an expensive software program</option>
               <option value="Setting up the Core Three Tools">Setting up the Core Three Tools</option>
               <option value="Custom website or domain setup">Custom website or domain setup</option>
@@ -509,11 +509,11 @@
         </div>
         
         <div class="form-field" style="margin-top: 20px;">
-          <label for="user-message">How can we help your business?</label>
-          <textarea id="user-message" class="form-input" rows="4" placeholder="Tell us a little about your shop or what you'd like to simplify..." required></textarea>
+          <label for="client_message">How can we help your business?</label>
+          <textarea id="client_message" name="message" class="form-input" rows="4" placeholder="Tell us a little about your shop or what you'd like to simplify..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-submit">Send message</button>
+        <button type="submit" id="submitBtn" class="btn-submit">Send message</button>
       </form>
     </div>
   </section>
@@ -542,48 +542,51 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT ENDPOINT INTEGRATION -->
+  <!-- SCRIPT -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
 
     function processMessageSubmission(e) {
       e.preventDefault();
       
-      const submitButton = e.target.querySelector('.btn-submit');
-      const originalText = submitButton.innerText;
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.innerText = "Sending message...";
+      submitBtn.disabled = true;
       
-      submitButton.innerText = "Sending message...";
-      submitButton.disabled = true;
-      
-      const details = {
+      const nameVal = document.getElementById('client_name').value.trim();
+      const locationVal = document.getElementById('client_location').value.trim();
+      const contactVal = document.getElementById('client_contact').value.trim();
+      const interestVal = document.getElementById('client_interest').value;
+      const messageVal = document.getElementById('client_message').value.trim();
+
+      const payload = {
         formType: "contact_inquiry",
-        name: document.getElementById('user-name').value,
-        location: document.getElementById('user-location').value,
-        contact: document.getElementById('user-contact').value,
-        interest: document.getElementById('user-interest').value,
-        message: document.getElementById('user-message').value
+        name: nameVal,
+        business: nameVal,
+        location: locationVal,
+        contact: contactVal,
+        interest: interestVal,
+        message: messageVal,
+        problem: messageVal
       };
       
       fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors", 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(details)
+        body: JSON.stringify(payload)
       })
       .then(() => {
         alert("Thank you! We received your message and will be in touch shortly.");
-        document.getElementById('user-name').value = '';
-        document.getElementById('user-location').value = '';
-        document.getElementById('user-contact').value = '';
-        document.getElementById('user-message').value = '';
+        document.getElementById('leadForm').reset();
       })
       .catch(error => {
-        console.error("Transmission error:", error);
+        console.error("Submission error:", error);
         alert("Something went wrong with the connection. Please try again.");
       })
       .finally(() => {
-        submitButton.innerText = originalText;
-        submitButton.disabled = false;
+        submitBtn.innerText = "Send message";
+        submitBtn.disabled = false;
       });
     }
   </script>
