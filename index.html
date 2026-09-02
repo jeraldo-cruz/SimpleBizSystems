@@ -7,39 +7,90 @@
 <title>Simple Biz Systems | Cut Software Subscriptions | Kingsland, TX</title>
 <meta name="description" content="If your business has a Gmail account, you already have the tools to run your operations. We build simple custom tools in Google Sheets so you can stop paying monthly software fees in Kingsland, Marble Falls, and Llano.">
 
+<!-- Canonical URL -->
 <link rel="canonical" href="https://www.simplebizsystems.com/" />
 
+<!-- JSON-LD Local Business & FAQ Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Simple Biz Systems",
-  "description": "Custom, zero-license software tools and clean websites engineered for small businesses in the Texas Hill Country.",
-  "url": "https://www.simplebizsystems.com",
-  "founder": {
-    "@type": "Person",
-    "name": "Jeraldo Cruz",
-    "sameAs": "https://www.linkedin.com/in/jeraldo-cruz/"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Kingsland",
-    "addressRegion": "TX",
-    "postalCode": "78639",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 30.6638,
-    "longitude": -98.4411
-  },
-  "areaServed": [
-    {"@type": "AdministrativeArea", "name": "Kingsland"},
-    {"@type": "AdministrativeArea", "name": "Marble Falls"},
-    {"@type": "AdministrativeArea", "name": "Llano"},
-    {"@type": "AdministrativeArea", "name": "Granite Shoals"}
-  ],
-  "priceRange": "$"
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "Simple Biz Systems",
+      "description": "Custom, zero-license software tools and clean websites engineered for small businesses in the Texas Hill Country.",
+      "url": "https://www.simplebizsystems.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Jeraldo Cruz",
+        "sameAs": "https://www.linkedin.com/in/jeraldo-cruz/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kingsland",
+        "addressRegion": "TX",
+        "postalCode": "78639",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.6638,
+        "longitude": -98.4411
+      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Kingsland"},
+        {"@type": "AdministrativeArea", "name": "Marble Falls"},
+        {"@type": "AdministrativeArea", "name": "Llano"},
+        {"@type": "AdministrativeArea", "name": "Granite Shoals"}
+      ],
+      "priceRange": "$"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do my crew members need paid Google accounts or tech skills?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your team doesn't need paid accounts or spreadsheet training. We give them clean, mobile-friendly screens with 3 or 4 simple buttons to enter time, submit quotes, or view today's jobs directly from their phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a team member accidentally break a formula or delete data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All master formulas and calculations are locked down. Plus, Google Sheets has built-in version history—if anyone ever makes an unwanted change, you can restore previous versions with one click."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this work on regular phones without buying new gear?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The tools run through any modern web browser on iPhones, Android devices, tablets, or shop laptops. Your team uses the phones they already have in their pockets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if we're out on a job site with spotty cell reception?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google Sheets and Drive support native offline access. You can view schedules, log job notes, and check details offline; everything automatically syncs the moment your phone reconnects to a signal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from buying a cheap template online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A downloaded template is a blank file you have to figure out yourself. We build an integrated system customized to your exact labor rates, services, and workflow, connect it to your personal Google account, and walk your team through how to run it."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -236,7 +287,7 @@
   }
   .tool-tag { 
     display: inline-block; 
-    background: #f1f5f9; 
+    background: #f1f2f6; 
     color: var(--primary-light); 
     font-size: 0.8rem; 
     padding: 4px 10px; 
@@ -361,6 +412,7 @@
     padding: 0 20px 20px 20px;
     color: var(--text-muted);
     font-size: 0.95rem;
+    line-height: 1.65;
     border-top: 1px solid transparent;
   }
   .faq-item.active .faq-answer {
@@ -468,10 +520,12 @@
 </head>
 <body>
 
+  <!-- TOP BANNER -->
   <div class="local-banner">
     Based in Kingsland, Texas — Serving <strong>Kingsland, Marble Falls, and Llano</strong>
   </div>
 
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">Simple Biz Systems</a>
@@ -483,6 +537,7 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <section class="hero text-center">
     <div class="container">
       <h1>If your business has a Gmail account, you already own the software</h1>
@@ -522,6 +577,7 @@
     </div>
   </section>
 
+  <!-- CORE THREE SHOWCASE -->
   <section class="container section-padding">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Three tools ready for your phone or shop</h2>
@@ -529,18 +585,21 @@
     </div>
 
     <div class="tool-showcase">
+      <!-- APP ONE -->
       <div class="tool-card">
         <span class="tool-tag">Replaces scheduling software</span>
         <h3>Simple Shift Team Hub</h3>
         <p>A simple daily board for your crew. Assign people to jobs, list notes for the day, and let techs see their daily tasks on their phones without endless text message chains.</p>
       </div>
       
+      <!-- APP TWO -->
       <div class="tool-card">
         <span class="tool-tag">Replaces quoting software</span>
         <h3>Job Profit Estimator</h3>
         <p>A fast pricing worksheet made for job sites. Enter your materials and labor hours to get the right price and share a clean quote with the customer right from the driveway.</p>
       </div>
 
+      <!-- APP THREE -->
       <div class="tool-card">
         <span class="tool-tag">Replaces complex sales apps</span>
         <h3>Closed-Loop Lead Tracker</h3>
@@ -549,6 +608,7 @@
     </div>
   </section>
 
+  <!-- PRICING & OPTIONS -->
   <section class="container section-padding" style="border-top: 1px solid var(--border);">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Clear, one-time setup options</h2>
@@ -556,6 +616,7 @@
     </div>
 
     <div class="price-showcase">
+      <!-- TIER 1 -->
       <div class="price-card">
         <h3>Do-it-yourself plans</h3>
         
@@ -589,6 +650,7 @@
         </ul>
       </div>
 
+      <!-- TIER 2 -->
       <div class="price-card featured">
         <div style="position:absolute; top:-12px; right:20px; background:var(--accent); color:white; font-size:0.75rem; padding:3px 12px; border-radius:12px; font-weight:700;">Most Popular</div>
         <h3>Done-for-you custom setup</h3>
@@ -628,6 +690,7 @@
       </div>
     </div>
 
+    <!-- DOMAIN SETUP ADDON -->
     <div class="addon-card">
       <div class="addon-info">
         <h4>Need a custom business email or website domain?</h4>
@@ -638,44 +701,71 @@
       </div>
     </div>
 
+    <!-- COMMON QUESTIONS ACCORDION -->
     <div class="faq-section">
       <div class="text-center" style="margin-bottom: 24px;">
         <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 0;">Common Questions</h3>
         <p style="color: var(--text-muted); margin: 4px 0 0 0; font-size: 0.95rem;">Clear answers on how the tools and setup work.</p>
       </div>
 
+      <!-- FAQ 1 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          Do my crew members need paid Google accounts?
+          Do my crew members need paid Google accounts or tech skills?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          No. Your team only needs regular web access on their phones or tablets. The mobile web screens connect directly into your master spreadsheet without needing extra licenses.
+          No. Your team doesn't need paid accounts or spreadsheet training. We give them clean, mobile-friendly screens with 3 or 4 simple buttons to enter time, submit quotes, or view today's jobs directly from their phone.
         </div>
       </div>
 
+      <!-- FAQ 2 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          Can I change pricing rates or staff names myself later?
+          Can a team member accidentally break a formula or delete data?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Yes. Because the backend is a standard Google Sheet that you own, you can easily add new employees, adjust hourly labor rates, or change service options anytime you want.
+          No. All master formulas and calculations are locked down. Plus, Google Sheets has built-in version history—if anyone ever makes an unwanted change, you can restore previous versions with one click.
         </div>
       </div>
 
+      <!-- FAQ 3 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          What happens to my data if I stop working with you?
+          Does this work on regular phones without buying new gear?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Nothing changes. The spreadsheets, forms, and code live inside your own Google Drive. We do not hold your customer lists or job history hostage, and you have lifetime access.
+          Yes. The tools run through any modern web browser on iPhones, Android devices, tablets, or shop laptops. Your team uses the phones they already have in their pockets.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          What if we're out on a job site with spotty cell reception?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Google Sheets and Drive support native offline access. You can view schedules, log job notes, and check details offline; everything automatically syncs the moment your phone reconnects to a signal.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button type="button" class="faq-question" onclick="toggleFaq(this)">
+          How is this different from buying a cheap template online?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          A downloaded template is a blank file you have to figure out yourself. We build an integrated system customized to your exact labor rates, services, and workflow, connect it to your personal Google account, and walk your team through how to run it.
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT FORM -->
   <section id="contact-panel" class="container">
     <div class="contact-panel">
       <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Send us a quick message</h3>
@@ -722,6 +812,7 @@
     </div>
   </section>
 
+  <!-- NEIGHBOR HANDSHAKE -->
   <section class="container">
     <div class="handshake-card">
       <h3>The Highland Lakes neighbor handshake</h3>
@@ -734,6 +825,7 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p style="font-weight: 700; margin-bottom: 6px; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
@@ -744,6 +836,7 @@
     </div>
   </footer>
 
+  <!-- SCRIPT -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
 
