@@ -297,9 +297,30 @@
     align-self: flex-start; 
   }
   .tool-card p {
-    margin: 0;
+    margin: 0 0 20px 0;
     color: var(--text-muted);
     font-size: 0.95rem;
+    flex-grow: 1;
+  }
+  .tool-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #f8fafc;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.15s ease;
+  }
+  .tool-link-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
   }
 
   /* PRICING */
@@ -581,29 +602,41 @@
   <section class="container section-padding">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Three tools ready for your phone or shop</h2>
-      <p style="color: var(--text-muted); margin: 6px 0 0 0;">Simple replacements for expensive software programs.</p>
+      <p style="color: var(--text-muted); margin: 6px 0 0 0;">Click on any tool below to see details and video walkthroughs.</p>
     </div>
 
     <div class="tool-showcase">
-      <!-- APP ONE -->
+      <!-- APP ONE: DISPATCH -->
       <div class="tool-card">
         <span class="tool-tag">Replaces scheduling software</span>
         <h3>Simple Shift Team Hub</h3>
         <p>A simple daily board for your crew. Assign people to jobs, list notes for the day, and let techs see their daily tasks on their phones without endless text message chains.</p>
+        <a href="dispatch.html" class="tool-link-btn">
+          View details &amp; demo
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
       </div>
       
-      <!-- APP TWO -->
+      <!-- APP TWO: ESTIMATOR -->
       <div class="tool-card">
         <span class="tool-tag">Replaces quoting software</span>
         <h3>Job Profit Estimator</h3>
         <p>A fast pricing worksheet made for job sites. Enter your materials and labor hours to get the right price and share a clean quote with the customer right from the driveway.</p>
+        <a href="estimator.html" class="tool-link-btn">
+          View details &amp; demo
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
       </div>
 
-      <!-- APP THREE -->
+      <!-- APP THREE: LEADS -->
       <div class="tool-card">
         <span class="tool-tag">Replaces complex sales apps</span>
         <h3>Closed-Loop Lead Tracker</h3>
         <p>A quick 15-second form to write down new customer requests while in the field. Saves the contact info and job details directly to your spreadsheet so nothing is forgotten.</p>
+        <a href="leads.html" class="tool-link-btn">
+          View details &amp; demo
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -708,7 +741,6 @@
         <p style="color: var(--text-muted); margin: 4px 0 0 0; font-size: 0.95rem;">Clear answers on how the tools and setup work.</p>
       </div>
 
-      <!-- FAQ 1 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do my crew members need paid Google accounts or tech skills?
@@ -719,7 +751,6 @@
         </div>
       </div>
 
-      <!-- FAQ 2 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Can a team member accidentally break a formula or delete data?
@@ -730,7 +761,6 @@
         </div>
       </div>
 
-      <!-- FAQ 3 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Does this work on regular phones without buying new gear?
@@ -741,7 +771,6 @@
         </div>
       </div>
 
-      <!-- FAQ 4 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           What if we're out on a job site with spotty cell reception?
@@ -752,7 +781,6 @@
         </div>
       </div>
 
-      <!-- FAQ 5 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How is this different from buying a cheap template online?
@@ -789,9 +817,11 @@
             <label for="client_interest">What are you interested in?</label>
             <select id="client_interest" name="interest" class="form-input">
               <option value="Replacing an expensive software program">Replacing an expensive software program</option>
-              <option value="Setting up the Core Three Tools">Setting up the Core Three Tools</option>
-              <option value="Custom website or domain setup">Custom website or domain setup</option>
-              <option value="Do-it-yourself plans">Do-it-yourself plans</option>
+              <option value="Job Profit Estimator ($450 custom / $99 DIY)">Job Profit Estimator ($450 custom / $99 DIY)</option>
+              <option value="Simple Shift Team Hub ($450 custom / $99 DIY)">Simple Shift Team Hub ($450 custom / $99 DIY)</option>
+              <option value="Closed-Loop Lead Tracker ($450 custom / $99 DIY)">Closed-Loop Lead Tracker ($450 custom / $99 DIY)</option>
+              <option value="Complete Core Three Setup + Website ($1,250)">Complete Core Three Setup + Website ($1,250)</option>
+              <option value="Custom website or domain setup ($75)">Custom website or domain setup ($75)</option>
               <option value="General question or local chat">General question or local chat</option>
             </select>
           </div>
