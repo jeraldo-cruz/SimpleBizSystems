@@ -7,14 +7,10 @@
 <title>Simple Biz Systems | Cut Software Subscriptions | Kingsland, TX</title>
 <meta name="description" content="If your business has a Gmail account, you already have the tools to run your operations. We build simple custom tools in Google Sheets so you can stop paying monthly software fees in Kingsland, Marble Falls, and Llano.">
 
-<!-- Canonical URL -->
 <link rel="canonical" href="https://www.simplebizsystems.com/" />
-
-<!-- Favicon Links -->
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- JSON-LD Local Business & FAQ Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,8 +112,11 @@
     --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   }
   
+  /* LOCK SCROLLBAR TO PREVENT NAV JUMPING */
   html {
     scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
   }
 
   *, *::before, *::after {
@@ -134,12 +133,16 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* IDENTICAL CONTAINER ACROSS ALL PAGES */
-  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .container { 
+    max-width: 960px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%;
+  }
   .section-padding { padding: 64px 0; }
   .text-center { text-align: center; }
   
-  /* BANNER */
+  /* TOP BANNER */
   .local-banner {
     background: var(--primary);
     color: #f1f5f9;
@@ -151,7 +154,7 @@
   }
   .local-banner strong { color: #fbbf24; font-weight: 600; }
   
-  /* NAV */
+  /* NAVIGATION BAR - SYNCHRONIZED */
   .nav { 
     background: var(--white); 
     border-bottom: 1px solid var(--border); 
@@ -174,6 +177,7 @@
     color: var(--primary); 
     font-size: 1.25rem; 
     letter-spacing: -0.02em;
+    line-height: 1;
   }
   .nav-brand-img {
     height: 38px;
@@ -182,13 +186,18 @@
     display: block;
     flex-shrink: 0;
   }
-  .nav-links { display: flex; align-items: center; gap: 20px; }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+  }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
     font-weight: 600; 
     font-size: 0.95rem; 
     transition: color 0.15s ease;
+    line-height: 1;
   }
   .nav-links a:hover { color: var(--accent); }
   .btn-nav {
@@ -558,12 +567,10 @@
 </head>
 <body>
 
-  <!-- TOP BANNER -->
   <div class="local-banner">
     Based in Kingsland, Texas — Serving <strong>Kingsland, Marble Falls, and Llano</strong>
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -578,7 +585,6 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
   <section class="hero text-center">
     <div class="container">
       <h1>If your business has a Gmail account, you already own the software</h1>
@@ -618,7 +624,6 @@
     </div>
   </section>
 
-  <!-- CORE THREE SHOWCASE -->
   <section class="container section-padding">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Three tools ready for your phone or shop</h2>
@@ -626,7 +631,6 @@
     </div>
 
     <div class="tool-showcase">
-      <!-- APP ONE: DISPATCH -->
       <div class="tool-card">
         <span class="tool-tag">Replaces scheduling software</span>
         <h3>Simple Shift Team Hub</h3>
@@ -637,7 +641,6 @@
         </a>
       </div>
       
-      <!-- APP TWO: ESTIMATOR -->
       <div class="tool-card">
         <span class="tool-tag">Replaces quoting software</span>
         <h3>Job Profit Estimator</h3>
@@ -648,7 +651,6 @@
         </a>
       </div>
 
-      <!-- APP THREE: LEADS -->
       <div class="tool-card">
         <span class="tool-tag">Replaces complex sales apps</span>
         <h3>Closed-Loop Lead Tracker</h3>
@@ -661,7 +663,6 @@
     </div>
   </section>
 
-  <!-- PRICING & OPTIONS -->
   <section class="container section-padding" style="border-top: 1px solid var(--border);">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Clear, one-time setup options</h2>
@@ -669,20 +670,16 @@
     </div>
 
     <div class="price-showcase">
-      <!-- TIER 1 -->
       <div class="price-card">
         <h3>Do-it-yourself plans</h3>
-        
         <div class="rate-box">
           <div class="rate-label">Per individual tool</div>
           <div class="price-amt">$99 <span>/ one-time</span></div>
         </div>
-        
         <div class="rate-box" style="background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid var(--border);">
           <div class="rate-label" style="color: var(--accent);">Complete three-tool bundle</div>
           <div class="price-amt" style="font-size: 1.7rem;">$199 <span>/ one-time</span></div>
         </div>
-        
         <ul class="price-features">
           <li>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -703,21 +700,17 @@
         </ul>
       </div>
 
-      <!-- TIER 2 -->
       <div class="price-card featured">
         <div style="position:absolute; top:-12px; right:20px; background:var(--accent); color:white; font-size:0.75rem; padding:3px 12px; border-radius:12px; font-weight:700;">Most Popular</div>
         <h3>Done-for-you custom setup</h3>
-        
         <div class="rate-box">
           <div class="rate-label">Per individual tool</div>
           <div class="price-amt">$450 <span>/ one-time</span></div>
         </div>
-        
         <div class="rate-box" style="background: #fffbeb; padding: 12px; border-radius: 6px; border: 1px solid #fde68a;">
           <div class="rate-label" style="color: var(--accent);">Full three-tool setup + onboarding</div>
           <div class="price-amt" style="font-size: 1.7rem; color: var(--primary);">$1,250 <span>/ one-time</span></div>
         </div>
-        
         <ul class="price-features">
           <li>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -743,7 +736,6 @@
       </div>
     </div>
 
-    <!-- COMMON QUESTIONS ACCORDION -->
     <div class="faq-section">
       <div class="text-center" style="margin-bottom: 24px;">
         <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 0;">Common Questions</h3>
@@ -802,7 +794,6 @@
     </div>
   </section>
 
-  <!-- CONTACT FORM -->
   <section id="contact-panel" class="container">
     <div class="contact-panel">
       <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Send us a quick message</h3>
@@ -850,7 +841,6 @@
     </div>
   </section>
 
-  <!-- NEIGHBOR HANDSHAKE -->
   <section class="container">
     <div class="handshake-card">
       <h3>The Highland Lakes neighbor handshake</h3>
@@ -863,11 +853,9 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-brand">
-        <!-- Crisp Vector Logo Directly Embedded (Zero Loading Issues) -->
         <svg class="footer-icon-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="currentColor" fill="none" />
           <polygon points="50,32 72,45 50,58 28,45" stroke="currentColor" fill="none" stroke-width="5.5" />
@@ -889,7 +877,6 @@
     </div>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
 
