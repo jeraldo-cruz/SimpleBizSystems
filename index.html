@@ -10,9 +10,9 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="https://www.simplebizsystems.com/" />
 
-<!-- High-Definition Favicon & Device Icons -->
-<link rel="icon" type="image/png" href="/logo-icon.png">
-<link rel="apple-touch-icon" href="/logo-icon.png">
+<!-- Favicon Links -->
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
 
 <!-- JSON-LD Local Business & FAQ Schema Markup -->
 <script type="application/ld+json">
@@ -134,6 +134,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* IDENTICAL CONTAINER ACROSS ALL PAGES */
   .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
   .section-padding { padding: 64px 0; }
   .text-center { text-align: center; }
@@ -539,12 +540,12 @@
     gap: 10px;
     margin-bottom: 12px;
   }
-  .footer-brand-img {
-    height: 28px;
-    width: 28px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
+  .footer-icon-svg {
+    width: 26px;
+    height: 26px;
+    color: #f8fafc;
+    opacity: 0.9;
+    flex-shrink: 0;
   }
   .footer-brand span {
     font-weight: 700;
@@ -749,7 +750,6 @@
         <p style="color: var(--text-muted); margin: 4px 0 0 0; font-size: 0.95rem;">Clear answers on how the tools and setup work.</p>
       </div>
 
-      <!-- FAQ 1 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do my crew members need paid Google accounts or tech skills?
@@ -760,7 +760,6 @@
         </div>
       </div>
 
-      <!-- FAQ 2 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Can a team member accidentally break a formula or delete data?
@@ -771,7 +770,6 @@
         </div>
       </div>
 
-      <!-- FAQ 3 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Does this work on regular phones without buying new gear?
@@ -782,7 +780,6 @@
         </div>
       </div>
 
-      <!-- FAQ 4 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           What if we're out on a job site with spotty cell reception?
@@ -793,7 +790,6 @@
         </div>
       </div>
 
-      <!-- FAQ 5 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How is this different from buying a cheap template online?
@@ -871,7 +867,19 @@
   <footer>
     <div class="container">
       <div class="footer-brand">
-        <img src="logo-icon.png" alt="Simple Biz Systems Logo" class="footer-brand-img">
+        <!-- Crisp Vector Logo Directly Embedded (Zero Loading Issues) -->
+        <svg class="footer-icon-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="currentColor" fill="none" />
+          <polygon points="50,32 72,45 50,58 28,45" stroke="currentColor" fill="none" stroke-width="5.5" />
+          <polyline points="28,45 28,70 50,83 72,70 72,45" stroke="currentColor" fill="none" stroke-width="5.5" />
+          <line x1="50" y1="58" x2="50" y2="83" stroke="currentColor" stroke-width="5.5" />
+          <circle cx="50" cy="15" r="4.5" fill="currentColor" />
+          <circle cx="80" cy="32" r="4.5" fill="currentColor" />
+          <circle cx="80" cy="68" r="4.5" fill="currentColor" />
+          <circle cx="50" cy="85" r="4.5" fill="currentColor" />
+          <circle cx="20" cy="68" r="4.5" fill="currentColor" />
+          <circle cx="20" cy="32" r="4.5" fill="currentColor" />
+        </svg>
         <span>Simple Biz Systems • Kingsland, TX 78639</span>
       </div>
       <p style="margin-top: 0; opacity: 0.8;">Simple, affordable business tools for Kingsland, Marble Falls, and Llano.</p>
