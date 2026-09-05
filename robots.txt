@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /logo.svg
+
 Sitemap: https://www.simplebizsystems.com/sitemap.xml
