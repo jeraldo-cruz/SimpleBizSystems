@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="logo.svg">
-  
+
 <title>Simple Biz Systems | Cut Software Subscriptions | Kingsland, TX</title>
 <meta name="description" content="If your business has a Gmail account, you already have the tools to run your operations. We build simple custom tools in Google Sheets so you can stop paying monthly software fees in Kingsland, Marble Falls, and Llano.">
 
+<!-- Canonical URL -->
 <link rel="canonical" href="https://www.simplebizsystems.com/" />
 
+<!-- Favicon Links -->
+<link rel="icon" type="image/png" href="/logo-icon.png">
+<link rel="apple-touch-icon" href="/logo-icon.png">
+
+<!-- JSON-LD Local Business & FAQ Schema Markup -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -17,8 +22,10 @@
     {
       "@type": "ProfessionalService",
       "name": "Simple Biz Systems",
-      "description": "Custom, zero-license software tools and clean websites engineered for small businesses in the Texas Hill Country.",
+      "description": "Custom, zero-license software tools engineered for small businesses in the Texas Hill Country.",
       "url": "https://www.simplebizsystems.com",
+      "logo": "https://www.simplebizsystems.com/logo-icon.png",
+      "image": "https://www.simplebizsystems.com/logo-icon.png",
       "founder": {
         "@type": "Person",
         "name": "Jeraldo Cruz",
@@ -95,7 +102,7 @@
 
 <style>
   :root { 
-    --primary: #0f2b48; 
+    --primary: #0d3b66; 
     --primary-light: #1e3a5f;
     --accent: #d97706; 
     --accent-hover: #b45309;
@@ -147,7 +154,7 @@
   .nav { 
     background: var(--white); 
     border-bottom: 1px solid var(--border); 
-    padding: 14px 0; 
+    padding: 12px 0; 
     position: sticky;
     top: 0;
     z-index: 100;
@@ -167,11 +174,11 @@
     font-size: 1.25rem; 
     letter-spacing: -0.02em;
   }
-  .logo-icon-svg {
-    width: 34px;
-    height: 34px;
-    color: var(--primary);
-    flex-shrink: 0;
+  .nav-brand-img {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
   .nav-links { display: flex; align-items: center; gap: 20px; }
   .nav-links a { 
@@ -381,25 +388,6 @@
     color: var(--success-green);
   }
 
-  /* DOMAIN ADD-ON */
-  .addon-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    box-shadow: var(--card-shadow);
-  }
-  .addon-info h4 { margin: 0 0 4px 0; font-size: 1.1rem; color: var(--primary); }
-  .addon-info p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
-  .addon-price { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
-  .addon-price span { font-size: 0.85rem; color: var(--text-muted); font-weight: normal; }
-
   /* FAQ ACCORDION */
   .faq-section {
     margin-top: 48px;
@@ -536,7 +524,7 @@
 
   /* FOOTER */
   footer { 
-    background: #0b1e33; 
+    background: #09233d; 
     color: #94a3b8; 
     padding: 48px 0; 
     margin-top: 72px; 
@@ -546,12 +534,21 @@
   .footer-brand {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .footer-brand-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
   }
   .footer-brand span {
     font-weight: 700;
     color: #f8fafc;
+    font-size: 1rem;
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
   footer a:hover { text-decoration: underline; }
@@ -559,27 +556,16 @@
 </head>
 <body>
 
+  <!-- TOP BANNER -->
   <div class="local-banner">
     Based in Kingsland, Texas — Serving <strong>Kingsland, Marble Falls, and Llano</strong>
   </div>
 
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
-        <svg class="logo-icon-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="currentColor" fill="none" />
-          
-          <polygon points="50,32 72,45 50,58 28,45" stroke="currentColor" fill="none" stroke-width="5" />
-          <polyline points="28,45 28,70 50,83 72,70 72,45" stroke="currentColor" fill="none" stroke-width="5" />
-          <line x1="50" y1="58" x2="50" y2="83" stroke="currentColor" stroke-width="5" />
-          
-          <circle cx="50" cy="15" r="4.5" fill="currentColor" />
-          <circle cx="80" cy="32" r="4.5" fill="currentColor" />
-          <circle cx="80" cy="68" r="4.5" fill="currentColor" />
-          <circle cx="50" cy="85" r="4.5" fill="currentColor" />
-          <circle cx="20" cy="68" r="4.5" fill="currentColor" />
-          <circle cx="20" cy="32" r="4.5" fill="currentColor" />
-        </svg>
+        <img src="logo-icon.png" alt="Simple Biz Systems Logo" class="nav-brand-img">
         <span>Simple Biz Systems</span>
       </a>
       <div class="nav-links">
@@ -590,6 +576,7 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <section class="hero text-center">
     <div class="container">
       <h1>If your business has a Gmail account, you already own the software</h1>
@@ -629,6 +616,7 @@
     </div>
   </section>
 
+  <!-- CORE THREE SHOWCASE -->
   <section class="container section-padding">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Three tools ready for your phone or shop</h2>
@@ -636,6 +624,7 @@
     </div>
 
     <div class="tool-showcase">
+      <!-- APP ONE: DISPATCH -->
       <div class="tool-card">
         <span class="tool-tag">Replaces scheduling software</span>
         <h3>Simple Shift Team Hub</h3>
@@ -646,6 +635,7 @@
         </a>
       </div>
       
+      <!-- APP TWO: ESTIMATOR -->
       <div class="tool-card">
         <span class="tool-tag">Replaces quoting software</span>
         <h3>Job Profit Estimator</h3>
@@ -656,6 +646,7 @@
         </a>
       </div>
 
+      <!-- APP THREE: LEADS -->
       <div class="tool-card">
         <span class="tool-tag">Replaces complex sales apps</span>
         <h3>Closed-Loop Lead Tracker</h3>
@@ -668,6 +659,7 @@
     </div>
   </section>
 
+  <!-- PRICING & OPTIONS -->
   <section class="container section-padding" style="border-top: 1px solid var(--border);">
     <div class="text-center">
       <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Clear, one-time setup options</h2>
@@ -675,6 +667,7 @@
     </div>
 
     <div class="price-showcase">
+      <!-- TIER 1 -->
       <div class="price-card">
         <h3>Do-it-yourself plans</h3>
         
@@ -708,6 +701,7 @@
         </ul>
       </div>
 
+      <!-- TIER 2 -->
       <div class="price-card featured">
         <div style="position:absolute; top:-12px; right:20px; background:var(--accent); color:white; font-size:0.75rem; padding:3px 12px; border-radius:12px; font-weight:700;">Most Popular</div>
         <h3>Done-for-you custom setup</h3>
@@ -747,22 +741,14 @@
       </div>
     </div>
 
-    <div class="addon-card">
-      <div class="addon-info">
-        <h4>Need a custom business email or website domain?</h4>
-        <p>We can help you set up a professional address (like info@yourshop.com) through Google Workspace so your business looks clean and established.</p>
-      </div>
-      <div class="addon-price">
-        $75 <span>/ one-time setup</span>
-      </div>
-    </div>
-
+    <!-- COMMON QUESTIONS ACCORDION -->
     <div class="faq-section">
       <div class="text-center" style="margin-bottom: 24px;">
         <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 0;">Common Questions</h3>
         <p style="color: var(--text-muted); margin: 4px 0 0 0; font-size: 0.95rem;">Clear answers on how the tools and setup work.</p>
       </div>
 
+      <!-- FAQ 1 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do my crew members need paid Google accounts or tech skills?
@@ -773,6 +759,7 @@
         </div>
       </div>
 
+      <!-- FAQ 2 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Can a team member accidentally break a formula or delete data?
@@ -783,6 +770,7 @@
         </div>
       </div>
 
+      <!-- FAQ 3 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Does this work on regular phones without buying new gear?
@@ -793,6 +781,7 @@
         </div>
       </div>
 
+      <!-- FAQ 4 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           What if we're out on a job site with spotty cell reception?
@@ -803,6 +792,7 @@
         </div>
       </div>
 
+      <!-- FAQ 5 -->
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           How is this different from buying a cheap template online?
@@ -815,6 +805,7 @@
     </div>
   </section>
 
+  <!-- CONTACT FORM -->
   <section id="contact-panel" class="container">
     <div class="contact-panel">
       <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Send us a quick message</h3>
@@ -842,7 +833,6 @@
               <option value="Simple Shift Team Hub ($450 custom / $99 DIY)">Simple Shift Team Hub ($450 custom / $99 DIY)</option>
               <option value="Closed-Loop Lead Tracker ($450 custom / $99 DIY)">Closed-Loop Lead Tracker ($450 custom / $99 DIY)</option>
               <option value="Complete Core Three Setup + Website ($1,250)">Complete Core Three Setup + Website ($1,250)</option>
-              <option value="Custom website or domain setup ($75)">Custom website or domain setup ($75)</option>
               <option value="General question or local chat">General question or local chat</option>
             </select>
           </div>
@@ -863,6 +853,7 @@
     </div>
   </section>
 
+  <!-- NEIGHBOR HANDSHAKE -->
   <section class="container">
     <div class="handshake-card">
       <h3>The Highland Lakes neighbor handshake</h3>
@@ -875,9 +866,11 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-brand">
+        <img src="logo-icon.png" alt="Simple Biz Systems Logo" class="footer-brand-img">
         <span>Simple Biz Systems • Kingsland, TX 78639</span>
       </div>
       <p style="margin-top: 0; opacity: 0.8;">Simple, affordable business tools for Kingsland, Marble Falls, and Llano.</p>
@@ -887,6 +880,7 @@
     </div>
   </footer>
 
+  <!-- SCRIPT -->
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYHWqqURr-KVL8nJvvPcftQRJitoNZAr6W1AbbYo1oomgedyJhlIYSddr_36Pxprfx/exec";
 
