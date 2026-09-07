@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kingsland Wire | Live Lake Levels, Road &amp; Public Utility Alerts</title>
-<meta name="description" content="A free, ad-free, zero-tracking public board for Kingsland, Llano, and Burnet County. Live LCRA lake levels, weather alerts, road status, and local utility updates.">
+<title>Kingsland Wire | Simple Local Updates &amp; Lake Levels</title>
+<meta name="description" content="A simple local news feed free of ads, tracking, and subscriptions. Quick updates on Lake Buchanan and LBJ water levels, weather alerts, and public notices.">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
@@ -149,7 +149,7 @@
     box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
   }
   h1 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
     margin: 0 0 8px 0;
@@ -272,7 +272,7 @@
     color: #94a3b8;
   }
 
-  /* LOADING & ERROR */
+  /* LOADING STATE */
   .skeleton-card {
     background: #e2e8f0;
     border-radius: 10px;
@@ -285,7 +285,7 @@
     100% { opacity: 0.6; }
   }
 
-  /* WORKING MAN PROMISE CARD */
+  /* COMMUNITY NOTICE CARD */
   .mission-card {
     background: #0f2b48;
     color: #ffffff;
@@ -354,7 +354,8 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html" style="color: var(--accent);">Kingsland Wire</a>
-        <a href="about.html">About</a>
+        <a href="about.html">About &amp; Founder</a>
+        <a href="index.html#contact-panel" class="btn-nav">Send a Message</a>
       </div>
     </div>
   </nav>
@@ -364,11 +365,11 @@
     <div class="container">
       <div class="status-badge">
         <span class="pulse-dot"></span>
-        <span>Live Government &amp; Utility Feed</span>
+        <span>Live Public Feed</span>
       </div>
-      <h1>Kingsland &amp; Hill Country Public Wire</h1>
+      <h1>Kingsland Wire</h1>
       <p class="lead-text">
-        Zero paywalls. Zero tracking. Instant status updates on Lake Buchanan and LBJ levels, floodgate operations, road conditions, and county public notices.
+        A simple local news feed free of ads, pop-ups, and monthly fees. Check current lake levels, local weather alerts, and public notices in one place.
       </p>
     </div>
   </header>
@@ -376,8 +377,8 @@
   <!-- MAIN FEED CONTAINER -->
   <main class="container">
     <div class="wire-meta-bar">
-      <div>Status: <strong id="feedStatus">Polling live feeds...</strong></div>
-      <button class="refresh-btn" onclick="fetchLiveWire()">↻ Refresh Data</button>
+      <div>Status: <strong id="feedStatus">Checking for updates...</strong></div>
+      <button class="refresh-btn" onclick="fetchLiveWire()">↻ Refresh Feed</button>
     </div>
 
     <!-- CARDS MOUNT POINT -->
@@ -389,9 +390,9 @@
 
     <!-- MISSION STATEMENT -->
     <div class="mission-card">
-      <h3>The Working Man's News Wire</h3>
+      <h3>About This Feed</h3>
       <p>
-        Most modern local news sites are flooded with pop-up ads, autoplay videos, paywalls, and hundreds of tracking cookies that drain your phone's battery. This public wire is built and maintained by Simple Biz Systems as a free community utility for Kingsland, Marble Falls, and Llano. It pulls directly from open government data endpoints without saving or tracking anything about you.
+        Many news websites are filled with pop-up ads, autoplay videos, and paywalls that slow down your phone. We built this page as a free service for Kingsland, Marble Falls, and Llano. It pulls simple, helpful information straight from official sources without collecting personal data or charging a fee.
       </p>
     </div>
   </main>
@@ -421,7 +422,7 @@
     </div>
   </footer>
 
-  <!-- LIVE FEED LOGIC -->
+  <!-- LIVE FEED SCRIPT -->
   <script>
     const WIRE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjqD0E9Y3ZJKtwAArsvsGBJKU3MOqm-A3CXcMRTqi-9WE-INbH2-aRgGIGS3cMoGk8/exec";
 
@@ -429,7 +430,7 @@
       const statusLabel = document.getElementById("feedStatus");
       const container = document.getElementById("alertsContainer");
       
-      statusLabel.innerText = "Syncing with state & county feeds...";
+      statusLabel.innerText = "Checking official feeds...";
 
       fetch(WIRE_ENDPOINT)
         .then(response => {
@@ -439,15 +440,15 @@
         .then(data => {
           const alerts = data.alerts || [];
           renderAlerts(alerts);
-          statusLabel.innerText = "Active & Updated";
+          statusLabel.innerText = "Updated";
         })
         .catch(err => {
           console.error("Feed error:", err);
-          statusLabel.innerText = "Error syncing (showing cached state)";
+          statusLabel.innerText = "Could not refresh";
           container.innerHTML = `
             <div style="grid-column: 1 / -1; padding: 24px; background: #ffffff; border: 1px solid var(--border); border-radius: 8px;">
-              <h4 style="margin: 0 0 6px 0; color: var(--primary);">Unable to connect to live feeds</h4>
-              <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Please check your connection or tap the Refresh Data button above.</p>
+              <h4 style="margin: 0 0 6px 0; color: var(--primary);">Unable to load latest updates</h4>
+              <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Please check your internet connection and tap the Refresh button above.</p>
             </div>
           `;
         });
@@ -458,7 +459,7 @@
       if (!alerts.length) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; padding: 24px; background: #ffffff; border: 1px solid var(--border); border-radius: 8px;">
-            <p style="margin: 0; color: var(--text-muted);">No current public alerts or lake updates reported.</p>
+            <p style="margin: 0; color: var(--text-muted);">No new updates or alerts at this time.</p>
           </div>
         `;
         return;
@@ -466,9 +467,9 @@
 
       container.innerHTML = alerts.map(item => {
         const status = (item.Status_Level || "Normal").toLowerCase();
-        const category = item.Category || "Notice";
+        const category = item.Category || "Update";
         const agency = item.Agency || "Public Source";
-        const headline = item.Headline || "Public Update";
+        const headline = item.Headline || "Notice";
         const detail = item.Detail || "";
         const sourceUrl = item.Source_URL || "#";
         const timestamp = item.Timestamp ? item.Timestamp.split(",")[0] : "Today";
@@ -484,7 +485,7 @@
               <p class="alert-detail">${escapeHtml(detail)}</p>
             </div>
             <div class="card-footer">
-              <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener" class="source-link">View Official Source &rarr;</a>
+              <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener" class="source-link">Read Official Notice &rarr;</a>
               <span class="timestamp-tag">${escapeHtml(timestamp)}</span>
             </div>
           </div>
@@ -501,7 +502,6 @@
         .replace(/'/g, "&#039;");
     }
 
-    // Auto-fetch on page load
     document.addEventListener("DOMContentLoaded", fetchLiveWire);
   </script>
 </body>
