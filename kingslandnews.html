@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kingsland Wire | Simple Local News, Weather &amp; Lake Levels</title>
-<meta name="description" content="A simple local news feed free of ads, tracking, and subscriptions. Current weather warnings, burn bans, road closures, community events, and lake levels for Kingsland, TX.">
+<meta name="description" content="A simple local news feed free of ads, tracking, and subscriptions. Current weather warnings, burn bans, utility directory, road closures, and lake levels for Kingsland, TX.">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
@@ -194,7 +194,7 @@
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--primary);
-    margin: 24px 0 16px 0;
+    margin: 28px 0 16px 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -273,6 +273,76 @@
   .source-link:hover { text-decoration: underline; }
   .timestamp-tag { color: #94a3b8; }
 
+  /* CITY UTILITIES DIRECTORY */
+  .utility-directory {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+    box-shadow: var(--card-shadow);
+  }
+  .directory-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .city-btn {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .city-btn:hover {
+    background: #e2e8f0;
+  }
+  .city-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+  }
+  .city-content {
+    display: none;
+  }
+  .city-content.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .util-box {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .util-box h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .util-box p {
+    margin: 0 0 8px 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .util-link-phone {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+  .util-link-phone:hover {
+    text-decoration: underline;
+  }
+
   /* COLLAPSIBLE LAKE DRAWER */
   .lake-accordion {
     background: var(--white);
@@ -339,7 +409,7 @@
     100% { opacity: 0.6; }
   }
 
-  /* EXPLANATION CARD */
+  /* MISSION CARD */
   .mission-card {
     background: #0f2b48;
     color: #ffffff;
@@ -423,12 +493,12 @@
       </div>
       <h1>Kingsland Wire</h1>
       <p class="lead-text">
-        A simple local news feed free of ads, tracking, and subscriptions. Weather warnings, burn bans, utility updates, road closures, and community events in one place.
+        A simple local news feed free of ads, tracking, and subscriptions. Weather warnings, burn bans, utility directory, road closures, and community events in one place.
       </p>
     </div>
   </header>
 
-  <!-- MAIN FEED CONTAINER -->
+  <!-- MAIN CONTENT CONTAINER -->
   <main class="container">
     <div class="wire-meta-bar">
       <div>Status: <strong id="feedStatus">Checking for updates...</strong></div>
@@ -445,15 +515,99 @@
       <div class="skeleton-card"></div>
     </div>
 
-    <!-- 2. PUBLIC UTILITY, ROAD WORK & COMMUNITY NOTICES -->
+    <!-- 2. PUBLIC UTILITY & ROAD NOTICES -->
     <div class="section-title">
       <span>Roads, Utilities &amp; Community Events</span>
     </div>
-    <div id="noticesContainer" class="alerts-grid">
-      <!-- Injected from Google Sheet Public_Notices tab -->
+    <div id="noticesContainer" class="alerts-grid"></div>
+
+    <!-- 3. CITY UTILITY DIRECTORY -->
+    <div class="utility-directory">
+      <h3 style="margin: 0 0 6px 0; color: var(--primary); font-size: 1.25rem;">Highland Lakes Utility &amp; Service Directory</h3>
+      <p style="margin: 0 0 16px 0; font-size: 0.92rem; color: var(--text-muted);">
+        Select a city below to view direct phone numbers and links for power, water, and local dispatch.
+      </p>
+
+      <div class="directory-nav">
+        <button type="button" class="city-btn active" onclick="switchCity('kingsland', this)">Kingsland</button>
+        <button type="button" class="city-btn" onclick="switchCity('marblefalls', this)">Marble Falls</button>
+        <button type="button" class="city-btn" onclick="switchCity('llano', this)">Llano</button>
+      </div>
+
+      <!-- KINGSLAND UTILITIES -->
+      <div id="city-kingsland" class="city-content active">
+        <div class="util-box">
+          <h4>Electric (Central Texas EC)</h4>
+          <p>Outages &amp; service issues.</p>
+          <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+        </div>
+        <div class="util-box">
+          <h4>Water &amp; Sewer (Kingsland MUD)</h4>
+          <p>Main line breaks &amp; service.</p>
+          <a href="tel:325-388-4559" class="util-link-phone">325-388-4559</a>
+        </div>
+        <div class="util-box">
+          <h4>Trash &amp; Bulk Waste</h4>
+          <p>Waste Connections pickup.</p>
+          <a href="tel:800-350-3882" class="util-link-phone">800-350-3882</a>
+        </div>
+        <div class="util-box">
+          <h4>Sheriff Dispatch (Non-Emergency)</h4>
+          <p>Llano County Sheriff.</p>
+          <a href="tel:325-247-5767" class="util-link-phone">325-247-5767</a>
+        </div>
+      </div>
+
+      <!-- MARBLE FALLS UTILITIES -->
+      <div id="city-marblefalls" class="city-content">
+        <div class="util-box">
+          <h4>Electric (PEC)</h4>
+          <p>Pedernales Electric Co-op.</p>
+          <a href="tel:888-554-4732" class="util-link-phone">888-554-4732</a>
+        </div>
+        <div class="util-box">
+          <h4>City Water &amp; Sewer</h4>
+          <p>City of Marble Falls Utilities.</p>
+          <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+        </div>
+        <div class="util-box">
+          <h4>Trash &amp; Recycling</h4>
+          <p>Waste Innovation pickup.</p>
+          <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+        </div>
+        <div class="util-box">
+          <h4>Police Dispatch (Non-Emergency)</h4>
+          <p>Marble Falls Police Dept.</p>
+          <a href="tel:830-693-3611" class="util-link-phone">830-693-3611</a>
+        </div>
+      </div>
+
+      <!-- LLANO UTILITIES -->
+      <div id="city-llano" class="city-content">
+        <div class="util-box">
+          <h4>City Electric &amp; Water</h4>
+          <p>City of Llano Utility Office.</p>
+          <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+        </div>
+        <div class="util-box">
+          <h4>Electric (Rural CTEC)</h4>
+          <p>Central Texas Electric Co-op.</p>
+          <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+        </div>
+        <div class="util-box">
+          <h4>Trash &amp; Recycling</h4>
+          <p>City of Llano Solid Waste.</p>
+          <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+        </div>
+        <div class="util-box">
+          <h4>Police Dispatch (Non-Emergency)</h4>
+          <p>Llano Police Department.</p>
+          <a href="tel:325-247-3028" class="util-link-phone">325-247-3028</a>
+        </div>
+      </div>
     </div>
 
-    <!-- 3. COLLAPSIBLE LAKE LEVELS DRAWER -->
+    <!-- 4. COLLAPSIBLE LAKE LEVELS DRAWER -->
     <div class="lake-accordion" id="lakeAccordion">
       <button class="lake-toggle-btn" type="button" onclick="toggleLakeDrawer()">
         <span class="lake-toggle-title">
@@ -466,9 +620,7 @@
         <p style="margin: 0 0 16px 0; font-size: 0.92rem; color: var(--text-muted);">
           Official elevations and conservation pool percentages reported daily by the Texas Water Development Board and LCRA.
         </p>
-        <div id="lakesContainer" class="lake-grid">
-          <!-- Lake cards injected here -->
-        </div>
+        <div id="lakesContainer" class="lake-grid"></div>
       </div>
     </div>
 
@@ -506,9 +658,20 @@
     </div>
   </footer>
 
-  <!-- FEED PARSER SCRIPT -->
+  <!-- SCRIPT LOGIC -->
   <script>
     const WIRE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjqD0E9Y3ZJKtwAArsvsGBJKU3MOqm-A3CXcMRTqi-9WE-INbH2-aRgGIGS3cMoGk8/exec";
+
+    function switchCity(cityKey, button) {
+      document.querySelectorAll('.city-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      document.querySelectorAll('.city-content').forEach(box => box.classList.remove('active'));
+      const activeContent = document.getElementById('city-' + cityKey);
+      if (activeContent) {
+        activeContent.classList.add('active');
+      }
+    }
 
     function toggleLakeDrawer() {
       const accordion = document.getElementById("lakeAccordion");
