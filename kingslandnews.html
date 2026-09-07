@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kingsland Wire | Live Lake Levels, Road &amp; Public Utility Alerts</title>
+<meta name="description" content="A free, ad-free, zero-tracking public board for Kingsland, Llano, and Burnet County. Live LCRA lake levels, weather alerts, road status, and local utility updates.">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --text-dark: #0f172a; 
+    --text-muted: #475569;
+    --white: #ffffff; 
+    --border: #e2e8f0; 
+    --success-green: #16a34a;
+    --warning-red: #dc2626;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 960px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
+    width: 100%;
+  }
+  
+  /* BANNER */
+  .local-banner {
+    background: var(--primary);
+    color: #f1f5f9;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 2px solid var(--accent);
+  }
+  .local-banner strong { color: #fbbf24; font-weight: 600; }
+  
+  /* NAV */
+  .nav { 
+    background: var(--white); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.25rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .nav-brand-img {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.95rem; 
+    transition: color 0.15s ease;
+    line-height: 1;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-nav {
+    background: var(--accent);
+    color: var(--white) !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem !important;
+    transition: background 0.15s ease;
+  }
+  .btn-nav:hover { background: var(--accent-hover); }
+
+  /* HEADER */
+  .feed-header {
+    background: var(--white);
+    padding: 48px 0 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .pulse-dot {
+    width: 9px;
+    height: 9px;
+    background: var(--success-green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  }
+  h1 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
+  }
+  .lead-text {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    margin: 0;
+  }
+
+  /* REFRESH BAR */
+  .wire-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px 0 16px 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .refresh-btn {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .refresh-btn:hover {
+    background: #f1f5f9;
+    border-color: var(--text-muted);
+  }
+
+  /* ALERTS GRID */
+  .alerts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .alert-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid var(--primary);
+  }
+  .alert-card.warning {
+    border-top-color: var(--warning-red);
+  }
+  .alert-card.advisory {
+    border-top-color: var(--accent);
+  }
+  .alert-card.normal {
+    border-top-color: var(--success-green);
+  }
+  
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .alert-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--primary);
+  }
+  .alert-agency {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .alert-headline {
+    margin: 0 0 10px 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.35;
+  }
+  .alert-detail {
+    margin: 0 0 16px 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    font-size: 0.82rem;
+  }
+  .source-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .source-link:hover {
+    text-decoration: underline;
+  }
+  .timestamp-tag {
+    color: #94a3b8;
+  }
+
+  /* LOADING & ERROR */
+  .skeleton-card {
+    background: #e2e8f0;
+    border-radius: 10px;
+    height: 180px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.6; }
+  }
+
+  /* WORKING MAN PROMISE CARD */
+  .mission-card {
+    background: #0f2b48;
+    color: #ffffff;
+    padding: 32px;
+    border-radius: 12px;
+    border-left: 6px solid var(--accent);
+    margin-bottom: 48px;
+  }
+  .mission-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .mission-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 48px 0; 
+    text-align: center; 
+    font-size: 0.9rem; 
+  }
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .footer-icon-svg {
+    width: 26px;
+    height: 26px;
+    color: #f8fafc;
+    opacity: 0.9;
+    flex-shrink: 0;
+  }
+  .footer-brand span {
+    font-weight: 700;
+    color: #f8fafc;
+    font-size: 1rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <div class="local-banner">
+    Highland Lakes Public Data • <strong>Kingsland, Llano, &amp; Burnet County</strong>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="kingslandnews.html" style="color: var(--accent);">Kingsland Wire</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="feed-header">
+    <div class="container">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>Live Government &amp; Utility Feed</span>
+      </div>
+      <h1>Kingsland &amp; Hill Country Public Wire</h1>
+      <p class="lead-text">
+        Zero paywalls. Zero tracking. Instant status updates on Lake Buchanan and LBJ levels, floodgate operations, road conditions, and county public notices.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN FEED CONTAINER -->
+  <main class="container">
+    <div class="wire-meta-bar">
+      <div>Status: <strong id="feedStatus">Polling live feeds...</strong></div>
+      <button class="refresh-btn" onclick="fetchLiveWire()">↻ Refresh Data</button>
+    </div>
+
+    <!-- CARDS MOUNT POINT -->
+    <div id="alertsContainer" class="alerts-grid">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+
+    <!-- MISSION STATEMENT -->
+    <div class="mission-card">
+      <h3>The Working Man's News Wire</h3>
+      <p>
+        Most modern local news sites are flooded with pop-up ads, autoplay videos, paywalls, and hundreds of tracking cookies that drain your phone's battery. This public wire is built and maintained by Simple Biz Systems as a free community utility for Kingsland, Marble Falls, and Llano. It pulls directly from open government data endpoints without saving or tracking anything about you.
+      </p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">
+        <svg class="footer-icon-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" stroke="currentColor" fill="none" />
+          <polygon points="50,32 72,45 50,58 28,45" stroke="currentColor" fill="none" stroke-width="5.5" />
+          <polyline points="28,45 28,70 50,83 72,70 72,45" stroke="currentColor" fill="none" stroke-width="5.5" />
+          <line x1="50" y1="58" x2="50" y2="83" stroke="currentColor" stroke-width="5.5" />
+          <circle cx="50" cy="15" r="4.5" fill="currentColor" />
+          <circle cx="80" cy="32" r="4.5" fill="currentColor" />
+          <circle cx="80" cy="68" r="4.5" fill="currentColor" />
+          <circle cx="50" cy="85" r="4.5" fill="currentColor" />
+          <circle cx="20" cy="68" r="4.5" fill="currentColor" />
+          <circle cx="20" cy="32" r="4.5" fill="currentColor" />
+        </svg>
+        <span>Simple Biz Systems • Kingsland, TX 78639</span>
+      </div>
+      <p style="margin-top: 0; opacity: 0.8;">Open public feeds for Kingsland, Marble Falls, and Llano.</p>
+      <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.6;">
+        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- LIVE FEED LOGIC -->
+  <script>
+    const WIRE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjqD0E9Y3ZJKtwAArsvsGBJKU3MOqm-A3CXcMRTqi-9WE-INbH2-aRgGIGS3cMoGk8/exec";
+
+    function fetchLiveWire() {
+      const statusLabel = document.getElementById("feedStatus");
+      const container = document.getElementById("alertsContainer");
+      
+      statusLabel.innerText = "Syncing with state & county feeds...";
+
+      fetch(WIRE_ENDPOINT)
+        .then(response => {
+          if (!response.ok) throw new Error("Network error");
+          return response.json();
+        })
+        .then(data => {
+          const alerts = data.alerts || [];
+          renderAlerts(alerts);
+          statusLabel.innerText = "Active & Updated";
+        })
+        .catch(err => {
+          console.error("Feed error:", err);
+          statusLabel.innerText = "Error syncing (showing cached state)";
+          container.innerHTML = `
+            <div style="grid-column: 1 / -1; padding: 24px; background: #ffffff; border: 1px solid var(--border); border-radius: 8px;">
+              <h4 style="margin: 0 0 6px 0; color: var(--primary);">Unable to connect to live feeds</h4>
+              <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">Please check your connection or tap the Refresh Data button above.</p>
+            </div>
+          `;
+        });
+    }
+
+    function renderAlerts(alerts) {
+      const container = document.getElementById("alertsContainer");
+      if (!alerts.length) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 24px; background: #ffffff; border: 1px solid var(--border); border-radius: 8px;">
+            <p style="margin: 0; color: var(--text-muted);">No current public alerts or lake updates reported.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = alerts.map(item => {
+        const status = (item.Status_Level || "Normal").toLowerCase();
+        const category = item.Category || "Notice";
+        const agency = item.Agency || "Public Source";
+        const headline = item.Headline || "Public Update";
+        const detail = item.Detail || "";
+        const sourceUrl = item.Source_URL || "#";
+        const timestamp = item.Timestamp ? item.Timestamp.split(",")[0] : "Today";
+
+        return `
+          <div class="alert-card ${status}">
+            <div>
+              <div class="card-top">
+                <span class="alert-category">${escapeHtml(category)}</span>
+                <span class="alert-agency">${escapeHtml(agency)}</span>
+              </div>
+              <h3 class="alert-headline">${escapeHtml(headline)}</h3>
+              <p class="alert-detail">${escapeHtml(detail)}</p>
+            </div>
+            <div class="card-footer">
+              <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener" class="source-link">View Official Source &rarr;</a>
+              <span class="timestamp-tag">${escapeHtml(timestamp)}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Auto-fetch on page load
+    document.addEventListener("DOMContentLoaded", fetchLiveWire);
+  </script>
+</body>
+</html>
