@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simple Biz Systems | Cut Software Subscriptions | Kingsland, TX</title>
-<meta name="description" content="If your business has a Gmail account, you already have the tools to run your operations. We build simple custom tools in Google Sheets so you can stop paying monthly software fees in Kingsland, Marble Falls, and Llano.">
+<title>Simple Biz Systems | Custom Tools Without Subscriptions | Kingsland, TX</title>
+<meta name="description" content="Stop paying monthly subscriptions for software your business barely uses. We build custom operating tools in Google Workspace for trade contractors and local businesses in Kingsland, Marble Falls, and Llano.">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
 
+<!-- JSON-LD Local Business & FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -18,7 +19,7 @@
     {
       "@type": "ProfessionalService",
       "name": "Simple Biz Systems",
-      "description": "Custom, zero-license software tools engineered for small businesses in the Texas Hill Country.",
+      "description": "Custom, subscription-free tools built directly into Google Workspace for local trade businesses in the Texas Hill Country.",
       "url": "https://www.simplebizsystems.com",
       "logo": "https://www.simplebizsystems.com/logo-icon.png",
       "image": "https://www.simplebizsystems.com/logo-icon.png",
@@ -44,8 +45,7 @@
         {"@type": "AdministrativeArea", "name": "Marble Falls"},
         {"@type": "AdministrativeArea", "name": "Llano"},
         {"@type": "AdministrativeArea", "name": "Granite Shoals"}
-      ],
-      "priceRange": "$"
+      ]
     },
     {
       "@type": "FAQPage",
@@ -55,39 +55,31 @@
           "name": "Do my crew members need paid Google accounts or tech skills?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Your team doesn't need paid accounts or spreadsheet training. We give them clean, mobile-friendly screens with 3 or 4 simple buttons to enter time, submit quotes, or view today's jobs directly from their phone."
+            "text": "No. Your team doesn't need paid accounts or spreadsheet training. We build clean, mobile-friendly screens with simple buttons to view jobs, enter hours, or submit work orders directly from their phones."
           }
         },
         {
           "@type": "Question",
-          "name": "Can a team member accidentally break a formula or delete data?",
+          "name": "Can an employee accidentally break formulas or erase data?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. All master formulas and calculations are locked down. Plus, Google Sheets has built-in version history—if anyone ever makes an unwanted change, you can restore previous versions with one click."
+            "text": "No. All core calculations and spreadsheets are protected. In addition, Google Drive maintains full version history, allowing you to restore any file with a single click."
           }
         },
         {
           "@type": "Question",
-          "name": "Does this work on regular phones without buying new gear?",
+          "name": "Does this work on mobile phones in the field?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The tools run through any modern web browser on iPhones, Android devices, tablets, or shop laptops. Your team uses the phones they already have in their pockets."
+            "text": "Yes. Every tool runs cleanly in any mobile browser on iPhones and Android devices, as well as shop computers and iPads."
           }
         },
         {
           "@type": "Question",
-          "name": "What if we're out on a job site with spotty cell reception?",
+          "name": "Why replace monthly software with custom Google Workspace tools?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Google Sheets and Drive support native offline access. You can view schedules, log job notes, and check details offline; everything automatically syncs the moment your phone reconnects to a signal."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is this different from buying a cheap template online?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A downloaded template is a blank file you have to figure out yourself. We build an integrated system customized to your exact labor rates, services, and workflow, connect it to your personal Google account, and walk your team through how to run it."
+            "text": "Most SaaS platforms cost $150 to $400 every month and trap your data. By building on your own Google account, you pay once for the build and own your customer data forever with zero monthly software rent."
           }
         }
       ]
@@ -112,7 +104,6 @@
     --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   }
   
-  /* LOCK SCROLLBAR TO PREVENT NAV JUMPING */
   html {
     scroll-behavior: smooth;
     overflow-y: scroll;
@@ -142,7 +133,7 @@
   .section-padding { padding: 64px 0; }
   .text-center { text-align: center; }
   
-  /* TOP BANNER */
+  /* BANNER */
   .local-banner {
     background: var(--primary);
     color: #f1f5f9;
@@ -154,7 +145,7 @@
   }
   .local-banner strong { color: #fbbf24; font-weight: 600; }
   
-  /* NAVIGATION BAR - SYNCHRONIZED */
+  /* NAV */
   .nav { 
     background: var(--white); 
     border-bottom: 1px solid var(--border); 
@@ -256,7 +247,7 @@
     flex-shrink: 0;
   }
 
-  /* EXPLAINER BLOCK */
+  /* CONCEPT INTRO */
   .concept-box {
     background: #f8fafc;
     border: 1px solid var(--border);
@@ -283,7 +274,7 @@
     color: var(--text-muted);
   }
   
-  /* TOOLS GRID */
+  /* SOLUTIONS GRID */
   .tool-showcase { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -293,7 +284,7 @@
   
   .tool-card { 
     background: var(--white); 
-    padding: 32px 24px; 
+    padding: 30px 24px; 
     border-radius: 12px; 
     border: 1px solid var(--border);
     box-shadow: var(--card-shadow);
@@ -313,90 +304,73 @@
   }
   .tool-tag { 
     display: inline-block; 
-    background: #f1f2f6; 
-    color: var(--primary-light); 
+    background: #eff6ff; 
+    color: var(--primary); 
     font-size: 0.8rem; 
     padding: 4px 10px; 
     border-radius: 6px; 
     font-weight: 600; 
     margin-bottom: 14px; 
     align-self: flex-start; 
+    border: 1px solid #dbeafe;
   }
   .tool-card p {
-    margin: 0 0 20px 0;
+    margin: 0 0 16px 0;
     color: var(--text-muted);
     font-size: 0.95rem;
     flex-grow: 1;
+    line-height: 1.6;
   }
-  .tool-link-btn {
+  .tool-footer-link {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    background: #f8fafc;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 10px 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    transition: all 0.15s ease;
+    gap: 4px;
   }
-  .tool-link-btn:hover {
-    background: var(--accent);
-    color: var(--white);
-    border-color: var(--accent);
+  .tool-footer-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
   }
 
-  /* PRICING */
-  .price-showcase {
+  /* HOW IT WORKS SECTION */
+  .steps-wrap {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
-    margin-top: 32px;
+    margin-top: 36px;
   }
-  .price-card {
+  .step-card {
     background: var(--white);
     border: 1px solid var(--border);
+    padding: 28px;
     border-radius: 12px;
-    padding: 36px 26px;
     box-shadow: var(--card-shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .price-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--card-shadow-hover);
+  .step-number {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    font-weight: 800;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
   }
-  .price-card.featured {
-    border: 2px solid var(--accent);
-    position: relative;
+  .step-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    color: var(--primary);
   }
-  .price-card h3 { margin: 0; font-size: 1.35rem; font-weight: 700; color: var(--primary); }
-  
-  .rate-box {
-    margin: 18px 0;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-  .rate-box:last-of-type { border-bottom: none; padding-bottom: 0; }
-  
-  .rate-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
-  .price-amt { font-size: 2.1rem; font-weight: 800; color: var(--primary); line-height: 1.1; margin: 4px 0; }
-  .price-amt span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
-
-  .price-features { list-style: none; padding: 0; margin: 20px 0 0 0; font-size: 0.95rem; }
-  .price-features li { 
-    margin-bottom: 12px; 
-    padding-left: 26px; 
-    position: relative; 
-    color: var(--text-dark); 
-  }
-  .price-features li svg {
-    position: absolute;
-    left: 0;
-    top: 3px;
-    color: var(--success-green);
+  .step-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
   }
 
   /* FAQ ACCORDION */
@@ -567,10 +541,12 @@
 </head>
 <body>
 
+  <!-- TOP BANNER -->
   <div class="local-banner">
     Based in Kingsland, Texas — Serving <strong>Kingsland, Marble Falls, and Llano</strong>
   </div>
 
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -585,10 +561,11 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <section class="hero text-center">
     <div class="container">
-      <h1>If your business has a Gmail account, you already own the software</h1>
-      <p>Most small businesses pay hundreds of dollars a month for complicated programs they barely use. We turn your free Google account into simple, custom tools so you can stop paying monthly software bills.</p>
+      <h1>Custom business tools without the monthly software rent</h1>
+      <p>If your business has a Google account, you already have the foundation to run your operations. We build clean, crew-friendly systems tailored to your exact workflow so you can stop paying recurring software fees.</p>
 
       <div class="trust-pills">
         <div class="trust-pill">
@@ -597,207 +574,176 @@
         </div>
         <div class="trust-pill">
           <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Zero Monthly Platform Rent
+          Zero Monthly User Licenses
         </div>
         <div class="trust-pill">
           <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Private &amp; No Algorithms
+          Works on Any Phone or Tablet
         </div>
       </div>
 
       <div class="concept-box">
         <div class="concept-grid">
           <div class="concept-item">
-            <h4>1. You already have the tools</h4>
-            <p>Your Gmail comes with free spreadsheets and file storage that can handle almost any daily business task.</p>
+            <h4>1. Built In Your Workspace</h4>
+            <p>Runs directly inside your Google Drive. No third-party servers storing or locking up your customer list.</p>
           </div>
           <div class="concept-item">
-            <h4>2. We build the simple remote</h4>
-            <p>We build clean screens for your phone or tablet so your crew can enter hours, send quotes, or log leads in seconds.</p>
+            <h4>2. Simple Field Remotes</h4>
+            <p>Crew members don't touch complicated sheets. They get clean 3-button screens to view jobs, log hours, or submit tickets.</p>
           </div>
           <div class="concept-item">
-            <h4>3. You own your data</h4>
-            <p>Everything saves directly inside your own Google account. No monthly fees, no contracts, and no lost information.</p>
+            <h4>3. Built For How You Work</h4>
+            <p>Every business runs differently. We customize the exact stages, line items, and notifications your crew needs.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- WHAT WE BUILD (EXPANDED SUITE) -->
   <section class="container section-padding">
     <div class="text-center">
-      <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Three tools ready for your phone or shop</h2>
-      <p style="color: var(--text-muted); margin: 6px 0 0 0;">Click on any tool below to view details and walk-throughs.</p>
+      <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Custom tools we engineer for local businesses</h2>
+      <p style="color: var(--text-muted); margin: 6px 0 0 0;">Common workflows we transform into subscription-free apps.</p>
     </div>
 
     <div class="tool-showcase">
+      
+      <!-- TOOL 1 -->
       <div class="tool-card">
-        <span class="tool-tag">Replaces scheduling software</span>
+        <span class="tool-tag">Replaces Jobber / Housecall Pro Dispatch</span>
         <h3>Simple Shift Team Hub</h3>
-        <p>A simple daily board for your crew. Assign people to jobs, list notes for the day, and let techs see their daily tasks on their phones without endless text message chains.</p>
-        <a href="dispatch.html" class="tool-link-btn">
-          View details &amp; demo
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-        </a>
+        <p>A central dispatch and schedule board. Assign crew members to jobs, attach gate codes and directions, and let techs see their daily schedule on their phones without group text chaos.</p>
+        <a href="dispatch.html" class="tool-footer-link">Explore the Team Hub &rarr;</a>
       </div>
       
+      <!-- TOOL 2 -->
       <div class="tool-card">
-        <span class="tool-tag">Replaces quoting software</span>
-        <h3>Job Profit Estimator</h3>
-        <p>A fast pricing worksheet made for job sites. Enter your materials and labor hours to get the right price and share a clean quote with the customer right from the driveway.</p>
-        <a href="estimator.html" class="tool-link-btn">
-          View details &amp; demo
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-        </a>
+        <span class="tool-tag">Replaces Sales CRM Subscriptions</span>
+        <h3>Closed-Loop Lead Tracker</h3>
+        <p>A fast 15-second form to capture new customer calls and site visits while driving. Organizes incoming inquiries, job status, and automatically logs quotes so no leads go cold.</p>
+        <a href="leads.html" class="tool-footer-link">Explore the Lead Tracker &rarr;</a>
       </div>
 
+      <!-- TOOL 3 -->
       <div class="tool-card">
-        <span class="tool-tag">Replaces complex sales apps</span>
-        <h3>Closed-Loop Lead Tracker</h3>
-        <p>A quick 15-second form to write down new customer requests while in the field. Saves the contact info and job details directly to your spreadsheet so nothing is forgotten.</p>
-        <a href="leads.html" class="tool-link-btn">
-          View details &amp; demo
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-        </a>
+        <span class="tool-tag">Replaces Invoicing & Work Order Apps</span>
+        <h3>Mobile Work Orders &amp; Invoices</h3>
+        <p>Generate clean, professional PDF invoices or work completion slips right from your truck. Techs select completed services, tap submit, and the customer receives an itemized copy instantly.</p>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Customized to your trade</span>
+      </div>
+
+      <!-- TOOL 4 -->
+      <div class="tool-card">
+        <span class="tool-tag">Replaces TSheets / Clockify Subscriptions</span>
+        <h3>Crew Timecard &amp; Labor Logger</h3>
+        <p>Stop paying per-user monthly fees just to track field hours. Crew members tap clock-in/clock-out by job name directly on their phone, logging clean payroll-ready hours into your office sheet.</p>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Automated overtime &amp; job codes</span>
+      </div>
+
+      <!-- TOOL 5 -->
+      <div class="tool-card">
+        <span class="tool-tag">Replaces Supply & Inventory Tools</span>
+        <h3>Material &amp; Supply Reorder Sheet</h3>
+        <p>Never get held up on a job site because a truck was missing parts. Foremen quickly submit material requests directly to the shop manager so trailers and vans stay restocked before tomorrow morning.</p>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Direct supplier export ready</span>
+      </div>
+
+      <!-- TOOL 6 -->
+      <div class="tool-card">
+        <span class="tool-tag">Replaces Equipment Management Software</span>
+        <h3>Customer Maintenance &amp; Equipment Logs</h3>
+        <p>Track customer HVAC units, pumps, roofs, or machinery history. Record filter sizes, serial numbers, install dates, and inspection notes so your crew always knows what is on site before pulling up.</p>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Instant search by address or name</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW THE ENGAGEMENT WORKS -->
+  <section class="container section-padding" style="border-top: 1px solid var(--border);">
+    <div class="text-center">
+      <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">How we build for your business</h2>
+      <p style="color: var(--text-muted); margin: 6px 0 0 0;">Simple, direct, and engineered around your existing routine.</p>
+    </div>
+
+    <div class="steps-wrap">
+      <div class="step-card">
+        <span class="step-number">1</span>
+        <h4>Review The Workflow</h4>
+        <p>We look at the software you're paying for or the paper system you want to replace. We identify the few buttons your crew actually needs.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">2</span>
+        <h4>Engineer The System</h4>
+        <p>We build the locked Google Sheets backend, connect mobile entry screens, and integrate automatic email alerts and PDF generation.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">3</span>
+        <h4>Handover &amp; Ownership</h4>
+        <p>We transfer full ownership directly into your Google Workspace, walk your crew through using it, and leave you completely subscription-free.</p>
       </div>
     </div>
   </section>
 
+  <!-- COMMON QUESTIONS -->
   <section class="container section-padding" style="border-top: 1px solid var(--border);">
-    <div class="text-center">
-      <h2 style="font-size: 1.65rem; margin: 0; font-weight: 800; color: var(--primary);">Clear, one-time setup options</h2>
-      <p style="color: var(--text-muted); margin: 6px 0 0 0;">You own the tools outright. Pick the setup style that fits your budget.</p>
+    <div class="text-center" style="margin-bottom: 28px;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 0;">Frequently Asked Questions</h2>
+      <p style="color: var(--text-muted); margin: 6px 0 0 0; font-size: 0.95rem;">Clear answers on how custom workspace tools function.</p>
     </div>
 
-    <div class="price-showcase">
-      <div class="price-card">
-        <h3>Do-it-yourself plans</h3>
-        <div class="rate-box">
-          <div class="rate-label">Per individual tool</div>
-          <div class="price-amt">$99 <span>/ one-time</span></div>
-        </div>
-        <div class="rate-box" style="background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid var(--border);">
-          <div class="rate-label" style="color: var(--accent);">Complete three-tool bundle</div>
-          <div class="price-amt" style="font-size: 1.7rem;">$199 <span>/ one-time</span></div>
-        </div>
-        <ul class="price-features">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Ready-to-use Google Sheet templates
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Clean web page files for your phone or computer
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Simple three-step setup guide
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Zero monthly fees or recurring costs
-          </li>
-        </ul>
-      </div>
-
-      <div class="price-card featured">
-        <div style="position:absolute; top:-12px; right:20px; background:var(--accent); color:white; font-size:0.75rem; padding:3px 12px; border-radius:12px; font-weight:700;">Most Popular</div>
-        <h3>Done-for-you custom setup</h3>
-        <div class="rate-box">
-          <div class="rate-label">Per individual tool</div>
-          <div class="price-amt">$450 <span>/ one-time</span></div>
-        </div>
-        <div class="rate-box" style="background: #fffbeb; padding: 12px; border-radius: 6px; border: 1px solid #fde68a;">
-          <div class="rate-label" style="color: var(--accent);">Full three-tool setup + onboarding</div>
-          <div class="price-amt" style="font-size: 1.7rem; color: var(--primary);">$1,250 <span>/ one-time</span></div>
-        </div>
-        <ul class="price-features">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Customized around how your shop already works
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Full setup and connection to your Google account
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Your business name, colors, and logo added
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            One-on-one walk-through and testing with your team
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Optional ongoing support if you ever need extra help
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="faq-section">
-      <div class="text-center" style="margin-bottom: 24px;">
-        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--primary); margin: 0;">Common Questions</h3>
-        <p style="color: var(--text-muted); margin: 4px 0 0 0; font-size: 0.95rem;">Clear answers on how the tools and setup work.</p>
-      </div>
-
+    <div class="faq-section" style="margin-top: 0;">
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
           Do my crew members need paid Google accounts or tech skills?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          No. Your team doesn't need paid accounts or spreadsheet training. We give them clean, mobile-friendly screens with 3 or 4 simple buttons to enter time, submit quotes, or view today's jobs directly from their phone.
+          No. Your crew doesn't need paid accounts or spreadsheet training. We build clean, mobile-friendly web screens with simple tap buttons so they can enter hours, pull up today's addresses, or submit notes in seconds.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          Can a team member accidentally break a formula or delete data?
+          Can an employee accidentally break formulas or erase our master data?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          No. All master formulas and calculations are locked down. Plus, Google Sheets has built-in version history—if anyone ever makes an unwanted change, you can restore previous versions with one click.
+          No. All calculations, headers, and formulas are fully protected and locked behind admin permissions. In addition, Google Workspace keeps automatic version histories, allowing you to restore any file state with a single click.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          Does this work on regular phones without buying new gear?
+          Does this work on mobile phones when on the road?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Yes. The tools run through any modern web browser on iPhones, Android devices, tablets, or shop laptops. Your team uses the phones they already have in their pockets.
+          Yes. Everything works seamlessly on iPhones, Android phones, tablets, or shop laptops. Your team uses the phones they already have in their pockets.
         </div>
       </div>
 
       <div class="faq-item">
         <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          What if we're out on a job site with spotty cell reception?
+          What if we have spotty cell reception out on a rural site?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Google Sheets and Drive support native offline access. You can view schedules, log job notes, and check details offline; everything automatically syncs the moment your phone reconnects to a signal.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button type="button" class="faq-question" onclick="toggleFaq(this)">
-          How is this different from buying a cheap template online?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          A downloaded template is a blank file you have to figure out yourself. We build an integrated system customized to your exact labor rates, services, and workflow, connect it to your personal Google account, and walk your team through how to run it.
+          Google Sheets and Drive support native offline caching. Crew members can view customer notes, addresses, and log tasks offline; everything automatically synchronizes the moment their phone connects to cellular signal.
         </div>
       </div>
     </div>
   </section>
 
+  <!-- SIMPLE CONTACT FORM -->
   <section id="contact-panel" class="container">
     <div class="contact-panel">
-      <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Send us a quick message</h3>
-      <p style="margin: 6px 0 0 0; color: var(--text-muted);">Have a question or want to lower your monthly software costs? Drop your info below and we will get back to you directly.</p>
+      <h3 style="margin: 0; font-size: 1.45rem; font-weight: 700; color: var(--primary);">Tell us about your business</h3>
+      <p style="margin: 6px 0 0 0; color: var(--text-muted);">Want to get rid of an expensive software bill or build a clean tool for your crew? Send a message below and we will get back to you directly.</p>
       
       <form id="leadForm" onsubmit="processMessageSubmission(event)">
         <div class="form-grid">
@@ -814,21 +760,23 @@
             <input type="text" id="client_contact" name="contact" class="form-input" placeholder="e.g., 325-555-0199 or name@domain.com" required>
           </div>
           <div class="form-field">
-            <label for="client_interest">What are you interested in?</label>
+            <label for="client_interest">What can we help you streamline?</label>
             <select id="client_interest" name="interest" class="form-input">
-              <option value="Replacing an expensive software program">Replacing an expensive software program</option>
-              <option value="Job Profit Estimator ($450 custom / $99 DIY)">Job Profit Estimator ($450 custom / $99 DIY)</option>
-              <option value="Simple Shift Team Hub ($450 custom / $99 DIY)">Simple Shift Team Hub ($450 custom / $99 DIY)</option>
-              <option value="Closed-Loop Lead Tracker ($450 custom / $99 DIY)">Closed-Loop Lead Tracker ($450 custom / $99 DIY)</option>
-              <option value="Complete Core Three Setup ($1,250)">Complete Core Three Setup ($1,250)</option>
-              <option value="General question or local chat">General question or local chat</option>
+              <option value="Replacing an expensive software subscription">Replacing an expensive software subscription</option>
+              <option value="Simple Shift Team Hub (Dispatch / Scheduling)">Simple Shift Team Hub (Dispatch / Scheduling)</option>
+              <option value="Closed-Loop Lead Tracker (Field CRM)">Closed-Loop Lead Tracker (Field CRM)</option>
+              <option value="Work Orders & Invoicing App">Work Orders & Invoicing App</option>
+              <option value="Crew Timecards & Labor Logger">Crew Timecards & Labor Logger</option>
+              <option value="Materials & Inventory Reordering">Materials & Inventory Reordering</option>
+              <option value="Customer Maintenance & Equipment Logs">Customer Maintenance & Equipment Logs</option>
+              <option value="General inquiry or local chat">General inquiry or local chat</option>
             </select>
           </div>
         </div>
         
         <div class="form-field" style="margin-top: 20px;">
-          <label for="client_message">How can we help your business?</label>
-          <textarea id="client_message" name="message" class="form-input" rows="4" placeholder="Tell us a little about your shop or what you'd like to simplify..." required></textarea>
+          <label for="client_message">What operational headache would you like to solve?</label>
+          <textarea id="client_message" name="message" class="form-input" rows="4" placeholder="Tell us a little about your crew, the software you want to replace, or what tool you need built..." required></textarea>
         </div>
         
         <button type="submit" id="submitBtn" class="btn-submit">Send message</button>
@@ -841,6 +789,7 @@
     </div>
   </section>
 
+  <!-- NEIGHBOR HANDSHAKE -->
   <section class="container">
     <div class="handshake-card">
       <h3>The Highland Lakes neighbor handshake</h3>
@@ -848,11 +797,12 @@
         We live and work right here in Kingsland. If you run a local trade or service shop along the lakes, we keep our terms fair, direct, and community-focused.
       </p>
       <p style="margin: 14px 0 0 0; font-size: 0.95rem; opacity: 0.85;">
-        Need help organizing your daily schedules or quotes, but prefer to talk shop or trade local services instead of cash? Let's connect, have a cup of coffee, and shake on it.
+        Need help organizing your daily schedules, dispatching, or customer tracking, but prefer to talk shop or trade local services instead of cash? Let's connect, have a cup of coffee, and shake on it.
       </p>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-brand">
@@ -870,7 +820,7 @@
         </svg>
         <span>Simple Biz Systems • Kingsland, TX 78639</span>
       </div>
-      <p style="margin-top: 0; opacity: 0.8;">Simple, affordable business tools for Kingsland, Marble Falls, and Llano.</p>
+      <p style="margin-top: 0; opacity: 0.8;">Custom operating systems for Kingsland, Marble Falls, and Llano.</p>
       <p style="margin-top: 20px; font-size: 0.85rem; opacity: 0.6;">
         Founded by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
       </p>
