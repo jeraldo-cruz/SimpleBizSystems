@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kingsland Wire | Real-Time Highland Lakes Public Briefing</title>
-<meta name="description" content="An ad-free, fast-loading community wire aggregating official feeds for Kingsland, Llano, and Burnet County. Live weather warnings, burn bans, lake levels, chamber events, and a free public boat ramp & fishing map.">
+<meta name="description" content="An ad-free community wire aggregating official feeds for Kingsland, Llano, and Burnet County. 7-day weather forecast, live burn bans, lake levels, chamber events, and a free boat ramp & fishing map.">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- Leaflet CSS for Interactive Map (Zero-tracker, lightweight) -->
+<!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
 <style>
@@ -145,7 +145,7 @@
   }
   .btn-nav:hover { background: var(--accent-hover); }
 
-  /* GOOGLE NEWS STYLE FILTER PILLS */
+  /* FILTER PILLS */
   .filter-bar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -186,12 +186,12 @@
     font-weight: 700;
   }
 
-  /* SECTION DIVIDER HEADERS */
+  /* SECTION HEADERS */
   .section-divider {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 36px 0 16px 0;
+    margin: 32px 0 16px 0;
     border-bottom: 2px solid var(--border);
     padding-bottom: 8px;
   }
@@ -208,107 +208,125 @@
     text-transform: uppercase;
   }
 
-  /* HERO BRIEFING GRID */
-  .news-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 20px;
-    margin-top: 24px;
+  /* ACTIVE WEATHER ALERT BANNER (ONLY SHOWS IF ACTIVE) */
+  #weatherAlertWrap {
+    display: none;
+    margin-top: 20px;
   }
-  @media (max-width: 820px) {
-    .news-grid { grid-template-columns: 1fr; }
+  .alert-box {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 6px solid var(--warning);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .alert-box h4 {
+    margin: 0 0 4px 0;
+    color: var(--warning);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+  .alert-box p {
+    margin: 0 0 8px 0;
+    font-size: 0.92rem;
+    color: #991b1b;
   }
 
-  .hero-card {
+  /* 7-DAY FORECAST SHELF */
+  .forecast-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
+    margin-top: 20px;
+  }
+  .forecast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .forecast-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .forecast-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    overflow-x: auto;
+  }
+  .forecast-day {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+  .day-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .day-temp {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .day-desc {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    line-height: 1.25;
+  }
+
+  /* BURN BANS SECTION */
+  .burn-bans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .burn-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--primary);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .hero-card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
+  .burn-card.active-ban {
+    border-left-color: var(--warning);
+    background: #fffafa;
   }
-  .source-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .source-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
-  .hero-card h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    line-height: 1.3;
-    margin: 0 0 12px 0;
+  .burn-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
     color: var(--text-dark);
   }
-  .hero-card p {
-    font-size: 0.96rem;
+  .burn-card p {
+    margin: 0 0 12px 0;
+    font-size: 0.88rem;
     color: var(--text-muted);
-    margin: 0 0 20px 0;
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  .card-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 14px;
-    font-size: 0.8rem;
-  }
-  .link-external {
+  .card-link {
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
   }
-  .link-external:hover { text-decoration: underline; }
+  .card-link:hover { text-decoration: underline; }
 
-  /* SIDEBAR STACK */
-  .side-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .side-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .side-card h3 {
-    font-size: 1.05rem;
-    margin: 4px 0 6px 0;
-    font-weight: 700;
-    line-height: 1.35;
-  }
-  .side-card p {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    margin: 0 0 10px 0;
-    line-height: 1.5;
-  }
-
-  /* CHAMBER EVENTS SHELF */
+  /* CHAMBER EVENTS */
   .events-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -347,21 +365,39 @@
     margin: 0 0 12px 0;
   }
 
-  /* SECONDARY STORIES GRID */
+  /* PUBLIC NOTICES */
   .stories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
     gap: 16px;
   }
+  .side-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+  }
+  .side-card h4 {
+    font-size: 1.05rem;
+    margin: 4px 0 6px 0;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  .side-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0 0 10px 0;
+  }
 
-  /* FREE COMMUNITY MAP & AMENITIES SECTION */
+  /* FREE OUTDOOR MAP & DIRECTORY */
   .map-wrapper-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
     box-shadow: var(--card-shadow);
-    margin-top: 24px;
+    margin-top: 14px;
   }
   .map-filter-row {
     display: flex;
@@ -385,7 +421,7 @@
     border-color: var(--primary);
   }
   #freeMap {
-    height: 380px;
+    height: 360px;
     width: 100%;
     border-radius: 8px;
     border: 1px solid var(--border);
@@ -421,11 +457,10 @@
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
-    align-self: flex-start;
   }
   .btn-directions:hover { text-decoration: underline; }
 
-  /* COLLAPSIBLE LAKE DRAWER */
+  /* LAKE DRAWER */
   .lake-strip {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -545,7 +580,7 @@
   .skeleton {
     background: #e2e8f0;
     border-radius: 8px;
-    height: 120px;
+    height: 100px;
     animation: pulse 1.5s infinite ease-in-out;
   }
   @keyframes pulse {
@@ -562,10 +597,10 @@
     <div class="container">
       <div class="ticker-item">
         <span class="pulse-dot"></span>
-        <span>Aggregated Official Public Feeds • Kingsland, Llano &amp; Burnet County</span>
+        <span>Aggregated Official Public Feeds • Kingsland &amp; Highland Lakes</span>
       </div>
       <div>
-        <span id="syncTimestamp">Checking feeds...</span>
+        <span id="syncTimestamp">Updating feeds...</span>
       </div>
     </div>
   </div>
@@ -590,9 +625,9 @@
   <div class="filter-bar">
     <div class="container">
       <div class="pills-wrap">
-        <button class="filter-pill active" onclick="applyFilter('all', this)">Top Briefing</button>
-        <button class="filter-pill" onclick="applyFilter('weather', this)">Weather &amp; Safety</button>
-        <button class="filter-pill" onclick="applyFilter('burn', this)">Burn Bans</button>
+        <button class="filter-pill active" onclick="scrollToSection('briefSection')">Kingsland Daily Brief</button>
+        <button class="filter-pill" onclick="scrollToSection('forecastSection')">7-Day Forecast</button>
+        <button class="filter-pill" onclick="scrollToSection('burnSection')">Burn Bans</button>
         <button class="filter-pill" onclick="scrollToSection('eventsSection')">Chamber Events</button>
         <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Boat Ramps &amp; Fishing</button>
         <button class="filter-pill" onclick="scrollToLakes()">Lake Levels</button>
@@ -600,34 +635,44 @@
     </div>
   </div>
 
-  <!-- MAIN WIRE CONTENT -->
   <main class="container">
     
-    <!-- TOP STORIES COMPACT HERO (HERO + SIDEBAR) -->
-    <div class="news-grid">
-      <!-- MAIN HERO CARD -->
-      <div class="hero-card" id="mainHero">
-        <div>
-          <div class="hero-card-header">
-            <span class="source-tag"><span class="source-dot"></span> <span id="heroSource">National Weather Service</span></span>
-          </div>
-          <h2 id="heroHeadline">Checking local advisory status...</h2>
-          <p id="heroDetail">Aggregating official feeds from National Weather Service and emergency management.</p>
-        </div>
-        <div class="card-meta">
-          <span id="heroDate">--/--/--</span>
-          <a href="https://www.weather.gov/ewx/" target="_blank" rel="noopener" id="heroLink" class="link-external">Official Advisory &rarr;</a>
-        </div>
+    <!-- 1. LIVE WEATHER ALERT (ONLY VISIBLE IF ACTIVE WARNING) -->
+    <div id="weatherAlertWrap">
+      <div class="alert-box">
+        <h4 id="alertEventTitle">Severe Weather Warning</h4>
+        <p id="alertEventDetail">Active alert description.</p>
+        <a href="https://www.weather.gov/ewx/" target="_blank" rel="noopener" style="font-weight: 700; color: #b91c1c;">Read NWS Advisory &rarr;</a>
       </div>
+    </div>
 
-      <!-- SIDEBAR STACK (COUNTY BURN BANS) -->
-      <div class="side-stack" id="sideStack">
+    <!-- 2. 7-DAY FORECAST SHELF -->
+    <div id="forecastSection" class="forecast-card">
+      <div class="forecast-header">
+        <h3>Kingsland 7-Day Weather Forecast</h3>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">National Weather Service</span>
+      </div>
+      <div class="forecast-strip" id="forecastGrid">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
         <div class="skeleton"></div>
         <div class="skeleton"></div>
       </div>
     </div>
 
-    <!-- CHAMBER & COMMUNITY EVENTS -->
+    <!-- 3. COUNTY BURN BANS (Llano in effect since July 17) -->
+    <div id="burnSection">
+      <div class="section-divider">
+        <h3>County Burn Bans &amp; Fire Status</h3>
+        <span>Emergency Management</span>
+      </div>
+      <div class="burn-bans-grid" id="burnGrid">
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+    </div>
+
+    <!-- 4. CHAMBER & COMMUNITY EVENTS -->
     <div id="eventsSection">
       <div class="section-divider">
         <h3>Kingsland Chamber &amp; Local Events</h3>
@@ -639,17 +684,18 @@
       </div>
     </div>
 
-    <!-- PUBLIC ROADS & UTILITY NOTICES -->
-    <div class="section-divider">
-      <h3>Road Closures, Public Works &amp; Notices</h3>
-      <span>Community Bulletins</span>
-    </div>
-    <div class="stories-grid" id="secondaryGrid">
-      <div class="skeleton"></div>
-      <div class="skeleton"></div>
+    <!-- 5. LOCAL ROADS & COMMUNITY NOTICES -->
+    <div id="briefSection">
+      <div class="section-divider">
+        <h3>Road Closures, Public Works &amp; Notices</h3>
+        <span>Community Bulletins</span>
+      </div>
+      <div class="stories-grid" id="noticesGrid">
+        <div class="skeleton"></div>
+      </div>
     </div>
 
-    <!-- FREE PUBLIC ACCESS & BOAT RAMPS MAP -->
+    <!-- 6. FREE PUBLIC ACCESS & BOAT RAMPS MAP -->
     <div id="mapSection">
       <div class="section-divider">
         <h3>Free Public Access &amp; Outdoors Guide</h3>
@@ -668,15 +714,13 @@
           <button class="map-pill" onclick="filterMapMarkers('public', this)">Parks &amp; Free Wi-Fi</button>
         </div>
 
-        <!-- Leaflet Map Mount Point -->
         <div id="freeMap"></div>
 
-        <!-- Directory of Free Locations -->
         <div class="amenity-grid" id="amenityList"></div>
       </div>
     </div>
 
-    <!-- COLLAPSIBLE LAKE DRAWER -->
+    <!-- 7. COLLAPSIBLE LAKE LEVELS -->
     <div class="lake-strip" id="lakeDrawer">
       <button class="lake-btn" type="button" onclick="toggleLakes()">
         <span>Lake Buchanan &amp; Lake LBJ Levels (TWDB / LCRA)</span>
@@ -690,7 +734,7 @@
       </div>
     </div>
 
-    <!-- UTILITY DIRECTORY -->
+    <!-- 8. UTILITY DIRECTORY -->
     <div class="directory-card">
       <h3 style="margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary);">Quick Utility &amp; Local Services Directory</h3>
       <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Direct phone lines and portal links for utilities across the lakes.</p>
@@ -813,7 +857,7 @@
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Open aggregation utility for Llano &amp; Burnet County residents.</p>
+      <p style="margin: 0 0 16px 0; opacity: 0.8;">Open public aggregation utility for Llano &amp; Burnet County residents.</p>
       <p style="margin: 0; opacity: 0.6;">
         Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
       </p>
@@ -825,18 +869,14 @@
 
   <script>
     const WIRE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjqD0E9Y3ZJKtwAArsvsGBJKU3MOqm-A3CXcMRTqi-9WE-INbH2-aRgGIGS3cMoGk8/exec";
-    let cachedAlerts = [];
-    let cachedNotices = [];
-    let cachedEvents = [];
 
-    // FREE AMENITIES DATA FOR KINGSLAND & IMMEDIATE AREA
     const FREE_SPOTS = [
       {
         name: "Kingsland Lions Club Park (Lake LBJ)",
         category: "ramp",
         lat: 30.6558,
         lng: -98.4385,
-        desc: "Free double concrete public boat ramp on Lake LBJ, lighted fishing pier, playground, and picnic tables.",
+        desc: "Free double concrete boat ramp on Lake LBJ, lighted fishing pier, playground, and picnic tables.",
         amenities: "Free Double Boat Ramp, Fishing Pier, Restrooms, Parking"
       },
       {
@@ -844,7 +884,7 @@
         category: "fishing",
         lat: 30.6628,
         lng: -98.4839,
-        desc: "Famous granite riverbed crossing on FM 3404. Free public river wading, bank fishing, and kayak launching.",
+        desc: "Famous granite riverbed on FM 3404. Free river wading, bank fishing, and kayak launching.",
         amenities: "Bank Fishing, Kayak Launch, Wading Pools"
       },
       {
@@ -852,7 +892,7 @@
         category: "fishing",
         lat: 30.7302,
         lng: -98.3845,
-        desc: "Free public access off Park Road 4. Bank fishing access along the Colorado River channel, observation ponds, and hiking trails.",
+        desc: "Free public access off Park Road 4. Colorado River channel bank fishing, ponds, and hiking trails.",
         amenities: "Free Bank Fishing, Nature Trails, Hatchery Tours"
       },
       {
@@ -860,16 +900,16 @@
         category: "public",
         lat: 30.6601,
         lng: -98.4442,
-        desc: "Llano County Library Branch. Free high-speed public Wi-Fi, computer workstations, printing services, and meeting rooms.",
-        amenities: "Free Public Wi-Fi, Computers, Air Conditioning, Restrooms"
+        desc: "Llano County Library. Free high-speed public Wi-Fi, computer workstations, and quiet rooms.",
+        amenities: "Free Public Wi-Fi, Workstations, Restrooms, AC"
       },
       {
         name: "Wirtz Dam Tailrace (Downstream Bank)",
         category: "fishing",
         lat: 30.5795,
         lng: -98.4286,
-        desc: "Free riverbank fishing downstream from Lake LBJ / Wirtz Dam along designated public bank access zones.",
-        amenities: "Bank Fishing, River Access (Check siren warnings before fishing)"
+        desc: "Free public riverbank fishing downstream from Lake LBJ along designated riverbanks.",
+        amenities: "Bank Fishing, River Access"
       }
     ];
 
@@ -877,12 +917,10 @@
     let mapMarkers = [];
 
     function initFreeMap() {
-      // Centered directly on Kingsland, TX
       mapInstance = L.map('freeMap').setView([30.6638, -98.4411], 12);
-
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution: '&copy; OpenStreetMap'
       }).addTo(mapInstance);
 
       renderMapMarkers(FREE_SPOTS);
@@ -896,7 +934,6 @@
       spots.forEach(spot => {
         const marker = L.marker([spot.lat, spot.lng]).addTo(mapInstance);
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}`;
-        
         marker.bindPopup(`
           <div style="font-family: inherit; font-size: 0.85rem; max-width: 220px;">
             <strong style="color: #0d3b66; font-size: 0.92rem; display: block; margin-bottom: 4px;">${spot.name}</strong>
@@ -941,9 +978,26 @@
       }
     }
 
-    function scrollToSection(sectionId) {
-      const el = document.getElementById(sectionId);
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleLakes() {
+      document.getElementById("lakeDrawer").classList.toggle("open");
+    }
+
+    function scrollToLakes() {
+      const drawer = document.getElementById("lakeDrawer");
+      drawer.classList.add("open");
+      drawer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function switchCity(key, btn) {
+      document.querySelectorAll('.dir-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.dir-content').forEach(c => c.classList.remove('active'));
+      document.getElementById('city-' + key).classList.add('active');
     }
 
     function formatDate(raw) {
@@ -962,97 +1016,73 @@
       return String(raw).split(",")[0];
     }
 
-    function toggleLakes() {
-      const drawer = document.getElementById("lakeDrawer");
-      drawer.classList.toggle("open");
-    }
-
-    function scrollToLakes() {
-      const drawer = document.getElementById("lakeDrawer");
-      drawer.classList.add("open");
-      drawer.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function switchCity(key, btn) {
-      document.querySelectorAll('.dir-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.dir-content').forEach(c => c.classList.remove('active'));
-      document.getElementById('city-' + key).classList.add('active');
-    }
-
     function fetchWire() {
       fetch(WIRE_ENDPOINT)
         .then(res => res.json())
         .then(data => {
-          cachedAlerts = data.alerts || [];
-          cachedNotices = data.notices || [];
-          cachedEvents = data.events || [];
-          renderLayout(data);
+          renderForecast(data.forecast || []);
+          renderWeatherAlert(data.alerts || []);
+          renderBurnBans(data.alerts || []);
+          renderEvents(data.events || []);
+          renderNotices(data.notices || []);
+          renderLakes(data.lakes || []);
           document.getElementById("syncTimestamp").innerText = "Updated " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         })
         .catch(err => {
           console.error("Fetch err:", err);
-          document.getElementById("syncTimestamp").innerText = "Using cached records";
+          document.getElementById("syncTimestamp").innerText = "Cached records";
         });
     }
 
-    function renderLayout(data) {
-      const alerts = data.alerts || [];
-      const lakes = data.lakes || [];
-      const notices = data.notices || [];
-      const events = data.events || [];
+    function renderWeatherAlert(alerts) {
+      const alertWrap = document.getElementById("weatherAlertWrap");
+      const weatherAlert = alerts.find(a => (a.Category || '').toLowerCase().includes('weather') || (a.Category || '').toLowerCase().includes('flood') || (a.Category || '').toLowerCase().includes('warning'));
 
-      // Main Hero Card (Weather Alert)
-      const weather = alerts.find(a => (a.Category || '').toLowerCase().includes('weather')) || alerts[0];
-      if (weather) {
-        document.getElementById("heroSource").innerText = weather.Agency || "National Weather Service";
-        document.getElementById("heroHeadline").innerText = weather.Headline || "Public Notice";
-        document.getElementById("heroDetail").innerText = weather.Detail || "";
-        document.getElementById("heroDate").innerText = formatDate(weather.Timestamp);
-        document.getElementById("heroLink").href = weather.Source_URL || "https://www.weather.gov/ewx/";
-      }
-
-      // Side Stack (Burn Bans)
-      const sideItems = alerts.filter(a => a !== weather);
-      const sideStack = document.getElementById("sideStack");
-      if (sideItems.length) {
-        sideStack.innerHTML = sideItems.map(item => `
-          <div class="side-card">
-            <div>
-              <span class="source-tag"><span class="source-dot"></span> ${escapeHtml(item.Agency || 'County Notice')}</span>
-              <h3>${escapeHtml(item.Headline)}</h3>
-              <p>${escapeHtml(item.Detail)}</p>
-            </div>
-            <div class="card-meta">
-              <span>${formatDate(item.Timestamp)}</span>
-              <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="link-external">Notice &rarr;</a>
-            </div>
-          </div>
-        `).join("");
+      if (weatherAlert && weatherAlert.Headline && !weatherAlert.Headline.toLowerCase().includes("no active")) {
+        document.getElementById("alertEventTitle").innerText = weatherAlert.Headline;
+        document.getElementById("alertEventDetail").innerText = weatherAlert.Detail;
+        alertWrap.style.display = "block";
       } else {
-        sideStack.innerHTML = `<p style="color: var(--text-muted); font-size: 0.9rem;">No active county fire alerts.</p>`;
+        alertWrap.style.display = "none";
+      }
+    }
+
+    function renderForecast(periods) {
+      const container = document.getElementById("forecastGrid");
+      if (!periods.length) {
+        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem; grid-column: 1/-1;">7-day forecast loading from NWS...</p>`;
+        return;
+      }
+      container.innerHTML = periods.slice(0, 7).map(p => `
+        <div class="forecast-day">
+          <div class="day-name">${escapeHtml(p.name)}</div>
+          <div class="day-temp">${escapeHtml(p.temperature)}°${escapeHtml(p.temperatureUnit)}</div>
+          <div class="day-desc">${escapeHtml(p.shortForecast)}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderBurnBans(alerts) {
+      const container = document.getElementById("burnGrid");
+      const bans = alerts.filter(a => (a.Category || '').toLowerCase().includes('burn'));
+
+      if (!bans.length) {
+        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem;">No county burn notices reported.</p>`;
+        return;
       }
 
-      // Chamber Events
-      renderEvents(events);
-
-      // Secondary Grid (Public Notices / Roads)
-      renderSecondary(notices);
-
-      // Lake Drawer
-      const lakeWrap = document.getElementById("lakeCardsWrap");
-      if (lakes.length) {
-        lakeWrap.innerHTML = lakes.map(l => `
-          <div class="lake-item">
-            <h4>${escapeHtml(l.Headline)}</h4>
-            <p>${escapeHtml(l.Detail)}</p>
-            <div style="font-size: 0.8rem; display: flex; justify-content: space-between;">
-              <span style="color: var(--text-muted);">${formatDate(l.Timestamp)}</span>
-              <a href="${escapeHtml(l.Source_URL)}" target="_blank" rel="noopener" class="link-external">TWDB Telemetry &rarr;</a>
+      container.innerHTML = bans.map(b => {
+        const isActive = (b.Status_Level || '').toLowerCase() === 'warning' || b.Headline.toLowerCase().includes('active');
+        return `
+          <div class="burn-card ${isActive ? 'active-ban' : ''}">
+            <div>
+              <h4>${escapeHtml(b.Headline)}</h4>
+              <p>${escapeHtml(b.Detail)}</p>
             </div>
+            <a href="${escapeHtml(b.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">County Order / Portal &rarr;</a>
           </div>
-        `).join("");
-      }
+        `;
+      }).join("");
     }
 
     function renderEvents(events) {
@@ -1063,9 +1093,9 @@
             <div>
               <span class="event-badge">Chamber Updates</span>
               <h4>Kingsland Chamber Community Schedule</h4>
-              <p>No special meetings or festivals posted today. Check the Chamber portal for the full monthly schedule.</p>
+              <p>No special meetings posted today. Check the Chamber portal for the monthly calendar.</p>
             </div>
-            <a href="https://kingslandchamber.org/events/" target="_blank" rel="noopener" class="link-external">View Chamber Calendar &rarr;</a>
+            <a href="https://kingslandchamber.org/events/" target="_blank" rel="noopener" class="card-link">View Chamber Calendar &rarr;</a>
           </div>
         `;
         return;
@@ -1077,14 +1107,14 @@
             <h4>${escapeHtml(e.Title)}</h4>
             <p>${escapeHtml(e.Location || 'Kingsland, TX')}</p>
           </div>
-          <a href="${escapeHtml(e.Link || 'https://kingslandchamber.org/events/')}" target="_blank" rel="noopener" class="link-external">Event Info &rarr;</a>
+          <a href="${escapeHtml(e.Link || 'https://kingslandchamber.org/events/')}" target="_blank" rel="noopener" class="card-link">Event Info &rarr;</a>
         </div>
       `).join("");
     }
 
-    function renderSecondary(items) {
-      const container = document.getElementById("secondaryGrid");
-      if (!items.length) {
+    function renderNotices(notices) {
+      const container = document.getElementById("noticesGrid");
+      if (!notices.length) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; background: #ffffff; border: 1px dashed var(--border); border-radius: 8px; padding: 18px; color: var(--text-muted); font-size: 0.9rem;">
             No road closures or public utility bulletins reported today.
@@ -1092,34 +1122,34 @@
         `;
         return;
       }
-      container.innerHTML = items.map(item => `
+      container.innerHTML = notices.map(item => `
         <div class="side-card">
-          <div>
-            <span class="source-tag"><span class="source-dot"></span> ${escapeHtml(item.Agency || 'Public Agency')}</span>
-            <h3>${escapeHtml(item.Headline)}</h3>
-            <p>${escapeHtml(item.Detail)}</p>
-          </div>
-          <div class="card-meta">
-            <span>${formatDate(item.Timestamp)}</span>
-            <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="link-external">Details &rarr;</a>
+          <h4>${escapeHtml(item.Headline)}</h4>
+          <p>${escapeHtml(item.Detail)}</p>
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+            <span style="color: var(--text-muted);">${formatDate(item.Timestamp)}</span>
+            <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">Details &rarr;</a>
           </div>
         </div>
       `).join("");
     }
 
-    function applyFilter(category, btn) {
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (category === 'all') {
-        renderSecondary(cachedNotices);
-      } else if (category === 'weather') {
-        const filtered = cachedAlerts.filter(a => (a.Category || '').toLowerCase().includes('weather'));
-        renderSecondary(filtered);
-      } else if (category === 'burn') {
-        const filtered = cachedAlerts.filter(a => (a.Category || '').toLowerCase().includes('burn'));
-        renderSecondary(filtered);
+    function renderLakes(lakes) {
+      const container = document.getElementById("lakeCardsWrap");
+      if (!lakes.length) {
+        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem;">Syncing water storage gauges...</p>`;
+        return;
       }
+      container.innerHTML = lakes.map(l => `
+        <div class="lake-item">
+          <h4>${escapeHtml(l.Headline)}</h4>
+          <p>${escapeHtml(l.Detail)}</p>
+          <div style="font-size: 0.8rem; display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">${formatDate(l.Timestamp)}</span>
+            <a href="${escapeHtml(l.Source_URL)}" target="_blank" rel="noopener" class="card-link">TWDB Telemetry &rarr;</a>
+          </div>
+        </div>
+      `).join("");
     }
 
     function escapeHtml(str) {
