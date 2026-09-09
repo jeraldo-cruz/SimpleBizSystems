@@ -312,28 +312,40 @@
   }
   .city-content.active {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 16px;
   }
   .util-box {
     background: #f8fafc;
     border: 1px solid var(--border);
-    padding: 16px;
+    padding: 18px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .util-box h4 {
     margin: 0 0 6px 0;
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     color: var(--primary);
     font-weight: 700;
   }
   .util-box p {
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
     font-size: 0.88rem;
     color: var(--text-muted);
   }
+  .util-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
   .util-link-phone {
-    display: inline-block;
     font-weight: 700;
     color: var(--accent);
     text-decoration: none;
@@ -341,6 +353,16 @@
   }
   .util-link-phone:hover {
     text-decoration: underline;
+  }
+  .util-link-web {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .util-link-web:hover {
+    text-decoration: underline;
+    color: var(--accent);
   }
 
   /* COLLAPSIBLE LAKE DRAWER */
@@ -493,7 +515,7 @@
       </div>
       <h1>Kingsland Wire</h1>
       <p class="lead-text">
-        A simple local news feed free of ads, tracking, and subscriptions. Weather warnings, burn bans, utility directory, road closures, and community events in one place.
+        A simple local news feed free of ads, tracking, and subscriptions. Weather warnings, burn bans, utility directory, road closures, and lake levels in one place.
       </p>
     </div>
   </header>
@@ -537,72 +559,132 @@
       <!-- KINGSLAND UTILITIES -->
       <div id="city-kingsland" class="city-content active">
         <div class="util-box">
-          <h4>Electric (Central Texas EC)</h4>
-          <p>Outages &amp; service issues.</p>
-          <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+          <div>
+            <h4>Electric (Central Texas EC)</h4>
+            <p>Power outages and electric service accounts.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+            <a href="https://www.ctec.coop/" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Water &amp; Sewer (Kingsland MUD)</h4>
-          <p>Main line breaks &amp; service.</p>
-          <a href="tel:325-388-4559" class="util-link-phone">325-388-4559</a>
+          <div>
+            <h4>Water &amp; Sewer (Kingsland MUD)</h4>
+            <p>Main line repairs, billing, and system notices.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:325-388-4559" class="util-link-phone">325-388-4559</a>
+            <a href="https://kingslandmud.com/" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Trash &amp; Bulk Waste</h4>
-          <p>Waste Connections pickup.</p>
-          <a href="tel:800-350-3882" class="util-link-phone">800-350-3882</a>
+          <div>
+            <h4>Trash &amp; Bulk Waste</h4>
+            <p>Waste Connections rural route pickup.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:800-350-3882" class="util-link-phone">800-350-3882</a>
+            <a href="https://www.wasteconnections.com/" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Sheriff Dispatch (Non-Emergency)</h4>
-          <p>Llano County Sheriff.</p>
-          <a href="tel:325-247-5767" class="util-link-phone">325-247-5767</a>
+          <div>
+            <h4>Sheriff Dispatch (Non-Emergency)</h4>
+            <p>Llano County Sheriff Dispatch.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:325-247-5767" class="util-link-phone">325-247-5767</a>
+            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener" class="util-link-web">County Portal &rarr;</a>
+          </div>
         </div>
       </div>
 
       <!-- MARBLE FALLS UTILITIES -->
       <div id="city-marblefalls" class="city-content">
         <div class="util-box">
-          <h4>Electric (PEC)</h4>
-          <p>Pedernales Electric Co-op.</p>
-          <a href="tel:888-554-4732" class="util-link-phone">888-554-4732</a>
+          <div>
+            <h4>Electric (PEC)</h4>
+            <p>Pedernales Electric Co-op outages &amp; billing.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:888-554-4732" class="util-link-phone">888-554-4732</a>
+            <a href="https://www.pec.coop/" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>City Water &amp; Sewer</h4>
-          <p>City of Marble Falls Utilities.</p>
-          <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+          <div>
+            <h4>City Water &amp; Sewer</h4>
+            <p>City of Marble Falls Utilities Department.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+            <a href="https://www.marblefallstx.gov/155/Utilities" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Trash &amp; Recycling</h4>
-          <p>Waste Innovation pickup.</p>
-          <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+          <div>
+            <h4>Trash &amp; Recycling</h4>
+            <p>City contract collections &amp; bulky item service.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:830-693-3615" class="util-link-phone">830-693-3615</a>
+            <a href="https://www.marblefallstx.gov/160/Trash-Recycling" target="_blank" rel="noopener" class="util-link-web">Trash Schedule &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Police Dispatch (Non-Emergency)</h4>
-          <p>Marble Falls Police Dept.</p>
-          <a href="tel:830-693-3611" class="util-link-phone">830-693-3611</a>
+          <div>
+            <h4>Police Dispatch (Non-Emergency)</h4>
+            <p>Marble Falls Police Department.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:830-693-3611" class="util-link-phone">830-693-3611</a>
+            <a href="https://www.marblefallstx.gov/151/Police-Department" target="_blank" rel="noopener" class="util-link-web">City Police &rarr;</a>
+          </div>
         </div>
       </div>
 
       <!-- LLANO UTILITIES -->
       <div id="city-llano" class="city-content">
         <div class="util-box">
-          <h4>City Electric &amp; Water</h4>
-          <p>City of Llano Utility Office.</p>
-          <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+          <div>
+            <h4>City Electric &amp; Water</h4>
+            <p>City of Llano Municipal Utilities Office.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+            <a href="https://www.cityofllano.com/152/Utility-Department" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Electric (Rural CTEC)</h4>
-          <p>Central Texas Electric Co-op.</p>
-          <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+          <div>
+            <h4>Electric (Rural CTEC)</h4>
+            <p>Central Texas Electric Co-op outside city limits.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:830-997-2126" class="util-link-phone">830-997-2126</a>
+            <a href="https://www.ctec.coop/" target="_blank" rel="noopener" class="util-link-web">Website / Portal &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Trash &amp; Recycling</h4>
-          <p>City of Llano Solid Waste.</p>
-          <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+          <div>
+            <h4>Trash &amp; Recycling</h4>
+            <p>City of Llano Solid Waste Services.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:325-247-4158" class="util-link-phone">325-247-4158</a>
+            <a href="https://www.cityofllano.com/154/Solid-Waste" target="_blank" rel="noopener" class="util-link-web">Pickup Rules &rarr;</a>
+          </div>
         </div>
         <div class="util-box">
-          <h4>Police Dispatch (Non-Emergency)</h4>
-          <p>Llano Police Department.</p>
-          <a href="tel:325-247-3028" class="util-link-phone">325-247-3028</a>
+          <div>
+            <h4>Police Dispatch (Non-Emergency)</h4>
+            <p>Llano Police Department non-emergency line.</p>
+          </div>
+          <div class="util-links-row">
+            <a href="tel:325-247-3028" class="util-link-phone">325-247-3028</a>
+            <a href="https://www.cityofllano.com/150/Police-Department" target="_blank" rel="noopener" class="util-link-web">Police Site &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -611,7 +693,9 @@
     <div class="lake-accordion" id="lakeAccordion">
       <button class="lake-toggle-btn" type="button" onclick="toggleLakeDrawer()">
         <span class="lake-toggle-title">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="color: var(--primary);"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
           Lake Levels &amp; Reservoir Storage (Buchanan &amp; LBJ)
         </span>
         <span class="lake-chevron" id="lakeChevron">&#9662;</span>
@@ -678,6 +762,31 @@
       accordion.classList.toggle("open");
     }
 
+    function formatCardDate(rawDate) {
+      if (!rawDate) return "Today";
+      
+      // If already in MM/DD/YY or MM/DD/YYYY format
+      if (typeof rawDate === "string" && /^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(rawDate.trim())) {
+        const parts = rawDate.trim().split("/");
+        const mm = parts[0].padStart(2, "0");
+        const dd = parts[1].padStart(2, "0");
+        const yy = parts[2].slice(-2);
+        return `${mm}/${dd}/${yy}`;
+      }
+
+      // If an ISO string or Date parseable format
+      const d = new Date(rawDate);
+      if (!isNaN(d.getTime())) {
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        const yy = String(d.getFullYear()).slice(-2);
+        return `${mm}/${dd}/${yy}`;
+      }
+
+      // Fallback
+      return String(rawDate).split(",")[0];
+    }
+
     function fetchLiveWire() {
       const statusLabel = document.getElementById("feedStatus");
       statusLabel.innerText = "Checking official feeds...";
@@ -706,7 +815,7 @@
       const headline = item.Headline || "Notice";
       const detail = item.Detail || "";
       const sourceUrl = item.Source_URL || "#";
-      const timestamp = item.Timestamp ? item.Timestamp.split(",")[0] : "Today";
+      const timestamp = formatCardDate(item.Timestamp);
 
       return `
         <div class="alert-card ${status}">
