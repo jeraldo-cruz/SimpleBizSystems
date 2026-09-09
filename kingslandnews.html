@@ -120,6 +120,17 @@
     width: 100%;
   }
 
+  /* ACCURATE SCROLL MARGINS FOR STICKY BARS */
+  #aboutSection,
+  #forecastSection,
+  #burnSection,
+  #eventsSection,
+  #briefSection,
+  #mapSection,
+  #utilitySection {
+    scroll-margin-top: 130px;
+  }
+
   /* TOP STATUS TICKER */
   .sub-ticker {
     background: var(--surface);
@@ -246,7 +257,7 @@
     font-weight: 700;
   }
 
-  /* ABOUT THE WIRE (PLACED HIGH AT TOP) */
+  /* ABOUT THE WIRE */
   .about-wire-card {
     background: #0f2b48;
     color: #ffffff;
@@ -298,7 +309,7 @@
     text-transform: uppercase;
   }
 
-  /* ACTIVE WEATHER ALERT BANNER (ONLY SHOWS IF NWS ADVISORY ACTIVE) */
+  /* ACTIVE WEATHER ALERT BANNER */
   #weatherAlertWrap {
     display: none;
     margin-top: 20px;
@@ -663,19 +674,19 @@
   <div class="filter-bar">
     <div class="container">
       <div class="pills-wrap">
-        <button class="filter-pill active" onclick="scrollToSection('aboutSection')">About The Wire</button>
-        <button class="filter-pill" onclick="scrollToSection('forecastSection')">7-Day Forecast</button>
-        <button class="filter-pill" onclick="scrollToSection('burnSection')">Burn Bans</button>
-        <button class="filter-pill" onclick="scrollToSection('eventsSection')">Chamber Events</button>
-        <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Boat Ramps &amp; Fishing</button>
-        <button class="filter-pill" onclick="scrollToSection('utilitySection')">Utility Directory</button>
+        <button class="filter-pill active" onclick="scrollToSection('aboutSection', this)">About The Wire</button>
+        <button class="filter-pill" onclick="scrollToSection('forecastSection', this)">7-Day Forecast</button>
+        <button class="filter-pill" onclick="scrollToSection('burnSection', this)">Burn Bans</button>
+        <button class="filter-pill" onclick="scrollToSection('eventsSection', this)">Chamber Events</button>
+        <button class="filter-pill" onclick="scrollToSection('mapSection', this)">Free Boat Ramps &amp; Fishing</button>
+        <button class="filter-pill" onclick="scrollToSection('utilitySection', this)">Utility Directory</button>
       </div>
     </div>
   </div>
 
   <main class="container">
     
-    <!-- 1. ABOUT THE WIRE MISSION CARD (PLACED HIGH AT TOP) -->
+    <!-- 1. ABOUT THE WIRE MISSION CARD -->
     <div id="aboutSection" class="about-wire-card">
       <h1>About The Kingsland Wire</h1>
       <p>
@@ -951,18 +962,28 @@
     let mapInstance = null;
     let mapMarkers = [];
 
+    // SAFE MAP INITIALIZATION
     function initFreeMap() {
-      mapInstance = L.map('freeMap').setView([30.6638, -98.4411], 12);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; OpenStreetMap'
-      }).addTo(mapInstance);
+      try {
+        const mapContainer = document.getElementById('freeMap');
+        if (!mapContainer) return;
 
-      renderMapMarkers(FREE_SPOTS);
-      renderAmenityCards(FREE_SPOTS);
+        mapInstance = L.map('freeMap').setView([30.6638, -98.4411], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '&copy; OpenStreetMap'
+        }).addTo(mapInstance);
+
+        renderMapMarkers(FREE_SPOTS);
+        renderAmenityCards(FREE_SPOTS);
+      } catch (mapErr) {
+        console.warn("Map setup notice:", mapErr);
+        renderAmenityCards(FREE_SPOTS);
+      }
     }
 
     function renderMapMarkers(spots) {
+      if (!mapInstance) return;
       mapMarkers.forEach(m => mapInstance.removeLayer(m));
       mapMarkers = [];
 
@@ -982,6 +1003,7 @@
 
     function renderAmenityCards(spots) {
       const container = document.getElementById("amenityList");
+      if (!container) return;
       container.innerHTML = spots.map(spot => {
         const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lng}`;
         return `
@@ -1013,16 +1035,27 @@
       }
     }
 
-    function scrollToSection(id) {
+    // OFFSET-AWARE SMOOTH SCROLLER
+    function scrollToSection(id, btn) {
+      if (btn) {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        const yOffset = -130; // Matches sticky nav + filter bar height with padding
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
 
     function switchCity(key, btn) {
       document.querySelectorAll('.dir-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('.dir-content').forEach(c => c.classList.remove('active'));
-      document.getElementById('city-' + key).classList.add('active');
+      const activeContent = document.getElementById('city-' + key);
+      if (activeContent) activeContent.classList.add('active');
     }
 
     function formatDate(raw) {
@@ -1041,11 +1074,9 @@
       return String(raw).split(",")[0];
     }
 
-    // DIRECT 7-DAY WEATHER LOADER (Instant, never gets stuck)
+    // DIRECT 7-DAY WEATHER (Fast, independent execution)
     function fetchKingslandWeather() {
       const forecastGrid = document.getElementById("forecastGrid");
-      
-      // Open-Meteo provides instantaneous, non-rate-limited daily forecast for Kingsland coordinates
       const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=weathercode,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago";
 
       fetch(weatherUrl)
@@ -1087,42 +1118,55 @@
               </div>
             `;
           }
-          forecastGrid.innerHTML = html;
+          if (forecastGrid) forecastGrid.innerHTML = html;
         })
         .catch(err => {
-          console.error("Weather load fallback:", err);
-          // Clean fallback if offline
-          forecastGrid.innerHTML = `
-            <div class="forecast-day" style="grid-column: 1 / -1; padding: 16px;">
-              <div class="day-desc">Highland Lakes Weather: Typical Hill Country conditions. <a href="https://forecast.weather.gov/MapClick.php?lat=30.6638&lon=-98.4411" target="_blank" rel="noopener" style="color: var(--accent); font-weight: bold;">View full NWS radar &rarr;</a></div>
-            </div>
-          `;
+          console.warn("Weather fallback notice:", err);
+          if (forecastGrid) {
+            forecastGrid.innerHTML = `
+              <div class="forecast-day" style="grid-column: 1 / -1; padding: 16px;">
+                <div class="day-desc">Highland Lakes Weather: Typical Hill Country conditions. <a href="https://forecast.weather.gov/MapClick.php?lat=30.6638&lon=-98.4411" target="_blank" rel="noopener" style="color: var(--accent); font-weight: bold;">View full NWS radar &rarr;</a></div>
+              </div>
+            `;
+          }
         });
     }
 
+    // MAIN WIRE FEED FETCH (Burn Bans, Chamber Events, Notices)
     function fetchWire() {
       fetch(WIRE_ENDPOINT)
-        .then(res => res.json())
+        .then(res => {
+          if (!res.ok) throw new Error("Wire API response not OK");
+          return res.json();
+        })
         .then(data => {
           renderWeatherAlert(data.alerts || []);
           renderBurnBans(data.alerts || []);
           renderEvents(data.events || []);
           renderNotices(data.notices || []);
-          document.getElementById("syncTimestamp").innerText = "Updated " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+          const statusElem = document.getElementById("syncTimestamp");
+          if (statusElem) {
+            statusElem.innerText = "Updated " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+          }
         })
         .catch(err => {
-          console.error("Fetch err:", err);
-          document.getElementById("syncTimestamp").innerText = "Cached community records";
+          console.error("Wire fetch notice:", err);
+          const statusElem = document.getElementById("syncTimestamp");
+          if (statusElem) statusElem.innerText = "Cached community records";
         });
     }
 
     function renderWeatherAlert(alerts) {
       const alertWrap = document.getElementById("weatherAlertWrap");
+      if (!alertWrap) return;
+
       const weatherAlert = alerts.find(a => (a.Category || '').toLowerCase().includes('weather') || (a.Category || '').toLowerCase().includes('flood') || (a.Category || '').toLowerCase().includes('warning'));
 
       if (weatherAlert && weatherAlert.Headline && !weatherAlert.Headline.toLowerCase().includes("no active")) {
-        document.getElementById("alertEventTitle").innerText = weatherAlert.Headline;
-        document.getElementById("alertEventDetail").innerText = weatherAlert.Detail;
+        const titleElem = document.getElementById("alertEventTitle");
+        const detailElem = document.getElementById("alertEventDetail");
+        if (titleElem) titleElem.innerText = weatherAlert.Headline;
+        if (detailElem) detailElem.innerText = weatherAlert.Detail;
         alertWrap.style.display = "block";
       } else {
         alertWrap.style.display = "none";
@@ -1131,6 +1175,8 @@
 
     function renderBurnBans(alerts) {
       const container = document.getElementById("burnGrid");
+      if (!container) return;
+
       const bans = alerts.filter(a => (a.Category || '').toLowerCase().includes('burn'));
 
       if (!bans.length) {
@@ -1139,7 +1185,7 @@
       }
 
       container.innerHTML = bans.map(b => {
-        const isActive = (b.Status_Level || '').toLowerCase() === 'warning' || b.Headline.toLowerCase().includes('active');
+        const isActive = (b.Status_Level || '').toLowerCase() === 'warning' || (b.Headline && b.Headline.toLowerCase().includes('active'));
         return `
           <div class="burn-card ${isActive ? 'active-ban' : ''}">
             <div>
@@ -1154,6 +1200,8 @@
 
     function renderEvents(events) {
       const container = document.getElementById("eventsGrid");
+      if (!container) return;
+
       if (!events.length) {
         container.innerHTML = `
           <div class="event-card" style="grid-column: 1 / -1;">
@@ -1167,6 +1215,7 @@
         `;
         return;
       }
+
       container.innerHTML = events.slice(0, 4).map(e => `
         <div class="event-card">
           <div>
@@ -1181,6 +1230,8 @@
 
     function renderNotices(notices) {
       const container = document.getElementById("noticesGrid");
+      if (!container) return;
+
       if (!notices.length) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; background: #ffffff; border: 1px dashed var(--border); border-radius: 8px; padding: 18px; color: var(--text-muted); font-size: 0.9rem;">
@@ -1189,6 +1240,7 @@
         `;
         return;
       }
+
       container.innerHTML = notices.map(item => `
         <div class="side-card">
           <h3>${escapeHtml(item.Headline)}</h3>
@@ -1210,10 +1262,11 @@
         .replace(/'/g, "&#039;");
     }
 
+    // RUN TASKS IN SAFE, INDEPENDENT PIPELINES
     document.addEventListener("DOMContentLoaded", () => {
       fetchKingslandWeather();
-      initFreeMap();
       fetchWire();
+      initFreeMap();
     });
   </script>
 </body>
