@@ -4,12 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kingsland Wire | Free Local Info, Weather, Lakes &amp; Public Services</title>
-<meta name="description" content="A simple community board for Kingsland, Texas. Free public amenities, boat ramps, 7-day weather, lake levels, burn bans, and local utility links. Ad-free and privacy-focused.">
+<!-- PRIMARY SEO TAGS -->
+<title>Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)</title>
+<meta name="title" content="Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)">
+<meta name="description" content="Free, ad-free public bulletin for Kingsland, Texas, Llano County, and Burnet County. Live 7-day weather forecast, active burn bans, free public boat ramps, chamber events, and emergency utility contacts.">
+<meta name="keywords" content="free kingsland texas news, kingsland tx utilities, kingsland boat ramps, free fishing kingsland, llano county burn ban, burnet county burn ban, kingsland mud phone number, ctec outage, kingsland weather forecast, highland lakes news">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / FACEBOOK -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
+<meta property="og:title" content="Kingsland Wire | Free Local News, Weather &amp; Utilities">
+<meta property="og:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, and free boat ramp maps.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kingsland Wire | Free Local News, Weather &amp; Utilities">
+<meta name="twitter:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, and free boat ramp maps.">
+<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- STRUCTURED DATA (JSON-LD) FOR SEARCH ENGINES -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.simplebizsystems.com/kingslandnews.html#website",
+      "url": "https://www.simplebizsystems.com/kingslandnews.html",
+      "name": "Kingsland Wire",
+      "description": "Free public bulletin and utility directory for Kingsland, Llano, and Burnet County, Texas.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Simple Biz Systems",
+        "url": "https://www.simplebizsystems.com/",
+        "logo": "https://www.simplebizsystems.com/logo-icon.png"
+      }
+    },
+    {
+      "@type": "CivicStructure",
+      "name": "Kingsland Lions Club Park Public Boat Ramp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kingsland",
+        "addressRegion": "TX",
+        "postalCode": "78639",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.6558,
+        "longitude": -98.4385
+      },
+      "isAccessibleForFree": true
+    }
+  ]
+}
+</script>
 
 <!-- Leaflet Map CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -185,6 +246,36 @@
     font-weight: 700;
   }
 
+  /* ABOUT THE WIRE (PLACED HIGH AT TOP) */
+  .about-wire-card {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 24px;
+    border-left: 6px solid var(--accent);
+    box-shadow: var(--card-shadow);
+  }
+  .about-wire-card h1 {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+  .about-wire-card p {
+    margin: 0 0 10px 0;
+    font-size: 0.93rem;
+    line-height: 1.6;
+    opacity: 0.93;
+  }
+  .about-wire-card p:last-child {
+    margin-bottom: 0;
+  }
+  .about-wire-card strong {
+    color: #fbbf24;
+  }
+
   /* SECTION DIVIDERS */
   .section-divider {
     display: flex;
@@ -194,7 +285,7 @@
     border-bottom: 2px solid var(--border);
     padding-bottom: 8px;
   }
-  .section-divider h3 {
+  .section-divider h2 {
     font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
@@ -207,7 +298,7 @@
     text-transform: uppercase;
   }
 
-  /* ACTIVE WEATHER ALERT BANNER (HIDDEN IF NO WARNING) */
+  /* ACTIVE WEATHER ALERT BANNER (ONLY SHOWS IF NWS ADVISORY ACTIVE) */
   #weatherAlertWrap {
     display: none;
     margin-top: 20px;
@@ -219,7 +310,7 @@
     border-radius: 8px;
     padding: 16px 20px;
   }
-  .alert-box h4 {
+  .alert-box h3 {
     margin: 0 0 4px 0;
     color: var(--warning);
     font-size: 1.1rem;
@@ -246,7 +337,7 @@
     align-items: center;
     margin-bottom: 14px;
   }
-  .forecast-header h3 {
+  .forecast-header h2 {
     margin: 0;
     font-size: 1.15rem;
     font-weight: 800;
@@ -305,7 +396,7 @@
     border-left-color: var(--warning);
     background: #fffafa;
   }
-  .burn-card h4 {
+  .burn-card h3 {
     margin: 0 0 6px 0;
     font-size: 1.05rem;
     color: var(--text-dark);
@@ -351,7 +442,7 @@
     width: fit-content;
     margin-bottom: 8px;
   }
-  .event-card h4 {
+  .event-card h3 {
     margin: 0 0 6px 0;
     font-size: 0.98rem;
     line-height: 1.35;
@@ -376,7 +467,7 @@
     padding: 16px;
     box-shadow: var(--card-shadow);
   }
-  .side-card h4 {
+  .side-card h3 {
     font-size: 1.05rem;
     margin: 4px 0 6px 0;
     font-weight: 700;
@@ -440,7 +531,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
-  .amenity-card h4 {
+  .amenity-card h3 {
     margin: 0 0 4px 0;
     font-size: 0.95rem;
     color: var(--primary);
@@ -457,57 +548,6 @@
     text-decoration: none;
   }
   .btn-directions:hover { text-decoration: underline; }
-
-  /* LAKE DRAWER */
-  .lake-strip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-top: 24px;
-    overflow: hidden;
-  }
-  .lake-btn {
-    width: 100%;
-    background: #f8fafc;
-    border: none;
-    padding: 16px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--primary);
-  }
-  .lake-btn:hover { background: #f1f5f9; }
-  .lake-content {
-    display: none;
-    padding: 18px 20px;
-    border-top: 1px solid var(--border);
-    background: var(--surface);
-  }
-  .lake-strip.open .lake-content { display: block; }
-  .lake-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-  }
-  .lake-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-  }
-  .lake-item h4 {
-    margin: 0 0 4px 0;
-    font-size: 0.95rem;
-    color: var(--primary);
-  }
-  .lake-item p {
-    margin: 0 0 8px 0;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-  }
 
   /* UTILITY DIRECTORY */
   .directory-card {
@@ -563,33 +603,6 @@
   .dir-actions a { color: var(--accent); text-decoration: none; }
   .dir-actions a:hover { text-decoration: underline; }
 
-  /* ABOUT THE WIRE (MISSION CARD) */
-  .about-wire-card {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 28px;
-    margin-top: 40px;
-    border-left: 6px solid var(--accent);
-  }
-  .about-wire-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.25rem;
-    font-weight: 800;
-  }
-  .about-wire-card p {
-    margin: 0 0 12px 0;
-    font-size: 0.92rem;
-    line-height: 1.6;
-    opacity: 0.92;
-  }
-  .about-wire-card p:last-child {
-    margin-bottom: 0;
-  }
-  .about-wire-card strong {
-    color: #fbbf24;
-  }
-
   /* FOOTER */
   footer { 
     background: #09233d; 
@@ -605,7 +618,7 @@
   .skeleton {
     background: #e2e8f0;
     border-radius: 8px;
-    height: 100px;
+    height: 90px;
     animation: pulse 1.5s infinite ease-in-out;
   }
   @keyframes pulse {
@@ -622,7 +635,7 @@
     <div class="container">
       <div class="ticker-item">
         <span class="pulse-dot"></span>
-        <span>Public Data Feed • Kingsland, Llano &amp; Burnet County</span>
+        <span>Free Public Community Wire • Kingsland, Llano &amp; Burnet County</span>
       </div>
       <div>
         <span id="syncTimestamp">Updating feeds...</span>
@@ -650,33 +663,43 @@
   <div class="filter-bar">
     <div class="container">
       <div class="pills-wrap">
-        <button class="filter-pill active" onclick="scrollToSection('forecastSection')">Live Wire</button>
+        <button class="filter-pill active" onclick="scrollToSection('aboutSection')">About The Wire</button>
         <button class="filter-pill" onclick="scrollToSection('forecastSection')">7-Day Forecast</button>
         <button class="filter-pill" onclick="scrollToSection('burnSection')">Burn Bans</button>
         <button class="filter-pill" onclick="scrollToSection('eventsSection')">Chamber Events</button>
-        <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Outdoors &amp; Boat Ramps</button>
-        <button class="filter-pill" onclick="scrollToLakes()">Lake Levels</button>
-        <button class="filter-pill" onclick="scrollToSection('aboutSection')">About The Wire</button>
+        <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Boat Ramps &amp; Fishing</button>
+        <button class="filter-pill" onclick="scrollToSection('utilitySection')">Utility Directory</button>
       </div>
     </div>
   </div>
 
   <main class="container">
     
-    <!-- 1. LIVE WEATHER ALERT (ONLY VISIBLE IF ACTIVE WARNING) -->
+    <!-- 1. ABOUT THE WIRE MISSION CARD (PLACED HIGH AT TOP) -->
+    <div id="aboutSection" class="about-wire-card">
+      <h1>About The Kingsland Wire</h1>
+      <p>
+        The <strong>Kingsland Wire</strong> is a free community utility for Kingsland, Texas, and surrounding Highland Lakes communities in Llano and Burnet Counties.
+      </p>
+      <p>
+        Unlike commercial news sites, this bulletin is <strong>100% ad-free, subscription-free, and has zero tracking cookies</strong>. It aggregates open government data, county emergency notices, free public boat ramps, and essential utility contacts into one fast-loading page for local residents and visitors.
+      </p>
+    </div>
+
+    <!-- 2. LIVE WEATHER ALERT (ONLY VISIBLE IF ACTIVE WARNING) -->
     <div id="weatherAlertWrap">
       <div class="alert-box">
-        <h4 id="alertEventTitle">Severe Weather Warning</h4>
-        <p id="alertEventDetail">Active alert description.</p>
+        <h3 id="alertEventTitle">Severe Weather Warning</h3>
+        <p id="alertEventDetail">Active weather alert description.</p>
         <a href="https://www.weather.gov/ewx/" target="_blank" rel="noopener" style="font-weight: 700; color: #b91c1c;">Official Weather Advisory &rarr;</a>
       </div>
     </div>
 
-    <!-- 2. 7-DAY FORECAST SHELF -->
+    <!-- 3. 7-DAY FORECAST SHELF -->
     <div id="forecastSection" class="forecast-card">
       <div class="forecast-header">
-        <h3>Kingsland 7-Day Weather Forecast</h3>
-        <span style="font-size: 0.8rem; color: var(--text-muted);">National Weather Service</span>
+        <h2>Kingsland 7-Day Weather Forecast</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Kingsland, TX (78639)</span>
       </div>
       <div class="forecast-strip" id="forecastGrid">
         <div class="skeleton"></div>
@@ -686,10 +709,10 @@
       </div>
     </div>
 
-    <!-- 3. COUNTY BURN BANS -->
+    <!-- 4. COUNTY BURN BANS -->
     <div id="burnSection">
       <div class="section-divider">
-        <h3>County Burn Bans &amp; Fire Status</h3>
+        <h2>County Burn Bans &amp; Fire Status</h2>
         <span>Emergency Management</span>
       </div>
       <div class="burn-bans-grid" id="burnGrid">
@@ -698,11 +721,11 @@
       </div>
     </div>
 
-    <!-- 4. CHAMBER & COMMUNITY EVENTS -->
+    <!-- 5. CHAMBER & COMMUNITY EVENTS -->
     <div id="eventsSection">
       <div class="section-divider">
-        <h3>Kingsland Chamber &amp; Local Events</h3>
-        <span>Automated Community Calendar</span>
+        <h2>Kingsland Chamber &amp; Local Events</h2>
+        <span>Community Calendar</span>
       </div>
       <div class="events-grid" id="eventsGrid">
         <div class="skeleton"></div>
@@ -710,27 +733,27 @@
       </div>
     </div>
 
-    <!-- 5. LOCAL ROADS & COMMUNITY NOTICES -->
+    <!-- 6. LOCAL ROADS & COMMUNITY NOTICES -->
     <div id="briefSection">
       <div class="section-divider">
-        <h3>Road Closures, Public Works &amp; Notices</h3>
-        <span>Community Bulletins</span>
+        <h2>Road Closures, Public Works &amp; Notices</h2>
+        <span>Local Bulletins</span>
       </div>
       <div class="stories-grid" id="noticesGrid">
         <div class="skeleton"></div>
       </div>
     </div>
 
-    <!-- 6. FREE PUBLIC ACCESS & BOAT RAMPS MAP -->
+    <!-- 7. FREE PUBLIC ACCESS & BOAT RAMPS MAP -->
     <div id="mapSection">
       <div class="section-divider">
-        <h3>Free Public Access &amp; Outdoors Guide</h3>
-        <span>Verified Zero-Cost Public Amenities</span>
+        <h2>Free Public Access &amp; Outdoors Guide</h2>
+        <span>Zero-Cost Public Amenities</span>
       </div>
 
       <div class="map-wrapper-card">
         <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted);">
-          Tap any marker or item below to see amenities and launch GPS directions in your phone's map.
+          Tap any marker or location card to see amenities and launch GPS directions in your phone's navigation app.
         </p>
 
         <div class="map-filter-row">
@@ -746,24 +769,10 @@
       </div>
     </div>
 
-    <!-- 7. COLLAPSIBLE LAKE LEVELS -->
-    <div class="lake-strip" id="lakeDrawer">
-      <button class="lake-btn" type="button" onclick="toggleLakes()">
-        <span>Lake Buchanan &amp; Lake LBJ Levels (TWDB / LCRA)</span>
-        <span id="lakeIndicator">&#9662;</span>
-      </button>
-      <div class="lake-content">
-        <p style="margin: 0 0 14px 0; font-size: 0.88rem; color: var(--text-muted);">
-          Recorded elevation and storage capacity from official Texas Water Development Board telemetry.
-        </p>
-        <div class="lake-grid" id="lakeCardsWrap"></div>
-      </div>
-    </div>
-
-    <!-- 8. UTILITY & DIRECTORY -->
-    <div class="directory-card">
-      <h3 style="margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary);">Quick Utility &amp; Local Services Directory</h3>
-      <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Direct phone lines and website links for utilities across the lakes.</p>
+    <!-- 8. UTILITY & ESSENTIAL SERVICES DIRECTORY -->
+    <div id="utilitySection" class="directory-card">
+      <h2 style="margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary);">Quick Utility &amp; Local Services Directory</h2>
+      <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Direct phone lines and website links for water, electricity, trash, and dispatch.</p>
 
       <div class="dir-tabs">
         <button class="dir-tab-btn active" onclick="switchCity('kingsland', this)">Kingsland</button>
@@ -877,24 +886,13 @@
       </div>
     </div>
 
-    <!-- 9. ABOUT THE WIRE SECTION -->
-    <div id="aboutSection" class="about-wire-card">
-      <h3>About The Kingsland Wire</h3>
-      <p>
-        The <strong>Kingsland Wire</strong> is an independent community resource dedicated to free and low-cost services, public amenities, and essential utilities across Kingsland, Llano County, and Burnet County.
-      </p>
-      <p>
-        Most commercial news websites are crowded with subscription pop-ups and tracking cookies. We built this board to be completely <strong>ad-free, subscription-free, and privacy-respecting</strong>. It pulls directly from open government records—including the National Weather Service, Texas Water Development Board, and county emergency management—refreshing automatically so local residents always have straightforward, honest information at their fingertips.
-      </p>
-    </div>
-
   </main>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Open public aggregation utility for Llano &amp; Burnet County residents.</p>
+      <p style="margin: 0 0 16px 0; opacity: 0.8;">Open public community utility for Llano &amp; Burnet County residents.</p>
       <p style="margin: 0; opacity: 0.6;">
         Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
       </p>
@@ -989,7 +987,7 @@
         return `
           <div class="amenity-card">
             <div>
-              <h4>${escapeHtml(spot.name)}</h4>
+              <h3>${escapeHtml(spot.name)}</h3>
               <p>${escapeHtml(spot.desc)}</p>
               <div style="font-size: 0.78rem; color: #64748b; margin-bottom: 8px;">
                 <strong>Features:</strong> ${escapeHtml(spot.amenities)}
@@ -1020,16 +1018,6 @@
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function toggleLakes() {
-      document.getElementById("lakeDrawer").classList.toggle("open");
-    }
-
-    function scrollToLakes() {
-      const drawer = document.getElementById("lakeDrawer");
-      drawer.classList.add("open");
-      drawer.scrollIntoView({ behavior: 'smooth' });
-    }
-
     function switchCity(key, btn) {
       document.querySelectorAll('.dir-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -1053,21 +1041,78 @@
       return String(raw).split(",")[0];
     }
 
+    // DIRECT 7-DAY WEATHER LOADER (Instant, never gets stuck)
+    function fetchKingslandWeather() {
+      const forecastGrid = document.getElementById("forecastGrid");
+      
+      // Open-Meteo provides instantaneous, non-rate-limited daily forecast for Kingsland coordinates
+      const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=weathercode,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago";
+
+      fetch(weatherUrl)
+        .then(res => res.json())
+        .then(data => {
+          if (!data || !data.daily || !data.daily.time) throw new Error("No daily data");
+          
+          const days = data.daily.time;
+          const maxTemps = data.daily.temperature_2m_max;
+          const minTemps = data.daily.temperature_2m_min;
+          const codes = data.daily.weathercode;
+
+          const weatherDesc = (code) => {
+            if (code === 0) return "Sunny";
+            if (code === 1 || code === 2) return "Mostly Sunny";
+            if (code === 3) return "Partly Cloudy";
+            if (code >= 45 && code <= 48) return "Foggy";
+            if (code >= 51 && code <= 65) return "Rain Showers";
+            if (code >= 80 && code <= 82) return "Showers";
+            if (code >= 95) return "Thunderstorm";
+            return "Clear";
+          };
+
+          const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+          let html = "";
+          for (let i = 0; i < 7 && i < days.length; i++) {
+            const dateObj = new Date(days[i] + "T12:00:00");
+            const dayLabel = i === 0 ? "Today" : dayNames[dateObj.getDay()];
+            const high = Math.round(maxTemps[i]);
+            const low = Math.round(minTemps[i]);
+            const cond = weatherDesc(codes[i]);
+
+            html += `
+              <div class="forecast-day">
+                <div class="day-name">${dayLabel}</div>
+                <div class="day-temp">${high}°</div>
+                <div class="day-desc">${low}° Low • ${cond}</div>
+              </div>
+            `;
+          }
+          forecastGrid.innerHTML = html;
+        })
+        .catch(err => {
+          console.error("Weather load fallback:", err);
+          // Clean fallback if offline
+          forecastGrid.innerHTML = `
+            <div class="forecast-day" style="grid-column: 1 / -1; padding: 16px;">
+              <div class="day-desc">Highland Lakes Weather: Typical Hill Country conditions. <a href="https://forecast.weather.gov/MapClick.php?lat=30.6638&lon=-98.4411" target="_blank" rel="noopener" style="color: var(--accent); font-weight: bold;">View full NWS radar &rarr;</a></div>
+            </div>
+          `;
+        });
+    }
+
     function fetchWire() {
       fetch(WIRE_ENDPOINT)
         .then(res => res.json())
         .then(data => {
-          renderForecast(data.forecast || []);
           renderWeatherAlert(data.alerts || []);
           renderBurnBans(data.alerts || []);
           renderEvents(data.events || []);
           renderNotices(data.notices || []);
-          renderLakes(data.lakes || []);
           document.getElementById("syncTimestamp").innerText = "Updated " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         })
         .catch(err => {
           console.error("Fetch err:", err);
-          document.getElementById("syncTimestamp").innerText = "Cached records";
+          document.getElementById("syncTimestamp").innerText = "Cached community records";
         });
     }
 
@@ -1084,21 +1129,6 @@
       }
     }
 
-    function renderForecast(periods) {
-      const container = document.getElementById("forecastGrid");
-      if (!periods.length) {
-        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem; grid-column: 1/-1;">7-day forecast loading from NWS...</p>`;
-        return;
-      }
-      container.innerHTML = periods.slice(0, 7).map(p => `
-        <div class="forecast-day">
-          <div class="day-name">${escapeHtml(p.name)}</div>
-          <div class="day-temp">${escapeHtml(p.temperature)}°${escapeHtml(p.temperatureUnit)}</div>
-          <div class="day-desc">${escapeHtml(p.shortForecast)}</div>
-        </div>
-      `).join("");
-    }
-
     function renderBurnBans(alerts) {
       const container = document.getElementById("burnGrid");
       const bans = alerts.filter(a => (a.Category || '').toLowerCase().includes('burn'));
@@ -1113,7 +1143,7 @@
         return `
           <div class="burn-card ${isActive ? 'active-ban' : ''}">
             <div>
-              <h4>${escapeHtml(b.Headline)}</h4>
+              <h3>${escapeHtml(b.Headline)}</h3>
               <p>${escapeHtml(b.Detail)}</p>
             </div>
             <a href="${escapeHtml(b.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">County Order / Notice &rarr;</a>
@@ -1129,7 +1159,7 @@
           <div class="event-card" style="grid-column: 1 / -1;">
             <div>
               <span class="event-badge">Chamber Updates</span>
-              <h4>Kingsland Chamber Community Schedule</h4>
+              <h3>Kingsland Chamber Community Schedule</h3>
               <p>No special meetings posted today. Check the Chamber calendar for the monthly schedule.</p>
             </div>
             <a href="https://business.kingslandchamber.org/events" target="_blank" rel="noopener" class="card-link">View Chamber Calendar &rarr;</a>
@@ -1141,7 +1171,7 @@
         <div class="event-card">
           <div>
             <span class="event-badge">${formatDate(e.Event_Date)}</span>
-            <h4>${escapeHtml(e.Title)}</h4>
+            <h3>${escapeHtml(e.Title)}</h3>
             <p>${escapeHtml(e.Location || 'Kingsland, TX')}</p>
           </div>
           <a href="${escapeHtml(e.Link || 'https://business.kingslandchamber.org/events')}" target="_blank" rel="noopener" class="card-link">Event Details &rarr;</a>
@@ -1161,29 +1191,11 @@
       }
       container.innerHTML = notices.map(item => `
         <div class="side-card">
-          <h4>${escapeHtml(item.Headline)}</h4>
+          <h3>${escapeHtml(item.Headline)}</h3>
           <p>${escapeHtml(item.Detail)}</p>
           <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
             <span style="color: var(--text-muted);">${formatDate(item.Timestamp)}</span>
             <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">Official Notice &rarr;</a>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function renderLakes(lakes) {
-      const container = document.getElementById("lakeCardsWrap");
-      if (!lakes.length) {
-        container.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem;">Syncing water storage gauges...</p>`;
-        return;
-      }
-      container.innerHTML = lakes.map(l => `
-        <div class="lake-item">
-          <h4>${escapeHtml(l.Headline)}</h4>
-          <p>${escapeHtml(l.Detail)}</p>
-          <div style="font-size: 0.8rem; display: flex; justify-content: space-between;">
-            <span style="color: var(--text-muted);">${formatDate(l.Timestamp)}</span>
-            <a href="${escapeHtml(l.Source_URL)}" target="_blank" rel="noopener" class="card-link">TWDB Data &rarr;</a>
           </div>
         </div>
       `).join("");
@@ -1199,6 +1211,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      fetchKingslandWeather();
       initFreeMap();
       fetchWire();
     });
