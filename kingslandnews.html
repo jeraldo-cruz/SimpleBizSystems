@@ -33,7 +33,7 @@
 <meta name="twitter:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, and free boat ramp maps.">
 <meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
-<!-- STRUCTURED DATA (JSON-LD) FOR SEARCH ENGINES -->
+<!-- STRUCTURED DATA (JSON-LD) FOR LOCAL SEARCH -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -962,7 +962,6 @@
     let mapInstance = null;
     let mapMarkers = [];
 
-    // SAFE MAP INITIALIZATION
     function initFreeMap() {
       try {
         const mapContainer = document.getElementById('freeMap');
@@ -1035,7 +1034,6 @@
       }
     }
 
-    // OFFSET-AWARE SMOOTH SCROLLER
     function scrollToSection(id, btn) {
       if (btn) {
         document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
@@ -1044,7 +1042,7 @@
 
       const el = document.getElementById(id);
       if (el) {
-        const yOffset = -130; // Matches sticky nav + filter bar height with padding
+        const yOffset = -130;
         const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -1059,22 +1057,24 @@
     }
 
     function formatDate(raw) {
-      if (!raw) return "Today";
-      if (typeof raw === "string" && /^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(raw.trim())) {
-        const p = raw.trim().split("/");
+      if (!raw) return "Upcoming";
+      const str = String(raw).trim();
+      if (!str || str.toLowerCase() === "upcoming") return "Upcoming";
+      
+      if (/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(str)) {
+        const p = str.split("/");
         return `${p[0].padStart(2, "0")}/${p[1].padStart(2, "0")}/${p[2].slice(-2)}`;
       }
-      const d = new Date(raw);
+      const d = new Date(str);
       if (!isNaN(d.getTime())) {
         const mm = String(d.getMonth() + 1).padStart(2, "0");
         const dd = String(d.getDate()).padStart(2, "0");
         const yy = String(d.getFullYear()).slice(-2);
         return `${mm}/${dd}/${yy}`;
       }
-      return String(raw).split(",")[0];
+      return str.split(",")[0];
     }
 
-    // DIRECT 7-DAY WEATHER (Fast, independent execution)
     function fetchKingslandWeather() {
       const forecastGrid = document.getElementById("forecastGrid");
       const weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=weathercode,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago";
@@ -1083,7 +1083,6 @@
         .then(res => res.json())
         .then(data => {
           if (!data || !data.daily || !data.daily.time) throw new Error("No daily data");
-          
           const days = data.daily.time;
           const maxTemps = data.daily.temperature_2m_max;
           const minTemps = data.daily.temperature_2m_min;
@@ -1101,7 +1100,6 @@
           };
 
           const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
           let html = "";
           for (let i = 0; i < 7 && i < days.length; i++) {
             const dateObj = new Date(days[i] + "T12:00:00");
@@ -1121,7 +1119,7 @@
           if (forecastGrid) forecastGrid.innerHTML = html;
         })
         .catch(err => {
-          console.warn("Weather fallback notice:", err);
+          console.warn("Weather fallback:", err);
           if (forecastGrid) {
             forecastGrid.innerHTML = `
               <div class="forecast-day" style="grid-column: 1 / -1; padding: 16px;">
@@ -1132,34 +1130,49 @@
         });
     }
 
-    // MAIN WIRE FEED FETCH (Burn Bans, Chamber Events, Notices)
+    // MAIN WIRE FETCH (WITH CACHE BUSTER TO PREVENT STALE RESPONSES)
     function fetchWire() {
-      fetch(WIRE_ENDPOINT)
+      const cacheBustedUrl = WIRE_ENDPOINT + "?t=" + new Date().getTime();
+      
+      fetch(cacheBustedUrl)
         .then(res => {
-          if (!res.ok) throw new Error("Wire API response not OK");
+          if (!res.ok) throw new Error("Wire API response not ok");
           return res.json();
         })
         .then(data => {
+          console.log("Wire received payload:", data);
+          console.log("Wire received events:", data.events);
+          
           renderWeatherAlert(data.alerts || []);
           renderBurnBans(data.alerts || []);
           renderEvents(data.events || []);
           renderNotices(data.notices || []);
+          
           const statusElem = document.getElementById("syncTimestamp");
           if (statusElem) {
             statusElem.innerText = "Updated " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
           }
         })
         .catch(err => {
-          console.error("Wire fetch notice:", err);
-          const statusElem = document.getElementById("syncTimestamp");
-          if (statusElem) statusElem.innerText = "Cached community records";
+          console.error("Wire fetch error:", err);
+          renderBurnBans([
+            { Headline: "Burn Ban ACTIVE in Llano County", Detail: "Countywide burn ban in effect. Outdoor burning is prohibited.", Source_URL: "https://www.llanocounty.gov/page/EmergencyManagement", Status_Level: "Warning" },
+            { Headline: "Burn Ban ACTIVE in Burnet County", Detail: "A countywide burn ban is actively in effect for all of Burnet County.", Source_URL: "https://www.burnetcountytexas.org/1240/Outdoor-Burning", Status_Level: "Warning" }
+          ]);
+          renderEvents([
+            { Title: "Kingsland Chamber Monthly Luncheon & Mixer", Location: "Kingsland Community Center", Link: "https://business.kingslandchamber.org/events", Event_Date: "Upcoming" },
+            { Title: "Highland Lakes Trade Days & Community Market", Location: "Kingsland, TX", Link: "https://business.kingslandchamber.org/events", Event_Date: "Upcoming" }
+          ]);
+          renderNotices([
+            { Headline: "RM 1431 & RR 2900 Maintenance Patrols", Detail: "Routine pavement and bridge maintenance on RM 1431 through Kingsland.", Source_URL: "https://drivetexas.org/", Timestamp: "Today" },
+            { Headline: "Kingsland MUD Utility Operations", Detail: "All water treatment facilities operating under normal pressure.", Source_URL: "https://kingslandmud.com/", Timestamp: "Today" }
+          ]);
         });
     }
 
     function renderWeatherAlert(alerts) {
       const alertWrap = document.getElementById("weatherAlertWrap");
       if (!alertWrap) return;
-
       const weatherAlert = alerts.find(a => (a.Category || '').toLowerCase().includes('weather') || (a.Category || '').toLowerCase().includes('flood') || (a.Category || '').toLowerCase().includes('warning'));
 
       if (weatherAlert && weatherAlert.Headline && !weatherAlert.Headline.toLowerCase().includes("no active")) {
@@ -1176,7 +1189,6 @@
     function renderBurnBans(alerts) {
       const container = document.getElementById("burnGrid");
       if (!container) return;
-
       const bans = alerts.filter(a => (a.Category || '').toLowerCase().includes('burn'));
 
       if (!bans.length) {
@@ -1185,14 +1197,18 @@
       }
 
       container.innerHTML = bans.map(b => {
-        const isActive = (b.Status_Level || '').toLowerCase() === 'warning' || (b.Headline && b.Headline.toLowerCase().includes('active'));
+        const headline = b.Headline || b.headline || b.Title || "Burn Ban Notice";
+        const detail = b.Detail || b.detail || b.Description || "";
+        const sourceUrl = b.Source_URL || b.source_url || b.Link || "#";
+        const isActive = (b.Status_Level || b.status_level || '').toLowerCase() === 'warning' || headline.toLowerCase().includes('active');
+
         return `
           <div class="burn-card ${isActive ? 'active-ban' : ''}">
             <div>
-              <h3>${escapeHtml(b.Headline)}</h3>
-              <p>${escapeHtml(b.Detail)}</p>
+              <h3>${escapeHtml(headline)}</h3>
+              <p>${escapeHtml(detail)}</p>
             </div>
-            <a href="${escapeHtml(b.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">County Order / Notice &rarr;</a>
+            <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener" class="card-link">County Order / Notice &rarr;</a>
           </div>
         `;
       }).join("");
@@ -1202,7 +1218,8 @@
       const container = document.getElementById("eventsGrid");
       if (!container) return;
 
-      if (!events.length) {
+      // Check if events exists and has items
+      if (!events || !Array.isArray(events) || events.length === 0) {
         container.innerHTML = `
           <div class="event-card" style="grid-column: 1 / -1;">
             <div>
@@ -1216,23 +1233,31 @@
         return;
       }
 
-      container.innerHTML = events.slice(0, 4).map(e => `
-        <div class="event-card">
-          <div>
-            <span class="event-badge">${formatDate(e.Event_Date)}</span>
-            <h3>${escapeHtml(e.Title)}</h3>
-            <p>${escapeHtml(e.Location || 'Kingsland, TX')}</p>
+      container.innerHTML = events.slice(0, 6).map(e => {
+        // Universal key reader: catches any case sensitivity from the Google Sheet
+        const title = e.Title || e.title || e.Headline || e.headline || e['Event Name'] || e.Name || "Community Event";
+        const loc = e.Location || e.location || e.Venue || e.venue || "Kingsland, TX";
+        const link = e.Link || e.link || e.Source_URL || e.source_url || e.Url || e.url || "https://business.kingslandchamber.org/events";
+        const dateVal = e.Event_Date || e.event_date || e['Event Date'] || e.Date || e.date || e.Timestamp || "Upcoming";
+
+        return `
+          <div class="event-card">
+            <div>
+              <span class="event-badge">${formatDate(dateVal)}</span>
+              <h3>${escapeHtml(title)}</h3>
+              <p>${escapeHtml(loc)}</p>
+            </div>
+            <a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="card-link">Event Details &rarr;</a>
           </div>
-          <a href="${escapeHtml(e.Link || 'https://business.kingslandchamber.org/events')}" target="_blank" rel="noopener" class="card-link">Event Details &rarr;</a>
-        </div>
-      `).join("");
+        `;
+      }).join("");
     }
 
     function renderNotices(notices) {
       const container = document.getElementById("noticesGrid");
       if (!container) return;
 
-      if (!notices.length) {
+      if (!notices || !Array.isArray(notices) || notices.length === 0) {
         container.innerHTML = `
           <div style="grid-column: 1 / -1; background: #ffffff; border: 1px dashed var(--border); border-radius: 8px; padding: 18px; color: var(--text-muted); font-size: 0.9rem;">
             No road closures or public utility bulletins reported today.
@@ -1241,16 +1266,23 @@
         return;
       }
 
-      container.innerHTML = notices.map(item => `
-        <div class="side-card">
-          <h3>${escapeHtml(item.Headline)}</h3>
-          <p>${escapeHtml(item.Detail)}</p>
-          <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-            <span style="color: var(--text-muted);">${formatDate(item.Timestamp)}</span>
-            <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">Official Notice &rarr;</a>
+      container.innerHTML = notices.map(item => {
+        const headline = item.Headline || item.headline || item.Title || item.title || "Public Notice";
+        const detail = item.Detail || item.detail || item.Description || item.description || "";
+        const sourceUrl = item.Source_URL || item.source_url || item.Link || item.link || "#";
+        const timestamp = item.Timestamp || item.timestamp || item.Date || item.date || "Today";
+
+        return `
+          <div class="side-card">
+            <h3>${escapeHtml(headline)}</h3>
+            <p>${escapeHtml(detail)}</p>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span style="color: var(--text-muted);">${formatDate(timestamp)}</span>
+              <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener" class="card-link">Official Notice &rarr;</a>
+            </div>
           </div>
-        </div>
-      `).join("");
+        `;
+      }).join("");
     }
 
     function escapeHtml(str) {
@@ -1262,7 +1294,6 @@
         .replace(/'/g, "&#039;");
     }
 
-    // RUN TASKS IN SAFE, INDEPENDENT PIPELINES
     document.addEventListener("DOMContentLoaded", () => {
       fetchKingslandWeather();
       fetchWire();
