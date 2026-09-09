@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kingsland Wire | Real-Time Highland Lakes Public Briefing</title>
-<meta name="description" content="An ad-free community wire aggregating official feeds for Kingsland, Llano, and Burnet County. 7-day weather forecast, live burn bans, lake levels, chamber events, and a free boat ramp & fishing map.">
+<title>Kingsland Wire | Free Local Info, Weather, Lakes &amp; Public Services</title>
+<meta name="description" content="A simple community board for Kingsland, Texas. Free public amenities, boat ramps, 7-day weather, lake levels, burn bans, and local utility links. Ad-free and privacy-focused.">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/kingslandnews.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- Leaflet CSS -->
+<!-- Leaflet Map CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
 <style>
@@ -29,8 +29,7 @@
     --badge-bg: #f1f5f9;
     --success: #16a34a;
     --warning: #dc2626;
-    --advisory: #d97706;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
   }
   
   html {
@@ -54,7 +53,7 @@
   }
 
   .container { 
-    max-width: 1040px; 
+    max-width: 1000px; 
     margin: 0 auto; 
     padding: 0 20px; 
     width: 100%;
@@ -145,7 +144,7 @@
   }
   .btn-nav:hover { background: var(--accent-hover); }
 
-  /* FILTER PILLS */
+  /* FILTER BAR PILLS */
   .filter-bar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -186,7 +185,7 @@
     font-weight: 700;
   }
 
-  /* SECTION HEADERS */
+  /* SECTION DIVIDERS */
   .section-divider {
     display: flex;
     align-items: center;
@@ -208,7 +207,7 @@
     text-transform: uppercase;
   }
 
-  /* ACTIVE WEATHER ALERT BANNER (ONLY SHOWS IF ACTIVE) */
+  /* ACTIVE WEATHER ALERT BANNER (HIDDEN IF NO WARNING) */
   #weatherAlertWrap {
     display: none;
     margin-top: 20px;
@@ -257,7 +256,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 10px;
-    overflow-x: auto;
   }
   .forecast-day {
     background: var(--bg);
@@ -274,7 +272,7 @@
     text-transform: uppercase;
   }
   .day-temp {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--text-dark);
     margin-bottom: 4px;
@@ -565,6 +563,33 @@
   .dir-actions a { color: var(--accent); text-decoration: none; }
   .dir-actions a:hover { text-decoration: underline; }
 
+  /* ABOUT THE WIRE (MISSION CARD) */
+  .about-wire-card {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 40px;
+    border-left: 6px solid var(--accent);
+  }
+  .about-wire-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .about-wire-card p {
+    margin: 0 0 12px 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.92;
+  }
+  .about-wire-card p:last-child {
+    margin-bottom: 0;
+  }
+  .about-wire-card strong {
+    color: #fbbf24;
+  }
+
   /* FOOTER */
   footer { 
     background: #09233d; 
@@ -597,7 +622,7 @@
     <div class="container">
       <div class="ticker-item">
         <span class="pulse-dot"></span>
-        <span>Aggregated Official Public Feeds • Kingsland &amp; Highland Lakes</span>
+        <span>Public Data Feed • Kingsland, Llano &amp; Burnet County</span>
       </div>
       <div>
         <span id="syncTimestamp">Updating feeds...</span>
@@ -625,12 +650,13 @@
   <div class="filter-bar">
     <div class="container">
       <div class="pills-wrap">
-        <button class="filter-pill active" onclick="scrollToSection('briefSection')">Kingsland Daily Brief</button>
+        <button class="filter-pill active" onclick="scrollToSection('forecastSection')">Live Wire</button>
         <button class="filter-pill" onclick="scrollToSection('forecastSection')">7-Day Forecast</button>
         <button class="filter-pill" onclick="scrollToSection('burnSection')">Burn Bans</button>
         <button class="filter-pill" onclick="scrollToSection('eventsSection')">Chamber Events</button>
-        <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Boat Ramps &amp; Fishing</button>
+        <button class="filter-pill" onclick="scrollToSection('mapSection')">Free Outdoors &amp; Boat Ramps</button>
         <button class="filter-pill" onclick="scrollToLakes()">Lake Levels</button>
+        <button class="filter-pill" onclick="scrollToSection('aboutSection')">About The Wire</button>
       </div>
     </div>
   </div>
@@ -642,7 +668,7 @@
       <div class="alert-box">
         <h4 id="alertEventTitle">Severe Weather Warning</h4>
         <p id="alertEventDetail">Active alert description.</p>
-        <a href="https://www.weather.gov/ewx/" target="_blank" rel="noopener" style="font-weight: 700; color: #b91c1c;">Read NWS Advisory &rarr;</a>
+        <a href="https://www.weather.gov/ewx/" target="_blank" rel="noopener" style="font-weight: 700; color: #b91c1c;">Official Weather Advisory &rarr;</a>
       </div>
     </div>
 
@@ -660,7 +686,7 @@
       </div>
     </div>
 
-    <!-- 3. COUNTY BURN BANS (Llano in effect since July 17) -->
+    <!-- 3. COUNTY BURN BANS -->
     <div id="burnSection">
       <div class="section-divider">
         <h3>County Burn Bans &amp; Fire Status</h3>
@@ -734,10 +760,10 @@
       </div>
     </div>
 
-    <!-- 8. UTILITY DIRECTORY -->
+    <!-- 8. UTILITY & DIRECTORY -->
     <div class="directory-card">
       <h3 style="margin: 0 0 4px 0; font-size: 1.15rem; color: var(--primary);">Quick Utility &amp; Local Services Directory</h3>
-      <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Direct phone lines and portal links for utilities across the lakes.</p>
+      <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted);">Direct phone lines and website links for utilities across the lakes.</p>
 
       <div class="dir-tabs">
         <button class="dir-tab-btn active" onclick="switchCity('kingsland', this)">Kingsland</button>
@@ -751,7 +777,7 @@
           <span>Outages &amp; service</span>
           <div class="dir-actions">
             <a href="tel:830-997-2126">830-997-2126</a>
-            <a href="https://www.ctec.coop/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.ctec.coop/" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -759,7 +785,7 @@
           <span>Repairs &amp; billing</span>
           <div class="dir-actions">
             <a href="tel:325-388-4559">325-388-4559</a>
-            <a href="https://kingslandmud.com/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://kingslandmud.com/" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -767,7 +793,7 @@
           <span>Rural pickup</span>
           <div class="dir-actions">
             <a href="tel:800-350-3882">800-350-3882</a>
-            <a href="https://www.wasteconnections.com/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.wasteconnections.com/" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -775,7 +801,7 @@
           <span>Llano non-emergency</span>
           <div class="dir-actions">
             <a href="tel:325-247-5767">325-247-5767</a>
-            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">County Site &rarr;</a>
           </div>
         </div>
       </div>
@@ -786,7 +812,7 @@
           <span>Pedernales Electric Co-op</span>
           <div class="dir-actions">
             <a href="tel:888-554-4732">888-554-4732</a>
-            <a href="https://www.pec.coop/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.pec.coop/" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -794,7 +820,7 @@
           <span>City of Marble Falls</span>
           <div class="dir-actions">
             <a href="tel:830-693-3615">830-693-3615</a>
-            <a href="https://www.marblefallstx.gov/155/Utilities" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.marblefallstx.gov/155/Utilities" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -802,7 +828,7 @@
           <span>City contract services</span>
           <div class="dir-actions">
             <a href="tel:830-693-3615">830-693-3615</a>
-            <a href="https://www.marblefallstx.gov/160/Trash-Recycling" target="_blank" rel="noopener">Schedule &rarr;</a>
+            <a href="https://www.marblefallstx.gov/160/Trash-Recycling" target="_blank" rel="noopener">Pickup Schedule &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -810,7 +836,7 @@
           <span>Marble Falls Police Dept</span>
           <div class="dir-actions">
             <a href="tel:830-693-3611">830-693-3611</a>
-            <a href="https://www.marblefallstx.gov/151/Police-Department" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.marblefallstx.gov/151/Police-Department" target="_blank" rel="noopener">Police Site &rarr;</a>
           </div>
         </div>
       </div>
@@ -821,7 +847,7 @@
           <span>Llano electric &amp; water</span>
           <div class="dir-actions">
             <a href="tel:325-247-4158">325-247-4158</a>
-            <a href="https://www.cityofllano.com/152/Utility-Department" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.cityofllano.com/152/Utility-Department" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -829,7 +855,7 @@
           <span>Outside city limits</span>
           <div class="dir-actions">
             <a href="tel:830-997-2126">830-997-2126</a>
-            <a href="https://www.ctec.coop/" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.ctec.coop/" target="_blank" rel="noopener">Official Site &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -837,7 +863,7 @@
           <span>City of Llano</span>
           <div class="dir-actions">
             <a href="tel:325-247-4158">325-247-4158</a>
-            <a href="https://www.cityofllano.com/154/Solid-Waste" target="_blank" rel="noopener">Rules &rarr;</a>
+            <a href="https://www.cityofllano.com/154/Solid-Waste" target="_blank" rel="noopener">Disposal Rules &rarr;</a>
           </div>
         </div>
         <div class="dir-box">
@@ -845,10 +871,21 @@
           <span>City of Llano Police</span>
           <div class="dir-actions">
             <a href="tel:325-247-3028">325-247-3028</a>
-            <a href="https://www.cityofllano.com/150/Police-Department" target="_blank" rel="noopener">Portal &rarr;</a>
+            <a href="https://www.cityofllano.com/150/Police-Department" target="_blank" rel="noopener">Police Site &rarr;</a>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 9. ABOUT THE WIRE SECTION -->
+    <div id="aboutSection" class="about-wire-card">
+      <h3>About The Kingsland Wire</h3>
+      <p>
+        The <strong>Kingsland Wire</strong> is an independent community resource dedicated to free and low-cost services, public amenities, and essential utilities across Kingsland, Llano County, and Burnet County.
+      </p>
+      <p>
+        Most commercial news websites are crowded with subscription pop-ups and tracking cookies. We built this board to be completely <strong>ad-free, subscription-free, and privacy-respecting</strong>. It pulls directly from open government records—including the National Weather Service, Texas Water Development Board, and county emergency management—refreshing automatically so local residents always have straightforward, honest information at their fingertips.
+      </p>
     </div>
 
   </main>
@@ -1079,7 +1116,7 @@
               <h4>${escapeHtml(b.Headline)}</h4>
               <p>${escapeHtml(b.Detail)}</p>
             </div>
-            <a href="${escapeHtml(b.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">County Order / Portal &rarr;</a>
+            <a href="${escapeHtml(b.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">County Order / Notice &rarr;</a>
           </div>
         `;
       }).join("");
@@ -1093,9 +1130,9 @@
             <div>
               <span class="event-badge">Chamber Updates</span>
               <h4>Kingsland Chamber Community Schedule</h4>
-              <p>No special meetings posted today. Check the Chamber portal for the monthly calendar.</p>
+              <p>No special meetings posted today. Check the Chamber calendar for the monthly schedule.</p>
             </div>
-            <a href="https://kingslandchamber.org/events/" target="_blank" rel="noopener" class="card-link">View Chamber Calendar &rarr;</a>
+            <a href="https://business.kingslandchamber.org/events" target="_blank" rel="noopener" class="card-link">View Chamber Calendar &rarr;</a>
           </div>
         `;
         return;
@@ -1107,7 +1144,7 @@
             <h4>${escapeHtml(e.Title)}</h4>
             <p>${escapeHtml(e.Location || 'Kingsland, TX')}</p>
           </div>
-          <a href="${escapeHtml(e.Link || 'https://kingslandchamber.org/events/')}" target="_blank" rel="noopener" class="card-link">Event Info &rarr;</a>
+          <a href="${escapeHtml(e.Link || 'https://business.kingslandchamber.org/events')}" target="_blank" rel="noopener" class="card-link">Event Details &rarr;</a>
         </div>
       `).join("");
     }
@@ -1128,7 +1165,7 @@
           <p>${escapeHtml(item.Detail)}</p>
           <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
             <span style="color: var(--text-muted);">${formatDate(item.Timestamp)}</span>
-            <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">Details &rarr;</a>
+            <a href="${escapeHtml(item.Source_URL || '#')}" target="_blank" rel="noopener" class="card-link">Official Notice &rarr;</a>
           </div>
         </div>
       `).join("");
@@ -1146,7 +1183,7 @@
           <p>${escapeHtml(l.Detail)}</p>
           <div style="font-size: 0.8rem; display: flex; justify-content: space-between;">
             <span style="color: var(--text-muted);">${formatDate(l.Timestamp)}</span>
-            <a href="${escapeHtml(l.Source_URL)}" target="_blank" rel="noopener" class="card-link">TWDB Telemetry &rarr;</a>
+            <a href="${escapeHtml(l.Source_URL)}" target="_blank" rel="noopener" class="card-link">TWDB Data &rarr;</a>
           </div>
         </div>
       `).join("");
