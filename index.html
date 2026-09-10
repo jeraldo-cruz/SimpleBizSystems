@@ -175,8 +175,7 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 16px; 
-    flex-wrap: wrap;
+    gap: 20px; 
   }
   .nav-links a { 
     text-decoration: none; 
@@ -186,6 +185,57 @@
     transition: color 0.15s ease;
   }
   .nav-links a:hover { color: var(--accent); }
+
+  /* DROPDOWN MENU */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s ease;
+  }
+  .dropbtn:hover { color: var(--accent); }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--surface);
+    min-width: 220px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow-lg);
+    padding: 8px 0;
+    z-index: 110;
+  }
+  .dropdown-content a {
+    color: var(--text-dark);
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+  .dropdown-content a:hover {
+    background: var(--bg);
+    color: var(--accent);
+  }
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+
   .btn-nav {
     background: var(--accent);
     color: #ffffff !important;
@@ -198,7 +248,7 @@
 
   /* HERO SECTION */
   .hero-section {
-    padding: 60px 0 48px 0;
+    padding: 56px 0 40px 0;
     text-align: left;
   }
   .badge-tag {
@@ -384,7 +434,7 @@
     border-color: var(--primary);
   }
 
-  /* WHY CHOOSE US COMPARISON */
+  /* WHY SIMPLE BIZ SYSTEMS */
   .comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -524,14 +574,25 @@
       <div class="nav-links">
         <a href="index.html" style="color: var(--accent);">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html">Estimator</a>
-        <a href="workorders.html">Work Orders</a>
-        <a href="leads.html">Leads</a>
-        <a href="timecards.html">Timecards</a>
-        <a href="materials.html">Materials</a>
-        <a href="equipment.html">Equipment</a>
-        <a href="about.html">About</a>
+        
+        <!-- NEAT DROPDOWN FOR SAMPLE SYSTEMS -->
+        <div class="dropdown">
+          <button class="dropbtn" type="button">
+            Sample Systems ▾
+          </button>
+          <div class="dropdown-content">
+            <a href="estimator.html">Job Estimator (PDF)</a>
+            <a href="dispatch.html">Daily Dispatch Board</a>
+            <a href="workorders.html">Mobile Work Orders</a>
+            <a href="leads.html">Lead Pipeline Tracker</a>
+            <a href="timecards.html">Crew Labor &amp; Timecards</a>
+            <a href="materials.html">Material Reorder Sheet</a>
+            <a href="equipment.html">Customer Equipment Logs</a>
+            <a href="#sample-tools" style="border-top: 1px solid var(--border); font-weight: 700; color: var(--accent);">View All Systems &rarr;</a>
+          </div>
+        </div>
+
+        <a href="about.html">About &amp; Founder</a>
         <a href="#contact-panel" class="btn-nav">Contact</a>
       </div>
     </div>
