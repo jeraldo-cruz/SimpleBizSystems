@@ -576,7 +576,7 @@
         <a href="index.html" style="color: var(--accent);">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
         
-        <!-- NEAT DROPDOWN FOR SAMPLE SYSTEMS -->
+        <!-- DROPDOWN FOR SAMPLE SYSTEMS -->
         <div class="dropdown">
           <button class="dropbtn" type="button">
             Sample Systems ▾
@@ -758,25 +758,25 @@
       </div>
 
       <!-- GOOGLE SHEET ASYNC FORM -->
-      <form id="contactForm" onsubmit="handleContactSubmit(event)">
+      <form id="contactForm">
         <div class="contact-grid">
           <div class="field-group">
             <label for="cName">Your Name</label>
-            <input type="text" id="cName" required placeholder="e.g. John Miller">
+            <input type="text" id="cName" name="name" required placeholder="e.g. John Miller">
           </div>
           <div class="field-group">
             <label for="cCompany">Business / Trade</label>
-            <input type="text" id="cCompany" placeholder="e.g. Miller Plumbing &amp; Mechanical">
+            <input type="text" id="cCompany" name="company" placeholder="e.g. Miller Plumbing &amp; Mechanical">
           </div>
         </div>
         <div class="contact-grid">
           <div class="field-group">
             <label for="cPhone">Phone Number</label>
-            <input type="tel" id="cPhone" required placeholder="e.g. 325-555-0182">
+            <input type="tel" id="cPhone" name="phone" required placeholder="e.g. 325-555-0182">
           </div>
           <div class="field-group">
             <label for="cService">Area of Interest</label>
-            <select id="cService">
+            <select id="cService" name="service">
               <option value="Custom Dispatch Board">Custom Dispatch &amp; Route Board</option>
               <option value="Lead Ingestion & SMS">Automated Lead Ingestion &amp; SMS</option>
               <option value="Estimating & Work Orders">Estimates &amp; Work Order Generator</option>
@@ -787,7 +787,7 @@
         </div>
         <div class="field-group" style="margin-bottom: 20px;">
           <label for="cMessage">What software subscription or operational bottleneck do you want to replace?</label>
-          <textarea id="cMessage" rows="3" placeholder="Tell us about the software you're currently paying monthly fees for, or the manual paperwork slowing you down..."></textarea>
+          <textarea id="cMessage" name="message" rows="3" placeholder="Tell us about the software you're currently paying monthly fees for, or the manual paperwork slowing you down..."></textarea>
         </div>
         <button type="submit" id="btnSubmit" class="btn-submit">Send Message &rarr;</button>
         <div id="formFeedback" style="display:none; margin-top:14px; text-align:center; font-weight:700; font-size:0.95rem;"></div>
@@ -808,50 +808,57 @@
   </footer>
 
   <script>
-    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP DEPLOYMENT URL HERE:
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
     const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-    async function handleContactSubmit(e) {
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
       e.preventDefault();
+      e.stopPropagation();
+
+      const form = this;
       const btn = document.getElementById("btnSubmit");
       const feedback = document.getElementById("formFeedback");
 
-      const payload = {
-        timestamp: new Date().toISOString(),
-        name: document.getElementById("cName").value.trim(),
-        company: document.getElementById("cCompany").value.trim() || "N/A",
-        phone: document.getElementById("cPhone").value.trim(),
-        service: document.getElementById("cService").value,
-        message: document.getElementById("cMessage").value.trim() || "None"
-      };
+      const nameVal = document.getElementById("cName").value.trim();
+      const phoneVal = document.getElementById("cPhone").value.trim();
+
+      if (!nameVal || !phoneVal) {
+        feedback.style.display = "block";
+        feedback.style.color = "#dc2626";
+        feedback.innerText = "Please provide your name and phone number.";
+        return false;
+      }
 
       btn.disabled = true;
       btn.innerText = "Sending...";
       feedback.style.display = "none";
 
-      try {
-        // mode: 'no-cors' allows posting across domains to Google Apps Script without CORS redirect blocks
-        await fetch(https://script.google.com/macros/s/AKfycbx5JvxF6Kjitx3-EOBb3oEa64vzhW_cLVYz6Rhz7_1smlORVv5V8hV74oYkB0LIjQST/exec, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
+      const formData = new FormData(form);
 
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(function() {
         feedback.style.display = "block";
         feedback.style.color = "#16a34a";
         feedback.innerText = "✓ Thank you! Your message was received. We will be in touch shortly.";
-        document.getElementById("contactForm").reset();
-      } catch (err) {
-        console.error("Submission failed:", err);
+        form.reset();
+      })
+      .catch(function(err) {
+        console.error("Submission error:", err);
         feedback.style.display = "block";
         feedback.style.color = "#dc2626";
-        feedback.innerText = "Submission failed. Please call or text us directly at 325-555-0182.";
-      } finally {
+        feedback.innerText = "Submission failed. Please call or text us directly.";
+      })
+      .finally(function() {
         btn.disabled = false;
         btn.innerText = "Send Message →";
-      }
-    }
+      });
+
+      return false;
+    });
   </script>
 </body>
 </html>
