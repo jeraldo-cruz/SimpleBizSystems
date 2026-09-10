@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Crew Timecard &amp; Labor Logger | Free Trade Timesheet Calculator</title>
+<meta name="title" content="Crew Timecard &amp; Labor Logger | Free Trade Timesheet Calculator">
+<meta name="description" content="Calculate crew hours, overtime, and gross labor costs in seconds. Log field timecards and export payroll CSVs with zero monthly per-seat software fees.">
+<meta name="keywords" content="contractor timecard calculator, crew labor logger, trade timesheet generator, free employee time clock, overtime labor calculator, Kingsland TX business tools">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/timecards.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/timecards.html">
+<meta property="og:title" content="Crew Timecard &amp; Labor Logger | Free Trade Timesheet Calculator">
+<meta property="og:description" content="Track crew shifts, overtime hours, and job labor costs with an instant, no-fee mobile time logger.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crew Timecard &amp; Labor Logger | Free Trade Timesheet Calculator">
+<meta name="twitter:description" content="Track crew shifts, overtime hours, and job labor costs with an instant, no-fee mobile time logger.">
+<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Crew Timecard & Labor Logger",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Simple Biz Systems",
+    "url": "https://www.simplebizsystems.com/"
+  },
+  "description": "A streamlined mobile field labor timecard calculator and CSV payroll logger for trade contractors."
+}
+</script>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --success: #16a34a;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 0;
+    font-size: 0.83rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.2rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .nav-brand-img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-nav {
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+    transition: background 0.15s ease;
+  }
+  .btn-nav:hover { background: var(--accent-hover); }
+
+  /* HEADER BLOCK */
+  .header-block {
+    padding: 36px 0 20px 0;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+  .header-block h1 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .header-block p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0;
+  }
+
+  /* TIMECARDS CARD */
+  .timecard-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 32px;
+  }
+
+  .timecard-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .timecard-metrics {
+    display: flex;
+    gap: 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .timecard-metrics strong {
+    color: var(--primary);
+  }
+  .timecard-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .btn-action {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-action:hover { background: var(--primary-light); }
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: #e2e8f0; }
+
+  /* TIMECARD TABLE */
+  .time-table-wrap {
+    overflow-x: auto;
+  }
+  .time-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .time-table th {
+    background: var(--bg);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .time-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-dark);
+  }
+  .time-table tr:hover {
+    background: #fbfcfe;
+  }
+  .tech-pill {
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .ot-tag {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+  }
+  .btn-del-shift {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  /* MODAL */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.active { display: flex; }
+  .modal-window {
+    background: var(--surface);
+    border-radius: 12px;
+    max-width: 460px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  .modal-window h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.15rem;
+    color: var(--primary);
+  }
+  .form-group {
+    margin-bottom: 12px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    font-family: inherit;
+  }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* FEATURE TILES */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .feature-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .feature-tile h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .feature-tile p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* CONVERSION PROMPT */
+  .conversion-box {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin-top: 24px;
+    text-align: center;
+    border-left: 6px solid var(--accent);
+    box-shadow: var(--card-shadow);
+  }
+  .conversion-box h2 {
+    color: #ffffff;
+    font-size: 1.35rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+  }
+  .conversion-box p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    max-width: 620px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .btn-cta:hover { background: var(--accent-hover); }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 40px 0; 
+    margin-top: 48px;
+    text-align: center; 
+    font-size: 0.85rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Field Labor &amp; Payroll • <strong>No Per-Seat Monthly Subscription Fees</strong>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="estimator.html">Estimator</a>
+        <a href="workorders.html">Work Orders</a>
+        <a href="leads.html">Leads</a>
+        <a href="timecards.html" style="color: var(--accent);">Timecards</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <!-- HEADER -->
+    <header class="header-block">
+      <span class="badge-tag">Crew Labor &amp; Overtime</span>
+      <h1>Crew Timecard &amp; Labor Logger</h1>
+      <p>
+        Track technician shift hours, job sites, overtime, and gross payroll costs. Export clean payroll CSVs without paying recurring monthly per-user software fees.
+      </p>
+    </header>
+
+    <!-- TIMECARDS CARD -->
+    <div class="timecard-card">
+      <div class="timecard-controls">
+        <div class="timecard-metrics">
+          <span>Logged Shifts: <strong id="metricTotalShifts">0</strong></span>
+          <span>Reg Hours: <strong id="metricRegHours">0</strong></span>
+          <span>OT Hours: <strong id="metricOtHours">0</strong></span>
+          <span>Gross Labor: <strong id="metricGrossPay" style="color: var(--success);">$0.00</strong></span>
+        </div>
+        <div class="timecard-actions">
+          <button class="btn-action" type="button" onclick="openShiftModal()">+ Log Shift</button>
+          <button class="btn-action btn-secondary" type="button" onclick="exportTimecardsCSV()">Export CSV</button>
+          <button class="btn-action btn-secondary" type="button" onclick="resetDemoShifts()">Reset</button>
+        </div>
+      </div>
+
+      <!-- TIMECARD TABLE -->
+      <div class="time-table-wrap">
+        <table class="time-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Technician</th>
+              <th>Job / Location</th>
+              <th>Reg Hrs</th>
+              <th>OT Hrs</th>
+              <th>Hourly Rate</th>
+              <th>Gross Labor</th>
+              <th style="width: 40px;"></th>
+            </tr>
+          </thead>
+          <tbody id="timecardBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FEATURE GRID -->
+    <div class="feature-grid">
+      <div class="feature-tile">
+        <h3>True Overtime Tracking</h3>
+        <p>Calculates standard vs. 1.5&times; overtime pay automatically, giving you an accurate reflection of job labor costs before running payroll.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Zero Seat Taxes</h3>
+        <p>Add full-time technicians, apprentices, and seasonal helpers without paying $5 to $10 extra every month per employee.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Instant Spreadsheet Export</h3>
+        <p>Download payroll and job labor records into a clean, universal CSV ready for Excel, Google Sheets, or direct import into your accounting software.</p>
+      </div>
+    </div>
+
+    <!-- CONVERSION BOX -->
+    <div class="conversion-box">
+      <h2>Need GPS Geofenced Timecards or Automated Payroll Sync?</h2>
+      <p>
+        We build custom field labor systems—allowing technicians to clock in on their phones with automatic GPS stamps, syncing hours to Google Sheets, and feeding directly into QuickBooks payroll.
+      </p>
+      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+    </div>
+
+  </main>
+
+  <!-- ADD SHIFT MODAL -->
+  <div class="modal-backdrop" id="shiftModal">
+    <div class="modal-window">
+      <h3>Log Crew Shift &amp; Hours</h3>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="shiftDate">Date</label>
+          <input type="date" id="shiftDate">
+        </div>
+        <div class="form-group">
+          <label for="shiftTech">Technician</label>
+          <input type="text" id="shiftTech" placeholder="e.g. Mike Ross">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="shiftJob">Job Name / Address</label>
+        <input type="text" id="shiftJob" placeholder="e.g. Miller Residence - Dock Wiring">
+      </div>
+      <div class="form-row-3" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;">
+        <div class="form-group">
+          <label for="shiftReg">Reg Hrs</label>
+          <input type="number" id="shiftReg" value="8" step="0.5" min="0">
+        </div>
+        <div class="form-group">
+          <label for="shiftOT">OT Hrs</label>
+          <input type="number" id="shiftOT" value="0" step="0.5" min="0">
+        </div>
+        <div class="form-group">
+          <label for="shiftRate">Rate ($/hr)</label>
+          <input type="number" id="shiftRate" value="32.00" step="1.00" min="0">
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button class="btn-action btn-secondary" type="button" onclick="closeShiftModal()">Cancel</button>
+        <button class="btn-action" type="button" onclick="saveNewShift()">Add Shift</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
+      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0; opacity: 0.6;">
+        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const TIMECARDS_STORAGE_KEY = "sbs_timecards_data";
+
+    const DEFAULT_SHIFTS = [
+      { id: "shift-1", date: "2026-09-08", tech: "J. Cruz (Lead)", job: "Lake LBJ Dock Pump Replacement", reg: 8, ot: 1.5, rate: 45.00 },
+      { id: "shift-2", date: "2026-09-08", tech: "Tech B (Service)", job: "Kingsland Marina Generator Diagnostic", reg: 8, ot: 0, rate: 32.00 },
+      { id: "shift-3", date: "2026-09-09", tech: "J. Cruz (Lead)", job: "RM 1431 Commercial A/C Filter & Run", reg: 7.5, ot: 0, rate: 45.00 },
+      { id: "shift-4", date: "2026-09-09", tech: "Crew 1 (Install)", job: "Highland Haven Septic Lift Wire", reg: 8, ot: 2.0, rate: 30.00 }
+    ];
+
+    let currentShifts = [];
+
+    function loadShifts() {
+      const saved = localStorage.getItem(TIMECARDS_STORAGE_KEY);
+      if (saved) {
+        try {
+          currentShifts = JSON.parse(saved);
+        } catch (e) {
+          currentShifts = [...DEFAULT_SHIFTS];
+        }
+      } else {
+        currentShifts = [...DEFAULT_SHIFTS];
+      }
+      renderTimecards();
+    }
+
+    function saveShifts() {
+      localStorage.setItem(TIMECARDS_STORAGE_KEY, JSON.stringify(currentShifts));
+      renderTimecards();
+    }
+
+    function renderTimecards() {
+      const tbody = document.getElementById("timecardBody");
+      tbody.innerHTML = "";
+
+      let totalReg = 0;
+      let totalOt = 0;
+      let totalGross = 0;
+
+      if (!currentShifts.length) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:24px;">No shifts logged. Click "+ Log Shift" to begin.</td></tr>`;
+      } else {
+        currentShifts.forEach(shift => {
+          const regHrs = parseFloat(shift.reg) || 0;
+          const otHrs = parseFloat(shift.ot) || 0;
+          const rate = parseFloat(shift.rate) || 0;
+
+          const regPay = regHrs * rate;
+          const otPay = otHrs * (rate * 1.5);
+          const shiftTotal = regPay + otPay;
+
+          totalReg += regHrs;
+          totalOt += otHrs;
+          totalGross += shiftTotal;
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${escapeHtml(shift.date)}</td>
+            <td><span class="tech-pill">${escapeHtml(shift.tech)}</span></td>
+            <td>${escapeHtml(shift.job)}</td>
+            <td>${regHrs.toFixed(1)}</td>
+            <td>${otHrs > 0 ? otHrs.toFixed(1) + '<span class="ot-tag">1.5x</span>' : '0.0'}</td>
+            <td>$${rate.toFixed(2)}</td>
+            <td style="font-weight:700; color:var(--primary);">$${shiftTotal.toFixed(2)}</td>
+            <td><button class="btn-del-shift" onclick="deleteShift('${shift.id}')" title="Delete shift">&times;</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById("metricTotalShifts").innerText = currentShifts.length;
+      document.getElementById("metricRegHours").innerText = totalReg.toFixed(1);
+      document.getElementById("metricOtHours").innerText = totalOt.toFixed(1);
+      document.getElementById("metricGrossPay").innerText = "$" + totalGross.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function deleteShift(id) {
+      currentShifts = currentShifts.filter(s => s.id !== id);
+      saveShifts();
+    }
+
+    function openShiftModal() {
+      document.getElementById("shiftDate").value = new Date().toISOString().slice(0, 10);
+      document.getElementById("shiftTech").value = "";
+      document.getElementById("shiftJob").value = "";
+      document.getElementById("shiftReg").value = "8";
+      document.getElementById("shiftOT").value = "0";
+      document.getElementById("shiftRate").value = "32.00";
+      document.getElementById("shiftModal").classList.add("active");
+    }
+
+    function closeShiftModal() {
+      document.getElementById("shiftModal").classList.remove("active");
+    }
+
+    function saveNewShift() {
+      const date = document.getElementById("shiftDate").value || new Date().toISOString().slice(0, 10);
+      const tech = document.getElementById("shiftTech").value.trim() || "Field Technician";
+      const job = document.getElementById("shiftJob").value.trim() || "General Service";
+      const reg = parseFloat(document.getElementById("shiftReg").value) || 0;
+      const ot = parseFloat(document.getElementById("shiftOT").value) || 0;
+      const rate = parseFloat(document.getElementById("shiftRate").value) || 0;
+
+      const newShift = {
+        id: "shift-" + Date.now(),
+        date,
+        tech,
+        job,
+        reg,
+        ot,
+        rate
+      };
+
+      currentShifts.unshift(newShift);
+      saveShifts();
+      closeShiftModal();
+    }
+
+    function resetDemoShifts() {
+      currentShifts = [...DEFAULT_SHIFTS];
+      saveShifts();
+    }
+
+    function exportTimecardsCSV() {
+      if (!currentShifts.length) {
+        alert("No shifts to export.");
+        return;
+      }
+
+      let csv = "ID,Date,Technician,Job_Location,Regular_Hours,OT_Hours,Hourly_Rate,Gross_Pay\n";
+      currentShifts.forEach(s => {
+        const reg = parseFloat(s.reg) || 0;
+        const ot = parseFloat(s.ot) || 0;
+        const rate = parseFloat(s.rate) || 0;
+        const gross = (reg * rate) + (ot * rate * 1.5);
+        csv += `"${s.id}","${s.date}","${s.tech.replace(/"/g, '""')}","${s.job.replace(/"/g, '""')}",${reg},${ot},${rate},${gross.toFixed(2)}\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `crew_timecards_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    document.addEventListener("DOMContentLoaded", loadShifts);
+  </script>
+</body>
+</html>
