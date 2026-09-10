@@ -543,6 +543,7 @@
     transition: background 0.15s ease;
   }
   .btn-submit:hover { background: var(--accent-hover); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
   /* FOOTER */
   footer { 
@@ -756,7 +757,8 @@
         </p>
       </div>
 
-      <form onsubmit="handleContactSubmit(event)">
+      <!-- GOOGLE SHEET ASYNC FORM -->
+      <form id="contactForm" onsubmit="handleContactSubmit(event)">
         <div class="contact-grid">
           <div class="field-group">
             <label for="cName">Your Name</label>
@@ -787,7 +789,8 @@
           <label for="cMessage">What software subscription or operational bottleneck do you want to replace?</label>
           <textarea id="cMessage" rows="3" placeholder="Tell us about the software you're currently paying monthly fees for, or the manual paperwork slowing you down..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Send Message &rarr;</button>
+        <button type="submit" id="btnSubmit" class="btn-submit">Send Message &rarr;</button>
+        <div id="formFeedback" style="display:none; margin-top:14px; text-align:center; font-weight:700; font-size:0.95rem;"></div>
       </form>
     </div>
 
@@ -805,18 +808,49 @@
   </footer>
 
   <script>
-    function handleContactSubmit(e) {
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP DEPLOYMENT URL HERE:
+    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+    async function handleContactSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById("cName").value;
-      const comp = document.getElementById("cCompany").value;
-      const phone = document.getElementById("cPhone").value;
-      const service = document.getElementById("cService").value;
-      const msg = document.getElementById("cMessage").value;
+      const btn = document.getElementById("btnSubmit");
+      const feedback = document.getElementById("formFeedback");
 
-      const subject = encodeURIComponent(`Simple Biz Systems Inquiry - ${name} (${comp || 'Local Business'})`);
-      const body = encodeURIComponent(`Name: ${name}\nBusiness: ${comp}\nPhone: ${phone}\nInterest: ${service}\n\nNotes:\n${msg}`);
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: document.getElementById("cName").value.trim(),
+        company: document.getElementById("cCompany").value.trim() || "N/A",
+        phone: document.getElementById("cPhone").value.trim(),
+        service: document.getElementById("cService").value,
+        message: document.getElementById("cMessage").value.trim() || "None"
+      };
 
-      window.location.href = `mailto:contact@simplebizsystems.com?subject=${subject}&body=${body}`;
+      btn.disabled = true;
+      btn.innerText = "Sending...";
+      feedback.style.display = "none";
+
+      try {
+        // mode: 'no-cors' allows posting across domains to Google Apps Script without CORS redirect blocks
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        feedback.style.display = "block";
+        feedback.style.color = "#16a34a";
+        feedback.innerText = "✓ Thank you! Your message was received. We will be in touch shortly.";
+        document.getElementById("contactForm").reset();
+      } catch (err) {
+        console.error("Submission failed:", err);
+        feedback.style.display = "block";
+        feedback.style.color = "#dc2626";
+        feedback.innerText = "Submission failed. Please call or text us directly at 325-555-0182.";
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Send Message →";
+      }
     }
   </script>
 </body>
