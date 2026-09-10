@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Customer Maintenance &amp; Equipment Logs | Free Service Asset Tracker</title>
+<meta name="title" content="Customer Maintenance &amp; Equipment Logs | Free Service Asset Tracker">
+<meta name="description" content="Track customer equipment, serial numbers, install dates, and maintenance schedules. Free mobile service history tracker for contractors with zero software fees.">
+<meta name="keywords" content="customer equipment log, hvac equipment tracker, contractor maintenance log, serial number asset tracker, preventative maintenance tool, Kingsland TX business tools">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/equipment.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/equipment.html">
+<meta property="og:title" content="Customer Maintenance &amp; Equipment Logs | Free Service Asset Tracker">
+<meta property="og:description" content="Keep customer serial numbers, warranty dates, and service history at your fingertips in the field with zero monthly software fees.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Customer Maintenance &amp; Equipment Logs | Free Service Asset Tracker">
+<meta name="twitter:description" content="Keep customer serial numbers, warranty dates, and service history at your fingertips in the field with zero monthly software fees.">
+<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Customer Maintenance & Equipment Logs",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Simple Biz Systems",
+    "url": "https://www.simplebizsystems.com/"
+  },
+  "description": "A streamlined mobile maintenance log and equipment registry for trade contractors and field technicians."
+}
+</script>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --success: #16a34a;
+    --warning: #dc2626;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 0;
+    font-size: 0.83rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.2rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .nav-brand-img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-nav {
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+    transition: background 0.15s ease;
+  }
+  .btn-nav:hover { background: var(--accent-hover); }
+
+  /* HEADER BLOCK */
+  .header-block {
+    padding: 36px 0 20px 0;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+  .header-block h1 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .header-block p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0;
+  }
+
+  /* MAIN CARD */
+  .equip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 32px;
+  }
+
+  .equip-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    width: 240px;
+  }
+  .equip-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .btn-action {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-action:hover { background: var(--primary-light); }
+  .btn-secondary {
+    background: var(--bg);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: #e2e8f0; }
+
+  /* TABLE */
+  .table-wrap {
+    overflow-x: auto;
+  }
+  .equip-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .equip-table th {
+    background: var(--bg);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .equip-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-dark);
+    vertical-align: top;
+  }
+  .equip-table tr:hover {
+    background: #fbfcfe;
+  }
+  
+  .badge-service {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  .badge-due {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  .badge-current {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .btn-del-unit {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  /* MODAL */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.active { display: flex; }
+  .modal-window {
+    background: var(--surface);
+    border-radius: 12px;
+    max-width: 480px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  .modal-window h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.15rem;
+    color: var(--primary);
+  }
+  .form-group {
+    margin-bottom: 12px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    font-family: inherit;
+  }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* FEATURE TILES */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .feature-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .feature-tile h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .feature-tile p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* CONVERSION PROMPT */
+  .conversion-box {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin-top: 24px;
+    text-align: center;
+    border-left: 6px solid var(--accent);
+    box-shadow: var(--card-shadow);
+  }
+  .conversion-box h2 {
+    color: #ffffff;
+    font-size: 1.35rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+  }
+  .conversion-box p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    max-width: 620px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .btn-cta:hover { background: var(--accent-hover); }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 40px 0; 
+    margin-top: 48px;
+    text-align: center; 
+    font-size: 0.85rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Preventative Maintenance &amp; Asset Tracking • <strong>Zero Monthly Software Fees</strong>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="estimator.html">Estimator</a>
+        <a href="workorders.html">Work Orders</a>
+        <a href="leads.html">Leads</a>
+        <a href="timecards.html">Timecards</a>
+        <a href="materials.html">Materials</a>
+        <a href="equipment.html" style="color: var(--accent);">Equipment</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <!-- HEADER -->
+    <header class="header-block">
+      <span class="badge-tag">Customer Unit &amp; Service Registry</span>
+      <h1>Customer Maintenance &amp; Equipment Logs</h1>
+      <p>
+        Keep track of installed equipment, serial numbers, warranty dates, and service history on site. Capture repeat maintenance business without expensive per-asset software retainers.
+      </p>
+    </header>
+
+    <!-- MAIN EQUIPMENT CARD -->
+    <div class="equip-card">
+      <div class="equip-controls">
+        <input type="text" id="equipSearch" class="search-input" placeholder="Search customer, serial, or model..." oninput="filterEquipment()">
+        <div class="equip-actions">
+          <button class="btn-action" type="button" onclick="openAddEquipModal()">+ Register Unit</button>
+          <button class="btn-action btn-secondary" type="button" onclick="exportEquipmentCSV()">Export CSV</button>
+          <button class="btn-action btn-secondary" type="button" onclick="resetDemoEquip()">Reset</button>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="table-wrap">
+        <table class="equip-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Customer &amp; Location</th>
+              <th>Unit / Model</th>
+              <th>Serial / Specs</th>
+              <th>Installed</th>
+              <th>Last Service</th>
+              <th>Service Notes</th>
+              <th style="width: 40px;"></th>
+            </tr>
+          </thead>
+          <tbody id="equipBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FEATURE GRID -->
+    <div class="feature-grid">
+      <div class="feature-tile">
+        <h3>Never Guess Unit Specs</h3>
+        <p>Log exact filter sizes, belt dimensions, refrigerant types, and motor voltages so technicians arrive prepared with the right parts the first time.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Capture Repeat Tune-Ups</h3>
+        <p>Visual status badges clearly highlight which customer units are overdue for spring/fall tune-ups, filter swaps, or preventative inspections.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Private &amp; Unrestricted</h3>
+        <p>Record unlimited units, service histories, and customer sites without paying monthly per-asset fees or hitting software paywalls.</p>
+      </div>
+    </div>
+
+    <!-- CONVERSION PROMPT -->
+    <div class="conversion-box">
+      <h2>Need QR Tag Scanning or Automated Customer Maintenance Reminders?</h2>
+      <p>
+        We build custom equipment databases for contractors—allowing technicians to scan QR stickers on condenser units or pumps with their phone camera and automatically texting customers when semi-annual maintenance is due.
+      </p>
+      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+    </div>
+
+  </main>
+
+  <!-- ADD UNIT MODAL -->
+  <div class="modal-backdrop" id="equipModal">
+    <div class="modal-window">
+      <h3>Register Customer Equipment</h3>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="mCustName">Customer Name</label>
+          <input type="text" id="mCustName" placeholder="e.g. Miller Residence">
+        </div>
+        <div class="form-group">
+          <label for="mLocation">Location / Address</label>
+          <input type="text" id="mLocation" placeholder="e.g. Lake LBJ Waterfront">
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="mUnit">Equipment Type / Model</label>
+          <input type="text" id="mUnit" placeholder="e.g. Trane XR14 3.5-Ton">
+        </div>
+        <div class="form-group">
+          <label for="mSerial">Serial # / Key Specs</label>
+          <input type="text" id="mSerial" placeholder="e.g. 2145R9012 (R-410A)">
+        </div>
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="mInstallDate">Install Date</label>
+          <input type="date" id="mInstallDate">
+        </div>
+        <div class="form-group">
+          <label for="mLastService">Last Service Date</label>
+          <input type="date" id="mLastService">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mNotes">Service / Filter Specs / Notes</label>
+        <textarea id="mNotes" rows="2" placeholder="e.g. 16x25x1 filter, new run capacitor installed."></textarea>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button class="btn-action btn-secondary" type="button" onclick="closeAddEquipModal()">Cancel</button>
+        <button class="btn-action" type="button" onclick="saveNewEquip()">Save Unit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
+      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0; opacity: 0.6;">
+        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const EQUIP_STORAGE_KEY = "sbs_equipment_data";
+
+    const DEFAULT_EQUIP = [
+      { id: "eq-1", customer: "Miller Residence", location: "142 River Oaks, Kingsland", unit: "Trane XR14 3.5-Ton Heat Pump", serial: "SN: 2109R8812 (R-410A)", installed: "2023-04-12", lastService: "2026-02-10", notes: "Filter: 16x25x1 MERV 8. Replaced dual run capacitor 45/5." },
+      { id: "eq-2", customer: "Apex Marine Shop", location: "Hwy 1431, Kingsland", unit: "Ingersoll Rand 80-Gal Air Compressor", serial: "SN: IR-772901 (230V 1-PH)", installed: "2021-08-15", lastService: "2025-11-20", notes: "Synthetic oil change and intake air filter replacement." },
+      { id: "eq-3", customer: "Highland Haven Cabin", location: "Lake LBJ Waterfront", unit: "Franklin 1.5-HP Submersible Well Pump", serial: "SN: FP-44012 (2-Wire)", installed: "2022-06-05", lastService: "2026-08-14", notes: "Replaced 40/60 pressure switch. Operating pressure 58 PSI." },
+      { id: "eq-4", customer: "Kingsland Storage", location: "RR 2900, Kingsland", unit: "Carrier Comfort 5-Ton Package Unit", serial: "SN: C-8812903", installed: "2020-03-10", lastService: "2025-05-18", notes: "Evaporator coil cleaned. Blower motor inspected." }
+    ];
+
+    let currentEquip = [];
+
+    function loadEquipment() {
+      const saved = localStorage.getItem(EQUIP_STORAGE_KEY);
+      if (saved) {
+        try {
+          currentEquip = JSON.parse(saved);
+        } catch (e) {
+          currentEquip = [...DEFAULT_EQUIP];
+        }
+      } else {
+        currentEquip = [...DEFAULT_EQUIP];
+      }
+      renderEquipment(currentEquip);
+    }
+
+    function saveEquipment() {
+      localStorage.setItem(EQUIP_STORAGE_KEY, JSON.stringify(currentEquip));
+      renderEquipment(currentEquip);
+    }
+
+    function renderEquipment(list) {
+      const tbody = document.getElementById("equipBody");
+      tbody.innerHTML = "";
+
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:24px;">No equipment records found.</td></tr>`;
+        return;
+      }
+
+      const now = new Date();
+
+      list.forEach(unit => {
+        // Due for service if last service was over 180 days ago (semi-annual)
+        let isDue = false;
+        if (unit.lastService) {
+          const lastDate = new Date(unit.lastService);
+          const diffDays = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+          if (diffDays > 180) isDue = true;
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>
+            <span class="badge-service ${isDue ? 'badge-due' : 'badge-current'}">
+              ${isDue ? '⚠️ SERVICE DUE' : '✓ CURRENT'}
+            </span>
+          </td>
+          <td>
+            <strong>${escapeHtml(unit.customer)}</strong><br>
+            <span style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(unit.location)}</span>
+          </td>
+          <td><strong>${escapeHtml(unit.unit)}</strong></td>
+          <td style="font-size:0.8rem; font-family:monospace;">${escapeHtml(unit.serial)}</td>
+          <td style="font-size:0.82rem;">${escapeHtml(unit.installed || 'N/A')}</td>
+          <td style="font-size:0.82rem;">${escapeHtml(unit.lastService || 'N/A')}</td>
+          <td style="font-size:0.8rem; color:var(--text-muted); max-width:260px;">${escapeHtml(unit.notes)}</td>
+          <td><button class="btn-del-unit" onclick="deleteEquip('${unit.id}')" title="Delete record">&times;</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterEquipment() {
+      const q = document.getElementById("equipSearch").value.toLowerCase();
+      const filtered = currentEquip.filter(u => 
+        u.customer.toLowerCase().includes(q) ||
+        u.location.toLowerCase().includes(q) ||
+        u.unit.toLowerCase().includes(q) ||
+        u.serial.toLowerCase().includes(q) ||
+        u.notes.toLowerCase().includes(q)
+      );
+      renderEquipment(filtered);
+    }
+
+    function deleteEquip(id) {
+      currentEquip = currentEquip.filter(u => u.id !== id);
+      saveEquipment();
+    }
+
+    function openAddEquipModal() {
+      document.getElementById("mCustName").value = "";
+      document.getElementById("mLocation").value = "";
+      document.getElementById("mUnit").value = "";
+      document.getElementById("mSerial").value = "";
+      document.getElementById("mInstallDate").value = new Date().toISOString().slice(0, 10);
+      document.getElementById("mLastService").value = new Date().toISOString().slice(0, 10);
+      document.getElementById("mNotes").value = "";
+      document.getElementById("equipModal").classList.add("active");
+    }
+
+    function closeAddEquipModal() {
+      document.getElementById("equipModal").classList.remove("active");
+    }
+
+    function saveNewEquip() {
+      const customer = document.getElementById("mCustName").value.trim() || "Customer";
+      const location = document.getElementById("mLocation").value.trim() || "Location";
+      const unit = document.getElementById("mUnit").value.trim() || "Equipment Model";
+      const serial = document.getElementById("mSerial").value.trim() || "SN: Unrecorded";
+      const installed = document.getElementById("mInstallDate").value || "";
+      const lastService = document.getElementById("mLastService").value || "";
+      const notes = document.getElementById("mNotes").value.trim() || "";
+
+      const newUnit = {
+        id: "eq-" + Date.now(),
+        customer,
+        location,
+        unit,
+        serial,
+        installed,
+        lastService,
+        notes
+      };
+
+      currentEquip.unshift(newUnit);
+      saveEquipment();
+      closeAddEquipModal();
+    }
+
+    function resetDemoEquip() {
+      currentEquip = [...DEFAULT_EQUIP];
+      saveEquipment();
+    }
+
+    function exportEquipmentCSV() {
+      if (!currentEquip.length) {
+        alert("No equipment records to export.");
+        return;
+      }
+
+      let csv = "ID,Customer,Location,Unit_Model,Serial_Specs,Install_Date,Last_Service,Notes\n";
+      currentEquip.forEach(u => {
+        csv += `"${u.id}","${u.customer.replace(/"/g, '""')}","${u.location.replace(/"/g, '""')}","${u.unit.replace(/"/g, '""')}","${u.serial.replace(/"/g, '""')}","${u.installed}","${u.lastService}","${u.notes.replace(/"/g, '""')}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `customer_equipment_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    document.addEventListener("DOMContentLoaded", loadEquipment);
+  </script>
+</body>
+</html>
