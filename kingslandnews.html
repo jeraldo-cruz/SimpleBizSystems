@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)</title>
 <meta name="title" content="Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)">
-<meta name="description" content="Free, ad-free public bulletin for Kingsland, Texas, Llano County, and Burnet County. Live 7-day weather forecast, active burn bans, free public boat ramps, chamber events, and emergency utility contacts.">
-<meta name="keywords" content="free kingsland texas news, kingsland tx utilities, kingsland boat ramps, free fishing kingsland, llano county burn ban, burnet county burn ban, kingsland mud phone number, ctec outage, kingsland weather forecast, highland lakes news">
+<meta name="description" content="Free, ad-free public bulletin for Kingsland, Texas, Llano County, and Burnet County. Live 7-day weather forecast, active burn bans, free public boat ramps, chamber events, contractor tools, and emergency utility contacts.">
+<meta name="keywords" content="free kingsland texas news, kingsland tx utilities, kingsland boat ramps, free fishing kingsland, llano county burn ban, burnet county burn ban, kingsland mud phone number, ctec outage, kingsland weather forecast, highland lakes news, contractor estimate calculator">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -121,7 +121,8 @@
   #eventsSection,
   #briefSection,
   #mapSection,
-  #utilitySection {
+  #utilitySection,
+  #toolsSection {
     scroll-margin-top: 130px;
   }
 
@@ -190,7 +191,7 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 18px; 
+    gap: 16px; 
   }
   .nav-links a { 
     text-decoration: none; 
@@ -554,6 +555,59 @@
   }
   .btn-directions:hover { text-decoration: underline; }
 
+  /* FREE BUSINESS & CONTRACTOR TOOLS SECTION */
+  .tools-section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+    box-shadow: var(--card-shadow);
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .tool-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.1s ease;
+  }
+  .tool-box:hover {
+    border-color: #cbd5e1;
+  }
+  .tool-box h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    color: var(--primary);
+  }
+  .tool-box p {
+    margin: 0 0 14px 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .btn-tool {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+  }
+  .btn-tool:hover { background: var(--primary-light); }
+
   /* UTILITY DIRECTORY */
   .directory-card {
     background: var(--surface);
@@ -646,6 +700,8 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html" style="color: var(--accent);">Kingsland Wire</a>
+        <a href="estimator.html">Estimator</a>
+        <a href="dispatch.html">Dispatch</a>
         <a href="about.html">About &amp; Founder</a>
         <a href="index.html#contact-panel" class="btn-nav">Contact</a>
       </div>
@@ -663,6 +719,7 @@
         <button class="filter-pill" onclick="scrollToSection('briefSection', this)">Road Closures &amp; TxDOT</button>
         <button class="filter-pill" onclick="scrollToSection('mapSection', this)">Free Boat Ramps &amp; Fishing</button>
         <button class="filter-pill" onclick="scrollToSection('utilitySection', this)">Utility Directory</button>
+        <button class="filter-pill" onclick="scrollToSection('toolsSection', this)">Contractor Tools</button>
       </div>
     </div>
   </div>
@@ -680,7 +737,7 @@
       </p>
     </div>
 
-    <!-- 2. LIVE WEATHER ALERT (ONLY VISIBLE IF ACTIVE WARNING) -->
+    <!-- 2. LIVE WEATHER ALERT -->
     <div id="weatherAlertWrap">
       <div class="alert-box">
         <h3 id="alertEventTitle">Severe Weather Warning</h3>
@@ -867,6 +924,35 @@
       </div>
     </div>
 
+    <!-- 9. FREE LOCAL BUSINESS & CONTRACTOR TOOLS (NEW INTEGRATED SECTION) -->
+    <div id="toolsSection" class="tools-section-card">
+      <div class="section-divider" style="margin-top: 0;">
+        <h2>Free Contractor &amp; Small Business Tools</h2>
+        <span>No Login Required</span>
+      </div>
+      <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+        Practical web utilities designed for local Highland Lakes service businesses, trades, and field operators.
+      </p>
+
+      <div class="tools-grid">
+        <div class="tool-box">
+          <div>
+            <h3>Job Profit &amp; Estimate Calculator</h3>
+            <p>Calculate labor, materials, sales tax, and target profit margins. Generate clean, client-ready PDF quotes straight from the job site.</p>
+          </div>
+          <a href="estimator.html" class="btn-tool">Open Estimator &rarr;</a>
+        </div>
+
+        <div class="tool-box">
+          <div>
+            <h3>Crew &amp; Route Dispatch Board</h3>
+            <p>A lightweight, mobile-friendly daily dispatch board to coordinate jobs, technicians, and routes without expensive monthly per-seat software fees.</p>
+          </div>
+          <a href="dispatch.html" class="btn-tool">Open Dispatch &rarr;</a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- FOOTER -->
@@ -886,7 +972,6 @@
   <script>
     const WIRE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwjqD0E9Y3ZJKtwAArsvsGBJKU3MOqm-A3CXcMRTqi-9WE-INbH2-aRgGIGS3cMoGk8/exec";
 
-    // GUARANTEED LOCAL DATA BASELINE (Shows instantly on page load)
     const VERIFIED_EVENTS = [
       { Title: "Business After Hours Chamber Mixer", Location: "Kingsland Community Center / Host Venues", Link: "https://business.kingslandchamber.org/events", Event_Date: "Upcoming" },
       { Title: "Connections Over Coffee - Morning Networking", Location: "Kingsland Chamber Office", Link: "https://business.kingslandchamber.org/events", Event_Date: "Upcoming" },
@@ -1253,12 +1338,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Render initial state immediately so the page is never blank or stuck
       renderBurnBans([]);
       renderEvents(VERIFIED_EVENTS);
       renderNotices(VERIFIED_NOTICES);
 
-      // 2. Fetch live data
       fetchKingslandWeather();
       fetchWire();
       initFreeMap();
