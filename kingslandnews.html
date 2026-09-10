@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)</title>
 <meta name="title" content="Kingsland Wire | Free Local News, Weather, Utilities &amp; Boat Ramps (Kingsland, TX)">
-<meta name="description" content="Free, ad-free public bulletin for Kingsland, Texas, Llano County, and Burnet County. Live 7-day weather forecast, active burn bans, free public boat ramps, chamber events, contractor tools, and emergency utility contacts.">
-<meta name="keywords" content="free kingsland texas news, kingsland tx utilities, kingsland boat ramps, free fishing kingsland, llano county burn ban, burnet county burn ban, kingsland mud phone number, ctec outage, kingsland weather forecast, highland lakes news, contractor estimate calculator, contractor dispatch board">
+<meta name="description" content="Free, ad-free public bulletin for Kingsland, Texas, Llano County, and Burnet County. Live 7-day weather forecast, active burn bans, free public boat ramps, chamber events, sample trade systems, and emergency utility contacts.">
+<meta name="keywords" content="free kingsland texas news, kingsland tx utilities, kingsland boat ramps, free fishing kingsland, llano county burn ban, burnet county burn ban, kingsland mud phone number, ctec outage, kingsland weather forecast, highland lakes news, contractor software alternatives">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,13 +24,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
 <meta property="og:title" content="Kingsland Wire | Free Local News, Weather &amp; Utilities">
-<meta property="og:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, free boat ramp maps, and contractor tools.">
+<meta property="og:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, free boat ramp maps, and sample trade systems.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- TWITTER CARD -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kingsland Wire | Free Local News, Weather &amp; Utilities">
-<meta name="twitter:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, free boat ramp maps, and contractor tools.">
+<meta name="twitter:description" content="Ad-free, tracker-free community board for Kingsland, TX. Live weather forecast, county burn bans, utility phone lines, free boat ramp maps, and sample trade systems.">
 <meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- STRUCTURED DATA (JSON-LD) -->
@@ -91,6 +91,7 @@
     --success: #16a34a;
     --warning: #dc2626;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
   }
   
   html {
@@ -197,7 +198,7 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 16px; 
+    gap: 20px; 
   }
   .nav-links a { 
     text-decoration: none; 
@@ -207,6 +208,57 @@
     transition: color 0.15s ease;
   }
   .nav-links a:hover { color: var(--accent); }
+
+  /* DROPDOWN MENU */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s ease;
+  }
+  .dropbtn:hover { color: var(--accent); }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--surface);
+    min-width: 220px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow-lg);
+    padding: 8px 0;
+    z-index: 110;
+  }
+  .dropdown-content a {
+    color: var(--text-dark);
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.86rem;
+    font-weight: 500;
+  }
+  .dropdown-content a:hover {
+    background: var(--bg);
+    color: var(--accent);
+  }
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+
   .btn-nav {
     background: var(--accent);
     color: #ffffff !important;
@@ -561,59 +613,6 @@
   }
   .btn-directions:hover { text-decoration: underline; }
 
-  /* FREE CONTRACTOR TOOLS SECTION */
-  .tools-section-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-top: 32px;
-    box-shadow: var(--card-shadow);
-  }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-top: 16px;
-  }
-  .tool-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.1s ease;
-  }
-  .tool-box:hover {
-    border-color: #cbd5e1;
-  }
-  .tool-box h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    color: var(--primary);
-  }
-  .tool-box p {
-    margin: 0 0 14px 0;
-    font-size: 0.86rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-  .btn-tool {
-    display: inline-block;
-    background: var(--primary);
-    color: #ffffff !important;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-decoration: none;
-    text-align: center;
-    width: fit-content;
-  }
-  .btn-tool:hover { background: var(--primary-light); }
-
   /* UTILITY DIRECTORY */
   .directory-card {
     background: var(--surface);
@@ -668,6 +667,59 @@
   .dir-actions a { color: var(--accent); text-decoration: none; }
   .dir-actions a:hover { text-decoration: underline; }
 
+  /* SAMPLE BUSINESS & TRADE SYSTEMS SHOWCASE */
+  .tools-section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+    box-shadow: var(--card-shadow);
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .tool-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.1s ease;
+  }
+  .tool-box:hover {
+    border-color: #cbd5e1;
+  }
+  .tool-box h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    color: var(--primary);
+  }
+  .tool-box p {
+    margin: 0 0 14px 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .btn-tool {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff !important;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+  }
+  .btn-tool:hover { background: var(--primary-light); }
+
   /* FOOTER */
   footer { 
     background: #09233d; 
@@ -706,9 +758,24 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html" style="color: var(--accent);">Kingsland Wire</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html">Estimator</a>
-        <a href="workorders.html">Work Orders</a>
+        
+        <!-- NEAT DROPDOWN FOR SAMPLE SYSTEMS -->
+        <div class="dropdown">
+          <button class="dropbtn" type="button">
+            Sample Systems ▾
+          </button>
+          <div class="dropdown-content">
+            <a href="estimator.html">Job Estimator (PDF)</a>
+            <a href="dispatch.html">Daily Dispatch Board</a>
+            <a href="workorders.html">Mobile Work Orders</a>
+            <a href="leads.html">Lead Pipeline Tracker</a>
+            <a href="timecards.html">Crew Labor &amp; Timecards</a>
+            <a href="materials.html">Material Reorder Sheet</a>
+            <a href="equipment.html">Customer Equipment Logs</a>
+            <a href="index.html#sample-tools" style="border-top: 1px solid var(--border); font-weight: 700; color: var(--accent);">View Systems Suite &rarr;</a>
+          </div>
+        </div>
+
         <a href="about.html">About &amp; Founder</a>
         <a href="index.html#contact-panel" class="btn-nav">Contact</a>
       </div>
@@ -726,7 +793,7 @@
         <button class="filter-pill" onclick="scrollToSection('briefSection', this)">Road Closures &amp; TxDOT</button>
         <button class="filter-pill" onclick="scrollToSection('mapSection', this)">Free Boat Ramps &amp; Fishing</button>
         <button class="filter-pill" onclick="scrollToSection('utilitySection', this)">Utility Directory</button>
-        <button class="filter-pill" onclick="scrollToSection('toolsSection', this)">Contractor Tools</button>
+        <button class="filter-pill" onclick="scrollToSection('toolsSection', this)">Sample Trade Systems</button>
       </div>
     </div>
   </div>
@@ -740,11 +807,11 @@
         The <strong>Kingsland Wire</strong> is a free community utility for Kingsland, Texas, and surrounding Highland Lakes communities in Llano and Burnet Counties.
       </p>
       <p>
-        Unlike commercial news sites, this bulletin is <strong>100% ad-free, subscription-free, and has zero tracking cookies</strong>. It aggregates open government data, county emergency notices, free public boat ramps, trade tools, and essential utility contacts into one fast-loading page for local residents and visitors.
+        Unlike commercial news sites, this bulletin is <strong>100% ad-free, subscription-free, and has zero tracking cookies</strong>. It aggregates open government data, county emergency notices, free public boat ramps, trade system demos, and essential utility contacts into one fast-loading page for local residents and visitors.
       </p>
     </div>
 
-    <!-- 2. LIVE WEATHER ALERT (ONLY VISIBLE IF ACTIVE WARNING) -->
+    <!-- 2. LIVE WEATHER ALERT -->
     <div id="weatherAlertWrap">
       <div class="alert-box">
         <h3 id="alertEventTitle">Severe Weather Warning</h3>
@@ -931,71 +998,71 @@
       </div>
     </div>
 
-    <!-- 9. FREE LOCAL BUSINESS & CONTRACTOR TOOLS -->
+    <!-- 9. SAMPLE BUSINESS & TRADE SYSTEMS (SHOWCASE SECTION) -->
     <div id="toolsSection" class="tools-section-card">
       <div class="section-divider" style="margin-top: 0;">
-        <h2>Free Contractor &amp; Small Business Tools</h2>
-        <span>No Login Required</span>
+        <h2>Sample Trade Tools &amp; Systems</h2>
+        <span>Proof-of-Concept Demos • Try Them Live</span>
       </div>
       <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
-        Practical web utilities designed for local Highland Lakes service businesses, trades, and field operators.
+        Interactive working samples of low-cost tools built to replace expensive monthly software subscriptions for local trades.
       </p>
 
       <div class="tools-grid">
         <div class="tool-box">
           <div>
             <h3>Job Profit &amp; Estimate Calculator</h3>
-            <p>Calculate labor, materials, sales tax, and target margins. Generate clean, client-ready PDF quotes on site.</p>
+            <p>Calculates materials, labor, and target margins, producing clean client-ready PDF quotes on site without monthly fees.</p>
           </div>
-          <a href="estimator.html" class="btn-tool">Open Estimator &rarr;</a>
+          <a href="estimator.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Crew &amp; Route Dispatch Board</h3>
-            <p>A lightweight, mobile-friendly daily dispatch board to coordinate jobs, technicians, and routes without monthly fees.</p>
+            <p>A fast, mobile-friendly daily dispatch board to coordinate jobs, technicians, and routes without expensive monthly per-seat fees.</p>
           </div>
-          <a href="dispatch.html" class="btn-tool">Open Dispatch &rarr;</a>
+          <a href="dispatch.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Mobile Work Order Generator</h3>
-            <p>Document completed jobs, collect touchscreen customer signatures, and download signed PDF receipts instantly.</p>
+            <p>Demonstrates touchscreen customer signatures, line-item labor logging, and instant PDF service receipts in the field.</p>
           </div>
-          <a href="workorders.html" class="btn-tool">Open Work Orders &rarr;</a>
+          <a href="workorders.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Closed-Loop Lead Tracker</h3>
-            <p>Track customer inquiries from phone call through estimate, scheduling, and payment without bloated CRM software.</p>
+            <p>A streamlined inquiry pipeline to track customer jobs from initial call through estimate and invoice without bloated CRM software.</p>
           </div>
-          <a href="leads.html" class="btn-tool">Open Leads &rarr;</a>
+          <a href="leads.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Crew Timecard &amp; Labor Logger</h3>
-            <p>Calculate shift hours, track standard vs. overtime pay, and export payroll CSV spreadsheets with no per-user fees.</p>
+            <p>Calculates regular vs. overtime hours and gross labor costs, generating spreadsheet-ready CSV payroll exports with zero per-user fees.</p>
           </div>
-          <a href="timecards.html" class="btn-tool">Open Timecards &rarr;</a>
+          <a href="timecards.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Material &amp; Supply Reorder Sheet</h3>
-            <p>Track van and shop stock, monitor minimum thresholds, and compile one-click supply house purchase orders.</p>
+            <p>Tracks van and shop stock, monitors minimum thresholds, and compiles one-click supply house purchase orders.</p>
           </div>
-          <a href="materials.html" class="btn-tool">Open Materials &rarr;</a>
+          <a href="materials.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
 
         <div class="tool-box">
           <div>
             <h3>Customer Equipment &amp; Service Logs</h3>
-            <p>Maintain customer serial numbers, warranty dates, filter sizes, and track units overdue for seasonal service.</p>
+            <p>Maintains customer unit serial numbers, filter sizes, and warranty dates, highlighting units due for seasonal service.</p>
           </div>
-          <a href="equipment.html" class="btn-tool">Open Equipment Logs &rarr;</a>
+          <a href="equipment.html" class="btn-tool">Try Interactive Sample &rarr;</a>
         </div>
       </div>
     </div>
