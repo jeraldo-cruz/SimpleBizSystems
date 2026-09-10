@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Mobile Work Order Generator | Free Digital Field Service Ticket &amp; Signoff</title>
+<meta name="title" content="Mobile Work Order Generator | Free Digital Field Service Ticket &amp; Signoff">
+<meta name="description" content="Generate instant digital work orders on mobile or desktop. Log parts and labor, collect customer signatures on-screen, and export clean PDF service receipts for free.">
+<meta name="keywords" content="mobile work order generator, digital field service ticket, free work order with signature, contractor work order pdf, no subscription work order tool, trade service signoff, Kingsland TX business tools">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/workorders.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/workorders.html">
+<meta property="og:title" content="Mobile Work Order Generator | Free Digital Field Service Ticket">
+<meta property="og:description" content="Log completed work, collect customer signatures on mobile, and generate PDF service receipts with zero monthly fees.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mobile Work Order Generator | Free Digital Field Service Ticket">
+<meta name="twitter:description" content="Log completed work, collect customer signatures on mobile, and generate PDF service receipts with zero monthly fees.">
+<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- STRUCTURED DATA (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mobile Work Order Generator",
+  "operatingSystem": "Web Browser, iOS, Android",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Simple Biz Systems",
+    "url": "https://www.simplebizsystems.com/"
+  },
+  "description": "A streamlined mobile work order generator that lets technicians log materials, collect customer signatures on-screen, and generate PDF tickets without monthly software subscriptions."
+}
+</script>
+
+<!-- html2pdf.js for client-side PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --success: #16a34a;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 0;
+    font-size: 0.83rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.2rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .nav-brand-img {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .btn-nav {
+    background: var(--accent);
+    color: #ffffff !important;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+    transition: background 0.15s ease;
+  }
+  .btn-nav:hover { background: var(--accent-hover); }
+
+  /* HEADER BLOCK */
+  .header-block {
+    padding: 36px 0 20px 0;
+  }
+  .badge-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+  .header-block h1 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .header-block p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 720px;
+    margin: 0;
+  }
+
+  /* WORK ORDER FORM WRAPPER */
+  .order-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 32px;
+  }
+
+  .form-section-title {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 700px) {
+    .form-row-2, .form-row-3 { grid-template-columns: 1fr; }
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .field-group label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .field-group input, .field-group select, .field-group textarea {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-family: inherit;
+  }
+  .field-group textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+
+  /* LINE ITEMS */
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+  }
+  .items-table th {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 8px 6px;
+    text-transform: uppercase;
+  }
+  .items-table td {
+    padding: 6px;
+  }
+  .items-table input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+  }
+  .btn-remove {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 4px 8px;
+  }
+  .btn-add {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    color: var(--primary);
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: background 0.15s ease;
+  }
+  .btn-add:hover { background: #e2e8f0; }
+
+  /* TOTALS PANEL */
+  .totals-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-bottom: 24px;
+  }
+  .totals-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+  .totals-line.final {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    border-top: 2px solid var(--border);
+    padding-top: 8px;
+    margin-top: 6px;
+  }
+
+  /* SIGNATURE CANVAS */
+  .signature-wrapper {
+    background: var(--bg);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .signature-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .signature-header span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .btn-clear {
+    background: #e2e8f0;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+  .btn-clear:hover { background: #cbd5e1; }
+  #sigCanvas {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    touch-action: none;
+    cursor: crosshair;
+    width: 100%;
+    height: 140px;
+  }
+
+  .btn-generate {
+    width: 100%;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-generate:hover { background: var(--accent-hover); }
+
+  /* FEATURE TILES */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .feature-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .feature-tile h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .feature-tile p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* CONVERSION PROMPT */
+  .conversion-box {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin-top: 24px;
+    text-align: center;
+    border-left: 6px solid var(--accent);
+    box-shadow: var(--card-shadow);
+  }
+  .conversion-box h2 {
+    color: #ffffff;
+    font-size: 1.35rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+  }
+  .conversion-box p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    max-width: 620px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .btn-cta:hover { background: var(--accent-hover); }
+
+  /* PDF HIDDEN SHELL */
+  #pdfWorkOrderTemplate {
+    display: none;
+    background: #ffffff;
+    padding: 34px;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
+  }
+  #pdfWorkOrderTemplate h2 {
+    color: #0d3b66;
+    margin: 0 0 4px 0;
+    font-size: 1.5rem;
+  }
+  .pdf-header-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #0d3b66;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .pdf-block-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+  }
+  .pdf-block-grid div strong {
+    color: #0d3b66;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  .pdf-table th {
+    background: #f1f5f9;
+    padding: 8px;
+    font-size: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid #cbd5e1;
+  }
+  .pdf-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.85rem;
+  }
+  .pdf-sig-box {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pdf-sig-preview {
+    border-bottom: 1px solid #0d3b66;
+    width: 240px;
+    height: 70px;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 40px 0; 
+    margin-top: 48px;
+    text-align: center; 
+    font-size: 0.85rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Field Service Tools • <strong>Digital Signatures &amp; Zero Monthly Subscriptions</strong>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="estimator.html">Estimator</a>
+        <a href="workorders.html" style="color: var(--accent);">Work Orders</a>
+        <a href="about.html">About</a>
+        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <!-- HEADER -->
+    <header class="header-block">
+      <span class="badge-tag">Field Work Order &amp; Signoff</span>
+      <h1>Mobile Work Order Generator</h1>
+      <p>
+        Document completed jobs in the field. Enter materials and labor, hand your device to the customer for an on-screen signature, and generate an instant PDF service receipt.
+      </p>
+    </header>
+
+    <!-- FORM CARD -->
+    <div class="order-card">
+      
+      <!-- 1. GENERAL JOB DETAILS -->
+      <div class="form-section-title">Job &amp; Customer Information</div>
+      <div class="form-row-3">
+        <div class="field-group">
+          <label for="companyName">Your Company Name</label>
+          <input type="text" id="companyName" value="Highland Lakes Trade Services">
+        </div>
+        <div class="field-group">
+          <label for="techName">Lead Tech / Field Rep</label>
+          <input type="text" id="techName" value="J. Cruz (Lead)">
+        </div>
+        <div class="field-group">
+          <label for="orderNumber">Work Order #</label>
+          <input type="text" id="orderNumber" value="WO-2041">
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="field-group">
+          <label for="custName">Customer / Client Name</label>
+          <input type="text" id="custName" value="Robert Miller">
+        </div>
+        <div class="field-group">
+          <label for="custAddress">Job Address / Location</label>
+          <input type="text" id="custAddress" value="1420 RR 1431, Kingsland, TX 78639">
+        </div>
+      </div>
+
+      <div class="field-group" style="margin-bottom: 24px;">
+        <label for="workDescription">Scope of Work / Service Performed</label>
+        <textarea id="workDescription">Replaced secondary water pressure regulator. Re-routed 1/2" copper line to bypass corroded shutoff valve. Pressure tested system at 65 PSI - no leaks detected upon inspection.</textarea>
+      </div>
+
+      <!-- 2. PARTS & LABOR TABLE -->
+      <div class="form-section-title">Materials, Parts &amp; Labor</div>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th style="width: 50%;">Item / Task Description</th>
+            <th style="width: 15%;">Qty</th>
+            <th style="width: 25%;">Rate ($)</th>
+            <th style="width: 10%;"></th>
+          </tr>
+        </thead>
+        <tbody id="workItemsBody">
+          <tr>
+            <td><input type="text" class="item-desc" value="1/2-Inch High Pressure Regulator Valve"></td>
+            <td><input type="number" class="item-qty" value="1" min="0" oninput="calculateOrder()"></td>
+            <td><input type="number" class="item-rate" value="145.00" step="1.00" oninput="calculateOrder()"></td>
+            <td><button class="btn-remove" onclick="removeWorkItem(this)">&times;</button></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="item-desc" value="Copper fittings, solder &amp; pipe run"></td>
+            <td><input type="number" class="item-qty" value="1" min="0" oninput="calculateOrder()"></td>
+            <td><input type="number" class="item-rate" value="48.50" step="0.50" oninput="calculateOrder()"></td>
+            <td><button class="btn-remove" onclick="removeWorkItem(this)">&times;</button></td>
+          </tr>
+          <tr>
+            <td><input type="text" class="item-desc" value="Diagnostic, Labor &amp; Pressure Testing (Hrs)"></td>
+            <td><input type="number" class="item-qty" value="2.5" min="0" step="0.25" oninput="calculateOrder()"></td>
+            <td><input type="number" class="item-rate" value="95.00" step="1.00" oninput="calculateOrder()"></td>
+            <td><button class="btn-remove" onclick="removeWorkItem(this)">&times;</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn-add" type="button" onclick="addWorkItem()">+ Add Line Item</button>
+
+      <!-- 3. TOTALS -->
+      <div class="totals-box">
+        <div class="totals-line">
+          <span style="color: var(--text-muted); font-weight:600;">Subtotal:</span>
+          <span id="txtSubtotal" style="font-weight:700;">$431.00</span>
+        </div>
+        <div class="totals-line">
+          <span style="color: var(--text-muted); font-weight:600;">Sales Tax (8.25%):</span>
+          <span id="txtTax" style="font-weight:700;">$35.56</span>
+        </div>
+        <div class="totals-line final">
+          <span>Total Balance:</span>
+          <span id="txtTotal">$466.56</span>
+        </div>
+      </div>
+
+      <!-- 4. ON-SCREEN CUSTOMER SIGNATURE -->
+      <div class="signature-wrapper">
+        <div class="signature-header">
+          <span>Customer Signoff &amp; Authorization</span>
+          <button class="btn-clear" type="button" onclick="clearSignature()">Clear Signature</button>
+        </div>
+        <canvas id="sigCanvas"></canvas>
+        <p style="font-size: 0.76rem; color: var(--text-muted); margin: 6px 0 0 0;">
+          Sign above with your finger or stylus to confirm work completion and authorization.
+        </p>
+      </div>
+
+      <!-- 5. DOWNLOAD PDF ACTION -->
+      <button class="btn-generate" type="button" onclick="generateWorkOrderPDF()">
+        📄 Generate &amp; Download Signed Work Order (PDF)
+      </button>
+
+    </div>
+
+    <!-- FEATURE GRID -->
+    <div class="feature-grid">
+      <div class="feature-tile">
+        <h3>Touchscreen Signatures</h3>
+        <p>Accept authorized customer signoffs directly on any smartphone, iPad, or Android tablet in the field without carrying physical carbon-copy paperwork.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Private &amp; Offline-Ready</h3>
+        <p>Runs entirely in your local browser. Customer names and pricing numbers stay strictly on your device—we never collect, gate, or sell your trade data.</p>
+      </div>
+      <div class="feature-tile">
+        <h3>Zero Subscription Fees</h3>
+        <p>A completely free, unmetered tool. Create as many work orders as your crew needs without paying $50+ per month per technician.</p>
+      </div>
+    </div>
+
+    <!-- CONVERSION PROMPT -->
+    <div class="conversion-box">
+      <h2>Need Work Orders Synced Automatically to Google Sheets or QuickBooks?</h2>
+      <p>
+        We build custom operational backends for trade businesses—automatically emailing completed PDF receipts to customers, saving copies to Google Drive, and logging completed tickets to your accounting books.
+      </p>
+      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+    </div>
+
+  </main>
+
+  <!-- HIDDEN PDF SHELL -->
+  <div id="pdfWorkOrderTemplate">
+    <div class="pdf-header-grid">
+      <div>
+        <h2 id="pdfCompanyHeader">Trade Services Co.</h2>
+        <div style="font-size: 0.85rem; color: #64748b;">Completed Field Service Ticket</div>
+      </div>
+      <div style="text-align: right; font-size: 0.85rem; color: #475569;">
+        <div><strong>Order #:</strong> <span id="pdfOrderNum">WO-1001</span></div>
+        <div><strong>Date:</strong> <span id="pdfDateVal">Today</span></div>
+        <div><strong>Technician:</strong> <span id="pdfTechVal">Tech</span></div>
+      </div>
+    </div>
+
+    <div class="pdf-block-grid">
+      <div>
+        <strong>Customer / Location:</strong>
+        <div id="pdfCustVal">Customer Name</div>
+        <div id="pdfAddrVal" style="color: #64748b;">Customer Address</div>
+      </div>
+      <div>
+        <strong>Work Summary:</strong>
+        <div id="pdfScopeVal" style="color: #475569; font-size: 0.82rem; line-height: 1.4;">Work performed details...</div>
+      </div>
+    </div>
+
+    <table class="pdf-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th style="text-align:center;">Qty</th>
+          <th style="text-align:right;">Rate</th>
+          <th style="text-align:right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody id="pdfTableBody"></tbody>
+    </table>
+
+    <div style="width: 250px; margin-left: auto; margin-bottom: 20px; font-size: 0.85rem;">
+      <div style="display:flex; justify-content:space-between; margin-bottom: 4px;">
+        <span>Subtotal:</span>
+        <span id="pdfSub">0.00</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom: 6px;">
+        <span>Sales Tax (8.25%):</span>
+        <span id="pdfTaxVal">0.00</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; font-size: 1.15rem; font-weight: bold; color: #0d3b66; border-top: 1px solid #cbd5e1; padding-top: 6px;">
+        <span>Total:</span>
+        <span id="pdfTotVal">0.00</span>
+      </div>
+    </div>
+
+    <div class="pdf-sig-box">
+      <div style="font-size: 0.78rem; color: #64748b; max-width: 320px;">
+        I acknowledge satisfactory receipt and completion of the labor and materials outlined above.
+      </div>
+      <div>
+        <img id="pdfSigImg" class="pdf-sig-preview" alt="Customer Signature">
+        <div style="font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 4px;">Authorized Customer Signature</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px; border-top: 1px dashed #cbd5e1; padding-top: 10px; font-size: 0.75rem; color: #94a3b8; text-align: center;">
+      Generated via Simple Biz Systems Mobile Work Orders (simplebizsystems.com).
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
+      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0; opacity: 0.6;">
+        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // HTML5 SIGNATURE PAD IMPLEMENTATION
+    const canvas = document.getElementById("sigCanvas");
+    const ctx = canvas.getContext("2d");
+    let isDrawing = false;
+    let hasSigned = false;
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      ctx.strokeStyle = "#0d3b66";
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      hasSigned = true;
+      ctx.beginPath();
+      const pos = getPos(e);
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      e.preventDefault();
+      const pos = getPos(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function clearSignature() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSigned = false;
+    }
+
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    window.addEventListener("mouseup", stopDrawing);
+
+    canvas.addEventListener("touchstart", startDrawing, { passive: false });
+    canvas.addEventListener("touchmove", draw, { passive: false });
+    window.addEventListener("touchend", stopDrawing);
+
+    // DYNAMIC TABLE ITEMS & TOTALS
+    function addWorkItem() {
+      const tbody = document.getElementById("workItemsBody");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td><input type="text" class="item-desc" placeholder="Part description or labor task"></td>
+        <td><input type="number" class="item-qty" value="1" min="0" oninput="calculateOrder()"></td>
+        <td><input type="number" class="item-rate" value="0.00" step="0.50" oninput="calculateOrder()"></td>
+        <td><button class="btn-remove" onclick="removeWorkItem(this)">&times;</button></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    function removeWorkItem(btn) {
+      const rows = document.querySelectorAll("#workItemsBody tr");
+      if (rows.length > 1) {
+        btn.closest("tr").remove();
+        calculateOrder();
+      }
+    }
+
+    function calculateOrder() {
+      const rows = document.querySelectorAll("#workItemsBody tr");
+      let subtotal = 0;
+
+      rows.forEach(r => {
+        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
+        const rate = parseFloat(r.querySelector(".item-rate").value) || 0;
+        subtotal += (qty * rate);
+      });
+
+      const tax = subtotal * 0.0825;
+      const total = subtotal + tax;
+
+      document.getElementById("txtSubtotal").innerText = formatCurrency(subtotal);
+      document.getElementById("txtTax").innerText = formatCurrency(tax);
+      document.getElementById("txtTotal").innerText = formatCurrency(total);
+    }
+
+    function formatCurrency(num) {
+      return "$" + num.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // PDF GENERATION
+    function generateWorkOrderPDF() {
+      if (!hasSigned) {
+        if (!confirm("No customer signature was detected. Do you still want to generate the work order PDF without a signature?")) {
+          return;
+        }
+      }
+
+      document.getElementById("pdfCompanyHeader").innerText = document.getElementById("companyName").value || "Service Company";
+      document.getElementById("pdfTechVal").innerText = document.getElementById("techName").value || "Technician";
+      document.getElementById("pdfOrderNum").innerText = document.getElementById("orderNumber").value || "WO-1001";
+      document.getElementById("pdfCustVal").innerText = document.getElementById("custName").value || "Customer";
+      document.getElementById("pdfAddrVal").innerText = document.getElementById("custAddress").value || "";
+      document.getElementById("pdfScopeVal").innerText = document.getElementById("workDescription").value || "";
+      document.getElementById("pdfDateVal").innerText = new Date().toLocaleDateString();
+
+      const tbody = document.getElementById("pdfTableBody");
+      tbody.innerHTML = "";
+
+      const rows = document.querySelectorAll("#workItemsBody tr");
+      let subtotal = 0;
+
+      rows.forEach(r => {
+        const desc = r.querySelector(".item-desc").value || "Item";
+        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
+        const rate = parseFloat(r.querySelector(".item-rate").value) || 0;
+        const lineTotal = qty * rate;
+        subtotal += lineTotal;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${escapeHtml(desc)}</td>
+          <td style="text-align:center;">${qty}</td>
+          <td style="text-align:right;">${formatCurrency(rate)}</td>
+          <td style="text-align:right;">${formatCurrency(lineTotal)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const tax = subtotal * 0.0825;
+      const total = subtotal + tax;
+
+      document.getElementById("pdfSub").innerText = formatCurrency(subtotal);
+      document.getElementById("pdfTaxVal").innerText = formatCurrency(tax);
+      document.getElementById("pdfTotVal").innerText = formatCurrency(total);
+
+      // Export signature to image
+      const sigImg = document.getElementById("pdfSigImg");
+      sigImg.src = canvas.toDataURL("image/png");
+
+      const template = document.getElementById("pdfWorkOrderTemplate");
+      template.style.display = "block";
+
+      const orderRef = (document.getElementById("orderNumber").value || "workorder").toLowerCase().replace(/[^a-z0-9]/g, "_");
+
+      const opt = {
+        margin:       10,
+        filename:     `${orderRef}_receipt.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(template).save().then(() => {
+        template.style.display = "none";
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    document.addEventListener("DOMContentLoaded", () => {
+      resizeCanvas();
+      calculateOrder();
+    });
+  </script>
+</body>
+</html>
