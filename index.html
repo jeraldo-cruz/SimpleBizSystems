@@ -808,8 +808,7 @@
   </footer>
 
   <script>
-    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
-    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
     document.getElementById("contactForm").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -836,23 +835,19 @@
       btn.innerText = "Sending...";
       feedback.style.display = "none";
 
-      // Encode as clean URL parameters
-      const urlPayload = new URLSearchParams({
+      const queryParams = new URLSearchParams({
         name: nameVal,
         company: companyVal,
         phone: phoneVal,
         service: serviceVal,
-        message: msgVal
+        message: msgVal,
+        _t: new Date().getTime()
       }).toString();
 
-      // Pass as body with standard text/plain to bypass CORS preflight while preserving data
-      fetch(https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: urlPayload
+      // Transmit via query parameter string across the Google redirect boundary
+      fetch(SCRIPT_URL + "?" + queryParams, {
+        method: "GET",
+        mode: "no-cors"
       })
       .then(function() {
         feedback.style.display = "block";
