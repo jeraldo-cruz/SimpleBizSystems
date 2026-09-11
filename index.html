@@ -820,7 +820,10 @@
       const feedback = document.getElementById("formFeedback");
 
       const nameVal = document.getElementById("cName").value.trim();
+      const companyVal = document.getElementById("cCompany").value.trim() || "N/A";
       const phoneVal = document.getElementById("cPhone").value.trim();
+      const serviceVal = document.getElementById("cService").value;
+      const msgVal = document.getElementById("cMessage").value.trim() || "None";
 
       if (!nameVal || !phoneVal) {
         feedback.style.display = "block";
@@ -833,12 +836,23 @@
       btn.innerText = "Sending...";
       feedback.style.display = "none";
 
-      const formData = new FormData(form);
+      // Encode as clean URL parameters
+      const urlPayload = new URLSearchParams({
+        name: nameVal,
+        company: companyVal,
+        phone: phoneVal,
+        service: serviceVal,
+        message: msgVal
+      }).toString();
 
-      fetch(SCRIPT_URL, {
+      // Pass as body with standard text/plain to bypass CORS preflight while preserving data
+      fetch(https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec, {
         method: "POST",
-        body: formData,
-        mode: "no-cors"
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: urlPayload
       })
       .then(function() {
         feedback.style.display = "block";
