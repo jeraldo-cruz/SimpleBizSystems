@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)</title>
-<meta name="title" content="The Kingsland Wire | 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)">
+<title>The Kingsland Wire | Live 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)</title>
+<meta name="title" content="The Kingsland Wire | Live 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)">
 <meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, Lake LBJ, Inks Lake &amp; Lake Buchanan levels, Kingsland Chamber events, Texas Workforce job fairs, CTEC electric, and public utilities.">
-<meta name="keywords" content="Kingsland TX weather 7 day, Lake LBJ level, Inks Lake water level, Lake Buchanan elevation, Kingsland Chamber events, Texas Workforce job fairs Burnet Llano, Sharing the Harvest, CTEC SmartHub, Jeraldo Cruz">
+<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ level, Inks Lake water level, Lake Buchanan elevation, Kingsland Chamber events, Texas Workforce job fairs Burnet Llano, Sharing the Harvest, CTEC SmartHub, Jeraldo Cruz">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,13 +23,13 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | 7-Day Weather, Highland Lakes &amp; Events">
+<meta property="og:title" content="The Kingsland Wire | Live 7-Day Weather, Highland Lakes &amp; Events">
 <meta property="og:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- TWITTER CARD -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Kingsland Wire | 7-Day Weather, Highland Lakes &amp; Events">
+<meta name="twitter:title" content="The Kingsland Wire | Live 7-Day Weather, Highland Lakes &amp; Events">
 <meta name="twitter:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
 <meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
@@ -41,7 +41,7 @@
   "@id": "https://www.simplebizsystems.com/kingslandnews.html#webpage",
   "url": "https://www.simplebizsystems.com/kingslandnews.html",
   "name": "The Kingsland Wire - Weather, Highland Lakes & Civic Directory",
-  "description": "7-day forecast, Lake LBJ, Inks Lake and Lake Buchanan water levels, Chamber of Commerce calendar, and Texas workforce job fairs.",
+  "description": "Live 7-day forecast, Lake LBJ, Inks Lake and Lake Buchanan water levels, Chamber of Commerce calendar, and Texas workforce job fairs.",
   "publisher": {
     "@type": "Organization",
     "name": "Simple Biz Systems",
@@ -215,7 +215,7 @@
 
   /* HERO HEADER */
   .wire-header {
-    padding: 36px 0 16px 0;
+    padding: 34px 0 14px 0;
   }
   .badge-tag {
     display: inline-block;
@@ -248,7 +248,7 @@
 
   /* WEATHER & HIGHLAND LAKES MONITOR BAR */
   .monitor-section {
-    margin: 20px 0 28px 0;
+    margin: 18px 0 28px 0;
     display: grid;
     grid-template-columns: 1fr 310px;
     gap: 16px;
@@ -308,11 +308,12 @@
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     padding: 10px 4px;
-    min-width: 64px;
+    min-width: 66px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    transition: transform 0.15s ease;
   }
   .forecast-day.today {
     border-color: var(--accent);
@@ -332,8 +333,8 @@
     margin: 2px 0;
   }
   .forecast-temps {
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.84rem;
+    font-weight: 800;
     color: var(--text-dark);
   }
   .forecast-low {
@@ -345,6 +346,10 @@
     font-size: 0.68rem;
     font-weight: 600;
     color: #475569;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 62px;
   }
 
   /* MULTI-LAKE ELEVATION GAUGE CARD */
@@ -658,7 +663,7 @@
 
   <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. 7-day weather, Highland Lakes levels &amp; civic calendar.
+    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. Live 7-day weather, Highland Lakes levels &amp; civic calendar.
   </div>
 
   <!-- NAVIGATION -->
@@ -706,7 +711,7 @@
     <!-- 7-DAY WEATHER & MULTI-LAKE ELEVATION MONITOR (Directly under Title, above Buttons) -->
     <section class="monitor-section">
       
-      <!-- 7-DAY FORECAST WITH WEATHER SVG ICONS -->
+      <!-- DYNAMIC 7-DAY LIVE FORECAST -->
       <div class="weather-card">
         <div class="monitor-title-row">
           <h2>
@@ -714,111 +719,16 @@
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
             </svg>
-            Kingsland 7-Day Forecast
+            Kingsland Live 7-Day Forecast
           </h2>
-          <span class="monitor-subtitle">Highland Lakes Basin</span>
+          <span class="monitor-subtitle" id="weatherMeta">Highland Lakes Basin</span>
         </div>
 
-        <div class="forecast-grid">
-          
-          <!-- SAT -->
-          <div class="forecast-day today">
-            <span class="forecast-date">SAT</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.8">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">90°</span>
-            <span class="forecast-low">68°</span>
-            <span class="forecast-cond">Sunny</span>
+        <!-- DYNAMIC FORECAST CONTAINER -->
+        <div class="forecast-grid" id="forecastGrid">
+          <div style="grid-column: 1 / -1; padding: 20px; font-size: 0.85rem; color: var(--text-muted);">
+            Loading live Highland Lakes forecast...
           </div>
-
-          <!-- SUN -->
-          <div class="forecast-day">
-            <span class="forecast-date">SUN</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2">
-                <circle cx="12" cy="10" r="4" fill="#fef08a"></circle>
-                <path d="M7 16a4 4 0 0 1 8 0H7z" fill="#cbd5e1" stroke="#64748b"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">91°</span>
-            <span class="forecast-low">68°</span>
-            <span class="forecast-cond">Clear</span>
-          </div>
-
-          <!-- MON -->
-          <div class="forecast-day">
-            <span class="forecast-date">MON</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#e2e8f0" stroke="#64748b" stroke-width="2" stroke-linejoin="round">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">88°</span>
-            <span class="forecast-low">66°</span>
-            <span class="forecast-cond">P.Cloudy</span>
-          </div>
-
-          <!-- TUE -->
-          <div class="forecast-day">
-            <span class="forecast-date">TUE</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round">
-                <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" fill="#e2e8f0"></path>
-                <line x1="8" y1="19" x2="8" y2="21"></line>
-                <line x1="12" y1="19" x2="12" y2="21"></line>
-                <line x1="16" y1="19" x2="16" y2="21"></line>
-              </svg>
-            </div>
-            <span class="forecast-temps">85°</span>
-            <span class="forecast-low">65°</span>
-            <span class="forecast-cond">20% Rain</span>
-          </div>
-
-          <!-- WED -->
-          <div class="forecast-day">
-            <span class="forecast-date">WED</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.8">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">87°</span>
-            <span class="forecast-low">66°</span>
-            <span class="forecast-cond">Sunny</span>
-          </div>
-
-          <!-- THU -->
-          <div class="forecast-day">
-            <span class="forecast-date">THU</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.8">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">90°</span>
-            <span class="forecast-low">69°</span>
-            <span class="forecast-cond">Sunny</span>
-          </div>
-
-          <!-- FRI -->
-          <div class="forecast-day">
-            <span class="forecast-date">FRI</span>
-            <div class="forecast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#e2e8f0" stroke="#64748b" stroke-width="2" stroke-linejoin="round">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-              </svg>
-            </div>
-            <span class="forecast-temps">89°</span>
-            <span class="forecast-low">68°</span>
-            <span class="forecast-cond">P.Cloudy</span>
-          </div>
-
         </div>
       </div>
 
@@ -1142,6 +1052,91 @@
   </footer>
 
   <script>
+    // AUTOMATIC WEATHER FETCH FOR KINGSLAND, TX (30.6638 N, 98.4411 W)
+    (function fetchKingslandWeather() {
+      const LAT = 30.6638;
+      const LON = -98.4411;
+      const endpoint = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FChicago`;
+
+      fetch(endpoint)
+        .then(res => res.json())
+        .then(data => {
+          if (!data || !data.daily) return;
+
+          const days = data.daily.time;
+          const maxTemps = data.daily.temperature_2m_max;
+          const minTemps = data.daily.temperature_2m_min;
+          const codes = data.daily.weather_code;
+          const rainProb = data.daily.precipitation_probability_max;
+
+          const container = document.getElementById('forecastGrid');
+          container.innerHTML = '';
+
+          const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+          for (let i = 0; i < Math.min(7, days.length); i++) {
+            const dateObj = new Date(days[i] + 'T00:00:00');
+            const dayLabel = (i === 0) ? 'TODAY' : dayNames[dateObj.getDay()];
+            const isToday = (i === 0) ? 'today' : '';
+            const max = Math.round(maxTemps[i]);
+            const min = Math.round(minTemps[i]);
+            const rain = rainProb[i] || 0;
+            const code = codes[i];
+
+            const { cond, iconSvg } = getWeatherDisplay(code, rain);
+
+            const dayCol = document.createElement('div');
+            dayCol.className = `forecast-day ${isToday}`;
+            dayCol.innerHTML = `
+              <span class="forecast-date">${dayLabel}</span>
+              <div class="forecast-icon">${iconSvg}</div>
+              <span class="forecast-temps">${max}°</span>
+              <span class="forecast-low">${min}°</span>
+              <span class="forecast-cond" title="${cond}">${cond}</span>
+            `;
+            container.appendChild(dayCol);
+          }
+        })
+        .catch(err => {
+          console.error("Live weather lookup error:", err);
+          document.getElementById('forecastGrid').innerHTML = `
+            <div style="grid-column: 1 / -1; padding: 16px; font-size: 0.85rem; color: #b45309;">
+              Live weather feed connecting. Check local LCRA sensors or refresh shortly.
+            </div>
+          `;
+        });
+
+      function getWeatherDisplay(code, rain) {
+        // WMO Weather interpretation codes (http://www.nodc.noaa.gov/archive/arc0021/0002199/1.1/data/0-data/HTML/WMO-CODE/WMO4677.HTM)
+        if (code === 0) {
+          return {
+            cond: "Sunny",
+            iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.8"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2" stroke-linecap="round"></path></svg>`
+          };
+        } else if (code >= 1 && code <= 3) {
+          return {
+            cond: (code === 1) ? "Clear" : "P.Cloudy",
+            iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><circle cx="12" cy="10" r="4" fill="#fef08a"></circle><path d="M7 16a4 4 0 0 1 8 0H7z" fill="#cbd5e1" stroke="#64748b"></path></svg>`
+          };
+        } else if (code >= 51 && code <= 67 || code >= 80 && code <= 82) {
+          return {
+            cond: rain > 0 ? `${rain}% Rain` : "Rain",
+            iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round"><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" fill="#e2e8f0"></path><line x1="8" y1="19" x2="8" y2="21"></line><line x1="12" y1="19" x2="12" y2="21"></line><line x1="16" y1="19" x2="16" y2="21"></line></svg>`
+          };
+        } else if (code >= 95) {
+          return {
+            cond: "Storms",
+            iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" fill="#cbd5e1"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>`
+          };
+        } else {
+          return {
+            cond: "Overcast",
+            iconSvg: `<svg width="22" height="22" viewBox="0 0 24 24" fill="#e2e8f0" stroke="#64748b" stroke-width="2" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`
+          };
+        }
+      }
+    })();
+
     function filterCards(category) {
       const cards = document.querySelectorAll('.wire-card');
       const buttons = document.querySelectorAll('.filter-chip');
