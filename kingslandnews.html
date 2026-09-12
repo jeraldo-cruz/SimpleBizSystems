@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | Live 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)</title>
-<meta name="title" content="The Kingsland Wire | Live 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)">
-<meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, Lake LBJ, Inks Lake &amp; Lake Buchanan levels, Kingsland Chamber events, Texas Workforce job fairs, CTEC electric, and public utilities.">
-<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ level, Inks Lake water level, Lake Buchanan elevation, Kingsland Chamber events, Texas Workforce job fairs Burnet Llano, Sharing the Harvest, CTEC SmartHub, Jeraldo Cruz">
+<title>The Kingsland Wire | Weather, Lake % Full, Public Parks &amp; Events (Kingsland, TX)</title>
+<meta name="title" content="The Kingsland Wire | Weather, Lake % Full, Public Parks &amp; Events (Kingsland, TX)">
+<meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, Lake LBJ, Inks Lake &amp; Buchanan % full capacity, free public parks &amp; boat ramps map, Kingsland Chamber calendar, and utilities.">
+<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ percent full, Inks Lake capacity, Lake Buchanan water level, Kingsland boat ramps map, Kingsland library, the slab Kingsland TX, Kingsland Chamber events, Jeraldo Cruz">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,14 +23,14 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | Live 7-Day Weather, Highland Lakes &amp; Events">
-<meta property="og:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
+<meta property="og:title" content="The Kingsland Wire | Live 7-Day Weather, Lake % Full &amp; Community Map">
+<meta property="og:description" content="Live 7-day weather, Lake LBJ, Inks Lake, and Buchanan % full capacity, map of free boat ramps and parks, and public services.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- TWITTER CARD -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Kingsland Wire | Live 7-Day Weather, Highland Lakes &amp; Events">
-<meta name="twitter:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
+<meta name="twitter:title" content="The Kingsland Wire | Live 7-Day Weather, Lake % Full &amp; Community Map">
+<meta name="twitter:description" content="Live 7-day weather, Lake LBJ, Inks Lake, and Buchanan % full capacity, map of free boat ramps and parks, and public services.">
 <meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- STRUCTURED DATA (JSON-LD) -->
@@ -40,8 +40,8 @@
   "@type": "WebPage",
   "@id": "https://www.simplebizsystems.com/kingslandnews.html#webpage",
   "url": "https://www.simplebizsystems.com/kingslandnews.html",
-  "name": "The Kingsland Wire - Weather, Highland Lakes & Civic Directory",
-  "description": "Live 7-day forecast, Lake LBJ, Inks Lake and Lake Buchanan water levels, Chamber of Commerce calendar, and Texas workforce job fairs.",
+  "name": "The Kingsland Wire - Weather, Lake Capacity & Public Directory",
+  "description": "Live 7-day forecast, Lake LBJ percent capacity, public boat ramps map, library hours, and local utilities.",
   "publisher": {
     "@type": "Organization",
     "name": "Simple Biz Systems",
@@ -250,7 +250,7 @@
   .monitor-section {
     margin: 18px 0 28px 0;
     display: grid;
-    grid-template-columns: 1fr 310px;
+    grid-template-columns: 1fr 320px;
     gap: 16px;
   }
   @media (max-width: 960px) {
@@ -352,7 +352,7 @@
     max-width: 62px;
   }
 
-  /* MULTI-LAKE ELEVATION GAUGE CARD */
+  /* SIMPLIFIED LAKE % FULL GAUGE CARD */
   .lake-gauge-card {
     background: #f0f9ff;
     border: 1px solid #bae6fd;
@@ -384,27 +384,46 @@
     font-size: 0.68rem;
     color: #475569;
   }
-  .lake-val {
-    text-align: right;
-    font-size: 0.95rem;
+  .lake-badge-full {
+    background: #dcfce7;
+    color: #15803d;
     font-weight: 800;
-    color: #0c4a6e;
+    font-size: 0.85rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #bbf7d0;
   }
-  .lake-val span {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: #0284c7;
+  .lake-badge-variable {
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #fde68a;
   }
-  .btn-lake-live {
+  
+  .monitor-action-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .btn-map-highlight {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
-    font-size: 0.76rem;
+    background: #0284c7;
+    color: #ffffff !important;
     font-weight: 700;
-    color: #0369a1;
-    text-decoration: underline;
-    margin-top: 6px;
+    font-size: 0.76rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    flex: 1;
+    transition: background 0.15s ease;
   }
+  .btn-map-highlight:hover { background: #0369a1; }
 
   /* CALENDAR-STYLED EVENTS SECTION */
   .calendar-section {
@@ -663,7 +682,7 @@
 
   <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. Live 7-day weather, Highland Lakes levels &amp; civic calendar.
+    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. Live 7-day weather, Lake levels &amp; civic calendar.
   </div>
 
   <!-- NAVIGATION -->
@@ -704,11 +723,11 @@
       <span class="badge-tag">Community Directory &amp; Daily Monitor</span>
       <h1>The Kingsland Wire</h1>
       <p>
-        Live 7-day weather conditions, Lake LBJ, Inks Lake &amp; Lake Buchanan levels, plus local community notices in one place.
+        Live 7-day weather conditions, Lake LBJ capacity, free parks &amp; boat ramp map, and local community notices in one place.
       </p>
     </header>
 
-    <!-- 7-DAY WEATHER & MULTI-LAKE ELEVATION MONITOR (Directly under Title, above Buttons) -->
+    <!-- 7-DAY WEATHER & MULTI-LAKE CAPACITY MONITOR -->
     <section class="monitor-section">
       
       <!-- DYNAMIC 7-DAY LIVE FORECAST -->
@@ -732,7 +751,7 @@
         </div>
       </div>
 
-      <!-- MULTI-LAKE GAUGES (LBJ, INKS, BUCHANAN) -->
+      <!-- SIMPLIFIED LAKE % FULL CARD WITH MAP BUTTON -->
       <div class="lake-gauge-card">
         <div>
           <div class="monitor-title-row" style="border-color: #bae6fd; margin-bottom: 8px;">
@@ -742,39 +761,41 @@
                 <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
                 <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
               </svg>
-              Highland Lakes Gauges
+              Lake Capacity (% Full)
             </h2>
-            <span class="monitor-subtitle" style="color: #0284c7;">LCRA Hydromet</span>
+            <span class="monitor-subtitle" style="color: #0284c7;">LCRA Gauges</span>
           </div>
           
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Lake LBJ</div>
-              <div class="lake-subtext">Constant-Level Basin</div>
+              <div class="lake-subtext">Pass-Through Constant Level</div>
             </div>
-            <div class="lake-val">825.0 <span>ft msl</span></div>
+            <div class="lake-badge-full">99% Full</div>
           </div>
 
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Inks Lake</div>
-              <div class="lake-subtext">Constant-Level Basin</div>
+              <div class="lake-subtext">Pass-Through Constant Level</div>
             </div>
-            <div class="lake-val">888.1 <span>ft msl</span></div>
+            <div class="lake-badge-full">98% Full</div>
           </div>
 
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Lake Buchanan</div>
-              <div class="lake-subtext">Upstream Reservoir (Max 1,020 ft)</div>
+              <div class="lake-subtext">Storage Reservoir</div>
             </div>
-            <div class="lake-val">998.4 <span>ft msl</span></div>
+            <div class="lake-badge-variable">~70% Full</div>
           </div>
         </div>
 
-        <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener" class="btn-lake-live">
-          Open Live LCRA Hydromet Dashboard &rarr;
-        </a>
+        <div class="monitor-action-row">
+          <a href="https://www.google.com/maps/search/boat+ramps+parks+kingsland+tx/" target="_blank" rel="noopener" class="btn-map-highlight">
+            🗺️ Open Free Parks &amp; Ramps Map
+          </a>
+        </div>
       </div>
 
     </section>
@@ -839,18 +860,45 @@
     <!-- FAST CATEGORY FILTER CHIPS -->
     <div class="filter-bar">
       <button class="filter-chip active" onclick="filterCards('all')">All Links</button>
+      <button class="filter-chip" onclick="filterCards('parks')">Free Parks &amp; Ramps</button>
       <button class="filter-chip" onclick="filterCards('jobs')">Workforce &amp; Jobs</button>
       <button class="filter-chip" onclick="filterCards('utility')">Utilities &amp; Electric</button>
       <button class="filter-chip" onclick="filterCards('trash')">Trash Services</button>
       <button class="filter-chip" onclick="filterCards('county')">County &amp; Burn Bans</button>
-      <button class="filter-chip" onclick="filterCards('lake')">Highland Lakes &amp; Roads</button>
       <button class="filter-chip" onclick="filterCards('community')">Food Pantry</button>
     </div>
 
     <!-- DIRECTORY & UTILITY CARDS GRID (EXPANDS ON HOVER/TAP) -->
     <div class="wire-grid" id="bulletinGrid">
 
-      <!-- ITEM 1: TEXAS WORKFORCE & GOV JOB FAIRS -->
+      <!-- ITEM 1: FREE PUBLIC PARKS, BOAT RAMPS & THE SLAB -->
+      <div class="wire-card water" data-category="parks" tabindex="0">
+        <div>
+          <div class="card-top">
+            <span class="card-pill pill-blue">Free Public Spots</span>
+            <span class="expand-tag">Details ▾</span>
+          </div>
+          <h3>Free Parks, Boat Ramps &amp; The Slab</h3>
+          <p class="wire-summary">Public lake access, community parks, library, and the Llano River Slab.</p>
+        </div>
+        <div class="wire-details">
+          <div class="wire-details-content">
+            Free public spots in and around Kingsland with zero admission fees:
+            <ul>
+              <li><strong>Kingsland Lions Park:</strong> Public boat ramp &amp; dock on Lake LBJ (Eula Rough Rd).</li>
+              <li><strong>The Slab (Llano River):</strong> Historic river crossing &amp; shallow swimming off FM 3404.</li>
+              <li><strong>Kingsland Community Park:</strong> Playgrounds &amp; park grounds on Nob Hill.</li>
+              <li><strong>Kingsland Branch Library:</strong> 125 W Polk St (Free Wi-Fi, computers, and printing).</li>
+              <li><strong>Inks Dam National Fish Hatchery:</strong> Public walking trails &amp; shoreline access.</li>
+            </ul>
+            <div class="btn-row">
+              <a href="https://www.google.com/maps/search/boat+ramps+parks+kingsland+tx/" target="_blank" rel="noopener" class="action-btn">🗺️ Open Map in Google Maps &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2: TEXAS WORKFORCE & GOV JOB FAIRS -->
       <div class="wire-card workforce" data-category="jobs" tabindex="0">
         <div>
           <div class="card-top">
@@ -877,7 +925,7 @@
         </div>
       </div>
 
-      <!-- ITEM 2: SHARING THE HARVEST FOOD PANTRY -->
+      <!-- ITEM 3: SHARING THE HARVEST FOOD PANTRY -->
       <div class="wire-card highlight" data-category="community" tabindex="0">
         <div>
           <div class="card-top">
@@ -899,7 +947,7 @@
         </div>
       </div>
 
-      <!-- ITEM 3: CTEC ELECTRIC SMARTHUB -->
+      <!-- ITEM 4: CTEC ELECTRIC SMARTHUB -->
       <div class="wire-card utility" data-category="utility" tabindex="0">
         <div>
           <div class="card-top">
@@ -920,7 +968,7 @@
         </div>
       </div>
 
-      <!-- ITEM 4: KINGSLAND MUD -->
+      <!-- ITEM 5: KINGSLAND MUD -->
       <div class="wire-card utility" data-category="utility" tabindex="0">
         <div>
           <div class="card-top">
@@ -942,7 +990,7 @@
         </div>
       </div>
 
-      <!-- ITEM 5: LOCAL TRASH & DISPOSAL SERVICES -->
+      <!-- ITEM 6: LOCAL TRASH & DISPOSAL SERVICES -->
       <div class="wire-card utility" data-category="trash" tabindex="0">
         <div>
           <div class="card-top">
@@ -966,7 +1014,7 @@
         </div>
       </div>
 
-      <!-- ITEM 6: COUNTY INFO & BURN BANS -->
+      <!-- ITEM 7: COUNTY INFO & BURN BANS -->
       <div class="wire-card alert" data-category="county" tabindex="0">
         <div>
           <div class="card-top">
@@ -991,33 +1039,8 @@
         </div>
       </div>
 
-      <!-- ITEM 7: HIGHLAND LAKES LCRA SENSORS & RAMPS -->
-      <div class="wire-card water" data-category="lake" tabindex="0">
-        <div>
-          <div class="card-top">
-            <span class="card-pill pill-blue">Highland Lakes</span>
-            <span class="expand-tag">Details ▾</span>
-          </div>
-          <h3>Highland Lakes LCRA Gauges &amp; Ramps</h3>
-          <p class="wire-summary">Lake LBJ, Inks Lake, and Lake Buchanan dam releases and public ramp access.</p>
-        </div>
-        <div class="wire-details">
-          <div class="wire-details-content">
-            Real-time elevation data, river flow rates, and boat ramp status across the Colorado and Llano arms:
-            <ul>
-              <li><strong>Lake LBJ:</strong> Kingsland Lions Park Ramp &amp; Slab River Access.</li>
-              <li><strong>Inks Lake:</strong> Inks Lake State Park public ramp &amp; fish hatchery launch.</li>
-              <li><strong>Lake Buchanan:</strong> Burnet County Park &amp; Llano County Park ramps.</li>
-            </ul>
-            <div class="btn-row">
-              <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener" class="action-btn">🌐 Live LCRA Hydromet Gauges &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- ITEM 8: TXDOT HIGHWAY NOTICES -->
-      <div class="wire-card alert" data-category="lake" tabindex="0">
+      <div class="wire-card alert" data-category="parks" tabindex="0">
         <div>
           <div class="card-top">
             <span class="card-pill pill-red">Traffic &amp; Transit</span>
