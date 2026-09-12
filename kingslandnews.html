@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | 7-Day Weather, Lake LBJ Levels &amp; Community Calendar (Kingsland, TX)</title>
-<meta name="title" content="The Kingsland Wire | 7-Day Weather, Lake LBJ Levels &amp; Community Calendar (Kingsland, TX)">
-<meta name="description" content="Free community bulletin for Kingsland, TX. Live 7-day Highland Lakes weather, Lake LBJ pool levels, Chamber of Commerce calendar, food pantry links, CTEC electric, and public utilities.">
-<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ water levels, Kingsland Chamber of Commerce events, Sharing the Harvest food pantry Kingsland, CTEC electric SmartHub, Kingsland MUD, Jeraldo Cruz">
+<title>The Kingsland Wire | 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)</title>
+<meta name="title" content="The Kingsland Wire | 7-Day Weather, Lake Levels, Events &amp; Job Fairs (Kingsland, TX)">
+<meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, Lake LBJ, Inks Lake &amp; Lake Buchanan levels, Kingsland Chamber events, Texas Workforce job fairs, CTEC electric, and public utilities.">
+<meta name="keywords" content="Kingsland TX weather 7 day, Lake LBJ level, Inks Lake water level, Lake Buchanan elevation, Kingsland Chamber events, Texas Workforce job fairs Burnet Llano, Sharing the Harvest, CTEC SmartHub, Jeraldo Cruz">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,14 +23,14 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | 7-Day Weather, Lake LBJ &amp; Events Calendar">
-<meta property="og:description" content="Live 7-day weather, Lake LBJ elevation, local Chamber calendar, and Highland Lakes public services.">
+<meta property="og:title" content="The Kingsland Wire | 7-Day Weather, Highland Lakes &amp; Events">
+<meta property="og:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- TWITTER CARD -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Kingsland Wire | 7-Day Weather, Lake LBJ &amp; Events Calendar">
-<meta name="twitter:description" content="Live 7-day weather, Lake LBJ elevation, local Chamber calendar, and Highland Lakes public services.">
+<meta name="twitter:title" content="The Kingsland Wire | 7-Day Weather, Highland Lakes &amp; Events">
+<meta name="twitter:description" content="Live 7-day weather, Lake LBJ, Inks Lake, Lake Buchanan gauges, Chamber calendar, and Workforce hiring events.">
 <meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- STRUCTURED DATA (JSON-LD) -->
@@ -40,8 +40,8 @@
   "@type": "WebPage",
   "@id": "https://www.simplebizsystems.com/kingslandnews.html#webpage",
   "url": "https://www.simplebizsystems.com/kingslandnews.html",
-  "name": "The Kingsland Wire - Weather, Lake & Community Directory",
-  "description": "7-day forecast, Lake LBJ elevation gauges, community events calendar, and utilities for Kingsland, TX.",
+  "name": "The Kingsland Wire - Weather, Highland Lakes & Civic Directory",
+  "description": "7-day forecast, Lake LBJ, Inks Lake and Lake Buchanan water levels, Chamber of Commerce calendar, and Texas workforce job fairs.",
   "publisher": {
     "@type": "Organization",
     "name": "Simple Biz Systems",
@@ -246,14 +246,14 @@
     line-height: 1.5;
   }
 
-  /* WEATHER & LAKE MONITOR BAR (PLACED DIRECTLY UNDER TITLE) */
+  /* WEATHER & HIGHLAND LAKES MONITOR BAR */
   .monitor-section {
     margin: 20px 0 28px 0;
     display: grid;
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 1fr 310px;
     gap: 16px;
   }
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     .monitor-section { grid-template-columns: 1fr; }
   }
 
@@ -347,42 +347,58 @@
     color: #475569;
   }
 
-  /* LAKE GAUGE CARD */
+  /* MULTI-LAKE ELEVATION GAUGE CARD */
   .lake-gauge-card {
     background: #f0f9ff;
     border: 1px solid #bae6fd;
     border-left: 5px solid #0284c7;
     border-radius: 12px;
-    padding: 16px 18px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: var(--card-shadow);
   }
-  .gauge-level-box {
-    margin: 8px 0;
+  .lake-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #e0f2fe;
   }
-  .gauge-big {
-    font-size: 1.85rem;
-    font-weight: 900;
+  .lake-stat-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .lake-name {
+    font-size: 0.84rem;
+    font-weight: 800;
     color: #0369a1;
-    line-height: 1;
   }
-  .gauge-meta {
-    font-size: 0.8rem;
+  .lake-subtext {
+    font-size: 0.68rem;
+    color: #475569;
+  }
+  .lake-val {
+    text-align: right;
+    font-size: 0.95rem;
+    font-weight: 800;
     color: #0c4a6e;
+  }
+  .lake-val span {
+    font-size: 0.72rem;
     font-weight: 600;
-    margin-top: 4px;
+    color: #0284c7;
   }
   .btn-lake-live {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
     color: #0369a1;
     text-decoration: underline;
-    margin-top: 4px;
+    margin-top: 6px;
   }
 
   /* CALENDAR-STYLED EVENTS SECTION */
@@ -518,6 +534,7 @@
   .wire-card.alert { border-top: 4px solid var(--danger); }
   .wire-card.water { border-top: 4px solid #0284c7; }
   .wire-card.utility { border-top: 4px solid var(--accent); }
+  .wire-card.workforce { border-top: 4px solid #4f46e5; }
 
   .card-top {
     display: flex;
@@ -539,6 +556,7 @@
   .pill-red { background: #fee2e2; color: #b91c1c; }
   .pill-blue { background: #e0f2fe; color: #0369a1; }
   .pill-amber { background: #fef3c7; color: #b45309; }
+  .pill-indigo { background: #e0e7ff; color: #3730a3; }
 
   .expand-tag {
     font-size: 0.74rem;
@@ -640,7 +658,7 @@
 
   <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. 7-day weather, Lake LBJ levels &amp; civic calendar.
+    Simple Biz Systems Public Reference: <strong>The Kingsland Wire</strong>. 7-day weather, Highland Lakes levels &amp; civic calendar.
   </div>
 
   <!-- NAVIGATION -->
@@ -681,18 +699,17 @@
       <span class="badge-tag">Community Directory &amp; Daily Monitor</span>
       <h1>The Kingsland Wire</h1>
       <p>
-        Live 7-day weather conditions, Lake LBJ pool gauges, and Kingsland community updates in one place.
+        Live 7-day weather conditions, Lake LBJ, Inks Lake &amp; Lake Buchanan levels, plus local community notices in one place.
       </p>
     </header>
 
-    <!-- 7-DAY WEATHER & LAKE ELEVATION MONITOR (Directly under Title, above Buttons) -->
+    <!-- 7-DAY WEATHER & MULTI-LAKE ELEVATION MONITOR (Directly under Title, above Buttons) -->
     <section class="monitor-section">
       
       <!-- 7-DAY FORECAST WITH WEATHER SVG ICONS -->
       <div class="weather-card">
         <div class="monitor-title-row">
           <h2>
-            <!-- Sun Icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
@@ -704,18 +721,17 @@
 
         <div class="forecast-grid">
           
-          <!-- TODAY -->
+          <!-- SAT -->
           <div class="forecast-day today">
-            <span class="forecast-date">TODAY</span>
+            <span class="forecast-date">SAT</span>
             <div class="forecast-icon">
-              <!-- Sunny -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.8">
                 <circle cx="12" cy="12" r="5"></circle>
                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"></path>
               </svg>
             </div>
-            <span class="forecast-temps">89°</span>
-            <span class="forecast-low">67°</span>
+            <span class="forecast-temps">90°</span>
+            <span class="forecast-low">68°</span>
             <span class="forecast-cond">Sunny</span>
           </div>
 
@@ -723,7 +739,6 @@
           <div class="forecast-day">
             <span class="forecast-date">SUN</span>
             <div class="forecast-icon">
-              <!-- Mostly Sunny -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2">
                 <circle cx="12" cy="10" r="4" fill="#fef08a"></circle>
                 <path d="M7 16a4 4 0 0 1 8 0H7z" fill="#cbd5e1" stroke="#64748b"></path>
@@ -738,7 +753,6 @@
           <div class="forecast-day">
             <span class="forecast-date">MON</span>
             <div class="forecast-icon">
-              <!-- Partly Cloudy -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#e2e8f0" stroke="#64748b" stroke-width="2" stroke-linejoin="round">
                 <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
               </svg>
@@ -752,7 +766,6 @@
           <div class="forecast-day">
             <span class="forecast-date">TUE</span>
             <div class="forecast-icon">
-              <!-- Isolated Rain -->
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round">
                 <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25" fill="#e2e8f0"></path>
                 <line x1="8" y1="19" x2="8" y2="21"></line>
@@ -809,31 +822,48 @@
         </div>
       </div>
 
-      <!-- LAKE LBJ POOL GAUGE -->
+      <!-- MULTI-LAKE GAUGES (LBJ, INKS, BUCHANAN) -->
       <div class="lake-gauge-card">
         <div>
-          <div class="monitor-title-row" style="border-color: #bae6fd;">
+          <div class="monitor-title-row" style="border-color: #bae6fd; margin-bottom: 8px;">
             <h2 style="color: #0369a1;">
-              <!-- Wave Icon -->
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
                 <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
                 <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
               </svg>
-              Lake LBJ Level
+              Highland Lakes Gauges
             </h2>
             <span class="monitor-subtitle" style="color: #0284c7;">LCRA Hydromet</span>
           </div>
           
-          <div class="gauge-level-box">
-            <div class="gauge-big">825.0 <span style="font-size: 1rem; font-weight: 700;">ft</span></div>
-            <div class="gauge-meta">✓ Normal Pool (Constant-Level Basin)</div>
-            <div style="font-size: 0.74rem; color: #475569; margin-top: 2px;">Wirtz Dam Discharge: Normal Pass-Through</div>
+          <div class="lake-stat-row">
+            <div>
+              <div class="lake-name">Lake LBJ</div>
+              <div class="lake-subtext">Constant-Level Basin</div>
+            </div>
+            <div class="lake-val">825.0 <span>ft msl</span></div>
+          </div>
+
+          <div class="lake-stat-row">
+            <div>
+              <div class="lake-name">Inks Lake</div>
+              <div class="lake-subtext">Constant-Level Basin</div>
+            </div>
+            <div class="lake-val">888.1 <span>ft msl</span></div>
+          </div>
+
+          <div class="lake-stat-row">
+            <div>
+              <div class="lake-name">Lake Buchanan</div>
+              <div class="lake-subtext">Upstream Reservoir (Max 1,020 ft)</div>
+            </div>
+            <div class="lake-val">998.4 <span>ft msl</span></div>
           </div>
         </div>
 
         <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener" class="btn-lake-live">
-          Open Live LCRA Sensor Dashboard &rarr;
+          Open Live LCRA Hydromet Dashboard &rarr;
         </a>
       </div>
 
@@ -842,8 +872,8 @@
     <!-- CALENDAR-STYLED COMMERCE & COMMUNITY EVENTS -->
     <section class="calendar-section">
       <div class="section-divider">
-        <h2>Chamber &amp; Community Calendar</h2>
-        <span>Upcoming Highland Lakes Events</span>
+        <h2>Kingsland Chamber &amp; Community Calendar</h2>
+        <span>Upcoming Local Events</span>
       </div>
       
       <div class="calendar-grid">
@@ -855,9 +885,9 @@
             <div class="date-badge-day">16</div>
           </div>
           <div class="event-details">
-            <h3>Kingsland Chamber Networking Mixer</h3>
-            <p class="event-meta">Wednesday, 5:30 PM – 7:00 PM • Local Chamber Office / Area Venue</p>
-            <span class="event-tag">Commerce &amp; Networking</span>
+            <h3>Kingsland Chamber Business Mixer</h3>
+            <p class="event-meta">Wednesday, 5:30 PM – 7:00 PM • Local Chamber Member Host Venue</p>
+            <span class="event-tag">Business &amp; Networking</span>
           </div>
         </div>
 
@@ -865,12 +895,12 @@
         <div class="calendar-event-card">
           <div class="date-badge">
             <div class="date-badge-month">SEP</div>
-            <div class="date-badge-day">19</div>
+            <div class="date-badge-day">22</div>
           </div>
           <div class="event-details">
-            <h3>Highland Lakes Farmers &amp; Artisan Market</h3>
-            <p class="event-meta">Saturday, 9:00 AM – 1:00 PM • Kingsland Community Center grounds</p>
-            <span class="event-tag">Local Market</span>
+            <h3>Chamber Member Ribbon Cutting</h3>
+            <p class="event-meta">Tuesday, 11:30 AM • Welcoming New Local Trade &amp; Retail Members</p>
+            <span class="event-tag">Commerce</span>
           </div>
         </div>
 
@@ -881,8 +911,8 @@
             <div class="date-badge-day">03</div>
           </div>
           <div class="event-details">
-            <h3>Annual Lake LBJ Community Clean-Up Day</h3>
-            <p class="event-meta">Saturday, 8:00 AM – 12:00 PM • Lions Park Boat Ramp Launch Site</p>
+            <h3>Annual Lake LBJ Community Clean-Up</h3>
+            <p class="event-meta">Saturday, 8:00 AM – 12:00 PM • Lions Park Boat Ramp Launch Area</p>
             <span class="event-tag">Civic &amp; Parks</span>
           </div>
         </div>
@@ -890,8 +920,8 @@
       </div>
 
       <div style="margin-top: 10px; text-align: right;">
-        <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" style="font-size: 0.8rem; font-weight: 700; color: var(--accent); text-decoration: underline;">
-          View Full Kingsland Chamber of Commerce Official Calendar &rarr;
+        <a href="https://business.kingslandchamber.org/events" target="_blank" rel="noopener" style="font-size: 0.8rem; font-weight: 700; color: var(--accent); text-decoration: underline;">
+          View Full Kingsland Chamber of Commerce Events Directory &rarr;
         </a>
       </div>
     </section>
@@ -899,17 +929,45 @@
     <!-- FAST CATEGORY FILTER CHIPS -->
     <div class="filter-bar">
       <button class="filter-chip active" onclick="filterCards('all')">All Links</button>
+      <button class="filter-chip" onclick="filterCards('jobs')">Workforce &amp; Jobs</button>
       <button class="filter-chip" onclick="filterCards('utility')">Utilities &amp; Electric</button>
       <button class="filter-chip" onclick="filterCards('trash')">Trash Services</button>
       <button class="filter-chip" onclick="filterCards('county')">County &amp; Burn Bans</button>
-      <button class="filter-chip" onclick="filterCards('lake')">Lake LBJ &amp; Roads</button>
+      <button class="filter-chip" onclick="filterCards('lake')">Highland Lakes &amp; Roads</button>
       <button class="filter-chip" onclick="filterCards('community')">Food Pantry</button>
     </div>
 
     <!-- DIRECTORY & UTILITY CARDS GRID (EXPANDS ON HOVER/TAP) -->
     <div class="wire-grid" id="bulletinGrid">
 
-      <!-- ITEM 1: SHARING THE HARVEST FOOD PANTRY -->
+      <!-- ITEM 1: TEXAS WORKFORCE & GOV JOB FAIRS -->
+      <div class="wire-card workforce" data-category="jobs" tabindex="0">
+        <div>
+          <div class="card-top">
+            <span class="card-pill pill-indigo">Workforce &amp; Careers</span>
+            <span class="expand-tag">Details ▾</span>
+          </div>
+          <h3>Workforce Solutions &amp; County Job Fairs</h3>
+          <p class="wire-summary">Texas Workforce Rural Capital Area hiring events, job fairs, and county employment.</p>
+        </div>
+        <div class="wire-details">
+          <div class="wire-details-content">
+            Free career coaching, trade hiring fairs, and government civil service openings for Highland Lakes residents:
+            <ul>
+              <li><strong>Workforce Solutions Rural Capital (WSRCA):</strong> Hiring events &amp; mobile career units in Burnet &amp; Llano.</li>
+              <li><strong>WorkInTexas.com:</strong> Official State of Texas employment portal.</li>
+              <li><strong>Burnet County Job Postings:</strong> Road &amp; bridge, administrative, and sheriff dispatch.</li>
+              <li><strong>Llano County Employment:</strong> County government department openings.</li>
+            </ul>
+            <div class="btn-row">
+              <a href="https://workforcesolutionsrca.com/events" target="_blank" rel="noopener" class="action-btn">💼 WSRCA Hiring Calendar &rarr;</a>
+              <a href="https://www.workintexas.com" target="_blank" rel="noopener" class="action-btn">🏛️ WorkInTexas.com &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2: SHARING THE HARVEST FOOD PANTRY -->
       <div class="wire-card highlight" data-category="community" tabindex="0">
         <div>
           <div class="card-top">
@@ -931,7 +989,7 @@
         </div>
       </div>
 
-      <!-- ITEM 2: CTEC ELECTRIC SMARTHUB -->
+      <!-- ITEM 3: CTEC ELECTRIC SMARTHUB -->
       <div class="wire-card utility" data-category="utility" tabindex="0">
         <div>
           <div class="card-top">
@@ -952,7 +1010,7 @@
         </div>
       </div>
 
-      <!-- ITEM 3: KINGSLAND MUD -->
+      <!-- ITEM 4: KINGSLAND MUD -->
       <div class="wire-card utility" data-category="utility" tabindex="0">
         <div>
           <div class="card-top">
@@ -974,7 +1032,7 @@
         </div>
       </div>
 
-      <!-- ITEM 4: LOCAL TRASH & DISPOSAL SERVICES -->
+      <!-- ITEM 5: LOCAL TRASH & DISPOSAL SERVICES -->
       <div class="wire-card utility" data-category="trash" tabindex="0">
         <div>
           <div class="card-top">
@@ -998,7 +1056,7 @@
         </div>
       </div>
 
-      <!-- ITEM 5: COUNTY INFO & BURN BANS -->
+      <!-- ITEM 6: COUNTY INFO & BURN BANS -->
       <div class="wire-card alert" data-category="county" tabindex="0">
         <div>
           <div class="card-top">
@@ -1023,27 +1081,32 @@
         </div>
       </div>
 
-      <!-- ITEM 6: LAKE LBJ & WATER CONDITIONS -->
+      <!-- ITEM 7: HIGHLAND LAKES LCRA SENSORS & RAMPS -->
       <div class="wire-card water" data-category="lake" tabindex="0">
         <div>
           <div class="card-top">
-            <span class="card-pill pill-blue">Lake LBJ &amp; Rivers</span>
+            <span class="card-pill pill-blue">Highland Lakes</span>
             <span class="expand-tag">Details ▾</span>
           </div>
-          <h3>Lake LBJ Elevation &amp; LCRA Gauges</h3>
-          <p class="wire-summary">Pass-through lake elevation, dam releases, and river flow levels.</p>
+          <h3>Highland Lakes LCRA Gauges &amp; Ramps</h3>
+          <p class="wire-summary">Lake LBJ, Inks Lake, and Lake Buchanan dam releases and public ramp access.</p>
         </div>
         <div class="wire-details">
           <div class="wire-details-content">
-            View real-time lake pool levels, discharge rates at Wirtz and Starcke Dams, and basin rainfall via LCRA Hydromet.
+            Real-time elevation data, river flow rates, and boat ramp status across the Colorado and Llano arms:
+            <ul>
+              <li><strong>Lake LBJ:</strong> Kingsland Lions Park Ramp &amp; Slab River Access.</li>
+              <li><strong>Inks Lake:</strong> Inks Lake State Park public ramp &amp; fish hatchery launch.</li>
+              <li><strong>Lake Buchanan:</strong> Burnet County Park &amp; Llano County Park ramps.</li>
+            </ul>
             <div class="btn-row">
-              <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener" class="action-btn">🌐 Live LCRA Hydromet Data &rarr;</a>
+              <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener" class="action-btn">🌐 Live LCRA Hydromet Gauges &rarr;</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ITEM 7: TXDOT HIGHWAY NOTICES -->
+      <!-- ITEM 8: TXDOT HIGHWAY NOTICES -->
       <div class="wire-card alert" data-category="lake" tabindex="0">
         <div>
           <div class="card-top">
