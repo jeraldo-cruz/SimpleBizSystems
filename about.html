@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>About Simple Biz Systems &amp; Founder Jeraldo Cruz | Kingsland, TX</title>
-<meta name="title" content="About Simple Biz Systems &amp; Founder Jeraldo Cruz | Kingsland, TX">
-<meta name="description" content="Simple Biz Systems helps local businesses thrive as Kingsland and the Highland Lakes grow. Founded by Jeraldo Cruz, providing practical automation, custom tools, and ad-free community utilities.">
-<meta name="keywords" content="Simple Biz Systems, Jeraldo Cruz, Kingsland TX small business, Highland Lakes business consulting, local business automation Kingsland, Llano County small business tools, Kingsland Texas development">
-<meta name="author" content="Jeraldo Cruz">
+<title>About Simple Biz Systems and Founder Jeraldo Cruz | Kingsland, TX</title>
+<meta name="title" content="About Simple Biz Systems and Founder Jeraldo Cruz | Kingsland, TX">
+<meta name="description" content="Meet Jeraldo Cruz, founder of Simple Biz Systems in Kingsland, TX. Building basic software systems, lean operational tools, and local website support for Highland Lakes businesses.">
+<meta name="keywords" content="Jeraldo Cruz, Simple Biz Systems, basic software systems, Kingsland TX business support, Highland Lakes contractor software, local web support Marble Falls, Burnet Llano tech help">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
 <meta name="geo.placename" content="Kingsland, Texas">
@@ -20,52 +20,39 @@
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- OPEN GRAPH / FACEBOOK -->
+<!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://www.simplebizsystems.com/about.html">
-<meta property="og:title" content="About Simple Biz Systems &amp; Founder Jeraldo Cruz | Kingsland, TX">
-<meta property="og:description" content="Helping small businesses in Kingsland and the Highland Lakes grow with straightforward, reliable software tools and community utilities.">
+<meta property="og:title" content="About Simple Biz Systems &amp; Founder Jeraldo Cruz">
+<meta property="og:description" content="Building lean, low-cost operational tools and free or low-cost website help for local businesses in Kingsland and the Highland Lakes.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Simple Biz Systems &amp; Founder Jeraldo Cruz | Kingsland, TX">
-<meta name="twitter:description" content="Helping small businesses in Kingsland and the Highland Lakes grow with straightforward, reliable software tools and community utilities.">
-<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- STRUCTURED DATA (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "AboutPage",
-      "@id": "https://www.simplebizsystems.com/about.html#webpage",
-      "url": "https://www.simplebizsystems.com/about.html",
-      "name": "About Simple Biz Systems & Founder Jeraldo Cruz",
-      "description": "Background on Simple Biz Systems and founder Jeraldo Cruz, supporting small business growth in Kingsland, Texas."
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://www.simplebizsystems.com/#organization",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Jeraldo Cruz",
+    "jobTitle": "Founder & Operations Specialist",
+    "worksFor": {
+      "@type": "Organization",
       "name": "Simple Biz Systems",
-      "url": "https://www.simplebizsystems.com/",
-      "logo": "https://www.simplebizsystems.com/logo-icon.png",
-      "founder": {
-        "@type": "Person",
-        "name": "Jeraldo Cruz",
-        "jobTitle": "Founder & Operations Specialist",
-        "sameAs": "https://www.linkedin.com/in/jeraldo-cruz/"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Kingsland",
-        "addressRegion": "TX",
-        "postalCode": "78639",
-        "addressCountry": "US"
-      }
+      "url": "https://www.simplebizsystems.com/"
+    },
+    "description": "Operations specialist and systems architect building basic software systems, lean trade workflows, and providing community website support for Kingsland, TX and the Highland Lakes basin.",
+    "sameAs": [
+      "https://www.linkedin.com/in/jeraldo-cruz/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kingsland",
+      "addressRegion": "TX",
+      "postalCode": "78639",
+      "addressCountry": "US"
     }
-  ]
+  }
 }
 </script>
 
@@ -82,6 +69,8 @@
     --border: #e2e8f0; 
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --success: #16a34a;
   }
   
   html {
@@ -100,30 +89,31 @@
     margin: 0; 
     padding: 0; 
     color: var(--text-dark); 
-    line-height: 1.6;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
   .container { 
     max-width: 960px; 
     margin: 0 auto; 
-    padding: 0 24px; 
+    padding: 0 20px; 
     width: 100%;
   }
 
-  /* TOP BANNER */
-  .local-banner {
+  /* TOP SUB-TICKER */
+  .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
+    padding: 8px 12px;
+    font-size: 0.82rem;
     text-align: center;
-    padding: 9px 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
     border-bottom: 2px solid var(--accent);
+    line-height: 1.4;
   }
-  .local-banner strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION */
+  /* NAVIGATION MATCHED EXACTLY TO HOME & WIRE */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -136,21 +126,23 @@
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    gap: 12px;
   }
   .logo { 
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     text-decoration: none; 
     font-weight: 800; 
     color: var(--primary); 
-    font-size: 1.22rem; 
+    font-size: 1.15rem; 
     letter-spacing: -0.02em;
     line-height: 1;
+    white-space: nowrap;
   }
   .nav-brand-img {
-    height: 36px;
-    width: 36px;
+    height: 30px;
+    width: 30px;
     object-fit: contain;
     display: block;
     flex-shrink: 0;
@@ -158,206 +150,234 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 20px; 
+    gap: 16px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
     font-weight: 600; 
-    font-size: 0.92rem; 
+    font-size: 0.88rem; 
     transition: color 0.15s ease;
+    padding: 4px 2px;
+    white-space: nowrap;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .btn-nav {
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.88rem !important;
-    transition: background 0.15s ease;
+  .nav-links a:hover,
+  .nav-links a.active { 
+    color: var(--accent); 
   }
-  .btn-nav:hover { background: var(--accent-hover); }
 
-  /* PAGE HEADER */
-  .page-header {
-    background: var(--surface);
-    padding: 44px 0 36px 0;
-    border-bottom: 1px solid var(--border);
+  /* HEADER */
+  .about-header {
+    padding: 34px 0 16px 0;
   }
-  .status-badge {
+  .badge-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .about-header h1 {
+    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+  .about-header p {
+    font-size: clamp(0.96rem, 2vw, 1.05rem);
+    color: var(--text-muted);
+    max-width: 760px;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* FOUNDER CARD */
+  .bio-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px;
+    box-shadow: var(--card-shadow);
+    margin: 22px 0 30px 0;
+  }
+  .bio-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+  }
+  .bio-name h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 3px 0;
+  }
+  .bio-role {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .btn-linkedin {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: #f1f5f9;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.82rem;
+    gap: 6px;
+    background: #0a66c2;
+    color: #ffffff !important;
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 14px;
-    border: 1px solid var(--border);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
   }
-  .page-header h1 {
-    font-size: clamp(1.85rem, 3.2vw, 2.4rem);
-    font-weight: 800;
-    color: var(--primary);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
-  }
-  .page-header p {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 680px;
-    margin: 0;
-  }
+  .btn-linkedin:hover { opacity: 0.9; }
 
-  /* CONTENT SECTIONS */
-  .content-section {
-    padding: 36px 0;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 24px;
-    box-shadow: var(--card-shadow);
-  }
-
-  .card h2 {
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 0 0 14px 0;
-    letter-spacing: -0.01em;
-  }
-
-  .card p {
+  .bio-text p {
+    font-size: 0.92rem;
     color: var(--text-dark);
-    font-size: 0.96rem;
-    line-height: 1.65;
+    line-height: 1.6;
     margin: 0 0 14px 0;
   }
-  .card p:last-child {
-    margin-bottom: 0;
-  }
+  .bio-text p:last-child { margin-bottom: 0; }
 
-  /* MISSION CALLOUT CARD (MATCHES WIRE ACCENT CARD) */
-  .mission-feature {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 28px;
-    border-left: 6px solid var(--accent);
-    box-shadow: var(--card-shadow);
-  }
-  .mission-feature h2 {
-    color: #ffffff;
-    font-size: 1.35rem;
-    font-weight: 800;
-    margin: 0 0 12px 0;
-  }
-  .mission-feature p {
-    color: #e2e8f0;
-    font-size: 0.98rem;
-    line-height: 1.7;
-    margin: 0 0 14px 0;
-  }
-  .mission-feature p:last-child {
-    margin-bottom: 0;
-  }
-  .mission-feature strong {
-    color: #fbbf24;
-  }
-
-  /* HIGHLIGHT PILL LIST */
-  .values-grid {
+  /* CORE PILLARS GRID */
+  .pillars-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 16px;
-    margin-top: 18px;
+    margin-bottom: 34px;
   }
-  .value-item {
-    background: var(--bg);
+  .pillar-box {
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 18px;
+    box-shadow: var(--card-shadow);
   }
-  .value-item h3 {
+  .pillar-box.blue { border-top: 4px solid var(--primary); }
+  .pillar-box.amber { border-top: 4px solid var(--accent); }
+  .pillar-box.green { border-top: 4px solid var(--success); }
+
+  .pillar-box h3 {
     margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.02rem;
+    font-weight: 800;
     color: var(--primary);
   }
-  .value-item p {
+  .pillar-box p {
     margin: 0;
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
     line-height: 1.5;
   }
 
-  /* CALL TO ACTION BOX */
-  .cta-box {
-    background: var(--surface);
-    border: 2px dashed var(--accent);
+  /* INQUIRY PANEL */
+  .inquiry-box {
+    background: #0f2b48;
+    color: #ffffff;
     border-radius: 12px;
-    padding: 28px;
-    text-align: center;
-    margin-top: 20px;
+    padding: 26px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
   }
-  .cta-box h2 {
+  .inquiry-box h2 {
+    color: #ffffff;
     font-size: 1.25rem;
     font-weight: 800;
-    color: var(--primary);
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
   }
-  .cta-box p {
-    font-size: 0.94rem;
-    color: var(--text-muted);
-    max-width: 580px;
-    margin: 0 auto 18px auto;
+  .inquiry-box p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    max-width: 700px;
   }
-  .btn-primary {
-    display: inline-block;
+  .inquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) {
+    .inquiry-form { grid-template-columns: 1fr; }
+  }
+  .inquiry-form input, .inquiry-form select, .inquiry-form textarea {
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 0.88rem;
+    font-family: inherit;
+    width: 100%;
+  }
+  .btn-inquiry {
     background: var(--accent);
     color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.92rem;
-    padding: 10px 22px;
+    border: none;
+    padding: 11px;
     border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.92rem;
+    cursor: pointer;
+    grid-column: 1 / -1;
     transition: background 0.15s ease;
   }
-  .btn-primary:hover {
-    background: var(--accent-hover);
-  }
+  .btn-inquiry:hover { background: var(--accent-hover); }
 
   /* FOOTER */
   footer { 
     background: #09233d; 
     color: #94a3b8; 
-    padding: 40px 0; 
-    margin-top: 48px;
+    padding: 34px 0; 
     text-align: center; 
-    font-size: 0.85rem; 
+    font-size: 0.82rem; 
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
   footer a:hover { text-decoration: underline; }
+
+  /* MOBILE TUNING */
+  @media (max-width: 640px) {
+    .nav-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.05rem;
+    }
+    .nav-links {
+      gap: 10px;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+    }
+    .bio-card, .inquiry-box {
+      padding: 18px;
+    }
+  }
 </style>
 </head>
 <body>
 
-  <!-- TOP BANNER -->
-  <div class="local-banner">
-    Highland Lakes Business &amp; Community • <strong>Kingsland, Llano, &amp; Burnet County</strong>
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Simple Biz Systems &bull; Built in Kingsland, TX to support local businesses across the Highland Lakes.
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (EXACT MATCH TO HOME & WIRE) -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -367,92 +387,90 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="about.html" style="color: var(--accent);">About &amp; Founder</a>
-        <a href="index.html#contact-panel" class="btn-nav">Send a Message</a>
+        <a href="about.html" class="active">About &amp; Founder</a>
       </div>
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <header class="page-header">
-    <div class="container">
-      <div class="status-badge">
-        <span>Local Operations &amp; Community Focus</span>
+  <main class="container">
+
+    <!-- PAGE HEADER -->
+    <header class="about-header">
+      <span class="badge-tag">Community-First Operations &amp; Tech</span>
+      <h1>About Simple Biz Systems</h1>
+      <p>
+        Helping independent trade contractors and local shops thrive with basic software systems, lean workflows, and free or low-cost website help.
+      </p>
+    </header>
+
+    <!-- FOUNDER BIOGRAPHY CARD -->
+    <div class="bio-card">
+      <div class="bio-title-row">
+        <div class="bio-name">
+          <h2>Jeraldo Cruz</h2>
+          <span class="bio-role">Founder &bull; Operations &amp; Systems Specialist</span>
+        </div>
+        <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener" class="btn-linkedin">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          Connect on LinkedIn
+        </a>
       </div>
-      <h1>Building Tools for Kingsland &amp; The Highland Lakes</h1>
-      <p>
-        Helping local service businesses, trades, and independent shops thrive with practical technology as our Hill Country community grows.
-      </p>
-    </div>
-  </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container content-section">
-
-    <!-- OUR VISION: SEEING SMALL BUSINESSES THRIVE AS KINGSLAND GROWS -->
-    <div class="mission-feature">
-      <h2>Keeping Local Business Strong in a Growing Hill Country</h2>
-      <p>
-        Kingsland and the surrounding Highland Lakes region are expanding quickly. With new residents, new construction, and increased tourism across Llano and Burnet Counties, the business landscape is shifting rapidly.
-      </p>
-      <p>
-        Our core mission is to make sure our <strong>local small businesses thrive as Kingsland grows</strong>. The electricians, plumbers, HVAC technicians, boat mechanics, food trucks, and family-owned storefronts are the backbone of this lake community. When rapid growth happens, local operations shouldn't get pushed out or outmatched simply because big regional corporate franchises have massive software budgets.
-      </p>
-      <p>
-        We build lean, simple digital workflows and management tools that give independent business owners an unfair advantage—saving them hours of paperwork, keeping customer follow-ups on track, and letting them run professional operations without expensive monthly retainers.
-      </p>
-    </div>
-
-    <!-- WHO WE ARE & FOUNDER BACKGROUND -->
-    <div class="card">
-      <h2>About Simple Biz Systems &amp; Founder Jeraldo Cruz</h2>
-      <p>
-        Simple Biz Systems is based right here in Kingsland, Texas. Founded by <strong>Jeraldo Cruz</strong>, the practice was born out of a simple observation: modern business software has become needlessly complicated, overpriced, and bloated with features that local operators never use.
-      </p>
-      <p>
-        With a deep technical background in operations management, systems engineering, and workflow architecture—including years supporting mission-critical enterprise systems and high-volume operations—Jeraldo translates technical best practices into lightweight, easy-to-use tools for local owners.
-      </p>
-      <p>
-        Whether it is a shift roster that works seamlessly on mobile, an automated profit and estimate calculator, or an ad-free public utility wire for our neighbors, the philosophy is always the same: <em>keep it simple, keep it fast, and keep it useful.</em>
-      </p>
-
-      <div class="values-grid">
-        <div class="value-item">
-          <h3>No Bloat, No Fluff</h3>
-          <p>Tools designed to solve one specific problem cleanly, without steep learning curves or complicated onboarding.</p>
-        </div>
-        <div class="value-item">
-          <h3>Built for Real Operations</h3>
-          <p>Tested in trucks, docks, and field service jobs where you need answers in seconds, not endless configuration menus.</p>
-        </div>
-        <div class="value-item">
-          <h3>Community-First</h3>
-          <p>Dedicated to public utilities like the Kingsland Wire—giving residents honest, ad-free updates with zero tracking.</p>
-        </div>
+      <div class="bio-text">
+        <p>
+          I started <strong>Simple Biz Systems</strong> with a clear purpose: to make sure local businesses thrive as Kingsland and the Highland Lakes continue to grow.
+        </p>
+        <p>
+          With a background spanning network operations, technical support engineering, and operations management, I have spent years diagnosing why technology often gets in the way of real work instead of speeding it up. Big software corporations build bloated apps that charge local trade contractors $50 to $150 every month per user for features they never touch in the field.
+        </p>
+        <p>
+          We do things differently. We build <strong>basic software systems</strong> tailored to the exact daily rhythm of independent plumbers, electricians, HVAC techs, and service contractors. Our tools connect directly to the platforms you already own, like your private Google Workspace, with zero monthly per-seat licensing fees.
+        </p>
+        <p>
+          Beyond custom business tools, I maintain <strong>The Kingsland Wire</strong> as a free civic utility and provide free or low-cost website and technical support for independent shops and contractors across Kingsland, Marble Falls, Llano, and Burnet.
+        </p>
       </div>
     </div>
 
-    <!-- WHY WE RUN THE KINGSLAND WIRE -->
-    <div class="card">
-      <h2>The Public Utility: The Kingsland Wire</h2>
-      <p>
-        As part of our commitment to Kingsland, we created and maintain the <a href="kingslandnews.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">Kingsland Wire</a> as a 100% free, ad-free public bulletin.
-      </p>
-      <p>
-        Most commercial news sites today are filled with paywalls, invasive tracking cookies, and screen-blocking popups. The Wire runs on lean, automated infrastructure that aggregates verified data directly from official sources—including the National Weather Service, County Emergency Management burn ban orders, Texas Water Development Board lake gauges, TxDOT road closures, and Chamber of Commerce events.
-      </p>
-      <p>
-        It is proof of what lightweight, thoughtful technology can do for a community when user respect comes first.
-      </p>
+    <!-- CORE PILLARS -->
+    <div class="pillars-grid">
+      <div class="pillar-box blue">
+        <h3>Own Your Code &amp; Data</h3>
+        <p>No vendor lock-in. Your client records, estimates, and schedules stay safely in your private spreadsheets and drives, not a closed app.</p>
+      </div>
+
+      <div class="pillar-box amber">
+        <h3>Zero Seat Taxes</h3>
+        <p>Stop paying monthly software penalties every time you bring on a helper or new truck. Pay once for setup and own your system outright.</p>
+      </div>
+
+      <div class="pillar-box green">
+        <h3>Community-First Support</h3>
+        <p>Free or sliding-scale assistance for local websites, Google business setup, and technical tune-ups to keep our local economy strong.</p>
+      </div>
     </div>
 
-    <!-- CALL TO ACTION -->
-    <div class="cta-box">
-      <h2>Have a Question or Want to Streamline Your Business?</h2>
+    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <div class="inquiry-box">
+      <h2>Let us discuss your systems or website</h2>
       <p>
-        Whether you want to discuss a custom tool for your local business or have an idea to improve our community bulletin, we'd love to connect.
+        Whether you want to eliminate an expensive software subscription, need an operational tool for your trucks, or need a hand with your website, send a message below.
       </p>
-      <a href="index.html#contact-panel" class="btn-primary">Send a Direct Message &rarr;</a>
+      <form id="aboutLeadForm" class="inquiry-form">
+        <input type="text" id="leadName" required placeholder="Your Name">
+        <input type="tel" id="leadPhone" required placeholder="Phone Number">
+        <select id="leadService" style="grid-column: 1 / -1;">
+          <option value="Local Website Support (Free/Low-Cost)">Local Website Support (Free / Low-Cost)</option>
+          <option value="Basic Software Systems / Trade Tools">Basic Software Systems / Trade Tools</option>
+          <option value="Software Cost Audit">Software Subscription Cost Audit</option>
+          <option value="General Question / Other">General Question / Other</option>
+        </select>
+        <textarea id="leadMsg" rows="3" style="grid-column: 1 / -1;" placeholder="How can we help your business?"></textarea>
+        <button type="submit" id="btnLead" class="btn-inquiry">Send Message to Jeraldo &rarr;</button>
+        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
+      </form>
     </div>
 
   </main>
@@ -460,13 +478,63 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and public utilities for Kingsland and Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
+
+    document.getElementById("aboutLeadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnLead");
+      const feedback = document.getElementById("leadFeedback");
+
+      const nameVal = document.getElementById("leadName").value.trim();
+      const phoneVal = document.getElementById("leadPhone").value.trim();
+      const serviceVal = document.getElementById("leadService").value;
+      const msgVal = document.getElementById("leadMsg").value.trim() || "Inquiry from About page";
+
+      if (!nameVal || !phoneVal) {
+        feedback.style.display = "block";
+        feedback.style.color = "#fca5a5";
+        feedback.innerText = "Please provide your name and phone number.";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = "Sending...";
+
+      const params = new URLSearchParams({
+        name: nameVal,
+        company: "About Page Inquiry",
+        phone: phoneVal,
+        service: serviceVal,
+        message: msgVal,
+        _t: new Date().getTime()
+      }).toString();
+
+      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
+        .then(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#86efac";
+          feedback.innerText = "Thank you! Your message was received. I will be in touch shortly.";
+          document.getElementById("aboutLeadForm").reset();
+        })
+        .catch(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#fca5a5";
+          feedback.innerText = "Error sending message. Please reach out directly.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerText = "Send Message to Jeraldo →";
+        });
+    });
+  </script>
 </body>
 </html>
