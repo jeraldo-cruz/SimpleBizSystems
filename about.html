@@ -23,7 +23,7 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://www.simplebizsystems.com/about.html">
-<meta property="og:title" content="About Simple Biz Systems &amp; Founder Jeraldo Cruz">
+<meta property="og:title" content="About Simple Biz Systems and Founder Jeraldo Cruz">
 <meta property="og:description" content="Building lean, low-cost operational tools and free or low-cost website help for local businesses in Kingsland and the Highland Lakes.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
@@ -69,7 +69,7 @@
     --border: #e2e8f0; 
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     --success: #16a34a;
   }
   
@@ -94,7 +94,7 @@
   }
 
   .container { 
-    max-width: 960px; 
+    max-width: 980px; 
     margin: 0 auto; 
     padding: 0 20px; 
     width: 100%;
@@ -113,7 +113,7 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION MATCHED EXACTLY TO HOME & WIRE */
+  /* NAVIGATION (EXACT PARITY WITH HOME AND WIRE) */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -170,7 +170,7 @@
 
   /* HEADER */
   .about-header {
-    padding: 34px 0 16px 0;
+    padding: 36px 0 18px 0;
   }
   .badge-tag {
     display: inline-block;
@@ -181,6 +181,7 @@
     font-size: 0.74rem;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
     margin-bottom: 10px;
   }
   .about-header h1 {
@@ -189,40 +190,73 @@
     color: var(--primary);
     margin: 0 0 8px 0;
     line-height: 1.2;
-    word-break: break-word;
   }
   .about-header p {
     font-size: clamp(0.96rem, 2vw, 1.05rem);
     color: var(--text-muted);
-    max-width: 760px;
+    max-width: 780px;
     margin: 0;
     line-height: 1.5;
   }
 
-  /* FOUNDER CARD */
+  /* FOUNDER BIO CARD WITH GRAPHIC SLOT */
   .bio-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 26px;
+    padding: 28px;
     box-shadow: var(--card-shadow);
-    margin: 22px 0 30px 0;
+    margin: 22px 0 32px 0;
   }
+  .bio-layout {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .founder-photo-wrapper {
+    flex-shrink: 0;
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .founder-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .founder-content {
+    flex: 1;
+    min-width: 0;
+  }
+  
   .bio-title-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     border-bottom: 1px solid var(--border-subtle);
     padding-bottom: 14px;
     margin-bottom: 16px;
   }
   .bio-name h2 {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 3px 0;
+    margin: 0 0 2px 0;
+    line-height: 1.2;
   }
   .bio-role {
     font-size: 0.85rem;
@@ -231,25 +265,36 @@
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
+
+  /* REFINED LINKEDIN BUTTON */
   .btn-linkedin {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 8px;
     background: #0a66c2;
     color: #ffffff !important;
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: opacity 0.15s ease;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 4px rgba(10, 102, 194, 0.2);
   }
-  .btn-linkedin:hover { opacity: 0.9; }
+  .btn-linkedin:hover { 
+    background: #084e96; 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(10, 102, 194, 0.25);
+  }
+  .btn-linkedin svg {
+    flex-shrink: 0;
+  }
 
   .bio-text p {
-    font-size: 0.92rem;
+    font-size: 0.93rem;
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.62;
     margin: 0 0 14px 0;
   }
   .bio-text p:last-child { margin-bottom: 0; }
@@ -265,7 +310,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 18px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
   }
   .pillar-box.blue { border-top: 4px solid var(--primary); }
@@ -273,49 +318,48 @@
   .pillar-box.green { border-top: 4px solid var(--success); }
 
   .pillar-box h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.02rem;
+    margin: 0 0 8px 0;
+    font-size: 1.04rem;
     font-weight: 800;
     color: var(--primary);
   }
   .pillar-box p {
     margin: 0;
-    font-size: 0.86rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.5;
   }
 
-  /* INQUIRY PANEL */
+  /* INQUIRY PANEL & BUTTON */
   .inquiry-box {
     background: #0f2b48;
     color: #ffffff;
     border-radius: 12px;
-    padding: 26px;
+    padding: 28px;
     margin-bottom: 40px;
     box-shadow: var(--card-shadow);
   }
   .inquiry-box h2 {
     color: #ffffff;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 800;
     margin: 0 0 6px 0;
   }
   .inquiry-box p {
     color: #cbd5e1;
-    font-size: 0.9rem;
-    margin: 0 0 16px 0;
-    max-width: 700px;
+    font-size: 0.92rem;
+    margin: 0 0 18px 0;
+    max-width: 720px;
   }
   .inquiry-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
   }
-  @media (max-width: 600px) {
-    .inquiry-form { grid-template-columns: 1fr; }
-  }
-  .inquiry-form input, .inquiry-form select, .inquiry-form textarea {
-    padding: 9px 11px;
+  .inquiry-form input, 
+  .inquiry-form select, 
+  .inquiry-form textarea {
+    padding: 10px 12px;
     border-radius: 6px;
     border: 1px solid #334155;
     background: #ffffff;
@@ -324,19 +368,35 @@
     font-family: inherit;
     width: 100%;
   }
+
+  /* OPTIMIZED INQUIRY BUTTON */
   .btn-inquiry {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background: var(--accent);
     color: #ffffff;
     border: none;
-    padding: 11px;
-    border-radius: 6px;
+    padding: 13px 20px;
+    border-radius: 8px;
     font-weight: 800;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     cursor: pointer;
     grid-column: 1 / -1;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
-  .btn-inquiry:hover { background: var(--accent-hover); }
+  .btn-inquiry:hover { 
+    background: var(--accent-hover); 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .btn-inquiry:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
 
   /* FOOTER */
   footer { 
@@ -349,7 +409,28 @@
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
   footer a:hover { text-decoration: underline; }
 
-  /* MOBILE TUNING */
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 720px) {
+    .bio-layout {
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+      gap: 18px;
+    }
+    .founder-photo-wrapper {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    .founder-photo {
+      width: 90px;
+      height: 90px;
+    }
+    .inquiry-form { 
+      grid-template-columns: 1fr; 
+    }
+  }
+
   @media (max-width: 640px) {
     .nav-container {
       flex-direction: row;
@@ -365,7 +446,18 @@
       font-size: 0.82rem;
     }
     .bio-card, .inquiry-box {
-      padding: 18px;
+      padding: 20px 16px;
+    }
+    .bio-title-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .btn-linkedin {
+      width: 100%;
+    }
+    .btn-inquiry {
+      width: 100%;
     }
   }
 </style>
@@ -377,7 +469,7 @@
     Simple Biz Systems &bull; Built in Kingsland, TX to support local businesses across the Highland Lakes.
   </div>
 
-  <!-- NAVIGATION (EXACT MATCH TO HOME & WIRE) -->
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -405,32 +497,43 @@
 
     <!-- FOUNDER BIOGRAPHY CARD -->
     <div class="bio-card">
-      <div class="bio-title-row">
-        <div class="bio-name">
-          <h2>Jeraldo Cruz</h2>
-          <span class="bio-role">Founder &bull; Operations &amp; Systems Specialist</span>
+      <div class="bio-layout">
+        
+        <!-- FOUNDER GRAPHIC / PHOTO -->
+        <div class="founder-photo-wrapper">
+          <img src="founder.webp" alt="Jeraldo Cruz" class="founder-photo" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'founder-photo\'>JC</div>';">
         </div>
-        <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener" class="btn-linkedin">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#ffffff">
-            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-          </svg>
-          Connect on LinkedIn
-        </a>
-      </div>
 
-      <div class="bio-text">
-        <p>
-          I started <strong>Simple Biz Systems</strong> with a clear purpose: to make sure local businesses thrive as Kingsland and the Highland Lakes continue to grow.
-        </p>
-        <p>
-          With a background spanning network operations, technical support engineering, and operations management, I have spent years diagnosing why technology often gets in the way of real work instead of speeding it up. Big software corporations build bloated apps that charge local trade contractors $50 to $150 every month per user for features they never touch in the field.
-        </p>
-        <p>
-          We do things differently. We build <strong>basic software systems</strong> tailored to the exact daily rhythm of independent plumbers, electricians, HVAC techs, and service contractors. Our tools connect directly to the platforms you already own, like your private Google Workspace, with zero monthly per-seat licensing fees.
-        </p>
-        <p>
-          Beyond custom business tools, I maintain <strong>The Kingsland Wire</strong> as a free civic utility and provide free or low-cost website and technical support for independent shops and contractors across Kingsland, Marble Falls, Llano, and Burnet.
-        </p>
+        <div class="founder-content">
+          <div class="bio-title-row">
+            <div class="bio-name">
+              <h2>Jeraldo Cruz</h2>
+              <span class="bio-role">Founder &bull; Operations &amp; Systems Specialist</span>
+            </div>
+            <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener" class="btn-linkedin">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+
+          <div class="bio-text">
+            <p>
+              I started <strong>Simple Biz Systems</strong> with a clear purpose: to make sure local businesses thrive as Kingsland and the Highland Lakes continue to grow.
+            </p>
+            <p>
+              With a background spanning network operations, technical support engineering, and operations management, I have spent years diagnosing why technology often gets in the way of real work instead of speeding it up. Big software corporations build bloated apps that charge local trade contractors $50 to $150 every month per user for features they never touch in the field.
+            </p>
+            <p>
+              We do things differently. We build <strong>basic software systems</strong> tailored to the exact daily rhythm of independent plumbers, electricians, HVAC techs, and service contractors. Our tools connect directly to the platforms you already own, like your private Google Workspace, with zero monthly per-seat licensing fees.
+            </p>
+            <p>
+              Beyond custom business tools, I maintain <strong>The Kingsland Wire</strong> as a free civic utility and provide free or low-cost website and technical support for independent shops and contractors across Kingsland, Marble Falls, Llano, and Burnet.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -452,7 +555,7 @@
       </div>
     </div>
 
-    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <!-- INQUIRY PANEL -->
     <div class="inquiry-box">
       <h2>Let us discuss your systems or website</h2>
       <p>
@@ -468,7 +571,10 @@
           <option value="General Question / Other">General Question / Other</option>
         </select>
         <textarea id="leadMsg" rows="3" style="grid-column: 1 / -1;" placeholder="How can we help your business?"></textarea>
-        <button type="submit" id="btnLead" class="btn-inquiry">Send Message to Jeraldo &rarr;</button>
+        <button type="submit" id="btnLead" class="btn-inquiry">
+          <span>Send Message to Jeraldo</span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
         <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
       </form>
     </div>
@@ -532,7 +638,7 @@
         })
         .finally(() => {
           btn.disabled = false;
-          btn.innerText = "Send Message to Jeraldo →";
+          btn.innerHTML = "<span>Send Message to Jeraldo</span> <span aria-hidden='true'>&rarr;</span>";
         });
     });
   </script>
