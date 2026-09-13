@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Mobile Contractor Work Order and Signoff Tool | Basic Software Systems Demo</title>
-<meta name="title" content="Mobile Contractor Work Order and Signoff Tool | Basic Software Systems Demo">
-<meta name="description" content="Free interactive mobile work order generator with digital touchscreen signature capture and instant PDF receipts. Custom basic software systems by Simple Biz Systems.">
-<meta name="keywords" content="contractor work order signature, basic software systems, mobile service ticket pdf, HVAC work order template, plumbing signoff sheet, digital signature contractor app, Kingsland TX">
+<title>Free Mobile Work Order and Signoff Tool | Simple Biz Systems</title>
+<meta name="title" content="Free Mobile Work Order and Signoff Tool | Simple Biz Systems">
+<meta name="description" content="Free to use, sample tools and custom setups. Mobile work order generator with digital touchscreen customer signature capture and instant PDF receipts. Basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="free contractor work order signature, basic software systems, mobile service ticket pdf, HVAC work order template, plumbing signoff sheet, digital signature contractor app, Kingsland TX">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 
@@ -24,7 +24,7 @@
   "url": "https://www.simplebizsystems.com/workorders.html",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
-  "description": "Mobile service ticket and work order tool with on-screen customer signature capture and instant PDF export.",
+  "description": "Free to use sample tool for service contractors to record work completed, capture digital customer signatures, and download verified PDF receipts.",
   "creator": {
     "@type": "Person",
     "name": "Jeraldo Cruz"
@@ -79,7 +79,6 @@
     border-bottom: 2px solid var(--accent);
   }
   .sub-ticker strong { color: #fbbf24; }
-  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
   .nav {
@@ -130,8 +129,9 @@
   }
   .badge-tag {
     display: inline-block;
-    background: #e0f2fe;
-    color: var(--primary);
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 0.74rem;
@@ -161,6 +161,15 @@
     padding: 24px;
     box-shadow: var(--card-shadow);
     margin-bottom: 30px;
+  }
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
   }
   .form-grid {
     display: grid;
@@ -244,12 +253,12 @@
   /* PDF HIDDEN TEMPLATE */
   #pdfTemplate {
     display: none;
-    padding: 24px;
+    padding: 30px;
     font-family: Arial, sans-serif;
     color: #1e293b;
   }
 
-  /* BOTTOM EMBEDDED CONTACT PANEL */
+  /* INQUIRY PANEL */
   .inquiry-box {
     background: #0f2b48;
     color: #ffffff;
@@ -312,12 +321,10 @@
 </head>
 <body>
 
-  <!-- SUB-TICKER -->
   <div class="sub-ticker">
-    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
+    Free to use, sample tools, and custom setups from <strong>Simple Biz Systems</strong>: No account or subscription required.
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -335,19 +342,33 @@
   <main class="container">
     
     <header class="page-header">
-      <span class="badge-tag">Sample System Demo &bull; Field Operations</span>
+      <span class="badge-tag">Free to Use &bull; Sample Field Tool</span>
       <h1>Mobile Work Order and Signoff Tool</h1>
       <p>
         Capture customer signatures on your phone or tablet at job completion. Log replaced parts, write service notes, and export a verified PDF work order receipt on site.
       </p>
     </header>
 
-    <!-- WORK ORDER BUILDER -->
     <div class="tool-box">
+      <!-- CONTRACTOR INFORMATION -->
+      <div class="section-label">Your Company Details (Appears on PDF)</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="bizName">Your Business Name</label>
+          <input type="text" id="bizName" placeholder="e.g. Hill Country Mechanical">
+        </div>
+        <div class="field">
+          <label for="bizPhone">Business Phone</label>
+          <input type="tel" id="bizPhone" placeholder="e.g. 325-555-0199">
+        </div>
+      </div>
+
+      <!-- WORK ORDER METADATA -->
+      <div class="section-label" style="margin-top: 20px;">Work Order &amp; Customer Details</div>
       <div class="form-grid">
         <div class="field">
           <label for="woTicketNum">Work Order Number</label>
-          <input type="text" id="woTicketNum" value="WO-2041" readonly style="background: #f1f5f9;">
+          <input type="text" id="woTicketNum" value="WO-2041">
         </div>
         <div class="field">
           <label for="woTech">Technician Name</label>
@@ -391,18 +412,19 @@
         <canvas id="sigCanvas"></canvas>
       </div>
 
-      <button type="button" class="btn-generate" onclick="generateWorkOrderPDF()">Complete Job &amp; Export Signed PDF &rarr;</button>
+      <button type="button" class="btn-generate" onclick="generateWorkOrderPDF()">Complete Job &amp; Download Signed PDF &rarr;</button>
     </div>
 
-    <!-- HIDDEN PDF TEMPLATE (CLONED BY HTML2PDF) -->
+    <!-- BRANDED PDF TEMPLATE (RENDERED BY HTML2PDF) -->
     <div id="pdfTemplate">
+      <!-- CONTRACTOR HEADER -->
       <div style="border-bottom: 2px solid #0d3b66; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end;">
         <div>
-          <h2 style="color: #0d3b66; margin: 0 0 2px 0;">COMPLETED WORK ORDER</h2>
-          <p style="margin: 0; font-size: 0.85rem; color: #64748b;">Simple Biz Systems Operational Engine</p>
+          <h2 style="color: #0d3b66; margin: 0 0 2px 0; font-size: 1.35rem;" id="pdfBiz">Completed Work Order</h2>
+          <p style="margin: 0; font-size: 0.85rem; color: #475569;" id="pdfPhone"></p>
         </div>
         <div style="text-align: right;">
-          <strong style="font-size: 1.1rem; color: #0d3b66;" id="pdfTicket"></strong><br>
+          <strong style="font-size: 1.1rem; color: #d97706;" id="pdfTicket"></strong><br>
           <span style="font-size: 0.82rem; color: #64748b;" id="pdfDate"></span>
         </div>
       </div>
@@ -413,7 +435,7 @@
           <td><strong>Lead Tech:</strong> <span id="pdfTech"></span></td>
         </tr>
         <tr>
-          <td colspan="2"><strong>Job Site:</strong> <span id="pdfAddress"></span></td>
+          <td colspan="2" style="padding-top: 4px;"><strong>Job Site:</strong> <span id="pdfAddress"></span></td>
         </tr>
       </table>
 
@@ -437,7 +459,7 @@
         </tr>
         <tr style="font-weight: bold; background: #fafafa;">
           <td style="padding: 8px;">Total Due:</td>
-          <td style="text-align: right; padding: 8px;" id="pdfTotal"></td>
+          <td style="text-align: right; padding: 8px; color: #0d3b66;" id="pdfTotal"></td>
         </tr>
       </table>
 
@@ -450,32 +472,40 @@
             <img id="pdfSigImg" src="" alt="Customer Signature" style="max-height: 50px; border-bottom: 1px solid #334155; display: block;">
             <span style="font-size: 0.74rem; color: #64748b;">Customer Signature on File</span>
           </div>
-          <div style="font-size: 0.74rem; color: #64748b;">Verified via Mobile Work Order Engine</div>
+          <div style="font-size: 0.74rem; color: #64748b;">Verified Field Signoff</div>
         </div>
+      </div>
+
+      <!-- SIMPLE BIZ SYSTEMS WATERMARK FOOTER -->
+      <div style="border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <img src="logo-icon.png" alt="Simple Biz Systems" style="height: 16px; width: 16px; object-fit: contain;">
+          <span>Generated free via <strong>Simple Biz Systems</strong> &bull; simplebizsystems.com</span>
+        </div>
+        <span>Basic Software Systems &bull; Kingsland, TX</span>
       </div>
     </div>
 
-    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <!-- UPSELL INQUIRY BOX -->
     <div class="inquiry-box">
       <h2>Want paperless mobile work orders for your service trucks?</h2>
       <p>
-        We build custom basic software systems that log field tickets, customer signatures, and photos straight into your Google Drive and spreadsheet records with zero monthly software seat fees.
+        These free to use, sample tools help independent contractors run lean. If you ever want field tickets, photos, and customer signatures logged directly into your own private Google Drive and spreadsheets with zero monthly software bills, drop your number below.
       </p>
       <form id="toolLeadForm" class="inquiry-form">
         <input type="text" id="leadName" required placeholder="Your Name">
         <input type="tel" id="leadPhone" required placeholder="Phone Number">
-        <button type="submit" id="btnLead" class="btn-inquiry">Request Work Order Tool Setup for My Business &rarr;</button>
+        <button type="submit" id="btnLead" class="btn-inquiry">Ask About Custom Spreadsheet Setup &rarr;</button>
         <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
       </form>
     </div>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Free to use, sample tools, and basic software systems for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
         <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
@@ -554,16 +584,20 @@
 
     // EXPORT PDF VIA HTML2PDF
     function generateWorkOrderPDF() {
+      const biz = document.getElementById('bizName').value.trim() || "Independent Trade Services";
+      const phone = document.getElementById('bizPhone').value.trim() || "Service Department";
       const customer = document.getElementById('woCustomer').value.trim() || "Customer";
       const tech = document.getElementById('woTech').value.trim() || "Field Tech";
       const address = document.getElementById('woAddress').value.trim() || "On Site";
       const notes = document.getElementById('woNotes').value.trim() || "Standard diagnostic & repairs completed.";
-      const ticket = document.getElementById('woTicketNum').value;
+      const ticket = document.getElementById('woTicketNum').value.trim() || "WO-TICKET";
 
       const parts = parseFloat(document.getElementById('woPartsCost').value) || 0;
       const labor = parseFloat(document.getElementById('woLaborCost').value) || 0;
       const total = parts + labor;
 
+      document.getElementById('pdfBiz').innerText = biz;
+      document.getElementById('pdfPhone').innerText = phone;
       document.getElementById('pdfTicket').innerText = ticket;
       document.getElementById('pdfDate').innerText = new Date().toLocaleDateString();
       document.getElementById('pdfCustomer').innerText = customer;
@@ -574,7 +608,6 @@
       document.getElementById('pdfLabor').innerText = '$' + labor.toFixed(2);
       document.getElementById('pdfTotal').innerText = '$' + total.toFixed(2);
 
-      // Export signature to image
       const sigImg = document.getElementById('pdfSigImg');
       if (hasSigned) {
         sigImg.src = canvas.toDataURL("image/png");
@@ -599,7 +632,7 @@
       });
     }
 
-    // LEAD INGESTION (APPS SCRIPT GET)
+    // LEAD INGESTION
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
     document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
@@ -614,10 +647,10 @@
 
       const params = new URLSearchParams({
         name: nameVal,
-        company: "Work Order Tool Demo User",
+        company: "Work Order Tool User",
         phone: phoneVal,
         service: "Basic Software Systems / Work Order Customization",
-        message: "Requested custom work order tool setup.",
+        message: "Interested in custom spreadsheet setup from free work order tool.",
         _t: new Date().getTime()
       }).toString();
 
@@ -635,7 +668,7 @@
         })
         .finally(() => {
           btn.disabled = false;
-          btn.innerText = "Request Work Order Tool Setup for My Business →";
+          btn.innerText = "Ask About Custom Spreadsheet Setup →";
         });
     });
   </script>
