@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>The Kingsland Wire | Weather, Lake Levels, Public Parks and Utilities (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Weather, Lake Levels, Public Parks and Utilities (Kingsland, TX)">
-<meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, Lake LBJ, Inks Lake and Buchanan capacity, free public parks and boat ramps map, Kingsland Chamber calendar, and utilities.">
-<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ percent full, Inks Lake capacity, Lake Buchanan water level, Kingsland boat ramps map, Kingsland library, the slab Kingsland TX, Kingsland Chamber events, Jeraldo Cruz">
+<meta name="description" content="Community bulletin for Kingsland, TX. Live 7-day weather, LCRA Lake LBJ, Inks Lake and Buchanan capacity, free public parks and boat ramps map, Kingsland Chamber calendar, and utilities.">
+<meta name="keywords" content="Kingsland TX weather 7 day forecast, Lake LBJ percent full, Inks Lake capacity, Lake Buchanan water level, Kingsland boat ramps map, Kingsland library, the slab Kingsland TX, Kingsland Chamber events, LCRA hydromet, Jeraldo Cruz">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -41,7 +41,7 @@
   "@id": "https://www.simplebizsystems.com/kingslandnews.html#webpage",
   "url": "https://www.simplebizsystems.com/kingslandnews.html",
   "name": "The Kingsland Wire - Weather, Lake Capacity and Public Directory",
-  "description": "Live 7-day forecast, Lake LBJ percent capacity, public boat ramps map, library hours, and local utilities.",
+  "description": "Live 7-day forecast via Open-Meteo, LCRA lake percent capacity, public boat ramps map, library hours, and local utilities.",
   "publisher": {
     "@type": "Organization",
     "name": "Simple Biz Systems",
@@ -233,11 +233,18 @@
     align-items: center;
     gap: 6px;
   }
-  .monitor-subtitle {
-    font-size: 0.74rem;
+  .data-source-tag {
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--text-muted);
-    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .data-source-tag:hover {
+    color: var(--accent);
+    text-decoration: underline;
   }
 
   .forecast-grid {
@@ -346,18 +353,19 @@
     border: 1px solid #bbf7d0;
   }
   .lake-badge-variable {
-    background: #fef3c7;
-    color: #92400e;
+    background: #dbeafe;
+    color: #1e40af;
     font-weight: 800;
     font-size: 0.85rem;
     padding: 3px 8px;
     border-radius: 6px;
-    border: 1px solid #fde68a;
+    border: 1px solid #bfdbfe;
   }
   
   .monitor-action-row {
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
     margin-top: 10px;
   }
   .btn-map-highlight {
@@ -372,10 +380,20 @@
     padding: 8px 12px;
     border-radius: 6px;
     text-decoration: none;
-    flex: 1;
     transition: background 0.15s ease;
   }
   .btn-map-highlight:hover { background: #0369a1; }
+  
+  .source-footnote {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .source-footnote a {
+    color: #0284c7;
+    text-decoration: underline;
+  }
 
   /* CALENDAR EVENTS SECTION */
   .calendar-section {
@@ -650,7 +668,6 @@
     .wire-header {
       padding: 24px 0 14px 0;
     }
-    /* Auto-expand card details on touch devices to avoid hover issues */
     .wire-details {
       max-height: none;
       opacity: 1;
@@ -708,7 +725,10 @@
             </svg>
             Kingsland Live 7-Day Forecast
           </h2>
-          <span class="monitor-subtitle" id="weatherMeta">Highland Lakes Basin</span>
+          <!-- DATA SOURCE LINK FOR READERS -->
+          <a href="https://open-meteo.com/" target="_blank" rel="noopener" class="data-source-tag" title="NOAA / Open-Meteo High Resolution Weather Model">
+            Data: Open-Meteo &rarr;
+          </a>
         </div>
 
         <!-- DYNAMIC FORECAST CONTAINER -->
@@ -719,7 +739,7 @@
         </div>
       </div>
 
-      <!-- SIMPLIFIED LAKE % FULL CARD WITH MAP BUTTON -->
+      <!-- ACCURATE LAKE % FULL CARD WITH MAP BUTTON & SOURCES -->
       <div class="lake-gauge-card">
         <div>
           <div class="monitor-title-row" style="border-color: #bae6fd; margin-bottom: 8px;">
@@ -731,13 +751,16 @@
               </svg>
               Lake Capacity (% Full)
             </h2>
-            <span class="monitor-subtitle" style="color: #0284c7;">LCRA Gauges</span>
+            <!-- DIRECT SOURCE LINK -->
+            <a href="https://hydromet.lcra.org/riverreport/" target="_blank" rel="noopener" class="data-source-tag" style="color: #0284c7;" title="LCRA Hydromet River Operations Report">
+              LCRA River Report &rarr;
+            </a>
           </div>
           
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Lake LBJ</div>
-              <div class="lake-subtext">Pass-Through Constant Level</div>
+              <div class="lake-subtext">Pass-Through Constant Pool (825.0 ft)</div>
             </div>
             <div class="lake-badge-full">99% Full</div>
           </div>
@@ -745,7 +768,7 @@
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Inks Lake</div>
-              <div class="lake-subtext">Pass-Through Constant Level</div>
+              <div class="lake-subtext">Pass-Through Constant Pool (888.0 ft)</div>
             </div>
             <div class="lake-badge-full">98% Full</div>
           </div>
@@ -753,9 +776,9 @@
           <div class="lake-stat-row">
             <div>
               <div class="lake-name">Lake Buchanan</div>
-              <div class="lake-subtext">Storage Reservoir</div>
+              <div class="lake-subtext">Storage Reservoir (1,018.8 ft / 1,020 Max)</div>
             </div>
-            <div class="lake-badge-variable">~70% Full</div>
+            <div class="lake-badge-variable">96.9% Full</div>
           </div>
         </div>
 
@@ -763,6 +786,9 @@
           <a href="https://www.google.com/maps/search/boat+ramps+parks+kingsland+tx/" target="_blank" rel="noopener" class="btn-map-highlight">
             🗺️ Open Free Parks and Ramps Map
           </a>
+          <div class="source-footnote">
+            Sources: <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener">LCRA Hydromet</a> &bull; <a href="https://waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener">Water Data for Texas (TWDB)</a>
+          </div>
         </div>
       </div>
 
@@ -1043,7 +1069,7 @@
   </footer>
 
   <script>
-    // AUTOMATIC WEATHER FETCH FOR KINGSLAND, TX (30.6638 N, 98.4411 W)
+    // AUTOMATIC WEATHER FETCH FOR KINGSLAND, TX (30.6638 N, 98.4411 W) VIA OPEN-METEO
     (function fetchKingslandWeather() {
       const LAT = 30.6638;
       const LON = -98.4411;
