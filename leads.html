@@ -5,493 +5,379 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Simple Lead Tracker | Closed-Loop Pipeline for Trade Contractors</title>
-<meta name="title" content="Simple Lead Tracker | Closed-Loop Pipeline for Trade Contractors">
-<meta name="description" content="A fast, clean lead tracking board for contractors and service businesses. Track new inquiries, sent estimates, and completed jobs without paying monthly per-user CRM fees.">
-<meta name="keywords" content="contractor lead tracker, simple trade crm, closed loop lead pipeline, no subscription lead tracker, small business inquiry tracker, field service lead management, Kingsland TX business tools">
+<title>Contractor Lead and Pipeline Tracker | Basic Software Systems Demo</title>
+<meta name="title" content="Contractor Lead and Pipeline Tracker | Basic Software Systems Demo">
+<meta name="description" content="Free interactive contractor lead tracker and customer pipeline board. Follow job inquiries from first call to paid invoice without monthly CRM fees. Basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="contractor lead tracker, basic software systems, simple contractor CRM no monthly fee, Google Sheets lead pipeline, trade sales tracker, Jobber alternative, Kingsland TX">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
-<meta name="geo.region" content="US-TX">
-<meta name="geo.placename" content="Kingsland, Texas">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/leads.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
-<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- OPEN GRAPH / SOCIAL -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.simplebizsystems.com/leads.html">
-<meta property="og:title" content="Simple Lead Tracker | Closed-Loop Pipeline for Trade Contractors">
-<meta property="og:description" content="Stop losing customer inquiries in chaotic text threads. Track estimates to cash flow with a lightweight, no-fee pipeline board.">
-<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Simple Lead Tracker | Closed-Loop Pipeline for Trade Contractors">
-<meta name="twitter:description" content="Stop losing customer inquiries in chaotic text threads. Track estimates to cash flow with a lightweight, no-fee pipeline board.">
-<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- STRUCTURED DATA (JSON-LD) -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Simple Lead Tracker",
-  "operatingSystem": "Web Browser, iOS, Android",
+  "@type": "WebApplication",
+  "name": "Contractor Lead and Pipeline Tracker",
+  "url": "https://www.simplebizsystems.com/leads.html",
   "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "operatingSystem": "All",
+  "description": "Interactive lead ingestion and sales pipeline tracker designed for trade contractors without per-user CRM subscriptions.",
   "creator": {
-    "@type": "Organization",
-    "name": "Simple Biz Systems",
-    "url": "https://www.simplebizsystems.com/"
-  },
-  "description": "A streamlined closed-loop lead pipeline board for trade contractors and local service businesses."
+    "@type": "Person",
+    "name": "Jeraldo Cruz"
+  }
 }
 </script>
 
 <style>
-  :root { 
-    --primary: #0d3b66; 
-    --primary-light: #1e3a5f;
-    --accent: #d97706; 
+  :root {
+    --primary: #0d3b66;
+    --accent: #d97706;
     --accent-hover: #b45309;
-    --bg: #f8fafc; 
+    --bg: #f8fafc;
     --surface: #ffffff;
-    --text-dark: #1e293b; 
+    --text-dark: #1e293b;
     --text-muted: #64748b;
-    --border: #e2e8f0; 
+    --border: #e2e8f0;
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
     --success: #16a34a;
   }
-  
-  html {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
-  }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    background: var(--bg); 
-    margin: 0; 
-    padding: 0; 
-    color: var(--text-dark); 
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 0;
-    font-size: 0.83rem;
+    padding: 8px 12px;
+    font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
   }
-  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker strong { color: #fbbf24; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
-  .nav { 
-    background: var(--surface); 
-    border-bottom: 1px solid var(--border); 
-    padding: 12px 0; 
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
-  .logo { 
+  .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    text-decoration: none; 
-    font-weight: 800; 
-    color: var(--primary); 
-    font-size: 1.2rem; 
-    letter-spacing: -0.02em;
-    line-height: 1;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.15rem;
+    white-space: nowrap;
   }
   .nav-brand-img {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     object-fit: contain;
-    display: block;
-    flex-shrink: 0;
   }
-  .nav-links { 
-    display: flex; 
-    align-items: center; 
-    gap: 16px; 
+  .nav-links {
+    display: flex;
+    gap: 16px;
   }
-  .nav-links a { 
-    text-decoration: none; 
-    color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    transition: color 0.15s ease;
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--accent); }
-  .btn-nav {
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem !important;
-    transition: background 0.15s ease;
-  }
-  .btn-nav:hover { background: var(--accent-hover); }
 
-  /* HEADER BLOCK */
-  .header-block {
-    padding: 36px 0 20px 0;
+  /* HEADER */
+  .page-header {
+    padding: 30px 0 16px 0;
   }
   .badge-tag {
     display: inline-block;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
+    background: #e0f2fe;
     color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .header-block h1 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  .page-header h1 {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
   }
-  .header-block p {
-    font-size: 1rem;
+  .page-header p {
+    font-size: 0.96rem;
     color: var(--text-muted);
-    max-width: 720px;
-    margin: 0;
+    margin: 0 0 16px 0;
+    max-width: 780px;
   }
 
-  /* PIPELINE WRAPPER */
-  .pipeline-card {
+  /* PIPELINE CONTROLS & STATS */
+  .pipeline-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 8px;
+    padding: 12px 16px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 32px;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-top: 2px;
   }
 
-  .pipeline-controls {
+  .board-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 14px;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .pipeline-stats {
-    display: flex;
-    gap: 18px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .pipeline-stats strong {
-    color: var(--primary);
-  }
-  .pipeline-actions {
-    display: flex;
     gap: 10px;
   }
-  .btn-action {
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.86rem;
+  .btn-add-lead {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--primary);
     font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background 0.15s ease;
   }
-  .btn-action:hover { background: var(--primary-light); }
-  .btn-secondary {
-    background: var(--bg);
-    color: var(--text-dark);
-    border: 1px solid var(--border);
+  .btn-add-lead:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
   }
-  .btn-secondary:hover { background: #e2e8f0; }
 
-  /* 4 COLUMN KANBAN GRID */
-  .pipeline-columns {
+  /* KANBAN BOARD */
+  .pipeline-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
+    margin-bottom: 34px;
   }
-  @media (max-width: 1000px) {
-    .pipeline-columns { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .pipeline-columns { grid-template-columns: 1fr; }
+  @media (max-width: 860px) {
+    .pipeline-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
-  .column-box {
-    background: var(--bg);
+  .pipeline-col {
+    background: #f1f5f9;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-  }
-  .col-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .col-head h3 {
-    margin: 0;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .col-badge {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 2px 7px;
     border-radius: 10px;
-    color: var(--text-muted);
-  }
-  .lead-stack {
+    padding: 12px;
+    min-height: 380px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 180px;
+  }
+  .col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+  .col-count {
+    background: #e2e8f0;
+    color: #475569;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.74rem;
   }
 
-  /* LEAD ITEM CARD */
   .lead-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 12px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .lead-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-lg);
   }
   .lead-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-  .lead-name {
-    font-size: 0.92rem;
+    font-size: 0.74rem;
     font-weight: 700;
+    color: var(--text-muted);
+  }
+  .lead-title {
+    font-size: 0.92rem;
+    font-weight: 800;
     color: var(--text-dark);
     margin: 0;
   }
-  .lead-val {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--success);
-  }
-  .lead-scope {
+  .lead-phone {
     font-size: 0.8rem;
+    color: var(--accent-hover);
+    font-weight: 600;
+    margin: 0;
+  }
+  .lead-desc {
+    font-size: 0.78rem;
     color: var(--text-muted);
-    margin: 0 0 8px 0;
-    line-height: 1.35;
-  }
-  .lead-contact {
-    font-size: 0.76rem;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  .lead-contact a {
-    color: inherit;
-    text-decoration: underline;
+    margin: 0;
+    line-height: 1.4;
   }
   .lead-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--border-subtle);
+    margin-top: 4px;
     padding-top: 6px;
+    border-top: 1px dashed var(--border-subtle);
   }
-  .lead-select {
-    font-size: 0.74rem;
-    font-weight: 600;
+  .lead-val {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--success);
+  }
+  .btn-advance {
+    background: none;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 2px 4px;
-    background: var(--surface);
-    color: var(--text-dark);
-  }
-  .btn-lead-del {
-    background: transparent;
-    border: none;
-    color: #ef4444;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: bold;
-    padding: 2px 4px;
-  }
-
-  /* MODAL */
-  .modal-backdrop {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.5);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-backdrop.active { display: flex; }
-  .modal-window {
-    background: var(--surface);
-    border-radius: 12px;
-    max-width: 440px;
-    width: 100%;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  .modal-window h3 {
-    margin: 0 0 14px 0;
-    font-size: 1.15rem;
-    color: var(--primary);
-  }
-  .form-group {
-    margin-bottom: 12px;
-  }
-  .form-group label {
-    display: block;
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-  .form-group input, .form-group select {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.88rem;
-    color: var(--text-dark);
-    font-family: inherit;
-  }
-
-  /* FEATURE TILES */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .feature-tile {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: var(--card-shadow);
-  }
-  .feature-tile h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--primary);
-  }
-  .feature-tile p {
-    margin: 0;
-    font-size: 0.88rem;
     color: var(--text-muted);
-    line-height: 1.55;
+    padding: 2px 6px;
+    cursor: pointer;
+  }
+  .btn-advance:hover {
+    background: var(--primary);
+    color: #ffffff;
   }
 
-  /* CONVERSION BOX */
-  .conversion-box {
+  /* BOTTOM EMBEDDED CONTACT PANEL */
+  .inquiry-box {
     background: #0f2b48;
     color: #ffffff;
     border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 24px;
-    text-align: center;
-    border-left: 6px solid var(--accent);
-    box-shadow: var(--card-shadow);
+    padding: 26px;
+    margin-bottom: 40px;
   }
-  .conversion-box h2 {
+  .inquiry-box h2 {
     color: #ffffff;
-    font-size: 1.35rem;
-    margin: 0 0 10px 0;
+    font-size: 1.25rem;
     font-weight: 800;
+    margin: 0 0 6px 0;
   }
-  .conversion-box p {
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    max-width: 620px;
-    margin: 0 auto 20px auto;
-    line-height: 1.6;
+  .inquiry-box p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    max-width: 700px;
   }
-  .btn-cta {
-    display: inline-block;
+  .inquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) {
+    .inquiry-form { grid-template-columns: 1fr; }
+  }
+  .inquiry-form input {
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 0.88rem;
+    width: 100%;
+  }
+  .btn-inquiry {
     background: var(--accent);
     color: #ffffff;
-    padding: 10px 24px;
+    border: none;
+    padding: 10px;
     border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: background 0.15s ease;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    grid-column: 1 / -1;
   }
-  .btn-cta:hover { background: var(--accent-hover); }
+  .btn-inquiry:hover { background: var(--accent-hover); }
 
   /* FOOTER */
-  footer { 
-    background: #09233d; 
-    color: #94a3b8; 
-    padding: 40px 0; 
-    margin-top: 48px;
-    text-align: center; 
-    font-size: 0.85rem; 
+  footer {
+    background: #09233d;
+    color: #94a3b8;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.82rem;
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
+  <!-- SUB-TICKER -->
   <div class="sub-ticker">
-    Pipeline Management • <strong>No Per-User Subscription Fees</strong>
+    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
   </div>
 
   <!-- NAVIGATION -->
@@ -504,319 +390,279 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html">Estimator</a>
-        <a href="workorders.html">Work Orders</a>
-        <a href="leads.html" style="color: var(--accent);">Leads</a>
-        <a href="about.html">About</a>
-        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
+        <a href="about.html">About &amp; Founder</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
     
-    <!-- HEADER -->
-    <header class="header-block">
-      <span class="badge-tag">Closed-Loop Sales Tracker</span>
-      <h1>Simple Contractor Lead Tracker</h1>
+    <header class="page-header">
+      <span class="badge-tag">Sample System Demo &bull; Customer Pipeline &amp; Intake</span>
+      <h1>Contractor Lead and Pipeline Tracker</h1>
       <p>
-        Never lose another job inquiry in a messy text thread. Track incoming customer leads from first call through estimate, job completion, and final payment.
+        Never let a service call slip through the cracks. Track incoming phone calls, website inquiries, and estimates straight into your own Google Sheet without paying $80 to $150 a month for CRM software.
       </p>
     </header>
 
-    <!-- PIPELINE CARD -->
-    <div class="pipeline-card">
-      <div class="pipeline-controls">
-        <div class="pipeline-stats">
-          <span>Active Leads: <strong id="totalLeadsCount">0</strong></span>
-          <span>Pipeline Value: <strong id="totalPipelineValue">$0</strong></span>
-        </div>
-        <div class="pipeline-actions">
-          <button class="btn-action" type="button" onclick="openLeadModal()">+ Log New Lead</button>
-          <button class="btn-action btn-secondary" type="button" onclick="exportLeadsCSV()">Export CSV</button>
-          <button class="btn-action btn-secondary" type="button" onclick="resetDemoLeads()">Reset</button>
-        </div>
+    <!-- METRICS STRIP -->
+    <div class="pipeline-stats">
+      <div class="stat-card">
+        <div class="stat-label">Active Leads in Pipe</div>
+        <div class="stat-value" id="statActive">5 Leads</div>
       </div>
-
-      <!-- 4 STAGE BOARD -->
-      <div class="pipeline-columns">
-        
-        <!-- STAGE 1: NEW INQUIRY -->
-        <div class="column-box">
-          <div class="col-head">
-            <h3>New Inquiries</h3>
-            <span class="col-badge" id="badge-inquiry">0</span>
-          </div>
-          <div class="lead-stack" id="stack-inquiry"></div>
-        </div>
-
-        <!-- STAGE 2: ESTIMATE SENT -->
-        <div class="column-box">
-          <div class="col-head">
-            <h3>Estimate Sent</h3>
-            <span class="col-badge" id="badge-estimate">0</span>
-          </div>
-          <div class="lead-stack" id="stack-estimate"></div>
-        </div>
-
-        <!-- STAGE 3: SCHEDULED -->
-        <div class="column-box">
-          <div class="col-head">
-            <h3>Job Scheduled</h3>
-            <span class="col-badge" id="badge-scheduled">0</span>
-          </div>
-          <div class="lead-stack" id="stack-scheduled"></div>
-        </div>
-
-        <!-- STAGE 4: CLOSED -->
-        <div class="column-box">
-          <div class="col-head">
-            <h3>Paid &amp; Closed</h3>
-            <span class="col-badge" id="badge-closed">0</span>
-          </div>
-          <div class="lead-stack" id="stack-closed"></div>
-        </div>
-
+      <div class="stat-card">
+        <div class="stat-label">Pipeline Value</div>
+        <div class="stat-value" id="statValue">$11,850</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Monthly Software Cost</div>
+        <div class="stat-value" style="color: var(--success);">$0 / mo</div>
       </div>
     </div>
 
-    <!-- FEATURE GRID -->
-    <div class="feature-grid">
-      <div class="feature-tile">
-        <h3>Close the Revenue Loop</h3>
-        <p>Follow every inquiry directly through to final payment so unbilled jobs and uncollected balances don't fall through the cracks.</p>
-      </div>
-      <div class="feature-tile">
-        <h3>Zero CRM Seat Taxes</h3>
-        <p>Manage your entire sales flow without paying recurring $40 to $100 per-month fees for bloated software features your trade doesn't need.</p>
-      </div>
-      <div class="feature-tile">
-        <h3>Private &amp; Offline-Safe</h3>
-        <p>Data stays securely in your local browser. Your trade pricing, customer phone numbers, and pipeline numbers are never shared or sold.</p>
-      </div>
+    <!-- BOARD CONTROLS -->
+    <div class="board-controls">
+      <span style="font-weight: 800; color: var(--primary); font-size: 0.95rem;">Current Sales Pipeline</span>
+      <button type="button" class="btn-add-lead" onclick="addSampleLead()">+ Log Incoming Call</button>
     </div>
 
-    <!-- CONVERSION BOX -->
-    <div class="conversion-box">
-      <h2>Need Automated Inbound Lead Capture &amp; SMS Responses?</h2>
+    <!-- KANBAN PIPELINE -->
+    <div class="pipeline-grid">
+      
+      <!-- STAGE 1: NEW INQUIRY -->
+      <div class="pipeline-col" id="col-new">
+        <div class="col-header">
+          <span>1. New Inquiries</span>
+          <span class="col-count" id="count-new">2</span>
+        </div>
+
+        <div class="lead-card" id="lead-1">
+          <div class="lead-top">
+            <span>Website Form &bull; 10m ago</span>
+            <span style="color: #d97706;">Hot</span>
+          </div>
+          <p class="lead-title">Mark Reynolds</p>
+          <p class="lead-phone">325-555-0144</p>
+          <p class="lead-desc">Lake LBJ dock rewire and lighting quote request.</p>
+          <div class="lead-footer">
+            <span class="lead-val">Est. $3,200</span>
+            <button class="btn-advance" onclick="advanceLead('lead-1', 'col-contacted')">Contact &rarr;</button>
+          </div>
+        </div>
+
+        <div class="lead-card" id="lead-2">
+          <div class="lead-top">
+            <span>Phone Call &bull; 1 hr ago</span>
+            <span>Routine</span>
+          </div>
+          <p class="lead-title">Brenda Collins</p>
+          <p class="lead-phone">512-555-0891</p>
+          <p class="lead-desc">Needs replacement water filtration system under sink.</p>
+          <div class="lead-footer">
+            <span class="lead-val">Est. $650</span>
+            <button class="btn-advance" onclick="advanceLead('lead-2', 'col-contacted')">Contact &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 2: CONTACTED / SITE VISIT -->
+      <div class="pipeline-col" id="col-contacted">
+        <div class="col-header">
+          <span>2. Site Visit Scheduled</span>
+          <span class="col-count" id="count-contacted">1</span>
+        </div>
+
+        <div class="lead-card" id="lead-3">
+          <div class="lead-top">
+            <span>Site Visit Mon 9 AM</span>
+            <span>Walkthrough</span>
+          </div>
+          <p class="lead-title">Highland Ridge HOA</p>
+          <p class="lead-phone">325-555-0322</p>
+          <p class="lead-desc">Common area irrigation backflow test and zone repair.</p>
+          <div class="lead-footer">
+            <span class="lead-val">Est. $1,800</span>
+            <button class="btn-advance" onclick="advanceLead('lead-3', 'col-quoted')">Quote &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3: QUOTE SENT -->
+      <div class="pipeline-col" id="col-quoted">
+        <div class="col-header">
+          <span>3. Quote Sent</span>
+          <span class="col-count" id="count-quoted">1</span>
+        </div>
+
+        <div class="lead-card" id="lead-4">
+          <div class="lead-top">
+            <span>Sent 2 Days Ago</span>
+            <span>Reviewing</span>
+          </div>
+          <p class="lead-title">David Patterson</p>
+          <p class="lead-phone">512-555-0763</p>
+          <p class="lead-desc">Full 4-ton dual heat pump changeout proposal.</p>
+          <div class="lead-footer">
+            <span class="lead-val">Est. $5,400</span>
+            <button class="btn-advance" onclick="advanceLead('lead-4', 'col-won')">Book &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 4: WON & BOOKED -->
+      <div class="pipeline-col" id="col-won">
+        <div class="col-header">
+          <span>4. Won / Scheduled</span>
+          <span class="col-count" id="count-won">1</span>
+        </div>
+
+        <div class="lead-card" id="lead-5">
+          <div class="lead-top">
+            <span>Deposit Paid</span>
+            <span style="color: var(--success);">Booked</span>
+          </div>
+          <p class="lead-title">Sunset Cove Rentals</p>
+          <p class="lead-phone">325-555-0919</p>
+          <p class="lead-desc">Mini-split installation for guest cabin.</p>
+          <div class="lead-footer">
+            <span class="lead-val" style="color: var(--success);">$800 Paid</span>
+            <button class="btn-advance" onclick="advanceLead('lead-5', 'col-new')">Reopen &larr;</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <div class="inquiry-box">
+      <h2>Want your website inquiries routed straight to your spreadsheet?</h2>
       <p>
-        We build automated lead funnels for trade contractors—instantly texting callers back when you are on a roof or under a sink, logging entries straight into Google Sheets, and alerting your phone.
+        We build custom basic software systems that capture customer leads, send automatic confirmation text messages, and update your pipeline directly in Google Sheets without recurring subscription costs.
       </p>
-      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+      <form id="toolLeadForm" class="inquiry-form">
+        <input type="text" id="leadName" required placeholder="Your Name">
+        <input type="tel" id="leadPhone" required placeholder="Phone Number">
+        <button type="submit" id="btnLead" class="btn-inquiry">Request Lead Tracker Setup for My Business &rarr;</button>
+        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
+      </form>
     </div>
 
   </main>
 
-  <!-- ADD LEAD MODAL -->
-  <div class="modal-backdrop" id="leadModal">
-    <div class="modal-window">
-      <h3>Log New Customer Lead</h3>
-      <div class="form-group">
-        <label for="leadName">Customer / Company Name</label>
-        <input type="text" id="leadName" placeholder="e.g. David Jenkins">
-      </div>
-      <div class="form-group">
-        <label for="leadPhone">Phone / Email</label>
-        <input type="text" id="leadPhone" placeholder="e.g. 512-555-0192">
-      </div>
-      <div class="form-group">
-        <label for="leadScope">Job Type / Project Scope</label>
-        <input type="text" id="leadScope" placeholder="e.g. Water heater replacement">
-      </div>
-      <div class="form-group">
-        <label for="leadValue">Estimated Value ($)</label>
-        <input type="number" id="leadValue" placeholder="1850" min="0" step="50">
-      </div>
-      <div class="form-group">
-        <label for="leadStage">Initial Pipeline Stage</label>
-        <select id="leadStage">
-          <option value="inquiry">New Inquiry</option>
-          <option value="estimate">Estimate Sent</option>
-          <option value="scheduled">Job Scheduled</option>
-          <option value="closed">Paid &amp; Closed</option>
-        </select>
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-        <button class="btn-action btn-secondary" type="button" onclick="closeLeadModal()">Cancel</button>
-        <button class="btn-action" type="button" onclick="saveNewLead()">Save Lead</button>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    const LEADS_STORAGE_KEY = "sbs_leads_data";
+    function advanceLead(leadId, targetColId) {
+      const lead = document.getElementById(leadId);
+      const targetCol = document.getElementById(targetColId);
+      if (!lead || !targetCol) return;
 
-    const DEFAULT_LEADS = [
-      { id: "lead-101", name: "Apex Marine Repair", phone: "325-388-5520", scope: "Dock sub-panel installation", value: 3400, stage: "inquiry" },
-      { id: "lead-102", name: "Highland Haven Cabin", phone: "512-756-1140", scope: "Mini-split HVAC service", value: 850, stage: "estimate" },
-      { id: "lead-103", name: "Lake LBJ Vacation Rental", phone: "830-693-8821", scope: "Whole-home water filtration", value: 2100, stage: "scheduled" },
-      { id: "lead-104", name: "Kingsland Storage Units", phone: "325-247-9912", scope: "Security lighting retrofit", value: 1650, stage: "closed" }
-    ];
+      targetCol.appendChild(lead);
 
-    let currentLeads = [];
-
-    function loadLeads() {
-      const saved = localStorage.getItem(LEADS_STORAGE_KEY);
-      if (saved) {
-        try {
-          currentLeads = JSON.parse(saved);
-        } catch (e) {
-          currentLeads = [...DEFAULT_LEADS];
-        }
+      const btn = lead.querySelector('.btn-advance');
+      if (targetColId === 'col-contacted') {
+        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-quoted')`);
+        btn.innerText = 'Quote →';
+      } else if (targetColId === 'col-quoted') {
+        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-won')`);
+        btn.innerText = 'Book →';
+      } else if (targetColId === 'col-won') {
+        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-new')`);
+        btn.innerText = 'Reopen ←';
       } else {
-        currentLeads = [...DEFAULT_LEADS];
-      }
-      renderPipeline();
-    }
-
-    function saveLeads() {
-      localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(currentLeads));
-      renderPipeline();
-    }
-
-    function renderPipeline() {
-      const stacks = {
-        inquiry: document.getElementById("stack-inquiry"),
-        estimate: document.getElementById("stack-estimate"),
-        scheduled: document.getElementById("stack-scheduled"),
-        closed: document.getElementById("stack-closed")
-      };
-
-      const counts = { inquiry: 0, estimate: 0, scheduled: 0, closed: 0 };
-      let pipelineTotal = 0;
-
-      Object.values(stacks).forEach(s => s.innerHTML = "");
-
-      currentLeads.forEach(lead => {
-        const stageStack = stacks[lead.stage] || stacks.inquiry;
-        counts[lead.stage] = (counts[lead.stage] || 0) + 1;
-        pipelineTotal += (lead.value || 0);
-
-        const card = document.createElement("div");
-        card.className = "lead-card";
-        card.innerHTML = `
-          <div class="lead-top">
-            <h4 class="lead-name">${escapeHtml(lead.name)}</h4>
-            <span class="lead-val">$${Number(lead.value || 0).toLocaleString()}</span>
-          </div>
-          <div class="lead-scope">${escapeHtml(lead.scope)}</div>
-          <div class="lead-contact">📞 <a href="tel:${escapeHtml(lead.phone)}">${escapeHtml(lead.phone)}</a></div>
-          <div class="lead-footer">
-            <select class="lead-select" onchange="changeLeadStage('${lead.id}', this.value)">
-              <option value="inquiry" ${lead.stage === 'inquiry' ? 'selected' : ''}>Inquiry</option>
-              <option value="estimate" ${lead.stage === 'estimate' ? 'selected' : ''}>Estimate</option>
-              <option value="scheduled" ${lead.stage === 'scheduled' ? 'selected' : ''}>Scheduled</option>
-              <option value="closed" ${lead.stage === 'closed' ? 'selected' : ''}>Closed</option>
-            </select>
-            <button class="btn-lead-del" onclick="deleteLead('${lead.id}')" title="Delete lead">&times;</button>
-          </div>
-        `;
-        stageStack.appendChild(card);
-      });
-
-      document.getElementById("badge-inquiry").innerText = counts.inquiry;
-      document.getElementById("badge-estimate").innerText = counts.estimate;
-      document.getElementById("badge-scheduled").innerText = counts.scheduled;
-      document.getElementById("badge-closed").innerText = counts.closed;
-
-      document.getElementById("totalLeadsCount").innerText = currentLeads.length;
-      document.getElementById("totalPipelineValue").innerText = "$" + pipelineTotal.toLocaleString();
-    }
-
-    function changeLeadStage(id, newStage) {
-      const target = currentLeads.find(l => l.id === id);
-      if (target) {
-        target.stage = newStage;
-        saveLeads();
-      }
-    }
-
-    function deleteLead(id) {
-      currentLeads = currentLeads.filter(l => l.id !== id);
-      saveLeads();
-    }
-
-    function openLeadModal() {
-      document.getElementById("leadName").value = "";
-      document.getElementById("leadPhone").value = "";
-      document.getElementById("leadScope").value = "";
-      document.getElementById("leadValue").value = "";
-      document.getElementById("leadModal").classList.add("active");
-    }
-
-    function closeLeadModal() {
-      document.getElementById("leadModal").classList.remove("active");
-    }
-
-    function saveNewLead() {
-      const name = document.getElementById("leadName").value.trim() || "New Lead";
-      const phone = document.getElementById("leadPhone").value.trim() || "N/A";
-      const scope = document.getElementById("leadScope").value.trim() || "General Service";
-      const value = parseFloat(document.getElementById("leadValue").value) || 0;
-      const stage = document.getElementById("leadStage").value || "inquiry";
-
-      const newLead = {
-        id: "lead-" + Date.now(),
-        name,
-        phone,
-        scope,
-        value,
-        stage
-      };
-
-      currentLeads.push(newLead);
-      saveLeads();
-      closeLeadModal();
-    }
-
-    function resetDemoLeads() {
-      currentLeads = [...DEFAULT_LEADS];
-      saveLeads();
-    }
-
-    function exportLeadsCSV() {
-      if (!currentLeads.length) {
-        alert("No leads to export.");
-        return;
+        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-contacted')`);
+        btn.innerText = 'Contact →';
       }
 
-      let csv = "ID,Name,Phone,Scope,Estimated_Value,Stage\n";
-      currentLeads.forEach(l => {
-        csv += `"${l.id}","${l.name.replace(/"/g, '""')}","${l.phone}","${l.scope.replace(/"/g, '""')}",${l.value},"${l.stage}"\n`;
-      });
-
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.setAttribute("href", url);
-      link.setAttribute("download", `contractor_leads_${new Date().toISOString().slice(0,10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      updateColCounts();
     }
 
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    function updateColCounts() {
+      document.getElementById('count-new').innerText = document.getElementById('col-new').querySelectorAll('.lead-card').length;
+      document.getElementById('count-contacted').innerText = document.getElementById('col-contacted').querySelectorAll('.lead-card').length;
+      document.getElementById('count-quoted').innerText = document.getElementById('col-quoted').querySelectorAll('.lead-card').length;
+      document.getElementById('count-won').innerText = document.getElementById('col-won').querySelectorAll('.lead-card').length;
+
+      const totalActive = document.querySelectorAll('.lead-card').length;
+      document.getElementById('statActive').innerText = totalActive + ' Leads';
     }
 
-    document.addEventListener("DOMContentLoaded", loadLeads);
+    let leadCounter = 6;
+    function addSampleLead() {
+      const colNew = document.getElementById('col-new');
+      const newId = 'lead-' + leadCounter;
+
+      const card = document.createElement('div');
+      card.className = 'lead-card';
+      card.id = newId;
+      card.innerHTML = `
+        <div class="lead-top">
+          <span>Inbound Call &bull; Just Now</span>
+          <span style="color: #0284c7;">New Lead</span>
+        </div>
+        <p class="lead-title">Prospective Customer #${leadCounter}</p>
+        <p class="lead-phone">325-555-0100</p>
+        <p class="lead-desc">Service estimate inquiry called in directly from Google listing.</p>
+        <div class="lead-footer">
+          <span class="lead-val">Est. $950</span>
+          <button class="btn-advance" onclick="advanceLead('${newId}', 'col-contacted')">Contact &rarr;</button>
+        </div>
+      `;
+
+      colNew.appendChild(card);
+      leadCounter++;
+      updateColCounts();
+    }
+
+    // LEAD INGESTION (APPS SCRIPT GET)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
+
+    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnLead");
+      const feedback = document.getElementById("leadFeedback");
+      const nameVal = document.getElementById("leadName").value.trim();
+      const phoneVal = document.getElementById("leadPhone").value.trim();
+
+      btn.disabled = true;
+      btn.innerText = "Sending...";
+
+      const params = new URLSearchParams({
+        name: nameVal,
+        company: "Lead Tracker Demo User",
+        phone: phoneVal,
+        service: "Basic Software Systems / Lead Tracker Customization",
+        message: "Requested custom lead tracker setup.",
+        _t: new Date().getTime()
+      }).toString();
+
+      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
+        .then(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#86efac";
+          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
+          document.getElementById("toolLeadForm").reset();
+        })
+        .catch(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#fca5a5";
+          feedback.innerText = "Error sending message. Please reach out directly.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerText = "Request Lead Tracker Setup for My Business →";
+        });
+    });
   </script>
 </body>
 </html>
