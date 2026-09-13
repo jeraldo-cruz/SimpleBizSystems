@@ -5,483 +5,354 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Simple Dispatch Board | Lightweight Field Team &amp; Crew Scheduler</title>
-<meta name="title" content="Simple Dispatch Board | Lightweight Field Team &amp; Crew Scheduler">
-<meta name="description" content="A clean, no-bloat daily dispatch and shift board for field service crews, trades, and delivery teams. Assign jobs, coordinate routes, and eliminate expensive per-user software fees.">
-<meta name="keywords" content="simple dispatch software, field service dispatch board, crew scheduler for contractors, no subscription dispatch, trade business job board, Google Sheets dispatch tool, Kingsland TX business tools">
+<title>Contractor Route and Dispatch Board | Basic Software Systems Demo</title>
+<meta name="title" content="Contractor Route and Dispatch Board | Basic Software Systems Demo">
+<meta name="description" content="Free interactive contractor dispatch and crew scheduling board. Coordinate field service jobs without expensive per-driver monthly fees. Basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="contractor dispatch board, basic software systems, service route scheduling, plumbing dispatch sheet, HVAC route board, Jobber alternative no subscription, ServiceTitan alternative, Kingsland TX">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/dispatch.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
-<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- OPEN GRAPH / SOCIAL -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.simplebizsystems.com/dispatch.html">
-<meta property="og:title" content="Simple Dispatch Board | Lightweight Field Team &amp; Crew Scheduler">
-<meta property="og:description" content="Stop paying monthly per-driver software fees. A fast, mobile-friendly dispatch board built for field service operations.">
-<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Simple Dispatch Board | Lightweight Field Team &amp; Crew Scheduler">
-<meta name="twitter:description" content="Stop paying monthly per-driver software fees. A fast, mobile-friendly dispatch board built for field service operations.">
-<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- STRUCTURED DATA (JSON-LD) -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Simple Dispatch Board",
-  "operatingSystem": "Web Browser, iOS, Android",
+  "@type": "WebApplication",
+  "name": "Contractor Route and Daily Dispatch Board",
+  "url": "https://www.simplebizsystems.com/dispatch.html",
   "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "operatingSystem": "All",
+  "description": "Interactive crew dispatch and daily service job board built for trade contractors without per-user subscription fees.",
   "creator": {
-    "@type": "Organization",
-    "name": "Simple Biz Systems",
-    "url": "https://www.simplebizsystems.com/"
-  },
-  "description": "A streamlined daily dispatch board for trade contractors, field technicians, and local delivery operators."
+    "@type": "Person",
+    "name": "Jeraldo Cruz"
+  }
 }
 </script>
 
 <style>
-  :root { 
-    --primary: #0d3b66; 
-    --primary-light: #1e3a5f;
-    --accent: #d97706; 
+  :root {
+    --primary: #0d3b66;
+    --accent: #d97706;
     --accent-hover: #b45309;
-    --bg: #f8fafc; 
+    --bg: #f8fafc;
     --surface: #ffffff;
-    --text-dark: #1e293b; 
+    --text-dark: #1e293b;
     --text-muted: #64748b;
-    --border: #e2e8f0; 
+    --border: #e2e8f0;
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --status-pending: #fef3c7;
-    --status-pending-text: #92400e;
-    --status-progress: #e0f2fe;
-    --status-progress-text: #0369a1;
-    --status-done: #dcfce7;
-    --status-done-text: #166534;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --success: #16a34a;
   }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    background: var(--bg); 
-    margin: 0; 
-    padding: 0; 
-    color: var(--text-dark); 
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 0;
-    font-size: 0.83rem;
+    padding: 8px 12px;
+    font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
   }
-  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker strong { color: #fbbf24; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
-  .nav { 
-    background: var(--surface); 
-    border-bottom: 1px solid var(--border); 
-    padding: 12px 0; 
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
-  .logo { 
+  .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    text-decoration: none; 
-    font-weight: 800; 
-    color: var(--primary); 
-    font-size: 1.2rem; 
-    letter-spacing: -0.02em;
-    line-height: 1;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.15rem;
+    white-space: nowrap;
   }
   .nav-brand-img {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     object-fit: contain;
-    display: block;
-    flex-shrink: 0;
   }
-  .nav-links { 
-    display: flex; 
-    align-items: center; 
-    gap: 18px; 
+  .nav-links {
+    display: flex;
+    gap: 16px;
   }
-  .nav-links a { 
-    text-decoration: none; 
-    color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    transition: color 0.15s ease;
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--accent); }
-  .btn-nav {
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem !important;
-    transition: background 0.15s ease;
-  }
-  .btn-nav:hover { background: var(--accent-hover); }
 
-  /* HEADER BLOCK */
-  .header-block {
-    padding: 36px 0 24px 0;
-    text-align: left;
+  /* HEADER */
+  .page-header {
+    padding: 30px 0 16px 0;
   }
   .badge-tag {
     display: inline-block;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
+    background: #e0f2fe;
     color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .header-block h1 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  .page-header h1 {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
   }
-  .header-block p {
-    font-size: 1rem;
+  .page-header p {
+    font-size: 0.96rem;
     color: var(--text-muted);
-    max-width: 720px;
-    margin: 0;
+    margin: 0 0 16px 0;
+    max-width: 780px;
   }
 
-  /* DISPATCH BOARD WRAPPER */
-  .dispatch-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: var(--card-shadow);
-    margin-bottom: 32px;
-  }
-
-  /* CONTROLS ROW */
-  .dispatch-controls {
+  /* KANBAN DISPATCH BOARD */
+  .board-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 14px;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .controls-meta {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    font-weight: 600;
-  }
-  .controls-actions {
-    display: flex;
     gap: 10px;
   }
-  .btn-action {
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.86rem;
+  .board-date {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 0.95rem;
+  }
+  .btn-add-ticket {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--primary);
     font-weight: 700;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background 0.15s ease;
   }
-  .btn-action:hover { background: var(--primary-light); }
-  .btn-secondary {
-    background: var(--bg);
-    color: var(--text-dark);
-    border: 1px solid var(--border);
+  .btn-add-ticket:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
   }
-  .btn-secondary:hover { background: #e2e8f0; }
 
-  /* BOARD COLUMNS (KANBAN/LIST LAYOUT) */
-  .board-columns {
+  .dispatch-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 34px;
   }
-  .board-column {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-  }
-  .column-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .column-header h3 {
-    margin: 0;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .column-count {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    font-size: 0.76rem;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 12px;
-    color: var(--text-muted);
-  }
-  .card-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-height: 120px;
+  @media (max-width: 860px) {
+    .dispatch-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
-  /* JOB CARD */
-  .job-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-    transition: transform 0.1s ease, border-color 0.1s ease;
-  }
-  .job-card:hover {
-    border-color: #cbd5e1;
-  }
-  .job-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 6px;
-  }
-  .job-title {
-    font-size: 0.92rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin: 0;
-  }
-  .job-tech {
-    font-size: 0.76rem;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 4px;
+  .dispatch-col {
     background: #f1f5f9;
-    color: var(--primary);
-  }
-  .job-address {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin: 0 0 10px 0;
-  }
-  .job-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 8px;
-    font-size: 0.78rem;
-  }
-  .job-time {
-    color: var(--text-muted);
-    font-weight: 600;
-  }
-  .job-actions select {
-    font-size: 0.75rem;
-    font-weight: 600;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 6px;
-    background: var(--surface);
-    color: var(--text-dark);
-  }
-
-  /* MODAL */
-  .modal-backdrop {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.5);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-backdrop.active { display: flex; }
-  .modal-window {
-    background: var(--surface);
-    border-radius: 12px;
-    max-width: 460px;
-    width: 100%;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  .modal-window h3 {
-    margin: 0 0 16px 0;
-    font-size: 1.15rem;
-    color: var(--primary);
-  }
-  .form-group {
-    margin-bottom: 14px;
-  }
-  .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-  }
-  .form-group input, .form-group select {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.88rem;
-    color: var(--text-dark);
-  }
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  /* FEATURE TILES */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .feature-tile {
-    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: var(--card-shadow);
+    padding: 12px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  .feature-tile h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
+  .col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.84rem;
+    font-weight: 800;
     color: var(--primary);
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
   }
-  .feature-tile p {
-    margin: 0;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.55;
+  .col-count {
+    background: #e2e8f0;
+    color: #475569;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.74rem;
   }
 
-  /* BOTTOM CONVERSION PROMPT */
-  .conversion-box {
+  .ticket-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: grab;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ticket-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-lg);
+  }
+  .ticket-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .ticket-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+  }
+  .ticket-address {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .ticket-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--border-subtle);
+  }
+  .ticket-tech {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #0284c7;
+    background: #e0f2fe;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .btn-advance {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding: 2px 6px;
+    cursor: pointer;
+  }
+  .btn-advance:hover {
+    background: var(--primary);
+    color: #ffffff;
+  }
+
+  /* BOTTOM EMBEDDED CONTACT PANEL */
+  .inquiry-box {
     background: #0f2b48;
     color: #ffffff;
     border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 36px;
-    text-align: center;
-    border-left: 6px solid var(--accent);
-    box-shadow: var(--card-shadow);
+    padding: 26px;
+    margin-bottom: 40px;
   }
-  .conversion-box h2 {
+  .inquiry-box h2 {
     color: #ffffff;
-    font-size: 1.35rem;
-    margin: 0 0 10px 0;
+    font-size: 1.25rem;
     font-weight: 800;
+    margin: 0 0 6px 0;
   }
-  .conversion-box p {
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    max-width: 620px;
-    margin: 0 auto 20px auto;
-    line-height: 1.6;
+  .inquiry-box p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    max-width: 700px;
   }
-  .btn-cta {
-    display: inline-block;
+  .inquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 600px) {
+    .inquiry-form { grid-template-columns: 1fr; }
+  }
+  .inquiry-form input {
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 0.88rem;
+    width: 100%;
+  }
+  .btn-inquiry {
     background: var(--accent);
     color: #ffffff;
-    padding: 10px 24px;
+    border: none;
+    padding: 10px;
     border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: background 0.15s ease;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    grid-column: 1 / -1;
   }
-  .btn-cta:hover { background: var(--accent-hover); }
+  .btn-inquiry:hover { background: var(--accent-hover); }
 
   /* FOOTER */
-  footer { 
-    background: #09233d; 
-    color: #94a3b8; 
-    padding: 40px 0; 
-    margin-top: 48px;
-    text-align: center; 
-    font-size: 0.85rem; 
+  footer {
+    background: #09233d;
+    color: #94a3b8;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.82rem;
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
+  <!-- SUB-TICKER -->
   <div class="sub-ticker">
-    Field Service Operations • <strong>No Monthly Per-Seat User Fees</strong>
+    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
   </div>
 
   <!-- NAVIGATION -->
@@ -494,274 +365,254 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="dispatch.html" style="color: var(--accent);">Dispatch</a>
-        <a href="estimator.html">Estimator</a>
         <a href="about.html">About &amp; Founder</a>
-        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
     
-    <!-- HEADER -->
-    <header class="header-block">
-      <span class="badge-tag">Crew &amp; Route Logistics</span>
-      <h1>Simple Daily Crew &amp; Dispatch Board</h1>
+    <header class="page-header">
+      <span class="badge-tag">Sample System Demo &bull; Logistics &amp; Field Dispatch</span>
+      <h1>Daily Route and Dispatch Board</h1>
       <p>
-        Built for contractors, couriers, and field service teams who need to coordinate routes and technicians without clunky menus or per-seat monthly subscription fees.
+        Coordinate crew trucks, service calls, and project milestones across the Highland Lakes without paying $50 to $120 a month per technician. Click or tap <strong>Move &rarr;</strong> on any card to simulate daily field dispatching.
       </p>
     </header>
 
-    <!-- DISPATCH TOOL CARD -->
-    <div class="dispatch-card">
-      <div class="dispatch-controls">
-        <div class="controls-meta">
-          <span id="jobTotalCount">Active Jobs: 3</span> • Today's Board
-        </div>
-        <div class="controls-actions">
-          <button class="btn-action" type="button" onclick="openJobModal()">+ Dispatch New Job</button>
-          <button class="btn-action btn-secondary" type="button" onclick="resetDemoData()">Reset Demo</button>
-        </div>
-      </div>
-
-      <!-- KANBAN COLUMNS -->
-      <div class="board-columns">
-        <!-- PENDING -->
-        <div class="board-column">
-          <div class="column-header">
-            <h3>Scheduled</h3>
-            <span class="column-count" id="count-scheduled">0</span>
-          </div>
-          <div class="card-stack" id="stack-scheduled"></div>
-        </div>
-
-        <!-- IN PROGRESS -->
-        <div class="board-column">
-          <div class="column-header">
-            <h3>En Route / On Site</h3>
-            <span class="column-count" id="count-progress">0</span>
-          </div>
-          <div class="card-stack" id="stack-progress"></div>
-        </div>
-
-        <!-- COMPLETED -->
-        <div class="board-column">
-          <div class="column-header">
-            <h3>Completed</h3>
-            <span class="column-count" id="count-completed">0</span>
-          </div>
-          <div class="card-stack" id="stack-completed"></div>
-        </div>
-      </div>
+    <!-- BOARD CONTROLS -->
+    <div class="board-controls">
+      <span class="board-date">Today's Daily Schedule &bull; Active Crews</span>
+      <button type="button" class="btn-add-ticket" onclick="addSampleTicket()">+ Add Quick Service Call</button>
     </div>
 
-    <!-- FEATURE GRID -->
-    <div class="feature-grid">
-      <div class="feature-tile">
-        <h3>Mobile-Ready for Field Techs</h3>
-        <p>Opens cleanly on any smartphone browser in the field without forcing technicians or subcontractors to download heavy app-store bloat.</p>
+    <!-- KANBAN BOARD -->
+    <div class="dispatch-grid">
+      
+      <!-- COL 1: UNSCHEDULED -->
+      <div class="dispatch-col" id="col-queued">
+        <div class="col-header">
+          <span>Queued / Pending</span>
+          <span class="col-count" id="count-queued">2</span>
+        </div>
+
+        <div class="ticket-card" id="ticket-1">
+          <div class="ticket-top">
+            <span>#1042 &bull; 8:30 AM</span>
+            <span style="color: #d97706;">High Priority</span>
+          </div>
+          <p class="ticket-title">Emergency Main Shutoff Valve</p>
+          <p class="ticket-address">1420 River Oaks Dr, Kingsland</p>
+          <div class="ticket-footer">
+            <span class="ticket-tech">Crew 1 (Dan)</span>
+            <button class="btn-advance" onclick="advanceTicket('ticket-1', 'col-enroute')">Move &rarr;</button>
+          </div>
+        </div>
+
+        <div class="ticket-card" id="ticket-2">
+          <div class="ticket-top">
+            <span>#1043 &bull; 10:00 AM</span>
+            <span>Routine</span>
+          </div>
+          <p class="ticket-title">Capacitor &amp; Coil Inspection</p>
+          <p class="ticket-address">310 FM 2900, Kingsland</p>
+          <div class="ticket-footer">
+            <span class="ticket-tech">Crew 2 (Leo)</span>
+            <button class="btn-advance" onclick="advanceTicket('ticket-2', 'col-enroute')">Move &rarr;</button>
+          </div>
+        </div>
       </div>
-      <div class="feature-tile">
-        <h3>Zero Per-Seat Fees</h3>
-        <p>Never pay an extra $30 to $70 per month just to add a seasonal helper, apprentice, or second driver to your dispatch schedule.</p>
+
+      <!-- COL 2: EN ROUTE -->
+      <div class="dispatch-col" id="col-enroute">
+        <div class="col-header">
+          <span>En Route</span>
+          <span class="col-count" id="count-enroute">1</span>
+        </div>
+
+        <div class="ticket-card" id="ticket-3">
+          <div class="ticket-top">
+            <span>#1041 &bull; 8:00 AM</span>
+            <span>In Transit</span>
+          </div>
+          <p class="ticket-title">200A Breaker Panel Upgrade</p>
+          <p class="ticket-address">742 Nob Hill, Sunrise Beach</p>
+          <div class="ticket-footer">
+            <span class="ticket-tech">Crew 3 (Sam)</span>
+            <button class="btn-advance" onclick="advanceTicket('ticket-3', 'col-progress')">Move &rarr;</button>
+          </div>
+        </div>
       </div>
-      <div class="feature-tile">
-        <h3>Google Workspace Connected</h3>
-        <p>Syncs directly with Google Sheets or your custom Google Drive database so you own and keep all your customer records and completed run logs.</p>
+
+      <!-- COL 3: IN PROGRESS -->
+      <div class="dispatch-col" id="col-progress">
+        <div class="col-header">
+          <span>On Job Site</span>
+          <span class="col-count" id="count-progress">1</span>
+        </div>
+
+        <div class="ticket-card" id="ticket-4">
+          <div class="ticket-top">
+            <span>#1040 &bull; 7:30 AM</span>
+            <span style="color: #16a34a;">Active Now</span>
+          </div>
+          <p class="ticket-title">Dock Pump Replacement</p>
+          <p class="ticket-address">8800 RR 1431, Granite Shoals</p>
+          <div class="ticket-footer">
+            <span class="ticket-tech">Crew 1 (Dan)</span>
+            <button class="btn-advance" onclick="advanceTicket('ticket-4', 'col-complete')">Finish &rarr;</button>
+          </div>
+        </div>
       </div>
+
+      <!-- COL 4: COMPLETED -->
+      <div class="dispatch-col" id="col-complete">
+        <div class="col-header">
+          <span>Complete / Billed</span>
+          <span class="col-count" id="count-complete">1</span>
+        </div>
+
+        <div class="ticket-card" id="ticket-5">
+          <div class="ticket-top">
+            <span>#1039 &bull; 6:45 AM</span>
+            <span style="color: #16a34a;">Signed Off</span>
+          </div>
+          <p class="ticket-title">Thermostat Sensor Wiring</p>
+          <p class="ticket-address">120 E Polk St, Kingsland</p>
+          <div class="ticket-footer">
+            <span class="ticket-tech">Crew 2 (Leo)</span>
+            <button class="btn-advance" onclick="advanceTicket('ticket-5', 'col-queued')">Reopen &larr;</button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- CONVERSION PROMPT -->
-    <div class="conversion-box">
-      <h2>Need Automated SMS Dispatch or Custom Driver Routing?</h2>
+    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <div class="inquiry-box">
+      <h2>Want this dispatch board hooked to your Google Sheet?</h2>
       <p>
-        We build custom dispatch boards tailored to your exact trade—integrating automated customer text alerts, one-tap GPS navigation, and QuickBooks or Google Sheets backends.
+        We build custom basic software systems that sync route assignments, text customer notifications, and archive work tickets directly in your own spreadsheets with zero per-user seat fees.
       </p>
-      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+      <form id="toolLeadForm" class="inquiry-form">
+        <input type="text" id="leadName" required placeholder="Your Name">
+        <input type="tel" id="leadPhone" required placeholder="Phone Number">
+        <button type="submit" id="btnLead" class="btn-inquiry">Request Dispatch Board Setup for My Business &rarr;</button>
+        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
+      </form>
     </div>
 
   </main>
 
-  <!-- ADD JOB MODAL -->
-  <div class="modal-backdrop" id="jobModal">
-    <div class="modal-window">
-      <h3>Dispatch New Job Ticket</h3>
-      <div class="form-group">
-        <label for="modalCustomer">Customer / Job Name</label>
-        <input type="text" id="modalCustomer" placeholder="e.g. Miller HVAC Inspection">
-      </div>
-      <div class="form-group">
-        <label for="modalAddress">Service Address / Location</label>
-        <input type="text" id="modalAddress" placeholder="e.g. 1420 RR 1431, Kingsland, TX">
-      </div>
-      <div class="form-group">
-        <label for="modalTech">Assigned Tech / Crew</label>
-        <select id="modalTech">
-          <option value="Tech A (Lead)">Tech A (Lead)</option>
-          <option value="Tech B (Service)">Tech B (Service)</option>
-          <option value="Crew 1 (Install)">Crew 1 (Install)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="modalTime">Window / Estimated Time</label>
-        <input type="text" id="modalTime" placeholder="e.g. 10:30 AM - 12:00 PM">
-      </div>
-      <div class="modal-actions">
-        <button class="btn-action btn-secondary" type="button" onclick="closeJobModal()">Cancel</button>
-        <button class="btn-action" type="button" onclick="saveNewJob()">Add to Board</button>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    const STORAGE_KEY = "sbs_dispatch_jobs";
+    function advanceTicket(ticketId, targetColId) {
+      const ticket = document.getElementById(ticketId);
+      const targetCol = document.getElementById(targetColId);
+      if (!ticket || !targetCol) return;
 
-    const DEFAULT_JOBS = [
-      { id: "job-1", title: "Lakeland Dock Pump Repair", address: "142 River Oaks Dr, Kingsland, TX", tech: "Tech A (Lead)", time: "09:00 AM", status: "progress" },
-      { id: "job-2", title: "Lake LBJ Generator Service", address: "780 RR 2900, Kingsland, TX", tech: "Tech B (Service)", time: "11:30 AM", status: "scheduled" },
-      { id: "job-3", title: "Commercial A/C Filter & Tune", address: "Highway 1431, Kingsland, TX", tech: "Crew 1 (Install)", time: "08:00 AM", status: "completed" }
-    ];
+      targetCol.appendChild(ticket);
 
-    let currentJobs = [];
-
-    function loadJobs() {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        try {
-          currentJobs = JSON.parse(saved);
-        } catch (e) {
-          currentJobs = [...DEFAULT_JOBS];
-        }
+      const btn = ticket.querySelector('.btn-advance');
+      if (targetColId === 'col-enroute') {
+        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-progress')`);
+        btn.innerText = 'On Site →';
+      } else if (targetColId === 'col-progress') {
+        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-complete')`);
+        btn.innerText = 'Finish →';
+      } else if (targetColId === 'col-complete') {
+        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-queued')`);
+        btn.innerText = 'Reopen ←';
       } else {
-        currentJobs = [...DEFAULT_JOBS];
+        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-enroute')`);
+        btn.innerText = 'Move →';
       }
-      renderBoard();
+
+      updateColCounts();
     }
 
-    function saveJobs() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(currentJobs));
-      renderBoard();
+    function updateColCounts() {
+      document.getElementById('count-queued').innerText = document.getElementById('col-queued').querySelectorAll('.ticket-card').length;
+      document.getElementById('count-enroute').innerText = document.getElementById('col-enroute').querySelectorAll('.ticket-card').length;
+      document.getElementById('count-progress').innerText = document.getElementById('col-progress').querySelectorAll('.ticket-card').length;
+      document.getElementById('count-complete').innerText = document.getElementById('col-complete').querySelectorAll('.ticket-card').length;
     }
 
-    function renderBoard() {
-      const stacks = {
-        scheduled: document.getElementById("stack-scheduled"),
-        progress: document.getElementById("stack-progress"),
-        completed: document.getElementById("stack-completed")
-      };
+    let ticketCounter = 1044;
+    function addSampleTicket() {
+      const colQueued = document.getElementById('col-queued');
+      const newId = 'ticket-' + ticketCounter;
 
-      const counts = {
-        scheduled: 0,
-        progress: 0,
-        completed: 0
-      };
+      const card = document.createElement('div');
+      card.className = 'ticket-card';
+      card.id = newId;
+      card.innerHTML = `
+        <div class="ticket-top">
+          <span>#${ticketCounter} &bull; Call In</span>
+          <span style="color: #0284c7;">New Call</span>
+        </div>
+        <p class="ticket-title">Standard Service Diagnostic</p>
+        <p class="ticket-address">Local Highland Lakes Route</p>
+        <div class="ticket-footer">
+          <span class="ticket-tech">Crew Standby</span>
+          <button class="btn-advance" onclick="advanceTicket('${newId}', 'col-enroute')">Move &rarr;</button>
+        </div>
+      `;
 
-      Object.values(stacks).forEach(stack => stack.innerHTML = "");
-
-      currentJobs.forEach(job => {
-        const targetStack = stacks[job.status] || stacks.scheduled;
-        counts[job.status] = (counts[job.status] || 0) + 1;
-
-        const mapsUrl = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(job.address);
-
-        const card = document.createElement("div");
-        card.className = "job-card";
-        card.innerHTML = `
-          <div class="job-card-top">
-            <h4 class="job-title">${escapeHtml(job.title)}</h4>
-            <span class="job-tech">${escapeHtml(job.tech)}</span>
-          </div>
-          <p class="job-address">
-            <a href="${mapsUrl}" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">
-              📍 ${escapeHtml(job.address)}
-            </a>
-          </p>
-          <div class="job-footer">
-            <span class="job-time">⏰ ${escapeHtml(job.time)}</span>
-            <div class="job-actions">
-              <select onchange="updateJobStatus('${job.id}', this.value)">
-                <option value="scheduled" ${job.status === 'scheduled' ? 'selected' : ''}>Scheduled</option>
-                <option value="progress" ${job.status === 'progress' ? 'selected' : ''}>En Route / On Site</option>
-                <option value="completed" ${job.status === 'completed' ? 'selected' : ''}>Completed</option>
-              </select>
-            </div>
-          </div>
-        `;
-        targetStack.appendChild(card);
-      });
-
-      document.getElementById("count-scheduled").innerText = counts.scheduled;
-      document.getElementById("count-progress").innerText = counts.progress;
-      document.getElementById("count-completed").innerText = counts.completed;
-      document.getElementById("jobTotalCount").innerText = `Active Jobs: ${currentJobs.length}`;
+      colQueued.appendChild(card);
+      ticketCounter++;
+      updateColCounts();
     }
 
-    function updateJobStatus(id, newStatus) {
-      const target = currentJobs.find(j => j.id === id);
-      if (target) {
-        target.status = newStatus;
-        saveJobs();
-      }
-    }
+    // LEAD INGESTION (APPS SCRIPT GET)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
-    function openJobModal() {
-      document.getElementById("modalCustomer").value = "";
-      document.getElementById("modalAddress").value = "";
-      document.getElementById("modalTime").value = "";
-      document.getElementById("jobModal").classList.add("active");
-    }
+    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnLead");
+      const feedback = document.getElementById("leadFeedback");
+      const nameVal = document.getElementById("leadName").value.trim();
+      const phoneVal = document.getElementById("leadPhone").value.trim();
 
-    function closeJobModal() {
-      document.getElementById("jobModal").classList.remove("active");
-    }
+      btn.disabled = true;
+      btn.innerText = "Sending...";
 
-    function saveNewJob() {
-      const title = document.getElementById("modalCustomer").value.trim() || "Service Ticket";
-      const address = document.getElementById("modalAddress").value.trim() || "Kingsland, TX";
-      const tech = document.getElementById("modalTech").value;
-      const time = document.getElementById("modalTime").value.trim() || "Scheduled";
+      const params = new URLSearchParams({
+        name: nameVal,
+        company: "Dispatch Board Demo User",
+        phone: phoneVal,
+        service: "Basic Software Systems / Dispatch Board Customization",
+        message: "Requested custom dispatch board setup.",
+        _t: new Date().getTime()
+      }).toString();
 
-      const newJob = {
-        id: "job-" + Date.now(),
-        title,
-        address,
-        tech,
-        time,
-        status: "scheduled"
-      };
-
-      currentJobs.push(newJob);
-      saveJobs();
-      closeJobModal();
-    }
-
-    function resetDemoData() {
-      currentJobs = [...DEFAULT_JOBS];
-      saveJobs();
-    }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    document.addEventListener("DOMContentLoaded", loadJobs);
+      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
+        .then(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#86efac";
+          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
+          document.getElementById("toolLeadForm").reset();
+        })
+        .catch(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#fca5a5";
+          feedback.innerText = "Error sending message. Please reach out directly.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerText = "Request Dispatch Board Setup for My Business →";
+        });
+    });
   </script>
 </body>
 </html>
