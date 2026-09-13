@@ -5,477 +5,295 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Job Profit &amp; Estimate Calculator | Free Contractor Quote Generator</title>
-<meta name="title" content="Job Profit &amp; Estimate Calculator | Free Contractor Quote Generator">
-<meta name="description" content="Calculate job costs, materials, labor, and profit margins in seconds. Generate client-ready PDF estimates with zero subscriptions, accounts, or fees.">
-<meta name="keywords" content="contractor estimate calculator, job costing tool, profit margin calculator for trades, free estimate generator pdf, no subscription estimate tool, contractor labor markup calculator, Kingsland TX business tools">
+<title>Job Estimate and Profit Calculator | Free Contractor PDF Tool</title>
+<meta name="title" content="Job Estimate and Profit Calculator | Free Contractor PDF Tool">
+<meta name="description" content="Free interactive contractor estimate and profit margin calculator. Calculate materials, labor, and profit margins to generate instant PDF quotes. Custom basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="contractor estimate calculator, basic software systems, job profit margin calculator, plumbing estimate template pdf, HVAC quote calculator, simple contractor invoicing, Kingsland TX">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
-<meta name="geo.region" content="US-TX">
-<meta name="geo.placename" content="Kingsland, Texas">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/estimator.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
-<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- OPEN GRAPH / SOCIAL -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.simplebizsystems.com/estimator.html">
-<meta property="og:title" content="Job Profit &amp; Estimate Calculator | Free Contractor Quote Generator">
-<meta property="og:description" content="Instant job costing, labor markup, and profit margin calculator for trade contractors. Free PDF quotes with no monthly fees.">
-<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Job Profit &amp; Estimate Calculator | Free Contractor Quote Generator">
-<meta name="twitter:description" content="Instant job costing, labor markup, and profit margin calculator for trade contractors. Free PDF quotes with no monthly fees.">
-<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- STRUCTURED DATA (JSON-LD) -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Simple Job Profit & Estimate Calculator",
-  "operatingSystem": "Web Browser, iOS, Android",
+  "@type": "WebApplication",
+  "name": "Contractor Job Estimate and Profit Calculator",
+  "url": "https://www.simplebizsystems.com/estimator.html",
   "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "operatingSystem": "All",
+  "description": "Interactive contractor costing tool with locked profit margins and instant PDF quote export.",
   "creator": {
-    "@type": "Organization",
-    "name": "Simple Biz Systems",
-    "url": "https://www.simplebizsystems.com/"
-  },
-  "description": "An instant job costing and margin calculator that produces clean, client-ready PDF estimates without software fees."
+    "@type": "Person",
+    "name": "Jeraldo Cruz"
+  }
 }
 </script>
 
-<!-- html2pdf.js for client-side PDF export -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- HTML2PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
-  :root { 
-    --primary: #0d3b66; 
-    --primary-light: #1e3a5f;
-    --accent: #d97706; 
+  :root {
+    --primary: #0d3b66;
+    --accent: #d97706;
     --accent-hover: #b45309;
-    --bg: #f8fafc; 
+    --bg: #f8fafc;
     --surface: #ffffff;
-    --text-dark: #1e293b; 
+    --text-dark: #1e293b;
     --text-muted: #64748b;
-    --border: #e2e8f0; 
+    --border: #e2e8f0;
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --success: #16a34a;
   }
-  
-  html {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
-  }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    background: var(--bg); 
-    margin: 0; 
-    padding: 0; 
-    color: var(--text-dark); 
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 0;
-    font-size: 0.83rem;
+    padding: 8px 12px;
+    font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
   }
-  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker strong { color: #fbbf24; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
-  .nav { 
-    background: var(--surface); 
-    border-bottom: 1px solid var(--border); 
-    padding: 12px 0; 
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .logo { 
+  .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    text-decoration: none; 
-    font-weight: 800; 
-    color: var(--primary); 
-    font-size: 1.2rem; 
-    letter-spacing: -0.02em;
-    line-height: 1;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.15rem;
   }
   .nav-brand-img {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     object-fit: contain;
-    display: block;
-    flex-shrink: 0;
   }
-  .nav-links { 
-    display: flex; 
-    align-items: center; 
-    gap: 18px; 
+  .nav-links {
+    display: flex;
+    gap: 16px;
   }
-  .nav-links a { 
-    text-decoration: none; 
-    color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    transition: color 0.15s ease;
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
   }
   .nav-links a:hover { color: var(--accent); }
-  .btn-nav {
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem !important;
-    transition: background 0.15s ease;
-  }
-  .btn-nav:hover { background: var(--accent-hover); }
 
-  /* HEADER BLOCK */
-  .header-block {
-    padding: 36px 0 20px 0;
+  /* HEADER */
+  .page-header {
+    padding: 30px 0 16px 0;
   }
   .badge-tag {
     display: inline-block;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
+    background: #e0f2fe;
     color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .header-block h1 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  .page-header h1 {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
   }
-  .header-block p {
-    font-size: 1rem;
+  .page-header p {
+    font-size: 0.96rem;
     color: var(--text-muted);
-    max-width: 720px;
-    margin: 0;
-  }
-
-  /* CALCULATOR GRID */
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-  @media (max-width: 860px) {
-    .calc-grid { grid-template-columns: 1fr; }
-  }
-
-  .calc-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: var(--card-shadow);
-  }
-
-  .section-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary);
     margin: 0 0 16px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
-  /* LINE ITEMS TABLE */
-  .item-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 14px;
-  }
-  .item-table th {
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-align: left;
-    padding: 6px 8px;
-    text-transform: uppercase;
-  }
-  .item-table td {
-    padding: 6px 8px;
-  }
-  .item-table input {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.88rem;
-    color: var(--text-dark);
-  }
-  .btn-remove {
-    background: transparent;
-    border: none;
-    color: #ef4444;
-    font-size: 1.1rem;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 4px 8px;
-  }
-
-  .btn-add {
-    background: var(--bg);
-    border: 1px dashed var(--border);
-    color: var(--primary);
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 0.86rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: background 0.15s ease;
-  }
-  .btn-add:hover { background: #e2e8f0; }
-
-  /* SUMMARY ASIDE */
-  .summary-card {
+  /* CALCULATOR CARD */
+  .tool-box {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
     box-shadow: var(--card-shadow);
-    height: fit-content;
+    margin-bottom: 30px;
   }
-  .metric-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-subtle);
-    font-size: 0.92rem;
-  }
-  .metric-row.highlight {
-    border-bottom: 2px solid var(--primary);
-    padding: 14px 0;
-  }
-  .metric-label {
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .metric-val {
-    font-weight: 700;
-    color: var(--text-dark);
-    font-size: 1rem;
-  }
-  .metric-val.total {
-    font-size: 1.4rem;
-    color: var(--primary);
-  }
-  .metric-val.profit {
-    color: var(--success);
-  }
-
-  .rate-inputs {
+  .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 16px 0;
+    gap: 14px;
+    margin-bottom: 14px;
   }
-  .rate-group label {
-    display: block;
-    font-size: 0.78rem;
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  .field label {
+    font-size: 0.76rem;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--text-dark);
     margin-bottom: 4px;
     text-transform: uppercase;
   }
-  .rate-group input {
-    width: 100%;
-    padding: 8px 10px;
+  .field input {
+    padding: 9px 11px;
     border: 1px solid var(--border);
     border-radius: 6px;
     font-size: 0.9rem;
-    font-weight: 600;
+    color: var(--text-dark);
   }
 
-  .btn-pdf {
-    width: 100%;
+  /* SUMMARY BOX */
+  .summary-panel {
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 18px 0;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  .summary-row.total {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .btn-calc {
     background: var(--accent);
     color: #ffffff;
     border: none;
-    padding: 12px 16px;
+    padding: 12px 20px;
     border-radius: 6px;
     font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 18px;
-    transition: background 0.15s ease;
-  }
-  .btn-pdf:hover { background: var(--accent-hover); }
-
-  /* FEATURE TILES */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-  .feature-tile {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: var(--card-shadow);
-  }
-  .feature-tile h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--primary);
-  }
-  .feature-tile p {
-    margin: 0;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.55;
-  }
-
-  /* CONVERSION BOX */
-  .conversion-box {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 24px;
-    text-align: center;
-    border-left: 6px solid var(--accent);
-    box-shadow: var(--card-shadow);
-  }
-  .conversion-box h2 {
-    color: #ffffff;
-    font-size: 1.35rem;
-    margin: 0 0 10px 0;
     font-weight: 800;
-  }
-  .conversion-box p {
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    max-width: 620px;
-    margin: 0 auto 20px auto;
-    line-height: 1.6;
-  }
-  .btn-cta {
-    display: inline-block;
-    background: var(--accent);
-    color: #ffffff;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
     transition: background 0.15s ease;
   }
-  .btn-cta:hover { background: var(--accent-hover); }
+  .btn-calc:hover { background: var(--accent-hover); }
 
-  /* PDF HIDDEN TEMPLATE */
+  /* PDF EXPORT STYLING (HIDDEN BY DEFAULT, CLONED FOR EXPORT) */
   #pdfTemplate {
     display: none;
-    background: #ffffff;
-    padding: 30px;
+    padding: 24px;
     font-family: Arial, sans-serif;
     color: #1e293b;
   }
-  #pdfTemplate h2 {
-    color: #0d3b66;
-    margin: 0 0 4px 0;
+
+  /* BOTTOM EMBEDDED CONTACT PANEL */
+  .inquiry-box {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 26px;
+    margin-bottom: 40px;
   }
-  #pdfTemplate .pdf-meta {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-bottom: 24px;
+  .inquiry-box h2 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 6px 0;
   }
-  #pdfTemplate table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 24px;
+  .inquiry-box p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
   }
-  #pdfTemplate th {
-    background: #f1f5f9;
-    padding: 8px;
-    font-size: 0.85rem;
-    text-align: left;
+  .inquiry-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
-  #pdfTemplate td {
-    padding: 8px;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.85rem;
+  @media (max-width: 600px) {
+    .inquiry-form { grid-template-columns: 1fr; }
   }
-  #pdfTemplate .pdf-total {
-    text-align: right;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #0d3b66;
+  .inquiry-form input {
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 0.88rem;
   }
+  .btn-inquiry {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    grid-column: 1 / -1;
+  }
+  .btn-inquiry:hover { background: var(--accent-hover); }
 
   /* FOOTER */
-  footer { 
-    background: #09233d; 
-    color: #94a3b8; 
-    padding: 40px 0; 
-    margin-top: 48px;
-    text-align: center; 
-    font-size: 0.85rem; 
+  footer {
+    background: #09233d;
+    color: #94a3b8;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.82rem;
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
+  <!-- SUB-TICKER -->
   <div class="sub-ticker">
-    Trade Operations &amp; Estimating • <strong>Free Web Tool, No Account Required</strong>
+    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
   </div>
 
   <!-- NAVIGATION -->
@@ -488,328 +306,219 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html" style="color: var(--accent);">Estimator</a>
         <a href="about.html">About &amp; Founder</a>
-        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
     
-    <!-- HEADER -->
-    <header class="header-block">
-      <span class="badge-tag">Fast Job Costing</span>
-      <h1>Job Profit &amp; Estimate Calculator</h1>
+    <header class="page-header">
+      <span class="badge-tag">Sample System Demo &bull; Estimating</span>
+      <h1>Job Estimate and Profit Calculator</h1>
       <p>
-        Built for contractors, electricians, HVAC, and service trades. Calculate raw job costs, apply target profit margins, and export clean, branded PDF quotes for customers.
+        Calculate material costs, crew labor hours, and locked profit margins on the job site. Generate an exportable customer PDF quote instantly.
       </p>
     </header>
 
-    <!-- CALCULATOR INTERFACE -->
-    <div class="calc-grid">
-      
-      <!-- LEFT: LINE ITEMS FORM -->
-      <div class="calc-card">
-        <div class="section-title">
-          <span>Project &amp; Client Info</span>
+    <!-- ESTIMATOR TOOL -->
+    <div class="tool-box">
+      <div class="form-grid">
+        <div class="field">
+          <label for="clientName">Customer / Job Name</label>
+          <input type="text" id="clientName" placeholder="e.g. Miller Residence">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
-          <div>
-            <label style="display:block; font-size: 0.78rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">PROJECT NAME</label>
-            <input type="text" id="projName" value="Lake LBJ Dock Wiring" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:6px; font-size:0.9rem;">
-          </div>
-          <div>
-            <label style="display:block; font-size: 0.78rem; font-weight:700; color:var(--text-muted); margin-bottom:4px;">CLIENT / BUSINESS</label>
-            <input type="text" id="clientName" value="Miller Residence" style="width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:6px; font-size:0.9rem;">
-          </div>
+        <div class="field">
+          <label for="tradeType">Trade / Project Type</label>
+          <input type="text" id="tradeType" placeholder="e.g. Water Heater Replacement">
         </div>
-
-        <div class="section-title">
-          <span>Labor &amp; Materials Line Items</span>
-        </div>
-
-        <table class="item-table">
-          <thead>
-            <tr>
-              <th style="width: 45%;">Description</th>
-              <th style="width: 18%;">Qty</th>
-              <th style="width: 27%;">Unit Cost ($)</th>
-              <th style="width: 10%;"></th>
-            </tr>
-          </thead>
-          <tbody id="lineItemsBody">
-            <!-- Row 1 -->
-            <tr>
-              <td><input type="text" class="item-desc" value="Marine conduit &amp; copper run (ft)"></td>
-              <td><input type="number" class="item-qty" value="120" min="0" oninput="calculateTotals()"></td>
-              <td><input type="number" class="item-unit" value="4.50" step="0.25" min="0" oninput="calculateTotals()"></td>
-              <td><button class="btn-remove" onclick="removeRow(this)" title="Remove item">&times;</button></td>
-            </tr>
-            <!-- Row 2 -->
-            <tr>
-              <td><input type="text" class="item-desc" value="Lead Journeyman Labor (hrs)"></td>
-              <td><input type="number" class="item-qty" value="8" min="0" oninput="calculateTotals()"></td>
-              <td><input type="number" class="item-unit" value="65.00" step="1.00" min="0" oninput="calculateTotals()"></td>
-              <td><button class="btn-remove" onclick="removeRow(this)" title="Remove item">&times;</button></td>
-            </tr>
-            <!-- Row 3 -->
-            <tr>
-              <td><input type="text" class="item-desc" value="Sub-panel &amp; GFCI breakers"></td>
-              <td><input type="number" class="item-qty" value="1" min="0" oninput="calculateTotals()"></td>
-              <td><input type="number" class="item-unit" value="280.00" step="5.00" min="0" oninput="calculateTotals()"></td>
-              <td><button class="btn-remove" onclick="removeRow(this)" title="Remove item">&times;</button></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button class="btn-add" type="button" onclick="addRow()">+ Add Line Item</button>
       </div>
 
-      <!-- RIGHT: MARGINS & TOTALS ASIDE -->
-      <aside class="summary-card">
-        <div class="section-title">
-          <span>Cost &amp; Profit Margins</span>
+      <div class="form-grid">
+        <div class="field">
+          <label for="matCost">Material Cost ($)</label>
+          <input type="number" id="matCost" value="450" oninput="calculateEstimate()">
         </div>
+        <div class="field">
+          <label for="matMarkup">Material Markup (%)</label>
+          <input type="number" id="matMarkup" value="20" oninput="calculateEstimate()">
+        </div>
+      </div>
 
-        <div class="rate-inputs">
-          <div class="rate-group">
-            <label>Target Margin (%)</label>
-            <input type="number" id="marginRate" value="30" min="0" max="99" oninput="calculateTotals()">
-          </div>
-          <div class="rate-group">
-            <label>Sales Tax (%)</label>
-            <input type="number" id="taxRate" value="8.25" min="0" step="0.05" oninput="calculateTotals()">
-          </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="laborHours">Estimated Labor Hours</label>
+          <input type="number" id="laborHours" value="4" oninput="calculateEstimate()">
         </div>
+        <div class="field">
+          <label for="laborRate">Hourly Labor Rate ($/hr)</label>
+          <input type="number" id="laborRate" value="95" oninput="calculateEstimate()">
+        </div>
+      </div>
 
-        <div class="metric-row">
-          <span class="metric-label">Direct Cost (COGS)</span>
-          <span class="metric-val" id="valDirectCost">$1,340.00</span>
+      <div class="summary-panel">
+        <div class="summary-row">
+          <span>Total Materials (with markup):</span>
+          <strong id="displayMaterials">$540.00</strong>
         </div>
-        <div class="metric-row">
-          <span class="metric-label">Estimated Gross Profit</span>
-          <span class="metric-val profit" id="valGrossProfit">$574.29</span>
+        <div class="summary-row">
+          <span>Total Labor:</span>
+          <strong id="displayLabor">$380.00</strong>
         </div>
-        <div class="metric-row">
-          <span class="metric-label">Sales Tax</span>
-          <span class="metric-val" id="valTax">$157.93</span>
+        <div class="summary-row total">
+          <span>Customer Quote Total:</span>
+          <span id="displayTotal">$920.00</span>
         </div>
-        <div class="metric-row highlight">
-          <span class="metric-label" style="font-size:1.05rem; font-weight:700; color:var(--primary);">Total Client Price</span>
-          <span class="metric-val total" id="valTotalPrice">$2,072.22</span>
-        </div>
+      </div>
 
-        <button class="btn-pdf" type="button" onclick="exportEstimatePDF()">
-          📄 Download Client Quote PDF
-        </button>
-      </aside>
-
+      <button type="button" class="btn-calc" onclick="downloadEstimatePDF()">Export Official PDF Quote &rarr;</button>
     </div>
 
-    <!-- FEATURE GRID -->
-    <div class="feature-grid">
-      <div class="feature-tile">
-        <h3>Protect Your Net Margins</h3>
-        <p>Ensure every job factors in true direct costs before adding realistic margins, preventing the creeping overhead that quietly drains cash flow.</p>
+    <!-- HIDDEN PDF TEMPLATE (RENDERED BY HTML2PDF) -->
+    <div id="pdfTemplate">
+      <div style="border-bottom: 2px solid #0d3b66; padding-bottom: 12px; margin-bottom: 16px;">
+        <h2 style="color: #0d3b66; margin: 0 0 4px 0;">PROJECT ESTIMATE</h2>
+        <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Prepared by Simple Biz Systems Demo Engine</p>
       </div>
-      <div class="feature-tile">
-        <h3>No Paywalls or Login Locks</h3>
-        <p>Built as a free utility. Your numbers stay in your browser—we don't collect, gate, or sell your trade pricing data.</p>
-      </div>
-      <div class="feature-tile">
-        <h3>Client-Ready PDF Quotes</h3>
-        <p>Generate clean, professional estimates in one tap that you can text or email to your customer straight from the job site.</p>
-      </div>
-    </div>
-
-    <!-- CONVERSION BOX -->
-    <div class="conversion-box">
-      <h2>Need an Automated Estimator Tied to Your Price Book?</h2>
-      <p>
-        We build custom quoting engines for local trade contractors—connecting your actual supplier price sheets, material calculators, and automated contracts directly to Google Workspace or QuickBooks.
+      <p><strong>Customer / Project:</strong> <span id="pdfCustomer"></span></p>
+      <p><strong>Scope of Work:</strong> <span id="pdfScope"></span></p>
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem;">
+        <tr style="background: #f1f5f9; border-bottom: 1px solid #cbd5e1;">
+          <th style="text-align: left; padding: 8px;">Description</th>
+          <th style="text-align: right; padding: 8px;">Amount</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 8px;">Estimated Materials &amp; Supplies</td>
+          <td style="text-align: right; padding: 8px;" id="pdfMat"></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 8px;">Crew Labor &amp; Installation</td>
+          <td style="text-align: right; padding: 8px;" id="pdfLab"></td>
+        </tr>
+        <tr style="font-weight: bold; background: #fafafa;">
+          <td style="padding: 10px;">Total Project Estimate</td>
+          <td style="text-align: right; padding: 10px;" id="pdfTot"></td>
+        </tr>
+      </table>
+      <p style="font-size: 0.8rem; color: #64748b; margin-top: 30px;">
+        * Estimate valid for 30 days. Generated via Simple Biz Systems custom operational tools.
       </p>
-      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+    </div>
+
+    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <div class="inquiry-box">
+      <h2>Want this customized for your business?</h2>
+      <p>
+        We build custom basic software systems that log your estimates straight into your own Google Sheet with zero monthly seat fees.
+      </p>
+      <form id="toolLeadForm" class="inquiry-form">
+        <input type="text" id="leadName" required placeholder="Your Name">
+        <input type="tel" id="leadPhone" required placeholder="Phone Number">
+        <button type="submit" id="btnLead" class="btn-inquiry">Request Custom Setup for My Trade &rarr;</button>
+        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
+      </form>
     </div>
 
   </main>
 
-  <!-- HIDDEN PDF RENDERING SHELL -->
-  <div id="pdfTemplate">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 20px;">
-      <div>
-        <h2 id="pdfProjHeader">Project Estimate</h2>
-        <div class="pdf-meta" id="pdfClientMeta">Prepared for: Client</div>
-      </div>
-      <div style="text-align: right; font-size: 0.85rem; color: #64748b;">
-        <div>Date: <span id="pdfDate">Today</span></div>
-        <div>Estimate Reference: #EST-<span id="pdfNum">1001</span></div>
-      </div>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th style="text-align:center;">Qty</th>
-          <th style="text-align:right;">Unit Price</th>
-          <th style="text-align:right;">Line Total</th>
-        </tr>
-      </thead>
-      <tbody id="pdfTableBody"></tbody>
-    </table>
-
-    <div style="width: 240px; margin-left: auto; text-align: right;">
-      <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-size:0.85rem;">
-        <span>Subtotal:</span>
-        <span id="pdfSubtotal">$0.00</span>
-      </div>
-      <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.85rem;">
-        <span>Sales Tax:</span>
-        <span id="pdfTax">$0.00</span>
-      </div>
-      <div style="display:flex; justify-content:space-between; font-size:1.1rem; font-weight:bold; color:#0d3b66; border-top: 1px solid #cbd5e1; padding-top:6px;">
-        <span>Total Quote:</span>
-        <span id="pdfTotal">$0.00</span>
-      </div>
-    </div>
-
-    <div style="margin-top: 40px; border-top: 1px dashed #cbd5e1; padding-top: 12px; font-size: 0.75rem; color: #94a3b8; text-align: center;">
-      Estimate valid for 30 days. Generated via Simple Biz Systems Estimator (simplebizsystems.com).
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    function addRow() {
-      const tbody = document.getElementById("lineItemsBody");
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td><input type="text" class="item-desc" placeholder="Item or service description"></td>
-        <td><input type="number" class="item-qty" value="1" min="0" oninput="calculateTotals()"></td>
-        <td><input type="number" class="item-unit" value="0.00" step="0.25" min="0" oninput="calculateTotals()"></td>
-        <td><button class="btn-remove" onclick="removeRow(this)" title="Remove item">&times;</button></td>
-      `;
-      tbody.appendChild(tr);
+    function calculateEstimate() {
+      const matCost = parseFloat(document.getElementById('matCost').value) || 0;
+      const matMarkup = parseFloat(document.getElementById('matMarkup').value) || 0;
+      const laborHours = parseFloat(document.getElementById('laborHours').value) || 0;
+      const laborRate = parseFloat(document.getElementById('laborRate').value) || 0;
+
+      const totalMaterials = matCost + (matCost * (matMarkup / 100));
+      const totalLabor = laborHours * laborRate;
+      const grandTotal = totalMaterials + totalLabor;
+
+      document.getElementById('displayMaterials').innerText = '$' + totalMaterials.toFixed(2);
+      document.getElementById('displayLabor').innerText = '$' + totalLabor.toFixed(2);
+      document.getElementById('displayTotal').innerText = '$' + grandTotal.toFixed(2);
+
+      return {
+        customer: document.getElementById('clientName').value.trim() || "Customer",
+        scope: document.getElementById('tradeType').value.trim() || "Trade Services",
+        materials: '$' + totalMaterials.toFixed(2),
+        labor: '$' + totalLabor.toFixed(2),
+        total: '$' + grandTotal.toFixed(2)
+      };
     }
 
-    function removeRow(btn) {
-      const row = btn.closest("tr");
-      if (document.querySelectorAll("#lineItemsBody tr").length > 1) {
-        row.remove();
-        calculateTotals();
-      }
-    }
+    function downloadEstimatePDF() {
+      const data = calculateEstimate();
+      document.getElementById('pdfCustomer').innerText = data.customer;
+      document.getElementById('pdfScope').innerText = data.scope;
+      document.getElementById('pdfMat').innerText = data.materials;
+      document.getElementById('pdfLab').innerText = data.labor;
+      document.getElementById('pdfTot').innerText = data.total;
 
-    function calculateTotals() {
-      const rows = document.querySelectorAll("#lineItemsBody tr");
-      let directCost = 0;
-
-      rows.forEach(r => {
-        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
-        const unit = parseFloat(r.querySelector(".item-unit").value) || 0;
-        directCost += (qty * unit);
-      });
-
-      const marginPct = (parseFloat(document.getElementById("marginRate").value) || 0) / 100;
-      const taxPct = (parseFloat(document.getElementById("taxRate").value) || 0) / 100;
-
-      // Price before tax based on margin: Cost / (1 - Margin)
-      let priceBeforeTax = directCost;
-      if (marginPct < 1 && marginPct > 0) {
-        priceBeforeTax = directCost / (1 - marginPct);
-      }
-      
-      const grossProfit = priceBeforeTax - directCost;
-      const tax = priceBeforeTax * taxPct;
-      const totalClientPrice = priceBeforeTax + tax;
-
-      document.getElementById("valDirectCost").innerText = formatMoney(directCost);
-      document.getElementById("valGrossProfit").innerText = formatMoney(grossProfit);
-      document.getElementById("valTax").innerText = formatMoney(tax);
-      document.getElementById("valTotalPrice").innerText = formatMoney(totalClientPrice);
-    }
-
-    function formatMoney(amount) {
-      return "$" + amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
-
-    function exportEstimatePDF() {
-      const proj = document.getElementById("projName").value || "Job Estimate";
-      const client = document.getElementById("clientName").value || "Valued Client";
-      
-      document.getElementById("pdfProjHeader").innerText = proj;
-      document.getElementById("pdfClientMeta").innerText = "Prepared for: " + client;
-      document.getElementById("pdfDate").innerText = new Date().toLocaleDateString();
-      document.getElementById("pdfNum").innerText = Math.floor(1000 + Math.random() * 9000);
-
-      const tbody = document.getElementById("pdfTableBody");
-      tbody.innerHTML = "";
-
-      const marginPct = (parseFloat(document.getElementById("marginRate").value) || 0) / 100;
-      const rows = document.querySelectorAll("#lineItemsBody tr");
-
-      let subtotalClient = 0;
-
-      rows.forEach(r => {
-        const desc = r.querySelector(".item-desc").value || "Service item";
-        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
-        const costUnit = parseFloat(r.querySelector(".item-unit").value) || 0;
-        
-        // Marked-up unit price for client view
-        let markedUnit = costUnit;
-        if (marginPct < 1 && marginPct > 0) {
-          markedUnit = costUnit / (1 - marginPct);
-        }
-        const lineTotal = qty * markedUnit;
-        subtotalClient += lineTotal;
-
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${desc}</td>
-          <td style="text-align:center;">${qty}</td>
-          <td style="text-align:right;">${formatMoney(markedUnit)}</td>
-          <td style="text-align:right;">${formatMoney(lineTotal)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      const taxPct = (parseFloat(document.getElementById("taxRate").value) || 0) / 100;
-      const taxTotal = subtotalClient * taxPct;
-      const grandTotal = subtotalClient + taxTotal;
-
-      document.getElementById("pdfSubtotal").innerText = formatMoney(subtotalClient);
-      document.getElementById("pdfTax").innerText = formatMoney(taxTotal);
-      document.getElementById("pdfTotal").innerText = formatMoney(grandTotal);
-
-      const template = document.getElementById("pdfTemplate");
-      template.style.display = "block";
+      const element = document.getElementById('pdfTemplate');
+      element.style.display = 'block';
 
       const opt = {
-        margin:       10,
-        filename:     `${proj.toLowerCase().replace(/[^a-z0-9]/g, '_')}_estimate.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        margin: 0.5,
+        filename: 'Estimate_' + data.customer.replace(/\s+/g, '_') + '.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
 
-      html2pdf().set(opt).from(template).save().then(() => {
-        template.style.display = "none";
+      html2pdf().set(opt).from(element).save().then(() => {
+        element.style.display = 'none';
       });
     }
 
-    document.addEventListener("DOMContentLoaded", calculateTotals);
+    // LEAD INGESTION (APPS SCRIPT GET)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
+
+    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnLead");
+      const feedback = document.getElementById("leadFeedback");
+      const nameVal = document.getElementById("leadName").value.trim();
+      const phoneVal = document.getElementById("leadPhone").value.trim();
+
+      btn.disabled = true;
+      btn.innerText = "Sending...";
+
+      const params = new URLSearchParams({
+        name: nameVal,
+        company: "Estimate Tool Demo User",
+        phone: phoneVal,
+        service: "Basic Software Systems / Estimator Customization",
+        message: "Requested custom estimator tool setup.",
+        _t: new Date().getTime()
+      }).toString();
+
+      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
+        .then(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#86efac";
+          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
+          document.getElementById("toolLeadForm").reset();
+        })
+        .catch(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#fca5a5";
+          feedback.innerText = "Error sending message. Please reach out directly.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerText = "Request Custom Setup for My Trade →";
+        });
+    });
   </script>
 </body>
 </html>
