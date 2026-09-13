@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Contractor Lead and Pipeline Tracker | Basic Software Systems Demo</title>
-<meta name="title" content="Contractor Lead and Pipeline Tracker | Basic Software Systems Demo">
-<meta name="description" content="Free interactive contractor lead tracker and customer pipeline board. Follow job inquiries from first call to paid invoice without monthly CRM fees. Basic software systems by Simple Biz Systems.">
-<meta name="keywords" content="contractor lead tracker, basic software systems, simple contractor CRM no monthly fee, Google Sheets lead pipeline, trade sales tracker, Jobber alternative, Kingsland TX">
+<title>Free Crew Timecard and Labor Calculator | Simple Biz Systems</title>
+<meta name="title" content="Free Crew Timecard and Labor Calculator | Simple Biz Systems">
+<meta name="description" content="Free to use sample tools for contractors. Calculate regular hours, overtime, and crew wages, then download an official payroll PDF. Basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="free crew timecard calculator, basic software systems, contractor overtime calculator, free trade tools, payroll hours tracker pdf, Kingsland TX web support">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://www.simplebizsystems.com/leads.html" />
+<link rel="canonical" href="https://www.simplebizsystems.com/timecards.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 
 <!-- STRUCTURED DATA -->
@@ -20,17 +20,20 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Contractor Lead and Pipeline Tracker",
-  "url": "https://www.simplebizsystems.com/leads.html",
+  "name": "Crew Timecard and Labor Hours Calculator",
+  "url": "https://www.simplebizsystems.com/timecards.html",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
-  "description": "Interactive lead ingestion and sales pipeline tracker designed for trade contractors without per-user CRM subscriptions.",
+  "description": "Free to use sample tool for trade crews to calculate regular and overtime hours with instant PDF payroll reports.",
   "creator": {
     "@type": "Person",
     "name": "Jeraldo Cruz"
   }
 }
 </script>
+
+<!-- HTML2PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
   :root {
@@ -60,7 +63,7 @@
   }
 
   .container {
-    max-width: 1100px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
@@ -76,7 +79,6 @@
     border-bottom: 2px solid var(--accent);
   }
   .sub-ticker strong { color: #fbbf24; }
-  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
   .nav {
@@ -127,8 +129,9 @@
   }
   .badge-tag {
     display: inline-block;
-    background: #e0f2fe;
-    color: var(--primary);
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 0.74rem;
@@ -147,172 +150,148 @@
     font-size: 0.96rem;
     color: var(--text-muted);
     margin: 0 0 16px 0;
-    max-width: 780px;
+    max-width: 760px;
   }
 
-  /* PIPELINE CONTROLS & STATS */
-  .pipeline-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .stat-card {
+  /* TIMECARD TOOL BOX */
+  .tool-box {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 16px;
+    border-radius: 12px;
+    padding: 24px;
     box-shadow: var(--card-shadow);
+    margin-bottom: 30px;
   }
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-  .stat-value {
-    font-size: 1.3rem;
+  .section-label {
+    font-size: 0.8rem;
     font-weight: 800;
     color: var(--primary);
-    margin-top: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  .field label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .field input {
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    width: 100%;
   }
 
-  .board-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-    gap: 10px;
+  /* CREW TABLE */
+  .crew-table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
   }
-  .btn-add-lead {
-    background: var(--surface);
+  .crew-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .crew-table th {
+    background: #f1f5f9;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .crew-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .crew-table input {
+    padding: 6px 8px;
     border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.86rem;
+    width: 100%;
+  }
+
+  .btn-add-row {
+    background: none;
+    border: 1px dashed var(--border);
     color: var(--primary);
+    font-size: 0.8rem;
     font-weight: 700;
-    font-size: 0.82rem;
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.15s ease;
+    margin-bottom: 14px;
   }
-  .btn-add-lead:hover {
-    background: var(--primary);
-    color: #ffffff;
+  .btn-add-row:hover {
+    background: #f8fafc;
     border-color: var(--primary);
   }
 
-  /* KANBAN BOARD */
-  .pipeline-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin-bottom: 34px;
-  }
-  @media (max-width: 860px) {
-    .pipeline-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .pipeline-col {
+  .summary-panel {
     background: #f1f5f9;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 18px 0;
   }
-  .col-header {
+  .summary-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 0.84rem;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  .summary-row.total {
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
-    text-transform: uppercase;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--border);
-  }
-  .col-count {
-    background: #e2e8f0;
-    color: #475569;
-    padding: 1px 6px;
-    border-radius: 10px;
-    font-size: 0.74rem;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: 8px;
+    margin-bottom: 0;
   }
 
-  .lead-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .lead-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow-lg);
-  }
-  .lead-top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--text-muted);
-  }
-  .lead-title {
-    font-size: 0.92rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin: 0;
-  }
-  .lead-phone {
-    font-size: 0.8rem;
-    color: var(--accent-hover);
-    font-weight: 600;
-    margin: 0;
-  }
-  .lead-desc {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.4;
-  }
-  .lead-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px dashed var(--border-subtle);
-  }
-  .lead-val {
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: var(--success);
-  }
-  .btn-advance {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    padding: 2px 6px;
-    cursor: pointer;
-  }
-  .btn-advance:hover {
-    background: var(--primary);
+  .btn-calc {
+    background: var(--accent);
     color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s ease;
+  }
+  .btn-calc:hover { background: var(--accent-hover); }
+
+  /* PDF HIDDEN TEMPLATE */
+  #pdfTemplate {
+    display: none;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
   }
 
-  /* BOTTOM EMBEDDED CONTACT PANEL */
+  /* INQUIRY PANEL */
   .inquiry-box {
     background: #0f2b48;
     color: #ffffff;
@@ -375,12 +354,10 @@
 </head>
 <body>
 
-  <!-- SUB-TICKER -->
   <div class="sub-ticker">
-    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
+    Free to use sample tools from <strong>Simple Biz Systems</strong>: No account, login, or subscription required.
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -398,163 +375,144 @@
   <main class="container">
     
     <header class="page-header">
-      <span class="badge-tag">Sample System Demo &bull; Customer Pipeline &amp; Intake</span>
-      <h1>Contractor Lead and Pipeline Tracker</h1>
+      <span class="badge-tag">Free to Use &bull; Sample Field Tool</span>
+      <h1>Crew Timecard and Labor Calculator</h1>
       <p>
-        Never let a service call slip through the cracks. Track incoming phone calls, website inquiries, and estimates straight into your own Google Sheet without paying $80 to $150 a month for CRM software.
+        Calculate regular hours, overtime rates, and gross wages for your crew on the job site. Export an official payroll summary PDF with your business name for free.
       </p>
     </header>
 
-    <!-- METRICS STRIP -->
-    <div class="pipeline-stats">
-      <div class="stat-card">
-        <div class="stat-label">Active Leads in Pipe</div>
-        <div class="stat-value" id="statActive">5 Leads</div>
+    <div class="tool-box">
+      <!-- BUSINESS & PERIOD DETAILS -->
+      <div class="section-label">Payroll &amp; Company Details (Appears on PDF)</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="bizName">Your Company Name</label>
+          <input type="text" id="bizName" placeholder="e.g. Hill Country Mechanical">
+        </div>
+        <div class="field">
+          <label for="payPeriod">Pay Period / Week Ending</label>
+          <input type="text" id="payPeriod" placeholder="e.g. Week Ending Sep 18, 2026">
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Pipeline Value</div>
-        <div class="stat-value" id="statValue">$11,850</div>
+
+      <!-- CREW HOURS TABLE -->
+      <div class="section-label" style="margin-top: 20px;">Crew Hours &amp; Rates</div>
+      <div class="crew-table-wrap">
+        <table class="crew-table" id="crewTable">
+          <thead>
+            <tr>
+              <th style="min-width: 140px;">Technician / Helper</th>
+              <th style="width: 80px;">Reg Hrs</th>
+              <th style="width: 80px;">OT Hrs</th>
+              <th style="width: 100px;">Base Rate ($/hr)</th>
+              <th style="width: 100px; text-align: right;">Gross Total</th>
+            </tr>
+          </thead>
+          <tbody id="crewTableBody">
+            <tr>
+              <td><input type="text" class="t-name" value="Dan Reynolds (Lead)"></td>
+              <td><input type="number" class="t-reg" value="40" oninput="calculatePayroll()"></td>
+              <td><input type="number" class="t-ot" value="4" oninput="calculatePayroll()"></td>
+              <td><input type="number" class="t-rate" value="28.00" oninput="calculatePayroll()"></td>
+              <td style="text-align: right; font-weight: 700;" class="t-row-total">$1,288.00</td>
+            </tr>
+            <tr>
+              <td><input type="text" class="t-name" value="Sam Torres (Apprentice)"></td>
+              <td><input type="number" class="t-reg" value="38" oninput="calculatePayroll()"></td>
+              <td><input type="number" class="t-ot" value="0" oninput="calculatePayroll()"></td>
+              <td><input type="number" class="t-rate" value="19.50" oninput="calculatePayroll()"></td>
+              <td style="text-align: right; font-weight: 700;" class="t-row-total">$741.00</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Monthly Software Cost</div>
-        <div class="stat-value" style="color: var(--success);">$0 / mo</div>
+
+      <button type="button" class="btn-add-row" onclick="addCrewRow()">+ Add Another Crew Member</button>
+
+      <!-- TOTALS PANEL -->
+      <div class="summary-panel">
+        <div class="summary-row">
+          <span>Total Regular Hours:</span>
+          <strong id="displayTotalReg">78.0 hrs</strong>
+        </div>
+        <div class="summary-row">
+          <span>Total Overtime Hours:</span>
+          <strong id="displayTotalOT">4.0 hrs</strong>
+        </div>
+        <div class="summary-row total">
+          <span>Total Gross Payroll:</span>
+          <span id="displayGrossTotal">$2,029.00</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-calc" onclick="downloadPayrollPDF()">Generate &amp; Download Payroll PDF &rarr;</button>
+    </div>
+
+    <!-- BRANDED PDF EXPORT TEMPLATE -->
+    <div id="pdfTemplate">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #0d3b66; padding-bottom: 12px; margin-bottom: 16px;">
+        <div>
+          <h2 style="color: #0d3b66; margin: 0 0 4px 0; font-size: 1.3rem;" id="pdfBiz">Company Payroll Summary</h2>
+          <p style="margin: 0; font-size: 0.85rem; color: #475569;" id="pdfPeriod"></p>
+        </div>
+        <div style="text-align: right;">
+          <strong style="color: #d97706; font-size: 1.05rem;">CREW TIMECARD</strong><br>
+          <span style="font-size: 0.8rem; color: #64748b;" id="pdfDate"></span>
+        </div>
+      </div>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: #f1f5f9; border-bottom: 1px solid #cbd5e1;">
+            <th style="text-align: left; padding: 8px;">Employee / Tech</th>
+            <th style="text-align: center; padding: 8px;">Reg Hrs</th>
+            <th style="text-align: center; padding: 8px;">OT Hrs</th>
+            <th style="text-align: right; padding: 8px;">Base Rate</th>
+            <th style="text-align: right; padding: 8px;">Gross Total</th>
+          </tr>
+        </thead>
+        <tbody id="pdfTableBody">
+          <!-- Dynamically filled on PDF export -->
+        </tbody>
+        <tfoot>
+          <tr style="font-weight: bold; background: #fafafa; border-top: 2px solid #cbd5e1;">
+            <td style="padding: 10px;" colspan="4">Total Gross Payroll Due:</td>
+            <td style="text-align: right; padding: 10px; color: #0d3b66;" id="pdfTotalVal"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- SIMPLE BIZ SYSTEMS WATERMARK FOOTER -->
+      <div style="border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <img src="logo-icon.png" alt="Simple Biz Systems" style="height: 16px; width: 16px; object-fit: contain;">
+          <span>Generated free via <strong>Simple Biz Systems</strong> &bull; simplebizsystems.com</span>
+        </div>
+        <span>Basic Software Systems &bull; Kingsland, TX</span>
       </div>
     </div>
 
-    <!-- BOARD CONTROLS -->
-    <div class="board-controls">
-      <span style="font-weight: 800; color: var(--primary); font-size: 0.95rem;">Current Sales Pipeline</span>
-      <button type="button" class="btn-add-lead" onclick="addSampleLead()">+ Log Incoming Call</button>
-    </div>
-
-    <!-- KANBAN PIPELINE -->
-    <div class="pipeline-grid">
-      
-      <!-- STAGE 1: NEW INQUIRY -->
-      <div class="pipeline-col" id="col-new">
-        <div class="col-header">
-          <span>1. New Inquiries</span>
-          <span class="col-count" id="count-new">2</span>
-        </div>
-
-        <div class="lead-card" id="lead-1">
-          <div class="lead-top">
-            <span>Website Form &bull; 10m ago</span>
-            <span style="color: #d97706;">Hot</span>
-          </div>
-          <p class="lead-title">Mark Reynolds</p>
-          <p class="lead-phone">325-555-0144</p>
-          <p class="lead-desc">Lake LBJ dock rewire and lighting quote request.</p>
-          <div class="lead-footer">
-            <span class="lead-val">Est. $3,200</span>
-            <button class="btn-advance" onclick="advanceLead('lead-1', 'col-contacted')">Contact &rarr;</button>
-          </div>
-        </div>
-
-        <div class="lead-card" id="lead-2">
-          <div class="lead-top">
-            <span>Phone Call &bull; 1 hr ago</span>
-            <span>Routine</span>
-          </div>
-          <p class="lead-title">Brenda Collins</p>
-          <p class="lead-phone">512-555-0891</p>
-          <p class="lead-desc">Needs replacement water filtration system under sink.</p>
-          <div class="lead-footer">
-            <span class="lead-val">Est. $650</span>
-            <button class="btn-advance" onclick="advanceLead('lead-2', 'col-contacted')">Contact &rarr;</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAGE 2: CONTACTED / SITE VISIT -->
-      <div class="pipeline-col" id="col-contacted">
-        <div class="col-header">
-          <span>2. Site Visit Scheduled</span>
-          <span class="col-count" id="count-contacted">1</span>
-        </div>
-
-        <div class="lead-card" id="lead-3">
-          <div class="lead-top">
-            <span>Site Visit Mon 9 AM</span>
-            <span>Walkthrough</span>
-          </div>
-          <p class="lead-title">Highland Ridge HOA</p>
-          <p class="lead-phone">325-555-0322</p>
-          <p class="lead-desc">Common area irrigation backflow test and zone repair.</p>
-          <div class="lead-footer">
-            <span class="lead-val">Est. $1,800</span>
-            <button class="btn-advance" onclick="advanceLead('lead-3', 'col-quoted')">Quote &rarr;</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAGE 3: QUOTE SENT -->
-      <div class="pipeline-col" id="col-quoted">
-        <div class="col-header">
-          <span>3. Quote Sent</span>
-          <span class="col-count" id="count-quoted">1</span>
-        </div>
-
-        <div class="lead-card" id="lead-4">
-          <div class="lead-top">
-            <span>Sent 2 Days Ago</span>
-            <span>Reviewing</span>
-          </div>
-          <p class="lead-title">David Patterson</p>
-          <p class="lead-phone">512-555-0763</p>
-          <p class="lead-desc">Full 4-ton dual heat pump changeout proposal.</p>
-          <div class="lead-footer">
-            <span class="lead-val">Est. $5,400</span>
-            <button class="btn-advance" onclick="advanceLead('lead-4', 'col-won')">Book &rarr;</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- STAGE 4: WON & BOOKED -->
-      <div class="pipeline-col" id="col-won">
-        <div class="col-header">
-          <span>4. Won / Scheduled</span>
-          <span class="col-count" id="count-won">1</span>
-        </div>
-
-        <div class="lead-card" id="lead-5">
-          <div class="lead-top">
-            <span>Deposit Paid</span>
-            <span style="color: var(--success);">Booked</span>
-          </div>
-          <p class="lead-title">Sunset Cove Rentals</p>
-          <p class="lead-phone">325-555-0919</p>
-          <p class="lead-desc">Mini-split installation for guest cabin.</p>
-          <div class="lead-footer">
-            <span class="lead-val" style="color: var(--success);">$800 Paid</span>
-            <button class="btn-advance" onclick="advanceLead('lead-5', 'col-new')">Reopen &larr;</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
+    <!-- UPSELL INQUIRY BOX -->
     <div class="inquiry-box">
-      <h2>Want your website inquiries routed straight to your spreadsheet?</h2>
+      <h2>Want crew punches saved straight into your Google Sheet?</h2>
       <p>
-        We build custom basic software systems that capture customer leads, send automatic confirmation text messages, and update your pipeline directly in Google Sheets without recurring subscription costs.
+        These sample tools are 100% free to use on job sites. If you ever want crew timecards, job labor tracking, or supply sheets automatically connected to your own private Google account with zero per-user monthly bills, let us know below.
       </p>
       <form id="toolLeadForm" class="inquiry-form">
         <input type="text" id="leadName" required placeholder="Your Name">
         <input type="tel" id="leadPhone" required placeholder="Phone Number">
-        <button type="submit" id="btnLead" class="btn-inquiry">Request Lead Tracker Setup for My Business &rarr;</button>
+        <button type="submit" id="btnLead" class="btn-inquiry">Ask About Custom Spreadsheet Setup &rarr;</button>
         <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
       </form>
     </div>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Free to use sample tools and basic software systems for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
         <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
@@ -562,66 +520,95 @@
   </footer>
 
   <script>
-    function advanceLead(leadId, targetColId) {
-      const lead = document.getElementById(leadId);
-      const targetCol = document.getElementById(targetColId);
-      if (!lead || !targetCol) return;
+    function calculatePayroll() {
+      const rows = document.querySelectorAll('#crewTableBody tr');
+      let totalReg = 0;
+      let totalOT = 0;
+      let grandTotal = 0;
 
-      targetCol.appendChild(lead);
+      rows.forEach(row => {
+        const reg = parseFloat(row.querySelector('.t-reg').value) || 0;
+        const ot = parseFloat(row.querySelector('.t-ot').value) || 0;
+        const rate = parseFloat(row.querySelector('.t-rate').value) || 0;
 
-      const btn = lead.querySelector('.btn-advance');
-      if (targetColId === 'col-contacted') {
-        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-quoted')`);
-        btn.innerText = 'Quote →';
-      } else if (targetColId === 'col-quoted') {
-        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-won')`);
-        btn.innerText = 'Book →';
-      } else if (targetColId === 'col-won') {
-        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-new')`);
-        btn.innerText = 'Reopen ←';
-      } else {
-        btn.setAttribute('onclick', `advanceLead('${leadId}', 'col-contacted')`);
-        btn.innerText = 'Contact →';
-      }
+        const regPay = reg * rate;
+        const otPay = ot * (rate * 1.5);
+        const rowTotal = regPay + otPay;
 
-      updateColCounts();
+        row.querySelector('.t-row-total').innerText = '$' + rowTotal.toFixed(2);
+
+        totalReg += reg;
+        totalOT += ot;
+        grandTotal += rowTotal;
+      });
+
+      document.getElementById('displayTotalReg').innerText = totalReg.toFixed(1) + ' hrs';
+      document.getElementById('displayTotalOT').innerText = totalOT.toFixed(1) + ' hrs';
+      document.getElementById('displayGrossTotal').innerText = '$' + grandTotal.toFixed(2);
+
+      return grandTotal;
     }
 
-    function updateColCounts() {
-      document.getElementById('count-new').innerText = document.getElementById('col-new').querySelectorAll('.lead-card').length;
-      document.getElementById('count-contacted').innerText = document.getElementById('col-contacted').querySelectorAll('.lead-card').length;
-      document.getElementById('count-quoted').innerText = document.getElementById('col-quoted').querySelectorAll('.lead-card').length;
-      document.getElementById('count-won').innerText = document.getElementById('col-won').querySelectorAll('.lead-card').length;
-
-      const totalActive = document.querySelectorAll('.lead-card').length;
-      document.getElementById('statActive').innerText = totalActive + ' Leads';
-    }
-
-    let leadCounter = 6;
-    function addSampleLead() {
-      const colNew = document.getElementById('col-new');
-      const newId = 'lead-' + leadCounter;
-
-      const card = document.createElement('div');
-      card.className = 'lead-card';
-      card.id = newId;
-      card.innerHTML = `
-        <div class="lead-top">
-          <span>Inbound Call &bull; Just Now</span>
-          <span style="color: #0284c7;">New Lead</span>
-        </div>
-        <p class="lead-title">Prospective Customer #${leadCounter}</p>
-        <p class="lead-phone">325-555-0100</p>
-        <p class="lead-desc">Service estimate inquiry called in directly from Google listing.</p>
-        <div class="lead-footer">
-          <span class="lead-val">Est. $950</span>
-          <button class="btn-advance" onclick="advanceLead('${newId}', 'col-contacted')">Contact &rarr;</button>
-        </div>
+    function addCrewRow() {
+      const tbody = document.getElementById('crewTableBody');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" class="t-name" placeholder="Technician Name"></td>
+        <td><input type="number" class="t-reg" value="40" oninput="calculatePayroll()"></td>
+        <td><input type="number" class="t-ot" value="0" oninput="calculatePayroll()"></td>
+        <td><input type="number" class="t-rate" value="20.00" oninput="calculatePayroll()"></td>
+        <td style="text-align: right; font-weight: 700;" class="t-row-total">$800.00</td>
       `;
+      tbody.appendChild(tr);
+      calculatePayroll();
+    }
 
-      colNew.appendChild(card);
-      leadCounter++;
-      updateColCounts();
+    function downloadPayrollPDF() {
+      const grandTotal = calculatePayroll();
+      const bizName = document.getElementById('bizName').value.trim() || "Independent Contractor Services";
+      const payPeriod = document.getElementById('payPeriod').value.trim() || "Current Pay Period";
+
+      document.getElementById('pdfBiz').innerText = bizName;
+      document.getElementById('pdfPeriod').innerText = payPeriod;
+      document.getElementById('pdfDate').innerText = new Date().toLocaleDateString();
+      document.getElementById('pdfTotalVal').innerText = '$' + grandTotal.toFixed(2);
+
+      const pdfTbody = document.getElementById('pdfTableBody');
+      pdfTbody.innerHTML = '';
+
+      document.querySelectorAll('#crewTableBody tr').forEach(row => {
+        const name = row.querySelector('.t-name').value.trim() || "Employee";
+        const reg = row.querySelector('.t-reg').value || "0";
+        const ot = row.querySelector('.t-ot').value || "0";
+        const rate = parseFloat(row.querySelector('.t-rate').value) || 0;
+        const total = row.querySelector('.t-row-total').innerText;
+
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e2e8f0';
+        tr.innerHTML = `
+          <td style="padding: 8px;">${name}</td>
+          <td style="text-align: center; padding: 8px;">${reg}</td>
+          <td style="text-align: center; padding: 8px;">${ot}</td>
+          <td style="text-align: right; padding: 8px;">$${rate.toFixed(2)}</td>
+          <td style="text-align: right; padding: 8px; font-weight: bold;">${total}</td>
+        `;
+        pdfTbody.appendChild(tr);
+      });
+
+      const element = document.getElementById('pdfTemplate');
+      element.style.display = 'block';
+
+      const opt = {
+        margin: 0.5,
+        filename: 'Payroll_' + bizName.replace(/\s+/g, '_') + '.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        element.style.display = 'none';
+      });
     }
 
     // LEAD INGESTION (APPS SCRIPT GET)
@@ -639,10 +626,10 @@
 
       const params = new URLSearchParams({
         name: nameVal,
-        company: "Lead Tracker Demo User",
+        company: "Timecard Tool User",
         phone: phoneVal,
-        service: "Basic Software Systems / Lead Tracker Customization",
-        message: "Requested custom lead tracker setup.",
+        service: "Basic Software Systems / Timecard Customization",
+        message: "Interested in custom spreadsheet setup from free timecard tool.",
         _t: new Date().getTime()
       }).toString();
 
@@ -660,7 +647,7 @@
         })
         .finally(() => {
           btn.disabled = false;
-          btn.innerText = "Request Lead Tracker Setup for My Business →";
+          btn.innerText = "Ask About Custom Spreadsheet Setup →";
         });
     });
   </script>
