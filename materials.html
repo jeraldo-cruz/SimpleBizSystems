@@ -5,451 +5,377 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Material &amp; Supply Reorder Sheet | Free Service Van &amp; Shop Inventory</title>
-<meta name="title" content="Material &amp; Supply Reorder Sheet | Free Service Van &amp; Shop Inventory">
-<meta name="description" content="Track shop and truck inventory, identify low stock, and generate instant supply reorders. Free mobile material tracker for contractors with zero software fees.">
-<meta name="keywords" content="contractor material reorder sheet, service truck inventory tracker, supply restock generator, trade purchase order tool, no subscription inventory tool, Kingsland TX business tools">
+<title>Free Contractor Supply Reorder Sheet | Simple Biz Systems</title>
+<meta name="title" content="Free Contractor Supply Reorder Sheet | Simple Biz Systems">
+<meta name="description" content="Free to use sample tools for trade contractors. Monitor truck stock thresholds, calculate restock orders, and download a supplier purchase order PDF. Basic software systems by Simple Biz Systems.">
+<meta name="keywords" content="contractor supply reorder sheet, basic software systems, truck stock inventory template, free trade tools, plumbing parts order sheet, HVAC supply checklist pdf, Kingsland TX">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
-<meta name="geo.region" content="US-TX">
-<meta name="geo.placename" content="Kingsland, Texas">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/materials.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
-<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- OPEN GRAPH / SOCIAL -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.simplebizsystems.com/materials.html">
-<meta property="og:title" content="Material &amp; Supply Reorder Sheet | Free Service Van Inventory">
-<meta property="og:description" content="Never get caught empty-handed on a job site. Track van stock and fire off distributor reorders with zero monthly software fees.">
-<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- TWITTER CARD -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Material &amp; Supply Reorder Sheet | Free Service Van Inventory">
-<meta name="twitter:description" content="Never get caught empty-handed on a job site. Track van stock and fire off distributor reorders with zero monthly software fees.">
-<meta name="twitter:image" content="https://www.simplebizsystems.com/logo-icon.png">
-
-<!-- STRUCTURED DATA (JSON-LD) -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Material & Supply Reorder Sheet",
-  "operatingSystem": "Web Browser, iOS, Android",
+  "@type": "WebApplication",
+  "name": "Contractor Supply Reorder and Inventory Sheet",
+  "url": "https://www.simplebizsystems.com/materials.html",
   "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "operatingSystem": "All",
+  "description": "Free to use sample tool for service trucks and shops to monitor material stock, generate supply house text orders, and export purchase order PDFs.",
   "creator": {
-    "@type": "Organization",
-    "name": "Simple Biz Systems",
-    "url": "https://www.simplebizsystems.com/"
-  },
-  "description": "A lightweight mobile contractor material tracker and restock order sheet for service trucks and trade shops."
+    "@type": "Person",
+    "name": "Jeraldo Cruz"
+  }
 }
 </script>
 
+<!-- HTML2PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
-  :root { 
-    --primary: #0d3b66; 
-    --primary-light: #1e3a5f;
-    --accent: #d97706; 
+  :root {
+    --primary: #0d3b66;
+    --accent: #d97706;
     --accent-hover: #b45309;
-    --bg: #f8fafc; 
+    --bg: #f8fafc;
     --surface: #ffffff;
-    --text-dark: #1e293b; 
+    --text-dark: #1e293b;
     --text-muted: #64748b;
-    --border: #e2e8f0; 
+    --border: #e2e8f0;
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
     --success: #16a34a;
-    --warning: #dc2626;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
+    --danger: #dc2626;
   }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after { box-sizing: border-box; }
 
-  body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-    background: var(--bg); 
-    margin: 0; 
-    padding: 0; 
-    color: var(--text-dark); 
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 0;
-    font-size: 0.83rem;
+    padding: 8px 12px;
+    font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
   }
-  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker strong { color: #fbbf24; }
 
   /* NAVIGATION */
-  .nav { 
-    background: var(--surface); 
-    border-bottom: 1px solid var(--border); 
-    padding: 12px 0; 
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-container { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
-  .logo { 
+  .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    text-decoration: none; 
-    font-weight: 800; 
-    color: var(--primary); 
-    font-size: 1.2rem; 
-    letter-spacing: -0.02em;
-    line-height: 1;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.15rem;
+    white-space: nowrap;
   }
   .nav-brand-img {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     object-fit: contain;
-    display: block;
-    flex-shrink: 0;
   }
-  .nav-links { 
-    display: flex; 
-    align-items: center; 
-    gap: 16px; 
+  .nav-links {
+    display: flex;
+    gap: 16px;
   }
-  .nav-links a { 
-    text-decoration: none; 
-    color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    transition: color 0.15s ease;
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--accent); }
-  .btn-nav {
-    background: var(--accent);
-    color: #ffffff !important;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 0.85rem !important;
-    transition: background 0.15s ease;
-  }
-  .btn-nav:hover { background: var(--accent-hover); }
 
-  /* HEADER BLOCK */
-  .header-block {
-    padding: 36px 0 20px 0;
+  /* HEADER */
+  .page-header {
+    padding: 30px 0 16px 0;
   }
   .badge-tag {
     display: inline-block;
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    padding: 4px 12px;
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    padding: 3px 10px;
     border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--primary);
+    font-size: 0.74rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .header-block h1 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  .page-header h1 {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-    line-height: 1.25;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
   }
-  .header-block p {
-    font-size: 1rem;
+  .page-header p {
+    font-size: 0.96rem;
     color: var(--text-muted);
-    max-width: 720px;
-    margin: 0;
+    margin: 0 0 16px 0;
+    max-width: 760px;
   }
 
-  /* MATERIALS CARD */
-  .materials-card {
+  /* MATERIALS TOOL BOX */
+  .tool-box {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 32px;
+    margin-bottom: 30px;
   }
-
-  .materials-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .materials-metrics {
-    display: flex;
-    gap: 18px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    flex-wrap: wrap;
-  }
-  .materials-metrics strong {
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 800;
     color: var(--primary);
-  }
-  .materials-actions {
-    display: flex;
-    gap: 10px;
-  }
-  .btn-action {
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.86rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-  .btn-action:hover { background: var(--primary-light); }
-  .btn-secondary {
-    background: var(--bg);
-    color: var(--text-dark);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { background: #e2e8f0; }
-
-  /* INVENTORY TABLE */
-  .table-wrap {
-    overflow-x: auto;
-  }
-  .inv-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-  }
-  .inv-table th {
-    background: var(--bg);
-    padding: 10px 12px;
-    text-align: left;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--text-muted);
     text-transform: uppercase;
     border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
   }
-  .inv-table td {
-    padding: 12px;
-    border-bottom: 1px solid var(--border-subtle);
-    color: var(--text-dark);
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
   }
-  .inv-table tr:hover {
-    background: #fbfcfe;
+  @media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
   }
-  
-  .status-badge-stock {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 12px;
-    display: inline-block;
+  .field {
+    display: flex;
+    flex-direction: column;
   }
-  .status-low {
-    background: #fee2e2;
-    color: #991b1b;
-  }
-  .status-ok {
-    background: #dcfce7;
-    color: #166534;
-  }
-
-  .qty-btn {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-weight: bold;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    line-height: 1;
-  }
-  .qty-btn:hover { background: #e2e8f0; }
-
-  .btn-del-item {
-    background: transparent;
-    border: none;
-    color: #ef4444;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-
-  /* MODALS */
-  .modal-backdrop {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15, 23, 42, 0.5);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .modal-backdrop.active { display: flex; }
-  .modal-window {
-    background: var(--surface);
-    border-radius: 12px;
-    max-width: 460px;
-    width: 100%;
-    padding: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  .modal-window h3 {
-    margin: 0 0 16px 0;
-    font-size: 1.15rem;
-    color: var(--primary);
-  }
-  .form-group {
-    margin-bottom: 12px;
-  }
-  .form-group label {
-    display: block;
-    font-size: 0.78rem;
+  .field label {
+    font-size: 0.76rem;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 4px;
     text-transform: uppercase;
   }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 8px 10px;
+  .field input {
+    padding: 9px 11px;
     border: 1px solid var(--border);
     border-radius: 6px;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-dark);
-    font-family: inherit;
+    width: 100%;
   }
-  .form-row-2 {
+
+  /* TABLE */
+  .mat-table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  .mat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .mat-table th {
+    background: #f1f5f9;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .mat-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .mat-table input {
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.86rem;
+    width: 100%;
+  }
+
+  .btn-add-row {
+    background: none;
+    border: 1px dashed var(--border);
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 14px;
+  }
+  .btn-add-row:hover {
+    background: #f8fafc;
+    border-color: var(--primary);
+  }
+
+  /* ACTION BUTTONS ROW */
+  .action-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media (max-width: 600px) {
+    .action-row { grid-template-columns: 1fr; }
+  }
+  .btn-copy {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s ease;
+  }
+  .btn-copy:hover { background: #e2e8f0; }
+
+  .btn-calc {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s ease;
+  }
+  .btn-calc:hover { background: var(--accent-hover); }
+
+  /* SUMMARY BOX */
+  .summary-panel {
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .summary-panel strong {
+    font-size: 1.15rem;
+    color: var(--primary);
+  }
+
+  /* PDF HIDDEN TEMPLATE */
+  #pdfTemplate {
+    display: none;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    color: #1e293b;
+  }
+
+  /* INQUIRY PANEL */
+  .inquiry-box {
+    background: #0f2b48;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 26px;
+    margin-bottom: 40px;
+  }
+  .inquiry-box h2 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+  }
+  .inquiry-box p {
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+    max-width: 700px;
+  }
+  .inquiry-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-
-  /* FEATURE TILES */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
+  @media (max-width: 600px) {
+    .inquiry-form { grid-template-columns: 1fr; }
   }
-  .feature-tile {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: var(--card-shadow);
-  }
-  .feature-tile h3 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--primary);
-  }
-  .feature-tile p {
-    margin: 0;
+  .inquiry-form input {
+    padding: 9px 11px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #ffffff;
+    color: #1e293b;
     font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.55;
+    width: 100%;
   }
-
-  /* CONVERSION PROMPT */
-  .conversion-box {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 32px 24px;
-    margin-top: 24px;
-    text-align: center;
-    border-left: 6px solid var(--accent);
-    box-shadow: var(--card-shadow);
-  }
-  .conversion-box h2 {
-    color: #ffffff;
-    font-size: 1.35rem;
-    margin: 0 0 10px 0;
-    font-weight: 800;
-  }
-  .conversion-box p {
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    max-width: 620px;
-    margin: 0 auto 20px auto;
-    line-height: 1.6;
-  }
-  .btn-cta {
-    display: inline-block;
+  .btn-inquiry {
     background: var(--accent);
     color: #ffffff;
-    padding: 10px 24px;
+    border: none;
+    padding: 10px;
     border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: background 0.15s ease;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    grid-column: 1 / -1;
   }
-  .btn-cta:hover { background: var(--accent-hover); }
+  .btn-inquiry:hover { background: var(--accent-hover); }
 
   /* FOOTER */
-  footer { 
-    background: #09233d; 
-    color: #94a3b8; 
-    padding: 40px 0; 
-    margin-top: 48px;
-    text-align: center; 
-    font-size: 0.85rem; 
+  footer {
+    background: #09233d;
+    color: #94a3b8;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.82rem;
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Supply &amp; Inventory Management • <strong>No Monthly Software Fees</strong>
+    Free to use, sample tools, and custom setups from <strong>Simple Biz Systems</strong>: No account or subscription required.
   </div>
 
-  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -459,351 +385,321 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html">Estimator</a>
-        <a href="workorders.html">Work Orders</a>
-        <a href="leads.html">Leads</a>
-        <a href="timecards.html">Timecards</a>
-        <a href="materials.html" style="color: var(--accent);">Materials</a>
-        <a href="about.html">About</a>
-        <a href="index.html#contact-panel" class="btn-nav">Contact</a>
+        <a href="about.html">About &amp; Founder</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
     
-    <!-- HEADER -->
-    <header class="header-block">
-      <span class="badge-tag">Service Truck &amp; Shop Inventory</span>
-      <h1>Material &amp; Supply Reorder Sheet</h1>
+    <header class="page-header">
+      <span class="badge-tag">Free to Use &bull; Sample Inventory Tool</span>
+      <h1>Contractor Supply Reorder Sheet</h1>
       <p>
-        Keep field trucks and shop shelves stocked. Track minimum inventory thresholds, identify depleted parts, and generate supply house purchase orders in seconds.
+        Check truck inventory levels against your minimum par stock. Generate a copy-ready text message order for your supply house counter or download an official purchase order PDF.
       </p>
     </header>
 
-    <!-- MATERIALS CARD -->
-    <div class="materials-card">
-      <div class="materials-controls">
-        <div class="materials-metrics">
-          <span>Tracked SKUs: <strong id="metricTotalSkus">0</strong></span>
-          <span>Items Low: <strong id="metricLowStock" style="color: var(--warning);">0</strong></span>
-          <span>Inventory Value: <strong id="metricInvVal" style="color: var(--primary);">$0.00</strong></span>
+    <div class="tool-box">
+      <!-- DETAILS -->
+      <div class="section-label">Order &amp; Supplier Information (Appears on PDF)</div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="bizName">Your Business Name</label>
+          <input type="text" id="bizName" placeholder="e.g. Miller Plumbing &amp; Mechanical">
         </div>
-        <div class="materials-actions">
-          <button class="btn-action" type="button" onclick="openAddItemModal()">+ Add SKU</button>
-          <button class="btn-action" style="background: var(--accent);" type="button" onclick="openOrderModal()">📋 Create Reorder</button>
-          <button class="btn-action btn-secondary" type="button" onclick="exportMaterialsCSV()">Export CSV</button>
-          <button class="btn-action btn-secondary" type="button" onclick="resetDemoMaterials()">Reset</button>
+        <div class="field">
+          <label for="supplierName">Supplier / Supply House</label>
+          <input type="text" id="supplierName" placeholder="e.g. Ferguson / Morrison Supply">
         </div>
       </div>
 
-      <!-- INVENTORY TABLE -->
-      <div class="table-wrap">
-        <table class="inv-table">
+      <div class="form-grid">
+        <div class="field">
+          <label for="truckId">Truck / Job Location</label>
+          <input type="text" id="truckId" value="Truck 1 (Main Service)">
+        </div>
+        <div class="field">
+          <label for="poNumber">PO / Reference Number</label>
+          <input type="text" id="poNumber" value="PO-5012">
+        </div>
+      </div>
+
+      <!-- INVENTORY AUDIT TABLE -->
+      <div class="section-label" style="margin-top: 20px;">Parts &amp; Inventory Restock Checklist</div>
+      <div class="mat-table-wrap">
+        <table class="mat-table" id="matTable">
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Item / Part Description</th>
-              <th>Supplier / Category</th>
-              <th>In Stock</th>
-              <th>Min Threshold</th>
-              <th>Unit Cost</th>
-              <th>Total Value</th>
-              <th style="width: 40px;"></th>
+              <th style="min-width: 160px;">Item / Part Description</th>
+              <th style="width: 90px;">Par Stock</th>
+              <th style="width: 90px;">On Hand</th>
+              <th style="width: 110px; text-align: right;">Quantity to Order</th>
             </tr>
           </thead>
-          <tbody id="materialsBody"></tbody>
+          <tbody id="matTableBody">
+            <tr>
+              <td><input type="text" class="m-item" value="3/4 inch Ball Valves (Lead Free)"></td>
+              <td><input type="number" class="m-par" value="10" oninput="calculateShortage()"></td>
+              <td><input type="number" class="m-hand" value="3" oninput="calculateShortage()"></td>
+              <td style="text-align: right; font-weight: 700; color: var(--danger);" class="m-order">7</td>
+            </tr>
+            <tr>
+              <td><input type="text" class="m-item" value="Dual Run Capacitors (45/5 MFD)"></td>
+              <td><input type="number" class="m-par" value="6" oninput="calculateShortage()"></td>
+              <td><input type="number" class="m-hand" value="1" oninput="calculateShortage()"></td>
+              <td style="text-align: right; font-weight: 700; color: var(--danger);" class="m-order">5</td>
+            </tr>
+            <tr>
+              <td><input type="text" class="m-item" value="ProPEX 3/4 inch Tees (Pack of 10)"></td>
+              <td><input type="number" class="m-par" value="4" oninput="calculateShortage()"></td>
+              <td><input type="number" class="m-hand" value="4" oninput="calculateShortage()"></td>
+              <td style="text-align: right; font-weight: 700; color: var(--success);" class="m-order">0 (Full)</td>
+            </tr>
+          </tbody>
         </table>
       </div>
+
+      <button type="button" class="btn-add-row" onclick="addMaterialRow()">+ Add Another Material / Part</button>
+
+      <!-- TOTAL ITEMS ALERT -->
+      <div class="summary-panel">
+        <span>Restock Items Flagged for Order:</span>
+        <strong id="displayShortageCount">2 Items Short</strong>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-row">
+        <button type="button" class="btn-copy" onclick="copyTextOrder()">📋 Copy Text Order for Supplier</button>
+        <button type="button" class="btn-calc" onclick="downloadOrderPDF()">Download Purchase Order PDF &rarr;</button>
+      </div>
     </div>
 
-    <!-- FEATURE GRID -->
-    <div class="feature-grid">
-      <div class="feature-tile">
-        <h3>Never Run Dry On Site</h3>
-        <p>Set custom minimum thresholds for common copper, PVC, breakers, and filters. Visual alerts flag items before they run out mid-job.</p>
+    <!-- BRANDED PDF TEMPLATE -->
+    <div id="pdfTemplate">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #0d3b66; padding-bottom: 12px; margin-bottom: 16px;">
+        <div>
+          <h2 style="color: #0d3b66; margin: 0 0 4px 0; font-size: 1.35rem;" id="pdfBiz">Supply Restock Order</h2>
+          <p style="margin: 0; font-size: 0.85rem; color: #475569;" id="pdfTruck"></p>
+        </div>
+        <div style="text-align: right;">
+          <strong style="color: #d97706; font-size: 1.1rem;" id="pdfPo"></strong><br>
+          <span style="font-size: 0.8rem; color: #64748b;" id="pdfDate"></span>
+        </div>
       </div>
-      <div class="feature-tile">
-        <h3>Fast Text / Email Reorders</h3>
-        <p>Instantly compile all low-stock items into an organized purchase order list that you can copy-paste straight to your supply counter rep.</p>
-      </div>
-      <div class="feature-tile">
-        <h3>Zero Subscription Fees</h3>
-        <p>Track unlimited items, parts, and truck stocks without paying per-vehicle or per-warehouse monthly enterprise software subscriptions.</p>
-      </div>
-    </div>
 
-    <!-- CONVERSION BOX -->
-    <div class="conversion-box">
-      <h2>Need Automated Supplier Integration or Barcode Scanning?</h2>
-      <p>
-        We build custom shop and field inventory workflows—integrating direct barcode scanning on smartphones, automatic vendor stock feeds, and sync with QuickBooks purchase orders.
+      <table style="width: 100%; font-size: 0.9rem; margin-bottom: 16px;">
+        <tr>
+          <td><strong>Supplier:</strong> <span id="pdfSupplier"></span></td>
+        </tr>
+      </table>
+
+      <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem;">
+        <thead>
+          <tr style="background: #f1f5f9; border-bottom: 1px solid #cbd5e1;">
+            <th style="text-align: left; padding: 8px;">Part / Supply Description</th>
+            <th style="text-align: center; width: 80px; padding: 8px;">Par</th>
+            <th style="text-align: center; width: 80px; padding: 8px;">On Hand</th>
+            <th style="text-align: right; width: 100px; padding: 8px;">Qty Needed</th>
+          </tr>
+        </thead>
+        <tbody id="pdfTableBody">
+          <!-- Populated dynamically -->
+        </tbody>
+      </table>
+
+      <p style="font-size: 0.78rem; color: #64748b; margin-top: 24px;">
+        * Purchase order generated via Simple Biz Systems free field tools.
       </p>
-      <a href="index.html#contact-panel" class="btn-cta">Discuss a Custom Setup &rarr;</a>
+
+      <!-- WATERMARK FOOTER -->
+      <div style="border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <img src="logo-icon.png" alt="Simple Biz Systems" style="height: 16px; width: 16px; object-fit: contain;">
+          <span>Generated free via <strong>Simple Biz Systems</strong> &bull; simplebizsystems.com</span>
+        </div>
+        <span>Basic Software Systems &bull; Kingsland, TX</span>
+      </div>
+    </div>
+
+    <!-- UPSELL INQUIRY BOX -->
+    <div class="inquiry-box">
+      <h2>Want your truck inventory synced directly to a Google Sheet?</h2>
+      <p>
+        These free to use, sample tools are built to help independent trades run leaner. If you ever want minimum threshold stock alerts, barcode scanning, or automatic supplier purchase orders tied to your private Google account, let us know below.
+      </p>
+      <form id="toolLeadForm" class="inquiry-form">
+        <input type="text" id="leadName" required placeholder="Your Name">
+        <input type="tel" id="leadPhone" required placeholder="Phone Number">
+        <button type="submit" id="btnLead" class="btn-inquiry">Ask About Custom Spreadsheet Setup &rarr;</button>
+        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
+      </form>
     </div>
 
   </main>
 
-  <!-- ADD ITEM MODAL -->
-  <div class="modal-backdrop" id="itemModal">
-    <div class="modal-window">
-      <h3>Add Material / Part SKU</h3>
-      <div class="form-group">
-        <label for="itemDesc">Item / Part Description</label>
-        <input type="text" id="itemDesc" placeholder="e.g. 3/4-Inch Brass Ball Valve">
-      </div>
-      <div class="form-group">
-        <label for="itemSupplier">Supplier or Category</label>
-        <input type="text" id="itemSupplier" placeholder="e.g. Ferguson / Plumbing">
-      </div>
-      <div class="form-row-2">
-        <div class="form-group">
-          <label for="itemStock">Current Qty</label>
-          <input type="number" id="itemStock" value="5" min="0">
-        </div>
-        <div class="form-group">
-          <label for="itemMin">Min Threshold</label>
-          <input type="number" id="itemMin" value="3" min="1">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="itemCost">Unit Cost ($)</label>
-        <input type="number" id="itemCost" value="14.50" step="0.25" min="0">
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-        <button class="btn-action btn-secondary" type="button" onclick="closeAddItemModal()">Cancel</button>
-        <button class="btn-action" type="button" onclick="saveNewItem()">Save Item</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- COMPILED REORDER MODAL -->
-  <div class="modal-backdrop" id="orderModal">
-    <div class="modal-window" style="max-width: 520px;">
-      <h3>Supply House Purchase Order</h3>
-      <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0 0 12px 0;">
-        Items below minimum threshold compiled automatically:
-      </p>
-      <textarea id="reorderText" style="width:100%; height:160px; font-family:monospace; font-size:0.85rem; padding:10px; border:1px solid var(--border); border-radius:6px; margin-bottom:14px;"></textarea>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span id="reorderEstTotal" style="font-weight:700; color:var(--primary); font-size:0.9rem;"></span>
-        <div style="display:flex; gap:8px;">
-          <button class="btn-action btn-secondary" type="button" onclick="closeOrderModal()">Close</button>
-          <button class="btn-action" type="button" onclick="copyReorderText()">Copy to Clipboard</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems • Kingsland, TX 78639</p>
-      <p style="margin: 0 0 16px 0; opacity: 0.8;">Practical tools and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 8px 0; opacity: 0.85;">Free to use, sample tools, and basic software systems for Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        Built by <a href="about.html">Jeraldo Cruz</a> | Connect on <a href="https://www.linkedin.com/in/jeraldo-cruz/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    const MATERIALS_STORAGE_KEY = "sbs_materials_data";
+    function calculateShortage() {
+      const rows = document.querySelectorAll('#matTableBody tr');
+      let shortCount = 0;
 
-    const DEFAULT_MATERIALS = [
-      { id: "mat-1", desc: "3/4\" PEX-A Tubing Coil (100ft)", supplier: "Ferguson / Plumbing", stock: 1, min: 2, cost: 68.00 },
-      { id: "mat-2", desc: "1/2\" Brass Ball Valve (Lead Free)", supplier: "Ferguson / Valves", stock: 8, min: 4, cost: 12.50 },
-      { id: "mat-3", desc: "20-Amp Single Pole Breaker (Square D)", supplier: "Elliott Electric", stock: 2, min: 5, cost: 9.80 },
-      { id: "mat-4", desc: "16x25x1 MERV 8 Air Filter (12-Pack)", supplier: "Insco / HVAC", stock: 0, min: 2, cost: 42.00 },
-      { id: "mat-5", desc: "Heavy Duty PVC Glue & Primer Kit", supplier: "Home Depot / Pro", stock: 4, min: 2, cost: 18.25 }
-    ];
+      rows.forEach(row => {
+        const par = parseInt(row.querySelector('.m-par').value) || 0;
+        const hand = parseInt(row.querySelector('.m-hand').value) || 0;
+        const diff = par - hand;
 
-    let currentMaterials = [];
-
-    function loadMaterials() {
-      const saved = localStorage.getItem(MATERIALS_STORAGE_KEY);
-      if (saved) {
-        try {
-          currentMaterials = JSON.parse(saved);
-        } catch (e) {
-          currentMaterials = [...DEFAULT_MATERIALS];
+        const orderCell = row.querySelector('.m-order');
+        if (diff > 0) {
+          orderCell.innerText = diff;
+          orderCell.style.color = "var(--danger)";
+          shortCount++;
+        } else {
+          orderCell.innerText = "0 (Full)";
+          orderCell.style.color = "var(--success)";
         }
-      } else {
-        currentMaterials = [...DEFAULT_MATERIALS];
-      }
-      renderMaterials();
+      });
+
+      document.getElementById('displayShortageCount').innerText = `${shortCount} Items Short`;
     }
 
-    function saveMaterials() {
-      localStorage.setItem(MATERIALS_STORAGE_KEY, JSON.stringify(currentMaterials));
-      renderMaterials();
+    function addMaterialRow() {
+      const tbody = document.getElementById('matTableBody');
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="text" class="m-item" placeholder="Part description or SKU"></td>
+        <td><input type="number" class="m-par" value="5" oninput="calculateShortage()"></td>
+        <td><input type="number" class="m-hand" value="0" oninput="calculateShortage()"></td>
+        <td style="text-align: right; font-weight: 700; color: var(--danger);" class="m-order">5</td>
+      `;
+      tbody.appendChild(tr);
+      calculateShortage();
     }
 
-    function renderMaterials() {
-      const tbody = document.getElementById("materialsBody");
-      tbody.innerHTML = "";
+    function copyTextOrder() {
+      const biz = document.getElementById('bizName').value.trim() || "Contractor Order";
+      const po = document.getElementById('poNumber').value.trim() || "PO";
+      let text = `SUPPLY ORDER: ${biz} (${po})\n`;
 
-      let lowCount = 0;
-      let totalValue = 0;
+      let hasItems = false;
+      document.querySelectorAll('#matTableBody tr').forEach(row => {
+        const item = row.querySelector('.m-item').value.trim();
+        const par = parseInt(row.querySelector('.m-par').value) || 0;
+        const hand = parseInt(row.querySelector('.m-hand').value) || 0;
+        const diff = par - hand;
 
-      if (!currentMaterials.length) {
-        tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:24px;">No items tracked. Click "+ Add SKU" to begin.</td></tr>`;
-      } else {
-        currentMaterials.forEach(item => {
-          const isLow = item.stock <= item.min;
-          if (isLow) lowCount++;
+        if (diff > 0 && item) {
+          text += `- Qty ${diff}: ${item}\n`;
+          hasItems = true;
+        }
+      });
 
-          const val = item.stock * item.cost;
-          totalValue += val;
-
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>
-              <span class="status-badge-stock ${isLow ? 'status-low' : 'status-ok'}">
-                ${isLow ? '⚠️ REORDER' : '✓ OK'}
-              </span>
-            </td>
-            <td><strong>${escapeHtml(item.desc)}</strong></td>
-            <td><span style="color:var(--text-muted);">${escapeHtml(item.supplier)}</span></td>
-            <td>
-              <button class="qty-btn" onclick="adjustStock('${item.id}', -1)">-</button>
-              <span style="font-weight:700; margin: 0 6px;">${item.stock}</span>
-              <button class="qty-btn" onclick="adjustStock('${item.id}', 1)">+</button>
-            </td>
-            <td>${item.min}</td>
-            <td>$${item.cost.toFixed(2)}</td>
-            <td style="font-weight:700; color:var(--primary);">$${val.toFixed(2)}</td>
-            <td><button class="btn-del-item" onclick="deleteItem('${item.id}')" title="Delete item">&times;</button></td>
-          `;
-          tbody.appendChild(tr);
-        });
+      if (!hasItems) {
+        alert("All stock levels are full! No shortages detected.");
+        return;
       }
 
-      document.getElementById("metricTotalSkus").innerText = currentMaterials.length;
-      document.getElementById("metricLowStock").innerText = lowCount;
-      document.getElementById("metricInvVal").innerText = "$" + totalValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Order copied to clipboard! Paste it into a text message or email for your supplier counter.");
+      });
     }
 
-    function adjustStock(id, delta) {
-      const target = currentMaterials.find(m => m.id === id);
-      if (target) {
-        target.stock = Math.max(0, target.stock + delta);
-        saveMaterials();
-      }
-    }
+    function downloadOrderPDF() {
+      const biz = document.getElementById('bizName').value.trim() || "Independent Contractor";
+      const supplier = document.getElementById('supplierName').value.trim() || "Local Supply House";
+      const truck = document.getElementById('truckId').value.trim() || "Service Truck";
+      const po = document.getElementById('poNumber').value.trim() || "PO-ORDER";
 
-    function deleteItem(id) {
-      currentMaterials = currentMaterials.filter(m => m.id !== id);
-      saveMaterials();
-    }
+      document.getElementById('pdfBiz').innerText = biz;
+      document.getElementById('pdfSupplier').innerText = supplier;
+      document.getElementById('pdfTruck').innerText = truck;
+      document.getElementById('pdfPo').innerText = po;
+      document.getElementById('pdfDate').innerText = new Date().toLocaleDateString();
 
-    function openAddItemModal() {
-      document.getElementById("itemDesc").value = "";
-      document.getElementById("itemSupplier").value = "";
-      document.getElementById("itemStock").value = "5";
-      document.getElementById("itemMin").value = "3";
-      document.getElementById("itemCost").value = "14.50";
-      document.getElementById("itemModal").classList.add("active");
-    }
+      const pdfTbody = document.getElementById('pdfTableBody');
+      pdfTbody.innerHTML = '';
 
-    function closeAddItemModal() {
-      document.getElementById("itemModal").classList.remove("active");
-    }
+      document.querySelectorAll('#matTableBody tr').forEach(row => {
+        const item = row.querySelector('.m-item').value.trim() || "Unspecified Item";
+        const par = row.querySelector('.m-par').value || "0";
+        const hand = row.querySelector('.m-hand').value || "0";
+        const orderQty = row.querySelector('.m-order').innerText;
 
-    function saveNewItem() {
-      const desc = document.getElementById("itemDesc").value.trim() || "Item SKU";
-      const supplier = document.getElementById("itemSupplier").value.trim() || "General Supply";
-      const stock = parseInt(document.getElementById("itemStock").value) || 0;
-      const min = parseInt(document.getElementById("itemMin").value) || 1;
-      const cost = parseFloat(document.getElementById("itemCost").value) || 0;
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid #e2e8f0';
+        tr.innerHTML = `
+          <td style="padding: 8px;">${item}</td>
+          <td style="text-align: center; padding: 8px;">${par}</td>
+          <td style="text-align: center; padding: 8px;">${hand}</td>
+          <td style="text-align: right; padding: 8px; font-weight: bold; color: #0d3b66;">${orderQty}</td>
+        `;
+        pdfTbody.appendChild(tr);
+      });
 
-      const newItem = {
-        id: "mat-" + Date.now(),
-        desc,
-        supplier,
-        stock,
-        min,
-        cost
+      const element = document.getElementById('pdfTemplate');
+      element.style.display = 'block';
+
+      const opt = {
+        margin: 0.5,
+        filename: `${po}_${biz.replace(/\s+/g, '_')}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
 
-      currentMaterials.push(newItem);
-      saveMaterials();
-      closeAddItemModal();
-    }
-
-    function openOrderModal() {
-      const lowItems = currentMaterials.filter(m => m.stock <= m.min);
-      if (!lowItems.length) {
-        alert("All inventory items are currently above minimum threshold levels.");
-        return;
-      }
-
-      let orderText = `PURCHASE REORDER LIST - ${new Date().toLocaleDateString()}\n----------------------------------------\n`;
-      let estTotal = 0;
-
-      lowItems.forEach(item => {
-        const needed = Math.max(1, (item.min * 2) - item.stock);
-        const sub = needed * item.cost;
-        estTotal += sub;
-        orderText += `• [Qty: ${needed}] ${item.desc} (Supplier: ${item.supplier})\n`;
-      });
-
-      orderText += `----------------------------------------\nEst. PO Total: $${estTotal.toFixed(2)}`;
-
-      document.getElementById("reorderText").value = orderText;
-      document.getElementById("reorderEstTotal").innerText = `Estimated Total: $${estTotal.toFixed(2)}`;
-      document.getElementById("orderModal").classList.add("active");
-    }
-
-    function closeOrderModal() {
-      document.getElementById("orderModal").classList.remove("active");
-    }
-
-    function copyReorderText() {
-      const text = document.getElementById("reorderText");
-      text.select();
-      navigator.clipboard.writeText(text.value).then(() => {
-        alert("Reorder list copied to clipboard. Ready to paste in text or email.");
+      html2pdf().set(opt).from(element).save().then(() => {
+        element.style.display = 'none';
       });
     }
 
-    function resetDemoMaterials() {
-      currentMaterials = [...DEFAULT_MATERIALS];
-      saveMaterials();
-    }
+    // LEAD INGESTION
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
-    function exportMaterialsCSV() {
-      if (!currentMaterials.length) {
-        alert("No items to export.");
-        return;
-      }
+    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnLead");
+      const feedback = document.getElementById("leadFeedback");
+      const nameVal = document.getElementById("leadName").value.trim();
+      const phoneVal = document.getElementById("leadPhone").value.trim();
 
-      let csv = "ID,Description,Supplier,In_Stock,Min_Threshold,Unit_Cost,Total_Value\n";
-      currentMaterials.forEach(m => {
-        const val = (m.stock * m.cost).toFixed(2);
-        csv += `"${m.id}","${m.desc.replace(/"/g, '""')}","${m.supplier.replace(/"/g, '""')}",${m.stock},${m.min},${m.cost.toFixed(2)},${val}\n`;
-      });
+      btn.disabled = true;
+      btn.innerText = "Sending...";
 
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.setAttribute("href", url);
-      link.setAttribute("download", `material_inventory_${new Date().toISOString().slice(0,10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+      const params = new URLSearchParams({
+        name: nameVal,
+        company: "Materials Reorder Tool User",
+        phone: phoneVal,
+        service: "Basic Software Systems / Inventory Customization",
+        message: "Interested in custom spreadsheet setup from free materials tool.",
+        _t: new Date().getTime()
+      }).toString();
 
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-    document.addEventListener("DOMContentLoaded", loadMaterials);
+      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
+        .then(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#86efac";
+          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
+          document.getElementById("toolLeadForm").reset();
+        })
+        .catch(() => {
+          feedback.style.display = "block";
+          feedback.style.color = "#fca5a5";
+          feedback.innerText = "Error sending message. Please reach out directly.";
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerText = "Ask About Custom Spreadsheet Setup →";
+        });
+    });
   </script>
 </body>
 </html>
