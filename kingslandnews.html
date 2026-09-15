@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | Local News, Lake Levels & Public Utilities</title>
-<meta name="title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities">
-<meta name="description" content="Free community bulletin, real-time Highland Lakes water levels, burn bans, and local updates for Kingsland, Texas and surrounding Hill Country communities.">
-<meta name="keywords" content="Kingsland TX news, Lake LBJ water levels, Lake Buchanan lake level, Inks Lake elevation, Llano County burn ban, Highland Lakes public updates, Simple Biz Systems wire">
+<title>The Kingsland Wire | Lake Levels, Senior & Veteran Resources, Public Utilities</title>
+<meta name="title" content="The Kingsland Wire | Lake Levels, Senior & Veteran Resources, Public Utilities">
+<meta name="description" content="Free community bulletin for Kingsland, TX. Real-time Highland Lakes water levels, burn ban notices, and direct contact resources for local seniors and veterans.">
+<meta name="keywords" content="Kingsland TX news, Lake LBJ water levels, Lake Buchanan elevation, Llano County veterans officer, Burnet County VSO, Kingsland senior resources, Meals on Wheels Highland Lakes">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,8 +23,8 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities">
-<meta property="og:description" content="Real-time Highland Lakes water levels, regional burn bans, and civic notices for Kingsland, TX.">
+<meta property="og:title" content="The Kingsland Wire | Lake Levels, Senior & Veteran Resources">
+<meta property="og:description" content="Real-time Highland Lakes water levels, local safety advisories, and direct support contacts for Kingsland seniors and veterans.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -43,7 +43,7 @@
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     --success: #16a34a;
     --warning: #ca8a04;
-    --danger: #dc2626;
+    --navy-card: #0f2b48;
   }
   
   html {
@@ -86,7 +86,7 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION (EXACT 1:1 PARITY) */
+  /* NAVIGATION */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -213,7 +213,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
   .lake-card {
     background: var(--surface);
@@ -307,7 +307,6 @@
     color: var(--text-muted);
   }
 
-  /* VISUAL CAPACITY BAR */
   .bar-container {
     background: #e2e8f0;
     height: 8px;
@@ -340,7 +339,108 @@
     color: var(--text-dark);
   }
 
-  /* CIVIC DISPATCH CARDS */
+  /* SENIOR & VETERAN RESOURCE HUB */
+  .community-hub {
+    background: var(--navy-card);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+  }
+  .community-hub-header {
+    margin-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 14px;
+  }
+  .community-hub-header h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+  }
+  .community-hub-header p {
+    font-size: 0.92rem;
+    color: #cbd5e1;
+    margin: 0;
+    max-width: 800px;
+  }
+
+  .hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .hub-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hub-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #fbbf24;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hub-card p {
+    font-size: 0.88rem;
+    color: #e2e8f0;
+    line-height: 1.55;
+    margin: 0 0 16px 0;
+  }
+  
+  .hub-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .hub-contact-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .hub-contact-item:last-child {
+    margin-bottom: 0;
+  }
+  .hub-contact-info strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #ffffff;
+  }
+  .hub-contact-info span {
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+  .btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+  .btn-call:hover {
+    background: var(--accent-hover);
+  }
+
+  /* CIVIC DISPATCH COLUMNS */
   .wire-columns {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -452,6 +552,9 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
+    .hub-grid {
+      grid-template-columns: 1fr;
+    }
     .wire-columns {
       grid-template-columns: 1fr;
     }
@@ -473,6 +576,18 @@
     }
     .wire-header h1 {
       font-size: 1.75rem;
+    }
+    .community-hub {
+      padding: 20px 16px;
+    }
+    .hub-contact-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .btn-call {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>
@@ -506,7 +621,7 @@
       <span class="badge-tag">Community Civic Utility</span>
       <h1>The Kingsland Wire</h1>
       <p>
-        Highland Lakes water levels, burn bans, and essential community utilities for Kingsland, Sunrise Beach, and neighboring Hill Country trades.
+        Highland Lakes water levels, senior and veteran resources, and essential community utilities for Kingsland, Sunrise Beach, and neighboring Hill Country trades.
       </p>
     </header>
 
@@ -601,6 +716,102 @@
         </div>
       </article>
 
+    </section>
+
+    <!-- SENIOR & VETERAN COMMUNITY CARE DESK -->
+    <section class="community-hub">
+      <div class="community-hub-header">
+        <h2>Highland Lakes Veterans &amp; Senior Care Desk</h2>
+        <p>
+          Direct contact information for local county officers, nutrition programs, and accessible transit serving Kingsland and surrounding lake communities.
+        </p>
+      </div>
+
+      <div class="hub-grid">
+        
+        <!-- VETERANS ASSISTANCE -->
+        <div class="hub-card">
+          <div>
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              Veterans Services &amp; Claims
+            </h3>
+            <p>
+              Free local assistance with VA medical enrollment, service disability claims, and survivor benefits without traveling into big city centers.
+            </p>
+          </div>
+
+          <ul class="hub-contact-list">
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>Llano County Veterans Service Officer</strong>
+                <span>Direct County Claims &amp; Benefit Support</span>
+              </div>
+              <a href="tel:3252477730" class="btn-call">Call (325) 247-7730</a>
+            </li>
+
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>Burnet County Veterans Service Officer</strong>
+                <span>East Lake LBJ &amp; Burnet County Services</span>
+              </div>
+              <a href="tel:5127155270" class="btn-call">Call (512) 715-5270</a>
+            </li>
+
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>Veterans Crisis Line</strong>
+                <span>24/7 Confidential Assistance (Dial 988, Press 1)</span>
+              </div>
+              <a href="tel:988" class="btn-call">Call 988</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SENIOR SERVICES & TRANSIT -->
+        <div class="hub-card">
+          <div>
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              Senior Care, Meals &amp; Transit
+            </h3>
+            <p>
+              Hot daily meal delivery, rural door-to-door transit for doctor visits, and Medicare counseling across the Highland Lakes.
+            </p>
+          </div>
+
+          <ul class="hub-contact-list">
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>Meals on Wheels &bull; Highland Lakes</strong>
+                <span>Daily Hot Meal Deliveries for Seniors</span>
+              </div>
+              <a href="tel:3253886532" class="btn-call">Call (325) 388-6532</a>
+            </li>
+
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>CARTS Rural Transportation</strong>
+                <span>Low-Cost Medical &amp; Grocery Rides</span>
+              </div>
+              <a href="tel:5124787433" class="btn-call">Call (512) 478-7433</a>
+            </li>
+
+            <li class="hub-contact-item">
+              <div class="hub-contact-info">
+                <strong>Area Agency on Aging (Central Texas)</strong>
+                <span>Medicare Guidance &amp; Respite Support</span>
+              </div>
+              <a href="tel:2547702330" class="btn-call">Call (254) 770-2330</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </section>
 
     <!-- WIRE CONTENT -->
