@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX</title>
 <meta name="title" content="Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX">
-<meta name="description" content="Interactive trade dispatch board for plumbing, HVAC, electrical, and septic contractors. Visual mapping, custom driver colors, mobile technician view preview, sequential job ETAs, and printable shift logs.">
-<meta name="keywords" content="dispatching board, contractor dispatch board, mobile tech view, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools">
+<meta name="description" content="Free trade contractor dispatching board for plumbing, HVAC, electrical, and septic services in Kingsland, Marble Falls, and the Highland Lakes. Live GPS routing, custom truck color tags, sequential job ETAs, and printable shift logs without monthly SaaS subscriptions.">
+<meta name="keywords" content="dispatching board, contractor dispatch board, mobile tech view, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools, HVAC plumbing electrical dispatch, free fleet dispatch software">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -151,7 +151,7 @@
 
   /* PAGE HEADER */
   .dispatch-header {
-    padding: 28px 0 14px 0;
+    padding: 24px 0 14px 0;
   }
   .dispatch-header h1 {
     font-size: clamp(1.8rem, 3.6vw, 2.35rem);
@@ -163,8 +163,9 @@
   .dispatch-header p {
     font-size: 0.95rem;
     color: var(--text-muted);
-    max-width: 820px;
-    margin: 0 0 16px 0;
+    max-width: 860px;
+    margin: 0 0 10px 0;
+    line-height: 1.55;
   }
 
   /* SEO HOW TO USE GUIDE BLOCK */
@@ -173,7 +174,7 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px 20px;
-    margin-bottom: 24px;
+    margin: 16px 0 24px 0;
     box-shadow: var(--card-shadow);
   }
   .how-to-guide h2 {
@@ -196,7 +197,7 @@
     background: #f8fafc;
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -806,13 +807,17 @@
     color: #991b1b;
   }
 
-  /* OFF-SCREEN PRINTABLE TEMPLATE: 
-     Positioned at top:0, left:0, z-index:-9999 with exact pixel dimensions.
-     Zero negative coordinates and zero CSS variables ensures html2canvas renders perfectly. */
-  #pdfPrintManifest {
-    position: fixed;
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (FIXES JUMBLED TEXT GLITCH) */
+  .pdf-hidden-wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
     top: 0;
     left: 0;
+    z-index: -9999;
+  }
+  #pdfPrintManifest {
     width: 760px;
     background: #ffffff;
     color: #1e293b;
@@ -820,7 +825,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
-    z-index: -9999;
   }
   .pdf-header {
     border-bottom: 2px solid #0d3b66;
@@ -950,8 +954,10 @@
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="about.html">About &amp; Founder</a>
+        <a href="workorder.html">Work Orders</a>
+        <a href="dispatch.html" class="active">Dispatch Board</a>
+        <a href="driver.html">Tech View</a>
+        <a href="about.html">About</a>
       </div>
     </div>
   </nav>
@@ -962,7 +968,10 @@
     <header class="dispatch-header">
       <h1>Field Dispatch Board</h1>
       <p>
-        A lightweight operational dispatch console built for Hill Country plumbers, HVAC technicians, electricians, and septic contractors. Monitor live truck locations, sequential arrival ETAs, and print shift manifests with zero per-user subscription fees.
+        A visual operational dispatching board engineered for independent trade contractors across Kingsland, Marble Falls, Burnet, and the Highland Lakes basin. Monitor real-time technician positions, sequential arrival windows, and vehicle color coding with zero monthly software subscriptions.
+      </p>
+      <p>
+        Contractors use this tool to replace chaotic whiteboards and expensive enterprise platforms like ServiceTitan or Jobber. Office staff can drag and drop service calls onto available rigs, while field technicians receive synchronized stops directly on their mobile phones with turn-by-turn navigation.
       </p>
 
       <!-- SEO OPTIMIZED HOW TO USE INSTRUCTIONS -->
@@ -1162,67 +1171,69 @@
     </div>
   </div>
 
-  <!-- PRINTABLE TEMPLATE (RENDERED DIRECTLY BY HTML2PDF) -->
-  <div id="pdfPrintManifest">
-    <div class="pdf-header">
-      <div class="pdf-title">
-        <h2>Simple Biz Systems &bull; Daily Dispatch &amp; Shift Manifest</h2>
-        <p>Kingsland, TX 78639 &bull; Independent Contractor Operations Support</p>
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (ISOLATED WRAPPER PREVENTS BLEED-THROUGH) -->
+  <div class="pdf-hidden-wrapper">
+    <div id="pdfPrintManifest">
+      <div class="pdf-header">
+        <div class="pdf-title">
+          <h2>Simple Biz Systems &bull; Daily Dispatch &amp; Shift Manifest</h2>
+          <p>Kingsland, TX 78639 &bull; Independent Contractor Operations Support</p>
+        </div>
+        <div class="pdf-meta">
+          <div><strong>Date:</strong> <span id="pdfDate"></span></div>
+          <div><strong>Log Generated:</strong> <span id="pdfTime"></span></div>
+        </div>
       </div>
-      <div class="pdf-meta">
-        <div><strong>Date:</strong> <span id="pdfDate"></span></div>
-        <div><strong>Log Generated:</strong> <span id="pdfTime"></span></div>
-      </div>
-    </div>
 
-    <h3 style="font-size: 1rem; color: #0d3b66; margin: 0 0 8px 0;">Technician &amp; Vehicle Roster</h3>
-    <table class="pdf-table">
-      <thead>
-        <tr>
-          <th>Technician</th>
-          <th>Truck Rig</th>
-          <th>Current Status</th>
-          <th>Active Assignment</th>
-          <th>Next Queued Stop</th>
-        </tr>
-      </thead>
-      <tbody id="pdfDriverTableBody">
-        <!-- Populated dynamically -->
-      </tbody>
-    </table>
+      <h3 style="font-size: 1rem; color: #0d3b66; margin: 0 0 8px 0;">Technician &amp; Vehicle Roster</h3>
+      <table class="pdf-table">
+        <thead>
+          <tr>
+            <th>Technician</th>
+            <th>Truck Rig</th>
+            <th>Current Status</th>
+            <th>Active Assignment</th>
+            <th>Next Queued Stop</th>
+          </tr>
+        </thead>
+        <tbody id="pdfDriverTableBody">
+          <!-- Populated dynamically -->
+        </tbody>
+      </table>
 
-    <h3 style="font-size: 1rem; color: #0d3b66; margin: 16px 0 8px 0;">Unassigned Backlog &amp; Service Queue</h3>
-    <table class="pdf-table">
-      <thead>
-        <tr>
-          <th>Customer Name</th>
-          <th>Service City</th>
-          <th>Trade Scope</th>
-          <th>Est Duration</th>
-        </tr>
-      </thead>
-      <tbody id="pdfQueueTableBody">
-        <!-- Populated dynamically -->
-      </tbody>
-    </table>
+      <h3 style="font-size: 1rem; color: #0d3b66; margin: 16px 0 8px 0;">Unassigned Backlog &amp; Service Queue</h3>
+      <table class="pdf-table">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Service City</th>
+            <th>Trade Scope</th>
+            <th>Est Duration</th>
+          </tr>
+        </thead>
+        <tbody id="pdfQueueTableBody">
+          <!-- Populated dynamically -->
+        </tbody>
+      </table>
 
-    <div class="pdf-signoff-row">
-      <div>
-        <div class="pdf-sign-line"></div>
-        <div class="pdf-sign-label">Dispatcher Signature</div>
+      <div class="pdf-signoff-row">
+        <div>
+          <div class="pdf-sign-line"></div>
+          <div class="pdf-sign-label">Dispatcher Signature</div>
+        </div>
+        <div>
+          <div class="pdf-sign-line"></div>
+          <div class="pdf-sign-label">Total Shift Mileage Logged</div>
+        </div>
+        <div>
+          <div class="pdf-sign-line"></div>
+          <div class="pdf-sign-label">Field Supervisor Approval</div>
+        </div>
       </div>
-      <div>
-        <div class="pdf-sign-line"></div>
-        <div class="pdf-sign-label">Total Shift Mileage Logged</div>
-      </div>
-      <div>
-        <div class="pdf-sign-line"></div>
-        <div class="pdf-sign-label">Field Supervisor Approval</div>
-      </div>
-    </div>
 
-    <div style="font-size: 0.7rem; color: #94a3b8; text-align: center; margin-top: 24px;">
-      Verified Shift Record &bull; Simple Biz Systems Field Dispatch Architecture &bull; simplebizsystems.com
+      <div style="font-size: 0.7rem; color: #94a3b8; text-align: center; margin-top: 24px;">
+        Verified Shift Record &bull; Simple Biz Systems Field Dispatch Architecture &bull; simplebizsystems.com
+      </div>
     </div>
   </div>
 
@@ -1232,7 +1243,7 @@
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
       <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and public utilities for Kingsland and Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
-        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
+        <a href="index.html">Home</a> &bull; <a href="workorder.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Tech View</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
@@ -1684,7 +1695,7 @@
       document.getElementById("phoneModal").classList.remove("active");
     }
 
-    // BULLETPROOF SHIFT PDF EXPORT (EXPLICIT DIMENSIONS + NO CSS VARIABLES)
+    // BULLETPROOF SHIFT PDF EXPORT (USES ISOLATED WRAPPER WITHOUT VISIBLE BLEED)
     function exportShiftPDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
