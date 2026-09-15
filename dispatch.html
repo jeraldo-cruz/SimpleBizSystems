@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX</title>
 <meta name="title" content="Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX">
-<meta name="description" content="Interactive trade dispatch board for plumbing, HVAC, electrical, and septic contractors. Visual mapping, custom driver colors, sequential job ETAs, and printable end of shift PDF logs.">
-<meta name="keywords" content="dispatching board, contractor dispatch board, how to use dispatch board, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools">
+<meta name="description" content="Interactive trade dispatch board for plumbing, HVAC, electrical, and septic contractors. Visual mapping, custom driver colors, mobile technician view preview, sequential job ETAs, and printable shift logs.">
+<meta name="keywords" content="dispatching board, contractor dispatch board, mobile tech view, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/dispatch.html">
 <meta property="og:title" content="Field Dispatch Board | Simple Biz Systems">
-<meta property="og:description" content="Visual map dispatching, custom truck color coding, sequential arrival ETAs, and shift export logs for independent trades.">
+<meta property="og:description" content="Visual map dispatching, custom truck color coding, live mobile driver console preview, and shift export logs for independent trades.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- LEAFLET OPEN-SOURCE MAPS CSS -->
@@ -476,6 +476,28 @@
     margin-top: 8px;
   }
 
+  /* DRIVER ACTION LINKS ROW */
+  .driver-link-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .btn-open-tech-view {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .btn-open-tech-view:hover {
+    text-decoration: underline;
+  }
+
   /* BOTTOM CONSOLE */
   .console-section {
     background: var(--surface);
@@ -520,8 +542,25 @@
   .console-actions-right {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
+  }
+  .btn-mobile-preview {
+    background: #0f2b48;
+    color: #ffffff;
+    border: 1px solid #1e3a5f;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s ease;
+  }
+  .btn-mobile-preview:hover {
+    background: #1e3a5f;
   }
   .btn-pdf-export {
     background: #0284c7;
@@ -685,7 +724,76 @@
   }
   .disclaimer-box strong { color: var(--primary); }
 
-  /* OFF-SCREEN PRINTABLE TEMPLATE (FIXES BLANK PDF BY PROVIDING EXACT GEOMETRY) */
+  /* MOBILE PHONE PREVIEW MODAL */
+  .phone-modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .phone-modal-backdrop.active {
+    display: flex;
+  }
+
+  .phone-bezel {
+    width: 380px;
+    height: 720px;
+    max-height: 90vh;
+    background: #090d16;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 4px #334155;
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-speaker-bar {
+    width: 80px;
+    height: 5px;
+    background: #334155;
+    border-radius: 999px;
+    margin: 8px auto 10px auto;
+    flex-shrink: 0;
+  }
+  .phone-screen-iframe {
+    width: 100%;
+    flex: 1;
+    border: none;
+    border-radius: 28px;
+    background: #f8fafc;
+  }
+  .phone-modal-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    font-weight: 800;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  }
+  .phone-modal-close:hover {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  /* OFF-SCREEN PRINTABLE TEMPLATE (FOR HTML2PDF) */
   #pdfPrintManifest {
     position: fixed;
     left: -9999px;
@@ -694,7 +802,7 @@
     background: #ffffff;
     color: #1e293b;
     padding: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: block;
     box-sizing: border-box;
   }
@@ -861,8 +969,8 @@
           </div>
           <div class="step-item">
             <span class="step-num">Step 4</span>
-            <div class="step-title">Export Shift Manifest</div>
-            <p class="step-desc">Click "Export Shift PDF" at the end of the day to generate a branded log sheet with mileage and technician signoffs.</p>
+            <div class="step-title">Mobile Tech Sync</div>
+            <p class="step-desc">Click "Mobile Tech View" to preview how drivers receive calls in real time on their phones with one-touch GPS navigation.</p>
           </div>
         </div>
       </section>
@@ -898,7 +1006,7 @@
         </div>
 
         <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; text-align: center;">
-          Click any truck to expand route details or change its map color.
+          Click any truck to expand route details or test driver view.
         </div>
       </aside>
 
@@ -913,6 +1021,10 @@
           <button type="button" class="tab-btn" onclick="switchConsoleTab('tab-driver', event)">+ Add New Truck</button>
         </div>
         <div class="console-actions-right">
+          <button type="button" class="btn-mobile-preview" onclick="openPhoneModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+            <span>Mobile Tech View</span>
+          </button>
           <button type="button" class="btn-pdf-export" id="btnPdfExport" onclick="exportShiftPDF()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             <span>Export Shift PDF</span>
@@ -1013,6 +1125,15 @@
     </section>
 
   </main>
+
+  <!-- INTERACTIVE PHONE PREVIEW MODAL -->
+  <div class="phone-modal-backdrop" id="phoneModal" onclick="closePhoneModal(event)">
+    <div class="phone-bezel" onclick="event.stopPropagation();">
+      <button type="button" class="phone-modal-close" onclick="closePhoneModal(event)">&times;</button>
+      <div class="phone-speaker-bar"></div>
+      <iframe src="driver.html" class="phone-screen-iframe" id="driverIframe"></iframe>
+    </div>
+  </div>
 
   <!-- OFF-SCREEN PRINTABLE TEMPLATE (RENDERABLE BY HTML2PDF) -->
   <div id="pdfPrintManifest">
@@ -1242,6 +1363,14 @@
 
             <div class="eta-indicator-box">
               <span>${nextEtaText}</span>
+            </div>
+
+            <div class="driver-link-bar">
+              <a href="driver.html" target="_blank" class="btn-open-tech-view">
+                <span>Launch Mobile Screen</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <button type="button" class="btn-quick-assign" style="font-size:0.75rem;" onclick="openPhoneModal()">Preview Phone Frame</button>
             </div>
           </div>
         `;
@@ -1515,6 +1644,19 @@
       }
     }
 
+    // PHONE PREVIEW MODAL CONTROLS
+    function openPhoneModal() {
+      const modal = document.getElementById("phoneModal");
+      const iframe = document.getElementById("driverIframe");
+      iframe.src = "driver.html?_t=" + Date.now();
+      modal.classList.add("active");
+    }
+
+    function closePhoneModal(ev) {
+      if (ev) ev.preventDefault();
+      document.getElementById("phoneModal").classList.remove("active");
+    }
+
     // ROBUST SHIFT PDF EXPORT (USES OFF-SCREEN STAGING TO PREVENT BLANK OUTPUT)
     function exportShiftPDF() {
       const btn = document.getElementById("btnPdfExport");
@@ -1526,7 +1668,6 @@
       document.getElementById("pdfDate").innerText = now.toLocaleDateString();
       document.getElementById("pdfTime").innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // Populate Driver Table
       const driverTbody = document.getElementById("pdfDriverTableBody");
       driverTbody.innerHTML = "";
       drivers.forEach(d => {
@@ -1541,7 +1682,6 @@
         driverTbody.appendChild(tr);
       });
 
-      // Populate Queue Table
       const queueTbody = document.getElementById("pdfQueueTableBody");
       queueTbody.innerHTML = "";
       if (queue.length === 0) {
