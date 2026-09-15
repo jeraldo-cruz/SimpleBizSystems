@@ -8,7 +8,7 @@
 <title>Field Work Order & Customer Signoff | Simple Biz Systems</title>
 <meta name="title" content="Field Work Order & Customer Signoff | Simple Biz Systems">
 <meta name="description" content="Free offline mobile field work order and customer signature signoff tool for Highland Lakes trades. Generate professional PDF invoices on site with zero monthly subscription fees.">
-<meta name="keywords" content="field work order app, contractor signoff tool, mobile work order pdf, trades signature app, Kingsland TX field service software, offline work order generator, HVAC plumbing electrical signoff sheet">
+<meta name="keywords" content="field work order app, contractor signoff tool, mobile work order pdf, trades signature app, Kingsland TX field service software, offline work order generator, HVAC plumbing electrical signoff sheet, free field service management">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -125,6 +125,8 @@
     display: flex; 
     align-items: center; 
     gap: 10px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .nav-links a { 
     text-decoration: none; 
@@ -133,6 +135,11 @@
     font-size: 0.82rem; 
     padding: 4px 2px;
     white-space: nowrap;
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
   }
 
   /* PAGE HEADER */
@@ -316,7 +323,7 @@
     border-color: var(--primary);
   }
 
-  /* LINE ITEMS: STACKED CARD ARCHITECTURE (PREVENTS CUTOFF) */
+  /* LINE ITEMS: STACKED CARD ARCHITECTURE (NO CUTOFF) */
   .line-items-wrapper {
     margin-bottom: 12px;
     display: flex;
@@ -327,12 +334,18 @@
     background: #f8fafc;
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+  }
+  .line-item-header {
+    display: flex;
     gap: 8px;
+    align-items: flex-start;
   }
   .item-desc-input {
+    flex: 1;
     width: 100%;
     padding: 8px 10px;
     border-radius: 6px;
@@ -341,17 +354,33 @@
     font-family: inherit;
     background: #ffffff;
   }
+  .btn-remove-line {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    border-radius: 6px;
+    width: 38px;
+    height: 38px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
-  .item-math-row {
-    display: grid;
-    grid-template-columns: 80px 100px 1fr auto;
-    gap: 8px;
+  .line-item-math {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
     align-items: center;
   }
   .field-mini-wrap {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
+    flex: 1;
   }
   .field-mini-label {
     font-size: 0.68rem;
@@ -361,41 +390,20 @@
   }
   .field-mini-wrap input {
     width: 100%;
-    padding: 7px 8px;
+    padding: 8px 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    font-size: 0.84rem;
+    font-size: 0.86rem;
     font-family: inherit;
     background: #ffffff;
   }
-
-  .item-amount-display {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .amount-wrap {
     align-items: flex-end;
-    padding-right: 4px;
   }
   .amount-val {
     font-size: 0.95rem;
     font-weight: 800;
     color: var(--primary);
-  }
-
-  .btn-remove-line {
-    background: #fee2e2;
-    color: var(--danger);
-    border: none;
-    border-radius: 6px;
-    width: 32px;
-    height: 32px;
-    font-weight: 800;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 14px;
   }
 
   .btn-add-line {
@@ -404,7 +412,7 @@
     color: var(--primary);
     font-size: 0.8rem;
     font-weight: 700;
-    padding: 9px 14px;
+    padding: 10px 14px;
     border-radius: 6px;
     cursor: pointer;
     width: 100%;
@@ -562,11 +570,17 @@
     margin-bottom: 0;
   }
 
-  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
-  #pdfPrintStage {
-    position: fixed;
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (FIXES JUMBLED TEXT GLITCH) */
+  .pdf-hidden-wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
     top: 0;
     left: 0;
+    z-index: -9999;
+  }
+  #pdfPrintStage {
     width: 740px;
     background: #ffffff;
     color: #1e293b;
@@ -574,7 +588,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
-    z-index: -9999;
   }
   .pdf-top-row {
     border-bottom: 2px solid #0d3b66;
@@ -630,7 +643,7 @@
   footer { 
     background: #09233d; 
     color: #94a3b8; 
-    padding: 22px 0; 
+    padding: 24px 0; 
     text-align: center; 
     font-size: 0.78rem; 
   }
@@ -640,10 +653,6 @@
   @media (max-width: 580px) {
     .grid-2 {
       grid-template-columns: 1fr;
-      gap: 6px;
-    }
-    .item-math-row {
-      grid-template-columns: 65px 85px 1fr auto;
       gap: 6px;
     }
   }
@@ -664,6 +673,7 @@
         <span>Simple Biz Systems</span>
       </a>
       <div class="nav-links">
+        <a href="workorder.html" class="active">Work Orders</a>
         <a href="dispatch.html">Dispatch</a>
         <a href="driver.html">Tech View</a>
         <a href="about.html">About</a>
@@ -680,7 +690,10 @@
         <span class="net-status-badge online" id="netBadge">Online</span>
       </div>
       <p>
-        A mobile-first field service work order app and customer signature capture tool engineered for plumbing, HVAC, electrical, and septic contractors throughout Kingsland, Marble Falls, and the Highland Lakes basin. Built to operate seamlessly offline with local browser storage, instant PDF invoice generation, and zero monthly software fees.
+        A mobile-first field service work order app and customer signature capture tool engineered for plumbing, HVAC, electrical, and septic contractors throughout Kingsland, Marble Falls, and the Highland Lakes basin.
+      </p>
+      <p>
+        By digitizing your trade operations, you eliminate lost paper invoices and speed up customer billing. This tool integrates seamlessly into your standard operating procedures. Electricians and HVAC techs can rely on this free field service management software to capture localized data offline without needing expensive enterprise subscriptions.
       </p>
 
       <!-- STRUCTURED SEO STEP GUIDE -->
@@ -752,8 +765,11 @@
         
         <!-- Line Item Card 1 -->
         <div class="line-item-card">
-          <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="Standard Diagnostic &amp; Service Call" required>
-          <div class="item-math-row">
+          <div class="line-item-header">
+            <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="Standard Diagnostic &amp; Service Call" required>
+            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+          </div>
+          <div class="line-item-math">
             <div class="field-mini-wrap">
               <span class="field-mini-label">Qty</span>
               <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
@@ -762,18 +778,20 @@
               <span class="field-mini-label">Rate ($)</span>
               <input type="number" class="item-rate" placeholder="0.00" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
             </div>
-            <div class="item-amount-display">
+            <div class="field-mini-wrap amount-wrap">
               <span class="field-mini-label">Amount</span>
               <span class="amount-val">$125.00</span>
             </div>
-            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
           </div>
         </div>
 
         <!-- Line Item Card 2 -->
         <div class="line-item-card">
-          <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
-          <div class="item-math-row">
+          <div class="line-item-header">
+            <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
+            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+          </div>
+          <div class="line-item-math">
             <div class="field-mini-wrap">
               <span class="field-mini-label">Qty</span>
               <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
@@ -782,11 +800,10 @@
               <span class="field-mini-label">Rate ($)</span>
               <input type="number" class="item-rate" placeholder="0.00" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
             </div>
-            <div class="item-amount-display">
+            <div class="field-mini-wrap amount-wrap">
               <span class="field-mini-label">Amount</span>
               <span class="amount-val">$48.50</span>
             </div>
-            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
           </div>
         </div>
 
@@ -842,65 +859,67 @@
 
   </main>
 
-  <!-- BULLETPROOF OFF-SCREEN PDF PRINT STAGE -->
-  <div id="pdfPrintStage">
-    <div class="pdf-top-row">
-      <div class="pdf-brand-block">
-        <h2>Simple Biz Systems &bull; Field Work Order</h2>
-        <p>Kingsland, TX 78639 &bull; Trade Operations Support</p>
-      </div>
-      <div class="pdf-meta-block">
-        <div><strong>Order:</strong> <span id="pdfWoNum">WO-1042</span></div>
-        <div><strong>Date:</strong> <span id="pdfDate"></span></div>
-      </div>
-    </div>
-
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:14px; font-size:0.8rem;">
-      <div>
-        <strong style="color:#0d3b66;">Customer / Location:</strong>
-        <div id="pdfCustName" style="font-weight:700;"></div>
-        <div id="pdfCustAddress" style="color:#64748b;"></div>
-      </div>
-      <div>
-        <strong style="color:#0d3b66;">Technician / Truck:</strong>
-        <div id="pdfTechName" style="font-weight:700;"></div>
-        <div id="pdfTruckUnit" style="color:#64748b;"></div>
-      </div>
-    </div>
-
-    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:14px; font-size:0.8rem;">
-      <strong style="color:#0d3b66;">Scope of Work Completed:</strong>
-      <div id="pdfWorkScope" style="margin-top:4px; color:#1e293b;"></div>
-    </div>
-
-    <table class="pdf-table">
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th style="width:60px; text-align:center;">Qty</th>
-          <th style="width:90px; text-align:right;">Rate</th>
-          <th style="width:100px; text-align:right;">Amount</th>
-        </tr>
-      </thead>
-      <tbody id="pdfTableBody"></tbody>
-      <tfoot>
-        <tr>
-          <th colspan="3" style="text-align:right; border:1px solid #e2e8f0;">Total Balance:</th>
-          <th id="pdfTotal" style="text-align:right; border:1px solid #e2e8f0; color:#0d3b66; font-size:0.95rem;"></th>
-        </tr>
-      </tfoot>
-    </table>
-
-    <div style="margin-top:18px; border-top:1px solid #e2e8f0; padding-top:10px; display:flex; justify-content:space-between; align-items:flex-end;">
-      <div>
-        <span style="font-size:0.72rem; text-transform:uppercase; color:#64748b; font-weight:700;">Customer Signoff &amp; Authorization</span>
-        <img id="pdfSigImg" class="pdf-sig-preview" src="" alt="Customer Signature">
-        <div style="border-top:1px solid #94a3b8; margin-top:4px; padding-top:4px; font-size:0.72rem; color:#64748b;">
-          I acknowledge satisfactory completion of the work outlined above.
+  <!-- BULLETPROOF OFF-SCREEN PDF PRINT STAGE (CONTAINED & INVISIBLE TO PREVENT UI GLITCHES) -->
+  <div class="pdf-hidden-wrapper">
+    <div id="pdfPrintStage">
+      <div class="pdf-top-row">
+        <div class="pdf-brand-block">
+          <h2>Simple Biz Systems &bull; Field Work Order</h2>
+          <p>Kingsland, TX 78639 &bull; Trade Operations Support</p>
+        </div>
+        <div class="pdf-meta-block">
+          <div><strong>Order:</strong> <span id="pdfWoNum">WO-1042</span></div>
+          <div><strong>Date:</strong> <span id="pdfDate"></span></div>
         </div>
       </div>
-      <div style="text-align:right; font-size:0.72rem; color:#94a3b8;">
-        Verified Field Record &bull; simplebizsystems.com
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:14px; font-size:0.8rem;">
+        <div>
+          <strong style="color:#0d3b66;">Customer / Location:</strong>
+          <div id="pdfCustName" style="font-weight:700;"></div>
+          <div id="pdfCustAddress" style="color:#64748b;"></div>
+        </div>
+        <div>
+          <strong style="color:#0d3b66;">Technician / Truck:</strong>
+          <div id="pdfTechName" style="font-weight:700;"></div>
+          <div id="pdfTruckUnit" style="color:#64748b;"></div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:14px; font-size:0.8rem;">
+        <strong style="color:#0d3b66;">Scope of Work Completed:</strong>
+        <div id="pdfWorkScope" style="margin-top:4px; color:#1e293b;"></div>
+      </div>
+
+      <table class="pdf-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th style="width:60px; text-align:center;">Qty</th>
+            <th style="width:90px; text-align:right;">Rate</th>
+            <th style="width:100px; text-align:right;">Amount</th>
+          </tr>
+        </thead>
+        <tbody id="pdfTableBody"></tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3" style="text-align:right; border:1px solid #e2e8f0;">Total Balance:</th>
+            <th id="pdfTotal" style="text-align:right; border:1px solid #e2e8f0; color:#0d3b66; font-size:0.95rem;"></th>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div style="margin-top:18px; border-top:1px solid #e2e8f0; padding-top:10px; display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <span style="font-size:0.72rem; text-transform:uppercase; color:#64748b; font-weight:700;">Customer Signoff &amp; Authorization</span>
+          <img id="pdfSigImg" class="pdf-sig-preview" src="" alt="Customer Signature">
+          <div style="border-top:1px solid #94a3b8; margin-top:4px; padding-top:4px; font-size:0.72rem; color:#64748b;">
+            I acknowledge satisfactory completion of the work outlined above.
+          </div>
+        </div>
+        <div style="text-align:right; font-size:0.72rem; color:#94a3b8;">
+          Verified Field Record &bull; simplebizsystems.com
+        </div>
       </div>
     </div>
   </div>
@@ -910,7 +929,7 @@
     <div class="container">
       <p style="margin: 0 0 4px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
       <p style="margin: 0; opacity: 0.7;">
-        <a href="index.html">Home</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Driver View</a> &bull; <a href="about.html">About</a>
+        <a href="index.html">Home</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Tech View</a> &bull; <a href="about.html">About</a>
       </p>
     </div>
   </footer>
@@ -1043,8 +1062,11 @@
       const card = document.createElement("div");
       card.className = "line-item-card";
       card.innerHTML = `
-        <input type="text" class="item-desc-input" placeholder="Item / Labor Description" required>
-        <div class="item-math-row">
+        <div class="line-item-header">
+          <input type="text" class="item-desc-input" placeholder="Item / Labor Description" required>
+          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+        </div>
+        <div class="line-item-math">
           <div class="field-mini-wrap">
             <span class="field-mini-label">Qty</span>
             <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
@@ -1053,11 +1075,10 @@
             <span class="field-mini-label">Rate ($)</span>
             <input type="number" class="item-rate" placeholder="0.00" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
           </div>
-          <div class="item-amount-display">
+          <div class="field-mini-wrap amount-wrap">
             <span class="field-mini-label">Amount</span>
             <span class="amount-val">$0.00</span>
           </div>
-          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
         </div>
       `;
       container.appendChild(card);
@@ -1195,7 +1216,7 @@
       document.getElementById("woNumberDisplay").innerText = "WO-" + Math.floor(1000 + Math.random() * 9000);
     }
 
-    // BULLETPROOF HTML2PDF EXPORT USING PRECISE STAGING
+    // BULLETPROOF HTML2PDF EXPORT (SAFE DOM EXTRACTION)
     function generatePdfRecord(wo) {
       const btn = document.getElementById("btnSaveSign");
       const originalText = btn.innerHTML;
