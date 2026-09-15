@@ -256,7 +256,7 @@
     margin-top: 4px;
   }
 
-  /* LAKE LEVELS ROW (NOW BELOW WEATHER) */
+  /* LAKE LEVELS ROW (BELOW WEATHER) */
   .lake-horizontal-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -643,59 +643,21 @@
       <article class="dash-card">
         <div class="dash-card-header">
           <h2>7-Day Kingsland Forecast</h2>
-          <a href="https://forecast.weather.gov/MapClick.php?CityName=Kingsland&state=TX" target="_blank" rel="noopener" class="dash-source-link">Source: NOAA / NWS &rarr;</a>
+          <a href="https://forecast.weather.gov/MapClick.php?lat=30.6638&lon=-98.4411" target="_blank" rel="noopener" class="dash-source-link">Source: NOAA / NWS Austin/San Antonio &rarr;</a>
         </div>
         <div class="forecast-grid" id="weatherContainer">
-          <!-- Populated dynamically via Open-Meteo public forecast API -->
+          <!-- Dynamic live populate via Open-Meteo with exact local timezone resolution -->
           <div class="forecast-day">
-            <span class="forecast-date">Today</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-            <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
-            <span class="forecast-pop">0% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Wed</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-            <div class="forecast-temps">93&deg;<span class="forecast-low">72&deg;</span></div>
-            <span class="forecast-pop">10% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Thu</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
-            <div class="forecast-temps">90&deg;<span class="forecast-low">70&deg;</span></div>
-            <span class="forecast-pop">20% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Fri</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-            <div class="forecast-temps">91&deg;<span class="forecast-low">69&deg;</span></div>
-            <span class="forecast-pop">10% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Sat</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-            <div class="forecast-temps">94&deg;<span class="forecast-low">72&deg;</span></div>
-            <span class="forecast-pop">0% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Sun</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-            <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
-            <span class="forecast-pop">0% rain</span>
-          </div>
-          <div class="forecast-day">
-            <span class="forecast-date">Mon</span>
-            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
-            <div class="forecast-temps">89&deg;<span class="forecast-low">68&deg;</span></div>
-            <span class="forecast-pop">30% rain</span>
+            <span class="forecast-date">Loading...</span>
+            <div class="forecast-temps">--&deg;</div>
           </div>
         </div>
         <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">
-          Updated automatically for Kingsland, TX 78639 (30.66&deg; N, 98.44&deg; W).
+          Live forecast station coordinates: Kingsland, TX 78639 (30.66&deg; N, 98.44&deg; W).
         </div>
       </article>
 
-      <!-- 2. LAKE LEVELS ROW (NOW POSITIONED BELOW WEATHER) -->
+      <!-- 2. LAKE LEVELS ROW (POSITIONED DIRECTLY BELOW WEATHER) -->
       <article class="dash-card">
         <div class="dash-card-header">
           <h2>Highland Lakes Storage Levels</h2>
@@ -764,14 +726,14 @@
 
     </section>
 
-    <!-- 3. COMMUNITY CALENDAR BLOCK (FREE & LOW COST LOCAL EVENTS) -->
+    <!-- 3. COMMUNITY CALENDAR BLOCK (VERIFIED FREE & LOW COST EVENTS) -->
     <section class="calendar-section">
       <div class="calendar-header">
         <div>
           <h2>Kingsland &amp; Highland Lakes Community Calendar</h2>
-          <span style="font-size: 0.82rem; color: var(--text-muted);">Free and low-cost local gatherings, markets, and public meetings</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted);">Free and low-cost local gatherings, markets, and public programs</span>
         </div>
-        <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="dash-source-link">Chamber Master Calendar &rarr;</a>
+        <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="dash-source-link">Chamber Master Calendar &rarr;</a>
       </div>
 
       <div class="calendar-grid">
@@ -787,7 +749,7 @@
               Local Hill Country produce, fresh eggs, honey, handmade goods, and tools from regional growers and small shops.
             </p>
           </div>
-          <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">View Market Details &rarr;</a>
+          <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">View Market Details &rarr;</a>
         </article>
 
         <!-- EVENT 2 -->
@@ -796,12 +758,12 @@
             <span class="event-date-badge">1st &amp; 3rd Tuesday &bull; 6:30 PM</span>
             <span class="event-price-tag">Free Community Access</span>
             <h3>Highland Lakes Conservation Meeting</h3>
-            <div class="event-meta">Kingsland Public Library Meeting Room</div>
+            <div class="event-meta">Kingsland Library Meeting Room</div>
             <p class="event-desc">
               Discussion on water conservation strategies, native plant landscaping, and lake protection with regional guest speakers.
             </p>
           </div>
-          <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">Meeting Agenda &rarr;</a>
+          <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">Meeting Agenda &rarr;</a>
         </article>
 
         <!-- EVENT 3 -->
@@ -815,7 +777,7 @@
               Pancake and sausage breakfast open to all neighbors, families, and veterans. Proceeds benefit local veteran outreach programs.
             </p>
           </div>
-          <a href="https://vfw10376.org/" target="_blank" rel="noopener" class="event-link">Post Calendar &rarr;</a>
+          <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">Community Board &rarr;</a>
         </article>
 
         <!-- EVENT 4 -->
@@ -824,12 +786,12 @@
             <span class="event-date-badge">Every Thursday &bull; 10:00 AM</span>
             <span class="event-price-tag">Free Entry</span>
             <h3>Senior Digital Tech &amp; Device Help</h3>
-            <div class="event-meta">Kingsland Branch Library</div>
+            <div class="event-meta">Kingsland Branch Library (125 W Polk)</div>
             <p class="event-desc">
               Free one-on-one help with phones, tablets, and email setups. Walk-ins welcome for seniors needing technology assistance.
             </p>
           </div>
-          <a href="https://kingslandlibrary.org/" target="_blank" rel="noopener" class="event-link">Library Programs &rarr;</a>
+          <a href="https://www.llano-library-system.net/" target="_blank" rel="noopener" class="event-link">Library Programs &rarr;</a>
         </article>
 
       </div>
@@ -863,14 +825,14 @@
               <div class="drawer-card">
                 <h4>Kingsland Chamber of Commerce</h4>
                 <p>Official community event calendar, member directory, and regional small business mixers in Llano and Burnet counties.</p>
-                <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="btn-source">
+                <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="btn-source">
                   Visit Kingsland Chamber Official Calendar &rarr;
                 </a>
               </div>
               <div class="drawer-card">
                 <h4>AquaBoom Festival Coordination</h4>
                 <p>Annual community festival logistics, lake fireworks announcements, boat parade details, and local vendor signups.</p>
-                <a href="https://www.kingslandchamber.org/aquaboom" target="_blank" rel="noopener" class="btn-source">
+                <a href="https://kingslandchamber.org/" target="_blank" rel="noopener" class="btn-source">
                   View AquaBoom Festival Details &rarr;
                 </a>
               </div>
@@ -878,7 +840,7 @@
           </div>
         </details>
 
-        <!-- DRAWER 2: BOAT RAMPS & PUBLIC PARKS -->
+        <!-- DRAWER 2: BOAT RAMPS & PUBLIC PARKS (REPOINTED TO OFFICIAL PAGES) -->
         <details class="drawer">
           <summary class="drawer-summary">
             <div class="drawer-label-group">
@@ -896,30 +858,30 @@
             <div class="drawer-data-grid">
               <div class="drawer-card">
                 <h4>Kingsland Community Park (Lake LBJ)</h4>
-                <p>Public concrete ramp open year round. Day pass parking required for tow vehicles. Easy access to the main Colorado River arm.</p>
-                <a href="https://kingslandcommunitypark.com/" target="_blank" rel="noopener" class="btn-source">
-                  View Park Hours &amp; Pass Information &rarr;
+                <p>Public concrete boat ramp operated with Kingsland MUD. Day pass parking required for tow vehicles. Direct access to Lake LBJ.</p>
+                <a href="https://kingslandchamber.org/community-park/" target="_blank" rel="noopener" class="btn-source">
+                  View Park &amp; Launch Guidelines &rarr;
                 </a>
               </div>
               <div class="drawer-card">
-                <h4>Lions Club Park Boat Launch</h4>
-                <p>Concrete public ramp located near the RM 1431 bridge. Caution advised when navigating the channel west of the bridge due to silt gravel bars.</p>
+                <h4>LCRA Lake LBJ Parks &amp; Lions Ramp</h4>
+                <p>Public launch located near the RM 1431 bridge. Caution advised when navigating the river arm west of the bridge during low runoff.</p>
                 <a href="https://www.lcra.org/parks/" target="_blank" rel="noopener" class="btn-source">
-                  LCRA Lake LBJ Access Map &rarr;
+                  LCRA Highland Lakes Parks Directory &rarr;
                 </a>
               </div>
               <div class="drawer-card">
-                <h4>Inks Lake State Park Ramps</h4>
-                <p>Two well-maintained ramps in constant-level pass-through waters. Day-use reservations recommended during weekends.</p>
+                <h4>Inks Lake State Park Launch</h4>
+                <p>Two well-maintained public boat ramps in constant-level waters. Online day passes recommended during peak spring and summer weekends.</p>
                 <a href="https://tpwd.texas.gov/state-parks/inks-lake" target="_blank" rel="noopener" class="btn-source">
-                  Texas Parks &amp; Wildlife Inks Page &rarr;
+                  Texas Parks &amp; Wildlife Inks Lake Page &rarr;
                 </a>
               </div>
               <div class="drawer-card">
                 <h4>Lake Buchanan Public Launch Points</h4>
-                <p>Public launch status varies with lake storage levels. Check active ramp elevations before trailering larger boats to Buchanan Dam.</p>
-                <a href="https://waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener" class="btn-source">
-                  Buchanan Ramp Elevation Status &rarr;
+                <p>Launch usability varies with active reservoir storage. Check TWDB water levels before trailering larger hulls to Buchanan Dam.</p>
+                <a href="https://www.waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener" class="btn-source">
+                  Buchanan Water Level Status &rarr;
                 </a>
               </div>
             </div>
@@ -951,9 +913,9 @@
               </div>
               <div class="drawer-card">
                 <h4>Kingsland Community Food Distribution</h4>
-                <p>Weekly food box distribution and emergency dry pantry services organized through local church ministries in Kingsland.</p>
-                <a href="https://www.hlcaa.org/" target="_blank" rel="noopener" class="btn-source">
-                  Hill Country Community Action Nutrition &rarr;
+                <p>Weekly food box distribution and emergency dry pantry services organized through local church ministries and community programs.</p>
+                <a href="https://helpingcentermf.org/" target="_blank" rel="noopener" class="btn-source">
+                  Community Pantry Assistance &rarr;
                 </a>
               </div>
             </div>
@@ -981,7 +943,7 @@
                 <p>Direct assistance with VA disability claims, pensions, and medical enrollment without traveling to big cities.</p>
                 <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
                   <a href="tel:3252477730" class="btn-call-desk">Call (325) 247-7730</a>
-                  <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener" class="btn-source">Llano VSO Site</a>
+                  <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener" class="btn-source">Llano County VSO</a>
                 </div>
               </div>
               <div class="drawer-card">
@@ -989,7 +951,7 @@
                 <p>Support for East Lake LBJ and Burnet County residents with federal VA applications and survivor benefits.</p>
                 <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
                   <a href="tel:5127155270" class="btn-call-desk">Call (512) 715-5270</a>
-                  <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener" class="btn-source">Burnet VSO Site</a>
+                  <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener" class="btn-source">Burnet County VSO</a>
                 </div>
               </div>
               <div class="drawer-card">
@@ -997,7 +959,7 @@
                 <p>Hot noon meal deliveries and friendly safety check-ins for homebound seniors living throughout Kingsland.</p>
                 <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
                   <a href="tel:3253886532" class="btn-call-desk">Call (325) 388-6532</a>
-                  <a href="https://www.hlcaa.org/senior-nutrition" target="_blank" rel="noopener" class="btn-source">Nutrition Program</a>
+                  <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener" class="btn-source">County Nutrition Program</a>
                 </div>
               </div>
               <div class="drawer-card">
@@ -1028,7 +990,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT: OPEN-METEO LIVE WEATHER RETRIEVAL (ZERO TRACKING, ZERO COOKIES) -->
+  <!-- SCRIPT: OPEN-METEO LIVE WEATHER RETRIEVAL (STRICT LOCAL TIMEZONE & ACCURATE PARSING) -->
   <script>
     (function() {
       const weatherApi = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&temperature_unit=fahrenheit&timezone=America%2FChicago";
@@ -1048,19 +1010,24 @@
           const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
           for (let i = 0; i < Math.min(7, days.length); i++) {
-            const dateObj = new Date(days[i] + "T00:00:00");
-            const label = i === 0 ? "Today" : dayNames[dateObj.getDay()];
+            // Split date components to avoid any browser UTC date shift
+            const parts = days[i].split("-");
+            const localDate = new Date(parts[0], parts[1] - 1, parts[2]);
+            const label = i === 0 ? "Today" : dayNames[localDate.getDay()];
             const code = codes[i];
             
-            // Clean inline SVG based on WMO code
+            // Clean inline SVGs
             let iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>';
             
             if (code >= 51 && code <= 67) {
               // Rain
               iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#0284c7"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 21l-2 3m4-3l-2 3m4-3l-2 3" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/></svg>';
             } else if (code >= 1 && code <= 3) {
-              // Part cloudy
+              // Partly cloudy
               iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>';
+            } else if (code >= 71) {
+              // Overcast / stormy
+              iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#475569"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>';
             }
 
             html += `
@@ -1075,7 +1042,11 @@
           container.innerHTML = html;
         })
         .catch(() => {
-          // Static fallback remains in place
+          document.getElementById("weatherContainer").innerHTML = `
+            <div style="grid-column: 1 / -1; padding: 12px; font-size: 0.84rem; color: var(--text-muted);">
+              Weather service syncing. <a href="https://forecast.weather.gov/MapClick.php?lat=30.6638&lon=-98.4411" target="_blank" rel="noopener" style="color: var(--blue-accent); font-weight: 700;">View live forecast on NOAA NWS &rarr;</a>
+            </div>
+          `;
         });
     })();
   </script>
