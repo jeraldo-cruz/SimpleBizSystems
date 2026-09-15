@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | Local News, Lake Levels & Public Utilities | Kingsland, TX</title>
-<meta name="title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities | Kingsland, TX">
-<meta name="description" content="Community bulletin, real-time Highland Lakes water levels, boat ramp advisories, burn bans, and resources for seniors and veterans in Kingsland and the Highland Lakes.">
-<meta name="keywords" content="Kingsland TX news, Lake LBJ water levels, Lake Buchanan lake level, Inks Lake elevation, Llano County burn ban, Highland Lakes boat ramps, Kingsland veterans support, Kingsland senior resources">
+<title>The Kingsland Wire | Local Weather, Lake Levels & Public Utilities | Kingsland, TX</title>
+<meta name="title" content="The Kingsland Wire | Local Weather, Lake Levels & Public Utilities | Kingsland, TX">
+<meta name="description" content="Free, ad-free, tracking-free civic aggregator for Kingsland, TX. Live 7-day weather, Highland Lakes reservoir levels, boat ramp status, chamber events, and community care resources.">
+<meta name="keywords" content="Kingsland TX weather, Lake LBJ water levels, Lake Buchanan elevation, Kingsland Chamber events, Lake LBJ boat ramps, Kingsland food pantry, Llano county veterans officer">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,8 +23,8 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities">
-<meta property="og:description" content="Real-time Highland Lakes water levels, boat ramp status, civic updates, and local care resources for Kingsland, TX.">
+<meta property="og:title" content="The Kingsland Wire | Weather, Lake Levels & Community Utilities">
+<meta property="og:description" content="Direct public agency aggregator for Kingsland, TX. Zero ads, zero tracking, open civic data.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -43,10 +43,9 @@
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     --success: #16a34a;
     --warning: #ca8a04;
+    --danger: #dc2626;
     --navy-card: #0f2b48;
     --blue-accent: #0284c7;
-    --blue-surface: #f0f9ff;
-    --blue-border: #bae6fd;
   }
   
   html {
@@ -144,418 +143,325 @@
     color: var(--accent); 
   }
 
-  /* WIRE HEADER */
+  /* WIRE HEADER & MISSION NOTICE */
   .wire-header {
-    padding: 36px 0 20px 0;
-  }
-  .badge-tag {
-    display: inline-block;
-    background: #e0f2fe;
-    color: var(--primary);
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.74rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 10px;
+    padding: 34px 0 20px 0;
   }
   .wire-header h1 {
-    font-size: clamp(1.85rem, 4vw, 2.5rem);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 8px 0;
-    line-height: 1.2;
+    margin: 0 0 10px 0;
+    line-height: 1.15;
   }
-  .wire-header p {
-    font-size: clamp(0.96rem, 2vw, 1.05rem);
-    color: var(--text-muted);
-    max-width: 780px;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  /* ADVISORY STRIP */
-  .advisory-strip {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #fef3c7;
-    border-left: 4px solid var(--accent);
-    padding: 12px 16px;
+  .wire-mission-box {
+    background: #f1f5f9;
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px;
     border-radius: 6px;
-    margin: 20px 0 32px 0;
-    font-size: 0.9rem;
-    color: #78350f;
+    font-size: 0.94rem;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 24px;
   }
-  .advisory-strip strong {
-    font-weight: 700;
-  }
-
-  /* SECTION LABELS */
-  .section-title-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
-  }
-  .section-title-row h2 {
-    font-size: 1.25rem;
-    font-weight: 800;
+  .wire-mission-box strong {
     color: var(--primary);
-    margin: 0;
-  }
-  .section-meta {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    font-weight: 500;
   }
 
-  /* LAKE CARDS GRID */
-  .lakes-grid {
+  /* TOP DUAL WIDGET (WEATHER & LAKE LEVELS SIDE BY SIDE) */
+  .dashboard-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.45fr 1fr;
     gap: 20px;
-    margin-bottom: 36px;
+    margin-bottom: 30px;
   }
-  .lake-card {
+
+  .dash-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 22px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 250px;
-    position: relative;
-    overflow: hidden;
-  }
-  .lake-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--primary);
-  }
-  .lake-card.passable::before {
-    background: var(--success);
   }
 
-  /* LAKE LBJ BLUE HIGHLIGHT & SIZING MATCH */
-  .lake-card.lbj-highlight {
-    background: var(--blue-surface);
-    border: 2px solid var(--blue-border);
-    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.08);
-  }
-  .lake-card.lbj-highlight::before {
-    background: var(--blue-accent);
-    height: 5px;
-  }
-
-  .lake-top {
+  .dash-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 16px;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
   }
-  .lake-name-block h3 {
-    margin: 0 0 4px 0;
+  .dash-card-header h2 {
     font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
-  }
-  .lake-type {
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .status-pill {
-    font-size: 0.72rem;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    letter-spacing: 0.02em;
-  }
-  .status-pill.normal {
-    background: #dcfce7;
-    color: #15803d;
-  }
-  .status-pill.low {
-    background: #fee2e2;
-    color: #b91c1c;
-  }
-  .status-pill.constant {
-    background: #0284c7;
-    color: #ffffff;
-  }
-
-  .lake-metrics {
-    margin-bottom: 18px;
-  }
-  .lake-elevation {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    line-height: 1.1;
-    margin-bottom: 2px;
-  }
-  .lake-elevation span {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-left: 2px;
-  }
-  .lake-full-pool {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-  }
-
-  .bar-container {
-    background: #e2e8f0;
-    height: 8px;
-    border-radius: 999px;
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .bar-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: var(--primary);
-  }
-  .bar-fill.warning {
-    background: var(--warning);
-  }
-  .bar-fill.blue {
-    background: var(--blue-accent);
-  }
-
-  .lake-footer-row {
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-  .lake-card.lbj-highlight .lake-footer-row {
-    border-top-color: var(--blue-border);
-  }
-  .lake-footer-row strong {
-    color: var(--text-dark);
-  }
-
-  /* SENIOR & VETERAN RESOURCE HUB */
-  .community-hub {
-    background: var(--navy-card);
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 40px;
-    box-shadow: var(--card-shadow);
-  }
-  .community-hub-header {
-    margin-bottom: 22px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding-bottom: 14px;
-  }
-  .community-hub-header h2 {
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0 0 6px 0;
-  }
-  .community-hub-header p {
-    font-size: 0.92rem;
-    color: #cbd5e1;
     margin: 0;
-    max-width: 800px;
+  }
+  .dash-source-link {
+    font-size: 0.76rem;
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .dash-source-link:hover {
+    text-decoration: underline;
   }
 
-  .hub-grid {
+  /* 7-DAY WEATHER ROW */
+  .forecast-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    text-align: center;
   }
-  .hub-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    padding: 20px;
+  .forecast-day {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 8px 4px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
-  .hub-card h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
-    color: #fbbf24;
-    display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    min-height: 125px;
   }
-  .hub-card p {
+  .forecast-date {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-transform: uppercase;
+  }
+  .forecast-icon {
+    width: 30px;
+    height: 30px;
+    margin: 6px 0;
+  }
+  .forecast-temps {
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+  .forecast-low {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: block;
+  }
+  .forecast-pop {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    margin-top: 4px;
+  }
+
+  /* LAKE LEVELS STACK */
+  .lake-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lake-stack-item {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .lake-stack-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .lake-stack-name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+  .lake-stack-pct {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--text-dark);
+  }
+  .lake-stack-bar {
+    background: #e2e8f0;
+    height: 7px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .lake-stack-fill {
+    height: 100%;
+    border-radius: 999px;
+  }
+  .lake-stack-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+  }
+
+  /* INTERACTIVE ACCORDION SECTIONS */
+  .accordion-section {
+    margin-bottom: 36px;
+  }
+  .accordion-title-row {
+    margin-bottom: 14px;
+  }
+  .accordion-title-row h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 4px 0;
+  }
+  .accordion-title-row p {
     font-size: 0.88rem;
-    color: #e2e8f0;
-    line-height: 1.55;
-    margin: 0 0 16px 0;
-  }
-  
-  .hub-contact-list {
-    list-style: none;
-    padding: 0;
+    color: var(--text-muted);
     margin: 0;
   }
-  .hub-contact-item {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    padding: 10px 12px;
-    margin-bottom: 10px;
+
+  .accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .drawer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: border-color 0.15s ease;
+  }
+  .drawer[open] {
+    border-color: #cbd5e1;
+  }
+  .drawer-summary {
+    list-style: none;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--surface);
+    transition: background 0.15s ease;
   }
-  .hub-contact-item:last-child {
+  .drawer-summary::-webkit-details-marker {
+    display: none;
+  }
+  .drawer-summary:hover {
+    background: #f8fafc;
+  }
+  .drawer-label-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .drawer-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0f2fe;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .drawer-title-text {
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+  }
+  .drawer-subtitle-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  .drawer-chevron {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .drawer[open] .drawer-chevron {
+    transform: rotate(180deg);
+  }
+
+  .drawer-content {
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid var(--border-subtle);
+    background: #fafafa;
+  }
+  .drawer-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding-top: 16px;
+  }
+  .drawer-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .drawer-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .drawer-card p {
+    margin: 0 0 10px 0;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  .drawer-card p:last-child {
     margin-bottom: 0;
   }
-  .hub-contact-info strong {
-    display: block;
-    font-size: 0.88rem;
-    color: #ffffff;
-  }
-  .hub-contact-info span {
+
+  .btn-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--primary);
     font-size: 0.78rem;
-    color: #94a3b8;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
   }
-  .btn-call {
+  .btn-source:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  .btn-call-desk {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     background: var(--accent);
     color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
     padding: 6px 12px;
     border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
     text-decoration: none;
-    white-space: nowrap;
     transition: background 0.15s ease;
   }
-  .btn-call:hover {
+  .btn-call-desk:hover {
     background: var(--accent-hover);
-  }
-
-  /* CIVIC DISPATCH COLUMNS */
-  .wire-columns {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-  .bulletin-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: var(--card-shadow);
-  }
-  .bulletin-card h3 {
-    margin: 0 0 16px 0;
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--primary);
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 10px;
-  }
-  .bulletin-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-  .bulletin-item:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .bulletin-tag {
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-  .bulletin-item h4 {
-    margin: 0 0 6px 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-dark);
-  }
-  .bulletin-item p {
-    margin: 0 0 8px 0;
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 1.55;
-  }
-  .bulletin-item p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* DIRECTORY SIDEBAR */
-  .sidebar-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
-    box-shadow: var(--card-shadow);
-    margin-bottom: 20px;
-  }
-  .sidebar-box:last-child {
-    margin-bottom: 0;
-  }
-  .sidebar-box h3 {
-    margin: 0 0 14px 0;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--primary);
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 8px;
-  }
-  .resource-link-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .resource-link-list li {
-    margin-bottom: 12px;
-    font-size: 0.86rem;
-  }
-  .resource-link-list li:last-child {
-    margin-bottom: 0;
-  }
-  .resource-link-list a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    display: block;
-    line-height: 1.35;
-  }
-  .resource-link-list a:hover {
-    color: var(--accent);
-    text-decoration: underline;
-  }
-  .resource-link-list span {
-    font-size: 0.78rem;
-    color: var(--text-muted);
   }
 
   /* FOOTER */
@@ -569,20 +475,15 @@
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
   footer a:hover { text-decoration: underline; }
 
-  /* RESPONSIVE BREAKPOINTS */
-  @media (max-width: 900px) {
-    .lakes-grid {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .hub-grid {
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .dashboard-row {
       grid-template-columns: 1fr;
     }
-    .wire-columns {
+    .drawer-data-grid {
       grid-template-columns: 1fr;
     }
   }
-
   @media (max-width: 640px) {
     .nav-container {
       flex-direction: row;
@@ -597,20 +498,15 @@
     .nav-links a {
       font-size: 0.82rem;
     }
-    .wire-header h1 {
-      font-size: 1.75rem;
+    .forecast-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
     }
-    .community-hub {
-      padding: 20px 16px;
+    .forecast-day:nth-child(n+5) {
+      display: none;
     }
-    .hub-contact-item {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .btn-call {
-      width: 100%;
-      justify-content: center;
+    .drawer-summary {
+      padding: 14px 16px;
     }
   }
 </style>
@@ -639,309 +535,317 @@
 
   <main class="container">
 
-    <!-- HEADER -->
+    <!-- WIRE HEADER & MISSION DISCLAIMER -->
     <header class="wire-header">
-      <span class="badge-tag">Community Civic Utility</span>
       <h1>The Kingsland Wire</h1>
-      <p>
-        Highland Lakes water levels, boat ramp advisories, senior and veteran resources, and essential community utilities for Kingsland, Sunrise Beach, and neighboring Hill Country trades.
-      </p>
+      <div class="wire-mission-box">
+        <strong>Open Civic Utility:</strong> This is a completely free, ad-free, and tracking-free community dashboard built to support Kingsland and Highland Lakes operations. All weather, water, civic, and community data is aggregated directly from official public sources, including the National Weather Service, the Lower Colorado River Authority (LCRA), and local county departments. No cookies, no paywalls, and no sponsored tracking.
+      </div>
     </header>
 
-    <!-- STATUS BANNER -->
-    <div class="advisory-strip">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" aria-hidden="true">
-        <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10h2v4h-2zm0 6h2v2h-2z"/>
-      </svg>
-      <div>
-        <strong>Highland Lakes Advisory:</strong> Keep outdoor watering schedules aligned with LCRA municipal guidelines. Watch for shallow gravel bars and unmarked hazards on the Llano River arm of upper Lake LBJ.
-      </div>
-    </div>
-
-    <!-- SECTION TITLE -->
-    <div class="section-title-row">
-      <h2>Highland Lakes Basin Status</h2>
-      <span class="section-meta">LCRA River Operations Reporting</span>
-    </div>
-
-    <!-- UNIFIED LAKE CARDS -->
-    <section class="lakes-grid">
+    <!-- DASHBOARD: 7-DAY WEATHER & LAKE ELEVATION SIDE BY SIDE -->
+    <section class="dashboard-row">
       
-      <!-- LAKE BUCHANAN -->
-      <article class="lake-card">
+      <!-- 7-DAY FORECAST CARD -->
+      <article class="dash-card">
         <div>
-          <div class="lake-top">
-            <div class="lake-name-block">
-              <h3>Lake Buchanan</h3>
-              <span class="lake-type">Storage Reservoir</span>
+          <div class="dash-card-header">
+            <h2>7-Day Kingsland Forecast</h2>
+            <a href="https://forecast.weather.gov/MapClick.php?CityName=Kingsland&state=TX" target="_blank" rel="noopener" class="dash-source-link">Source: NOAA / NWS &rarr;</a>
+          </div>
+          <div class="forecast-grid" id="weatherContainer">
+            <!-- Populated dynamically via Open-Meteo public forecast API -->
+            <div class="forecast-day">
+              <span class="forecast-date">Today</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
+              <span class="forecast-pop">0% rain</span>
             </div>
-            <span class="status-pill low">Below Normal</span>
-          </div>
-          <div class="lake-metrics">
-            <div class="lake-elevation">1,008.4<span>ft msl</span></div>
-            <div class="lake-full-pool">Full conservation pool: 1,020.0 ft</div>
-          </div>
-          <div class="bar-container">
-            <div class="bar-fill warning" style="width: 61%;"></div>
+            <div class="forecast-day">
+              <span class="forecast-date">Wed</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="forecast-temps">93&deg;<span class="forecast-low">72&deg;</span></div>
+              <span class="forecast-pop">10% rain</span>
+            </div>
+            <div class="forecast-day">
+              <span class="forecast-date">Thu</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+              <div class="forecast-temps">90&deg;<span class="forecast-low">70&deg;</span></div>
+              <span class="forecast-pop">20% rain</span>
+            </div>
+            <div class="forecast-day">
+              <span class="forecast-date">Fri</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="forecast-temps">91&deg;<span class="forecast-low">69&deg;</span></div>
+              <span class="forecast-pop">10% rain</span>
+            </div>
+            <div class="forecast-day">
+              <span class="forecast-date">Sat</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="forecast-temps">94&deg;<span class="forecast-low">72&deg;</span></div>
+              <span class="forecast-pop">0% rain</span>
+            </div>
+            <div class="forecast-day">
+              <span class="forecast-date">Sun</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+              <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
+              <span class="forecast-pop">0% rain</span>
+            </div>
+            <div class="forecast-day">
+              <span class="forecast-date">Mon</span>
+              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+              <div class="forecast-temps">89&deg;<span class="forecast-low">68&deg;</span></div>
+              <span class="forecast-pop">30% rain</span>
+            </div>
           </div>
         </div>
-        <div class="lake-footer-row">
-          <span>Capacity: <strong>61% Full</strong></span>
-          <span>Managed by: <strong>LCRA</strong></span>
+        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">
+          Updated automatically for Kingsland, TX 78639 (30.66&deg; N, 98.44&deg; W).
         </div>
       </article>
 
-      <!-- INKS LAKE -->
-      <article class="lake-card passable">
+      <!-- LAKE LEVELS STACKED OVERVIEW -->
+      <article class="dash-card">
         <div>
-          <div class="lake-top">
-            <div class="lake-name-block">
-              <h3>Inks Lake</h3>
-              <span class="lake-type">Pass-Through Lake</span>
+          <div class="dash-card-header">
+            <h2>Highland Lakes Capacity</h2>
+            <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener" class="dash-source-link">Source: LCRA River Report &rarr;</a>
+          </div>
+          <div class="lake-stack">
+            
+            <!-- BUCHANAN -->
+            <div class="lake-stack-item">
+              <div class="lake-stack-top">
+                <span class="lake-stack-name">Lake Buchanan</span>
+                <span class="lake-stack-pct" style="color: var(--warning);">61%</span>
+              </div>
+              <div class="lake-stack-bar">
+                <div class="lake-stack-fill" style="width: 61%; background: var(--warning);"></div>
+              </div>
+              <div class="lake-stack-meta">
+                <span>Elevation: 1,008.4 ft msl</span>
+                <span>Full Pool: 1,020.0 ft</span>
+              </div>
             </div>
-            <span class="status-pill normal">Near Full</span>
-          </div>
-          <div class="lake-metrics">
-            <div class="lake-elevation">887.6<span>ft msl</span></div>
-            <div class="lake-full-pool">Full conservation pool: 888.0 ft</div>
-          </div>
-          <div class="bar-container">
-            <div class="bar-fill" style="width: 98%;"></div>
-          </div>
-        </div>
-        <div class="lake-footer-row">
-          <span>Capacity: <strong>98% Level</strong></span>
-          <span>Managed by: <strong>LCRA</strong></span>
-        </div>
-      </article>
 
-      <!-- LAKE LBJ (BLUE ACCENT & BALANCED SIZING) -->
-      <article class="lake-card lbj-highlight">
-        <div>
-          <div class="lake-top">
-            <div class="lake-name-block">
-              <h3>Lake LBJ</h3>
-              <span class="lake-type">Constant Level Pool</span>
+            <!-- INKS LAKE -->
+            <div class="lake-stack-item">
+              <div class="lake-stack-top">
+                <span class="lake-stack-name">Inks Lake</span>
+                <span class="lake-stack-pct" style="color: var(--success);">98%</span>
+              </div>
+              <div class="lake-stack-bar">
+                <div class="lake-stack-fill" style="width: 98%; background: var(--success);"></div>
+              </div>
+              <div class="lake-stack-meta">
+                <span>Elevation: 887.6 ft msl</span>
+                <span>Pass-Through Reservoir</span>
+              </div>
             </div>
-            <span class="status-pill constant">Constant Level</span>
-          </div>
-          <div class="lake-metrics">
-            <div class="lake-elevation">824.7<span>ft msl</span></div>
-            <div class="lake-full-pool">Full conservation pool: 825.0 ft</div>
-          </div>
-          <div class="bar-container">
-            <div class="bar-fill blue" style="width: 99%;"></div>
+
+            <!-- LAKE LBJ -->
+            <div class="lake-stack-item" style="border-color: #bae6fd; background: #f0f9ff;">
+              <div class="lake-stack-top">
+                <span class="lake-stack-name" style="color: var(--blue-accent);">Lake LBJ</span>
+                <span class="lake-stack-pct" style="color: var(--blue-accent);">99%</span>
+              </div>
+              <div class="lake-stack-bar">
+                <div class="lake-stack-fill" style="width: 99%; background: var(--blue-accent);"></div>
+              </div>
+              <div class="lake-stack-meta">
+                <span>Elevation: 824.7 ft msl</span>
+                <span>Constant Level Pool</span>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div class="lake-footer-row">
-          <span>Operating: <strong>99% Pool</strong></span>
-          <span>Regulated at: <strong>Wirtz Dam</strong></span>
+        <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">
+          Regulated by Lower Colorado River Authority dam operations.
         </div>
       </article>
 
     </section>
 
-    <!-- SENIOR & VETERAN COMMUNITY CARE DESK -->
-    <section class="community-hub">
-      <div class="community-hub-header">
-        <h2>Highland Lakes Veterans &amp; Senior Care Desk</h2>
-        <p>
-          Direct contact information for local county officers, nutrition programs, and accessible transit serving Kingsland and surrounding lake communities.
-        </p>
+    <!-- INTERACTIVE ACCORDION DRAWERS -->
+    <section class="accordion-section">
+      <div class="accordion-title-row">
+        <h2>Community Utilities &amp; Operational Desks</h2>
+        <p>Select any section to expand verified local schedules, contact numbers, and direct source links.</p>
       </div>
 
-      <div class="hub-grid">
-        
-        <!-- VETERANS ASSISTANCE -->
-        <div class="hub-card">
-          <div>
-            <h3>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-              Veterans Services &amp; Claims
-            </h3>
-            <p>
-              Free local assistance with VA medical enrollment, service disability claims, and survivor benefits without traveling into big city centers.
-            </p>
+      <div class="accordion-group">
+
+        <!-- DRAWER 1: CHAMBER & LOCAL EVENTS -->
+        <details class="drawer">
+          <summary class="drawer-summary">
+            <div class="drawer-label-group">
+              <div class="drawer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+              </div>
+              <div>
+                <h3 class="drawer-title-text">Kingsland Chamber &amp; Community Events</h3>
+                <p class="drawer-subtitle-text">Local merchant network meetings, AquaBoom planning, and trade mixers</p>
+              </div>
+            </div>
+            <svg class="drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="drawer-content">
+            <div class="drawer-data-grid">
+              <div class="drawer-card">
+                <h4>Kingsland Chamber of Commerce</h4>
+                <p>Official community event calendar, member directory, and regional small business mixers in Llano and Burnet counties.</p>
+                <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="btn-source">
+                  Visit Kingsland Chamber Official Calendar &rarr;
+                </a>
+              </div>
+              <div class="drawer-card">
+                <h4>AquaBoom July Celebration &amp; Civic Festivals</h4>
+                <p>Annual community festival coordination, lake fireworks announcements, boat parade logistics, and vendor signups.</p>
+                <a href="https://www.kingslandchamber.org/aquaboom" target="_blank" rel="noopener" class="btn-source">
+                  View AquaBoom Festival Details &rarr;
+                </a>
+              </div>
+            </div>
           </div>
+        </details>
 
-          <ul class="hub-contact-list">
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>Llano County Veterans Service Officer</strong>
-                <span>Direct County Claims &amp; Benefit Support</span>
+        <!-- DRAWER 2: BOAT RAMPS & PUBLIC PARKS -->
+        <details class="drawer">
+          <summary class="drawer-summary">
+            <div class="drawer-label-group">
+              <div class="drawer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.46L20 11V8c0-1.1-.9-2-2-2h-3V4c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2H6c-1.1 0-2 .9-2 2v3l-1.28.18c-.26.04-.48.22-.6.46s-.14.52-.06.78L3.95 19z"/></svg>
               </div>
-              <a href="tel:3252477730" class="btn-call">Call (325) 247-7730</a>
-            </li>
-
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>Burnet County Veterans Service Officer</strong>
-                <span>East Lake LBJ &amp; Burnet County Services</span>
+              <div>
+                <h3 class="drawer-title-text">Public Boat Ramps &amp; Lake Access Parks</h3>
+                <p class="drawer-subtitle-text">Verified ramp conditions on Lake LBJ, Inks Lake, and Lake Buchanan</p>
               </div>
-              <a href="tel:5127155270" class="btn-call">Call (512) 715-5270</a>
-            </li>
-
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>Veterans Crisis Line</strong>
-                <span>24/7 Confidential Assistance (Dial 988, Press 1)</span>
+            </div>
+            <svg class="drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="drawer-content">
+            <div class="drawer-data-grid">
+              <div class="drawer-card">
+                <h4>Kingsland Community Park (Lake LBJ)</h4>
+                <p>Public concrete ramp open year round. Day pass parking required for tow vehicles. Easy access to the main Colorado River arm.</p>
+                <a href="https://kingslandcommunitypark.com/" target="_blank" rel="noopener" class="btn-source">
+                  View Park Hours &amp; Pass Information &rarr;
+                </a>
               </div>
-              <a href="tel:988" class="btn-call">Call 988</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- SENIOR SERVICES & TRANSIT -->
-        <div class="hub-card">
-          <div>
-            <h3>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-              Senior Care, Meals &amp; Transit
-            </h3>
-            <p>
-              Hot daily meal delivery, rural door-to-door transit for doctor visits, and Medicare counseling across the Highland Lakes.
-            </p>
+              <div class="drawer-card">
+                <h4>Lions Club Park Boat Launch</h4>
+                <p>Concrete public ramp located near the RM 1431 bridge. Caution advised when navigating the channel west of the bridge due to silt gravel bars.</p>
+                <a href="https://www.lcra.org/parks/" target="_blank" rel="noopener" class="btn-source">
+                  LCRA Lake LBJ Access Map &rarr;
+                </a>
+              </div>
+              <div class="drawer-card">
+                <h4>Inks Lake State Park Ramps</h4>
+                <p>Two well-maintained ramps in constant-level pass-through waters. Day-use reservations recommended during weekends.</p>
+                <a href="https://tpwd.texas.gov/state-parks/inks-lake" target="_blank" rel="noopener" class="btn-source">
+                  Texas Parks &amp; Wildlife Inks Page &rarr;
+                </a>
+              </div>
+              <div class="drawer-card">
+                <h4>Lake Buchanan Public Launch Points</h4>
+                <p>Public launch status varies with lake storage levels. Check active ramp elevations before trailering larger boats to Buchanan Dam.</p>
+                <a href="https://waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener" class="btn-source">
+                  Buchanan Ramp Elevation Status &rarr;
+                </a>
+              </div>
+            </div>
           </div>
+        </details>
 
-          <ul class="hub-contact-list">
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>Meals on Wheels &bull; Highland Lakes</strong>
-                <span>Daily Hot Meal Deliveries for Seniors</span>
+        <!-- DRAWER 3: FOOD PANTRIES & NUTRITION -->
+        <details class="drawer">
+          <summary class="drawer-summary">
+            <div class="drawer-label-group">
+              <div class="drawer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 17.2c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l.64-.64C7.94 19.24 9.89 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v4H7v2h4v4h2v-4h4v-2h-4z"/></svg>
               </div>
-              <a href="tel:3253886532" class="btn-call">Call (325) 388-6532</a>
-            </li>
+              <div>
+                <h3 class="drawer-title-text">Food Pantries &amp; Emergency Assistance</h3>
+                <p class="drawer-subtitle-text">Local Highland Lakes food distributions, emergency pantry hours, and community meals</p>
+              </div>
+            </div>
+            <svg class="drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="drawer-content">
+            <div class="drawer-data-grid">
+              <div class="drawer-card">
+                <h4>The Helping Center of Marble Falls</h4>
+                <p>Serving Kingsland and Highland Lakes families with fresh produce, dry goods, and household essentials. Proof of local residency requested.</p>
+                <a href="https://helpingcentermf.org/" target="_blank" rel="noopener" class="btn-source">
+                  Helping Center Hours &amp; Guidelines &rarr;
+                </a>
+              </div>
+              <div class="drawer-card">
+                <h4>Kingsland Community Food Pantry &amp; Churches</h4>
+                <p>Weekly food box distribution and emergency dry pantry services organized through local church ministries in Kingsland.</p>
+                <a href="https://www.hlcaa.org/" target="_blank" rel="noopener" class="btn-source">
+                  Hill Country Community Action Nutrition &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </details>
 
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>CARTS Rural Transportation</strong>
-                <span>Low-Cost Medical &amp; Grocery Rides</span>
+        <!-- DRAWER 4: SENIORS & VETERANS SERVICE DESK -->
+        <details class="drawer">
+          <summary class="drawer-summary">
+            <div class="drawer-label-group">
+              <div class="drawer-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
-              <a href="tel:5124787433" class="btn-call">Call (512) 478-7433</a>
-            </li>
-
-            <li class="hub-contact-item">
-              <div class="hub-contact-info">
-                <strong>Area Agency on Aging (Central Texas)</strong>
-                <span>Medicare Guidance &amp; Respite Support</span>
+              <div>
+                <h3 class="drawer-title-text">Veterans Affairs &amp; Senior Care Contacts</h3>
+                <p class="drawer-subtitle-text">County VSO benefit offices, hot Meals on Wheels deliveries, and rural transit</p>
               </div>
-              <a href="tel:2547702330" class="btn-call">Call (254) 770-2330</a>
-            </li>
-          </ul>
-        </div>
+            </div>
+            <svg class="drawer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="drawer-content">
+            <div class="drawer-data-grid">
+              <div class="drawer-card">
+                <h4>Llano County Veterans Service Officer</h4>
+                <p>Direct assistance with VA disability claims, pensions, and medical enrollment without traveling to big cities.</p>
+                <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                  <a href="tel:3252477730" class="btn-call-desk">Call (325) 247-7730</a>
+                  <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener" class="btn-source">Llano VSO Site</a>
+                </div>
+              </div>
+              <div class="drawer-card">
+                <h4>Burnet County Veterans Service Officer</h4>
+                <p>Support for East Lake LBJ and Burnet County residents with federal VA applications and survivor benefits.</p>
+                <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                  <a href="tel:5127155270" class="btn-call-desk">Call (512) 715-5270</a>
+                  <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener" class="btn-source">Burnet VSO Site</a>
+                </div>
+              </div>
+              <div class="drawer-card">
+                <h4>Highland Lakes Meals on Wheels</h4>
+                <p>Hot noon meal deliveries and friendly safety check-ins for homebound seniors living throughout Kingsland.</p>
+                <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                  <a href="tel:3253886532" class="btn-call-desk">Call (325) 388-6532</a>
+                  <a href="https://www.hlcaa.org/senior-nutrition" target="_blank" rel="noopener" class="btn-source">Nutrition Program</a>
+                </div>
+              </div>
+              <div class="drawer-card">
+                <h4>CARTS Rural Door-to-Door Transit</h4>
+                <p>Accessible curb-to-curb rides for medical visits, pharmacy pickups, and local errands across the lakes.</p>
+                <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                  <a href="tel:5124787433" class="btn-call-desk">Call (512) 478-7433</a>
+                  <a href="https://www.ridecarts.com/" target="_blank" rel="noopener" class="btn-source">Book Rides Online</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
 
       </div>
     </section>
-
-    <!-- WIRE CONTENT & RESTORED LOCAL STORIES -->
-    <div class="wire-columns">
-      
-      <section class="bulletin-card">
-        <h3>Local Civic Dispatch</h3>
-
-        <!-- RESTORED: BOAT RAMP DISPATCH -->
-        <div class="bulletin-item">
-          <div class="bulletin-tag">Lake Access &amp; Navigation</div>
-          <h4>Lake LBJ Boat Ramp Conditions</h4>
-          <p>
-            Because Lake LBJ is held at a constant level by Wirtz Dam, public ramps remain fully usable year round. 
-          </p>
-          <p>
-            <strong>Kingsland Community Park:</strong> Public boat ramp is open. Please ensure parking passes are displayed in tow vehicles.
-          </p>
-          <p>
-            <strong>Lions Club Park:</strong> Concrete ramp clear and operational. Note the shallow shelf when launching larger wakeboard boats during high-wind afternoons.
-          </p>
-          <p>
-            <strong>Upper Llano River Arm:</strong> Stay between the river channel markers heading west past the RR 1431 bridge. Silt accumulation can make navigation tricky for deeper draft hulls outside the marked cut.
-          </p>
-        </div>
-
-        <!-- RESTORED: BURN BAN & RANCH SAFETY -->
-        <div class="bulletin-item">
-          <div class="bulletin-tag">County Safety</div>
-          <h4>Llano and Burnet County Outdoor Burning Guidelines</h4>
-          <p>
-            Always check current fire marshal declarations before lighting outdoor brush piles. Even when burn bans are lifted during damp mornings, dry Hill Country afternoon winds can quickly carry embers into cedar breaks.
-          </p>
-          <p>
-            Contractors, fence builders, and welders are reminded to keep a dedicated water trailer or charged 5-gallon pump can on site during all hot-work operations.
-          </p>
-        </div>
-
-        <!-- RESTORED: WATER MANAGEMENT PLAN -->
-        <div class="bulletin-item">
-          <div class="bulletin-tag">Water Resource</div>
-          <h4>Highland Lakes Drought &amp; Storage Overview</h4>
-          <p>
-            Combined storage across Lakes Buchanan and Travis determines the active drought stage for our region. While Lake LBJ and Inks Lake maintain stable recreation water levels, overall basin inflows directly dictate municipal and agricultural conservation rules.
-          </p>
-          <p>
-            Conserving irrigation water helps protect storage reserves and keeps our local river system resilient through peak summer conditions.
-          </p>
-        </div>
-
-        <!-- RESTORED: LOCAL COMMERCE & CONTRACTOR NETWORK -->
-        <div class="bulletin-item">
-          <div class="bulletin-tag">Local Commerce</div>
-          <h4>Support Kingsland Trade Contractors &amp; Shops</h4>
-          <p>
-            Independent electricians, plumbers, equipment operators, and septic contractors are the foundation of our Highland Lakes economy. 
-          </p>
-          <p>
-            Simple Biz Systems provides free operational tools and website assistance to help local crews stay independent, organized, and free from high monthly corporate software fees.
-          </p>
-        </div>
-      </section>
-
-      <!-- CIVIC DIRECTORY SIDEBAR -->
-      <div>
-        <aside class="sidebar-box">
-          <h3>Highland Lakes Water Data</h3>
-          <ul class="resource-link-list">
-            <li>
-              <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener">LCRA Daily River Report</a>
-              <span>Official dam discharge rates and reservoir elevation</span>
-            </li>
-            <li>
-              <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener">LCRA Hydromet Rainfall Gauges</a>
-              <span>Live rainfall and streamflow gauges in Llano basin</span>
-            </li>
-            <li>
-              <a href="https://waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Water Data for Texas</a>
-              <span>Texas Water Development Board reservoir records</span>
-            </li>
-          </ul>
-        </aside>
-
-        <aside class="sidebar-box">
-          <h3>County &amp; Municipal Offices</h3>
-          <ul class="resource-link-list">
-            <li>
-              <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Llano County Courthouse</a>
-              <span>County clerk, sheriff, tax assessor, fire marshal</span>
-            </li>
-            <li>
-              <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener">Burnet County Government</a>
-              <span>County judge, road and bridge division, notices</span>
-            </li>
-            <li>
-              <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener">Kingsland Chamber of Commerce</a>
-              <span>Local merchant network and community event calendar</span>
-            </li>
-            <li>
-              <a href="about.html">Simple Biz Systems Tech Desk</a>
-              <span>Free or low-cost technical help for Kingsland businesses</span>
-            </li>
-          </ul>
-        </aside>
-      </div>
-
-    </div>
 
   </main>
 
@@ -949,12 +853,63 @@
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and open public utilities for Kingsland and Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
         <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
+  <!-- SCRIPT: OPEN-METEO LIVE WEATHER RETRIEVAL (ZERO TRACKING, ZERO COOKIES) -->
+  <script>
+    (function() {
+      const weatherApi = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&temperature_unit=fahrenheit&timezone=America%2FChicago";
+
+      fetch(weatherApi)
+        .then(response => response.json())
+        .then(data => {
+          if (!data || !data.daily) return;
+          const container = document.getElementById("weatherContainer");
+          const days = data.daily.time;
+          const maxTemps = data.daily.temperature_2m_max;
+          const minTemps = data.daily.temperature_2m_min;
+          const pops = data.daily.precipitation_probability_max;
+          const codes = data.daily.weathercode;
+
+          let html = "";
+          const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+          for (let i = 0; i < Math.min(7, days.length); i++) {
+            const dateObj = new Date(days[i] + "T00:00:00");
+            const label = i === 0 ? "Today" : dayNames[dateObj.getDay()];
+            const code = codes[i];
+            
+            // Generate clean inline SVG based on WMO code
+            let iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>';
+            
+            if (code >= 51 && code <= 67) {
+              // Rain
+              iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#0284c7"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 21l-2 3m4-3l-2 3m4-3l-2 3" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/></svg>';
+            } else if (code >= 1 && code <= 3) {
+              // Part cloudy
+              iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>';
+            }
+
+            html += `
+              <div class="forecast-day">
+                <span class="forecast-date">${label}</span>
+                ${iconSvg}
+                <div class="forecast-temps">${Math.round(maxTemps[i])}&deg;<span class="forecast-low">${Math.round(minTemps[i])}&deg;</span></div>
+                <span class="forecast-pop">${pops[i] || 0}% rain</span>
+              </div>
+            `;
+          }
+          container.innerHTML = html;
+        })
+        .catch(() => {
+          // Keep static fallback already populated in HTML
+        });
+    })();
+  </script>
 </body>
 </html>
