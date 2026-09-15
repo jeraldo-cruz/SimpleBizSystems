@@ -87,9 +87,7 @@
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
     padding: 10px 0; 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    width: 100%;
   }
   .nav-container { 
     display: flex; 
@@ -104,7 +102,7 @@
     text-decoration: none; 
     font-weight: 800; 
     color: var(--primary); 
-    font-size: 1.08rem; 
+    font-size: 1.05rem; 
     letter-spacing: -0.02em;
     line-height: 1;
     white-space: nowrap;
@@ -119,14 +117,15 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 12px; 
+    gap: 10px; 
   }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
     font-weight: 600; 
-    font-size: 0.84rem; 
+    font-size: 0.82rem; 
     padding: 4px 2px;
+    white-space: nowrap;
   }
 
   /* PAGE HEADER & CONNECTION STATUS STRIP */
@@ -134,8 +133,8 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 18px;
-    margin: 18px 0 16px 0;
+    padding: 16px;
+    margin: 16px 0;
     box-shadow: var(--card-shadow);
   }
   .header-card-top {
@@ -143,26 +142,27 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 8px;
+    margin-bottom: 6px;
   }
   .header-card h1 {
-    font-size: 1.35rem;
+    font-size: clamp(1.2rem, 4vw, 1.35rem);
     font-weight: 800;
     color: var(--primary);
     margin: 0;
     line-height: 1.2;
   }
   .net-status-badge {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
+    white-space: nowrap;
   }
   .net-status-badge.online {
     background: #dcfce7;
@@ -184,12 +184,13 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #d97706;
+    background: var(--accent);
   }
   .header-card p {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     color: var(--text-muted);
     margin: 0;
+    line-height: 1.45;
   }
 
   /* WORK ORDER FORM CARD */
@@ -197,19 +198,19 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
+    padding: 16px;
     box-shadow: var(--card-shadow);
     margin-bottom: 24px;
   }
   .section-label {
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     font-weight: 800;
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     border-bottom: 1px solid var(--border-subtle);
     padding-bottom: 6px;
-    margin: 0 0 14px 0;
+    margin: 0 0 12px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -218,32 +219,32 @@
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 12px;
   }
   .form-group {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .form-group.full {
     grid-column: 1 / -1;
   }
   .form-group label {
     display: block;
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   .form-group input,
   .form-group textarea,
   .form-group select {
     width: 100%;
-    padding: 9px 12px;
+    padding: 9px 10px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-family: inherit;
     color: var(--text-dark);
     background: #ffffff;
@@ -255,26 +256,51 @@
     border-color: var(--primary);
   }
 
-  /* LINE ITEMS LIST */
+  /* LINE ITEMS LIST (MOBILE OPTIMIZED WRAPPER) */
   .line-items-wrapper {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .line-item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+  }
+  .line-item-top {
+    width: 100%;
+  }
+  .line-item-bottom {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr auto;
     gap: 8px;
-    margin-bottom: 8px;
     align-items: center;
+  }
+  .line-item-row input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.84rem;
+    font-family: inherit;
+    background: #ffffff;
+    width: 100%;
   }
   .btn-remove-line {
     background: #fee2e2;
     color: var(--danger);
     border: none;
     border-radius: 6px;
-    width: 32px;
+    width: 36px;
     height: 36px;
     font-weight: 800;
+    font-size: 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .btn-add-line {
     background: #f1f5f9;
@@ -282,22 +308,24 @@
     color: var(--primary);
     font-size: 0.78rem;
     font-weight: 700;
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 4px;
+    margin-top: 2px;
+    width: 100%;
   }
 
   /* TOTALS DISPLAY */
   .totals-box {
     background: #f8fafc;
     border-radius: 8px;
-    padding: 12px 16px;
+    padding: 10px 14px;
     display: flex;
     justify-content: flex-end;
-    gap: 24px;
-    font-size: 0.92rem;
-    margin-bottom: 18px;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.88rem;
+    margin: 14px 0;
     border: 1px solid var(--border-subtle);
   }
   .totals-box strong {
@@ -305,9 +333,10 @@
     color: var(--primary);
   }
 
-  /* SIGNATURE PAD BLOCK */
+  /* SIGNATURE PAD BLOCK (RESPONSIVE NO-OVERFLOW) */
   .sig-wrapper {
     margin-bottom: 18px;
+    width: 100%;
   }
   .sig-canvas-frame {
     border: 2px dashed #cbd5e1;
@@ -315,10 +344,13 @@
     background: #ffffff;
     touch-action: none;
     position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
   }
   #signaturePad {
     width: 100%;
-    height: 150px;
+    height: 100%;
     display: block;
     cursor: crosshair;
   }
@@ -327,9 +359,10 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 6px;
+    gap: 8px;
   }
   .sig-notice {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
   }
   .btn-clear-sig {
@@ -344,9 +377,9 @@
 
   /* ACTION BUTTONS */
   .action-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .btn-primary-action {
     background: var(--success);
@@ -362,6 +395,7 @@
     justify-content: center;
     gap: 8px;
     transition: background 0.15s ease;
+    width: 100%;
   }
   .btn-primary-action:hover {
     background: #15803d;
@@ -370,9 +404,9 @@
     background: #0f2b48;
     color: #ffffff;
     border: none;
-    padding: 13px;
+    padding: 12px;
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 800;
     cursor: pointer;
     display: inline-flex;
@@ -380,6 +414,7 @@
     justify-content: center;
     gap: 8px;
     transition: background 0.15s ease;
+    width: 100%;
   }
   .btn-secondary-action:hover {
     background: #1e3a5f;
@@ -392,11 +427,11 @@
     border-radius: 12px;
     padding: 16px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .queue-panel h3 {
     margin: 0 0 8px 0;
-    font-size: 0.96rem;
+    font-size: 0.94rem;
     font-weight: 800;
     color: var(--primary);
     display: flex;
@@ -412,12 +447,13 @@
     background: #f8fafc;
     border: 1px solid var(--border-subtle);
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 8px 10px;
     margin-bottom: 6px;
     font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
   }
   .queue-item:last-child {
     margin-bottom: 0;
@@ -431,7 +467,7 @@
     width: 740px;
     background: #ffffff;
     color: #1e293b;
-    padding: 30px;
+    padding: 26px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
@@ -439,15 +475,15 @@
   }
   .pdf-top-row {
     border-bottom: 2px solid #0d3b66;
-    padding-bottom: 14px;
-    margin-bottom: 18px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
   .pdf-brand-block h2 {
     margin: 0 0 2px 0;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     color: #0d3b66;
     font-weight: 800;
   }
@@ -458,13 +494,13 @@
   }
   .pdf-meta-block {
     text-align: right;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: #64748b;
   }
   .pdf-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 16px 0;
+    margin: 14px 0;
     font-size: 0.82rem;
   }
   .pdf-table th {
@@ -480,7 +516,9 @@
     border: 1px solid #e2e8f0;
   }
   .pdf-sig-preview {
-    max-height: 70px;
+    max-height: 65px;
+    max-width: 240px;
+    object-fit: contain;
     display: block;
     margin-top: 6px;
   }
@@ -489,22 +527,17 @@
   footer { 
     background: #09233d; 
     color: #94a3b8; 
-    padding: 24px 0; 
+    padding: 22px 0; 
     text-align: center; 
-    font-size: 0.8rem; 
+    font-size: 0.78rem; 
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
   footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 640px) {
+  @media (max-width: 580px) {
     .grid-2 {
       grid-template-columns: 1fr;
-    }
-    .action-row {
-      grid-template-columns: 1fr;
-    }
-    .line-item-row {
-      grid-template-columns: 1.5fr 1fr 1fr auto;
+      gap: 6px;
     }
   }
 </style>
@@ -524,8 +557,8 @@
         <span>Simple Biz Systems</span>
       </a>
       <div class="nav-links">
-        <a href="dispatch.html">Dispatch Board</a>
-        <a href="driver.html">Tech Console</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="driver.html">Tech View</a>
         <a href="about.html">About</a>
       </div>
     </div>
@@ -582,18 +615,27 @@
       </div>
 
       <div class="line-items-wrapper" id="lineItemsContainer">
-        <!-- Default Initial Row -->
-        <div class="line-item-row" data-row="0">
-          <input type="text" class="item-desc" placeholder="Item / Labor Description" value="Standard Diagnostic & Service Call" required>
-          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-          <input type="number" class="item-rate" placeholder="Rate ($)" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
-          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+        <!-- Item Row 1 -->
+        <div class="line-item-row">
+          <div class="line-item-top">
+            <input type="text" class="item-desc" placeholder="Item / Labor Description" value="Standard Diagnostic & Service Call" required>
+          </div>
+          <div class="line-item-bottom">
+            <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+            <input type="number" class="item-rate" placeholder="Rate ($)" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
+            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+          </div>
         </div>
-        <div class="line-item-row" data-row="1">
-          <input type="text" class="item-desc" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
-          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-          <input type="number" class="item-rate" placeholder="Rate ($)" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
-          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+        <!-- Item Row 2 -->
+        <div class="line-item-row">
+          <div class="line-item-top">
+            <input type="text" class="item-desc" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
+          </div>
+          <div class="line-item-bottom">
+            <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+            <input type="number" class="item-rate" placeholder="Rate ($)" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
+            <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+          </div>
         </div>
       </div>
 
@@ -604,13 +646,13 @@
         <div>Subtotal: <strong id="subtotalDisplay">$173.50</strong></div>
       </div>
 
-      <!-- CUSTOMER SIGNATURE CANVAS -->
+      <!-- CUSTOMER SIGNATURE CANVAS (RESPONSIVE NO-OVERFLOW) -->
       <div class="section-label">
         <span>3. Customer Acceptance &amp; Signoff</span>
       </div>
 
       <div class="sig-wrapper">
-        <div class="sig-canvas-frame">
+        <div class="sig-canvas-frame" id="canvasFrame">
           <canvas id="signaturePad"></canvas>
         </div>
         <div class="sig-actions">
@@ -646,7 +688,7 @@
 
   </main>
 
-  <!-- BULLETPROOF OFF-SCREEN PDF PRINT STAGE (NO NEGATIVE COORDINATES) -->
+  <!-- BULLETPROOF OFF-SCREEN PDF PRINT STAGE -->
   <div id="pdfPrintStage">
     <div class="pdf-top-row">
       <div class="pdf-brand-block">
@@ -672,7 +714,7 @@
       </div>
     </div>
 
-    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:16px; font-size:0.8rem;">
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:14px; font-size:0.8rem;">
       <strong style="color:#0d3b66;">Scope of Work Completed:</strong>
       <div id="pdfWorkScope" style="margin-top:4px; color:#1e293b;"></div>
     </div>
@@ -695,11 +737,11 @@
       </tfoot>
     </table>
 
-    <div style="margin-top:20px; border-top:1px solid #e2e8f0; padding-top:12px; display:grid; grid-template-columns: 2fr 1fr; gap:20px; align-items:flex-end;">
+    <div style="margin-top:18px; border-top:1px solid #e2e8f0; padding-top:10px; display:flex; justify-content:space-between; align-items:flex-end;">
       <div>
         <span style="font-size:0.72rem; text-transform:uppercase; color:#64748b; font-weight:700;">Customer Signoff &amp; Authorization</span>
         <img id="pdfSigImg" class="pdf-sig-preview" src="" alt="Customer Signature">
-        <div style="border-top:1px solid #94a3b8; margin-top:4px; padding-top:4px; font-size:0.75rem; color:#64748b;">
+        <div style="border-top:1px solid #94a3b8; margin-top:4px; padding-top:4px; font-size:0.72rem; color:#64748b;">
           I acknowledge satisfactory completion of the work outlined above.
         </div>
       </div>
@@ -720,7 +762,6 @@
   </footer>
 
   <script>
-    // HARDENED CANVAS SIGNATURE ENGINE
     let canvas, ctx;
     let isDrawing = false;
     let hasSigned = false;
@@ -731,7 +772,6 @@
       initNetworkMonitoring();
       renderOfflineQueue();
 
-      // Set random WO identifier for session
       document.getElementById("woNumberDisplay").innerText = "WO-" + Math.floor(1000 + Math.random() * 9000);
     });
 
@@ -739,25 +779,41 @@
       canvas = document.getElementById("signaturePad");
       ctx = canvas.getContext("2d");
 
-      function resizeCanvas() {
-        const rect = canvas.getBoundingClientRect();
+      function fitCanvas() {
+        const frame = document.getElementById("canvasFrame");
+        const rect = frame.getBoundingClientRect();
+        
+        // Backup existing drawing data before resize if user already signed
+        let imgData = null;
+        if (hasSigned && canvas.width > 0 && canvas.height > 0) {
+          imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        }
+
         canvas.width = rect.width;
         canvas.height = rect.height;
+
         ctx.strokeStyle = "#0d3b66";
         ctx.lineWidth = 2.5;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
-      }
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
 
-      // Desktop Mouse Events
+        if (imgData) {
+          ctx.putImageData(imgData, 0, 0);
+        }
+      }
+
+      // Initial fit & listener
+      fitCanvas();
+      window.addEventListener("resize", fitCanvas);
+      window.addEventListener("orientationchange", fitCanvas);
+
+      // Mouse listeners
       canvas.addEventListener("mousedown", startDrawing);
       canvas.addEventListener("mousemove", draw);
       canvas.addEventListener("mouseup", stopDrawing);
       canvas.addEventListener("mouseleave", stopDrawing);
 
-      // Mobile Touch Events (Prevents screen scrolling while signing)
+      // Touch listeners (prevent default touch-scroll behavior while drawing)
       canvas.addEventListener("touchstart", function(e) {
         e.preventDefault();
         const touch = e.touches[0];
@@ -835,10 +891,14 @@
       const div = document.createElement("div");
       div.className = "line-item-row";
       div.innerHTML = `
-        <input type="text" class="item-desc" placeholder="Item / Labor Description" required>
-        <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-        <input type="number" class="item-rate" placeholder="Rate ($)" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
-        <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+        <div class="line-item-top">
+          <input type="text" class="item-desc" placeholder="Item / Labor Description" required>
+        </div>
+        <div class="line-item-bottom">
+          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+          <input type="number" class="item-rate" placeholder="Rate ($)" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
+          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+        </div>
       `;
       container.appendChild(div);
     }
@@ -853,7 +913,7 @@
       }
     }
 
-    // NETWORK MONITORING FOR OFFLINE USE
+    // NETWORK MONITORING
     function initNetworkMonitoring() {
       const badge = document.getElementById("netBadge");
       function updateNet() {
@@ -915,7 +975,6 @@
         signature: signatureData
       };
 
-      // Save into offline local queue
       saveToOfflineQueue(workOrderPayload);
 
       if (triggerPdf) {
@@ -981,7 +1040,6 @@
       btn.disabled = true;
       btn.innerText = "Building PDF...";
 
-      // Populate staging container
       document.getElementById("pdfWoNum").innerText = wo.id;
       document.getElementById("pdfDate").innerText = new Date(wo.date).toLocaleDateString();
       document.getElementById("pdfCustName").innerText = wo.customer;
