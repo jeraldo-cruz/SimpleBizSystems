@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | Local Weather, Lake Levels & Public Utilities | Kingsland, TX</title>
-<meta name="title" content="The Kingsland Wire | Local Weather, Lake Levels & Public Utilities | Kingsland, TX">
-<meta name="description" content="Free, ad-free, tracking-free civic aggregator for Kingsland, TX. Live 7-day weather, Highland Lakes reservoir levels, boat ramp status, chamber events, and community care resources.">
-<meta name="keywords" content="Kingsland TX weather, Lake LBJ water levels, Lake Buchanan elevation, Kingsland Chamber events, Lake LBJ boat ramps, Kingsland food pantry, Llano county veterans officer">
+<title>The Kingsland Wire | Weather, Lake Levels & Community Events | Kingsland, TX</title>
+<meta name="title" content="The Kingsland Wire | Weather, Lake Levels & Community Events | Kingsland, TX">
+<meta name="description" content="Free, ad-free, tracking-free community aggregator for Kingsland, TX. Live 7-day weather, Highland Lakes reservoir levels, free community calendar, boat ramps, and local care desks.">
+<meta name="keywords" content="Kingsland TX weather, Lake LBJ water levels, Lake Buchanan elevation, Kingsland free events, Highland Lakes community calendar, Lake LBJ boat ramps, Kingsland food pantry, Llano county veterans officer">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,8 +23,8 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | Weather, Lake Levels & Community Utilities">
-<meta property="og:description" content="Direct public agency aggregator for Kingsland, TX. Zero ads, zero tracking, open civic data.">
+<meta property="og:title" content="The Kingsland Wire | Weather, Lake Levels & Community Events">
+<meta property="og:description" content="Direct public agency aggregator for Kingsland, TX. Zero ads, zero tracking, open community data.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -46,6 +46,7 @@
     --danger: #dc2626;
     --navy-card: #0f2b48;
     --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
   }
   
   html {
@@ -168,12 +169,12 @@
     color: var(--primary);
   }
 
-  /* TOP DUAL WIDGET (WEATHER & LAKE LEVELS SIDE BY SIDE) */
-  .dashboard-row {
-    display: grid;
-    grid-template-columns: 1.45fr 1fr;
+  /* VERTICAL DATA STACK */
+  .data-stack {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
 
   .dash-card {
@@ -182,9 +183,6 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .dash-card-header {
@@ -202,7 +200,7 @@
     margin: 0;
   }
   .dash-source-link {
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     color: var(--blue-accent);
     text-decoration: none;
     font-weight: 700;
@@ -215,14 +213,14 @@
   .forecast-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
+    gap: 8px;
     text-align: center;
   }
   .forecast-day {
     background: #f8fafc;
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
-    padding: 8px 4px;
+    padding: 10px 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -230,7 +228,7 @@
     min-height: 125px;
   }
   .forecast-date {
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     font-weight: 700;
     color: var(--text-dark);
     text-transform: uppercase;
@@ -241,7 +239,7 @@
     margin: 6px 0;
   }
   .forecast-temps {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     font-weight: 800;
     color: var(--text-dark);
   }
@@ -258,53 +256,148 @@
     margin-top: 4px;
   }
 
-  /* LAKE LEVELS STACK */
-  .lake-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  /* LAKE LEVELS ROW (NOW BELOW WEATHER) */
+  .lake-horizontal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
   }
-  .lake-stack-item {
+  .lake-metric-card {
     background: #f8fafc;
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
-  .lake-stack-top {
+  .lake-metric-card.lbj {
+    background: var(--blue-surface);
+    border-color: #bae6fd;
+  }
+  .lake-card-title-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 4px;
-  }
-  .lake-stack-name {
-    font-weight: 800;
-    font-size: 0.95rem;
-    color: var(--primary);
-  }
-  .lake-stack-pct {
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--text-dark);
-  }
-  .lake-stack-bar {
-    background: #e2e8f0;
-    height: 7px;
-    border-radius: 999px;
-    overflow: hidden;
     margin-bottom: 6px;
   }
-  .lake-stack-fill {
+  .lake-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .lake-pct {
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+  .lake-bar-bg {
+    background: #e2e8f0;
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .lake-bar-fill {
     height: 100%;
     border-radius: 999px;
   }
-  .lake-stack-meta {
+  .lake-metric-footer {
     display: flex;
     justify-content: space-between;
     font-size: 0.76rem;
     color: var(--text-muted);
   }
 
-  /* INTERACTIVE ACCORDION SECTIONS */
+  /* COMMUNITY CALENDAR SECTION */
+  .calendar-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 32px;
+  }
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .calendar-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+  }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .event-card {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .event-date-badge {
+    display: inline-block;
+    background: #e0f2fe;
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+  .event-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text-dark);
+  }
+  .event-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .event-desc {
+    font-size: 0.84rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+  }
+  .event-price-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #dcfce7;
+    color: #15803d;
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+  .event-link {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-decoration: none;
+  }
+  .event-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ACCORDION DRAWERS */
   .accordion-section {
     margin-bottom: 36px;
   }
@@ -477,7 +570,7 @@
 
   /* RESPONSIVE */
   @media (max-width: 860px) {
-    .dashboard-row {
+    .lake-horizontal-grid {
       grid-template-columns: 1fr;
     }
     .drawer-data-grid {
@@ -539,64 +632,62 @@
     <header class="wire-header">
       <h1>The Kingsland Wire</h1>
       <div class="wire-mission-box">
-        <strong>Open Civic Utility:</strong> This is a completely free, ad-free, and tracking-free community dashboard built to support Kingsland and Highland Lakes operations. All weather, water, civic, and community data is aggregated directly from official public sources, including the National Weather Service, the Lower Colorado River Authority (LCRA), and local county departments. No cookies, no paywalls, and no sponsored tracking.
+        <strong>Open Community Utility:</strong> This is a completely free, ad-free, and tracking-free dashboard built to support Kingsland and Highland Lakes operations. All weather, water, community, and support data is aggregated directly from official public sources, including the National Weather Service, the Lower Colorado River Authority (LCRA), and local county departments. No cookies, no paywalls, and no sponsored tracking.
       </div>
     </header>
 
-    <!-- DASHBOARD: 7-DAY WEATHER & LAKE ELEVATION SIDE BY SIDE -->
-    <section class="dashboard-row">
+    <!-- DATA STACK: WEATHER THEN LAKE LEVELS -->
+    <section class="data-stack">
       
-      <!-- 7-DAY FORECAST CARD -->
+      <!-- 1. 7-DAY FORECAST CARD (FULL WIDTH) -->
       <article class="dash-card">
-        <div>
-          <div class="dash-card-header">
-            <h2>7-Day Kingsland Forecast</h2>
-            <a href="https://forecast.weather.gov/MapClick.php?CityName=Kingsland&state=TX" target="_blank" rel="noopener" class="dash-source-link">Source: NOAA / NWS &rarr;</a>
+        <div class="dash-card-header">
+          <h2>7-Day Kingsland Forecast</h2>
+          <a href="https://forecast.weather.gov/MapClick.php?CityName=Kingsland&state=TX" target="_blank" rel="noopener" class="dash-source-link">Source: NOAA / NWS &rarr;</a>
+        </div>
+        <div class="forecast-grid" id="weatherContainer">
+          <!-- Populated dynamically via Open-Meteo public forecast API -->
+          <div class="forecast-day">
+            <span class="forecast-date">Today</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
+            <span class="forecast-pop">0% rain</span>
           </div>
-          <div class="forecast-grid" id="weatherContainer">
-            <!-- Populated dynamically via Open-Meteo public forecast API -->
-            <div class="forecast-day">
-              <span class="forecast-date">Today</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-              <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
-              <span class="forecast-pop">0% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Wed</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-              <div class="forecast-temps">93&deg;<span class="forecast-low">72&deg;</span></div>
-              <span class="forecast-pop">10% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Thu</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
-              <div class="forecast-temps">90&deg;<span class="forecast-low">70&deg;</span></div>
-              <span class="forecast-pop">20% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Fri</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-              <div class="forecast-temps">91&deg;<span class="forecast-low">69&deg;</span></div>
-              <span class="forecast-pop">10% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Sat</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-              <div class="forecast-temps">94&deg;<span class="forecast-low">72&deg;</span></div>
-              <span class="forecast-pop">0% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Sun</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
-              <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
-              <span class="forecast-pop">0% rain</span>
-            </div>
-            <div class="forecast-day">
-              <span class="forecast-date">Mon</span>
-              <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
-              <div class="forecast-temps">89&deg;<span class="forecast-low">68&deg;</span></div>
-              <span class="forecast-pop">30% rain</span>
-            </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Wed</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="forecast-temps">93&deg;<span class="forecast-low">72&deg;</span></div>
+            <span class="forecast-pop">10% rain</span>
+          </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Thu</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            <div class="forecast-temps">90&deg;<span class="forecast-low">70&deg;</span></div>
+            <span class="forecast-pop">20% rain</span>
+          </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Fri</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="forecast-temps">91&deg;<span class="forecast-low">69&deg;</span></div>
+            <span class="forecast-pop">10% rain</span>
+          </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Sat</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="forecast-temps">94&deg;<span class="forecast-low">72&deg;</span></div>
+            <span class="forecast-pop">0% rain</span>
+          </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Sun</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>
+            <div class="forecast-temps">92&deg;<span class="forecast-low">71&deg;</span></div>
+            <span class="forecast-pop">0% rain</span>
+          </div>
+          <div class="forecast-day">
+            <span class="forecast-date">Mon</span>
+            <svg class="forecast-icon" viewBox="0 0 24 24" fill="#94a3b8"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            <div class="forecast-temps">89&deg;<span class="forecast-low">68&deg;</span></div>
+            <span class="forecast-pop">30% rain</span>
           </div>
         </div>
         <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">
@@ -604,70 +695,147 @@
         </div>
       </article>
 
-      <!-- LAKE LEVELS STACKED OVERVIEW -->
+      <!-- 2. LAKE LEVELS ROW (NOW POSITIONED BELOW WEATHER) -->
       <article class="dash-card">
-        <div>
-          <div class="dash-card-header">
-            <h2>Highland Lakes Capacity</h2>
-            <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener" class="dash-source-link">Source: LCRA River Report &rarr;</a>
-          </div>
-          <div class="lake-stack">
-            
-            <!-- BUCHANAN -->
-            <div class="lake-stack-item">
-              <div class="lake-stack-top">
-                <span class="lake-stack-name">Lake Buchanan</span>
-                <span class="lake-stack-pct" style="color: var(--warning);">61%</span>
-              </div>
-              <div class="lake-stack-bar">
-                <div class="lake-stack-fill" style="width: 61%; background: var(--warning);"></div>
-              </div>
-              <div class="lake-stack-meta">
-                <span>Elevation: 1,008.4 ft msl</span>
-                <span>Full Pool: 1,020.0 ft</span>
-              </div>
-            </div>
-
-            <!-- INKS LAKE -->
-            <div class="lake-stack-item">
-              <div class="lake-stack-top">
-                <span class="lake-stack-name">Inks Lake</span>
-                <span class="lake-stack-pct" style="color: var(--success);">98%</span>
-              </div>
-              <div class="lake-stack-bar">
-                <div class="lake-stack-fill" style="width: 98%; background: var(--success);"></div>
-              </div>
-              <div class="lake-stack-meta">
-                <span>Elevation: 887.6 ft msl</span>
-                <span>Pass-Through Reservoir</span>
-              </div>
-            </div>
-
-            <!-- LAKE LBJ -->
-            <div class="lake-stack-item" style="border-color: #bae6fd; background: #f0f9ff;">
-              <div class="lake-stack-top">
-                <span class="lake-stack-name" style="color: var(--blue-accent);">Lake LBJ</span>
-                <span class="lake-stack-pct" style="color: var(--blue-accent);">99%</span>
-              </div>
-              <div class="lake-stack-bar">
-                <div class="lake-stack-fill" style="width: 99%; background: var(--blue-accent);"></div>
-              </div>
-              <div class="lake-stack-meta">
-                <span>Elevation: 824.7 ft msl</span>
-                <span>Constant Level Pool</span>
-              </div>
-            </div>
-
-          </div>
+        <div class="dash-card-header">
+          <h2>Highland Lakes Storage Levels</h2>
+          <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener" class="dash-source-link">Source: LCRA River Operations &rarr;</a>
         </div>
+        
+        <div class="lake-horizontal-grid">
+          
+          <!-- BUCHANAN -->
+          <div class="lake-metric-card">
+            <div>
+              <div class="lake-card-title-row">
+                <span class="lake-title">Lake Buchanan</span>
+                <span class="lake-pct" style="color: var(--warning);">61%</span>
+              </div>
+              <div class="lake-bar-bg">
+                <div class="lake-bar-fill" style="width: 61%; background: var(--warning);"></div>
+              </div>
+            </div>
+            <div class="lake-metric-footer">
+              <span>Elevation: 1,008.4 ft</span>
+              <span>Full Pool: 1,020.0 ft</span>
+            </div>
+          </div>
+
+          <!-- INKS LAKE -->
+          <div class="lake-metric-card">
+            <div>
+              <div class="lake-card-title-row">
+                <span class="lake-title">Inks Lake</span>
+                <span class="lake-pct" style="color: var(--success);">98%</span>
+              </div>
+              <div class="lake-bar-bg">
+                <div class="lake-bar-fill" style="width: 98%; background: var(--success);"></div>
+              </div>
+            </div>
+            <div class="lake-metric-footer">
+              <span>Elevation: 887.6 ft</span>
+              <span>Pass-Through Pool</span>
+            </div>
+          </div>
+
+          <!-- LAKE LBJ -->
+          <div class="lake-metric-card lbj">
+            <div>
+              <div class="lake-card-title-row">
+                <span class="lake-title" style="color: var(--blue-accent);">Lake LBJ</span>
+                <span class="lake-pct" style="color: var(--blue-accent);">99%</span>
+              </div>
+              <div class="lake-bar-bg">
+                <div class="lake-bar-fill" style="width: 99%; background: var(--blue-accent);"></div>
+              </div>
+            </div>
+            <div class="lake-metric-footer">
+              <span>Elevation: 824.7 ft</span>
+              <span>Constant Level Regulated</span>
+            </div>
+          </div>
+
+        </div>
+        
         <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 10px;">
-          Regulated by Lower Colorado River Authority dam operations.
+          Storage reservoir data monitored and reported daily by LCRA River Operations.
         </div>
       </article>
 
     </section>
 
-    <!-- INTERACTIVE ACCORDION DRAWERS -->
+    <!-- 3. COMMUNITY CALENDAR BLOCK (FREE & LOW COST LOCAL EVENTS) -->
+    <section class="calendar-section">
+      <div class="calendar-header">
+        <div>
+          <h2>Kingsland &amp; Highland Lakes Community Calendar</h2>
+          <span style="font-size: 0.82rem; color: var(--text-muted);">Free and low-cost local gatherings, markets, and public meetings</span>
+        </div>
+        <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="dash-source-link">Chamber Master Calendar &rarr;</a>
+      </div>
+
+      <div class="calendar-grid">
+        
+        <!-- EVENT 1 -->
+        <article class="event-card">
+          <div>
+            <span class="event-date-badge">Every Saturday &bull; 9:00 AM</span>
+            <span class="event-price-tag">Free Admission</span>
+            <h3>Kingsland Farmers &amp; Artisan Market</h3>
+            <div class="event-meta">Kingsland Community Center Grounds</div>
+            <p class="event-desc">
+              Local Hill Country produce, fresh eggs, honey, handmade goods, and tools from regional growers and small shops.
+            </p>
+          </div>
+          <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">View Market Details &rarr;</a>
+        </article>
+
+        <!-- EVENT 2 -->
+        <article class="event-card">
+          <div>
+            <span class="event-date-badge">1st &amp; 3rd Tuesday &bull; 6:30 PM</span>
+            <span class="event-price-tag">Free Community Access</span>
+            <h3>Highland Lakes Conservation Meeting</h3>
+            <div class="event-meta">Kingsland Public Library Meeting Room</div>
+            <p class="event-desc">
+              Discussion on water conservation strategies, native plant landscaping, and lake protection with regional guest speakers.
+            </p>
+          </div>
+          <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener" class="event-link">Meeting Agenda &rarr;</a>
+        </article>
+
+        <!-- EVENT 3 -->
+        <article class="event-card">
+          <div>
+            <span class="event-date-badge">2nd Saturday &bull; 8:00 AM</span>
+            <span class="event-price-tag">Low Cost ($8 Donation)</span>
+            <h3>VFW Post 10376 Community Breakfast</h3>
+            <div class="event-meta">VFW Post &bull; RR 1431 Kingsland</div>
+            <p class="event-desc">
+              Pancake and sausage breakfast open to all neighbors, families, and veterans. Proceeds benefit local veteran outreach programs.
+            </p>
+          </div>
+          <a href="https://vfw10376.org/" target="_blank" rel="noopener" class="event-link">Post Calendar &rarr;</a>
+        </article>
+
+        <!-- EVENT 4 -->
+        <article class="event-card">
+          <div>
+            <span class="event-date-badge">Every Thursday &bull; 10:00 AM</span>
+            <span class="event-price-tag">Free Entry</span>
+            <h3>Senior Digital Tech &amp; Device Help</h3>
+            <div class="event-meta">Kingsland Branch Library</div>
+            <p class="event-desc">
+              Free one-on-one help with phones, tablets, and email setups. Walk-ins welcome for seniors needing technology assistance.
+            </p>
+          </div>
+          <a href="https://kingslandlibrary.org/" target="_blank" rel="noopener" class="event-link">Library Programs &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 4. EXPANDABLE COMMUNITY DRAWERS -->
     <section class="accordion-section">
       <div class="accordion-title-row">
         <h2>Community Utilities &amp; Operational Desks</h2>
@@ -676,7 +844,7 @@
 
       <div class="accordion-group">
 
-        <!-- DRAWER 1: CHAMBER & LOCAL EVENTS -->
+        <!-- DRAWER 1: CHAMBER & LOCAL COMMERCE -->
         <details class="drawer">
           <summary class="drawer-summary">
             <div class="drawer-label-group">
@@ -684,7 +852,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
               </div>
               <div>
-                <h3 class="drawer-title-text">Kingsland Chamber &amp; Community Events</h3>
+                <h3 class="drawer-title-text">Kingsland Chamber &amp; Community Notices</h3>
                 <p class="drawer-subtitle-text">Local merchant network meetings, AquaBoom planning, and trade mixers</p>
               </div>
             </div>
@@ -700,8 +868,8 @@
                 </a>
               </div>
               <div class="drawer-card">
-                <h4>AquaBoom July Celebration &amp; Civic Festivals</h4>
-                <p>Annual community festival coordination, lake fireworks announcements, boat parade logistics, and vendor signups.</p>
+                <h4>AquaBoom Festival Coordination</h4>
+                <p>Annual community festival logistics, lake fireworks announcements, boat parade details, and local vendor signups.</p>
                 <a href="https://www.kingslandchamber.org/aquaboom" target="_blank" rel="noopener" class="btn-source">
                   View AquaBoom Festival Details &rarr;
                 </a>
@@ -782,7 +950,7 @@
                 </a>
               </div>
               <div class="drawer-card">
-                <h4>Kingsland Community Food Pantry &amp; Churches</h4>
+                <h4>Kingsland Community Food Distribution</h4>
                 <p>Weekly food box distribution and emergency dry pantry services organized through local church ministries in Kingsland.</p>
                 <a href="https://www.hlcaa.org/" target="_blank" rel="noopener" class="btn-source">
                   Hill Country Community Action Nutrition &rarr;
@@ -853,7 +1021,7 @@
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and open public utilities for Kingsland and Highland Lakes businesses.</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and open community utilities for Kingsland and Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
         <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
@@ -884,7 +1052,7 @@
             const label = i === 0 ? "Today" : dayNames[dateObj.getDay()];
             const code = codes[i];
             
-            // Generate clean inline SVG based on WMO code
+            // Clean inline SVG based on WMO code
             let iconSvg = '<svg class="forecast-icon" viewBox="0 0 24 24" fill="#d97706"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#d97706" stroke-width="2" stroke-linecap="round"/></svg>';
             
             if (code >= 51 && code <= 67) {
@@ -907,7 +1075,7 @@
           container.innerHTML = html;
         })
         .catch(() => {
-          // Keep static fallback already populated in HTML
+          // Static fallback remains in place
         });
     })();
   </script>
