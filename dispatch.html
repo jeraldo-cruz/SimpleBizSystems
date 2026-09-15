@@ -197,6 +197,9 @@
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .step-num {
     font-size: 0.72rem;
@@ -208,17 +211,44 @@
     display: inline-block;
     margin-bottom: 4px;
   }
+  .step-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
   .step-title {
     font-size: 0.86rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin: 0 0 3px 0;
+    margin: 0;
   }
   .step-desc {
     font-size: 0.78rem;
     color: var(--text-muted);
     line-height: 1.45;
     margin: 0;
+  }
+
+  /* INLINE MOBILE TECH VIEW BUTTON IN STEP 4 */
+  .btn-step-preview {
+    background: #0f2b48;
+    color: #ffffff;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+  .btn-step-preview:hover {
+    background: #1e3a5f;
   }
 
   /* MAIN WORKSPACE GRID: MAP ON LEFT, DRIVERS ON RIGHT */
@@ -544,23 +574,6 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-  }
-  .btn-mobile-preview {
-    background: #0f2b48;
-    color: #ffffff;
-    border: 1px solid #1e3a5f;
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 7px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.15s ease;
-  }
-  .btn-mobile-preview:hover {
-    background: #1e3a5f;
   }
   .btn-pdf-export {
     background: #0284c7;
@@ -953,24 +966,38 @@
         <h2>How to Operate the Field Dispatch Board</h2>
         <div class="steps-grid">
           <div class="step-item">
-            <span class="step-num">Step 1</span>
-            <div class="step-title">Log Service Calls</div>
-            <p class="step-desc">Enter customer details, select the service city, and assign directly to a truck or stage in the unassigned queue.</p>
+            <div>
+              <span class="step-num">Step 1</span>
+              <div class="step-title" style="margin-bottom: 4px;">Log Service Calls</div>
+              <p class="step-desc">Enter customer details, select the service city, and assign directly to a truck or stage in the unassigned queue.</p>
+            </div>
           </div>
           <div class="step-item">
-            <span class="step-num">Step 2</span>
-            <div class="step-title">Color Code Trucks</div>
-            <p class="step-desc">Click the color circle beside any driver to choose a custom vehicle color. Map pins and routes update instantly.</p>
+            <div>
+              <span class="step-num">Step 2</span>
+              <div class="step-title" style="margin-bottom: 4px;">Color Code Trucks</div>
+              <p class="step-desc">Click the color circle beside any driver to choose a custom vehicle color. Map pins and routes update instantly.</p>
+            </div>
           </div>
           <div class="step-item">
-            <span class="step-num">Step 3</span>
-            <div class="step-title">Expand Routes &amp; ETAs</div>
-            <p class="step-desc">Click any technician card to expand their active job, upcoming queued call, and auto-calculated sequential arrival time.</p>
+            <div>
+              <span class="step-num">Step 3</span>
+              <div class="step-title" style="margin-bottom: 4px;">Expand Routes &amp; ETAs</div>
+              <p class="step-desc">Click any technician card to expand their active job, upcoming queued call, and auto-calculated sequential arrival time.</p>
+            </div>
           </div>
           <div class="step-item">
-            <span class="step-num">Step 4</span>
-            <div class="step-title">Mobile Tech Sync</div>
-            <p class="step-desc">Click "Mobile Tech View" to preview how drivers receive calls in real time on their phones with one-touch GPS navigation.</p>
+            <div>
+              <span class="step-num">Step 4</span>
+              <div class="step-title-row">
+                <span class="step-title">Mobile Tech Sync</span>
+                <button type="button" class="btn-step-preview" onclick="openPhoneModal()">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                  <span>Mobile Tech View</span>
+                </button>
+              </div>
+              <p class="step-desc">Preview how drivers receive calls in real time on their phones with one-touch GPS navigation and job signoff.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -1021,10 +1048,6 @@
           <button type="button" class="tab-btn" onclick="switchConsoleTab('tab-driver', event)">+ Add New Truck</button>
         </div>
         <div class="console-actions-right">
-          <button type="button" class="btn-mobile-preview" onclick="openPhoneModal()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-            <span>Mobile Tech View</span>
-          </button>
           <button type="button" class="btn-pdf-export" id="btnPdfExport" onclick="exportShiftPDF()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             <span>Export Shift PDF</span>
