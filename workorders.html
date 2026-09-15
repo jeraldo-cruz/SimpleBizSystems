@@ -2,329 +2,521 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Free Mobile Work Order and Signoff Tool | Simple Biz Systems</title>
-<meta name="title" content="Free Mobile Work Order and Signoff Tool | Simple Biz Systems">
-<meta name="description" content="Free to use, sample tools and custom setups. Mobile work order generator with digital touchscreen customer signature capture and instant PDF receipts. Basic software systems by Simple Biz Systems.">
-<meta name="keywords" content="free contractor work order signature, basic software systems, mobile service ticket pdf, HVAC work order template, plumbing signoff sheet, digital signature contractor app, Kingsland TX">
+<title>Field Work Order & Customer Signoff | Simple Biz Systems</title>
+<meta name="title" content="Field Work Order & Customer Signoff | Simple Biz Systems">
+<meta name="description" content="Offline-capable mobile field work order and customer signature signoff tool for Highland Lakes trade contractors. Instant PDF invoice generation with zero monthly software fees.">
+<meta name="keywords" content="field work order app, contractor signoff tool, mobile work order pdf, trades signature app, Kingsland TX field service software, offline work order generator">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
 
-<link rel="canonical" href="https://www.simplebizsystems.com/workorders.html" />
+<link rel="canonical" href="https://www.simplebizsystems.com/workorder.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Mobile Contractor Work Order and Signoff Tool",
-  "url": "https://www.simplebizsystems.com/workorders.html",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "description": "Free to use sample tool for service contractors to record work completed, capture digital customer signatures, and download verified PDF receipts.",
-  "creator": {
-    "@type": "Person",
-    "name": "Jeraldo Cruz"
-  }
-}
-</script>
-
-<!-- HTML2PDF LIBRARY -->
+<!-- HTML2PDF LIBRARY FOR PDF GENERATION -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
-  :root {
-    --primary: #0d3b66;
-    --accent: #d97706;
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
     --accent-hover: #b45309;
-    --bg: #f8fafc;
+    --bg: #f8fafc; 
     --surface: #ffffff;
-    --text-dark: #1e293b;
+    --text-dark: #1e293b; 
     --text-muted: #64748b;
-    --border: #e2e8f0;
+    --border: #e2e8f0; 
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --blue-accent: #0284c7;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
   }
 
-  *, *::before, *::after { box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    margin: 0;
-    padding: 0;
-    color: var(--text-dark);
-    line-height: 1.5;
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 760px; 
+    margin: 0 auto; 
+    padding: 0 16px; 
     width: 100%;
   }
 
-  /* SUB-TICKER */
+  /* TOP SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
     padding: 8px 12px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
+    line-height: 1.35;
   }
-  .sub-ticker strong { color: #fbbf24; }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
 
   /* NAVIGATION */
-  .nav {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 10px 0; 
     position: sticky;
     top: 0;
     z-index: 100;
   }
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
     gap: 12px;
   }
-  .logo {
+  .logo { 
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    text-decoration: none;
-    font-weight: 800;
-    color: var(--primary);
-    font-size: 1.15rem;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.08rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
     white-space: nowrap;
   }
   .nav-brand-img {
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     object-fit: contain;
+    display: block;
+    flex-shrink: 0;
   }
-  .nav-links {
-    display: flex;
-    gap: 16px;
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
   }
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 0.88rem;
-    white-space: nowrap;
-  }
-  .nav-links a:hover { color: var(--accent); }
-
-  /* HEADER */
-  .page-header {
-    padding: 30px 0 16px 0;
-  }
-  .badge-tag {
-    display: inline-block;
-    background: #dcfce7;
-    color: #15803d;
-    border: 1px solid #bbf7d0;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.74rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .page-header h1 {
-    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
-    font-weight: 800;
-    color: var(--primary);
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-  }
-  .page-header p {
-    font-size: 0.96rem;
-    color: var(--text-muted);
-    margin: 0 0 16px 0;
-    max-width: 760px;
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.84rem; 
+    padding: 4px 2px;
   }
 
-  /* WORK ORDER FORM CARD */
-  .tool-box {
+  /* PAGE HEADER & CONNECTION STATUS STRIP */
+  .header-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 18px;
+    margin: 18px 0 16px 0;
     box-shadow: var(--card-shadow);
-    margin-bottom: 30px;
   }
-  .section-label {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: var(--primary);
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 4px;
-    margin-bottom: 14px;
-  }
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-  @media (max-width: 600px) {
-    .form-grid { grid-template-columns: 1fr; }
-  }
-  .field {
-    display: flex;
-    flex-direction: column;
-  }
-  .field label {
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-  .field input, .field textarea {
-    padding: 9px 11px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.88rem;
-    color: var(--text-dark);
-    font-family: inherit;
-    width: 100%;
-  }
-
-  /* SIGNATURE CANVAS BOX */
-  .sig-wrapper {
-    margin: 16px 0 20px 0;
-  }
-  .sig-header {
+  .header-card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
   }
-  .sig-header label {
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--text-dark);
+  .header-card h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+  .net-status-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
     text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .net-status-badge.online {
+    background: #dcfce7;
+    color: var(--success);
+  }
+  .net-status-badge.online::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+  }
+  .net-status-badge.offline {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  .net-status-badge.offline::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d97706;
+  }
+  .header-card p {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* WORK ORDER FORM CARD */
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+  }
+  .section-label {
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 6px;
+    margin: 0 0 14px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .form-group {
+    margin-bottom: 12px;
+  }
+  .form-group.full {
+    grid-column: 1 / -1;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: #ffffff;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  /* LINE ITEMS LIST */
+  .line-items-wrapper {
+    margin-bottom: 16px;
+  }
+  .line-item-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+  }
+  .btn-remove-line {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    border-radius: 6px;
+    width: 32px;
+    height: 36px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .btn-add-line {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+
+  /* TOTALS DISPLAY */
+  .totals-box {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+    border: 1px solid var(--border-subtle);
+  }
+  .totals-box strong {
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  /* SIGNATURE PAD BLOCK */
+  .sig-wrapper {
+    margin-bottom: 18px;
+  }
+  .sig-canvas-frame {
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    touch-action: none;
+    position: relative;
+  }
+  #signaturePad {
+    width: 100%;
+    height: 150px;
+    display: block;
+    cursor: crosshair;
+  }
+  .sig-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .sig-notice {
+    font-size: 0.74rem;
+    color: var(--text-muted);
   }
   .btn-clear-sig {
     background: none;
     border: none;
-    color: var(--accent);
     font-size: 0.76rem;
+    color: var(--danger);
     font-weight: 700;
     cursor: pointer;
-    text-decoration: underline;
-  }
-  #sigCanvas {
-    background: #f8fafc;
-    border: 2px dashed #cbd5e1;
-    border-radius: 8px;
-    width: 100%;
-    height: 140px;
-    touch-action: none;
-    cursor: crosshair;
+    padding: 4px 6px;
   }
 
-  .btn-generate {
-    background: var(--accent);
-    color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.15s ease;
-  }
-  .btn-generate:hover { background: var(--accent-hover); }
-
-  /* PDF HIDDEN TEMPLATE */
-  #pdfTemplate {
-    display: none;
-    padding: 30px;
-    font-family: Arial, sans-serif;
-    color: #1e293b;
-  }
-
-  /* INQUIRY PANEL */
-  .inquiry-box {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 26px;
-    margin-bottom: 40px;
-  }
-  .inquiry-box h2 {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin: 0 0 6px 0;
-  }
-  .inquiry-box p {
-    color: #cbd5e1;
-    font-size: 0.9rem;
-    margin: 0 0 16px 0;
-    max-width: 700px;
-  }
-  .inquiry-form {
+  /* ACTION BUTTONS */
+  .action-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  @media (max-width: 600px) {
-    .inquiry-form { grid-template-columns: 1fr; }
-  }
-  .inquiry-form input {
-    padding: 9px 11px;
-    border-radius: 6px;
-    border: 1px solid #334155;
-    background: #ffffff;
-    color: #1e293b;
-    font-size: 0.88rem;
-    width: 100%;
-  }
-  .btn-inquiry {
-    background: var(--accent);
+  .btn-primary-action {
+    background: var(--success);
     color: #ffffff;
     border: none;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 800;
-    font-size: 0.9rem;
     cursor: pointer;
-    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s ease;
   }
-  .btn-inquiry:hover { background: var(--accent-hover); }
+  .btn-primary-action:hover {
+    background: #15803d;
+  }
+  .btn-secondary-action {
+    background: #0f2b48;
+    color: #ffffff;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+  }
+  .btn-secondary-action:hover {
+    background: #1e3a5f;
+  }
 
-  /* FOOTER */
-  footer {
-    background: #09233d;
-    color: #94a3b8;
-    padding: 30px 0;
-    text-align: center;
+  /* OFFLINE BACKLOG PANEL */
+  .queue-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 28px;
+  }
+  .queue-panel h3 {
+    margin: 0 0 8px 0;
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .queue-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .queue-item {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .queue-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
+  #pdfPrintStage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 740px;
+    background: #ffffff;
+    color: #1e293b;
+    padding: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    display: block;
+    box-sizing: border-box;
+    z-index: -9999;
+  }
+  .pdf-top-row {
+    border-bottom: 2px solid #0d3b66;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pdf-brand-block h2 {
+    margin: 0 0 2px 0;
+    font-size: 1.4rem;
+    color: #0d3b66;
+    font-weight: 800;
+  }
+  .pdf-brand-block p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #64748b;
+  }
+  .pdf-meta-block {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #64748b;
+  }
+  .pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
     font-size: 0.82rem;
   }
+  .pdf-table th {
+    background: #f1f5f9;
+    color: #0d3b66;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    font-weight: 800;
+  }
+  .pdf-table td {
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .pdf-sig-preview {
+    max-height: 70px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 24px 0; 
+    text-align: center; 
+    font-size: 0.8rem; 
+  }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+    .action-row {
+      grid-template-columns: 1fr;
+    }
+    .line-item-row {
+      grid-template-columns: 1.5fr 1fr 1fr auto;
+    }
+  }
 </style>
 </head>
 <body>
 
+  <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Free to use, sample tools, and custom setups from <strong>Simple Biz Systems</strong>: No account or subscription required.
+    Field Work Order &amp; Signoff Engine &bull; Simple Biz Systems
   </div>
 
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -332,345 +524,520 @@
         <span>Simple Biz Systems</span>
       </a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="kingslandnews.html">Kingsland Wire</a>
-        <a href="about.html">About &amp; Founder</a>
+        <a href="dispatch.html">Dispatch Board</a>
+        <a href="driver.html">Tech Console</a>
+        <a href="about.html">About</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
-    
-    <header class="page-header">
-      <span class="badge-tag">Free to Use &bull; Sample Field Tool</span>
-      <h1>Mobile Work Order and Signoff Tool</h1>
+
+    <!-- HEADER & STATUS -->
+    <header class="header-card">
+      <div class="header-card-top">
+        <h1>Field Work Order &amp; Signoff</h1>
+        <span class="net-status-badge online" id="netBadge">Online</span>
+      </div>
       <p>
-        Capture customer signatures on your phone or tablet at job completion. Log replaced parts, write service notes, and export a verified PDF work order receipt on site.
+        Fill out parts, scope, and labor in the field. Works offline with automatic local storage and one-touch client PDF generation.
       </p>
     </header>
 
-    <div class="tool-box">
-      <!-- CONTRACTOR INFORMATION -->
-      <div class="section-label">Your Company Details (Appears on PDF)</div>
-      <div class="form-grid">
-        <div class="field">
-          <label for="bizName">Your Business Name</label>
-          <input type="text" id="bizName" placeholder="e.g. Hill Country Mechanical">
+    <!-- MAIN FORM -->
+    <form id="workOrderForm" class="form-card" onsubmit="event.preventDefault();">
+      
+      <!-- CLIENT & TECH METADATA -->
+      <div class="section-label">
+        <span>1. Job Information</span>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">WO #<span id="woNumberDisplay">WO-1042</span></span>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Customer Name</label>
+          <input type="text" id="custName" required placeholder="e.g., Lake LBJ Yacht Club">
         </div>
-        <div class="field">
-          <label for="bizPhone">Business Phone</label>
-          <input type="tel" id="bizPhone" placeholder="e.g. 325-555-0199">
+        <div class="form-group">
+          <label>Service Address / City</label>
+          <input type="text" id="custAddress" required placeholder="e.g., 1422 RR 1431, Kingsland, TX">
+        </div>
+        <div class="form-group">
+          <label>Lead Technician</label>
+          <input type="text" id="techName" required placeholder="e.g., Marcus Vance">
+        </div>
+        <div class="form-group">
+          <label>Truck Rig</label>
+          <input type="text" id="truckUnit" placeholder="e.g., Truck #1 (F-250)">
+        </div>
+        <div class="form-group full">
+          <label>Description of Work Performed</label>
+          <textarea id="workScope" rows="2" required placeholder="Diagnosed well pump electrical fault, verified breaker amperage, replaced 30A circuit."></textarea>
         </div>
       </div>
 
-      <!-- WORK ORDER METADATA -->
-      <div class="section-label" style="margin-top: 20px;">Work Order &amp; Customer Details</div>
-      <div class="form-grid">
-        <div class="field">
-          <label for="woTicketNum">Work Order Number</label>
-          <input type="text" id="woTicketNum" value="WO-2041">
+      <!-- ITEMIZATION TABLE -->
+      <div class="section-label">
+        <span>2. Labor &amp; Materials Itemization</span>
+      </div>
+
+      <div class="line-items-wrapper" id="lineItemsContainer">
+        <!-- Default Initial Row -->
+        <div class="line-item-row" data-row="0">
+          <input type="text" class="item-desc" placeholder="Item / Labor Description" value="Standard Diagnostic & Service Call" required>
+          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+          <input type="number" class="item-rate" placeholder="Rate ($)" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
+          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
         </div>
-        <div class="field">
-          <label for="woTech">Technician Name</label>
-          <input type="text" id="woTech" value="Dan R. (Lead Tech)">
+        <div class="line-item-row" data-row="1">
+          <input type="text" class="item-desc" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
+          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+          <input type="number" class="item-rate" placeholder="Rate ($)" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
+          <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
         </div>
       </div>
 
-      <div class="form-grid">
-        <div class="field">
-          <label for="woCustomer">Customer Name</label>
-          <input type="text" id="woCustomer" placeholder="e.g. Robert Henderson">
-        </div>
-        <div class="field">
-          <label for="woAddress">Job Location</label>
-          <input type="text" id="woAddress" placeholder="e.g. 1104 RR 1431, Kingsland">
-        </div>
+      <button type="button" class="btn-add-line" onclick="addLineItem()">+ Add Line Item</button>
+
+      <!-- TOTALS BAR -->
+      <div class="totals-box">
+        <div>Subtotal: <strong id="subtotalDisplay">$173.50</strong></div>
       </div>
 
-      <div class="field" style="margin-bottom: 14px;">
-        <label for="woNotes">Work Completed &amp; Parts Installed</label>
-        <textarea id="woNotes" rows="3" placeholder="e.g. Replaced dual run capacitor and cleaned outdoor condenser coil. System tested to normal operating pressure."></textarea>
+      <!-- CUSTOMER SIGNATURE CANVAS -->
+      <div class="section-label">
+        <span>3. Customer Acceptance &amp; Signoff</span>
       </div>
 
-      <div class="form-grid">
-        <div class="field">
-          <label for="woPartsCost">Parts Total ($)</label>
-          <input type="number" id="woPartsCost" value="145.00">
-        </div>
-        <div class="field">
-          <label for="woLaborCost">Labor &amp; Service Fee ($)</label>
-          <input type="number" id="woLaborCost" value="180.00">
-        </div>
-      </div>
-
-      <!-- SIGNATURE CAPTURE CANVAS -->
       <div class="sig-wrapper">
-        <div class="sig-header">
-          <label>Customer Signoff &bull; Draw Signature Below</label>
+        <div class="sig-canvas-frame">
+          <canvas id="signaturePad"></canvas>
+        </div>
+        <div class="sig-actions">
+          <span class="sig-notice">Sign above with finger or stylus</span>
           <button type="button" class="btn-clear-sig" onclick="clearSignature()">Clear Signature</button>
         </div>
-        <canvas id="sigCanvas"></canvas>
       </div>
 
-      <button type="button" class="btn-generate" onclick="generateWorkOrderPDF()">Complete Job &amp; Download Signed PDF &rarr;</button>
-    </div>
-
-    <!-- BRANDED PDF TEMPLATE (RENDERED BY HTML2PDF) -->
-    <div id="pdfTemplate">
-      <!-- CONTRACTOR HEADER -->
-      <div style="border-bottom: 2px solid #0d3b66; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end;">
-        <div>
-          <h2 style="color: #0d3b66; margin: 0 0 2px 0; font-size: 1.35rem;" id="pdfBiz">Completed Work Order</h2>
-          <p style="margin: 0; font-size: 0.85rem; color: #475569;" id="pdfPhone"></p>
-        </div>
-        <div style="text-align: right;">
-          <strong style="font-size: 1.1rem; color: #d97706;" id="pdfTicket"></strong><br>
-          <span style="font-size: 0.82rem; color: #64748b;" id="pdfDate"></span>
-        </div>
+      <!-- ACTION BUTTONS -->
+      <div class="action-row">
+        <button type="button" class="btn-primary-action" id="btnSaveSign" onclick="handleWorkOrderSubmit(true)">
+          <span>Save &amp; Generate PDF</span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+        <button type="button" class="btn-secondary-action" onclick="handleWorkOrderSubmit(false)">
+          <span>Save to Offline Queue</span>
+        </button>
       </div>
 
-      <table style="width: 100%; font-size: 0.9rem; margin-bottom: 16px;">
-        <tr>
-          <td><strong>Customer:</strong> <span id="pdfCustomer"></span></td>
-          <td><strong>Lead Tech:</strong> <span id="pdfTech"></span></td>
-        </tr>
-        <tr>
-          <td colspan="2" style="padding-top: 4px;"><strong>Job Site:</strong> <span id="pdfAddress"></span></td>
-        </tr>
-      </table>
+    </form>
 
-      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; margin-bottom: 16px;">
-        <strong style="font-size: 0.85rem; text-transform: uppercase; color: #0d3b66;">Description of Work Completed:</strong>
-        <p style="font-size: 0.9rem; margin: 6px 0 0 0;" id="pdfNotes"></p>
+    <!-- OFFLINE QUEUE TRACKER -->
+    <section class="queue-panel">
+      <h3>
+        <span>Saved Local Work Orders</span>
+        <span id="queueCounter" style="font-size: 0.76rem; color: var(--text-muted);">0 stored</span>
+      </h3>
+      <div id="queueEmptyNotice" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 10px 0;">
+        No pending offline work orders. All logs up to date.
       </div>
-
-      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.9rem;">
-        <tr style="border-bottom: 1px solid #cbd5e1; background: #f1f5f9;">
-          <th style="text-align: left; padding: 6px 8px;">Charge Category</th>
-          <th style="text-align: right; padding: 6px 8px;">Amount</th>
-        </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 6px 8px;">Installed Parts &amp; Consumables</td>
-          <td style="text-align: right; padding: 6px 8px;" id="pdfParts"></td>
-        </tr>
-        <tr style="border-bottom: 1px solid #e2e8f0;">
-          <td style="padding: 6px 8px;">Labor &amp; Service Diagnostic</td>
-          <td style="text-align: right; padding: 6px 8px;" id="pdfLabor"></td>
-        </tr>
-        <tr style="font-weight: bold; background: #fafafa;">
-          <td style="padding: 8px;">Total Due:</td>
-          <td style="text-align: right; padding: 8px; color: #0d3b66;" id="pdfTotal"></td>
-        </tr>
-      </table>
-
-      <div style="border-top: 1px solid #cbd5e1; padding-top: 12px; margin-top: 20px;">
-        <p style="font-size: 0.8rem; color: #475569; margin: 0 0 8px 0;">
-          By signing below, customer acknowledges work was completed satisfactorily and equipment was tested operational.
-        </p>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-          <div>
-            <img id="pdfSigImg" src="" alt="Customer Signature" style="max-height: 50px; border-bottom: 1px solid #334155; display: block;">
-            <span style="font-size: 0.74rem; color: #64748b;">Customer Signature on File</span>
-          </div>
-          <div style="font-size: 0.74rem; color: #64748b;">Verified Field Signoff</div>
-        </div>
-      </div>
-
-      <!-- SIMPLE BIZ SYSTEMS WATERMARK FOOTER -->
-      <div style="border-top: 1px solid #e2e8f0; margin-top: 30px; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #94a3b8;">
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <img src="logo-icon.png" alt="Simple Biz Systems" style="height: 16px; width: 16px; object-fit: contain;">
-          <span>Generated free via <strong>Simple Biz Systems</strong> &bull; simplebizsystems.com</span>
-        </div>
-        <span>Basic Software Systems &bull; Kingsland, TX</span>
-      </div>
-    </div>
-
-    <!-- UPSELL INQUIRY BOX -->
-    <div class="inquiry-box">
-      <h2>Want paperless mobile work orders for your service trucks?</h2>
-      <p>
-        These free to use, sample tools help independent contractors run lean. If you ever want field tickets, photos, and customer signatures logged directly into your own private Google Drive and spreadsheets with zero monthly software bills, drop your number below.
-      </p>
-      <form id="toolLeadForm" class="inquiry-form">
-        <input type="text" id="leadName" required placeholder="Your Name">
-        <input type="tel" id="leadPhone" required placeholder="Phone Number">
-        <button type="submit" id="btnLead" class="btn-inquiry">Ask About Custom Spreadsheet Setup &rarr;</button>
-        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
-      </form>
-    </div>
+      <ul class="queue-list" id="queueList"></ul>
+    </section>
 
   </main>
 
+  <!-- BULLETPROOF OFF-SCREEN PDF PRINT STAGE (NO NEGATIVE COORDINATES) -->
+  <div id="pdfPrintStage">
+    <div class="pdf-top-row">
+      <div class="pdf-brand-block">
+        <h2>Simple Biz Systems &bull; Field Work Order</h2>
+        <p>Kingsland, TX 78639 &bull; Trade Operations Support</p>
+      </div>
+      <div class="pdf-meta-block">
+        <div><strong>Order:</strong> <span id="pdfWoNum">WO-1042</span></div>
+        <div><strong>Date:</strong> <span id="pdfDate"></span></div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:14px; font-size:0.8rem;">
+      <div>
+        <strong style="color:#0d3b66;">Customer / Location:</strong>
+        <div id="pdfCustName" style="font-weight:700;"></div>
+        <div id="pdfCustAddress" style="color:#64748b;"></div>
+      </div>
+      <div>
+        <strong style="color:#0d3b66;">Technician / Truck:</strong>
+        <div id="pdfTechName" style="font-weight:700;"></div>
+        <div id="pdfTruckUnit" style="color:#64748b;"></div>
+      </div>
+    </div>
+
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px; margin-bottom:16px; font-size:0.8rem;">
+      <strong style="color:#0d3b66;">Scope of Work Completed:</strong>
+      <div id="pdfWorkScope" style="margin-top:4px; color:#1e293b;"></div>
+    </div>
+
+    <table class="pdf-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th style="width:60px; text-align:center;">Qty</th>
+          <th style="width:90px; text-align:right;">Rate</th>
+          <th style="width:100px; text-align:right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody id="pdfTableBody"></tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3" style="text-align:right; border:1px solid #e2e8f0;">Total Balance:</th>
+          <th id="pdfTotal" style="text-align:right; border:1px solid #e2e8f0; color:#0d3b66; font-size:0.95rem;"></th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div style="margin-top:20px; border-top:1px solid #e2e8f0; padding-top:12px; display:grid; grid-template-columns: 2fr 1fr; gap:20px; align-items:flex-end;">
+      <div>
+        <span style="font-size:0.72rem; text-transform:uppercase; color:#64748b; font-weight:700;">Customer Signoff &amp; Authorization</span>
+        <img id="pdfSigImg" class="pdf-sig-preview" src="" alt="Customer Signature">
+        <div style="border-top:1px solid #94a3b8; margin-top:4px; padding-top:4px; font-size:0.75rem; color:#64748b;">
+          I acknowledge satisfactory completion of the work outlined above.
+        </div>
+      </div>
+      <div style="text-align:right; font-size:0.72rem; color:#94a3b8;">
+        Verified Field Record &bull; simplebizsystems.com
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 8px 0; opacity: 0.85;">Free to use, sample tools, and basic software systems for Highland Lakes businesses.</p>
-      <p style="margin: 0; opacity: 0.6;">
-        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
+      <p style="margin: 0 0 4px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0; opacity: 0.7;">
+        <a href="index.html">Home</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Driver View</a> &bull; <a href="about.html">About</a>
       </p>
     </div>
   </footer>
 
   <script>
-    // CANVAS SIGNATURE DRAWING ENGINE (MOUSE & TOUCH)
-    const canvas = document.getElementById('sigCanvas');
-    const ctx = canvas.getContext('2d');
+    // HARDENED CANVAS SIGNATURE ENGINE
+    let canvas, ctx;
     let isDrawing = false;
     let hasSigned = false;
 
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-      ctx.strokeStyle = "#0d3b66";
-      ctx.lineWidth = 2.5;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    document.addEventListener("DOMContentLoaded", function() {
+      initCanvas();
+      recalcTotals();
+      initNetworkMonitoring();
+      renderOfflineQueue();
 
-    function getCoords(e) {
-      const rect = canvas.getBoundingClientRect();
-      if (e.touches && e.touches.length > 0) {
-        return {
-          x: e.touches[0].clientX - rect.left,
-          y: e.touches[0].clientY - rect.top
-        };
+      // Set random WO identifier for session
+      document.getElementById("woNumberDisplay").innerText = "WO-" + Math.floor(1000 + Math.random() * 9000);
+    });
+
+    function initCanvas() {
+      canvas = document.getElementById("signaturePad");
+      ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        ctx.strokeStyle = "#0d3b66";
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
       }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      // Desktop Mouse Events
+      canvas.addEventListener("mousedown", startDrawing);
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mouseup", stopDrawing);
+      canvas.addEventListener("mouseleave", stopDrawing);
+
+      // Mobile Touch Events (Prevents screen scrolling while signing)
+      canvas.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousedown", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      }, { passive: false });
+
+      canvas.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousemove", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      }, { passive: false });
+
+      canvas.addEventListener("touchend", function(e) {
+        e.preventDefault();
+        const mouseEvent = new MouseEvent("mouseup", {});
+        canvas.dispatchEvent(mouseEvent);
+      }, { passive: false });
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      hasSigned = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const pos = getPos(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
       return {
         x: e.clientX - rect.left,
         y: e.clientY - rect.top
       };
     }
 
-    function startDraw(e) {
-      isDrawing = true;
-      hasSigned = true;
-      const coords = getCoords(e);
-      ctx.beginPath();
-      ctx.moveTo(coords.x, coords.y);
-      if (e.cancelable) e.preventDefault();
-    }
-
-    function draw(e) {
-      if (!isDrawing) return;
-      const coords = getCoords(e);
-      ctx.lineTo(coords.x, coords.y);
-      ctx.stroke();
-      if (e.cancelable) e.preventDefault();
-    }
-
-    function stopDraw() {
-      isDrawing = false;
-    }
-
-    // Touch events
-    canvas.addEventListener('touchstart', startDraw, { passive: false });
-    canvas.addEventListener('touchmove', draw, { passive: false });
-    canvas.addEventListener('touchend', stopDraw);
-
-    // Mouse events
-    canvas.addEventListener('mousedown', startDraw);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDraw);
-    canvas.addEventListener('mouseleave', stopDraw);
-
     function clearSignature() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       hasSigned = false;
     }
 
-    // EXPORT PDF VIA HTML2PDF
-    function generateWorkOrderPDF() {
-      const biz = document.getElementById('bizName').value.trim() || "Independent Trade Services";
-      const phone = document.getElementById('bizPhone').value.trim() || "Service Department";
-      const customer = document.getElementById('woCustomer').value.trim() || "Customer";
-      const tech = document.getElementById('woTech').value.trim() || "Field Tech";
-      const address = document.getElementById('woAddress').value.trim() || "On Site";
-      const notes = document.getElementById('woNotes').value.trim() || "Standard diagnostic & repairs completed.";
-      const ticket = document.getElementById('woTicketNum').value.trim() || "WO-TICKET";
+    // LINE ITEMS CALCULATION
+    function recalcTotals() {
+      let subtotal = 0;
+      const rows = document.querySelectorAll(".line-item-row");
+      rows.forEach(r => {
+        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
+        const rate = parseFloat(r.querySelector(".item-rate").value) || 0;
+        subtotal += (qty * rate);
+      });
+      document.getElementById("subtotalDisplay").innerText = "$" + subtotal.toFixed(2);
+      return subtotal;
+    }
 
-      const parts = parseFloat(document.getElementById('woPartsCost').value) || 0;
-      const labor = parseFloat(document.getElementById('woLaborCost').value) || 0;
-      const total = parts + labor;
+    function addLineItem() {
+      const container = document.getElementById("lineItemsContainer");
+      const div = document.createElement("div");
+      div.className = "line-item-row";
+      div.innerHTML = `
+        <input type="text" class="item-desc" placeholder="Item / Labor Description" required>
+        <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
+        <input type="number" class="item-rate" placeholder="Rate ($)" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
+        <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
+      `;
+      container.appendChild(div);
+    }
 
-      document.getElementById('pdfBiz').innerText = biz;
-      document.getElementById('pdfPhone').innerText = phone;
-      document.getElementById('pdfTicket').innerText = ticket;
-      document.getElementById('pdfDate').innerText = new Date().toLocaleDateString();
-      document.getElementById('pdfCustomer').innerText = customer;
-      document.getElementById('pdfTech').innerText = tech;
-      document.getElementById('pdfAddress').innerText = address;
-      document.getElementById('pdfNotes').innerText = notes;
-      document.getElementById('pdfParts').innerText = '$' + parts.toFixed(2);
-      document.getElementById('pdfLabor').innerText = '$' + labor.toFixed(2);
-      document.getElementById('pdfTotal').innerText = '$' + total.toFixed(2);
-
-      const sigImg = document.getElementById('pdfSigImg');
-      if (hasSigned) {
-        sigImg.src = canvas.toDataURL("image/png");
-        sigImg.style.display = 'block';
+    function removeLineItem(btn) {
+      const rows = document.querySelectorAll(".line-item-row");
+      if (rows.length > 1) {
+        btn.closest(".line-item-row").remove();
+        recalcTotals();
       } else {
-        sigImg.style.display = 'none';
+        alert("At least one line item is required on a work order.");
+      }
+    }
+
+    // NETWORK MONITORING FOR OFFLINE USE
+    function initNetworkMonitoring() {
+      const badge = document.getElementById("netBadge");
+      function updateNet() {
+        if (navigator.onLine) {
+          badge.className = "net-status-badge online";
+          badge.innerText = "Online";
+        } else {
+          badge.className = "net-status-badge offline";
+          badge.innerText = "Offline - Saving Locally";
+        }
+      }
+      window.addEventListener("online", updateNet);
+      window.addEventListener("offline", updateNet);
+      updateNet();
+    }
+
+    // SUBMISSION & STORAGE
+    function handleWorkOrderSubmit(triggerPdf) {
+      const cust = document.getElementById("custName").value.trim();
+      const addr = document.getElementById("custAddress").value.trim();
+      const tech = document.getElementById("techName").value.trim();
+      const scope = document.getElementById("workScope").value.trim();
+
+      if (!cust || !addr || !tech || !scope) {
+        alert("Please complete the customer, technician, and scope fields.");
+        return;
       }
 
-      const element = document.getElementById('pdfTemplate');
-      element.style.display = 'block';
+      if (!hasSigned) {
+        if (!confirm("No customer signature recorded. Save anyway?")) {
+          return;
+        }
+      }
+
+      const woNumber = document.getElementById("woNumberDisplay").innerText;
+      const total = recalcTotals();
+      const signatureData = hasSigned ? canvas.toDataURL("image/png") : "";
+
+      const items = [];
+      document.querySelectorAll(".line-item-row").forEach(r => {
+        items.push({
+          desc: r.querySelector(".item-desc").value.trim(),
+          qty: r.querySelector(".item-qty").value,
+          rate: parseFloat(r.querySelector(".item-rate").value).toFixed(2),
+          total: (parseFloat(r.querySelector(".item-qty").value) * parseFloat(r.querySelector(".item-rate").value)).toFixed(2)
+        });
+      });
+
+      const workOrderPayload = {
+        id: woNumber,
+        date: new Date().toISOString(),
+        customer: cust,
+        address: addr,
+        tech: tech,
+        truck: document.getElementById("truckUnit").value.trim() || "Service Unit",
+        scope: scope,
+        items: items,
+        total: total.toFixed(2),
+        signature: signatureData
+      };
+
+      // Save into offline local queue
+      saveToOfflineQueue(workOrderPayload);
+
+      if (triggerPdf) {
+        generatePdfRecord(workOrderPayload);
+      } else {
+        alert("Work Order " + woNumber + " saved to local offline storage.");
+        resetForm();
+      }
+    }
+
+    function saveToOfflineQueue(payload) {
+      let queue = JSON.parse(localStorage.getItem("sbs_work_order_queue")) || [];
+      queue.unshift(payload);
+      localStorage.setItem("sbs_work_order_queue", JSON.stringify(queue));
+      renderOfflineQueue();
+    }
+
+    function renderOfflineQueue() {
+      const queue = JSON.parse(localStorage.getItem("sbs_work_order_queue")) || [];
+      const list = document.getElementById("queueList");
+      const emptyNotice = document.getElementById("queueEmptyNotice");
+      const counter = document.getElementById("queueCounter");
+
+      list.innerHTML = "";
+      counter.innerText = queue.length + " stored";
+
+      if (queue.length === 0) {
+        emptyNotice.style.display = "block";
+      } else {
+        emptyNotice.style.display = "none";
+        queue.slice(0, 5).forEach((wo, idx) => {
+          const li = document.createElement("li");
+          li.className = "queue-item";
+          li.innerHTML = `
+            <div>
+              <strong>${wo.id}</strong>: ${wo.customer} ($${wo.total})
+            </div>
+            <button type="button" style="background:none; border:none; color:var(--blue-accent); font-weight:700; cursor:pointer;" onclick="reprintPdfFromQueue(${idx})">PDF &rarr;</button>
+          `;
+          list.appendChild(li);
+        });
+      }
+    }
+
+    function reprintPdfFromQueue(idx) {
+      const queue = JSON.parse(localStorage.getItem("sbs_work_order_queue")) || [];
+      if (queue[idx]) {
+        generatePdfRecord(queue[idx]);
+      }
+    }
+
+    function resetForm() {
+      document.getElementById("workOrderForm").reset();
+      clearSignature();
+      recalcTotals();
+      document.getElementById("woNumberDisplay").innerText = "WO-" + Math.floor(1000 + Math.random() * 9000);
+    }
+
+    // BULLETPROOF HTML2PDF EXPORT USING PRECISE STAGING
+    function generatePdfRecord(wo) {
+      const btn = document.getElementById("btnSaveSign");
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerText = "Building PDF...";
+
+      // Populate staging container
+      document.getElementById("pdfWoNum").innerText = wo.id;
+      document.getElementById("pdfDate").innerText = new Date(wo.date).toLocaleDateString();
+      document.getElementById("pdfCustName").innerText = wo.customer;
+      document.getElementById("pdfCustAddress").innerText = wo.address;
+      document.getElementById("pdfTechName").innerText = wo.tech;
+      document.getElementById("pdfTruckUnit").innerText = wo.truck;
+      document.getElementById("pdfWorkScope").innerText = wo.scope;
+      document.getElementById("pdfTotal").innerText = "$" + wo.total;
+
+      const sigImg = document.getElementById("pdfSigImg");
+      if (wo.signature) {
+        sigImg.src = wo.signature;
+        sigImg.style.display = "block";
+      } else {
+        sigImg.style.display = "none";
+      }
+
+      const tbody = document.getElementById("pdfTableBody");
+      tbody.innerHTML = "";
+      wo.items.forEach(it => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${it.desc}</td>
+          <td style="text-align:center;">${it.qty}</td>
+          <td style="text-align:right;">$${it.rate}</td>
+          <td style="text-align:right; font-weight:700;">$${it.total}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const element = document.getElementById("pdfPrintStage");
 
       const opt = {
-        margin: 0.5,
-        filename: `${ticket}_${customer.replace(/\s+/g, '_')}.pdf`,
+        margin: [10, 10, 10, 10],
+        filename: `${wo.id}_${wo.customer.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          scrollX: 0, 
+          scrollY: 0,
+          windowWidth: 740
+        },
+        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
-        element.style.display = 'none';
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        resetForm();
+      }).catch(err => {
+        alert("Error exporting PDF. Your work order remains saved locally.");
+        btn.disabled = false;
+        btn.innerHTML = originalText;
       });
     }
-
-    // LEAD INGESTION
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
-
-    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const btn = document.getElementById("btnLead");
-      const feedback = document.getElementById("leadFeedback");
-      const nameVal = document.getElementById("leadName").value.trim();
-      const phoneVal = document.getElementById("leadPhone").value.trim();
-
-      btn.disabled = true;
-      btn.innerText = "Sending...";
-
-      const params = new URLSearchParams({
-        name: nameVal,
-        company: "Work Order Tool User",
-        phone: phoneVal,
-        service: "Basic Software Systems / Work Order Customization",
-        message: "Interested in custom spreadsheet setup from free work order tool.",
-        _t: new Date().getTime()
-      }).toString();
-
-      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
-        .then(() => {
-          feedback.style.display = "block";
-          feedback.style.color = "#86efac";
-          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
-          document.getElementById("toolLeadForm").reset();
-        })
-        .catch(() => {
-          feedback.style.display = "block";
-          feedback.style.color = "#fca5a5";
-          feedback.innerText = "Error sending message. Please reach out directly.";
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.innerText = "Ask About Custom Spreadsheet Setup →";
-        });
-    });
   </script>
 </body>
 </html>
