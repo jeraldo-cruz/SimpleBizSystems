@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>The Kingsland Wire | Lake Levels, Senior & Veteran Resources, Public Utilities</title>
-<meta name="title" content="The Kingsland Wire | Lake Levels, Senior & Veteran Resources, Public Utilities">
-<meta name="description" content="Free community bulletin for Kingsland, TX. Real-time Highland Lakes water levels, burn ban notices, and direct contact resources for local seniors and veterans.">
-<meta name="keywords" content="Kingsland TX news, Lake LBJ water levels, Lake Buchanan elevation, Llano County veterans officer, Burnet County VSO, Kingsland senior resources, Meals on Wheels Highland Lakes">
+<title>The Kingsland Wire | Local News, Lake Levels & Public Utilities | Kingsland, TX</title>
+<meta name="title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities | Kingsland, TX">
+<meta name="description" content="Community bulletin, real-time Highland Lakes water levels, boat ramp advisories, burn bans, and resources for seniors and veterans in Kingsland and the Highland Lakes.">
+<meta name="keywords" content="Kingsland TX news, Lake LBJ water levels, Lake Buchanan lake level, Inks Lake elevation, Llano County burn ban, Highland Lakes boat ramps, Kingsland veterans support, Kingsland senior resources">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,8 +23,8 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
-<meta property="og:title" content="The Kingsland Wire | Lake Levels, Senior & Veteran Resources">
-<meta property="og:description" content="Real-time Highland Lakes water levels, local safety advisories, and direct support contacts for Kingsland seniors and veterans.">
+<meta property="og:title" content="The Kingsland Wire | Local News, Lake Levels & Public Utilities">
+<meta property="og:description" content="Real-time Highland Lakes water levels, boat ramp status, civic updates, and local care resources for Kingsland, TX.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -44,6 +44,9 @@
     --success: #16a34a;
     --warning: #ca8a04;
     --navy-card: #0f2b48;
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+    --blue-border: #bae6fd;
   }
   
   html {
@@ -172,7 +175,7 @@
     line-height: 1.5;
   }
 
-  /* QUICK ADVISORY STRIP */
+  /* ADVISORY STRIP */
   .advisory-strip {
     display: flex;
     align-items: center;
@@ -208,7 +211,7 @@
     font-weight: 500;
   }
 
-  /* UNIFIED LAKE CARDS GRID */
+  /* LAKE CARDS GRID */
   .lakes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -240,8 +243,16 @@
   .lake-card.passable::before {
     background: var(--success);
   }
-  .lake-card.controlled::before {
-    background: #0284c7;
+
+  /* LAKE LBJ BLUE HIGHLIGHT & SIZING MATCH */
+  .lake-card.lbj-highlight {
+    background: var(--blue-surface);
+    border: 2px solid var(--blue-border);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.08);
+  }
+  .lake-card.lbj-highlight::before {
+    background: var(--blue-accent);
+    height: 5px;
   }
 
   .lake-top {
@@ -282,8 +293,8 @@
     color: #b91c1c;
   }
   .status-pill.constant {
-    background: #e0f2fe;
-    color: #0369a1;
+    background: #0284c7;
+    color: #ffffff;
   }
 
   .lake-metrics {
@@ -322,8 +333,8 @@
   .bar-fill.warning {
     background: var(--warning);
   }
-  .bar-fill.constant {
-    background: #0284c7;
+  .bar-fill.blue {
+    background: var(--blue-accent);
   }
 
   .lake-footer-row {
@@ -334,6 +345,9 @@
     align-items: center;
     font-size: 0.78rem;
     color: var(--text-muted);
+  }
+  .lake-card.lbj-highlight .lake-footer-row {
+    border-top-color: var(--blue-border);
   }
   .lake-footer-row strong {
     color: var(--text-dark);
@@ -463,8 +477,8 @@
     padding-bottom: 10px;
   }
   .bulletin-item {
-    margin-bottom: 18px;
-    padding-bottom: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--border-subtle);
   }
   .bulletin-item:last-child {
@@ -482,15 +496,18 @@
   }
   .bulletin-item h4 {
     margin: 0 0 6px 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-dark);
   }
   .bulletin-item p {
-    margin: 0;
+    margin: 0 0 8px 0;
     font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.55;
+  }
+  .bulletin-item p:last-child {
+    margin-bottom: 0;
   }
 
   /* DIRECTORY SIDEBAR */
@@ -500,12 +517,18 @@
     border-radius: 12px;
     padding: 22px;
     box-shadow: var(--card-shadow);
+    margin-bottom: 20px;
+  }
+  .sidebar-box:last-child {
+    margin-bottom: 0;
   }
   .sidebar-box h3 {
     margin: 0 0 14px 0;
     font-size: 1.05rem;
     font-weight: 800;
     color: var(--primary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
   }
   .resource-link-list {
     list-style: none;
@@ -621,17 +644,17 @@
       <span class="badge-tag">Community Civic Utility</span>
       <h1>The Kingsland Wire</h1>
       <p>
-        Highland Lakes water levels, senior and veteran resources, and essential community utilities for Kingsland, Sunrise Beach, and neighboring Hill Country trades.
+        Highland Lakes water levels, boat ramp advisories, senior and veteran resources, and essential community utilities for Kingsland, Sunrise Beach, and neighboring Hill Country trades.
       </p>
     </header>
 
     <!-- STATUS BANNER -->
     <div class="advisory-strip">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" aria-hidden="true">
         <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10h2v4h-2zm0 6h2v2h-2z"/>
       </svg>
       <div>
-        <strong>Highland Lakes Advisory:</strong> Keep outdoor watering schedules aligned with LCRA municipal guidelines. Watch for low-water gravel bars on upper Lake LBJ.
+        <strong>Highland Lakes Advisory:</strong> Keep outdoor watering schedules aligned with LCRA municipal guidelines. Watch for shallow gravel bars and unmarked hazards on the Llano River arm of upper Lake LBJ.
       </div>
     </div>
 
@@ -692,8 +715,8 @@
         </div>
       </article>
 
-      <!-- LAKE LBJ -->
-      <article class="lake-card controlled">
+      <!-- LAKE LBJ (BLUE ACCENT & BALANCED SIZING) -->
+      <article class="lake-card lbj-highlight">
         <div>
           <div class="lake-top">
             <div class="lake-name-block">
@@ -707,12 +730,12 @@
             <div class="lake-full-pool">Full conservation pool: 825.0 ft</div>
           </div>
           <div class="bar-container">
-            <div class="bar-fill constant" style="width: 99%;"></div>
+            <div class="bar-fill blue" style="width: 99%;"></div>
           </div>
         </div>
         <div class="lake-footer-row">
-          <span>Capacity: <strong>99% Operating Pool</strong></span>
-          <span>Controlled at: <strong>Wirtz Dam</strong></span>
+          <span>Operating: <strong>99% Pool</strong></span>
+          <span>Regulated at: <strong>Wirtz Dam</strong></span>
         </div>
       </article>
 
@@ -814,59 +837,109 @@
       </div>
     </section>
 
-    <!-- WIRE CONTENT -->
+    <!-- WIRE CONTENT & RESTORED LOCAL STORIES -->
     <div class="wire-columns">
       
       <section class="bulletin-card">
         <h3>Local Civic Dispatch</h3>
 
+        <!-- RESTORED: BOAT RAMP DISPATCH -->
+        <div class="bulletin-item">
+          <div class="bulletin-tag">Lake Access &amp; Navigation</div>
+          <h4>Lake LBJ Boat Ramp Conditions</h4>
+          <p>
+            Because Lake LBJ is held at a constant level by Wirtz Dam, public ramps remain fully usable year round. 
+          </p>
+          <p>
+            <strong>Kingsland Community Park:</strong> Public boat ramp is open. Please ensure parking passes are displayed in tow vehicles.
+          </p>
+          <p>
+            <strong>Lions Club Park:</strong> Concrete ramp clear and operational. Note the shallow shelf when launching larger wakeboard boats during high-wind afternoons.
+          </p>
+          <p>
+            <strong>Upper Llano River Arm:</strong> Stay between the river channel markers heading west past the RR 1431 bridge. Silt accumulation can make navigation tricky for deeper draft hulls outside the marked cut.
+          </p>
+        </div>
+
+        <!-- RESTORED: BURN BAN & RANCH SAFETY -->
         <div class="bulletin-item">
           <div class="bulletin-tag">County Safety</div>
-          <h4>Burn Ban and Outdoor Burning Status</h4>
+          <h4>Llano and Burnet County Outdoor Burning Guidelines</h4>
           <p>
-            Check county fire marshal updates before conducting brush burns or clearing slash. Keep a water source and charged equipment ready when running welders, grinders, or heavy machinery on dry rangeland.
+            Always check current fire marshal declarations before lighting outdoor brush piles. Even when burn bans are lifted during damp mornings, dry Hill Country afternoon winds can quickly carry embers into cedar breaks.
+          </p>
+          <p>
+            Contractors, fence builders, and welders are reminded to keep a dedicated water trailer or charged 5-gallon pump can on site during all hot-work operations.
           </p>
         </div>
 
+        <!-- RESTORED: WATER MANAGEMENT PLAN -->
         <div class="bulletin-item">
           <div class="bulletin-tag">Water Resource</div>
-          <h4>Highland Lakes Water Management Plan</h4>
+          <h4>Highland Lakes Drought &amp; Storage Overview</h4>
           <p>
-            Combined storage in Lakes Buchanan and Travis determines the active drought stage across the lower basin. Maintaining efficient residential and commercial irrigation preserves river levels through the heat.
+            Combined storage across Lakes Buchanan and Travis determines the active drought stage for our region. While Lake LBJ and Inks Lake maintain stable recreation water levels, overall basin inflows directly dictate municipal and agricultural conservation rules.
+          </p>
+          <p>
+            Conserving irrigation water helps protect storage reserves and keeps our local river system resilient through peak summer conditions.
           </p>
         </div>
 
+        <!-- RESTORED: LOCAL COMMERCE & CONTRACTOR NETWORK -->
         <div class="bulletin-item">
           <div class="bulletin-tag">Local Commerce</div>
-          <h4>Support Kingsland Trade Contractors</h4>
+          <h4>Support Kingsland Trade Contractors &amp; Shops</h4>
           <p>
-            Keeping trade work local keeps dollars circulating within Llano and Burnet counties. Hire independent plumbers, electricians, and equipment operators based right here in the lakes basin.
+            Independent electricians, plumbers, equipment operators, and septic contractors are the foundation of our Highland Lakes economy. 
+          </p>
+          <p>
+            Simple Biz Systems provides free operational tools and website assistance to help local crews stay independent, organized, and free from high monthly corporate software fees.
           </p>
         </div>
       </section>
 
-      <!-- CIVIC DIRECTORY -->
-      <aside class="sidebar-box">
-        <h3>Quick Contacts</h3>
-        <ul class="resource-link-list">
-          <li>
-            <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener">LCRA River Report</a>
-            <span>Official dam discharge and reservoir data</span>
-          </li>
-          <li>
-            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Llano County Government</a>
-            <span>County court, road and bridge, fire marshal</span>
-          </li>
-          <li>
-            <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener">Burnet County Government</a>
-            <span>Burnet county notices and emergency alerts</span>
-          </li>
-          <li>
-            <a href="about.html">Simple Biz Systems Help Desk</a>
-            <span>Free or low-cost tech help for local businesses</span>
-          </li>
-        </ul>
-      </aside>
+      <!-- CIVIC DIRECTORY SIDEBAR -->
+      <div>
+        <aside class="sidebar-box">
+          <h3>Highland Lakes Water Data</h3>
+          <ul class="resource-link-list">
+            <li>
+              <a href="https://www.lcra.org/water/river-operations/river-report/" target="_blank" rel="noopener">LCRA Daily River Report</a>
+              <span>Official dam discharge rates and reservoir elevation</span>
+            </li>
+            <li>
+              <a href="https://hydromet.lcra.org/" target="_blank" rel="noopener">LCRA Hydromet Rainfall Gauges</a>
+              <span>Live rainfall and streamflow gauges in Llano basin</span>
+            </li>
+            <li>
+              <a href="https://waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Water Data for Texas</a>
+              <span>Texas Water Development Board reservoir records</span>
+            </li>
+          </ul>
+        </aside>
+
+        <aside class="sidebar-box">
+          <h3>County &amp; Municipal Offices</h3>
+          <ul class="resource-link-list">
+            <li>
+              <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Llano County Courthouse</a>
+              <span>County clerk, sheriff, tax assessor, fire marshal</span>
+            </li>
+            <li>
+              <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener">Burnet County Government</a>
+              <span>County judge, road and bridge division, notices</span>
+            </li>
+            <li>
+              <a href="https://www.kingslandchamber.org/" target="_blank" rel="noopener">Kingsland Chamber of Commerce</a>
+              <span>Local merchant network and community event calendar</span>
+            </li>
+            <li>
+              <a href="about.html">Simple Biz Systems Tech Desk</a>
+              <span>Free or low-cost technical help for Kingsland businesses</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
 
     </div>
 
