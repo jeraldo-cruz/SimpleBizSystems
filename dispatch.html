@@ -5,68 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Contractor Route and Dispatch Board | Basic Software Systems Demo</title>
-<meta name="title" content="Contractor Route and Dispatch Board | Basic Software Systems Demo">
-<meta name="description" content="Free interactive contractor dispatch and crew scheduling board. Coordinate field service jobs without expensive per-driver monthly fees. Basic software systems by Simple Biz Systems.">
-<meta name="keywords" content="contractor dispatch board, basic software systems, service route scheduling, plumbing dispatch sheet, HVAC route board, Jobber alternative no subscription, ServiceTitan alternative, Kingsland TX">
+<title>Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX</title>
+<meta name="title" content="Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX">
+<meta name="description" content="Interactive trade dispatch board demo for plumbing, HVAC, electrical, and septic contractors. Visual mapping, live driver tracking, sequential job ETAs, and zero monthly fees.">
+<meta name="keywords" content="dispatching board, contractor dispatch board, trade dispatch software, Kingsland TX business systems, field service dispatch, low cost dispatch software, Highland Lakes contractor tools">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
 
 <link rel="canonical" href="https://www.simplebizsystems.com/dispatch.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
 
-<!-- STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Contractor Route and Daily Dispatch Board",
-  "url": "https://www.simplebizsystems.com/dispatch.html",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "description": "Interactive crew dispatch and daily service job board built for trade contractors without per-user subscription fees.",
-  "creator": {
-    "@type": "Person",
-    "name": "Jeraldo Cruz"
-  }
-}
-</script>
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/dispatch.html">
+<meta property="og:title" content="Field Dispatch Board | Simple Biz Systems">
+<meta property="og:description" content="Visual map dispatching, driver status tracking, and sequential arrival ETAs built for independent trades.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- LEAFLET OPEN-SOURCE MAPS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
 <style>
-  :root {
-    --primary: #0d3b66;
-    --accent: #d97706;
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
     --accent-hover: #b45309;
-    --bg: #f8fafc;
+    --bg: #f8fafc; 
     --surface: #ffffff;
-    --text-dark: #1e293b;
+    --text-dark: #1e293b; 
     --text-muted: #64748b;
-    --border: #e2e8f0;
+    --border: #e2e8f0; 
     --border-subtle: #f1f5f9;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
   }
 
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    margin: 0;
-    padding: 0;
-    color: var(--text-dark);
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
     line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
     width: 100%;
   }
 
-  /* SUB-TICKER */
+  /* TOP SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
@@ -74,285 +86,551 @@
     font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
+    line-height: 1.4;
   }
-  .sub-ticker strong { color: #fbbf24; }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
   /* NAVIGATION */
-  .nav {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 0;
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 500;
   }
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
     gap: 12px;
   }
-  .logo {
+  .logo { 
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    text-decoration: none;
-    font-weight: 800;
-    color: var(--primary);
-    font-size: 1.15rem;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.15rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
     white-space: nowrap;
   }
   .nav-brand-img {
     height: 30px;
     width: 30px;
     object-fit: contain;
+    display: block;
+    flex-shrink: 0;
   }
-  .nav-links {
-    display: flex;
-    gap: 16px;
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 600;
-    font-size: 0.88rem;
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.88rem; 
+    transition: color 0.15s ease;
+    padding: 4px 2px;
     white-space: nowrap;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover,
+  .nav-links a.active { 
+    color: var(--accent); 
+  }
 
-  /* HEADER */
-  .page-header {
-    padding: 30px 0 16px 0;
+  /* PAGE HEADER */
+  .dispatch-header {
+    padding: 28px 0 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
   }
-  .badge-tag {
-    display: inline-block;
-    background: #e0f2fe;
-    color: var(--primary);
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.74rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .page-header h1 {
-    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  .dispatch-header h1 {
+    font-size: clamp(1.75rem, 3.5vw, 2.3rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     line-height: 1.2;
   }
-  .page-header p {
-    font-size: 0.96rem;
+  .dispatch-header p {
+    font-size: 0.94rem;
     color: var(--text-muted);
-    margin: 0 0 16px 0;
-    max-width: 780px;
+    max-width: 760px;
+    margin: 0;
+  }
+  .engine-notice {
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    color: #0369a1;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* KANBAN DISPATCH BOARD */
-  .board-controls {
+  /* MAIN WORKSPACE GRID: MAP ON LEFT, DRIVERS ON RIGHT */
+  .dispatch-workspace {
+    display: grid;
+    grid-template-columns: 1.75fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  /* MAP VIEWPORT CARD */
+  .map-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+  }
+  .map-card-bar {
+    padding: 12px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
     flex-wrap: wrap;
     gap: 10px;
   }
-  .board-date {
+  .map-title {
+    font-size: 0.96rem;
     font-weight: 800;
     color: var(--primary);
-    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .btn-add-ticket {
+  .map-legend {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .legend-dot.active { background: var(--success); }
+  .legend-dot.enroute { background: var(--blue-accent); }
+  .legend-dot.queued { background: var(--warning); }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    background: #e5e7eb;
+    z-index: 10;
+  }
+
+  /* DRIVERS LIST COLUMN */
+  .drivers-column {
     background: var(--surface);
     border: 1px solid var(--border);
-    color: var(--primary);
-    font-weight: 700;
-    font-size: 0.82rem;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.15s ease;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 560px;
   }
-  .btn-add-ticket:hover {
+  .drivers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .drivers-header h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+  }
+  .drivers-count {
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 999px;
+    color: var(--text-muted);
+  }
+
+  .drivers-scroll-area {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 4px;
+    flex: 1;
+  }
+
+  /* DRIVER CARD WITH DROP TARGET */
+  .driver-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    position: relative;
+  }
+  .driver-card.drag-hover {
+    border-color: var(--accent);
+    background: #fffbeb;
+    transform: scale(1.01);
+  }
+  .driver-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .driver-name {
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .driver-truck {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .driver-status-pill {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .driver-status-pill.onsite { background: #dcfce7; color: var(--success); }
+  .driver-status-pill.enroute { background: #e0f2fe; color: var(--blue-accent); }
+  .driver-status-pill.idle { background: #f1f5f9; color: var(--text-muted); }
+
+  .current-job-box {
+    background: #ffffff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  .job-slot-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .job-slot-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+  .job-slot-location {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* SEQUENTIAL ETA BADGE */
+  .eta-indicator-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    color: #166534;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .eta-indicator-box strong {
+    font-weight: 800;
+  }
+
+  /* BOTTOM CONSOLE */
+  .console-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 36px;
+  }
+  .console-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tab-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  .tab-btn {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .tab-btn.active {
     background: var(--primary);
     color: #ffffff;
     border-color: var(--primary);
   }
 
-  .dispatch-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin-bottom: 34px;
-  }
-  @media (max-width: 860px) {
-    .dispatch-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .dispatch-col {
-    background: #f1f5f9;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px;
-    min-height: 380px;
+  .sandbox-controls {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 10px;
-  }
-  .col-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.84rem;
-    font-weight: 800;
-    color: var(--primary);
-    text-transform: uppercase;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--border);
-  }
-  .col-count {
-    background: #e2e8f0;
-    color: #475569;
-    padding: 1px 6px;
-    border-radius: 10px;
-    font-size: 0.74rem;
-  }
-
-  .ticket-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: var(--card-shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: grab;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .ticket-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow-lg);
-  }
-  .ticket-top {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.74rem;
-    font-weight: 700;
+    font-size: 0.8rem;
     color: var(--text-muted);
   }
-  .ticket-title {
-    font-size: 0.92rem;
-    font-weight: 800;
-    color: var(--text-dark);
-    margin: 0;
-  }
-  .ticket-address {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin: 0;
-  }
-  .ticket-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
-    padding-top: 6px;
-    border-top: 1px dashed var(--border-subtle);
-  }
-  .ticket-tech {
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #0284c7;
-    background: #e0f2fe;
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  .btn-advance {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    padding: 2px 6px;
-    cursor: pointer;
-  }
-  .btn-advance:hover {
-    background: var(--primary);
-    color: #ffffff;
-  }
-
-  /* BOTTOM EMBEDDED CONTACT PANEL */
-  .inquiry-box {
-    background: #0f2b48;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 26px;
-    margin-bottom: 40px;
-  }
-  .inquiry-box h2 {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin: 0 0 6px 0;
-  }
-  .inquiry-box p {
-    color: #cbd5e1;
-    font-size: 0.9rem;
-    margin: 0 0 16px 0;
-    max-width: 700px;
-  }
-  .inquiry-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  @media (max-width: 600px) {
-    .inquiry-form { grid-template-columns: 1fr; }
-  }
-  .inquiry-form input {
-    padding: 9px 11px;
-    border-radius: 6px;
-    border: 1px solid #334155;
+  .btn-reset-demo {
     background: #ffffff;
-    color: #1e293b;
-    font-size: 0.88rem;
-    width: 100%;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease;
   }
-  .btn-inquiry {
+  .btn-reset-demo:hover {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+  }
+
+  /* FORMS & GRIDS */
+  .console-panel {
+    display: none;
+  }
+  .console-panel.active {
+    display: block;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: #ffffff;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .btn-action {
     background: var(--accent);
     color: #ffffff;
     border: none;
-    padding: 10px;
+    padding: 11px 18px;
     border-radius: 6px;
-    font-weight: 800;
     font-size: 0.9rem;
+    font-weight: 800;
     cursor: pointer;
-    grid-column: 1 / -1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease, transform 0.15s ease;
   }
-  .btn-inquiry:hover { background: var(--accent-hover); }
+  .btn-action:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+  }
+
+  /* QUEUED JOBS TABLE / CARDS */
+  .queue-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .queue-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: grab;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+  }
+  .queue-card:active {
+    cursor: grabbing;
+  }
+  .queue-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e1;
+  }
+  .queue-card-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .queue-card h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .queue-card p {
+    margin: 0 0 8px 0;
+    font-size: 0.82rem;
+    color: var(--text-dark);
+  }
+  .queue-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 8px;
+  }
+  .btn-quick-assign {
+    font-size: 0.74rem;
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .btn-quick-delete {
+    font-size: 0.74rem;
+    color: var(--danger);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* DISCLAIMER BOX */
+  .disclaimer-box {
+    background: #f1f5f9;
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    color: #334155;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+  .disclaimer-box strong { color: var(--primary); }
 
   /* FOOTER */
-  footer {
-    background: #09233d;
-    color: #94a3b8;
-    padding: 30px 0;
-    text-align: center;
-    font-size: 0.82rem;
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 34px 0; 
+    text-align: center; 
+    font-size: 0.82rem; 
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .dispatch-workspace {
+      grid-template-columns: 1fr;
+    }
+    .map-card {
+      min-height: 420px;
+    }
+    .drivers-column {
+      max-height: 420px;
+    }
+  }
+  @media (max-width: 640px) {
+    .nav-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.05rem;
+    }
+    .nav-links {
+      gap: 10px;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+    }
+    .dispatch-header h1 {
+      font-size: 1.6rem;
+    }
+    .console-section {
+      padding: 16px;
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
 
-  <!-- SUB-TICKER -->
+  <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Part of the Simple Biz Systems suite: Basic software systems for independent trade contractors.
+    Simple Biz Systems &bull; Built in Kingsland, TX to support local businesses across the Highland Lakes.
   </div>
 
   <!-- NAVIGATION -->
@@ -371,136 +649,158 @@
   </nav>
 
   <main class="container">
-    
-    <header class="page-header">
-      <span class="badge-tag">Sample System Demo &bull; Logistics &amp; Field Dispatch</span>
-      <h1>Daily Route and Dispatch Board</h1>
-      <p>
-        Coordinate crew trucks, service calls, and project milestones across the Highland Lakes without paying $50 to $120 a month per technician. Click or tap <strong>Move &rarr;</strong> on any card to simulate daily field dispatching.
-      </p>
+
+    <!-- PAGE TITLE & ENGINE BADGE -->
+    <header class="dispatch-header">
+      <div>
+        <h1>Field Dispatch Board</h1>
+        <p>
+          Live visual mapping, driver tracking, and sequential arrival ETAs built for Hill Country service contractors without per-user subscription fees.
+        </p>
+      </div>
+      <div class="engine-notice">
+        <span>Mapping: OpenStreetMap Engine (Zero API Cost)</span>
+      </div>
     </header>
 
-    <!-- BOARD CONTROLS -->
-    <div class="board-controls">
-      <span class="board-date">Today's Daily Schedule &bull; Active Crews</span>
-      <button type="button" class="btn-add-ticket" onclick="addSampleTicket()">+ Add Quick Service Call</button>
-    </div>
-
-    <!-- KANBAN BOARD -->
-    <div class="dispatch-grid">
+    <!-- WORKSPACE: MAP VIEW ON LEFT, ACTIVE TRUCKS ON RIGHT -->
+    <section class="dispatch-workspace">
       
-      <!-- COL 1: UNSCHEDULED -->
-      <div class="dispatch-col" id="col-queued">
-        <div class="col-header">
-          <span>Queued / Pending</span>
-          <span class="col-count" id="count-queued">2</span>
-        </div>
-
-        <div class="ticket-card" id="ticket-1">
-          <div class="ticket-top">
-            <span>#1042 &bull; 8:30 AM</span>
-            <span style="color: #d97706;">High Priority</span>
+      <!-- MAP VIEWPORT -->
+      <article class="map-card">
+        <div class="map-card-bar">
+          <div class="map-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Highland Lakes Service Region</span>
           </div>
-          <p class="ticket-title">Emergency Main Shutoff Valve</p>
-          <p class="ticket-address">1420 River Oaks Dr, Kingsland</p>
-          <div class="ticket-footer">
-            <span class="ticket-tech">Crew 1 (Dan)</span>
-            <button class="btn-advance" onclick="advanceTicket('ticket-1', 'col-enroute')">Move &rarr;</button>
+          <div class="map-legend">
+            <span><span class="legend-dot active"></span> On Site</span>
+            <span><span class="legend-dot enroute"></span> En Route</span>
+            <span><span class="legend-dot queued"></span> Queued Call</span>
           </div>
         </div>
+        <div id="map"></div>
+      </article>
 
-        <div class="ticket-card" id="ticket-2">
-          <div class="ticket-top">
-            <span>#1043 &bull; 10:00 AM</span>
-            <span>Routine</span>
-          </div>
-          <p class="ticket-title">Capacitor &amp; Coil Inspection</p>
-          <p class="ticket-address">310 FM 2900, Kingsland</p>
-          <div class="ticket-footer">
-            <span class="ticket-tech">Crew 2 (Leo)</span>
-            <button class="btn-advance" onclick="advanceTicket('ticket-2', 'col-enroute')">Move &rarr;</button>
-          </div>
+      <!-- ACTIVE DRIVERS LIST -->
+      <aside class="drivers-column">
+        <div class="drivers-header">
+          <h2>Active Trucks &amp; Techs</h2>
+          <span class="drivers-count" id="driverCountDisplay">3 Trucks Online</span>
         </div>
-      </div>
-
-      <!-- COL 2: EN ROUTE -->
-      <div class="dispatch-col" id="col-enroute">
-        <div class="col-header">
-          <span>En Route</span>
-          <span class="col-count" id="count-enroute">1</span>
+        
+        <div class="drivers-scroll-area" id="driversContainer">
+          <!-- Rendered via JavaScript -->
         </div>
 
-        <div class="ticket-card" id="ticket-3">
-          <div class="ticket-top">
-            <span>#1041 &bull; 8:00 AM</span>
-            <span>In Transit</span>
-          </div>
-          <p class="ticket-title">200A Breaker Panel Upgrade</p>
-          <p class="ticket-address">742 Nob Hill, Sunrise Beach</p>
-          <div class="ticket-footer">
-            <span class="ticket-tech">Crew 3 (Sam)</span>
-            <button class="btn-advance" onclick="advanceTicket('ticket-3', 'col-progress')">Move &rarr;</button>
-          </div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 10px; text-align: center;">
+          Tip: Drag queued job cards onto any driver to assign immediately.
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- BOTTOM DISPATCH CONSOLE -->
+    <section class="console-section">
+      <div class="console-tabs">
+        <div class="tab-buttons">
+          <button type="button" class="tab-btn active" onclick="switchConsoleTab('tab-job')">+ Dispatch New Call</button>
+          <button type="button" class="tab-btn" onclick="switchConsoleTab('tab-queue')">Queued Calls &amp; Assign</button>
+          <button type="button" class="tab-btn" onclick="switchConsoleTab('tab-driver')">+ Add New Truck</button>
+        </div>
+        <div class="sandbox-controls">
+          <span id="sandboxCounter">Sandbox: 6/10 demo records used</span>
+          <button type="button" class="btn-reset-demo" onclick="resetDemoData()">Reset Demo</button>
         </div>
       </div>
 
-      <!-- COL 3: IN PROGRESS -->
-      <div class="dispatch-col" id="col-progress">
-        <div class="col-header">
-          <span>On Job Site</span>
-          <span class="col-count" id="count-progress">1</span>
-        </div>
+      <!-- TAB 1: DISPATCH NEW JOB -->
+      <div id="tab-job" class="console-panel active">
+        <form id="formNewJob">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Customer Name / Location</label>
+              <input type="text" id="jobCustomer" required placeholder="e.g., Lake LBJ Marina">
+            </div>
+            <div class="form-group">
+              <label>Service City / Hub</label>
+              <select id="jobCity" required>
+                <option value="Kingsland">Kingsland (Hub)</option>
+                <option value="Marble Falls">Marble Falls</option>
+                <option value="Burnet">Burnet</option>
+                <option value="Horseshoe Bay">Horseshoe Bay</option>
+                <option value="Llano">Llano</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Trade Scope / Description</label>
+              <input type="text" id="jobScope" required placeholder="e.g., 200A Panel Inspection">
+            </div>
+            <div class="form-group">
+              <label>Assign Driver</label>
+              <select id="jobDriverSelect">
+                <option value="queue">Leave in Queue (Unassigned)</option>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Est. On-Site Work Time</label>
+              <select id="jobDuration">
+                <option value="30">30 Minutes</option>
+                <option value="45" selected>45 Minutes</option>
+                <option value="60">1 Hour</option>
+                <option value="90">1.5 Hours</option>
+                <option value="120">2 Hours</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn-action">
+            <span>Log &amp; Pin Call on Board</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </form>
+      </div>
 
-        <div class="ticket-card" id="ticket-4">
-          <div class="ticket-top">
-            <span>#1040 &bull; 7:30 AM</span>
-            <span style="color: #16a34a;">Active Now</span>
-          </div>
-          <p class="ticket-title">Dock Pump Replacement</p>
-          <p class="ticket-address">8800 RR 1431, Granite Shoals</p>
-          <div class="ticket-footer">
-            <span class="ticket-tech">Crew 1 (Dan)</span>
-            <button class="btn-advance" onclick="advanceTicket('ticket-4', 'col-complete')">Finish &rarr;</button>
-          </div>
+      <!-- TAB 2: QUEUED CALLS (DRAG AND DROP REASSIGNMENT) -->
+      <div id="tab-queue" class="console-panel">
+        <div class="queue-list" id="queueCardsContainer">
+          <!-- Populated dynamically -->
         </div>
       </div>
 
-      <!-- COL 4: COMPLETED -->
-      <div class="dispatch-col" id="col-complete">
-        <div class="col-header">
-          <span>Complete / Billed</span>
-          <span class="col-count" id="count-complete">1</span>
-        </div>
-
-        <div class="ticket-card" id="ticket-5">
-          <div class="ticket-top">
-            <span>#1039 &bull; 6:45 AM</span>
-            <span style="color: #16a34a;">Signed Off</span>
+      <!-- TAB 3: ADD NEW DRIVER -->
+      <div id="tab-driver" class="console-panel">
+        <form id="formNewDriver">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Driver / Technician Name</label>
+              <input type="text" id="driverNameInput" required placeholder="e.g., Dave Miller">
+            </div>
+            <div class="form-group">
+              <label>Truck Number / Rig</label>
+              <input type="text" id="driverTruckInput" required placeholder="e.g., Truck #4 (Service Van)">
+            </div>
+            <div class="form-group">
+              <label>Initial Status</label>
+              <select id="driverStatusInput">
+                <option value="idle">Available / Staged in Kingsland</option>
+                <option value="enroute">En Route to Call</option>
+                <option value="onsite">On Site Working</option>
+              </select>
+            </div>
           </div>
-          <p class="ticket-title">Thermostat Sensor Wiring</p>
-          <p class="ticket-address">120 E Polk St, Kingsland</p>
-          <div class="ticket-footer">
-            <span class="ticket-tech">Crew 2 (Leo)</span>
-            <button class="btn-advance" onclick="advanceTicket('ticket-5', 'col-queued')">Reopen &larr;</button>
-          </div>
-        </div>
+          <button type="submit" class="btn-action">
+            <span>Add Truck to Board</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </form>
       </div>
 
-    </div>
-
-    <!-- INQUIRY FORM (PIPED TO GOOGLE APPS SCRIPT) -->
-    <div class="inquiry-box">
-      <h2>Want this dispatch board hooked to your Google Sheet?</h2>
-      <p>
-        We build custom basic software systems that sync route assignments, text customer notifications, and archive work tickets directly in your own spreadsheets with zero per-user seat fees.
-      </p>
-      <form id="toolLeadForm" class="inquiry-form">
-        <input type="text" id="leadName" required placeholder="Your Name">
-        <input type="tel" id="leadPhone" required placeholder="Phone Number">
-        <button type="submit" id="btnLead" class="btn-inquiry">Request Dispatch Board Setup for My Business &rarr;</button>
-        <div id="leadFeedback" style="display:none; grid-column: 1 / -1; font-weight: 700; font-size: 0.88rem; text-align: center; margin-top: 6px;"></div>
-      </form>
-    </div>
+      <!-- SYSTEM DISCLAIMER & TECHNICAL ARCHITECTURE -->
+      <div class="disclaimer-box">
+        <strong>Dispatch &amp; Calculation Methodology:</strong> ETAs shown on this board are calculated sequentially based on current call completion plus estimated transit drive times across the Highland Lakes basin. OpenStreetMap and Leaflet engine keep operations 100% free with zero monthly API billing. Turnkey Google Maps API integration with live satellite traffic and turn-by-turn driver updates is available for businesses with dedicated Google Cloud keys. Custom interactive layouts, drag-and-drop mechanics, and private Google Workspace sync are fully customizable for your shop.
+      </div>
+    </section>
 
   </main>
 
@@ -508,111 +808,403 @@
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 8px 0; opacity: 0.85;">Basic software systems and public utilities for Highland Lakes businesses.</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Basic software systems and public utilities for Kingsland and Highland Lakes businesses.</p>
       <p style="margin: 0; opacity: 0.6;">
         <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
+  <!-- LEAFLET JS ENGINE (OPEN SOURCE, ZERO COST) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <script>
-    function advanceTicket(ticketId, targetColId) {
-      const ticket = document.getElementById(ticketId);
-      const targetCol = document.getElementById(targetColId);
-      if (!ticket || !targetCol) return;
+    // PRESET HIGHLAND LAKES REGION COORDINATES (KINGS LAND CENTER)
+    const REGION_COORDS = {
+      "Kingsland": [30.6638, -98.4411],
+      "Marble Falls": [30.5707, -98.2742],
+      "Burnet": [30.7577, -98.2289],
+      "Horseshoe Bay": [30.5410, -98.3614],
+      "Llano": [30.7593, -98.6750]
+    };
 
-      targetCol.appendChild(ticket);
+    // DRIVE TIME MATRIX ESTIMATES FROM KINGSLAND (MINUTES)
+    const DRIVE_MINUTES = {
+      "Kingsland": 8,
+      "Marble Falls": 22,
+      "Burnet": 24,
+      "Horseshoe Bay": 18,
+      "Llano": 26
+    };
 
-      const btn = ticket.querySelector('.btn-advance');
-      if (targetColId === 'col-enroute') {
-        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-progress')`);
-        btn.innerText = 'On Site →';
-      } else if (targetColId === 'col-progress') {
-        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-complete')`);
-        btn.innerText = 'Finish →';
-      } else if (targetColId === 'col-complete') {
-        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-queued')`);
-        btn.innerText = 'Reopen ←';
-      } else {
-        btn.setAttribute('onclick', `advanceTicket('${ticketId}', 'col-enroute')`);
-        btn.innerText = 'Move →';
+    // INITIAL DEMO DATASET
+    const INITIAL_DRIVERS = [
+      {
+        id: "d1",
+        name: "Marcus Vance",
+        truck: "Truck #1 (F-250)",
+        status: "onsite",
+        currentJob: { title: "Well Pump Electrical Fault", city: "Kingsland", minsRemaining: 20 },
+        nextJob: { title: "200A Main Breaker Replace", city: "Burnet", estDuration: 60 }
+      },
+      {
+        id: "d2",
+        name: "Cole Henderson",
+        truck: "Truck #2 (Transit 350)",
+        status: "enroute",
+        currentJob: { title: "Commercial AC Capacitor", city: "Marble Falls", minsRemaining: 45 },
+        nextJob: null
+      },
+      {
+        id: "d3",
+        name: "Travis O'Neal",
+        truck: "Truck #3 (Service Rig)",
+        status: "onsite",
+        currentJob: { title: "Lift Station Float Switch", city: "Horseshoe Bay", minsRemaining: 35 },
+        nextJob: { title: "Septic Filter Cleanout", city: "Kingsland", estDuration: 45 }
+      }
+    ];
+
+    const INITIAL_QUEUE = [
+      { id: "q1", customer: "Highland Haven Residence", city: "Marble Falls", scope: "Tankless Flush", duration: 45 },
+      { id: "q2", customer: "Inks Lake RV Space #14", city: "Burnet", scope: "50A Pedestal Repair", duration: 30 },
+      { id: "q3", customer: "Sunrise Beach Waterfront", city: "Kingsland", scope: "Dock GFCI Circuit Tripped", duration: 40 }
+    ];
+
+    let drivers = JSON.parse(localStorage.getItem("sbs_dispatch_drivers")) || INITIAL_DRIVERS;
+    let queue = JSON.parse(localStorage.getItem("sbs_dispatch_queue")) || INITIAL_QUEUE;
+    const MAX_DEMO_ITEMS = 10;
+
+    let map;
+    let markersLayer;
+
+    // INITIALIZE MAP & SYSTEM
+    document.addEventListener("DOMContentLoaded", function() {
+      initMap();
+      renderBoard();
+      updateDriverSelectDropdown();
+      updateSandboxCounter();
+
+      // Form Listeners
+      document.getElementById("formNewJob").addEventListener("submit", handleNewJob);
+      document.getElementById("formNewDriver").addEventListener("submit", handleNewDriver);
+    });
+
+    function initMap() {
+      map = L.map('map', {
+        scrollWheelZoom: false
+      }).setView([30.6400, -98.4000], 11);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      markersLayer = L.layerGroup().addTo(map);
+    }
+
+    function renderBoard() {
+      markersLayer.clearLayers();
+      const container = document.getElementById("driversContainer");
+      container.innerHTML = "";
+
+      drivers.forEach(driver => {
+        // Compute Sequential ETA for Next Job
+        let nextEtaText = "No subsequent call queued";
+        if (driver.nextJob) {
+          const transitTime = DRIVE_MINUTES[driver.nextJob.city] || 15;
+          const totalMinutes = (driver.currentJob ? driver.currentJob.minsRemaining : 0) + transitTime;
+          const arrivalTime = new Date(Date.now() + totalMinutes * 60000);
+          const formattedTime = arrivalTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          nextEtaText = `Next ETA: ~${formattedTime} (${totalMinutes}m total window)`;
+        }
+
+        const card = document.createElement("div");
+        card.className = "driver-card";
+        card.setAttribute("data-driver-id", driver.id);
+
+        // Drag-and-drop event targets
+        card.ondragover = handleDragOver;
+        card.ondragleave = handleDragLeave;
+        card.ondrop = (e) => handleDropOnDriver(e, driver.id);
+
+        let statusClass = "idle";
+        let statusLabel = "Available in Kingsland";
+        if (driver.status === "onsite") {
+          statusClass = "onsite";
+          statusLabel = "On Site";
+        } else if (driver.status === "enroute") {
+          statusClass = "enroute";
+          statusLabel = "En Route";
+        }
+
+        card.innerHTML = `
+          <div class="driver-card-top">
+            <span class="driver-name">${driver.name}</span>
+            <span class="driver-truck">${driver.truck}</span>
+          </div>
+          <span class="driver-status-pill ${statusClass}">${statusLabel}</span>
+          
+          <div class="current-job-box">
+            <div class="job-slot-label">Current Service Call</div>
+            <div class="job-slot-title">${driver.currentJob ? driver.currentJob.title : "No active call assigned"}</div>
+            <div class="job-slot-location">${driver.currentJob ? `${driver.currentJob.city} &bull; ~${driver.currentJob.minsRemaining}m work left` : "Staged for dispatch"}</div>
+          </div>
+
+          ${driver.nextJob ? `
+            <div class="current-job-box" style="border-left: 3px solid var(--accent); background: #fffdfa;">
+              <div class="job-slot-label" style="color: var(--accent);">Next Queued Call</div>
+              <div class="job-slot-title">${driver.nextJob.title}</div>
+              <div class="job-slot-location">${driver.nextJob.city} &bull; ${driver.nextJob.estDuration}m est work</div>
+            </div>
+          ` : ""}
+
+          <div class="eta-indicator-box">
+            <span>${nextEtaText}</span>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        // Map Pins for Active Calls
+        if (driver.currentJob && REGION_COORDS[driver.currentJob.city]) {
+          const coords = REGION_COORDS[driver.currentJob.city];
+          // Slight jitter so multiple trucks in Kingsland don't sit on identical pixels
+          const offsetLat = (Math.random() - 0.5) * 0.02;
+          const offsetLng = (Math.random() - 0.5) * 0.02;
+          const pinColor = driver.status === "onsite" ? "#16a34a" : "#0284c7";
+
+          const marker = L.circleMarker([coords[0] + offsetLat, coords[1] + offsetLng], {
+            radius: 9,
+            fillColor: pinColor,
+            color: "#ffffff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.95
+          }).addTo(markersLayer);
+
+          marker.bindPopup(`
+            <strong style="color:#0d3b66;">${driver.name} (${driver.truck})</strong><br>
+            <strong>Call:</strong> ${driver.currentJob.title}<br>
+            <strong>Location:</strong> ${driver.currentJob.city}<br>
+            <strong>Status:</strong> ${statusLabel}
+          `);
+        }
+      });
+
+      document.getElementById("driverCountDisplay").innerText = `${drivers.length} Trucks Configured`;
+      renderQueueCards();
+    }
+
+    function renderQueueCards() {
+      const queueContainer = document.getElementById("queueCardsContainer");
+      queueContainer.innerHTML = "";
+
+      if (queue.length === 0) {
+        queueContainer.innerHTML = `<div style="grid-column: 1 / -1; padding: 14px; text-align: center; color: var(--text-muted); font-size: 0.88rem;">No unassigned calls in queue. Log a call above.</div>`;
+        return;
       }
 
-      updateColCounts();
+      queue.forEach((item, index) => {
+        const qCard = document.createElement("div");
+        qCard.className = "queue-card";
+        qCard.setAttribute("draggable", "true");
+        qCard.ondragstart = (e) => e.dataTransfer.setData("text/plain", index);
+
+        qCard.innerHTML = `
+          <div class="queue-card-top">
+            <span>${item.city}</span>
+            <span>${item.duration}m est</span>
+          </div>
+          <h4>${item.customer}</h4>
+          <p>${item.scope}</p>
+          <div class="queue-actions">
+            <button type="button" class="btn-quick-assign" onclick="quickAssignPrompt(${index})">Assign to Truck &rarr;</button>
+            <button type="button" class="btn-quick-delete" onclick="removeQueueItem(${index})">Remove</button>
+          </div>
+        `;
+
+        queueContainer.appendChild(qCard);
+
+        // Map Pins for Queued Calls
+        if (REGION_COORDS[item.city]) {
+          const coords = REGION_COORDS[item.city];
+          const offsetLat = (Math.random() - 0.5) * 0.025;
+          const offsetLng = (Math.random() - 0.5) * 0.025;
+
+          const marker = L.circleMarker([coords[0] + offsetLat, coords[1] + offsetLng], {
+            radius: 7,
+            fillColor: "#d97706",
+            color: "#ffffff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.9
+          }).addTo(markersLayer);
+
+          marker.bindPopup(`
+            <strong style="color:#d97706;">Queued Call (Unassigned)</strong><br>
+            <strong>Customer:</strong> ${item.customer}<br>
+            <strong>Scope:</strong> ${item.scope}<br>
+            <strong>Location:</strong> ${item.city}
+          `);
+        }
+      });
     }
 
-    function updateColCounts() {
-      document.getElementById('count-queued').innerText = document.getElementById('col-queued').querySelectorAll('.ticket-card').length;
-      document.getElementById('count-enroute').innerText = document.getElementById('col-enroute').querySelectorAll('.ticket-card').length;
-      document.getElementById('count-progress').innerText = document.getElementById('col-progress').querySelectorAll('.ticket-card').length;
-      document.getElementById('count-complete').innerText = document.getElementById('col-complete').querySelectorAll('.ticket-card').length;
-    }
-
-    let ticketCounter = 1044;
-    function addSampleTicket() {
-      const colQueued = document.getElementById('col-queued');
-      const newId = 'ticket-' + ticketCounter;
-
-      const card = document.createElement('div');
-      card.className = 'ticket-card';
-      card.id = newId;
-      card.innerHTML = `
-        <div class="ticket-top">
-          <span>#${ticketCounter} &bull; Call In</span>
-          <span style="color: #0284c7;">New Call</span>
-        </div>
-        <p class="ticket-title">Standard Service Diagnostic</p>
-        <p class="ticket-address">Local Highland Lakes Route</p>
-        <div class="ticket-footer">
-          <span class="ticket-tech">Crew Standby</span>
-          <button class="btn-advance" onclick="advanceTicket('${newId}', 'col-enroute')">Move &rarr;</button>
-        </div>
-      `;
-
-      colQueued.appendChild(card);
-      ticketCounter++;
-      updateColCounts();
-    }
-
-    // LEAD INGESTION (APPS SCRIPT GET)
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
-
-    document.getElementById("toolLeadForm").addEventListener("submit", function(e) {
+    function handleDragOver(e) {
       e.preventDefault();
-      const btn = document.getElementById("btnLead");
-      const feedback = document.getElementById("leadFeedback");
-      const nameVal = document.getElementById("leadName").value.trim();
-      const phoneVal = document.getElementById("leadPhone").value.trim();
+      this.classList.add("drag-hover");
+    }
 
-      btn.disabled = true;
-      btn.innerText = "Sending...";
+    function handleDragLeave(e) {
+      this.classList.remove("drag-hover");
+    }
 
-      const params = new URLSearchParams({
-        name: nameVal,
-        company: "Dispatch Board Demo User",
-        phone: phoneVal,
-        service: "Basic Software Systems / Dispatch Board Customization",
-        message: "Requested custom dispatch board setup.",
-        _t: new Date().getTime()
-      }).toString();
+    function handleDropOnDriver(e, driverId) {
+      e.preventDefault();
+      document.querySelectorAll(".driver-card").forEach(c => c.classList.remove("drag-hover"));
+      const queueIndex = e.dataTransfer.getData("text/plain");
 
-      fetch(SCRIPT_URL + "?" + params, { method: "GET", mode: "no-cors" })
-        .then(() => {
-          feedback.style.display = "block";
-          feedback.style.color = "#86efac";
-          feedback.innerText = "Thank you! We received your inquiry and will follow up shortly.";
-          document.getElementById("toolLeadForm").reset();
-        })
-        .catch(() => {
-          feedback.style.display = "block";
-          feedback.style.color = "#fca5a5";
-          feedback.innerText = "Error sending message. Please reach out directly.";
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.innerText = "Request Dispatch Board Setup for My Business →";
-        });
-    });
+      if (queueIndex !== "" && queue[queueIndex]) {
+        assignQueueItemToDriver(parseInt(queueIndex), driverId);
+      }
+    }
+
+    function assignQueueItemToDriver(index, driverId) {
+      const item = queue[index];
+      const targetDriver = drivers.find(d => d.id === driverId);
+
+      if (targetDriver) {
+        if (!targetDriver.currentJob) {
+          targetDriver.currentJob = { title: item.scope, city: item.city, minsRemaining: item.duration };
+          targetDriver.status = "enroute";
+        } else {
+          targetDriver.nextJob = { title: item.scope, city: item.city, estDuration: item.duration };
+        }
+        queue.splice(index, 1);
+        persist();
+        renderBoard();
+        updateSandboxCounter();
+      }
+    }
+
+    function quickAssignPrompt(queueIndex) {
+      const driverNames = drivers.map((d, i) => `${i + 1}: ${d.name}`).join("\n");
+      const choice = prompt(`Select Truck to Assign:\n${driverNames}\n(Enter number):`);
+      const num = parseInt(choice);
+      if (num > 0 && num <= drivers.length) {
+        assignQueueItemToDriver(queueIndex, drivers[num - 1].id);
+      }
+    }
+
+    function removeQueueItem(index) {
+      queue.splice(index, 1);
+      persist();
+      renderBoard();
+      updateSandboxCounter();
+    }
+
+    function handleNewJob(e) {
+      e.preventDefault();
+      const totalRecords = drivers.length + queue.length;
+      if (totalRecords >= MAX_DEMO_ITEMS) {
+        alert("Demo Sandbox Limit Reached (Max 10 records). Reset demo to continue testing.");
+        return;
+      }
+
+      const customer = document.getElementById("jobCustomer").value.trim();
+      const city = document.getElementById("jobCity").value;
+      const scope = document.getElementById("jobScope").value.trim();
+      const driverId = document.getElementById("jobDriverSelect").value;
+      const duration = parseInt(document.getElementById("jobDuration").value);
+
+      if (driverId === "queue") {
+        queue.push({ id: "q_" + Date.now(), customer, city, scope, duration });
+      } else {
+        const targetDriver = drivers.find(d => d.id === driverId);
+        if (targetDriver) {
+          if (!targetDriver.currentJob) {
+            targetDriver.currentJob = { title: scope, city, minsRemaining: duration };
+            targetDriver.status = "enroute";
+          } else {
+            targetDriver.nextJob = { title: scope, city, estDuration: duration };
+          }
+        }
+      }
+
+      document.getElementById("formNewJob").reset();
+      persist();
+      renderBoard();
+      updateSandboxCounter();
+    }
+
+    function handleNewDriver(e) {
+      e.preventDefault();
+      const totalRecords = drivers.length + queue.length;
+      if (totalRecords >= MAX_DEMO_ITEMS) {
+        alert("Demo Sandbox Limit Reached (Max 10 records). Reset demo to continue testing.");
+        return;
+      }
+
+      const name = document.getElementById("driverNameInput").value.trim();
+      const truck = document.getElementById("driverTruckInput").value.trim();
+      const status = document.getElementById("driverStatusInput").value;
+
+      drivers.push({
+        id: "d_" + Date.now(),
+        name,
+        truck,
+        status,
+        currentJob: null,
+        nextJob: null
+      });
+
+      document.getElementById("formNewDriver").reset();
+      updateDriverSelectDropdown();
+      persist();
+      renderBoard();
+      updateSandboxCounter();
+      switchConsoleTab('tab-job');
+    }
+
+    function updateDriverSelectDropdown() {
+      const select = document.getElementById("jobDriverSelect");
+      select.innerHTML = `<option value="queue">Leave in Queue (Unassigned)</option>`;
+      drivers.forEach(d => {
+        const opt = document.createElement("option");
+        opt.value = d.id;
+        opt.innerText = `${d.name} (${d.truck})`;
+        select.appendChild(opt);
+      });
+    }
+
+    function switchConsoleTab(tabId) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".console-panel").forEach(p => p.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      event.target.classList.add("active");
+    }
+
+    function updateSandboxCounter() {
+      const total = drivers.length + queue.length;
+      document.getElementById("sandboxCounter").innerText = `Sandbox: ${total}/${MAX_DEMO_ITEMS} demo records used`;
+    }
+
+    function persist() {
+      localStorage.setItem("sbs_dispatch_drivers", JSON.stringify(drivers));
+      localStorage.setItem("sbs_dispatch_queue", JSON.stringify(queue));
+    }
+
+    function resetDemoData() {
+      if (confirm("Reset dispatch board to original demo state?")) {
+        localStorage.removeItem("sbs_dispatch_drivers");
+        localStorage.removeItem("sbs_dispatch_queue");
+        drivers = JSON.parse(JSON.stringify(INITIAL_DRIVERS));
+        queue = JSON.parse(JSON.stringify(INITIAL_QUEUE));
+        updateDriverSelectDropdown();
+        renderBoard();
+        updateSandboxCounter();
+      }
+    }
   </script>
 </body>
 </html>
