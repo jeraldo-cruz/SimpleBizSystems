@@ -806,21 +806,24 @@
     color: #991b1b;
   }
 
-  /* OFF-SCREEN PRINTABLE TEMPLATE (FOR HTML2PDF) */
+  /* OFF-SCREEN PRINTABLE TEMPLATE: 
+     Positioned at top:0, left:0, z-index:-9999 with exact pixel dimensions.
+     Zero negative coordinates and zero CSS variables ensures html2canvas renders perfectly. */
   #pdfPrintManifest {
     position: fixed;
-    left: -9999px;
     top: 0;
+    left: 0;
     width: 760px;
     background: #ffffff;
     color: #1e293b;
     padding: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
+    z-index: -9999;
   }
   .pdf-header {
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid #0d3b66;
     padding-bottom: 12px;
     margin-bottom: 18px;
     display: flex;
@@ -829,19 +832,19 @@
   }
   .pdf-title h2 {
     font-size: 1.35rem;
-    color: var(--primary);
+    color: #0d3b66;
     margin: 0 0 4px 0;
     font-weight: 800;
   }
   .pdf-title p {
     font-size: 0.82rem;
-    color: var(--text-muted);
+    color: #64748b;
     margin: 0;
   }
   .pdf-meta {
     text-align: right;
     font-size: 0.78rem;
-    color: var(--text-muted);
+    color: #64748b;
   }
   .pdf-table {
     width: 100%;
@@ -851,7 +854,7 @@
   }
   .pdf-table th {
     background: #f1f5f9;
-    color: var(--primary);
+    color: #0d3b66;
     text-align: left;
     padding: 8px;
     border: 1px solid #e2e8f0;
@@ -860,6 +863,7 @@
   .pdf-table td {
     padding: 8px;
     border: 1px solid #e2e8f0;
+    color: #1e293b;
   }
   .pdf-signoff-row {
     display: grid;
@@ -876,7 +880,7 @@
   }
   .pdf-sign-label {
     font-size: 0.72rem;
-    color: var(--text-muted);
+    color: #64748b;
     text-transform: uppercase;
     font-weight: 700;
   }
@@ -1158,7 +1162,7 @@
     </div>
   </div>
 
-  <!-- OFF-SCREEN PRINTABLE TEMPLATE (RENDERABLE BY HTML2PDF) -->
+  <!-- PRINTABLE TEMPLATE (RENDERED DIRECTLY BY HTML2PDF) -->
   <div id="pdfPrintManifest">
     <div class="pdf-header">
       <div class="pdf-title">
@@ -1680,7 +1684,7 @@
       document.getElementById("phoneModal").classList.remove("active");
     }
 
-    // ROBUST SHIFT PDF EXPORT (USES OFF-SCREEN STAGING TO PREVENT BLANK OUTPUT)
+    // BULLETPROOF SHIFT PDF EXPORT (EXPLICIT DIMENSIONS + NO CSS VARIABLES)
     function exportShiftPDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
@@ -1691,32 +1695,34 @@
       document.getElementById("pdfDate").innerText = now.toLocaleDateString();
       document.getElementById("pdfTime").innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+      // Populate Drivers
       const driverTbody = document.getElementById("pdfDriverTableBody");
       driverTbody.innerHTML = "";
       drivers.forEach(d => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td><strong>${d.name}</strong></td>
-          <td>${d.truck}</td>
-          <td>${d.status.toUpperCase()}</td>
-          <td>${d.currentJob ? `${d.currentJob.title} (${d.currentJob.city})` : "None Assigned"}</td>
-          <td>${d.nextJob ? `${d.nextJob.title} (${d.nextJob.city})` : "None"}</td>
+          <td style="padding:8px; border:1px solid #e2e8f0;"><strong>${d.name}</strong></td>
+          <td style="padding:8px; border:1px solid #e2e8f0;">${d.truck}</td>
+          <td style="padding:8px; border:1px solid #e2e8f0;">${d.status.toUpperCase()}</td>
+          <td style="padding:8px; border:1px solid #e2e8f0;">${d.currentJob ? `${d.currentJob.title} (${d.currentJob.city})` : "None Assigned"}</td>
+          <td style="padding:8px; border:1px solid #e2e8f0;">${d.nextJob ? `${d.nextJob.title} (${d.nextJob.city})` : "None"}</td>
         `;
         driverTbody.appendChild(tr);
       });
 
+      // Populate Queue
       const queueTbody = document.getElementById("pdfQueueTableBody");
       queueTbody.innerHTML = "";
       if (queue.length === 0) {
-        queueTbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#64748b; padding:10px;">No unassigned queued calls recorded.</td></tr>`;
+        queueTbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#64748b; padding:10px; border:1px solid #e2e8f0;">No unassigned queued calls recorded.</td></tr>`;
       } else {
         queue.forEach(q => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-            <td>${q.customer}</td>
-            <td>${q.city}</td>
-            <td>${q.scope}</td>
-            <td>${q.duration} mins</td>
+            <td style="padding:8px; border:1px solid #e2e8f0;">${q.customer}</td>
+            <td style="padding:8px; border:1px solid #e2e8f0;">${q.city}</td>
+            <td style="padding:8px; border:1px solid #e2e8f0;">${q.scope}</td>
+            <td style="padding:8px; border:1px solid #e2e8f0;">${q.duration} mins</td>
           `;
           queueTbody.appendChild(tr);
         });
@@ -1728,7 +1734,13 @@
         margin: [10, 10, 10, 10],
         filename: `Dispatch_Shift_Manifest_${now.toISOString().slice(0, 10)}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          scrollX: 0, 
+          scrollY: 0,
+          windowWidth: 760
+        },
         jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
       };
 
