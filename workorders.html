@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Field Work Order & Customer Signoff | Simple Biz Systems</title>
 <meta name="title" content="Field Work Order & Customer Signoff | Simple Biz Systems">
-<meta name="description" content="Offline-capable mobile field work order and customer signature signoff tool for Highland Lakes trade contractors. Instant PDF invoice generation with zero monthly software fees.">
-<meta name="keywords" content="field work order app, contractor signoff tool, mobile work order pdf, trades signature app, Kingsland TX field service software, offline work order generator">
+<meta name="description" content="Free offline mobile field work order and customer signature signoff tool for Highland Lakes trades. Generate professional PDF invoices on site with zero monthly subscription fees.">
+<meta name="keywords" content="field work order app, contractor signoff tool, mobile work order pdf, trades signature app, Kingsland TX field service software, offline work order generator, HVAC plumbing electrical signoff sheet">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -19,6 +19,13 @@
 <link rel="canonical" href="https://www.simplebizsystems.com/workorder.html" />
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/workorder.html">
+<meta property="og:title" content="Field Work Order & Customer Signoff | Simple Biz Systems">
+<meta property="og:description" content="Offline mobile field work orders with live touch signatures and instant PDF invoice generation for trade contractors.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- HTML2PDF LIBRARY FOR PDF GENERATION -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -128,13 +135,13 @@
     white-space: nowrap;
   }
 
-  /* PAGE HEADER & CONNECTION STATUS STRIP */
+  /* PAGE HEADER */
   .header-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
+    padding: 18px;
+    margin: 16px 0 14px 0;
     box-shadow: var(--card-shadow);
   }
   .header-card-top {
@@ -146,7 +153,7 @@
     margin-bottom: 6px;
   }
   .header-card h1 {
-    font-size: clamp(1.2rem, 4vw, 1.35rem);
+    font-size: clamp(1.25rem, 4vw, 1.45rem);
     font-weight: 800;
     color: var(--primary);
     margin: 0;
@@ -187,10 +194,63 @@
     background: var(--accent);
   }
   .header-card p {
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
+    margin: 0 0 14px 0;
+    line-height: 1.5;
+  }
+
+  /* EXPANDED SEO INSTRUCTIONAL BLOCK */
+  .seo-guide-block {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 10px;
+  }
+  .seo-guide-block h2 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .seo-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .seo-step-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+  }
+  .seo-step-num {
+    font-size: 0.68rem;
+    font-weight: 800;
+    background: #e0f2fe;
+    color: var(--primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+  .seo-step-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+  .seo-step-desc {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.4;
     margin: 0;
-    line-height: 1.45;
   }
 
   /* WORK ORDER FORM CARD */
@@ -198,7 +258,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px;
+    padding: 18px;
     box-shadow: var(--card-shadow);
     margin-bottom: 24px;
   }
@@ -256,84 +316,127 @@
     border-color: var(--primary);
   }
 
-  /* LINE ITEMS LIST (MOBILE OPTIMIZED WRAPPER) */
+  /* LINE ITEMS: STACKED CARD ARCHITECTURE (PREVENTS CUTOFF) */
   .line-items-wrapper {
     margin-bottom: 12px;
-  }
-  .line-item-row {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
-    padding: 10px;
+    gap: 10px;
+  }
+  .line-item-card {
     background: #f8fafc;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border);
     border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
-  .line-item-top {
+  .item-desc-input {
     width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.86rem;
+    font-family: inherit;
+    background: #ffffff;
   }
-  .line-item-bottom {
+
+  .item-math-row {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 80px 100px 1fr auto;
     gap: 8px;
     align-items: center;
   }
-  .line-item-row input {
-    padding: 8px 10px;
+  .field-mini-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .field-mini-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .field-mini-wrap input {
+    width: 100%;
+    padding: 7px 8px;
     border-radius: 6px;
     border: 1px solid var(--border);
     font-size: 0.84rem;
     font-family: inherit;
     background: #ffffff;
-    width: 100%;
   }
+
+  .item-amount-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 4px;
+  }
+  .amount-val {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
   .btn-remove-line {
     background: #fee2e2;
     color: var(--danger);
     border: none;
     border-radius: 6px;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     font-weight: 800;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 14px;
   }
+
   .btn-add-line {
     background: #f1f5f9;
     border: 1px solid var(--border);
     color: var(--primary);
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    padding: 8px 14px;
+    padding: 9px 14px;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 2px;
     width: 100%;
+    transition: background 0.15s ease;
+  }
+  .btn-add-line:hover {
+    background: #e2e8f0;
   }
 
   /* TOTALS DISPLAY */
   .totals-box {
     background: #f8fafc;
     border-radius: 8px;
-    padding: 10px 14px;
+    padding: 12px 14px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 14px;
-    font-size: 0.88rem;
     margin: 14px 0;
     border: 1px solid var(--border-subtle);
   }
+  .totals-box span {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
   .totals-box strong {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--primary);
   }
 
-  /* SIGNATURE PAD BLOCK (RESPONSIVE NO-OVERFLOW) */
+  /* SIGNATURE PAD BLOCK */
   .sig-wrapper {
     margin-bottom: 18px;
     width: 100%;
@@ -362,7 +465,7 @@
     gap: 8px;
   }
   .sig-notice {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
   }
   .btn-clear-sig {
@@ -539,6 +642,10 @@
       grid-template-columns: 1fr;
       gap: 6px;
     }
+    .item-math-row {
+      grid-template-columns: 65px 85px 1fr auto;
+      gap: 6px;
+    }
   }
 </style>
 </head>
@@ -566,15 +673,42 @@
 
   <main class="container">
 
-    <!-- HEADER & STATUS -->
+    <!-- HEADER WITH EXPANDED SEO WORKFLOW GUIDE -->
     <header class="header-card">
       <div class="header-card-top">
-        <h1>Field Work Order &amp; Signoff</h1>
+        <h1>Field Work Order &amp; Customer Signoff</h1>
         <span class="net-status-badge online" id="netBadge">Online</span>
       </div>
       <p>
-        Fill out parts, scope, and labor in the field. Works offline with automatic local storage and one-touch client PDF generation.
+        A mobile-first field service work order app and customer signature capture tool engineered for plumbing, HVAC, electrical, and septic contractors throughout Kingsland, Marble Falls, and the Highland Lakes basin. Built to operate seamlessly offline with local browser storage, instant PDF invoice generation, and zero monthly software fees.
       </p>
+
+      <!-- STRUCTURED SEO STEP GUIDE -->
+      <section class="seo-guide-block" aria-label="Work order operating instructions">
+        <h2>Field Technician Workflow</h2>
+        <div class="seo-steps-grid">
+          <div class="seo-step-card">
+            <span class="seo-step-num">Step 1</span>
+            <div class="seo-step-title">Log Service Details</div>
+            <p class="seo-step-desc">Enter customer location, technician name, truck unit, and detailed scope of repairs performed on site.</p>
+          </div>
+          <div class="seo-step-card">
+            <span class="seo-step-num">Step 2</span>
+            <div class="seo-step-title">Itemize Parts &amp; Labor</div>
+            <p class="seo-step-desc">Add line items with quantities and hourly rates. Totals and line balances calculate automatically.</p>
+          </div>
+          <div class="seo-step-card">
+            <span class="seo-step-num">Step 3</span>
+            <div class="seo-step-title">Capture Touch Signature</div>
+            <p class="seo-step-desc">Hand your mobile device to the client to capture an authorized signature directly on the touch screen.</p>
+          </div>
+          <div class="seo-step-card">
+            <span class="seo-step-num">Step 4</span>
+            <div class="seo-step-title">Save &amp; Generate PDF</div>
+            <p class="seo-step-desc">Download an invoice PDF immediately, or save directly to your local offline queue when working outside cell coverage.</p>
+          </div>
+        </div>
+      </section>
     </header>
 
     <!-- MAIN FORM -->
@@ -609,44 +743,64 @@
         </div>
       </div>
 
-      <!-- ITEMIZATION TABLE -->
+      <!-- ITEMIZATION TABLE (STACKED CARD FORMAT PREVENTS CUTOFF) -->
       <div class="section-label">
         <span>2. Labor &amp; Materials Itemization</span>
       </div>
 
       <div class="line-items-wrapper" id="lineItemsContainer">
-        <!-- Item Row 1 -->
-        <div class="line-item-row">
-          <div class="line-item-top">
-            <input type="text" class="item-desc" placeholder="Item / Labor Description" value="Standard Diagnostic & Service Call" required>
-          </div>
-          <div class="line-item-bottom">
-            <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-            <input type="number" class="item-rate" placeholder="Rate ($)" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
+        
+        <!-- Line Item Card 1 -->
+        <div class="line-item-card">
+          <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="Standard Diagnostic &amp; Service Call" required>
+          <div class="item-math-row">
+            <div class="field-mini-wrap">
+              <span class="field-mini-label">Qty</span>
+              <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
+            </div>
+            <div class="field-mini-wrap">
+              <span class="field-mini-label">Rate ($)</span>
+              <input type="number" class="item-rate" placeholder="0.00" value="125.00" min="0" step="0.01" oninput="recalcTotals()" required>
+            </div>
+            <div class="item-amount-display">
+              <span class="field-mini-label">Amount</span>
+              <span class="amount-val">$125.00</span>
+            </div>
             <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
           </div>
         </div>
-        <!-- Item Row 2 -->
-        <div class="line-item-row">
-          <div class="line-item-top">
-            <input type="text" class="item-desc" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
-          </div>
-          <div class="line-item-bottom">
-            <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-            <input type="number" class="item-rate" placeholder="Rate ($)" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
+
+        <!-- Line Item Card 2 -->
+        <div class="line-item-card">
+          <input type="text" class="item-desc-input" placeholder="Item / Labor Description" value="2-Pole 30A Commercial Breaker" required>
+          <div class="item-math-row">
+            <div class="field-mini-wrap">
+              <span class="field-mini-label">Qty</span>
+              <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
+            </div>
+            <div class="field-mini-wrap">
+              <span class="field-mini-label">Rate ($)</span>
+              <input type="number" class="item-rate" placeholder="0.00" value="48.50" min="0" step="0.01" oninput="recalcTotals()" required>
+            </div>
+            <div class="item-amount-display">
+              <span class="field-mini-label">Amount</span>
+              <span class="amount-val">$48.50</span>
+            </div>
             <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
           </div>
         </div>
+
       </div>
 
       <button type="button" class="btn-add-line" onclick="addLineItem()">+ Add Line Item</button>
 
       <!-- TOTALS BAR -->
       <div class="totals-box">
-        <div>Subtotal: <strong id="subtotalDisplay">$173.50</strong></div>
+        <span>Subtotal Balance Due</span>
+        <strong id="subtotalDisplay">$173.50</strong>
       </div>
 
-      <!-- CUSTOMER SIGNATURE CANVAS (RESPONSIVE NO-OVERFLOW) -->
+      <!-- CUSTOMER SIGNATURE CANVAS -->
       <div class="section-label">
         <span>3. Customer Acceptance &amp; Signoff</span>
       </div>
@@ -783,7 +937,6 @@
         const frame = document.getElementById("canvasFrame");
         const rect = frame.getBoundingClientRect();
         
-        // Backup existing drawing data before resize if user already signed
         let imgData = null;
         if (hasSigned && canvas.width > 0 && canvas.height > 0) {
           imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -802,18 +955,15 @@
         }
       }
 
-      // Initial fit & listener
       fitCanvas();
       window.addEventListener("resize", fitCanvas);
       window.addEventListener("orientationchange", fitCanvas);
 
-      // Mouse listeners
       canvas.addEventListener("mousedown", startDrawing);
       canvas.addEventListener("mousemove", draw);
       canvas.addEventListener("mouseup", stopDrawing);
       canvas.addEventListener("mouseleave", stopDrawing);
 
-      // Touch listeners (prevent default touch-scroll behavior while drawing)
       canvas.addEventListener("touchstart", function(e) {
         e.preventDefault();
         const touch = e.touches[0];
@@ -873,14 +1023,16 @@
       hasSigned = false;
     }
 
-    // LINE ITEMS CALCULATION
+    // LINE ITEMS CALCULATION WITH INDIVIDUAL ROW AMOUNT UPDATES
     function recalcTotals() {
       let subtotal = 0;
-      const rows = document.querySelectorAll(".line-item-row");
-      rows.forEach(r => {
-        const qty = parseFloat(r.querySelector(".item-qty").value) || 0;
-        const rate = parseFloat(r.querySelector(".item-rate").value) || 0;
-        subtotal += (qty * rate);
+      const cards = document.querySelectorAll(".line-item-card");
+      cards.forEach(card => {
+        const qty = parseFloat(card.querySelector(".item-qty").value) || 0;
+        const rate = parseFloat(card.querySelector(".item-rate").value) || 0;
+        const rowAmount = qty * rate;
+        card.querySelector(".amount-val").innerText = "$" + rowAmount.toFixed(2);
+        subtotal += rowAmount;
       });
       document.getElementById("subtotalDisplay").innerText = "$" + subtotal.toFixed(2);
       return subtotal;
@@ -888,25 +1040,33 @@
 
     function addLineItem() {
       const container = document.getElementById("lineItemsContainer");
-      const div = document.createElement("div");
-      div.className = "line-item-row";
-      div.innerHTML = `
-        <div class="line-item-top">
-          <input type="text" class="item-desc" placeholder="Item / Labor Description" required>
-        </div>
-        <div class="line-item-bottom">
-          <input type="number" class="item-qty" placeholder="Qty" value="1" min="1" step="1" oninput="recalcTotals()" required>
-          <input type="number" class="item-rate" placeholder="Rate ($)" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
+      const card = document.createElement("div");
+      card.className = "line-item-card";
+      card.innerHTML = `
+        <input type="text" class="item-desc-input" placeholder="Item / Labor Description" required>
+        <div class="item-math-row">
+          <div class="field-mini-wrap">
+            <span class="field-mini-label">Qty</span>
+            <input type="number" class="item-qty" placeholder="1" value="1" min="1" step="1" oninput="recalcTotals()" required>
+          </div>
+          <div class="field-mini-wrap">
+            <span class="field-mini-label">Rate ($)</span>
+            <input type="number" class="item-rate" placeholder="0.00" value="0.00" min="0" step="0.01" oninput="recalcTotals()" required>
+          </div>
+          <div class="item-amount-display">
+            <span class="field-mini-label">Amount</span>
+            <span class="amount-val">$0.00</span>
+          </div>
           <button type="button" class="btn-remove-line" onclick="removeLineItem(this)" title="Remove item">&times;</button>
         </div>
       `;
-      container.appendChild(div);
+      container.appendChild(card);
     }
 
     function removeLineItem(btn) {
-      const rows = document.querySelectorAll(".line-item-row");
-      if (rows.length > 1) {
-        btn.closest(".line-item-row").remove();
+      const cards = document.querySelectorAll(".line-item-card");
+      if (cards.length > 1) {
+        btn.closest(".line-item-card").remove();
         recalcTotals();
       } else {
         alert("At least one line item is required on a work order.");
@@ -953,12 +1113,14 @@
       const signatureData = hasSigned ? canvas.toDataURL("image/png") : "";
 
       const items = [];
-      document.querySelectorAll(".line-item-row").forEach(r => {
+      document.querySelectorAll(".line-item-card").forEach(c => {
+        const qty = parseFloat(c.querySelector(".item-qty").value) || 0;
+        const rate = parseFloat(c.querySelector(".item-rate").value) || 0;
         items.push({
-          desc: r.querySelector(".item-desc").value.trim(),
-          qty: r.querySelector(".item-qty").value,
-          rate: parseFloat(r.querySelector(".item-rate").value).toFixed(2),
-          total: (parseFloat(r.querySelector(".item-qty").value) * parseFloat(r.querySelector(".item-rate").value)).toFixed(2)
+          desc: c.querySelector(".item-desc-input").value.trim(),
+          qty: qty,
+          rate: rate.toFixed(2),
+          total: (qty * rate).toFixed(2)
         });
       });
 
