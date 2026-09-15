@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Mobile Driver Console | Field Service Route & Job Signoff | Simple Biz Systems</title>
+<meta name="title" content="Mobile Driver Console | Field Service Route & Job Signoff | Simple Biz Systems">
+<meta name="description" content="Mobile-first field technician dispatch view. Chronological stop pipeline, one-touch GPS navigation, customer calling, and sequential job completion without monthly software fees.">
+<meta name="keywords" content="field service tech app, mobile contractor dispatch, technician route view, job signoff mobile, trade contractor mobile dispatch, Kingsland TX field tools">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/driver.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --success: #16a34a;
+    --success-surface: #f0fdf4;
+    --success-border: #bbf7d0;
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+    --blue-border: #bae6fd;
+    --locked: #94a3b8;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 680px; 
+    margin: 0 auto; 
+    padding: 0 16px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    line-height: 1.35;
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 10px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px;
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.08rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .nav-brand-img {
+    height: 28px;
+    width: 28px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.84rem; 
+    padding: 4px 2px;
+  }
+
+  /* DRIVER CONSOLE HEADER */
+  .driver-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 18px 0 16px 0;
+    box-shadow: var(--card-shadow);
+  }
+  .driver-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .driver-title h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 2px 0;
+    line-height: 1.2;
+  }
+  .truck-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .status-pill-online {
+    background: #dcfce7;
+    color: var(--success);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .status-pill-online::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+  }
+
+  /* ROUTE PROGRESS COUNTER */
+  .route-progress-bar-bg {
+    background: #e2e8f0;
+    height: 7px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .route-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* PIPELINE SECTION HEADER */
+  .pipeline-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18px 0 10px 0;
+  }
+  .pipeline-label-row h2 {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .btn-reset-route {
+    background: none;
+    border: none;
+    font-size: 0.76rem;
+    color: var(--blue-accent);
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* CHRONOLOGICAL STOPS LIST */
+  .stops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* JOB CARD STATES */
+  .stop-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* STATE: ACTIVE STOP */
+  .stop-card.active-stop {
+    border: 2px solid var(--blue-accent);
+    background: #ffffff;
+    box-shadow: var(--card-shadow-lg);
+  }
+  .stop-card.active-stop::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--blue-accent);
+  }
+
+  /* STATE: COMPLETED STOP */
+  .stop-card.completed-stop {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    opacity: 0.78;
+  }
+  .stop-card.completed-stop::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--success);
+  }
+
+  /* STATE: LOCKED / UP NEXT */
+  .stop-card.locked-stop {
+    border-color: var(--border-subtle);
+    background: #f8fafc;
+    opacity: 0.7;
+  }
+  .stop-card.locked-stop::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--locked);
+  }
+
+  .stop-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .stop-seq-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stop-number-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: var(--locked);
+    flex-shrink: 0;
+  }
+  .stop-card.active-stop .stop-number-badge {
+    background: var(--blue-accent);
+  }
+  .stop-card.completed-stop .stop-number-badge {
+    background: var(--success);
+  }
+
+  .stop-time-window {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .stop-status-pill {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .stop-status-pill.now {
+    background: var(--blue-surface);
+    color: var(--blue-accent);
+  }
+  .stop-status-pill.done {
+    background: var(--success-surface);
+    color: var(--success);
+  }
+  .stop-status-pill.queued {
+    background: #f1f5f9;
+    color: var(--text-muted);
+  }
+
+  .client-name {
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 2px 0;
+    line-height: 1.25;
+  }
+  .client-address {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin: 0 0 8px 0;
+  }
+  .client-scope {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+  }
+
+  /* DETAILS ACCORDION BLOCK */
+  .details-drawer {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 10px;
+    margin-top: 10px;
+    display: none;
+  }
+  .stop-card.expanded .details-drawer {
+    display: block;
+  }
+  .details-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+  }
+  .meta-cell {
+    background: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  .meta-cell span {
+    display: block;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .meta-cell strong {
+    color: var(--text-dark);
+  }
+
+  .notes-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.84rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: #ffffff;
+    margin-bottom: 12px;
+    resize: vertical;
+  }
+
+  /* BUTTON ACTION ROW */
+  .stop-action-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .btn-field-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background 0.15s ease;
+  }
+  .btn-navigate {
+    background: #e0f2fe;
+    color: var(--blue-accent);
+    border-color: #bae6fd;
+  }
+  .btn-navigate:hover {
+    background: #bae6fd;
+  }
+  .btn-call-client {
+    background: #fef3c7;
+    color: #92400e;
+    border-color: #fde68a;
+  }
+  .btn-call-client:hover {
+    background: #fde68a;
+  }
+
+  /* COMPLETE JOB BUTTON (FULL WIDTH) */
+  .btn-complete-job {
+    width: 100%;
+    margin-top: 10px;
+    background: var(--success);
+    color: #ffffff;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-complete-job:hover {
+    background: #15803d;
+    transform: translateY(-1px);
+  }
+  .btn-complete-job:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* LOCKED BADGE NOTICE */
+  .locked-notice {
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  /* SHIFT ROUTE COMPLETE SUMMARY CARD */
+  .all-complete-banner {
+    display: none;
+    background: var(--success-surface);
+    border: 2px solid var(--success-border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .all-complete-banner h3 {
+    font-size: 1.25rem;
+    color: #15803d;
+    margin: 0 0 6px 0;
+    font-weight: 800;
+  }
+  .all-complete-banner p {
+    font-size: 0.88rem;
+    color: #166534;
+    margin: 0 0 16px 0;
+  }
+
+  /* TECH DISCLAIMER BOX */
+  .tech-info-box {
+    background: #f1f5f9;
+    border-left: 4px solid var(--primary);
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #334155;
+    line-height: 1.45;
+    margin-bottom: 30px;
+  }
+  .tech-info-box strong {
+    color: var(--primary);
+  }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 28px 0; 
+    text-align: center; 
+    font-size: 0.8rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Mobile Technician Console &bull; Simple Biz Systems Field Dispatch Engine
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="dispatch.html">Office Board</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- DRIVER PROFILE & ROUTE STATUS -->
+    <header class="driver-header">
+      <div class="driver-header-top">
+        <div class="driver-title">
+          <span class="truck-badge">Truck #1 &bull; F-250 Rig</span>
+          <h1>Marcus Vance</h1>
+        </div>
+        <span class="status-pill-online">Online / Active</span>
+      </div>
+
+      <div class="route-progress-bar-bg">
+        <div class="route-progress-fill" id="progressBar" style="width: 0%;"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="progressStopsLabel">0 of 3 Stops Completed</span>
+        <span id="nextEtaLabel">Next Stop: ~20 mins remaining</span>
+      </div>
+    </header>
+
+    <!-- SHIFT COMPLETED SCREEN -->
+    <div class="all-complete-banner" id="shiftCompleteCard">
+      <h3>All Scheduled Calls Completed</h3>
+      <p>Your route manifest has logged 3 calls closed out. Dispatch has been notified that Truck #1 is available or staged for return.</p>
+      <button type="button" class="btn-field-action btn-navigate" style="background:#16a34a; color:#ffffff;" onclick="resetDemoRoute()">
+        <span>Restart Demo Route</span>
+      </button>
+    </div>
+
+    <!-- PIPELINE HEADING -->
+    <div class="pipeline-label-row">
+      <h2>Today's Service Pipeline</h2>
+      <button type="button" class="btn-reset-route" onclick="resetDemoRoute()">Reset Route</button>
+    </div>
+
+    <!-- CHRONOLOGICAL ROUTE CARDS -->
+    <section class="stops-list" id="stopsContainer">
+      <!-- Populated dynamically via JavaScript -->
+    </section>
+
+    <!-- OPERATIONAL NOTE -->
+    <div class="tech-info-box">
+      <strong>Technician Workflow Guardrail:</strong> Jobs are strictly locked in chronological order. Technicians cannot complete or skip ahead to future calls until the current active assignment is closed out. Tapping "Complete &amp; Mark Done" automatically stamps completion, re-centers focus on the next address, and calculates the arrival window.
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 4px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0; opacity: 0.7;">
+        <a href="index.html">Home</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="about.html">About &amp; Founder</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // PRE-SEEDED CHRONOLOGICAL ROUTE FOR TRUCK #1
+    const INITIAL_ROUTE = [
+      {
+        id: "stop_1",
+        seq: 1,
+        timeWindow: "8:30 AM - 10:00 AM",
+        customer: "Lake LBJ Yacht Club",
+        address: "1422 RR 1431, Kingsland, TX 78639",
+        phone: "325-388-9912",
+        scope: "Submersible pump tripping breaker on Dock B",
+        accessNotes: "Gate code: #4491. Access panel is on the north side of the main slip.",
+        estDuration: "45 mins",
+        status: "active", // active | completed | locked
+        fieldNotes: "Replaced 30A 2-pole breaker. Water seal intact."
+      },
+      {
+        id: "stop_2",
+        seq: 2,
+        timeWindow: "10:30 AM - 12:00 PM",
+        customer: "Highland Haven Lakehouse",
+        address: "210 Dove Circle, Marble Falls, TX 78654",
+        phone: "512-756-3341",
+        scope: "Tankless water heater annual descaling flush",
+        accessNotes: "Lockbox code: 1024 on side garage door. Turn off water main before flush.",
+        estDuration: "60 mins",
+        status: "locked",
+        fieldNotes: ""
+      },
+      {
+        id: "stop_3",
+        seq: 3,
+        timeWindow: "1:15 PM - 2:30 PM",
+        customer: "Inks Lake RV Space #14",
+        address: "345 Park Road 4, Burnet, TX 78611",
+        phone: "512-715-8820",
+        scope: "50-Amp RV pedestal replacement and ground check",
+        accessNotes: "Park in designated spot #14. Pedestal breaker is located on post 2.",
+        estDuration: "45 mins",
+        status: "locked",
+        fieldNotes: ""
+      }
+    ];
+
+    let route = JSON.parse(localStorage.getItem("sbs_driver_route")) || INITIAL_ROUTE;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      renderRoute();
+    });
+
+    function renderRoute() {
+      const container = document.getElementById("stopsContainer");
+      container.innerHTML = "";
+
+      const completedCount = route.filter(s => s.status === "completed").length;
+      const totalCount = route.length;
+      const pct = Math.round((completedCount / totalCount) * 100);
+
+      document.getElementById("progressBar").style.width = pct + "%";
+      document.getElementById("progressStopsLabel").innerText = `${completedCount} of ${totalCount} Stops Completed`;
+
+      if (completedCount === totalCount) {
+        document.getElementById("shiftCompleteCard").style.display = "block";
+        document.getElementById("nextEtaLabel").innerText = "Route Completed";
+      } else {
+        document.getElementById("shiftCompleteCard").style.display = "none";
+        const currentStop = route.find(s => s.status === "active");
+        if (currentStop) {
+          document.getElementById("nextEtaLabel").innerText = `Current: Stop #${currentStop.seq} (${currentStop.customer})`;
+        }
+      }
+
+      route.forEach(stop => {
+        const card = document.createElement("article");
+        let cardClass = "stop-card";
+        let statusBadge = "";
+
+        if (stop.status === "completed") {
+          cardClass += " completed-stop";
+          statusBadge = `<span class="stop-status-pill done">&#10003; Done</span>`;
+        } else if (stop.status === "active") {
+          cardClass += " active-stop expanded";
+          statusBadge = `<span class="stop-status-pill now">&bull; Active Now</span>`;
+        } else {
+          cardClass += " locked-stop";
+          statusBadge = `<span class="stop-status-pill queued">Up Next</span>`;
+        }
+
+        card.className = cardClass;
+        card.id = `card_${stop.id}`;
+
+        const mapUrl = `https://maps.apple.com/?daddr=${encodeURIComponent(stop.address)}`;
+        const phoneUrl = `tel:${stop.phone.replace(/[^0-9]/g, '')}`;
+
+        card.innerHTML = `
+          <div class="stop-card-header">
+            <div class="stop-seq-row">
+              <span class="stop-number-badge">${stop.seq}</span>
+              <span class="stop-time-window">${stop.timeWindow}</span>
+            </div>
+            ${statusBadge}
+          </div>
+
+          <h3 class="client-name">${stop.customer}</h3>
+          <p class="client-address">${stop.address}</p>
+          <p class="client-scope">${stop.scope}</p>
+
+          ${stop.status === "active" ? `
+            <div class="stop-action-row">
+              <a href="${mapUrl}" target="_blank" rel="noopener" class="btn-field-action btn-navigate">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                <span>Navigate (GPS)</span>
+              </a>
+              <a href="${phoneUrl}" class="btn-field-action btn-call-client">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>Call Client</span>
+              </a>
+            </div>
+
+            <div class="details-drawer" style="display:block;">
+              <div class="details-meta-grid">
+                <div class="meta-cell">
+                  <span>Est. Duration</span>
+                  <strong>${stop.estDuration}</strong>
+                </div>
+                <div class="meta-cell">
+                  <span>Client Contact</span>
+                  <strong>${stop.phone}</strong>
+                </div>
+              </div>
+
+              <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:6px; padding:8px 10px; margin-bottom:10px; font-size:0.78rem; color:#78350f;">
+                <strong>Site Instructions:</strong> ${stop.accessNotes}
+              </div>
+
+              <label style="display:block; font-size:0.72rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">Technician Signoff Notes</label>
+              <textarea id="notes_${stop.id}" class="notes-textarea" rows="2" placeholder="Record parts used, electrical readings, or completion notes...">${stop.fieldNotes}</textarea>
+
+              <button type="button" class="btn-complete-job" onclick="completeStop('${stop.id}')">
+                <span>&#10003; Complete &amp; Mark Done</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          ` : ""}
+
+          ${stop.status === "completed" ? `
+            <div style="background:#f1f5f9; border-radius:6px; padding:8px 10px; font-size:0.78rem; color:var(--text-muted); margin-top:8px;">
+              <strong>Logged Notes:</strong> ${stop.fieldNotes || "Call marked complete. Work verified on site."}
+            </div>
+          ` : ""}
+
+          ${stop.status === "locked" ? `
+            <div class="locked-notice">
+              Locked until previous service call is completed.
+            </div>
+          ` : ""}
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function completeStop(stopId) {
+      const stopIndex = route.findIndex(s => s.id === stopId);
+      if (stopIndex === -1) return;
+
+      const notesEl = document.getElementById(`notes_${stopId}`);
+      if (notesEl) {
+        route[stopIndex].fieldNotes = notesEl.value.trim();
+      }
+
+      route[stopIndex].status = "completed";
+
+      // Unlock the next sequential stop
+      if (stopIndex + 1 < route.length) {
+        route[stopIndex + 1].status = "active";
+      }
+
+      localStorage.setItem("sbs_driver_route", JSON.stringify(route));
+      renderRoute();
+
+      // Smooth scroll viewport to the newly active job card
+      if (stopIndex + 1 < route.length) {
+        const nextCard = document.getElementById(`card_${route[stopIndex + 1].id}`);
+        if (nextCard) {
+          nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    function resetDemoRoute() {
+      if (confirm("Reset driver pipeline to the beginning of the shift?")) {
+        route = JSON.parse(JSON.stringify(INITIAL_ROUTE));
+        localStorage.setItem("sbs_driver_route", JSON.stringify(route));
+        renderRoute();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
