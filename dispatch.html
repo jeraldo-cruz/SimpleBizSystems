@@ -685,13 +685,18 @@
   }
   .disclaimer-box strong { color: var(--primary); }
 
-  /* HIDDEN PRINTABLE TEMPLATE (FOR HTML2PDF COMPILATION) */
+  /* OFF-SCREEN PRINTABLE TEMPLATE (FIXES BLANK PDF BY PROVIDING EXACT GEOMETRY) */
   #pdfPrintManifest {
-    display: none;
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 760px;
     background: #ffffff;
     color: #1e293b;
     padding: 24px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: block;
+    box-sizing: border-box;
   }
   .pdf-header {
     border-bottom: 2px solid var(--primary);
@@ -702,7 +707,7 @@
     align-items: flex-end;
   }
   .pdf-title h2 {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     color: var(--primary);
     margin: 0 0 4px 0;
     font-weight: 800;
@@ -739,13 +744,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
-    margin-top: 30px;
-    padding-top: 16px;
+    margin-top: 24px;
+    padding-top: 14px;
     border-top: 1px solid #e2e8f0;
   }
   .pdf-sign-line {
     border-bottom: 1px solid #94a3b8;
-    height: 32px;
+    height: 28px;
     margin-bottom: 4px;
   }
   .pdf-sign-label {
@@ -881,7 +886,7 @@
         <div id="map"></div>
       </article>
 
-      <!-- ACTIVE DRIVERS LIST (COMPACT LIST WITH EXPANDABLE ROUTES) -->
+      <!-- ACTIVE DRIVERS LIST -->
       <aside class="drivers-column">
         <div class="drivers-header">
           <h2>Active Trucks &amp; Techs</h2>
@@ -908,7 +913,7 @@
           <button type="button" class="tab-btn" onclick="switchConsoleTab('tab-driver', event)">+ Add New Truck</button>
         </div>
         <div class="console-actions-right">
-          <button type="button" class="btn-pdf-export" onclick="exportShiftPDF()">
+          <button type="button" class="btn-pdf-export" id="btnPdfExport" onclick="exportShiftPDF()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             <span>Export Shift PDF</span>
           </button>
@@ -1009,7 +1014,7 @@
 
   </main>
 
-  <!-- HIDDEN SHIFT MANIFEST TEMPLATE FOR HTML2PDF -->
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (RENDERABLE BY HTML2PDF) -->
   <div id="pdfPrintManifest">
     <div class="pdf-header">
       <div class="pdf-title">
@@ -1243,7 +1248,6 @@
 
         container.appendChild(card);
 
-        // Map Pins for Active Calls (Colored with driver's custom swatch)
         if (driver.currentJob && REGION_COORDS[driver.currentJob.city]) {
           const coords = REGION_COORDS[driver.currentJob.city];
           const offsetLat = (Math.random() - 0.5) * 0.015;
@@ -1266,7 +1270,6 @@
             <strong>Status:</strong> ${statusLabel}
           `);
 
-          // Draw trajectory line if next job is queued
           if (driver.nextJob && REGION_COORDS[driver.nextJob.city]) {
             const nextCoords = REGION_COORDS[driver.nextJob.city];
             L.polyline([
@@ -1290,7 +1293,6 @@
       expandedDriverId = expandedDriverId === driverId ? null : driverId;
       renderBoard();
 
-      // If expanding, zoom map smoothly toward their current job
       if (expandedDriverId) {
         const d = drivers.find(drv => drv.id === expandedDriverId);
         if (d && d.currentJob && REGION_COORDS[d.currentJob.city]) {
@@ -1513,13 +1515,18 @@
       }
     }
 
-    // BRANDED END-OF-SHIFT PDF GENERATION VIA HTML2PDF
+    // ROBUST SHIFT PDF EXPORT (USES OFF-SCREEN STAGING TO PREVENT BLANK OUTPUT)
     function exportShiftPDF() {
+      const btn = document.getElementById("btnPdfExport");
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "<span>Generating PDF...</span>";
+
       const now = new Date();
       document.getElementById("pdfDate").innerText = now.toLocaleDateString();
       document.getElementById("pdfTime").innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // Populate Driver Rows
+      // Populate Driver Table
       const driverTbody = document.getElementById("pdfDriverTableBody");
       driverTbody.innerHTML = "";
       drivers.forEach(d => {
@@ -1528,17 +1535,17 @@
           <td><strong>${d.name}</strong></td>
           <td>${d.truck}</td>
           <td>${d.status.toUpperCase()}</td>
-          <td>${d.currentJob ? `${d.currentJob.title} (${d.currentJob.city})` : "None"}</td>
+          <td>${d.currentJob ? `${d.currentJob.title} (${d.currentJob.city})` : "None Assigned"}</td>
           <td>${d.nextJob ? `${d.nextJob.title} (${d.nextJob.city})` : "None"}</td>
         `;
         driverTbody.appendChild(tr);
       });
 
-      // Populate Queue Rows
+      // Populate Queue Table
       const queueTbody = document.getElementById("pdfQueueTableBody");
       queueTbody.innerHTML = "";
       if (queue.length === 0) {
-        queueTbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#64748b;">No outstanding queued calls.</td></tr>`;
+        queueTbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#64748b; padding:10px;">No unassigned queued calls recorded.</td></tr>`;
       } else {
         queue.forEach(q => {
           const tr = document.createElement("tr");
@@ -1553,18 +1560,22 @@
       }
 
       const element = document.getElementById("pdfPrintManifest");
-      element.style.display = "block";
 
       const opt = {
         margin: [10, 10, 10, 10],
         filename: `Dispatch_Shift_Manifest_${now.toISOString().slice(0, 10)}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
+        html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
         jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
       };
 
       html2pdf().set(opt).from(element).save().then(() => {
-        element.style.display = "none";
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }).catch(err => {
+        alert("Error generating PDF. Please try again.");
+        btn.disabled = false;
+        btn.innerHTML = originalText;
       });
     }
   </script>
