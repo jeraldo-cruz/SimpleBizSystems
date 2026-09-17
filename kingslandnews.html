@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)">
-<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with forecast icons, real-time Lake Buchanan elevation, county burn bans, public boat ramps, and interactive civic directory.">
-<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan water level, Lake LBJ level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, Kingsland boat ramps, Kingsland Water Supply Corporation, Kingsland Library, free community services Kingsland">
+<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, county burn bans, and safety directory.">
+<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, TxDOT Kingsland roads, DriveTexas FM 2900">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
 <meta property="og:title" content="The Kingsland Wire | Simple Biz Systems">
-<meta property="og:description" content="Ad-free aggregated community news, live weather with icons, real-time Lake Buchanan water levels, county burn bans, and directory.">
+<meta property="og:description" content="Ad-free aggregated community news, live weather with modern icons, real-time Highland Lakes capacities, burn bans, and directory.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -48,7 +48,7 @@
     --danger-border: #fecaca;
     --blue-accent: #0284c7;
     --blue-surface: #f0f9ff;
-    --lake-border: #bae6fd;
+    --lake-border: #cbd5e1;
   }
   
   html {
@@ -190,7 +190,7 @@
     color: var(--primary);
   }
 
-  /* CLEAN, PROMINENT SECTION TITLES (NO SECTION NUMBER PILLS) */
+  /* SECTION TITLES */
   .section-headline {
     font-size: clamp(1.25rem, 2.8vw, 1.45rem);
     font-weight: 800;
@@ -262,7 +262,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    min-height: 125px;
+    min-height: 132px;
   }
   .forecast-day.today {
     background: #f0f9ff;
@@ -276,13 +276,13 @@
     margin-bottom: 4px;
   }
   .forecast-icon-svg {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: block;
     margin: 4px auto;
   }
   .forecast-temp-high {
-    font-size: 1.02rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--text-dark);
     display: block;
@@ -301,10 +301,10 @@
     color: var(--text-muted);
   }
 
-  /* 2. LAKE LEVELS SECTION */
+  /* 2. LAKE LEVELS SECTION (STANDARDIZED & UNIFIED) */
   .lake-card {
     background: var(--surface);
-    border: 1px solid var(--lake-border);
+    border: 1px solid var(--border);
     border-top: 4px solid var(--primary);
     border-radius: 12px;
     padding: 20px;
@@ -339,7 +339,7 @@
 
   .lake-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 14px;
     margin-bottom: 12px;
   }
@@ -347,23 +347,19 @@
     background: #f8fafc;
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px 14px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  .lake-box.buchanan-box {
-    background: #f0f9ff;
-    border-color: #bae6fd;
   }
   .lake-box-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .lake-title {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 800;
     color: var(--primary);
   }
@@ -374,40 +370,58 @@
     color: var(--text-muted);
   }
 
-  .lake-stat-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
+  .lake-capacity-wrap {
+    margin: 6px 0 10px 0;
   }
-  .lake-stat-col span {
-    display: block;
-    font-size: 0.66rem;
+  .capacity-label {
+    font-size: 0.68rem;
     font-weight: 700;
-    color: var(--text-muted);
     text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 2px;
   }
-  .lake-stat-col strong {
-    font-size: 1.05rem;
+  .capacity-value {
+    font-size: 1.45rem;
     font-weight: 800;
-    color: var(--text-dark);
+    color: var(--primary);
+    line-height: 1.1;
   }
 
   .progress-track {
     background: #e2e8f0;
-    height: 7px;
+    height: 8px;
     border-radius: 999px;
     overflow: hidden;
     margin-top: 6px;
   }
   .progress-bar {
     height: 100%;
-    background: var(--primary);
+    background: var(--blue-accent);
     border-radius: 999px;
     transition: width 0.4s ease;
   }
-  .progress-bar.blue {
-    background: var(--blue-accent);
+
+  .lake-source-row {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.74rem;
+  }
+  .lake-source-row a {
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .lake-source-row a:hover {
+    text-decoration: underline;
+  }
+  .lake-elev-tag {
+    color: var(--text-muted);
+    font-weight: 600;
   }
 
   /* 3. LIVE BURN BAN ALERT BAR */
@@ -670,37 +684,27 @@
       </div>
     </section>
 
-    <!-- 2. LAKE LEVELS & WATERSHED STATUS -->
-    <h2 class="section-headline">Highland Lakes Hydrology &amp; Water Levels</h2>
+    <!-- 2. LAKE LEVELS & WATERSHED STATUS (SIMPLIFIED & UNIFIED) -->
+    <h2 class="section-headline">Highland Lakes Water Levels &amp; Storage Capacity</h2>
     <section class="lake-card">
       <div class="lake-card-header">
-        <h3>Live Lake Elevations &amp; Storage Capacity</h3>
-        <span class="lake-meta">Official Source: <a href="https://www.waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener">Water Data for Texas (TWDB / LCRA) &rarr;</a></span>
+        <h3>Reservoir Capacity Overview</h3>
+        <span class="lake-meta"><a href="https://www.waterdatafortexas.org/reservoirs/statewide" target="_blank" rel="noopener">Statewide Hydrology Index &rarr;</a></span>
       </div>
 
       <div class="lake-grid">
         
-        <!-- LAKE BUCHANAN (PRIMARY STORAGE) -->
-        <div class="lake-box buchanan-box">
+        <!-- LAKE BUCHANAN -->
+        <div class="lake-box">
           <div>
             <div class="lake-box-header">
               <span class="lake-title">Lake Buchanan</span>
               <span class="lake-badge">Storage Reservoir</span>
             </div>
             
-            <div class="lake-stat-row">
-              <div class="lake-stat-col">
-                <span>Current Elevation</span>
-                <strong id="buchananElevation">1,018.8 ft</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Capacity</span>
-                <strong id="buchananPercent">96.9% Full</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Pool Delta</span>
-                <strong id="buchananDelta">-1.2 ft</strong>
-              </div>
+            <div class="lake-capacity-wrap">
+              <span class="capacity-label">Current Capacity</span>
+              <span class="capacity-value" id="buchananPercent">96.9% Full</span>
             </div>
 
             <div class="progress-track">
@@ -708,13 +712,13 @@
             </div>
           </div>
 
-          <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--text-muted); margin-top: 6px;">
-            <span>Full Conservation: 1,020.0 ft msl</span>
-            <span id="buchananDateTag">Live TWDB Sensor</span>
+          <div class="lake-source-row">
+            <a href="https://www.waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener">View Buchanan Gauge &rarr;</a>
+            <span class="lake-elev-tag" id="buchananElevation">1,018.8 ft msl</span>
           </div>
         </div>
 
-        <!-- LAKE LBJ (CONSTANT POOL) -->
+        <!-- LAKE LBJ -->
         <div class="lake-box">
           <div>
             <div class="lake-box-header">
@@ -722,32 +726,23 @@
               <span class="lake-badge">Constant Pool</span>
             </div>
             
-            <div class="lake-stat-row">
-              <div class="lake-stat-col">
-                <span>Operating Level</span>
-                <strong>824.8 ft</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Normal Range</span>
-                <strong>824.5 - 825.0 ft</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Status</span>
-                <strong style="color: var(--success);">Normal Pool</strong>
-              </div>
+            <div class="lake-capacity-wrap">
+              <span class="capacity-label">Current Capacity</span>
+              <span class="capacity-value">99.0% Full</span>
             </div>
 
             <div class="progress-track">
-              <div class="progress-bar blue" style="width: 99%;"></div>
+              <div class="progress-bar" style="width: 99%;"></div>
             </div>
           </div>
 
-          <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 6px;">
-            Regulated via Wirtz Dam and Starcke Dam.
+          <div class="lake-source-row">
+            <a href="https://www.lcra.org/water/river-operations/" target="_blank" rel="noopener">View LCRA LBJ Level &rarr;</a>
+            <span class="lake-elev-tag">824.8 ft msl</span>
           </div>
         </div>
 
-        <!-- INKS LAKE (CONSTANT POOL) -->
+        <!-- INKS LAKE -->
         <div class="lake-box">
           <div>
             <div class="lake-box-header">
@@ -755,35 +750,26 @@
               <span class="lake-badge">Constant Pool</span>
             </div>
             
-            <div class="lake-stat-row">
-              <div class="lake-stat-col">
-                <span>Operating Level</span>
-                <strong>887.8 ft</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Normal Range</span>
-                <strong>887.0 - 888.0 ft</strong>
-              </div>
-              <div class="lake-stat-col">
-                <span>Status</span>
-                <strong style="color: var(--success);">Normal Pool</strong>
-              </div>
+            <div class="lake-capacity-wrap">
+              <span class="capacity-label">Current Capacity</span>
+              <span class="capacity-value">98.5% Full</span>
             </div>
 
             <div class="progress-track">
-              <div class="progress-bar blue" style="width: 98%;"></div>
+              <div class="progress-bar" style="width: 98.5%;"></div>
             </div>
           </div>
 
-          <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 6px;">
-            Regulated via Buchanan Dam outflow.
+          <div class="lake-source-row">
+            <a href="https://www.lcra.org/water/river-operations/" target="_blank" rel="noopener">View LCRA Inks Level &rarr;</a>
+            <span class="lake-elev-tag">887.8 ft msl</span>
           </div>
         </div>
 
       </div>
 
       <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.4;">
-        Lake Buchanan provides primary water supply and flood protection for Central Texas. Lake LBJ and Inks Lake are maintained at near-constant operating levels by LCRA river control dams.
+        Lake Buchanan provides primary water supply and flood storage for Central Texas. Lake LBJ and Inks Lake are pass-through constant-pool reservoirs regulated by LCRA dam operations.
       </div>
     </section>
 
@@ -806,25 +792,59 @@
       </div>
     </section>
 
-    <!-- 4. COMMUNITY DIRECTORY & PUBLIC SERVICES -->
+    <!-- 4. COMMUNITY DIRECTORY & PUBLIC SERVICES (DEFAULTS TO SAFETY & ROADS) -->
     <h2 class="section-headline">Community Directory &amp; Public Services</h2>
     <section class="directory-nav-card">
       <div class="directory-nav-header">
         <h3>Local Directory by Category</h3>
         
-        <!-- FILTER BUTTONS -->
+        <!-- FILTER BUTTONS (SAFETY & ROADS ACTIVE BY DEFAULT) -->
         <div class="filter-btn-group" role="tablist">
-          <button type="button" class="btn-filter active" onclick="filterDirectory('all', this)">All Services</button>
+          <button type="button" class="btn-filter active" onclick="filterDirectory('safety', this)">Safety &amp; Roads</button>
           <button type="button" class="btn-filter" onclick="filterDirectory('parks', this)">Parks &amp; Boat Ramps</button>
           <button type="button" class="btn-filter" onclick="filterDirectory('utilities', this)">Utilities &amp; Power</button>
-          <button type="button" class="btn-filter" onclick="filterDirectory('safety', this)">Safety &amp; Roads</button>
           <button type="button" class="btn-filter" onclick="filterDirectory('support', this)">Community &amp; Library</button>
+          <button type="button" class="btn-filter" onclick="filterDirectory('all', this)">All Services</button>
         </div>
       </div>
 
       <div class="directory-grid" id="directoryContainer">
         
-        <!-- CARD 1: PARKS & RAMPS -->
+        <!-- CARD 1: TXDOT ROADS (SAFETY) -->
+        <article class="dir-card" data-category="safety">
+          <div>
+            <span class="dir-badge">Transit &amp; Highway Alerts</span>
+            <h4>TxDOT Road &amp; Bridge Conditions</h4>
+            <p>Live highway travel alerts, resurfacing schedules, and bridge status across RM 1431 and FM 2900:</p>
+            <ul class="dir-list">
+              <li><strong>FM 2900 Bridge:</strong> Critical crossing between Kingsland and Sunrise Beach.</li>
+              <li><strong>RM 1431 Corridor:</strong> Travel alerts between Marble Falls and Llano.</li>
+            </ul>
+          </div>
+          <div class="dir-action-row">
+            <a href="https://www.drivetexas.org/" target="_blank" rel="noopener">Live DriveTexas Highway Map &rarr;</a>
+            <span class="dir-phone">Austin District: 512-832-7000</span>
+          </div>
+        </article>
+
+        <!-- CARD 2: COUNTY OFFICES (SAFETY) -->
+        <article class="dir-card" data-category="safety">
+          <div>
+            <span class="dir-badge">Local Government</span>
+            <h4>Llano &amp; Burnet County Offices</h4>
+            <p>Kingsland sits directly on the county border. Reach official county commissioners and emergency coordination below:</p>
+            <ul class="dir-list">
+              <li><strong>Llano County Courthouse:</strong> 801 Ford St, Llano, TX (325-247-4300).</li>
+              <li><strong>Burnet County Courthouse:</strong> 220 S Pierce St, Burnet, TX (512-756-5400).</li>
+            </ul>
+          </div>
+          <div class="dir-action-row">
+            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Llano County &rarr;</a>
+            <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener">Burnet County &rarr;</a>
+          </div>
+        </article>
+
+        <!-- CARD 3: PARKS & RAMPS -->
         <article class="dir-card" data-category="parks">
           <div>
             <span class="dir-badge">Free Public Access</span>
@@ -842,7 +862,7 @@
           </div>
         </article>
 
-        <!-- CARD 2: THE SLAB -->
+        <!-- CARD 4: THE SLAB -->
         <article class="dir-card" data-category="parks">
           <div>
             <span class="dir-badge">Swimming &amp; River Bed</span>
@@ -860,7 +880,7 @@
           </div>
         </article>
 
-        <!-- CARD 3: CTEC -->
+        <!-- CARD 5: CTEC -->
         <article class="dir-card" data-category="utilities">
           <div>
             <span class="dir-badge">Electric Cooperative</span>
@@ -877,7 +897,7 @@
           </div>
         </article>
 
-        <!-- CARD 4: KINGSLAND WATER SUPPLY CORP -->
+        <!-- CARD 6: KINGSLAND WATER SUPPLY CORP -->
         <article class="dir-card" data-category="utilities">
           <div>
             <span class="dir-badge">Water Supply Utility</span>
@@ -894,7 +914,7 @@
           </div>
         </article>
 
-        <!-- CARD 5: KMUD -->
+        <!-- CARD 7: KMUD -->
         <article class="dir-card" data-category="utilities">
           <div>
             <span class="dir-badge">Water &amp; Wastewater</span>
@@ -911,24 +931,7 @@
           </div>
         </article>
 
-        <!-- CARD 6: TXDOT ROADS -->
-        <article class="dir-card" data-category="safety">
-          <div>
-            <span class="dir-badge">Transit &amp; Highway Alerts</span>
-            <h4>TxDOT Road &amp; Bridge Conditions</h4>
-            <p>Live highway travel alerts, resurfacing schedules, and bridge status across RM 1431 and FM 2900:</p>
-            <ul class="dir-list">
-              <li><strong>FM 2900 Bridge:</strong> Critical crossing between Kingsland and Sunrise Beach.</li>
-              <li><strong>RM 1431 Corridor:</strong> Travel alerts between Marble Falls and Llano.</li>
-            </ul>
-          </div>
-          <div class="dir-action-row">
-            <a href="https://www.drivetexas.org/" target="_blank" rel="noopener">Live DriveTexas Highway Map &rarr;</a>
-            <span class="dir-phone">Austin District: 512-832-7000</span>
-          </div>
-        </article>
-
-        <!-- CARD 7: FOOD PANTRY -->
+        <!-- CARD 8: FOOD PANTRY -->
         <article class="dir-card" data-category="support">
           <div>
             <span class="dir-badge">Community Care</span>
@@ -945,7 +948,7 @@
           </div>
         </article>
 
-        <!-- CARD 8: LIBRARY (WITH FACEBOOK & COUNTY LINKS) -->
+        <!-- CARD 9: LIBRARY (WITH FACEBOOK LINK) -->
         <article class="dir-card" data-category="support">
           <div>
             <span class="dir-badge">Civic Resource &amp; Events</span>
@@ -963,23 +966,6 @@
           </div>
         </article>
 
-        <!-- CARD 9: COUNTY OFFICES -->
-        <article class="dir-card" data-category="safety">
-          <div>
-            <span class="dir-badge">Local Government</span>
-            <h4>Llano &amp; Burnet County Offices</h4>
-            <p>Kingsland sits directly on the county border. Reach official county commissioners and emergency coordination below:</p>
-            <ul class="dir-list">
-              <li><strong>Llano County Courthouse:</strong> 801 Ford St, Llano, TX (325-247-4300).</li>
-              <li><strong>Burnet County Courthouse:</strong> 220 S Pierce St, Burnet, TX (512-756-5400).</li>
-            </ul>
-          </div>
-          <div class="dir-action-row">
-            <a href="https://www.co.llano.tx.us/" target="_blank" rel="noopener">Llano County &rarr;</a>
-            <a href="https://www.burnetcountytexas.org/" target="_blank" rel="noopener">Burnet County &rarr;</a>
-          </div>
-        </article>
-
       </div>
     </section>
 
@@ -991,27 +977,45 @@
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">The Kingsland Wire &bull; Simple Biz Systems</p>
       <p style="margin: 0 0 10px 0; opacity: 0.85;">Ad-free, tracking-free civic bulletin and direct community resources for Kingsland, Texas 78639.</p>
       <p style="margin: 0; opacity: 0.6;">
-        <a href="index.html">Home</a> &bull; <a href="workorder.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Tech View</a> &bull; <a href="about.html">About &amp; Founder</a>
+        <a href="index.html">Home</a> &bull; <a href="workorders.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="driver.html">Tech View</a> &bull; <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    // SVG WEATHER ICONS REPOSITORY (CLEAN VECTOR ICONS, ZERO EMOJIS)
+    // REFINED MODERN TWO-TONE SVG WEATHER ICONS (NO EMOJIS)
     const WEATHER_ICONS = {
-      clear: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`,
-      partlyCloudy: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`,
-      cloudy: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`,
-      rain: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 13v6"></path><path d="M8 13v6"></path><path d="M12 15v6"></path><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>`,
-      storm: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>`
+      clear: `
+        <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="7" fill="#f59e0b" />
+          <path d="M18 4V7M18 29V32M4 18H7M29 18H32M8.1 8.1L10.2 10.2M25.8 25.8L27.9 27.9M8.1 27.9L10.2 25.8M25.8 10.2L27.9 8.1" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" />
+        </svg>`,
+      partlyCloudy: `
+        <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
+          <circle cx="22" cy="14" r="5.5" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
+          <path d="M11 28h13a5 5 0 0 0 1-9.9 6.5 6.5 0 0 0-12.8-1.1A4.5 4.5 0 0 0 11 28Z" fill="#e2e8f0" stroke="#0284c7" stroke-width="2" stroke-linejoin="round" />
+        </svg>`,
+      cloudy: `
+        <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
+          <path d="M11 26h14a5 5 0 0 0 1-9.9 6.5 6.5 0 0 0-12.8-1.1A4.5 4.5 0 0 0 11 26Z" fill="#cbd5e1" stroke="#475569" stroke-width="2" stroke-linejoin="round" />
+        </svg>`,
+      rain: `
+        <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
+          <path d="M10 21h15a4.5 4.5 0 0 0 1-8.9 6 6 0 0 0-11.8-1A4 4 0 0 0 10 21Z" fill="#cbd5e1" stroke="#0284c7" stroke-width="2" stroke-linejoin="round" />
+          <path d="M12 25L10 29M18 25L16 29M24 25L22 29" stroke="#0284c7" stroke-width="2" stroke-linecap="round" />
+        </svg>`,
+      storm: `
+        <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
+          <path d="M10 20h15a4.5 4.5 0 0 0 1-8.9 6 6 0 0 0-11.8-1A4 4 0 0 0 10 20Z" fill="#94a3b8" stroke="#1e293b" stroke-width="2" stroke-linejoin="round" />
+          <path d="M17 22L13 28H18L16 33" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>`
     };
 
     function getWeatherIcon(code) {
       if (code === 0) return WEATHER_ICONS.clear;
       if (code >= 1 && code <= 3) return WEATHER_ICONS.partlyCloudy;
       if (code >= 45 && code <= 48) return WEATHER_ICONS.cloudy;
-      if (code >= 51 && code <= 67) return WEATHER_ICONS.rain;
-      if (code >= 80 && code <= 82) return WEATHER_ICONS.rain;
+      if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return WEATHER_ICONS.rain;
       if (code >= 95 && code <= 99) return WEATHER_ICONS.storm;
       return WEATHER_ICONS.partlyCloudy;
     }
@@ -1061,9 +1065,7 @@
     async function loadLakeBuchananData() {
       const elevEl = document.getElementById("buchananElevation");
       const pctEl = document.getElementById("buchananPercent");
-      const deltaEl = document.getElementById("buchananDelta");
       const barEl = document.getElementById("buchananBar");
-      const tagEl = document.getElementById("buchananDateTag");
 
       try {
         const response = await fetch("https://waterdatafortexas.org/reservoirs/recent-conditions.json", {
@@ -1082,22 +1084,14 @@
         if (buchanan) {
           const elev = parseFloat(buchanan.water_level).toFixed(1);
           const pct = parseFloat(buchanan.percent_full).toFixed(1);
-          const diff = parseFloat(buchanan.height_above_conservation_pool).toFixed(1);
 
-          elevEl.innerText = `${elev} ft`;
+          elevEl.innerText = `${elev} ft msl`;
           pctEl.innerText = `${pct}% Full`;
-          deltaEl.innerText = diff > 0 ? `+${diff} ft` : `${diff} ft`;
           barEl.style.width = `${Math.min(Math.max(pct, 5), 100)}%`;
-          
-          if (buchanan.date) {
-            tagEl.innerText = `Updated: ${buchanan.date}`;
-          }
         }
       } catch (err) {
-        elevEl.innerText = "1,018.8 ft";
+        elevEl.innerText = "1,018.8 ft msl";
         pctEl.innerText = "96.9% Full";
-        deltaEl.innerText = "-1.2 ft";
-        tagEl.innerText = "LCRA Standard Baseline";
       }
     }
 
@@ -1105,7 +1099,9 @@
     function filterDirectory(category, btnElement) {
       const buttons = document.querySelectorAll(".btn-filter");
       buttons.forEach(b => b.classList.remove("active"));
-      btnElement.classList.add("active");
+      if (btnElement) {
+        btnElement.classList.add("active");
+      }
 
       const cards = document.querySelectorAll(".dir-card");
       cards.forEach(card => {
@@ -1120,6 +1116,9 @@
     document.addEventListener("DOMContentLoaded", function() {
       loadWeatherForecast();
       loadLakeBuchananData();
+      
+      const initialBtn = document.querySelector('.btn-filter[onclick*="safety"]');
+      filterDirectory('safety', initialBtn);
     });
   </script>
 </body>
