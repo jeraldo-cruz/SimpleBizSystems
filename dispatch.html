@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX</title>
-<meta name="title" content="Field Dispatch Board | Free Interactive Trade Dispatch Demo | Kingsland, TX">
-<meta name="description" content="Free trade contractor dispatching board for plumbing, HVAC, electrical, and septic services in Kingsland, Marble Falls, and the Highland Lakes. Live GPS routing, regional gas price tracker, custom truck colors, and shift logs.">
-<meta name="keywords" content="dispatching board, contractor dispatch board, mobile tech view, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools, gas prices Kingsland TX, diesel prices Burnet Marble Falls">
+<title>Field Dispatch Board & Highland Lakes Fuel Tracker | Simple Biz Systems</title>
+<meta name="title" content="Field Dispatch Board & Highland Lakes Fuel Tracker | Simple Biz Systems">
+<meta name="description" content="Free trade contractor dispatching board for plumbing, HVAC, electrical, and septic services in Kingsland, Marble Falls, Burnet, and Llano. Features live GPS map tracking, regional gas prices, custom truck colors, and shift logs without monthly SaaS subscriptions.">
+<meta name="keywords" content="dispatching board, contractor dispatch board, mobile tech view, trade dispatch software, Kingsland TX business systems, field service dispatch, end of shift driver log pdf, Highland Lakes contractor tools, gas prices Kingsland TX, diesel prices Burnet Marble Falls, Llano fleet fuel costs, contractor route fuel estimator">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,8 +23,8 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/dispatch.html">
-<meta property="og:title" content="Field Dispatch Board | Simple Biz Systems">
-<meta property="og:description" content="Visual map dispatching, regional gas prices, custom truck color coding, live mobile driver console preview, and shift export logs for independent trades.">
+<meta property="og:title" content="Field Dispatch Board & Highland Lakes Fuel Tracker | Simple Biz Systems">
+<meta property="og:description" content="Visual map dispatching, corridor gas prices, custom truck color coding, live mobile driver console preview, and shift export logs for independent trades.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- LEAFLET OPEN-SOURCE MAPS CSS -->
@@ -52,6 +52,8 @@
     --danger: #dc2626;
     --blue-accent: #0284c7;
     --blue-surface: #f0f9ff;
+    --fuel-tint: #fffcf7;
+    --fuel-border: #fed7aa;
   }
   
   html {
@@ -163,7 +165,7 @@
   .dispatch-header p {
     font-size: 0.95rem;
     color: var(--text-muted);
-    max-width: 860px;
+    max-width: 880px;
     margin: 0 0 10px 0;
     line-height: 1.55;
   }
@@ -251,12 +253,31 @@
     background: #1e3a5f;
   }
 
+  /* SECTION LABELS & VISUAL DIFFERENTIATION */
+  .section-badge-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .tag-fleet { background: #e0f2fe; color: var(--primary); }
+  .tag-fuel { background: #fef3c7; color: #92400e; }
+  .tag-console { background: #f1f5f9; color: var(--text-dark); }
+
   /* MAIN WORKSPACE GRID: MAP ON LEFT, DRIVERS ON RIGHT */
   .dispatch-workspace {
     display: grid;
     grid-template-columns: 1.75fr 1fr;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   /* MAP VIEWPORT CARD */
@@ -525,24 +546,25 @@
     text-decoration: underline;
   }
 
-  /* HIGHLAND LAKES REGIONAL FUEL TRACKER CARD */
+  /* HIGHLAND LAKES REGIONAL FUEL TRACKER CARD (RELOCATED BELOW VEHICLE AREA) */
   .fuel-tracker-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--fuel-tint);
+    border: 1px solid var(--fuel-border);
+    border-top: 4px solid var(--accent);
     border-radius: 12px;
-    padding: 16px 20px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
   .fuel-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 12px;
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 8px;
+    border-bottom: 1px solid #fed7aa;
+    padding-bottom: 10px;
   }
   .fuel-title-wrap {
     display: flex;
@@ -551,12 +573,12 @@
   }
   .fuel-title-wrap h2 {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
   }
   .fuel-source-tag {
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     color: var(--blue-accent);
     text-decoration: none;
     font-weight: 700;
@@ -565,20 +587,29 @@
     text-decoration: underline;
   }
 
+  .fuel-intro-copy {
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+  }
+
   .fuel-hubs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 12px;
+    margin-bottom: 16px;
   }
   .fuel-hub-box {
-    background: #f8fafc;
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
   }
   .fuel-hub-box.best-value {
     border-color: #86efac;
@@ -597,40 +628,54 @@
     text-transform: uppercase;
   }
   .fuel-hub-name {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .fuel-hub-corridor {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .fuel-prices-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid var(--border-subtle);
-    padding-top: 6px;
+    padding-top: 8px;
   }
   .fuel-rate-col {
     display: flex;
     flex-direction: column;
   }
   .fuel-rate-label {
-    font-size: 0.66rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
   }
   .fuel-rate-num {
-    font-size: 1.05rem;
+    font-size: 1.12rem;
     font-weight: 800;
     color: var(--text-dark);
   }
   .fuel-rate-num.diesel {
     color: var(--accent-hover);
+  }
+
+  /* TECHNICAL EXPLANATION & SOURCING BLOCK */
+  .fuel-method-block {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #334155;
+    line-height: 1.55;
+  }
+  .fuel-method-block strong {
+    color: var(--primary);
   }
 
   /* BOTTOM CONSOLE */
@@ -911,7 +956,7 @@
     color: #991b1b;
   }
 
-  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (FIXES JUMBLED TEXT GLITCH) */
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
   .pdf-hidden-wrapper {
     position: absolute;
     width: 0;
@@ -1128,6 +1173,12 @@
       </section>
     </header>
 
+    <!-- SECTION LABEL: FLEET MANAGEMENT & SERVICE REGION MAP -->
+    <div class="section-badge-bar">
+      <span class="section-tag tag-fleet">Section 1</span>
+      <strong style="font-size: 0.95rem; color: var(--primary);">Live Fleet Positions &amp; Technician Route Control</strong>
+    </div>
+
     <!-- WORKSPACE: MAP VIEW ON LEFT, ACTIVE TRUCKS ON RIGHT -->
     <section class="dispatch-workspace">
       
@@ -1146,7 +1197,7 @@
         <div id="map"></div>
       </article>
 
-      <!-- ACTIVE DRIVERS LIST -->
+      <!-- ACTIVE DRIVERS LIST (VEHICLE EDIT AREA) -->
       <aside class="drivers-column">
         <div class="drivers-header">
           <h2>Active Trucks &amp; Techs</h2>
@@ -1158,21 +1209,31 @@
         </div>
 
         <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; text-align: center;">
-          Click any truck to expand route details or test driver view.
+          Click any truck to expand route details or customize vehicle color.
         </div>
       </aside>
 
     </section>
 
-    <!-- HIGHLAND LAKES REGIONAL FUEL TRACKER CARD -->
+    <!-- SECTION LABEL: FUEL BENCHMARK & CORRIDOR LOGISTICS -->
+    <div class="section-badge-bar">
+      <span class="section-tag tag-fuel">Section 2</span>
+      <strong style="font-size: 0.95rem; color: #92400e;">Highland Lakes Regional Fuel Tracker &amp; Corridor Expense Benchmark</strong>
+    </div>
+
+    <!-- HIGHLAND LAKES REGIONAL FUEL TRACKER CARD (POSITIONED BELOW VEHICLE AREA) -->
     <section class="fuel-tracker-card" aria-label="Regional Fuel Rates">
       <div class="fuel-header">
         <div class="fuel-title-wrap">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true"><path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
-          <h2>Highland Lakes Fuel Tracker &amp; Corridor Rates</h2>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)" aria-hidden="true"><path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+          <h2>Highland Lakes Contractor Fuel Rates &amp; Transit Cost Intelligence</h2>
         </div>
-        <a href="https://gasprices.aaa.com/?state=TX" target="_blank" rel="noopener" class="fuel-source-tag">Official Benchmark: AAA Texas &rarr;</a>
+        <a href="https://gasprices.aaa.com/?state=TX" target="_blank" rel="noopener" class="fuel-source-tag">State Benchmark: AAA Texas &rarr;</a>
       </div>
+
+      <p class="fuel-intro-copy">
+        Fuel prices directly affect operating margins for trade contractors serving rural Hill Country routes. Disptaching trucks across Burnet, Llano, and Blanco counties requires active windshield management. This tracker monitors prevailing regular unleaded and highway diesel averages across the primary Highland Lakes transit corridors, helping office dispatchers route calls efficiently and guide technicians to the best refueling locations before returning to the shop.
+      </p>
 
       <div class="fuel-hubs-grid">
         
@@ -1180,8 +1241,8 @@
         <div class="fuel-hub-box best-value">
           <span class="best-tag">Lowest Gas</span>
           <div>
-            <div class="fuel-hub-name">Kingsland (Hub)</div>
-            <div class="fuel-hub-corridor">RM 1431 &bull; RM 2900 (H-E-B / Sunoco)</div>
+            <div class="fuel-hub-name">Kingsland (Service Hub)</div>
+            <div class="fuel-hub-corridor">RM 1431 &bull; RM 2900 (H-E-B &bull; Sunoco)</div>
           </div>
           <div class="fuel-prices-row">
             <div class="fuel-rate-col">
@@ -1199,7 +1260,7 @@
         <div class="fuel-hub-box">
           <div>
             <div class="fuel-hub-name">Marble Falls</div>
-            <div class="fuel-hub-corridor">US-281 Corridor (H-E-B / Murphy USA)</div>
+            <div class="fuel-hub-corridor">US-281 Corridor (H-E-B &bull; Murphy USA)</div>
           </div>
           <div class="fuel-prices-row">
             <div class="fuel-rate-col">
@@ -1218,7 +1279,7 @@
           <span class="best-tag">Lowest Diesel</span>
           <div>
             <div class="fuel-hub-name">Burnet</div>
-            <div class="fuel-hub-corridor">TX-29 &bull; US-281 (Stripes / Valero)</div>
+            <div class="fuel-hub-corridor">TX-29 &bull; US-281 (Stripes &bull; Valero)</div>
           </div>
           <div class="fuel-prices-row">
             <div class="fuel-rate-col">
@@ -1251,10 +1312,18 @@
         </div>
 
       </div>
-      <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 8px;">
-        Prices reflect prevailing regional trade averages. Used to calculate real-time windshield fuel burn on dispatched service calls.
+
+      <!-- SOURCING & METHODOLOGY BLOCK -->
+      <div class="fuel-method-block">
+        <strong>How We Source &amp; Compute Local Fuel Data:</strong> Regional averages are sampled across verified commercial fuel stops along TX-29, RM 1431, and US-281, referenced against the AAA Texas Public Fuel Index. Transit fuel expense projections use a baseline trade vehicle consumption index of 12.5 MPG for heavy three-quarter-ton service rigs (Ford F-250, Ram 2500, Chevy 2500HD) and commercial high-roof vans (Transit 350, ProMaster). To compute windshield transit cost on any route segment, the board applies: <code>(Corridor Transit Miles &divide; 12.5 MPG) &times; Prevailing Fuel Rate</code>.
       </div>
     </section>
+
+    <!-- SECTION LABEL: CALL LOGGING & QUEUED BACKLOG CONSOLE -->
+    <div class="section-badge-bar">
+      <span class="section-tag tag-console">Section 3</span>
+      <strong style="font-size: 0.95rem; color: var(--primary);">Dispatch Operations &amp; Work Order Queue Console</strong>
+    </div>
 
     <!-- BOTTOM DISPATCH CONSOLE -->
     <section class="console-section">
