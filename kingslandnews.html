@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)">
-<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather, real-time Lake Buchanan elevation, county burn bans, public boat ramps, and interactive civic directory.">
-<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan water level, Lake LBJ level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, Kingsland boat ramps, The Slab Kingsland TX, free community services Kingsland">
+<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with forecast icons, real-time Lake Buchanan elevation, county burn bans, public boat ramps, and interactive civic directory.">
+<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan water level, Lake LBJ level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, Kingsland boat ramps, Kingsland Water Supply Corporation, Kingsland Library, free community services Kingsland">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
 <meta property="og:title" content="The Kingsland Wire | Simple Biz Systems">
-<meta property="og:description" content="Ad-free aggregated community news, live weather, real-time Lake Buchanan water levels, county burn bans, and directory.">
+<meta property="og:description" content="Ad-free aggregated community news, live weather with icons, real-time Lake Buchanan water levels, county burn bans, and directory.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -190,25 +190,22 @@
     color: var(--primary);
   }
 
-  /* SECTION LABELS WITH COLOR TAGS */
-  .section-label-bar {
+  /* CLEAN, PROMINENT SECTION TITLES (NO SECTION NUMBER PILLS) */
+  .section-headline {
+    font-size: clamp(1.25rem, 2.8vw, 1.45rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 32px 0 14px 0;
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 24px 0 12px 0;
+    gap: 10px;
   }
-  .section-tag {
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 3px 8px;
-    border-radius: 4px;
+  .section-headline::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
   }
-  .tag-weather { background: #e0f2fe; color: var(--primary); }
-  .tag-lake { background: #e0f7fa; color: #006064; }
-  .tag-burn { background: #fee2e2; color: #991b1b; }
-  .tag-dir { background: #fef3c7; color: #92400e; }
 
   /* 1. WEATHER SECTION */
   .weather-card {
@@ -216,9 +213,9 @@
     border: 1px solid var(--border);
     border-top: 4px solid var(--blue-accent);
     border-radius: 12px;
-    padding: 18px 20px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .weather-card-header {
     display: flex;
@@ -230,8 +227,8 @@
     flex-wrap: wrap;
     gap: 8px;
   }
-  .weather-card-header h2 {
-    font-size: 1.1rem;
+  .weather-card-header h3 {
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--primary);
     margin: 0;
@@ -259,22 +256,33 @@
     background: #f8fafc;
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 10px 6px;
+    padding: 12px 6px 10px 6px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 125px;
   }
   .forecast-day.today {
     background: #f0f9ff;
     border-color: #bae6fd;
   }
   .forecast-day-name {
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     font-weight: 800;
     color: var(--primary);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .forecast-icon-svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 4px auto;
   }
   .forecast-temp-high {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 800;
     color: var(--text-dark);
     display: block;
@@ -293,15 +301,15 @@
     color: var(--text-muted);
   }
 
-  /* 2. LAKE LEVELS SECTION (UNDER WEATHER) */
+  /* 2. LAKE LEVELS SECTION */
   .lake-card {
     background: var(--surface);
     border: 1px solid var(--lake-border);
     border-top: 4px solid var(--primary);
     border-radius: 12px;
-    padding: 18px 20px;
+    padding: 20px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .lake-card-header {
     display: flex;
@@ -313,8 +321,8 @@
     flex-wrap: wrap;
     gap: 8px;
   }
-  .lake-card-header h2 {
-    font-size: 1.1rem;
+  .lake-card-header h3 {
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--primary);
     margin: 0;
@@ -409,7 +417,7 @@
     border-left: 6px solid var(--danger);
     border-radius: 10px;
     padding: 16px 18px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -453,14 +461,14 @@
     background: #fee2e2;
   }
 
-  /* 4. INTERACTIVE DIRECTORY FILTER BUTTONS */
+  /* 4. INTERACTIVE DIRECTORY WITH FILTER BUTTONS */
   .directory-nav-card {
     background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 16px 20px;
+    padding: 18px 20px;
     box-shadow: var(--card-shadow);
-    margin-bottom: 24px;
+    margin-bottom: 36px;
   }
   .directory-nav-header {
     display: flex;
@@ -468,12 +476,12 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
-  .directory-nav-header h2 {
-    font-size: 1.1rem;
+  .directory-nav-header h3 {
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--primary);
     margin: 0;
@@ -532,7 +540,7 @@
     display: block;
     margin-bottom: 4px;
   }
-  .dir-card h3 {
+  .dir-card h4 {
     margin: 0 0 6px 0;
     font-size: 0.98rem;
     font-weight: 800;
@@ -645,16 +653,11 @@
       </div>
     </header>
 
-    <!-- SECTION LABEL: WEATHER -->
-    <div class="section-label-bar">
-      <span class="section-tag tag-weather">Section 1</span>
-      <strong style="font-size: 0.95rem; color: var(--primary);">7-Day Local Weather Forecast</strong>
-    </div>
-
-    <!-- 1. 7-DAY WEATHER FORECAST (OPEN-METEO ENGINE) -->
+    <!-- 1. 7-DAY LOCAL WEATHER FORECAST -->
+    <h2 class="section-headline">7-Day Local Weather Forecast</h2>
     <section class="weather-card">
       <div class="weather-card-header">
-        <h2>Kingsland Weekly Forecast</h2>
+        <h3>Kingsland Weekly Forecast</h3>
         <span class="weather-meta">Sensor Feed: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo Direct API</a></span>
       </div>
       
@@ -667,16 +670,11 @@
       </div>
     </section>
 
-    <!-- SECTION LABEL: LAKE LEVELS -->
-    <div class="section-label-bar">
-      <span class="section-tag tag-lake">Section 2</span>
-      <strong style="font-size: 0.95rem; color: #006064;">Highland Lakes Hydrology &amp; Water Levels</strong>
-    </div>
-
-    <!-- 2. LAKE LEVELS (WATER DATA FOR TEXAS / TWDB / LCRA) -->
+    <!-- 2. LAKE LEVELS & WATERSHED STATUS -->
+    <h2 class="section-headline">Highland Lakes Hydrology &amp; Water Levels</h2>
     <section class="lake-card">
       <div class="lake-card-header">
-        <h2>Live Lake Elevations &amp; Storage Capacity</h2>
+        <h3>Live Lake Elevations &amp; Storage Capacity</h3>
         <span class="lake-meta">Official Source: <a href="https://www.waterdatafortexas.org/reservoirs/individual/buchanan" target="_blank" rel="noopener">Water Data for Texas (TWDB / LCRA) &rarr;</a></span>
       </div>
 
@@ -789,13 +787,8 @@
       </div>
     </section>
 
-    <!-- SECTION LABEL: COUNTY BURN BANS -->
-    <div class="section-label-bar">
-      <span class="section-tag tag-burn">Section 3</span>
-      <strong style="font-size: 0.95rem; color: #991b1b;">County Public Safety &amp; Fire Restrictions</strong>
-    </div>
-
     <!-- 3. LIVE BURN BAN ALERT BAR -->
+    <h2 class="section-headline">County Public Safety &amp; Fire Restrictions</h2>
     <section class="burn-ban-banner">
       <div class="burn-ban-content">
         <h3>
@@ -813,16 +806,11 @@
       </div>
     </section>
 
-    <!-- SECTION LABEL: COMMUNITY DIRECTORY -->
-    <div class="section-label-bar">
-      <span class="section-tag tag-dir">Section 4</span>
-      <strong style="font-size: 0.95rem; color: #92400e;">Community Directory &amp; Public Services</strong>
-    </div>
-
-    <!-- 4. INTERACTIVE DIRECTORY WITH FILTER BUTTONS -->
+    <!-- 4. COMMUNITY DIRECTORY & PUBLIC SERVICES -->
+    <h2 class="section-headline">Community Directory &amp; Public Services</h2>
     <section class="directory-nav-card">
       <div class="directory-nav-header">
-        <h2>Local Directory by Category</h2>
+        <h3>Local Directory by Category</h3>
         
         <!-- FILTER BUTTONS -->
         <div class="filter-btn-group" role="tablist">
@@ -830,7 +818,7 @@
           <button type="button" class="btn-filter" onclick="filterDirectory('parks', this)">Parks &amp; Boat Ramps</button>
           <button type="button" class="btn-filter" onclick="filterDirectory('utilities', this)">Utilities &amp; Power</button>
           <button type="button" class="btn-filter" onclick="filterDirectory('safety', this)">Safety &amp; Roads</button>
-          <button type="button" class="btn-filter" onclick="filterDirectory('support', this)">Food &amp; Community</button>
+          <button type="button" class="btn-filter" onclick="filterDirectory('support', this)">Community &amp; Library</button>
         </div>
       </div>
 
@@ -840,7 +828,7 @@
         <article class="dir-card" data-category="parks">
           <div>
             <span class="dir-badge">Free Public Access</span>
-            <h3>Kingsland Lions Memorial Park &amp; Boat Ramp</h3>
+            <h4>Kingsland Lions Memorial Park &amp; Boat Ramp</h4>
             <p>Free public boat ramp, fishing pier, shaded pavilions, and community docks located on Lake LBJ (Eula Rough Rd):</p>
             <ul class="dir-list">
               <li><strong>Ramp Access:</strong> Paved dual-lane ramp open 24/7.</li>
@@ -858,7 +846,7 @@
         <article class="dir-card" data-category="parks">
           <div>
             <span class="dir-badge">Swimming &amp; River Bed</span>
-            <h3>The Slab (Llano River Crossing)</h3>
+            <h4>The Slab (Llano River Crossing)</h4>
             <p>Famous granite riverbed crossing on FM 3404 where the Llano River flows over natural rock formations:</p>
             <ul class="dir-list">
               <li><strong>Activities:</strong> Wading, shallow swimming, and sunbathing.</li>
@@ -876,7 +864,7 @@
         <article class="dir-card" data-category="utilities">
           <div>
             <span class="dir-badge">Electric Cooperative</span>
-            <h3>Central Texas Electric Co-op (CTEC)</h3>
+            <h4>Central Texas Electric Co-op (CTEC)</h4>
             <p>Member-owned non-profit utility providing electrical power to rural Kingsland and the Highland Lakes:</p>
             <ul class="dir-list">
               <li><strong>SmartHub:</strong> Online account management and billing.</li>
@@ -889,12 +877,29 @@
           </div>
         </article>
 
-        <!-- CARD 4: KMUD -->
+        <!-- CARD 4: KINGSLAND WATER SUPPLY CORP -->
+        <article class="dir-card" data-category="utilities">
+          <div>
+            <span class="dir-badge">Water Supply Utility</span>
+            <h4>Kingsland Water Supply Corporation (KWSC)</h4>
+            <p>Member-owned non-profit water supply corporation providing retail drinking water services for Kingsland properties:</p>
+            <ul class="dir-list">
+              <li><strong>Office:</strong> 14224 RR 1431, Kingsland, TX 78639.</li>
+              <li><strong>Services:</strong> New water meters, account transfers, and customer portal.</li>
+            </ul>
+          </div>
+          <div class="dir-action-row">
+            <a href="https://kingslandwater.org/" target="_blank" rel="noopener">Visit KWSC Website &rarr;</a>
+            <span class="dir-phone">Phone: 325-388-6611</span>
+          </div>
+        </article>
+
+        <!-- CARD 5: KMUD -->
         <article class="dir-card" data-category="utilities">
           <div>
             <span class="dir-badge">Water &amp; Wastewater</span>
-            <h3>Kingsland Municipal Utility District (KMUD)</h3>
-            <p>Public water distribution, sanitary sewer collection, and community brush disposal recycling for Kingsland:</p>
+            <h4>Kingsland Municipal Utility District (KMUD)</h4>
+            <p>Public utility district overseeing wastewater collection, sewer services, and community brush drop-off recycling:</p>
             <ul class="dir-list">
               <li><strong>Office:</strong> 100 Ingram St, Kingsland, TX 78639.</li>
               <li><strong>Brush Site:</strong> Monthly residential green-waste drop-off.</li>
@@ -906,11 +911,11 @@
           </div>
         </article>
 
-        <!-- CARD 5: TXDOT ROADS -->
+        <!-- CARD 6: TXDOT ROADS -->
         <article class="dir-card" data-category="safety">
           <div>
             <span class="dir-badge">Transit &amp; Highway Alerts</span>
-            <h3>TxDOT Road &amp; Bridge Conditions</h3>
+            <h4>TxDOT Road &amp; Bridge Conditions</h4>
             <p>Live highway travel alerts, resurfacing schedules, and bridge status across RM 1431 and FM 2900:</p>
             <ul class="dir-list">
               <li><strong>FM 2900 Bridge:</strong> Critical crossing between Kingsland and Sunrise Beach.</li>
@@ -923,11 +928,11 @@
           </div>
         </article>
 
-        <!-- CARD 6: FOOD PANTRY -->
+        <!-- CARD 7: FOOD PANTRY -->
         <article class="dir-card" data-category="support">
           <div>
             <span class="dir-badge">Community Care</span>
-            <h3>Sharing the Harvest Food Pantry</h3>
+            <h4>Sharing the Harvest Food Pantry</h4>
             <p>Volunteer community food ministry serving families and seniors throughout Kingsland and surrounding lake areas:</p>
             <ul class="dir-list">
               <li><strong>Location:</strong> 3435 RM 1431, Kingsland, TX 78639.</li>
@@ -940,28 +945,29 @@
           </div>
         </article>
 
-        <!-- CARD 7: LIBRARY -->
+        <!-- CARD 8: LIBRARY (WITH FACEBOOK & COUNTY LINKS) -->
         <article class="dir-card" data-category="support">
           <div>
-            <span class="dir-badge">Civic Resource</span>
-            <h3>Kingsland Branch Library</h3>
-            <p>Public library offering free high-speed Wi-Fi, computer workstations, printing, and community meeting space:</p>
+            <span class="dir-badge">Civic Resource &amp; Events</span>
+            <h4>Kingsland Branch Library</h4>
+            <p>Public library offering free high-speed Wi-Fi, computer workstations, printing, book sales, and meeting spaces:</p>
             <ul class="dir-list">
               <li><strong>Address:</strong> 125 W Polk St, Kingsland, TX 78639.</li>
-              <li><strong>Services:</strong> Digital book loans, children's programs, and local history.</li>
+              <li><strong>Events:</strong> Children story hours, book sales, and local historical archives.</li>
             </ul>
           </div>
           <div class="dir-action-row">
-            <a href="https://www.llanolibrarysystem.net/" target="_blank" rel="noopener">Llano County Library Portal &rarr;</a>
-            <span class="dir-phone">Branch: 325-388-3170</span>
+            <a href="https://www.facebook.com/kingsland.tx.library/" target="_blank" rel="noopener">Library Facebook Page &rarr;</a>
+            <a href="https://www.llanolibrarysystem.net/" target="_blank" rel="noopener">County Catalog &rarr;</a>
+            <span class="dir-phone">325-388-3170</span>
           </div>
         </article>
 
-        <!-- CARD 8: COUNTY OFFICES -->
+        <!-- CARD 9: COUNTY OFFICES -->
         <article class="dir-card" data-category="safety">
           <div>
             <span class="dir-badge">Local Government</span>
-            <h3>Llano &amp; Burnet County Offices</h3>
+            <h4>Llano &amp; Burnet County Offices</h4>
             <p>Kingsland sits directly on the county border. Reach official county commissioners and emergency coordination below:</p>
             <ul class="dir-list">
               <li><strong>Llano County Courthouse:</strong> 801 Ford St, Llano, TX (325-247-4300).</li>
@@ -991,13 +997,32 @@
   </footer>
 
   <script>
+    // SVG WEATHER ICONS REPOSITORY (CLEAN VECTOR ICONS, ZERO EMOJIS)
+    const WEATHER_ICONS = {
+      clear: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`,
+      partlyCloudy: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`,
+      cloudy: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>`,
+      rain: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 13v6"></path><path d="M8 13v6"></path><path d="M12 15v6"></path><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>`,
+      storm: `<svg class="forecast-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>`
+    };
+
+    function getWeatherIcon(code) {
+      if (code === 0) return WEATHER_ICONS.clear;
+      if (code >= 1 && code <= 3) return WEATHER_ICONS.partlyCloudy;
+      if (code >= 45 && code <= 48) return WEATHER_ICONS.cloudy;
+      if (code >= 51 && code <= 67) return WEATHER_ICONS.rain;
+      if (code >= 80 && code <= 82) return WEATHER_ICONS.rain;
+      if (code >= 95 && code <= 99) return WEATHER_ICONS.storm;
+      return WEATHER_ICONS.partlyCloudy;
+    }
+
     // 1. OPEN-METEO 7-DAY FORECAST INTEGRATION
     async function loadWeatherForecast() {
       const container = document.getElementById("weatherForecastArea");
       const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
       try {
-        const url = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago";
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=30.6638&longitude=-98.4411&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago";
         const res = await fetch(url);
         if (!res.ok) throw new Error("Weather service offline");
 
@@ -1010,13 +1035,18 @@
           const dayName = i === 0 ? "Today" : days[dateObj.getDay()];
           const maxTemp = Math.round(daily.temperature_2m_max[i]);
           const minTemp = Math.round(daily.temperature_2m_min[i]);
+          const wCode = daily.weather_code[i];
+          const iconSvg = getWeatherIcon(wCode);
           const isTodayClass = i === 0 ? " forecast-day today" : " forecast-day";
 
           html += `
             <div class="${isTodayClass}">
               <div class="forecast-day-name">${dayName}</div>
-              <span class="forecast-temp-high">${maxTemp}&deg;</span>
-              <span class="forecast-temp-low">${minTemp}&deg;</span>
+              ${iconSvg}
+              <div>
+                <span class="forecast-temp-high">${maxTemp}&deg;</span>
+                <span class="forecast-temp-low">${minTemp}&deg;</span>
+              </div>
             </div>
           `;
         }
@@ -1064,7 +1094,6 @@
           }
         }
       } catch (err) {
-        // Safe fallback keeping standard LCRA numbers visible
         elevEl.innerText = "1,018.8 ft";
         pctEl.innerText = "96.9% Full";
         deltaEl.innerText = "-1.2 ft";
