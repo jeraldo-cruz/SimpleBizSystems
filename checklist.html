@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Critical Document Readiness Checklist & Triage | Simple Biz Systems</title>
+<meta name="title" content="Critical Document Readiness Checklist & Triage | Simple Biz Systems">
+<meta name="description" content="Free, private, offline document preparation checklist for Texas assistance programs, utility relief, and county support. Generate an itemized packet cover sheet with zero tracking.">
+<meta name="keywords" content="Texas benefit application checklist, SNAP document requirements, Texas utility assistance papers, Llano County assistance documents, Burnet County indigent care checklist, CEAP CTEC application papers, food stamp document prep, free document triage tool">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/checklist.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/checklist.html">
+<meta property="og:title" content="Critical Document Readiness Checklist & Triage | Simple Biz Systems">
+<meta property="og:description" content="Free, private checklist for families preparing assistance paperwork across the Highland Lakes. Itemize documents and generate case worker cover sheets.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- HTML2PDF LIBRARY FOR COVER SHEET GENERATION -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --danger-surface: #fef2f2;
+    --danger-border: #fecaca;
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 960px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    line-height: 1.4;
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 500;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px;
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.15rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .nav-brand-img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.88rem; 
+    transition: color 0.15s ease;
+    padding: 4px 2px;
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { 
+    color: var(--accent); 
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 24px 0 16px 0;
+  }
+  .tool-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #e0f2fe;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: clamp(1.8rem, 3.6vw, 2.35rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .intro-card {
+    background: #ffffff;
+    border-left: 4px solid var(--accent);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    box-shadow: var(--card-shadow);
+  }
+  .intro-card p {
+    font-size: 0.92rem;
+    color: #334155;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .intro-card strong {
+    color: var(--primary);
+  }
+
+  /* PRESET BUTTONS */
+  .presets-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--card-shadow);
+    margin: 20px 0;
+  }
+  .presets-header {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .presets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .btn-preset {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .btn-preset span {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .btn-preset:hover,
+  .btn-preset.active {
+    background: #f0f9ff;
+    border-color: var(--blue-accent);
+    color: var(--primary);
+  }
+  .btn-preset.active {
+    border-width: 2px;
+    padding: 9px 13px;
+  }
+
+  /* WARNING WARNING BOX FOR PO BOX TRAP */
+  .warning-banner {
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.84rem;
+    color: #92400e;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .warning-banner strong {
+    color: #b45309;
+  }
+
+  /* CHECKLIST SECTIONS */
+  .checklist-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 20px;
+  }
+  .checklist-header {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .checklist-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .completion-counter {
+    font-size: 0.8rem;
+    font-weight: 800;
+    background: #f1f5f9;
+    color: var(--text-muted);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .completion-counter.ready {
+    background: #dcfce7;
+    color: var(--success);
+  }
+
+  .checklist-group {
+    margin-bottom: 18px;
+  }
+  .checklist-group-title {
+    font-size: 0.84rem;
+    font-weight: 800;
+    color: var(--primary-light);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .item-row {
+    background: #f8fafc;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+  }
+  .item-row:hover {
+    background: #f1f5f9;
+  }
+  .item-row.checked {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+  .item-checkbox {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .item-details {
+    flex: 1;
+  }
+  .item-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: block;
+    line-height: 1.3;
+  }
+  .item-subtext {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* PACKET SUMMARY BAR */
+  .packet-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .packet-info h3 {
+    margin: 0 0 2px 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .packet-info p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .btn-print-cover {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+  }
+  .btn-print-cover:hover {
+    background: var(--primary-light);
+  }
+
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
+  .pdf-hidden-wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -9999;
+  }
+  #pdfPrintStage {
+    width: 740px;
+    background: #ffffff;
+    color: #1e293b;
+    padding: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    display: block;
+    box-sizing: border-box;
+  }
+  .pdf-top-row {
+    border-bottom: 2px solid #0d3b66;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pdf-top-row h2 {
+    font-size: 1.35rem;
+    color: #0d3b66;
+    margin: 0 0 4px 0;
+    font-weight: 800;
+  }
+  .pdf-top-row p {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin: 0;
+  }
+  .pdf-meta {
+    text-align: right;
+    font-size: 0.78rem;
+    color: #64748b;
+  }
+  .pdf-section-title {
+    font-size: 0.94rem;
+    font-weight: 800;
+    color: #0d3b66;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin: 16px 0 8px 0;
+  }
+  .pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    font-size: 0.82rem;
+  }
+  .pdf-table th {
+    background: #f1f5f9;
+    color: #0d3b66;
+    text-align: left;
+    padding: 6px 8px;
+    border: 1px solid #e2e8f0;
+    font-weight: 800;
+  }
+  .pdf-table td {
+    padding: 6px 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .pdf-status-tag {
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+  .pdf-status-tag.included { color: #16a34a; }
+  .pdf-status-tag.missing { color: #dc2626; }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 34px 0; 
+    text-align: center; 
+    font-size: 0.82rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .packet-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn-print-cover {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Simple Biz Systems &bull; Free, private community utilities for Kingsland &amp; Highland Lakes families.
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="workorders.html">Work Orders</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="checklist.html" class="active">Document Triage</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <span class="tool-badge">Private &bull; Offline-First &bull; Zero Tracking</span>
+      <h1>Critical Document Readiness Checklist</h1>
+      
+      <div class="intro-card">
+        <p>
+          <strong>Why this tool exists:</strong> Applications for Texas food benefits, utility relief, and emergency county care frequently stall for weeks due to a single missing paper or an unverified physical address. This tool lets you verify your documentation before submitting your packet, avoiding delays and repeat trips. Everything is processed privately inside your device browser with zero cloud storage.
+        </p>
+      </div>
+    </header>
+
+    <!-- PRESET PROGRAM BUTTONS -->
+    <section class="presets-panel">
+      <div class="presets-header">
+        <span>Select Application Type to Auto-Select Requirements</span>
+      </div>
+      <div class="presets-grid">
+        <button type="button" class="btn-preset active" onclick="applyPreset('snap', this)">
+          Texas SNAP / Food Aid
+          <span>Health and Human Services Form H1010</span>
+        </button>
+        <button type="button" class="btn-preset" onclick="applyPreset('ceap', this)">
+          Utility Relief (CEAP / CTEC)
+          <span>Electric and energy bill assistance</span>
+        </button>
+        <button type="button" class="btn-preset" onclick="applyPreset('county', this)">
+          County Indigent / Care
+          <span>Llano &amp; Burnet emergency assistance</span>
+        </button>
+        <button type="button" class="btn-preset" onclick="applyPreset('dps', this)">
+          Texas ID / Driver License
+          <span>DPS REAL-ID residency and identity</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- HILL COUNTRY PO BOX WARNING BOX -->
+    <div class="warning-banner">
+      <strong>Highland Lakes Address Note:</strong> State and county agencies require proof of a physical 911 residential address. A Post Office Box (PO Box) alone will cause an application rejection. If your utility bill shows a PO Box for mailing, include your lease, tax record, or a 911 address verification letter showing your actual physical home location.
+    </div>
+
+    <!-- MAIN CHECKLIST -->
+    <section class="checklist-card">
+      <div class="checklist-header">
+        <h2 class="checklist-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--primary)" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          <span id="activePresetTitle">Texas SNAP / Food Support Checklist</span>
+        </h2>
+        <span class="completion-counter" id="counterDisplay">0 of 0 Ready</span>
+      </div>
+
+      <div id="checklistItemsContainer">
+        <!-- Populated dynamically based on chosen preset -->
+      </div>
+    </section>
+
+    <!-- PACKET COVER SHEET EXPORT BAR -->
+    <section class="packet-bar">
+      <div class="packet-info">
+        <h3>Application Packet Cover Sheet</h3>
+        <p>Export an itemized inventory sheet to clip to the front of your document envelope.</p>
+      </div>
+      <button type="button" class="btn-print-cover" id="btnExportCover" onclick="generateCoverSheetPDF()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-4 11H9v-5h6v5zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-3-9H8V2h8v2z"/></svg>
+        <span>Download Packet Cover Sheet (PDF)</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CONTAINED & INVISIBLE) -->
+  <div class="pdf-hidden-wrapper">
+    <div id="pdfPrintStage">
+      <div class="pdf-top-row">
+        <div>
+          <h2>Application Packet Inventory Cover Sheet</h2>
+          <p>Prepared for Case Worker Review &bull; Simple Biz Systems Community Triage</p>
+        </div>
+        <div class="pdf-meta">
+          <div><strong>Date Compiled:</strong> <span id="pdfDate"></span></div>
+          <div><strong>Program:</strong> <span id="pdfProgramName"></span></div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.8rem; line-height:1.45;">
+        <strong>Applicant Checklist Disclosure:</strong> This document inventories the items included inside this physical envelope to accelerate intake verification. All items marked as INCLUDED have been pre-checked by the applicant.
+      </div>
+
+      <div id="pdfTableTarget"></div>
+
+      <div style="margin-top:24px; border-top:1px solid #cbd5e1; padding-top:12px; display:flex; justify-content:space-between; align-items:flex-end; font-size:0.75rem; color:#64748b;">
+        <div>
+          <div>Applicant Signature Confirmation: ___________________________</div>
+          <div style="margin-top:4px;">I verify that all copies enclosed represent true records.</div>
+        </div>
+        <div style="text-align:right;">
+          simplebizsystems.com/checklist.html
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Free community tools, local systems, and public records for the Highland Lakes.</p>
+      <p style="margin: 0; opacity: 0.6;">
+        <a href="index.html">Home</a> &bull; <a href="workorders.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // PRESET DOCUMENT DATA MATRIX
+    const PROGRAM_PRESETS = {
+      snap: {
+        title: "Texas SNAP / Food Assistance (HHSC)",
+        categories: [
+          {
+            name: "1. Identity & Household Members",
+            items: [
+              { id: "s_id", name: "Valid Photo ID for Head of Household", desc: "Texas Driver License, DPS ID card, or US Passport." },
+              { id: "s_ssn", name: "Social Security Numbers", desc: "SSN cards or numbers for all household members applying." },
+              { id: "s_cit", name: "Proof of Citizenship or Legal Status", desc: "Birth certificates, green cards, or naturalization papers." }
+            ]
+          },
+          {
+            name: "2. Proof of Physical Residence",
+            items: [
+              { id: "s_res", name: "Utility Bill or Lease with Physical Address", desc: "Must show actual 911 street address, not a PO Box." },
+              { id: "s_land", name: "Landlord Contact or Statement", desc: "If unleased or living with relatives, a written statement." }
+            ]
+          },
+          {
+            name: "3. Income Records (Past 30 to 60 Days)",
+            items: [
+              { id: "s_pay", name: "Last 3 Consecutive Paystubs", desc: "Pay records for every working adult in the household." },
+              { id: "s_ben", name: "Benefit Award Letters", desc: "Social Security, SSI, Veterans Benefits, or Child Support printouts." },
+              { id: "s_self", name: "Self-Employment Profit and Loss", desc: "Schedule C tax return or 3 months bank revenue logs if independent." }
+            ]
+          },
+          {
+            name: "4. Allowable Deductions & Expenses",
+            items: [
+              { id: "s_rent", name: "Rent Receipt or Mortgage Statement", desc: "Receipt showing monthly housing payment amount." },
+              { id: "s_care", name: "Childcare or Dependent Care Receipts", desc: "Costs paid to work or attend approved schooling." },
+              { id: "s_med", name: "Out-of-Pocket Medical Bills", desc: "Prescription receipts or doctor copays for elderly or disabled members." }
+            ]
+          }
+        ]
+      },
+      ceap: {
+        title: "Comprehensive Energy Assistance (CEAP / CTEC)",
+        categories: [
+          {
+            name: "1. Identity & Household Roster",
+            items: [
+              { id: "c_id", name: "Government Issued Photo ID", desc: "Applicant driver license or military ID." },
+              { id: "c_ssn", name: "Social Security Cards for Household", desc: "Required for all household residents." }
+            ]
+          },
+          {
+            name: "2. Energy Utility Records",
+            items: [
+              { id: "c_bill", name: "Current Month Electric / Gas Bill", desc: "Full bill showing account number, service address, and balance (e.g., CTEC statement)." },
+              { id: "c_past", name: "Past 12 Months Consumption History", desc: "Available by calling CTEC or downloading from SmartHub." },
+              { id: "c_discon", name: "Disconnection Notice (If Applicable)", desc: "Immediate priority notice if power cutoff is scheduled." }
+            ]
+          },
+          {
+            name: "3. Total Household Income Verification",
+            items: [
+              { id: "c_inc30", name: "Proof of Income for Last 30 Days", desc: "Paystubs, pension slips, or unemployment verification." },
+              { id: "c_zero", name: "Zero Income Declaration Form", desc: "If any adult member has no income, signed declaration required." }
+            ]
+          }
+        ]
+      },
+      county: {
+        title: "County Emergency Assistance (Llano / Burnet)",
+        categories: [
+          {
+            name: "1. Residency Verification",
+            items: [
+              { id: "co_res", name: "Proof of County Residency for 6+ Months", desc: "Lease agreement, property tax statement, or voter registration card." },
+              { id: "co_util", name: "Two Matching Local Utility Bills", desc: "Water (KMUD/KWSC), electric (CTEC), or trash collection bill." }
+            ]
+          },
+          {
+            name: "2. Hardship & Need Documentation",
+            items: [
+              { id: "co_doc", name: "Emergency Hardship Documentation", desc: "Medical work release, job separation notice, or disaster damage notice." },
+              { id: "co_bank", name: "Last 2 Months Bank Statements", desc: "All pages of checking and savings account statements." }
+            ]
+          }
+        ]
+      },
+      dps: {
+        title: "Texas Driver License / REAL-ID Renewal (DPS)",
+        categories: [
+          {
+            name: "1. Primary Identity",
+            items: [
+              { id: "d_prim", name: "Original Birth Certificate or US Passport", desc: "Must be certified state copy with raised seal." }
+            ]
+          },
+          {
+            name: "2. Social Security Verification",
+            items: [
+              { id: "d_ss", name: "Original Social Security Card or W-2", desc: "Must display full 9-digit SSN and matching legal name." }
+            ]
+          },
+          {
+            name: "3. Texas Residency (Must Bring 2 Different Items)",
+            items: [
+              { id: "d_res1", name: "Item 1: Utility Bill or Lease (911 Address)", desc: "Dated within 90 days with applicant legal name." },
+              { id: "d_res2", name: "Item 2: Texas Vehicle Title, Registration, or Insurance", desc: "Active policy or renewal card showing matching physical address." }
+            ]
+          }
+        ]
+      }
+    };
+
+    let currentPresetKey = "snap";
+    let checkedState = {};
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Load any stored checks
+      const saved = localStorage.getItem("sbs_triage_checks");
+      if (saved) {
+        try { checkedState = JSON.parse(saved); } catch(e) {}
+      }
+      renderChecklist();
+    });
+
+    function applyPreset(key, btn) {
+      document.querySelectorAll(".btn-preset").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentPresetKey = key;
+      renderChecklist();
+    }
+
+    function renderChecklist() {
+      const preset = PROGRAM_PRESETS[currentPresetKey];
+      document.getElementById("activePresetTitle").innerText = preset.title;
+      const container = document.getElementById("checklistItemsContainer");
+      container.innerHTML = "";
+
+      let totalItems = 0;
+      let checkedItems = 0;
+
+      preset.categories.forEach(cat => {
+        const groupEl = document.createElement("div");
+        groupEl.className = "checklist-group";
+
+        const titleEl = document.createElement("span");
+        titleEl.className = "checklist-group-title";
+        titleEl.innerText = cat.name;
+        groupEl.appendChild(titleEl);
+
+        cat.items.forEach(it => {
+          totalItems++;
+          const isChecked = !!checkedState[it.id];
+          if (isChecked) checkedItems++;
+
+          const row = document.createElement("div");
+          row.className = "item-row" + (isChecked ? " checked" : "");
+          row.onclick = () => toggleCheck(it.id);
+
+          row.innerHTML = `
+            <input type="checkbox" class="item-checkbox" ${isChecked ? "checked" : ""} onclick="event.stopPropagation(); toggleCheck('${it.id}');">
+            <div class="item-details">
+              <span class="item-name">${it.name}</span>
+              <span class="item-subtext">${it.desc}</span>
+            </div>
+          `;
+          groupEl.appendChild(row);
+        });
+
+        container.appendChild(groupEl);
+      });
+
+      const counter = document.getElementById("counterDisplay");
+      counter.innerText = `${checkedItems} of ${totalItems} Ready`;
+      if (checkedItems === totalItems && totalItems > 0) {
+        counter.className = "completion-counter ready";
+      } else {
+        counter.className = "completion-counter";
+      }
+    }
+
+    function toggleCheck(id) {
+      checkedState[id] = !checkedState[id];
+      localStorage.setItem("sbs_triage_checks", JSON.stringify(checkedState));
+      renderChecklist();
+    }
+
+    // BULLETPROOF 1-PAGE COVER SHEET PDF GENERATION
+    function generateCoverSheetPDF() {
+      const btn = document.getElementById("btnExportCover");
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "<span>Generating Cover Sheet...</span>";
+
+      const preset = PROGRAM_PRESETS[currentPresetKey];
+      const now = new Date();
+      document.getElementById("pdfDate").innerText = now.toLocaleDateString();
+      document.getElementById("pdfProgramName").innerText = preset.title;
+
+      let tableHtml = `
+        <table class="pdf-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Category</th>
+              <th style="width: 55%;">Document Description</th>
+              <th style="width: 20%; text-align: center;">Enclosed Status</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      preset.categories.forEach(cat => {
+        cat.items.forEach(it => {
+          const isChecked = !!checkedState[it.id];
+          tableHtml += `
+            <tr>
+              <td><strong>${cat.name}</strong></td>
+              <td>${it.name}<br><span style="font-size:0.72rem; color:#64748b;">${it.desc}</span></td>
+              <td style="text-align: center;">
+                <span class="pdf-status-tag ${isChecked ? "included" : "missing"}">
+                  ${isChecked ? "[X] INCLUDED" : "[  ] PENDING"}
+                </span>
+              </td>
+            </tr>
+          `;
+        });
+      });
+
+      tableHtml += `</tbody></table>`;
+      document.getElementById("pdfTableTarget").innerHTML = tableHtml;
+
+      const element = document.getElementById("pdfPrintStage");
+
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `Application_Cover_Sheet_${currentPresetKey.toUpperCase()}_${now.toISOString().slice(0, 10)}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          scrollX: 0, 
+          scrollY: 0,
+          windowWidth: 740
+        },
+        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }).catch(err => {
+        alert("Error generating cover sheet. Please try again.");
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      });
+    }
+  </script>
+</body>
+</html>
