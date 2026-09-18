@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)</title>
 <meta name="title" content="Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)">
-<meta name="description" content="Subscription-free field dispatch software, digital work orders, trade calculators, and free public community tools built in Kingsland, Texas for the Highland Lakes.">
-<meta name="keywords" content="field dispatch software, trade contractor work orders, Kingsland TX software, Highland Lakes business systems, free document triage, student backwards planner, Lake Buchanan water levels, mobile contractor signoff, trade hourly rate calculator">
+<meta name="description" content="Complete suite of subscription-free trade software: field dispatch, work orders, timecards, material tracking, lead management, and free civic utilities in Kingsland, Texas.">
+<meta name="keywords" content="field dispatch software, trade contractor work orders, timecards html, materials inventory contractor, lead tracker trades, equipment maintenance tracker, job estimator html, Kingsland TX software, Highland Lakes business systems">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/index.html">
 <meta property="og:title" content="Simple Biz Systems | Operations Software & Community Utilities">
-<meta property="og:description" content="Subscription-free field service tools for trades, operational business calculators, and free public utilities across the Highland Lakes.">
+<meta property="og:description" content="Subscription-free field service tools, labor timecards, material inventory, lead management, and free public utilities across the Highland Lakes.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -69,7 +69,7 @@
   }
 
   .container { 
-    max-width: 1140px; 
+    max-width: 1160px; 
     margin: 0 auto; 
     padding: 0 20px; 
     width: 100%;
@@ -125,7 +125,7 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 16px; 
+    gap: 14px; 
     flex-wrap: wrap;
     justify-content: flex-end;
   }
@@ -133,7 +133,7 @@
     text-decoration: none; 
     color: var(--text-muted); 
     font-weight: 600; 
-    font-size: 0.88rem; 
+    font-size: 0.86rem; 
     transition: color 0.15s ease;
     padding: 4px 2px;
     white-space: nowrap;
@@ -145,7 +145,7 @@
 
   /* HERO SECTION */
   .hero-section {
-    padding: 40px 0 24px 0;
+    padding: 38px 0 20px 0;
   }
   .hero-tag {
     font-size: 0.76rem;
@@ -170,7 +170,7 @@
   .hero-subtitle {
     font-size: 1.05rem;
     color: var(--text-muted);
-    max-width: 860px;
+    max-width: 880px;
     margin: 0 0 20px 0;
     line-height: 1.55;
   }
@@ -193,7 +193,7 @@
 
   /* SECTION HEADLINES */
   .section-headline {
-    font-size: clamp(1.25rem, 2.8vw, 1.45rem);
+    font-size: clamp(1.22rem, 2.6vw, 1.42rem);
     font-weight: 800;
     color: var(--primary);
     margin: 36px 0 16px 0;
@@ -213,7 +213,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .tool-card {
@@ -231,15 +231,10 @@
     box-shadow: var(--card-shadow-lg);
     transform: translateY(-2px);
   }
-  .tool-card.contractor {
-    border-top: 4px solid var(--primary);
-  }
-  .tool-card.community {
-    border-top: 4px solid var(--accent);
-  }
-  .tool-card.calculator {
-    border-top: 4px solid var(--blue-accent);
-  }
+  .tool-card.dispatch { border-top: 4px solid var(--primary); }
+  .tool-card.operations { border-top: 4px solid var(--primary-light); }
+  .tool-card.revenue { border-top: 4px solid var(--blue-accent); }
+  .tool-card.community { border-top: 4px solid var(--accent); }
 
   .card-badge {
     font-size: 0.7rem;
@@ -249,9 +244,10 @@
     display: block;
     margin-bottom: 6px;
   }
-  .badge-contractor { color: var(--primary); }
+  .badge-dispatch { color: var(--primary); }
+  .badge-operations { color: var(--primary-light); }
+  .badge-revenue { color: var(--blue-accent); }
   .badge-community { color: var(--accent); }
-  .badge-calculator { color: var(--blue-accent); }
 
   .tool-card h3 {
     margin: 0 0 6px 0;
@@ -291,8 +287,9 @@
     padding-top: 10px;
     border-top: 1px solid var(--border-subtle);
   }
-  .tool-card.contractor .tool-action-link,
-  .tool-card.calculator .tool-action-link {
+  .tool-card.dispatch .tool-action-link,
+  .tool-card.operations .tool-action-link,
+  .tool-card.revenue .tool-action-link {
     color: var(--blue-accent);
   }
   .tool-card.community .tool-action-link {
@@ -302,7 +299,7 @@
     text-decoration: underline;
   }
 
-  /* MODAL / EMBEDDED CALCULATOR STYLES */
+  /* MODALS FOR ON-PAGE CALCULATORS */
   .calc-modal-backdrop {
     display: none;
     position: fixed;
@@ -431,26 +428,57 @@
   footer { 
     background: #09233d; 
     color: #94a3b8; 
-    padding: 36px 0; 
-    text-align: center; 
+    padding: 40px 0 32px 0; 
     font-size: 0.82rem; 
   }
-  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  footer a:hover { text-decoration: underline; }
+  .footer-columns {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .footer-col h4 {
+    margin: 0 0 10px 0;
+    font-size: 0.86rem;
+    color: #f8fafc;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-col li {
+    margin-bottom: 6px;
+  }
+  .footer-col a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .footer-col a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+  .footer-bottom {
+    border-top: 1px solid #1e3a5f;
+    padding-top: 18px;
+    text-align: center;
+    color: #64748b;
+  }
 
+  @media (max-width: 840px) {
+    .footer-columns {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
   @media (max-width: 640px) {
-    .hero-section h1 {
-      font-size: 1.75rem;
-    }
-    .tools-grid {
-      grid-template-columns: 1fr;
-    }
-    .why-grid {
-      grid-template-columns: 1fr;
-    }
-    .calc-form-grid {
-      grid-template-columns: 1fr;
-    }
+    .hero-section h1 { font-size: 1.75rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .footer-columns { grid-template-columns: 1fr; }
+    .calc-form-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -458,7 +486,7 @@
 
   <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Simple Biz Systems &bull; Practical operations software and public utilities built in Kingsland, TX.
+    Simple Biz Systems &bull; Complete subscription-free operational suite built in Kingsland, TX.
   </div>
 
   <!-- NAVIGATION -->
@@ -472,6 +500,9 @@
         <a href="index.html" class="active">Home</a>
         <a href="workorders.html">Work Orders</a>
         <a href="dispatch.html">Dispatch</a>
+        <a href="timecards.html">Timecards</a>
+        <a href="materials.html">Materials</a>
+        <a href="leads.html">Leads</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
         <a href="about.html">About</a>
       </div>
@@ -482,49 +513,49 @@
 
     <!-- HERO SECTION -->
     <header class="hero-section">
-      <span class="hero-tag">Kingsland, Texas &bull; Highland Lakes</span>
-      <h1>Operational Systems &amp; Local Tools Without Monthly Bloat</h1>
+      <span class="hero-tag">Kingsland, Texas &bull; Highland Lakes Operations</span>
+      <h1>Clean, Practical Software Without Monthly Bloat</h1>
       <p class="hero-subtitle">
-        Simple Biz Systems designs dependable field systems for independent trade contractors, operational pricing calculators, and free public utilities for students and families across Llano, Burnet, and Blanco Counties.
+        A full operational ecosystem for independent trade contractors, fleet managers, and local communities. Zero monthly subscriptions, local-first data storage, and resilient offline functionality.
       </p>
 
       <div class="mission-box">
-        <strong>Our Guiding Principle:</strong> Most business software has become excessively complex, packed with unwanted subscriptions, fragile cloud connections, and tracking cookies. We build local-first, offline-capable systems that work reliably on any budget laptop or mobile phone, even when cellular service drops in rural Texas metal buildings.
+        <strong>Our Guiding Principle:</strong> We build practical software that runs directly in modern browsers without per-seat software fees or fragile cloud lock-in. Whether managing field crews across the RM 1431 corridor or looking up live Lake Buchanan water levels, our tools are engineered to work reliably on any device.
       </div>
     </header>
 
-    <!-- SECTION 1: FIELD TRADE & DISPATCH SYSTEMS -->
-    <h2 class="section-headline">Field Service &amp; Contractor Systems</h2>
+    <!-- SECTION 1: FIELD SERVICE & DISPATCH -->
+    <h2 class="section-headline">1. Field Service &amp; Dispatch Systems</h2>
     <section class="tools-grid">
       
-      <!-- TOOL 1: WORK ORDERS -->
-      <article class="tool-card contractor">
+      <!-- TOOL: WORK ORDERS -->
+      <article class="tool-card dispatch">
         <div>
-          <span class="card-badge badge-contractor">Field Billing</span>
+          <span class="card-badge badge-dispatch">Field Billing</span>
           <h3>Digital Work Orders &amp; Signoff</h3>
           <p>Complete service calls, capture customer touch signatures on site, and export professional itemized PDF invoices directly from any smartphone without monthly per-truck fees.</p>
           <ul class="features-list">
-            <li><strong>Touch Signature Pad:</strong> Captures signatures without hardware terminals.</li>
-            <li><strong>Offline Storage:</strong> Saves invoices locally if cell service is down.</li>
-            <li><strong>One-Touch PDF:</strong> Clean print formatting with tax calculations.</li>
+            <li><strong>Touch Signature Capture:</strong> Works on phones and tablets.</li>
+            <li><strong>Offline Storage:</strong> Saves invoices locally when cell service drops.</li>
+            <li><strong>Instant PDF Generation:</strong> Pre-formatted client invoices with tax.</li>
           </ul>
         </div>
         <a href="workorders.html" class="tool-action-link">
-          <span>Launch Work Order App</span>
+          <span>Open Work Orders</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </article>
 
-      <!-- TOOL 2: DISPATCH BOARD -->
-      <article class="tool-card contractor">
+      <!-- TOOL: DISPATCH BOARD -->
+      <article class="tool-card dispatch">
         <div>
-          <span class="card-badge badge-contractor">Fleet Logistics</span>
+          <span class="card-badge badge-dispatch">Fleet Logistics</span>
           <h3>Field Dispatch &amp; Route Board</h3>
-          <p>Visual map dispatching for trade rigs across Kingsland, Marble Falls, Burnet, and Llano. Color-code trucks, calculate sequential arrival ETAs, and monitor corridor gas prices.</p>
+          <p>Visual map dispatching for trade rigs across Kingsland, Marble Falls, Burnet, and Llano. Color-code trucks, calculate sequential arrival ETAs, and track corridor fuel.</p>
           <ul class="features-list">
-            <li><strong>Visual Map Pins:</strong> Live position pins via open-source Leaflet maps.</li>
-            <li><strong>Truck Color Coding:</strong> Differentiate service vehicles with custom colors.</li>
-            <li><strong>Highland Lakes Fuel Tracker:</strong> Corridor fuel and diesel cost index.</li>
+            <li><strong>Visual Map Routing:</strong> Interactive pins via Leaflet maps.</li>
+            <li><strong>Truck Color Coding:</strong> Differentiate service vehicles visually.</li>
+            <li><strong>Fuel Tracker:</strong> Highland Lakes corridor gas and diesel index.</li>
           </ul>
         </div>
         <a href="dispatch.html" class="tool-action-link">
@@ -533,16 +564,16 @@
         </a>
       </article>
 
-      <!-- TOOL 3: MOBILE TECH VIEW -->
-      <article class="tool-card contractor">
+      <!-- TOOL: MOBILE TECH CONSOLE -->
+      <article class="tool-card dispatch">
         <div>
-          <span class="card-badge badge-contractor">Field Driver Console</span>
+          <span class="card-badge badge-dispatch">Field Driver View</span>
           <h3>Mobile Technician Console</h3>
           <p>Streamlined mobile phone interface for drivers in the field. View assigned daily stops, tap for turn-by-turn Google Maps navigation, and update job status in real time.</p>
           <ul class="features-list">
-            <li><strong>One-Tap Directions:</strong> Immediate GPS navigation to customer sites.</li>
+            <li><strong>One-Tap Directions:</strong> Direct GPS navigation to customer sites.</li>
             <li><strong>Status Toggles:</strong> En Route, Working On Site, and Completed buttons.</li>
-            <li><strong>Lightweight Footprint:</strong> Loads instantly over weak cellular connections.</li>
+            <li><strong>Lightweight Footprint:</strong> Fast loads over weak cellular connections.</li>
           </ul>
         </div>
         <a href="driver.html" class="tool-action-link">
@@ -553,80 +584,140 @@
 
     </section>
 
-    <!-- SECTION 2: OPERATIONAL & BUSINESS CALCULATORS -->
-    <h2 class="section-headline">Contractor Pricing &amp; Operational Calculators</h2>
+    <!-- SECTION 2: OPERATIONS, LABOR & FLEET -->
+    <h2 class="section-headline">2. Operations, Labor &amp; Fleet Assets</h2>
     <section class="tools-grid">
       
-      <!-- TOOL 4: HOURLY RATE CALCULATOR -->
-      <article class="tool-card calculator">
+      <!-- TOOL: TIMECARDS -->
+      <article class="tool-card operations">
         <div>
-          <span class="card-badge badge-calculator">Business Finance</span>
-          <h3>Trade Hourly Rate Calculator</h3>
-          <p>Stop guessing your billable rate. Calculate your true breakeven cost per billable hour based on insurance, vehicle fuel, truck depreciation, and unbillable drive time.</p>
+          <span class="card-badge badge-operations">Payroll &amp; Crew Time</span>
+          <h3>Crew Labor &amp; Timecards</h3>
+          <p>Clock in crew members, log job travel vs on-site wrench time, and generate accurate weekly payroll breakdown sheets without expensive employee tracking apps.</p>
           <ul class="features-list">
-            <li><strong>Overhead Factoring:</strong> Accounts for licensing, phone, and tools.</li>
-            <li><strong>Billable Utilization:</strong> Adjusts for realistic windshield hours.</li>
-            <li><strong>Net Profit Margin:</strong> Sets target profit percentage automatically.</li>
+            <li><strong>Crew Time Punching:</strong> Start, pause, and log job travel time.</li>
+            <li><strong>Labor Cost Allocation:</strong> Links hours directly to specific work orders.</li>
+            <li><strong>Export Ready:</strong> CSV and printable payroll review sheets.</li>
           </ul>
         </div>
-        <a href="javascript:void(0)" onclick="openHourlyModal()" class="tool-action-link">
-          <span>Open Rate Calculator</span>
+        <a href="timecards.html" class="tool-action-link">
+          <span>Open Timecard Tracker</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </article>
 
-      <!-- TOOL 5: JOB MARKUP & PROFIT CALCULATOR -->
-      <article class="tool-card calculator">
+      <!-- TOOL: MATERIALS & TRUCK STOCK -->
+      <article class="tool-card operations">
         <div>
-          <span class="card-badge badge-calculator">Estimating &amp; Bidding</span>
-          <h3>Material Markup &amp; Margin Estimator</h3>
-          <p>Quickly calculate true gross profit margins versus simple markups on parts, materials, and subcontractor labor to protect job profitability on competitive bids.</p>
+          <span class="card-badge badge-operations">Inventory Management</span>
+          <h3>Materials &amp; Truck Stock</h3>
+          <p>Track wholesale materials, truck inventory, and commonly used trade fittings. Prevent forgotten material billings and monitor minimum truck restock alerts.</p>
           <ul class="features-list">
-            <li><strong>Markup vs Margin:</strong> Eliminates common contractor margin math errors.</li>
-            <li><strong>Material Surcharge:</strong> Calculates freight and stocking costs.</li>
-            <li><strong>Instant Bid Total:</strong> Gives client-ready subtotal and profit figures.</li>
+            <li><strong>Van Restock Alerts:</strong> Flags inventory when quantities fall low.</li>
+            <li><strong>Wholesale Price Log:</strong> Quick reference for copper, PVC, and wire.</li>
+            <li><strong>Work Order Sync:</strong> Deduct materials used on service calls.</li>
           </ul>
         </div>
-        <a href="javascript:void(0)" onclick="openMarkupModal()" class="tool-action-link">
-          <span>Open Markup Estimator</span>
+        <a href="materials.html" class="tool-action-link">
+          <span>Open Material Inventory</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </article>
 
-      <!-- TOOL 6: HILL COUNTRY CORRIDOR MILEAGE -->
-      <article class="tool-card calculator">
+      <!-- TOOL: EQUIPMENT & FLEET MAINTENANCE -->
+      <article class="tool-card operations">
         <div>
-          <span class="card-badge badge-calculator">Route Planning</span>
-          <h3>Hill Country Trip &amp; Deadhead Estimator</h3>
-          <p>Estimate true truck transit costs between Highland Lakes communities (Kingsland, Marble Falls, Burnet, Llano, Horseshoe Bay) factoring in fuel consumption and driver pay.</p>
+          <span class="card-badge badge-operations">Asset Health</span>
+          <h3>Equipment &amp; Asset Tracker</h3>
+          <p>Track service intervals, oil changes, generator service, and tool inspections for trailers, excavators, and trade vans across your service fleet.</p>
           <ul class="features-list">
-            <li><strong>Corridor Milage:</strong> Built-in highway distances across RM 1431 and TX-29.</li>
-            <li><strong>Deadhead Impact:</strong> Identifies unbilled windshield time losses.</li>
-            <li><strong>Trip Minimum:</strong> Computes mandatory service call minimum charge.</li>
+            <li><strong>Service Interval Logging:</strong> Track mileage and engine hour maintenance.</li>
+            <li><strong>Asset Assignment:</strong> Track which technician holds specialized tools.</li>
+            <li><strong>Maintenance History:</strong> Keep inspection logs for insurance audits.</li>
           </ul>
         </div>
-        <a href="dispatch.html" class="tool-action-link">
-          <span>View on Dispatch Board</span>
+        <a href="equipment.html" class="tool-action-link">
+          <span>Open Equipment Tracker</span>
           <span aria-hidden="true">&rarr;</span>
         </a>
       </article>
 
     </section>
 
-    <!-- SECTION 3: FREE COMMUNITY UTILITIES -->
-    <h2 class="section-headline">Free Public &amp; Community Utilities</h2>
+    <!-- SECTION 3: REVENUE, LEADS & ESTIMATING -->
+    <h2 class="section-headline">3. Revenue, Leads &amp; Job Estimating</h2>
     <section class="tools-grid">
       
-      <!-- TOOL 7: KINGSLAND WIRE -->
+      <!-- TOOL: LEADS TRACKER -->
+      <article class="tool-card revenue">
+        <div>
+          <span class="card-badge badge-revenue">Sales Pipeline</span>
+          <h3>Lead Tracker &amp; Inquiries</h3>
+          <p>Capture incoming customer calls, record job site addresses, track follow-up dates, and convert quotes into active work orders without paying for enterprise CRM licenses.</p>
+          <ul class="features-list">
+            <li><strong>Visual Stage Pipeline:</strong> New Call, Estimating, Won, and Scheduled.</li>
+            <li><strong>Follow-Up Reminders:</strong> Never lose an unreturned customer voicemail.</li>
+            <li><strong>One-Click Convert:</strong> Push won leads directly into dispatch.</li>
+          </ul>
+        </div>
+        <a href="leads.html" class="tool-action-link">
+          <span>Open Lead Tracker</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </article>
+
+      <!-- TOOL: ESTIMATOR -->
+      <article class="tool-card revenue">
+        <div>
+          <span class="card-badge badge-revenue">Bid Formulation</span>
+          <h3>Job Estimator &amp; Bid Builder</h3>
+          <p>Build comprehensive bids combining labor hours, material costs, subcontractor surcharges, and gross margin targets with clean PDF bid proposal exports.</p>
+          <ul class="features-list">
+            <li><strong>Multi-Variable Bidding:</strong> Materials, labor, equipment fees, and tax.</li>
+            <li><strong>Margin Protection:</strong> Computes true profit margins on competitive jobs.</li>
+            <li><strong>Client Proposal PDF:</strong> Clean customer-ready estimates.</li>
+          </ul>
+        </div>
+        <a href="estimator.html" class="tool-action-link">
+          <span>Launch Job Estimator</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </article>
+
+      <!-- TOOL: RATE CALCULATOR MODAL -->
+      <article class="tool-card revenue">
+        <div>
+          <span class="card-badge badge-revenue">Financial Modeling</span>
+          <h3>Hourly Rate &amp; Margin Tools</h3>
+          <p>Instant financial calculators to determine your true breakeven cost per billable hour and calculate required client prices using margin vs markup formulas.</p>
+          <ul class="features-list">
+            <li><strong>Breakeven Modeling:</strong> Overhead, truck costs, and non-billable time.</li>
+            <li><strong>Margin vs Markup:</strong> Eliminates common contractor profit losses.</li>
+            <li><strong>Instant Calculations:</strong> Interactive on-page tools ready anytime.</li>
+          </ul>
+        </div>
+        <div style="display:flex; gap:12px; padding-top:10px; border-top:1px solid var(--border-subtle);">
+          <a href="javascript:void(0)" onclick="openHourlyModal()" style="font-size:0.86rem; font-weight:800; color:var(--blue-accent); text-decoration:none;">Hourly Rate &rarr;</a>
+          <a href="javascript:void(0)" onclick="openMarkupModal()" style="font-size:0.86rem; font-weight:800; color:var(--blue-accent); text-decoration:none;">Markup Tool &rarr;</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- SECTION 4: FREE COMMUNITY & CIVIC UTILITIES -->
+    <h2 class="section-headline">4. Free Public &amp; Community Utilities</h2>
+    <section class="tools-grid">
+      
+      <!-- TOOL: KINGSLAND WIRE -->
       <article class="tool-card community">
         <div>
-          <span class="card-badge badge-community">Civic Resource &bull; Zero Ads</span>
+          <span class="card-badge badge-community">Civic Bulletin &bull; Zero Ads</span>
           <h3>The Kingsland Wire</h3>
-          <p>Live civic bulletin aggregating official weather forecasts, real-time Lake Buchanan and Lake LBJ water levels, Burnet and Llano burn bans, and public lake access points.</p>
+          <p>Live civic bulletin aggregating regional weather forecasts, real-time Lake Buchanan and Lake LBJ water levels, Burnet and Llano burn bans, and public lake access points.</p>
           <ul class="features-list">
-            <li><strong>Live Hydrology:</strong> Real-time reservoir levels via Water Data for Texas.</li>
+            <li><strong>Live Hydrology:</strong> Lake Buchanan elevation via Water Data for Texas.</li>
             <li><strong>7-Day Weather:</strong> Clean Open-Meteo temperature and condition feed.</li>
-            <li><strong>Interactive Directory:</strong> Filterable community services and parks.</li>
+            <li><strong>Community Directory:</strong> Filterable civic contacts, ramps, and parks.</li>
           </ul>
         </div>
         <a href="kingslandnews.html" class="tool-action-link">
@@ -635,15 +726,15 @@
         </a>
       </article>
 
-      <!-- TOOL 8: DOCUMENT TRIAGE -->
+      <!-- TOOL: DOCUMENT TRIAGE -->
       <article class="tool-card community">
         <div>
-          <span class="card-badge badge-community">Family Support &bull; Private</span>
+          <span class="card-badge badge-community">Family Resource &bull; Private</span>
           <h3>Critical Document Readiness Triage</h3>
-          <p>Preparing paperwork for Texas SNAP, CEAP utility bill relief, or Llano/Burnet county assistance? Audit your paperwork offline and generate a 1-page packet cover sheet.</p>
+          <p>Preparing paperwork for Texas SNAP, CEAP utility bill relief, or Llano/Burnet county assistance? Audit your paperwork offline and generate an itemized 1-page packet cover sheet.</p>
           <ul class="features-list">
             <li><strong>Hill Country PO Box Check:</strong> Alerts to 911 physical address traps.</li>
-            <li><strong>Program Presets:</strong> SNAP, utility assistance, and DPS ID requirements.</li>
+            <li><strong>Program Presets:</strong> SNAP, utility relief, and DPS ID requirements.</li>
             <li><strong>Case Worker Sheet:</strong> Exports an itemized inventory cover sheet (PDF).</li>
           </ul>
         </div>
@@ -653,7 +744,7 @@
         </a>
       </article>
 
-      <!-- TOOL 9: STUDY PLANNER -->
+      <!-- TOOL: STUDY PLANNER -->
       <article class="tool-card community">
         <div>
           <span class="card-badge badge-community">Student Tool &bull; Zero Login</span>
@@ -687,7 +778,7 @@
         </div>
         <div class="why-item">
           <h4>Offline Resiliency</h4>
-          <p>Engineered for rural Hill Country conditions. If cell coverage dies on a job site, your work orders and checklists continue working uninterrupted.</p>
+          <p>Engineered for rural Hill Country conditions. If cell coverage dies on a job site, your work orders, timecards, and tools keep functioning.</p>
         </div>
       </div>
     </section>
@@ -773,21 +864,53 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 12px 0; opacity: 0.85;">Practical business software, calculators, and free public utilities for the Highland Lakes.</p>
-      <p style="margin: 0; opacity: 0.65; font-size: 0.8rem; line-height: 1.6;">
-        <strong>Trade Tools:</strong> 
-        <a href="workorders.html">Work Orders</a> &bull; 
-        <a href="dispatch.html">Dispatch Board</a> &bull; 
-        <a href="driver.html">Tech View</a>
-        <span style="margin: 0 8px;">|</span>
-        <strong>Community:</strong> 
-        <a href="kingslandnews.html">Kingsland Wire</a> &bull; 
-        <a href="checklist.html">Document Triage</a> &bull; 
-        <a href="studyplan.html">Study Planner</a>
-        <span style="margin: 0 8px;">|</span>
-        <a href="about.html">About &amp; Founder</a>
-      </p>
+      <div class="footer-columns">
+        
+        <div class="footer-col">
+          <h4>Simple Biz Systems</h4>
+          <p style="margin: 0 0 10px 0; color: #94a3b8; line-height: 1.5;">
+            Built in Kingsland, Texas. Practical, subscription-free operational systems for trade contractors and free utilities for the Highland Lakes.
+          </p>
+          <p style="margin: 0; color: #64748b;">
+            No subscriptions &bull; No cookies &bull; Local-first
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Field Service</h4>
+          <ul>
+            <li><a href="workorders.html">Work Orders &amp; Signoff</a></li>
+            <li><a href="dispatch.html">Field Dispatch Board</a></li>
+            <li><a href="driver.html">Mobile Tech View</a></li>
+            <li><a href="timecards.html">Crew Timecards</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Operations &amp; Bids</h4>
+          <ul>
+            <li><a href="materials.html">Materials &amp; Stock</a></li>
+            <li><a href="equipment.html">Equipment Tracker</a></li>
+            <li><a href="leads.html">Lead Pipeline</a></li>
+            <li><a href="estimator.html">Job Estimator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Civic &amp; Community</h4>
+          <ul>
+            <li><a href="kingslandnews.html">The Kingsland Wire</a></li>
+            <li><a href="checklist.html">Document Triage</a></li>
+            <li><a href="studyplan.html">Student Planner</a></li>
+            <li><a href="about.html">About &amp; Founder</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        Simple Biz Systems &bull; Kingsland, TX 78639 &bull; Independent Operations Engineering
+      </div>
     </div>
   </footer>
 
@@ -822,7 +945,6 @@
       const totalAnnualCost = salary + overhead;
       const breakevenRate = totalAnnualCost / totalAnnualBillableHours;
 
-      // Rate needed to achieve net profit percentage on revenue
       const targetRate = breakevenRate / (1 - (profitPct / 100));
       const profitPerHour = targetRate - breakevenRate;
 
@@ -843,7 +965,6 @@
         return;
       }
 
-      // Selling Price = Cost / (1 - Margin)
       const sellingPrice = totalCost / (1 - (targetMarginPct / 100));
       const profit = sellingPrice - totalCost;
       const markupPct = totalCost > 0 ? (profit / totalCost) * 100 : 0;
