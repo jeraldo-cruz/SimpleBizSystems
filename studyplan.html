@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Student Assignment Backwards Planner | Simple Biz Systems</title>
+<meta name="title" content="Student Assignment Backwards Planner | Simple Biz Systems">
+<meta name="description" content="Free backwards assignment planner for middle school, high school, and college students. Break down major essays, exams, and projects into milestone deadlines with instant calendar (.ics) and PDF exports.">
+<meta name="keywords" content="backwards assignment planner, syllabus milestone calculator, student study schedule generator, essay deadline breakdown, exam prep timeline, free printable study schedule, student .ics calendar export">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/studyplan.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- OPEN GRAPH / SOCIAL -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.simplebizsystems.com/studyplan.html">
+<meta property="og:title" content="Student Assignment Backwards Planner | Simple Biz Systems">
+<meta property="og:description" content="Break essays, tests, and research projects into manageable daily milestones. Download calendar sync files and printable study schedules.">
+<meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- HTML2PDF LIBRARY FOR PDF GENERATION -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    --success: #16a34a;
+    --warning: #ca8a04;
+    --danger: #dc2626;
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    margin: 0; 
+    padding: 0; 
+    color: var(--text-dark); 
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { 
+    max-width: 960px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    line-height: 1.4;
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 12px 0; 
+    position: sticky;
+    top: 0;
+    z-index: 500;
+  }
+  .nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px;
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.15rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .nav-brand-img {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 16px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 600; 
+    font-size: 0.88rem; 
+    transition: color 0.15s ease;
+    padding: 4px 2px;
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { 
+    color: var(--accent); 
+  }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 24px 0 16px 0;
+  }
+  .tool-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #e0f2fe;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: clamp(1.8rem, 3.6vw, 2.35rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+  .intro-card {
+    background: #ffffff;
+    border-left: 4px solid var(--accent);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    box-shadow: var(--card-shadow);
+  }
+  .intro-card p {
+    font-size: 0.92rem;
+    color: #334155;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .intro-card strong {
+    color: var(--primary);
+  }
+
+  /* FORM CARD */
+  .generator-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--card-shadow);
+    margin: 20px 0;
+  }
+  .generator-card h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 16px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .form-group input, 
+  .form-group select {
+    width: 100%;
+    padding: 9px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: #ffffff;
+  }
+
+  .btn-calculate {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s ease;
+  }
+  .btn-calculate:hover {
+    background: var(--primary-light);
+  }
+
+  /* TIMELINE SCHEDULE VIEW */
+  .timeline-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+    display: none;
+  }
+  .timeline-card.active {
+    display: block;
+  }
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .assignment-summary-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 2px 0;
+  }
+  .assignment-summary-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .milestone-row {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue-accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .milestone-row.due-date-row {
+    border-left-color: var(--accent);
+    background: #fffdfa;
+  }
+  .milestone-info {
+    flex: 1;
+  }
+  .milestone-phase {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .milestone-row.due-date-row .milestone-phase {
+    color: var(--accent);
+  }
+  .milestone-title {
+    font-size: 0.94rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 4px 0;
+  }
+  .milestone-tasks {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .milestone-date-badge {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .milestone-target-date {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+  }
+  .milestone-countdown {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* ACTION EXPORT BUTTONS BAR */
+  .export-actions-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 16px;
+  }
+  .btn-export-secondary {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s ease;
+  }
+  .btn-export-secondary:hover {
+    background: #f1f5f9;
+  }
+  .btn-export-primary {
+    background: var(--blue-accent);
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s ease;
+  }
+  .btn-export-primary:hover {
+    background: #0369a1;
+  }
+
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CONTAINED & INVISIBLE) */
+  .pdf-hidden-wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -9999;
+  }
+  #pdfPrintStage {
+    width: 740px;
+    background: #ffffff;
+    color: #1e293b;
+    padding: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    display: block;
+    box-sizing: border-box;
+  }
+  .pdf-top-row {
+    border-bottom: 2px solid #0d3b66;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pdf-top-row h2 {
+    font-size: 1.35rem;
+    color: #0d3b66;
+    margin: 0 0 4px 0;
+    font-weight: 800;
+  }
+  .pdf-top-row p {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin: 0;
+  }
+  .pdf-meta {
+    text-align: right;
+    font-size: 0.78rem;
+    color: #64748b;
+  }
+  .pdf-milestone-box {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .pdf-milestone-box.final {
+    border-left: 4px solid #d97706;
+    background: #fffdfa;
+  }
+  .pdf-milestone-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #0d3b66;
+  }
+  .pdf-milestone-desc {
+    font-size: 0.78rem;
+    color: #334155;
+    margin-top: 2px;
+  }
+  .pdf-checkbox {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #94a3b8;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* FOOTER */
+  footer { 
+    background: #09233d; 
+    color: #94a3b8; 
+    padding: 34px 0; 
+    text-align: center; 
+    font-size: 0.82rem; 
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .milestone-row {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .milestone-date-badge {
+      text-align: left;
+    }
+    .export-actions-row {
+      flex-direction: column;
+    }
+    .btn-export-secondary, .btn-export-primary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Simple Biz Systems &bull; Free, private community utilities for Kingsland &amp; Highland Lakes students.
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="workorders.html">Work Orders</a>
+        <a href="dispatch.html">Dispatch</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="checklist.html">Document Triage</a>
+        <a href="studyplan.html" class="active">Study Planner</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <span class="tool-badge">Free Student Utility &bull; Zero Login &bull; Calendar Sync</span>
+      <h1>Assignment Backwards Planner</h1>
+      
+      <div class="intro-card">
+        <p>
+          <strong>How this works:</strong> Major papers, lab reports, and exam study schedules fail when students look only at the final deadline. This tool works in reverse: enter the assignment archetype and due date, and it automatically spaces out structured milestones. Download a printable study sheet or click to sync deadlines directly to your phone calendar without signing up or creating an account.
+        </p>
+      </div>
+    </header>
+
+    <!-- ASSIGNMENT CONFIGURATION FORM -->
+    <section class="generator-card">
+      <h2>1. Enter Assignment Details</h2>
+      <form id="formPlanner">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Assignment Title</label>
+            <input type="text" id="assignTitle" required placeholder="e.g., Texas History Term Paper">
+          </div>
+          <div class="form-group">
+            <label>Course / Subject</label>
+            <input type="text" id="assignCourse" required placeholder="e.g., HIST 1301">
+          </div>
+          <div class="form-group">
+            <label>Assignment Type</label>
+            <select id="assignType" required>
+              <option value="essay" selected>Research Paper / Long Essay</option>
+              <option value="exam">Exam / Midterm Preparation</option>
+              <option value="stem">STEM Lab Report / Problem Set</option>
+              <option value="project">Book Review / Presentation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Final Due Date</label>
+            <input type="date" id="assignDueDate" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-calculate">
+          <span>Generate Backwards Schedule</span>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- GENERATED SCHEDULE VIEW -->
+    <section class="timeline-card" id="timelineCard">
+      <div class="timeline-header">
+        <div>
+          <h3 class="assignment-summary-title" id="displayTitle">Texas History Term Paper</h3>
+          <span class="assignment-summary-meta" id="displayMeta">HIST 1301 &bull; Research Paper Schedule</span>
+        </div>
+        <span style="font-size:0.8rem; font-weight:700; color:var(--primary); background:#e0f2fe; padding:4px 10px; border-radius:999px;" id="totalDaysTag">14 Days Window</span>
+      </div>
+
+      <div class="milestones-list" id="milestonesContainer">
+        <!-- Milestones populated via JavaScript -->
+      </div>
+
+      <div class="export-actions-row">
+        <button type="button" class="btn-export-secondary" onclick="exportToCalendarICS()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>Sync to Calendar (.ICS File)</span>
+        </button>
+        <button type="button" class="btn-export-primary" id="btnExportPdf" onclick="exportSchedulePDF()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-4 11H9v-5h6v5zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-3-9H8V2h8v2z"/></svg>
+          <span>Print Schedule Sheet (PDF)</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE -->
+  <div class="pdf-hidden-wrapper">
+    <div id="pdfPrintStage">
+      <div class="pdf-top-row">
+        <div>
+          <h2 id="pdfAssignTitle">Texas History Term Paper</h2>
+          <p id="pdfAssignCourse">HIST 1301 &bull; Backwards Pacing Milestone Schedule</p>
+        </div>
+        <div class="pdf-meta">
+          <div><strong>Due Date:</strong> <span id="pdfDueDate"></span></div>
+          <div><strong>Generated:</strong> <span id="pdfGenDate"></span></div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:8px 12px; margin-bottom:14px; font-size:0.78rem; line-height:1.45;">
+        Pin this study schedule by your desk or inside your notebook. Check off each milestone box as completed to ensure on-time submission without all-nighter stress.
+      </div>
+
+      <div id="pdfMilestoneTarget"></div>
+
+      <div style="margin-top:24px; border-top:1px solid #cbd5e1; padding-top:10px; display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:#64748b;">
+        <div>Free Student Utility &bull; Simple Biz Systems Community Tools</div>
+        <div>simplebizsystems.com/studyplan.html</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
+      <p style="margin: 0 0 10px 0; opacity: 0.85;">Free community tools, local systems, and public records for the Highland Lakes.</p>
+      <p style="margin: 0; opacity: 0.6;">
+        <a href="index.html">Home</a> &bull; <a href="workorders.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="checklist.html">Document Triage</a> &bull; <a href="studyplan.html">Study Planner</a> &bull; <a href="about.html">About &amp; Founder</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // ARCHETYPE MILESTONE TEMPLATES
+    const MILESTONE_ARCHETYPES = {
+      essay: [
+        { pct: 0.85, phase: "Phase 1: Foundation", title: "Narrow Topic & Collect Primary Sources", tasks: "Select core thesis question. Gather at least 4 verified sources, book chapters, or academic articles." },
+        { pct: 0.60, phase: "Phase 2: Structure", title: "Complete Working Outline & Thesis Statement", tasks: "Structure introductory hook, argument topic sentences, and map out evidence for each body section." },
+        { pct: 0.35, phase: "Phase 3: Drafting", title: "Complete Full First Rough Draft", tasks: "Write out all body sections without stopping to self-edit. Get all arguments and evidence on the page." },
+        { pct: 0.15, phase: "Phase 4: Refinement", title: "Revisions, Polish & Citation Audit", tasks: "Check bibliography formatting (APA/MLA), verify quote citations, and read aloud to catch awkward sentences." },
+        { pct: 0.00, phase: "Final Deadline", title: "Final Proofread & File Upload", tasks: "Export clean PDF or Word file. Confirm submission confirmation email or LMS upload receipt." }
+      ],
+      exam: [
+        { pct: 0.80, phase: "Phase 1: Inventory", title: "Gather Notes & Identify Weak Subject Areas", tasks: "Collect lecture slides, homework sets, and past quizzes. Highlight unfamiliar vocabulary or concepts." },
+        { pct: 0.55, phase: "Phase 2: Synthesis", title: "Build One-Page Synthesis Cheat Sheets", tasks: "Condense notes into summary formula sheets, concept maps, or flashcards. Do not just re-read notes." },
+        { pct: 0.30, phase: "Phase 3: Active Recall", title: "Timed Practice Exam & Problem Drills", tasks: "Work through practice questions without looking at answer keys. Grade yourself and review errors." },
+        { pct: 0.10, phase: "Phase 4: Light Review", title: "Formula Refresh & Rest", tasks: "Brief review of flashcards and core formulas. Prepare calculator, pencils, and get 8 hours of sleep." },
+        { pct: 0.00, phase: "Test Day", title: "Exam Administration Day", tasks: "Arrive 10 minutes early. Take 3 deep breaths and pace time across high-point questions first." }
+      ],
+      stem: [
+        { pct: 0.80, phase: "Phase 1: Setup", title: "Raw Data Collation & Variable Audit", tasks: "Organize lab observations, verify measurements, and identify equations required for analysis." },
+        { pct: 0.50, phase: "Phase 2: Computation", title: "Complete Calculations & Charts", tasks: "Generate required graphs, calculate standard deviations/percent error, and check units." },
+        { pct: 0.25, phase: "Phase 3: Discussion", title: "Draft Results Analysis & Discussion", tasks: "Explain what the data proves, account for experimental error, and answer pre-lab questions." },
+        { pct: 0.05, phase: "Phase 4: Verification", title: "Final Figure Labeling & Code/Calc Review", tasks: "Ensure every chart has axes labels and units. Check formatting requirements." },
+        { pct: 0.00, phase: "Final Deadline", title: "Final Report Submission", tasks: "Submit digital copy or print out report packet with signed lab notebook pages." }
+      ],
+      project: [
+        { pct: 0.80, phase: "Phase 1: Analysis", title: "Finish Reading / Concept Research", tasks: "Complete text reading and flag key quotes, character developments, or research topics." },
+        { pct: 0.55, phase: "Phase 2: Slide / Outline", title: "Draft Key Findings / Slide Deck Structure", tasks: "Draft the presentation slides or review sections. Keep slides visual with minimal text." },
+        { pct: 0.30, phase: "Phase 3: Rehearsal", title: "Rehearse Delivery or Polish Written Review", tasks: "Time presentation out loud twice. Revise slides where timing feels rushed." },
+        { pct: 0.10, phase: "Phase 4: Final Polish", title: "Speaker Notes & Tech Backup", tasks: "Export backup slides to a USB drive or cloud drive. Print hardcopy speaker notes." },
+        { pct: 0.00, phase: "Final Deadline", title: "Presentation or Submission Day", tasks: "Deliver presentation or submit completed review portfolio." }
+      ]
+    };
+
+    let activePlanData = null;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set default date to 10 days out
+      const defaultDate = new Date();
+      defaultDate.setDate(defaultDate.getDate() + 10);
+      document.getElementById("assignDueDate").value = defaultDate.toISOString().slice(0, 10);
+
+      document.getElementById("formPlanner").addEventListener("submit", handleGeneratePlan);
+    });
+
+    function handleGeneratePlan(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("assignTitle").value.trim();
+      const course = document.getElementById("assignCourse").value.trim();
+      const type = document.getElementById("assignType").value;
+      const dueStr = document.getElementById("assignDueDate").value;
+
+      const dueDate = new Date(dueStr + "T23:59:59");
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const diffMs = dueDate - today;
+      const totalDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+      if (totalDays <= 0) {
+        alert("Please select a due date in the future.");
+        return;
+      }
+
+      const archetypeMilestones = MILESTONE_ARCHETYPES[type];
+      const milestones = [];
+
+      archetypeMilestones.forEach(m => {
+        const daysFromNow = Math.max(0, Math.round(totalDays * (1 - m.pct)));
+        const targetDate = new Date(today);
+        targetDate.setDate(targetDate.getDate() + daysFromNow);
+
+        milestones.push({
+          phase: m.phase,
+          title: m.title,
+          tasks: m.tasks,
+          targetDate: targetDate,
+          daysAway: daysFromNow,
+          isFinal: m.pct === 0
+        });
+      });
+
+      activePlanData = {
+        title,
+        course,
+        type,
+        dueDate,
+        totalDays,
+        milestones
+      };
+
+      renderPlanView();
+    }
+
+    function renderPlanView() {
+      if (!activePlanData) return;
+
+      document.getElementById("displayTitle").innerText = activePlanData.title;
+      document.getElementById("displayMeta").innerText = `${activePlanData.course} &bull; ${activePlanData.totalDays} Day Backwards Milestone Schedule`;
+      document.getElementById("totalDaysTag").innerText = `${activePlanData.totalDays} Days to Deadline`;
+
+      const container = document.getElementById("milestonesContainer");
+      container.innerHTML = "";
+
+      activePlanData.milestones.forEach((m, idx) => {
+        const dateFormatted = m.targetDate.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        const row = document.createElement("div");
+        row.className = "milestone-row" + (m.isFinal ? " due-date-row" : "");
+
+        row.innerHTML = `
+          <div class="milestone-info">
+            <span class="milestone-phase">${m.phase}</span>
+            <h4 class="milestone-title">${m.title}</h4>
+            <p class="milestone-tasks">${m.tasks}</p>
+          </div>
+          <div class="milestone-date-badge">
+            <span class="milestone-target-date">${dateFormatted}</span>
+            <span class="milestone-countdown">${m.daysAway === 0 ? "Today" : `Day +${m.daysAway}`}</span>
+          </div>
+        `;
+
+        container.appendChild(row);
+      });
+
+      const timelineCard = document.getElementById("timelineCard");
+      timelineCard.classList.add("active");
+      timelineCard.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // DIRECT .ICS CALENDAR FILE EXPORT (COMPATIBLE WITH GOOGLE, APPLE, OUTLOOK)
+    function exportToCalendarICS() {
+      if (!activePlanData) return;
+
+      let icsContent = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Simple Biz Systems//Student Backwards Planner//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH"
+      ];
+
+      const formatICSDate = (d) => {
+        const yr = d.getFullYear();
+        const mo = String(d.getMonth() + 1).padStart(2, '0');
+        const da = String(d.getDate()).padStart(2, '0');
+        return `${yr}${mo}${da}`;
+      };
+
+      activePlanData.milestones.forEach((m, i) => {
+        const dtStr = formatICSDate(m.targetDate);
+        const uid = `studyplan_${Date.now()}_${i}@simplebizsystems.com`;
+        
+        icsContent.push("BEGIN:VEVENT");
+        icsContent.push(`UID:${uid}`);
+        icsContent.push(`SUMMARY:${activePlanData.course}: ${m.title}`);
+        icsContent.push(`DESCRIPTION:${m.phase} - ${m.tasks}`);
+        icsContent.push(`DTSTART;VALUE=DATE:${dtStr}`);
+        icsContent.push(`DTEND;VALUE=DATE:${dtStr}`);
+        icsContent.push("STATUS:CONFIRMED");
+        icsContent.push("END:VEVENT");
+      });
+
+      icsContent.push("END:VCALENDAR");
+
+      const blob = new Blob([icsContent.join("\r\n")], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${activePlanData.course}_Schedule.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // 1-PAGE BULLETPROOF PDF EXPORT
+    function exportSchedulePDF() {
+      if (!activePlanData) return;
+
+      const btn = document.getElementById("btnExportPdf");
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "<span>Generating PDF...</span>";
+
+      document.getElementById("pdfAssignTitle").innerText = activePlanData.title;
+      document.getElementById("pdfAssignCourse").innerText = `${activePlanData.course} &bull; ${activePlanData.totalDays} Day Milestone Pacing Schedule`;
+      document.getElementById("pdfDueDate").innerText = activePlanData.dueDate.toLocaleDateString();
+      document.getElementById("pdfGenDate").innerText = new Date().toLocaleDateString();
+
+      let targetHtml = "";
+      activePlanData.milestones.forEach(m => {
+        const dateFormatted = m.targetDate.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+        targetHtml += `
+          <div class="pdf-milestone-box ${m.isFinal ? "final" : ""}">
+            <div style="flex:1;">
+              <div>
+                <span class="pdf-checkbox"></span>
+                <span class="pdf-milestone-title">${m.phase}: ${m.title}</span>
+              </div>
+              <div class="pdf-milestone-desc">${m.tasks}</div>
+            </div>
+            <div style="text-align:right; font-weight:800; font-size:0.84rem; color:#0d3b66; white-space:nowrap; margin-left:12px;">
+              ${dateFormatted}
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById("pdfMilestoneTarget").innerHTML = targetHtml;
+
+      const element = document.getElementById("pdfPrintStage");
+
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `Study_Plan_${activePlanData.course.replace(/\s+/g, '_')}_${activePlanData.dueDate.toISOString().slice(0, 10)}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true, 
+          scrollX: 0, 
+          scrollY: 0,
+          windowWidth: 740
+        },
+        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }).catch(err => {
+        alert("Error generating schedule PDF. Please try again.");
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      });
+    }
+  </script>
+</body>
+</html>
