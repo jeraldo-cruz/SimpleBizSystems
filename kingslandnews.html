@@ -8,7 +8,7 @@
 <title>The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)">
 <meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, county burn bans, and safety directory.">
-<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, TxDOT Kingsland roads, DriveTexas FM 2900">
+<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, TxDOT Kingsland roads, DriveTexas FM 2900, student assignment planner, document readiness checklist">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -542,6 +542,11 @@
   .dir-card:hover {
     box-shadow: var(--card-shadow);
   }
+  .dir-card.featured-tool-card {
+    background: #f0f9ff;
+    border-color: #bae6fd;
+    border-left: 4px solid var(--blue-accent);
+  }
   .dir-card.hidden {
     display: none;
   }
@@ -553,6 +558,9 @@
     letter-spacing: 0.03em;
     display: block;
     margin-bottom: 4px;
+  }
+  .dir-card.featured-tool-card .dir-badge {
+    color: var(--blue-accent);
   }
   .dir-card h4 {
     margin: 0 0 6px 0;
@@ -808,6 +816,24 @@
 
       <div class="directory-grid" id="directoryContainer">
         
+        <!-- FEATURED TOOL CARD 1: DOCUMENT TRIAGE (SAFETY & ROADS) -->
+        <article class="dir-card featured-tool-card" data-category="safety">
+          <div>
+            <span class="dir-badge">Free Community Tool</span>
+            <h4>Critical Document Readiness Triage</h4>
+            <p>Applying for Texas SNAP, CEAP utility aid, or Llano/Burnet county assistance? Audit your paperwork offline and avoid delays caused by PO Box address rejections:</p>
+            <ul class="dir-list">
+              <li><strong>Packet Audit:</strong> Pre-check residency, income, and allowable deductions.</li>
+              <li><strong>Physical Address Check:</strong> Verifies matching 911 county road records.</li>
+              <li><strong>Case Worker Sheet:</strong> Exports a 1-page PDF document checklist cover.</li>
+            </ul>
+          </div>
+          <div class="dir-action-row">
+            <a href="checklist.html">Open Document Checklist &rarr;</a>
+            <span class="dir-phone">Private &bull; Offline-First</span>
+          </div>
+        </article>
+
         <!-- CARD 1: TXDOT ROADS (SAFETY) -->
         <article class="dir-card" data-category="safety">
           <div>
@@ -929,6 +955,24 @@
           </div>
         </article>
 
+        <!-- FEATURED TOOL CARD 2: STUDY PLANNER (COMMUNITY & LIBRARY) -->
+        <article class="dir-card featured-tool-card" data-category="support">
+          <div>
+            <span class="dir-badge">Free Student Utility</span>
+            <h4>Student Assignment Backwards Planner</h4>
+            <p>Free deadline decomposition calculator for middle school, high school, and college students. Enter an assignment due date to automatically generate milestone schedules:</p>
+            <ul class="dir-list">
+              <li><strong>Milestone Decomposition:</strong> Spaces drafts, research, and review periods.</li>
+              <li><strong>Calendar Sync:</strong> One-click export to Google or Apple Calendar (.ics).</li>
+              <li><strong>Study Sheet:</strong> 1-page printable checklist for notebooks or desks.</li>
+            </ul>
+          </div>
+          <div class="dir-action-row">
+            <a href="studyplan.html">Launch Study Planner &rarr;</a>
+            <span class="dir-phone">Zero Login Required</span>
+          </div>
+        </article>
+
         <!-- CARD 8: FOOD PANTRY -->
         <article class="dir-card" data-category="support">
           <div>
@@ -974,8 +1018,12 @@
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">The Kingsland Wire &bull; Simple Biz Systems</p>
       <p style="margin: 0 0 10px 0; opacity: 0.85;">Ad-free, tracking-free civic bulletin and direct community resources for Kingsland, Texas 78639.</p>
-      <p style="margin: 0; opacity: 0.6;">
-        <a href="index.html">Home</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
+      <p style="margin: 0; opacity: 0.65; font-size: 0.8rem;">
+        <a href="index.html">Home</a> &bull; 
+        <a href="kingslandnews.html">Kingsland Wire</a> &bull; 
+        <a href="checklist.html">Document Triage</a> &bull; 
+        <a href="studyplan.html">Study Planner</a> &bull; 
+        <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
