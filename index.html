@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)</title>
 <meta name="title" content="Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)">
-<meta name="description" content="Practical, subscription-free field dispatch software, digital work orders, and free public community tools built in Kingsland, Texas for the Highland Lakes.">
-<meta name="keywords" content="field dispatch software, trade contractor work orders, Kingsland TX software, Highland Lakes business systems, free document triage, student backwards planner, Lake Buchanan water levels, mobile contractor signoff">
+<meta name="description" content="Subscription-free field dispatch software, digital work orders, trade calculators, and free public community tools built in Kingsland, Texas for the Highland Lakes.">
+<meta name="keywords" content="field dispatch software, trade contractor work orders, Kingsland TX software, Highland Lakes business systems, free document triage, student backwards planner, Lake Buchanan water levels, mobile contractor signoff, trade hourly rate calculator">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/index.html">
 <meta property="og:title" content="Simple Biz Systems | Operations Software & Community Utilities">
-<meta property="og:description" content="Subscription-free field service tools for trades and free public utilities for students and families across the Highland Lakes.">
+<meta property="og:description" content="Subscription-free field service tools for trades, operational business calculators, and free public utilities across the Highland Lakes.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -69,7 +69,7 @@
   }
 
   .container { 
-    max-width: 1100px; 
+    max-width: 1140px; 
     margin: 0 auto; 
     padding: 0 20px; 
     width: 100%;
@@ -145,7 +145,7 @@
 
   /* HERO SECTION */
   .hero-section {
-    padding: 44px 0 28px 0;
+    padding: 40px 0 24px 0;
   }
   .hero-tag {
     font-size: 0.76rem;
@@ -181,7 +181,7 @@
     border-left: 4px solid var(--accent);
     border-radius: 8px;
     padding: 16px 20px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
     box-shadow: var(--card-shadow);
     font-size: 0.92rem;
     color: #334155;
@@ -237,6 +237,9 @@
   .tool-card.community {
     border-top: 4px solid var(--accent);
   }
+  .tool-card.calculator {
+    border-top: 4px solid var(--blue-accent);
+  }
 
   .card-badge {
     font-size: 0.7rem;
@@ -248,6 +251,7 @@
   }
   .badge-contractor { color: var(--primary); }
   .badge-community { color: var(--accent); }
+  .badge-calculator { color: var(--blue-accent); }
 
   .tool-card h3 {
     margin: 0 0 6px 0;
@@ -287,7 +291,8 @@
     padding-top: 10px;
     border-top: 1px solid var(--border-subtle);
   }
-  .tool-card.contractor .tool-action-link {
+  .tool-card.contractor .tool-action-link,
+  .tool-card.calculator .tool-action-link {
     color: var(--blue-accent);
   }
   .tool-card.community .tool-action-link {
@@ -297,7 +302,98 @@
     text-decoration: underline;
   }
 
-  /* WHY SIMPLE BIZ SYSTEMS BLOCK */
+  /* MODAL / EMBEDDED CALCULATOR STYLES */
+  .calc-modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .calc-modal-backdrop.active {
+    display: flex;
+  }
+  .calc-modal {
+    background: var(--surface);
+    border-radius: 12px;
+    max-width: 580px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .calc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .calc-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .calc-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .calc-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .calc-field label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .calc-field input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .calc-result-box {
+    background: var(--blue-surface);
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .calc-result-box span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--blue-accent);
+  }
+  .calc-result-box strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+
+  /* ARCHITECTURE STANDARDS SECTION */
   .why-card {
     background: #f8fafc;
     border: 1px solid var(--border);
@@ -352,6 +448,9 @@
     .why-grid {
       grid-template-columns: 1fr;
     }
+    .calc-form-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 </head>
@@ -384,9 +483,9 @@
     <!-- HERO SECTION -->
     <header class="hero-section">
       <span class="hero-tag">Kingsland, Texas &bull; Highland Lakes</span>
-      <h1>Clean, Practical Software Without Monthly Bloat</h1>
+      <h1>Operational Systems &amp; Local Tools Without Monthly Bloat</h1>
       <p class="hero-subtitle">
-        Simple Biz Systems designs operational tools for independent trade contractors and free digital utilities for local students and families across Llano, Burnet, and Blanco Counties.
+        Simple Biz Systems designs dependable field systems for independent trade contractors, operational pricing calculators, and free public utilities for students and families across Llano, Burnet, and Blanco Counties.
       </p>
 
       <div class="mission-box">
@@ -394,18 +493,18 @@
       </div>
     </header>
 
-    <!-- SECTION 1: FIELD TRADE SYSTEMS -->
+    <!-- SECTION 1: FIELD TRADE & DISPATCH SYSTEMS -->
     <h2 class="section-headline">Field Service &amp; Contractor Systems</h2>
     <section class="tools-grid">
       
       <!-- TOOL 1: WORK ORDERS -->
       <article class="tool-card contractor">
         <div>
-          <span class="card-badge badge-contractor">Field Operations</span>
+          <span class="card-badge badge-contractor">Field Billing</span>
           <h3>Digital Work Orders &amp; Signoff</h3>
           <p>Complete service calls, capture customer touch signatures on site, and export professional itemized PDF invoices directly from any smartphone without monthly per-truck fees.</p>
           <ul class="features-list">
-            <li><strong>Touch Signature Pad:</strong> Works on touchscreens without special hardware.</li>
+            <li><strong>Touch Signature Pad:</strong> Captures signatures without hardware terminals.</li>
             <li><strong>Offline Storage:</strong> Saves invoices locally if cell service is down.</li>
             <li><strong>One-Touch PDF:</strong> Clean print formatting with tax calculations.</li>
           </ul>
@@ -419,7 +518,7 @@
       <!-- TOOL 2: DISPATCH BOARD -->
       <article class="tool-card contractor">
         <div>
-          <span class="card-badge badge-contractor">Office Logistics</span>
+          <span class="card-badge badge-contractor">Fleet Logistics</span>
           <h3>Field Dispatch &amp; Route Board</h3>
           <p>Visual map dispatching for trade rigs across Kingsland, Marble Falls, Burnet, and Llano. Color-code trucks, calculate sequential arrival ETAs, and monitor corridor gas prices.</p>
           <ul class="features-list">
@@ -437,7 +536,7 @@
       <!-- TOOL 3: MOBILE TECH VIEW -->
       <article class="tool-card contractor">
         <div>
-          <span class="card-badge badge-contractor">Mobile Field Console</span>
+          <span class="card-badge badge-contractor">Field Driver Console</span>
           <h3>Mobile Technician Console</h3>
           <p>Streamlined mobile phone interface for drivers in the field. View assigned daily stops, tap for turn-by-turn Google Maps navigation, and update job status in real time.</p>
           <ul class="features-list">
@@ -454,11 +553,71 @@
 
     </section>
 
-    <!-- SECTION 2: FREE COMMUNITY UTILITIES -->
+    <!-- SECTION 2: OPERATIONAL & BUSINESS CALCULATORS -->
+    <h2 class="section-headline">Contractor Pricing &amp; Operational Calculators</h2>
+    <section class="tools-grid">
+      
+      <!-- TOOL 4: HOURLY RATE CALCULATOR -->
+      <article class="tool-card calculator">
+        <div>
+          <span class="card-badge badge-calculator">Business Finance</span>
+          <h3>Trade Hourly Rate Calculator</h3>
+          <p>Stop guessing your billable rate. Calculate your true breakeven cost per billable hour based on insurance, vehicle fuel, truck depreciation, and unbillable drive time.</p>
+          <ul class="features-list">
+            <li><strong>Overhead Factoring:</strong> Accounts for licensing, phone, and tools.</li>
+            <li><strong>Billable Utilization:</strong> Adjusts for realistic windshield hours.</li>
+            <li><strong>Net Profit Margin:</strong> Sets target profit percentage automatically.</li>
+          </ul>
+        </div>
+        <a href="javascript:void(0)" onclick="openHourlyModal()" class="tool-action-link">
+          <span>Open Rate Calculator</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </article>
+
+      <!-- TOOL 5: JOB MARKUP & PROFIT CALCULATOR -->
+      <article class="tool-card calculator">
+        <div>
+          <span class="card-badge badge-calculator">Estimating &amp; Bidding</span>
+          <h3>Material Markup &amp; Margin Estimator</h3>
+          <p>Quickly calculate true gross profit margins versus simple markups on parts, materials, and subcontractor labor to protect job profitability on competitive bids.</p>
+          <ul class="features-list">
+            <li><strong>Markup vs Margin:</strong> Eliminates common contractor margin math errors.</li>
+            <li><strong>Material Surcharge:</strong> Calculates freight and stocking costs.</li>
+            <li><strong>Instant Bid Total:</strong> Gives client-ready subtotal and profit figures.</li>
+          </ul>
+        </div>
+        <a href="javascript:void(0)" onclick="openMarkupModal()" class="tool-action-link">
+          <span>Open Markup Estimator</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </article>
+
+      <!-- TOOL 6: HILL COUNTRY CORRIDOR MILEAGE -->
+      <article class="tool-card calculator">
+        <div>
+          <span class="card-badge badge-calculator">Route Planning</span>
+          <h3>Hill Country Trip &amp; Deadhead Estimator</h3>
+          <p>Estimate true truck transit costs between Highland Lakes communities (Kingsland, Marble Falls, Burnet, Llano, Horseshoe Bay) factoring in fuel consumption and driver pay.</p>
+          <ul class="features-list">
+            <li><strong>Corridor Milage:</strong> Built-in highway distances across RM 1431 and TX-29.</li>
+            <li><strong>Deadhead Impact:</strong> Identifies unbilled windshield time losses.</li>
+            <li><strong>Trip Minimum:</strong> Computes mandatory service call minimum charge.</li>
+          </ul>
+        </div>
+        <a href="dispatch.html" class="tool-action-link">
+          <span>View on Dispatch Board</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </article>
+
+    </section>
+
+    <!-- SECTION 3: FREE COMMUNITY UTILITIES -->
     <h2 class="section-headline">Free Public &amp; Community Utilities</h2>
     <section class="tools-grid">
       
-      <!-- TOOL 4: KINGSLAND WIRE -->
+      <!-- TOOL 7: KINGSLAND WIRE -->
       <article class="tool-card community">
         <div>
           <span class="card-badge badge-community">Civic Resource &bull; Zero Ads</span>
@@ -476,7 +635,7 @@
         </a>
       </article>
 
-      <!-- TOOL 5: DOCUMENT TRIAGE -->
+      <!-- TOOL 8: DOCUMENT TRIAGE -->
       <article class="tool-card community">
         <div>
           <span class="card-badge badge-community">Family Support &bull; Private</span>
@@ -494,7 +653,7 @@
         </a>
       </article>
 
-      <!-- TOOL 6: STUDY PLANNER -->
+      <!-- TOOL 9: STUDY PLANNER -->
       <article class="tool-card community">
         <div>
           <span class="card-badge badge-community">Student Tool &bull; Zero Login</span>
@@ -535,11 +694,87 @@
 
   </main>
 
+  <!-- MODAL 1: HOURLY RATE CALCULATOR -->
+  <div class="calc-modal-backdrop" id="modalHourly">
+    <div class="calc-modal">
+      <div class="calc-modal-header">
+        <h3>Trade Hourly Rate Calculator</h3>
+        <button type="button" class="calc-modal-close" onclick="closeModals()">&times;</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0;">Calculate what you need to charge per billable hour to cover true business overhead and take home your target profit.</p>
+      
+      <div class="calc-form-grid">
+        <div class="calc-field">
+          <label>Target Annual Income ($)</label>
+          <input type="number" id="targetSalary" value="75000" oninput="computeHourlyRate()">
+        </div>
+        <div class="calc-field">
+          <label>Annual Overhead ($)</label>
+          <input type="number" id="annualOverhead" value="28000" title="Insurance, truck, fuel, tools, phone" oninput="computeHourlyRate()">
+        </div>
+        <div class="calc-field">
+          <label>Billable Hours / Week</label>
+          <input type="number" id="billableHours" value="25" title="Actual paid hours on job sites (excluding driving)" oninput="computeHourlyRate()">
+        </div>
+        <div class="calc-field">
+          <label>Working Weeks / Year</label>
+          <input type="number" id="workWeeks" value="48" title="Excluding holidays and sick time" oninput="computeHourlyRate()">
+        </div>
+        <div class="calc-field" style="grid-column: span 2;">
+          <label>Desired Net Profit Margin (%)</label>
+          <input type="number" id="targetProfitPct" value="15" oninput="computeHourlyRate()">
+        </div>
+      </div>
+
+      <div class="calc-result-box">
+        <span>Recommended Minimum Hourly Billing Rate</span>
+        <strong id="resultHourlyRate">$101.00 / hr</strong>
+        <div style="font-size:0.75rem; color:#475569; margin-top:4px;" id="resultBreakdown">
+          Breakeven: $85.83/hr &bull; Profit: $15.17/hr
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: MATERIAL MARKUP & MARGIN ESTIMATOR -->
+  <div class="calc-modal-backdrop" id="modalMarkup">
+    <div class="calc-modal">
+      <div class="calc-modal-header">
+        <h3>Material Markup &amp; Margin Estimator</h3>
+        <button type="button" class="calc-modal-close" onclick="closeModals()">&times;</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0;">Ensure you do not confuse Markup with Margin. A 30% markup only yields a 23% margin.</p>
+      
+      <div class="calc-form-grid">
+        <div class="calc-field">
+          <label>Wholesale Cost ($)</label>
+          <input type="number" id="wholesaleCost" value="450" oninput="computeMarkup()">
+        </div>
+        <div class="calc-field">
+          <label>Freight / Surcharge ($)</label>
+          <input type="number" id="freightCost" value="25" oninput="computeMarkup()">
+        </div>
+        <div class="calc-field" style="grid-column: span 2;">
+          <label>Target Gross Margin (%)</label>
+          <input type="number" id="targetMargin" value="35" oninput="computeMarkup()">
+        </div>
+      </div>
+
+      <div class="calc-result-box">
+        <span>Required Client Price</span>
+        <strong id="resultClientPrice">$730.77</strong>
+        <div style="font-size:0.75rem; color:#475569; margin-top:4px;" id="markupBreakdown">
+          Gross Profit: $255.77 &bull; Equivalent Markup: 53.8%
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
-      <p style="margin: 0 0 12px 0; opacity: 0.85;">Practical business software and free public utilities for the Highland Lakes.</p>
+      <p style="margin: 0 0 12px 0; opacity: 0.85;">Practical business software, calculators, and free public utilities for the Highland Lakes.</p>
       <p style="margin: 0; opacity: 0.65; font-size: 0.8rem; line-height: 1.6;">
         <strong>Trade Tools:</strong> 
         <a href="workorders.html">Work Orders</a> &bull; 
@@ -556,5 +791,67 @@
     </div>
   </footer>
 
+  <script>
+    // MODAL CONTROLS
+    function openHourlyModal() {
+      document.getElementById("modalHourly").classList.add("active");
+      computeHourlyRate();
+    }
+    function openMarkupModal() {
+      document.getElementById("modalMarkup").classList.add("active");
+      computeMarkup();
+    }
+    function closeModals() {
+      document.querySelectorAll(".calc-modal-backdrop").forEach(m => m.classList.remove("active"));
+    }
+    window.onclick = function(event) {
+      if (event.target.classList.contains("calc-modal-backdrop")) {
+        closeModals();
+      }
+    };
+
+    // HOURLY RATE FORMULA
+    function computeHourlyRate() {
+      const salary = parseFloat(document.getElementById("targetSalary").value) || 0;
+      const overhead = parseFloat(document.getElementById("annualOverhead").value) || 0;
+      const hoursPerWeek = parseFloat(document.getElementById("billableHours").value) || 1;
+      const weeksPerYear = parseFloat(document.getElementById("workWeeks").value) || 1;
+      const profitPct = parseFloat(document.getElementById("targetProfitPct").value) || 0;
+
+      const totalAnnualBillableHours = hoursPerWeek * weeksPerYear;
+      const totalAnnualCost = salary + overhead;
+      const breakevenRate = totalAnnualCost / totalAnnualBillableHours;
+
+      // Rate needed to achieve net profit percentage on revenue
+      const targetRate = breakevenRate / (1 - (profitPct / 100));
+      const profitPerHour = targetRate - breakevenRate;
+
+      document.getElementById("resultHourlyRate").innerText = `$${targetRate.toFixed(2)} / hr`;
+      document.getElementById("resultBreakdown").innerText = 
+        `Breakeven: $${breakevenRate.toFixed(2)}/hr | Profit: $${profitPerHour.toFixed(2)}/hr (${totalAnnualBillableHours} billable hrs/yr)`;
+    }
+
+    // MARKUP & MARGIN FORMULA
+    function computeMarkup() {
+      const wholesale = parseFloat(document.getElementById("wholesaleCost").value) || 0;
+      const freight = parseFloat(document.getElementById("freightCost").value) || 0;
+      const targetMarginPct = parseFloat(document.getElementById("targetMargin").value) || 0;
+
+      const totalCost = wholesale + freight;
+      if (targetMarginPct >= 100) {
+        document.getElementById("resultClientPrice").innerText = "Invalid Margin";
+        return;
+      }
+
+      // Selling Price = Cost / (1 - Margin)
+      const sellingPrice = totalCost / (1 - (targetMarginPct / 100));
+      const profit = sellingPrice - totalCost;
+      const markupPct = totalCost > 0 ? (profit / totalCost) * 100 : 0;
+
+      document.getElementById("resultClientPrice").innerText = `$${sellingPrice.toFixed(2)}`;
+      document.getElementById("markupBreakdown").innerText = 
+        `Gross Profit: $${profit.toFixed(2)} | Required Markup: ${markupPct.toFixed(1)}% on total cost`;
+    }
+  </script>
 </body>
 </html>
