@@ -59,15 +59,12 @@
 
     --purple-accent: #7c3aed;
     --purple-surface: #f5f3ff;
-    --purple-border: #ddd6fe;
 
     --cyan-accent: #0891b2;
     --cyan-surface: #ecfeff;
-    --cyan-border: #a5f3fc;
 
     --rose-accent: #e11d48;
     --rose-surface: #fff1f2;
-    --rose-border: #fecdd3;
 
     --danger: #dc2626;
   }
@@ -224,7 +221,7 @@
     line-height: 1.4;
   }
 
-  /* SCRAPER CALLOUT BANNER (AMBER THEMED) */
+  /* SCRAPER CALLOUT BANNER */
   .scraper-callout {
     background: var(--amber-surface);
     border: 1px solid var(--amber-border);
@@ -269,7 +266,7 @@
     transform: translateY(-1px);
   }
 
-  /* SECTION LABELS WITH THEMATIC COLOR ICONS */
+  /* SECTION LABELS */
   .section-headline {
     font-size: 1.25rem;
     font-weight: 800;
@@ -297,7 +294,7 @@
   .sec-tag.blue { background: #e0f2fe; color: #0369a1; }
   .sec-tag.navy { background: #e2e8f0; color: #0f172a; }
 
-  /* 1. ZIP CODE MATERIAL BENCHMARK LOOKUP (SKY BLUE SURFACED) */
+  /* 1. ZIP CODE MATERIAL BENCHMARK LOOKUP */
   .zip-lookup-card {
     background: var(--blue-surface);
     border: 1px solid var(--blue-border);
@@ -379,7 +376,6 @@
     transform: translateY(-1px);
   }
 
-  /* TRADE THEMES */
   .material-item-card.trade-concrete { border-left: 4px solid #64748b; }
   .material-item-card.trade-concrete .mat-category { color: #475569; background: #f1f5f9; }
 
@@ -475,7 +471,7 @@
     background: var(--primary-light);
   }
 
-  /* EXPANDABLE SUPPLIER DRAWER (COLOR-ACCENTED) */
+  /* EXPANDABLE SUPPLIER DRAWER */
   .supplier-drawer {
     display: none;
     background: #f8fafc;
@@ -545,7 +541,7 @@
     padding: 0;
   }
 
-  /* 2. ACTIVE ESTIMATE BUILDER (NAVY THEMED CONTAINER) */
+  /* 2. ACTIVE ESTIMATE BUILDER */
   .estimate-builder-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -639,7 +635,7 @@
     border-color: var(--primary);
   }
 
-  /* TOTALS & MARGIN PANEL (EMERALD GREEN THEMED FINANCIAL BLOCK) */
+  /* TOTALS & MARGIN PANEL */
   .estimate-totals-panel {
     background: var(--green-surface);
     border: 1px solid var(--green-border);
@@ -795,21 +791,20 @@
     display: none;
   }
 
-  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
+  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CORRECTED GEOMETRY) */
   .pdf-hidden-wrapper {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    position: fixed;
     top: 0;
-    left: 0;
+    left: -9999px;
+    width: 740px;
+    overflow: visible;
     z-index: -9999;
   }
   #pdfPrintStage {
     width: 740px;
     background: #ffffff;
     color: #1e293b;
-    padding: 28px;
+    padding: 30px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
@@ -848,12 +843,12 @@
     background: #f1f5f9;
     color: #0d3b66;
     text-align: left;
-    padding: 6px 8px;
+    padding: 8px 10px;
     border: 1px solid #cbd5e1;
     font-weight: 800;
   }
   .pdf-table td {
-    padding: 6px 8px;
+    padding: 8px 10px;
     border: 1px solid #cbd5e1;
   }
 
@@ -930,7 +925,7 @@
       </div>
     </header>
 
-    <!-- CUSTOM SCRAPER ADVISORY BANNER (AMBER THEMED) -->
+    <!-- CUSTOM SCRAPER ADVISORY BANNER -->
     <section class="scraper-callout">
       <div class="scraper-content">
         <h3>Need Live Pricing From Your Specific Wholesale Suppliers?</h3>
@@ -941,7 +936,7 @@
       <button type="button" class="btn-contact-custom" onclick="openLeadModal('General Supplier Scraper Setup')">Request Custom Scraper &rarr;</button>
     </section>
 
-    <!-- 1. ZIP CODE MATERIAL BENCHMARK LOOKUP (SKY BLUE CONTAINER) -->
+    <!-- 1. ZIP CODE MATERIAL BENCHMARK LOOKUP -->
     <h2 class="section-headline">
       <span class="sec-tag blue">Lookup</span>
       <span>1. Regional Material Benchmark Rates</span>
@@ -961,7 +956,7 @@
       </div>
     </section>
 
-    <!-- 2. ACTIVE BID ESTIMATOR (NAVY CONTAINER) -->
+    <!-- 2. ACTIVE BID ESTIMATOR -->
     <h2 class="section-headline">
       <span class="sec-tag navy">Bidding</span>
       <span>2. Active Bid &amp; Proposal Builder</span>
@@ -1002,7 +997,7 @@
 
       <button type="button" class="btn-add-custom-row" onclick="addCustomRow()">+ Add Custom Labor or Material Line</button>
 
-      <!-- FINANCIAL TOTALS (EMERALD GREEN THEME) -->
+      <!-- FINANCIAL TOTALS -->
       <div class="estimate-totals-panel">
         <div class="total-block">
           <span>Direct Cost Subtotal</span>
@@ -1071,7 +1066,7 @@
     </div>
   </div>
 
-  <!-- OFF-SCREEN PRINTABLE TEMPLATE (ISOLATED CONTAINER FOR HTML2PDF) -->
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CORRECTED FIXED POSITIONING & WIDTH) -->
   <div class="pdf-hidden-wrapper">
     <div id="pdfPrintStage">
       <div class="pdf-top-row">
@@ -1085,7 +1080,7 @@
         </div>
       </div>
 
-      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.82rem; line-height:1.45;">
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:12px 14px; margin-bottom:16px; font-size:0.84rem; line-height:1.5;">
         <div><strong>Client:</strong> <span id="pdfCustomer"></span></div>
         <div><strong>Project Address:</strong> <span id="pdfAddress"></span></div>
         <div><strong>Scope:</strong> <span id="pdfProject"></span></div>
@@ -1103,18 +1098,18 @@
         <tbody id="pdfTableBody"></tbody>
       </table>
 
-      <div style="display:flex; justify-content:flex-end; margin-top:14px;">
-        <div style="width:260px; font-size:0.84rem; line-height:1.5;">
+      <div style="display:flex; justify-content:flex-end; margin-top:16px;">
+        <div style="width:280px; font-size:0.86rem; line-height:1.6;">
           <div style="display:flex; justify-content:space-between;"><span>Direct Cost:</span> <strong id="pdfSubtotal">$0.00</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Margin Factor:</span> <span id="pdfMargin"></span></div>
           <div style="display:flex; justify-content:space-between;"><span>Estimated Tax:</span> <span id="pdfTax"></span></div>
-          <div style="display:flex; justify-content:space-between; border-top:2px solid #0d3b66; padding-top:4px; margin-top:4px; font-size:1.05rem; color:#0d3b66;">
+          <div style="display:flex; justify-content:space-between; border-top:2px solid #0d3b66; padding-top:6px; margin-top:6px; font-size:1.1rem; color:#0d3b66;">
             <strong>Total Bid:</strong> <strong id="pdfGrandTotal">$0.00</strong>
           </div>
         </div>
       </div>
 
-      <div style="margin-top:28px; border-top:1px solid #cbd5e1; padding-top:12px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between;">
+      <div style="margin-top:36px; border-top:1px solid #cbd5e1; padding-top:14px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between;">
         <div>Client Acceptance Signature: ___________________________</div>
         <div>Date: ____________</div>
       </div>
@@ -1137,7 +1132,6 @@
   </footer>
 
   <script>
-    // BASELINE WHOLESALE MATERIAL DATA WITH LOCAL TEXAS SUPPLIER PROFILES & THEMATIC CLASSES
     const BASE_MATERIALS = [
       { 
         id: "m_conc", 
@@ -1255,7 +1249,7 @@
       }
     ];
 
-    let currentMultiplier = 1.06; // Default Highland Lakes regional factor
+    let currentMultiplier = 1.06;
     let currentRegionName = "Kingsland, TX (Highland Lakes Freight Region)";
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -1263,7 +1257,6 @@
       loadSavedEstimate();
     });
 
-    // 1. KEYLESS ZIP CODE LOOKUP WITH REGIONAL LOGISTICS MODIFIERS
     async function lookupZipRates() {
       const zip = document.getElementById("zipInput").value.trim();
       const statusEl = document.getElementById("zipStatusText");
@@ -1344,7 +1337,6 @@
               </div>
             </div>
 
-            <!-- EXPANDABLE SUPPLIERS DRAWER -->
             <div class="supplier-drawer" id="drawer_${mat.id}">
               <span class="supplier-drawer-title">Regional Wholesale &amp; Retail Outlets</span>
               ${suppliersHtml}
@@ -1375,7 +1367,6 @@
       btn.innerHTML = !isOpen ? "Close &uarr;" : "Suppliers &darr;";
     }
 
-    // 2. ACTIVE ESTIMATE TABLE MANIPULATION
     function addMaterialToEstimate(name, price) {
       const tbody = document.getElementById("estimateTableBody");
       const row = document.createElement("tr");
@@ -1508,7 +1499,6 @@
       } catch (e) {}
     }
 
-    // 3. LEAD MODAL & GOOGLE SHEETS / WEBHOOK INTEGRATION
     function openLeadModal(defaultNotes) {
       const modal = document.getElementById("leadModal");
       modal.classList.add("active");
@@ -1596,7 +1586,6 @@
       }
     }
 
-    // 4. BULLETPROOF 1-PAGE CLIENT ESTIMATE PDF EXPORT
     function exportEstimatePDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
@@ -1652,7 +1641,13 @@
         margin: [10, 10, 10, 10],
         filename: `Bid_Estimate_${now.toISOString().slice(0, 10)}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, windowWidth: 740 },
+        html2canvas: { 
+          scale: 2, 
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: 740
+        },
         jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
       };
 
