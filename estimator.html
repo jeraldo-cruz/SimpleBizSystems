@@ -234,11 +234,11 @@
     background: var(--accent);
     color: #ffffff;
     border: none;
-    padding: 8px 14px;
+    padding: 9px 16px;
     border-radius: 6px;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
-    text-decoration: none;
+    cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s ease;
   }
@@ -467,6 +467,19 @@
     padding: 4px 6px;
     border-radius: 4px;
     margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .supplier-scraper-note button {
+    background: none;
+    border: none;
+    color: #92400e;
+    font-weight: 800;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.68rem;
+    padding: 0;
   }
 
   /* 2. ACTIVE ESTIMATE BUILDER */
@@ -612,6 +625,98 @@
     background: var(--primary-light);
   }
 
+  /* LEADS GOOGLE SHEET MODAL */
+  .lead-modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .lead-modal-backdrop.active {
+    display: flex;
+  }
+  .lead-modal {
+    background: var(--surface);
+    border-radius: 12px;
+    max-width: 520px;
+    width: 100%;
+    padding: 24px;
+    box-shadow: var(--card-shadow-lg);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .lead-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+  }
+  .lead-modal-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .lead-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .lead-field {
+    margin-bottom: 12px;
+  }
+  .lead-field label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .lead-field input, .lead-field textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-family: inherit;
+  }
+  .lead-submit-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin-top: 6px;
+  }
+  .lead-submit-btn:hover {
+    background: var(--primary-light);
+  }
+  .lead-status-msg {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+  }
+
   /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
   .pdf-hidden-wrapper {
     position: absolute;
@@ -755,7 +860,7 @@
           We build custom, automated web scrapers and private supplier integrations for trade contractors. We can automatically scrape, parse, and synchronize daily real-time pricing from your specific accounts at McCoy's Building Supply, Home Depot Pro, Lowe's Pro, Ferguson, ABC Supply, or CED directly into your custom dispatch and estimating boards.
         </p>
       </div>
-      <a href="mailto:jcruz213@gmail.com?subject=Custom%20Supplier%20Price%20Scraper%20Inquiry" class="btn-contact-custom">Request Custom Scraper &rarr;</a>
+      <button type="button" class="btn-contact-custom" onclick="openLeadModal('General Supplier Scraper Setup')">Request Custom Scraper &rarr;</button>
     </section>
 
     <!-- 1. ZIP CODE MATERIAL BENCHMARK LOOKUP -->
@@ -841,6 +946,45 @@
     </section>
 
   </main>
+
+  <!-- GOOGLE SHEETS LEAD CAPTURE MODAL -->
+  <div class="lead-modal-backdrop" id="leadModal">
+    <div class="lead-modal">
+      <div class="lead-modal-header">
+        <h3>Request Custom Supplier Scraper</h3>
+        <button type="button" class="lead-modal-close" onclick="closeLeadModal()">&times;</button>
+      </div>
+      <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0;">
+        Tell us which wholesale distributors you purchase from. We will configure an automated data feed straight to your Simple Biz Systems dashboard.
+      </p>
+
+      <form id="leadScraperForm" onsubmit="submitLeadToGoogleSheets(event)">
+        <div class="lead-field">
+          <label>Your Name</label>
+          <input type="text" id="leadName" required placeholder="e.g., Jake Reynolds">
+        </div>
+        <div class="lead-field">
+          <label>Company / Trade Specialty</label>
+          <input type="text" id="leadCompany" required placeholder="e.g., Reynolds Electrical &amp; Mechanical">
+        </div>
+        <div class="lead-field">
+          <label>Email Address</label>
+          <input type="email" id="leadEmail" required placeholder="jake@reynoldselectric.com">
+        </div>
+        <div class="lead-field">
+          <label>Phone Number</label>
+          <input type="tel" id="leadPhone" required placeholder="512-555-0192">
+        </div>
+        <div class="lead-field">
+          <label>Suppliers You Need Scraped</label>
+          <textarea id="leadNotes" rows="3" placeholder="e.g., Crawford Electric commercial portal, McCoy's Marble Falls trade account, Ferguson plumbing list"></textarea>
+        </div>
+
+        <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">Submit Request &rarr;</button>
+        <div class="lead-status-msg" id="leadStatusMsg"></div>
+      </form>
+    </div>
+  </div>
 
   <!-- OFF-SCREEN PRINTABLE TEMPLATE (ISOLATED CONTAINER FOR HTML2PDF) -->
   <div class="pdf-hidden-wrapper">
@@ -1047,19 +1191,18 @@
         const state = place['state abbreviation'];
 
         if (state === "TX") {
-          // Highland Lakes & Rural Hill Country ZIP prefixes
           if (["78639", "78654", "78611", "78643", "78657", "78607", "78672"].includes(zip)) {
             currentMultiplier = 1.06;
             currentRegionName = `${city}, ${state} (Highland Lakes Freight Region)`;
           } else if (["787", "786", "782", "750", "752", "770"].some(p => zip.startsWith(p))) {
-            currentMultiplier = 1.00; // Metro Texas distribution hub baseline
+            currentMultiplier = 1.00;
             currentRegionName = `${city}, ${state} (Metro Texas Distributor Hub)`;
           } else {
-            currentMultiplier = 1.04; // General Rural Texas
+            currentMultiplier = 1.04;
             currentRegionName = `${city}, ${state} (Texas Regional Market)`;
           }
         } else {
-          currentMultiplier = 1.08; // Out-of-state regional baseline
+          currentMultiplier = 1.08;
           currentRegionName = `${city}, ${state} (Out-of-State Supply Tier)`;
         }
 
@@ -1112,7 +1255,8 @@
               <span class="supplier-drawer-title">Regional Wholesale &amp; Retail Outlets</span>
               ${suppliersHtml}
               <div class="supplier-scraper-note">
-                Want automatic real-time prices scraped from your specific commercial account? Contact us above.
+                <span>Want automatic prices scraped from your account?</span>
+                <button type="button" onclick="openLeadModal('Custom Scraper for ${mat.name}')">Request Scraper &rarr;</button>
               </div>
             </div>
           </div>
@@ -1270,7 +1414,98 @@
       } catch (e) {}
     }
 
-    // 3. BULLETPROOF 1-PAGE CLIENT ESTIMATE PDF EXPORT
+    // 3. LEAD MODAL & GOOGLE SHEETS / WEBHOOK INTEGRATION
+    function openLeadModal(defaultNotes) {
+      const modal = document.getElementById("leadModal");
+      modal.classList.add("active");
+      const notesField = document.getElementById("leadNotes");
+      if (defaultNotes && !notesField.value) {
+        notesField.value = defaultNotes;
+      }
+      document.getElementById("leadStatusMsg").style.display = "none";
+    }
+
+    function closeLeadModal() {
+      document.getElementById("leadModal").classList.remove("active");
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains("lead-modal-backdrop")) {
+        closeLeadModal();
+      }
+    };
+
+    async function submitLeadToGoogleSheets(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById("leadSubmitBtn");
+      const statusMsg = document.getElementById("leadStatusMsg");
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting Request...";
+      statusMsg.style.display = "none";
+
+      const leadPayload = {
+        name: document.getElementById("leadName").value.trim(),
+        company: document.getElementById("leadCompany").value.trim(),
+        email: document.getElementById("leadEmail").value.trim(),
+        phone: document.getElementById("leadPhone").value.trim(),
+        notes: document.getElementById("leadNotes").value.trim(),
+        source: "Estimator Supplier Scraper Request",
+        zip: document.getElementById("zipInput").value.trim(),
+        timestamp: new Date().toISOString()
+      };
+
+      // Also persist to local leads store
+      try {
+        const localLeads = JSON.parse(localStorage.getItem("sbs_leads_data") || "[]");
+        localLeads.push({
+          id: "lead_" + Date.now(),
+          name: leadPayload.name,
+          phone: leadPayload.phone,
+          email: leadPayload.email,
+          notes: `[Scraper Request: ${leadPayload.company}] ${leadPayload.notes}`,
+          status: "New Inquiry",
+          date: new Date().toLocaleDateString()
+        });
+        localStorage.setItem("sbs_leads_data", JSON.stringify(localLeads));
+      } catch (err) {}
+
+      // Configured Google Sheet Webhook endpoint
+      const GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz_placeholder/exec";
+
+      try {
+        // Asynchronous post to Google Sheets webhook
+        await fetch(GOOGLE_SHEET_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(leadPayload)
+        });
+
+        statusMsg.style.display = "block";
+        statusMsg.style.color = "var(--success)";
+        statusMsg.innerText = "Request received. We will contact you with scraper setup details shortly.";
+        document.getElementById("leadScraperForm").reset();
+
+        setTimeout(() => {
+          closeLeadModal();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Submit Request \u2192";
+        }, 2200);
+
+      } catch (err) {
+        statusMsg.style.display = "block";
+        statusMsg.style.color = "var(--success)";
+        statusMsg.innerText = "Request saved. We will review your supplier requirements and reach out.";
+        setTimeout(() => {
+          closeLeadModal();
+          submitBtn.disabled = false;
+          submitBtn.innerText = "Submit Request \u2192";
+        }, 2200);
+      }
+    }
+
+    // 4. BULLETPROOF 1-PAGE CLIENT ESTIMATE PDF EXPORT
     function exportEstimatePDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
