@@ -319,18 +319,27 @@
 
   .material-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
     margin-top: 14px;
   }
   .material-item-card {
     background: #f8fafc;
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.15s ease;
+  }
+  .material-item-card:hover {
+    box-shadow: var(--card-shadow);
+  }
+  .mat-top-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
   }
   .mat-info {
@@ -344,14 +353,14 @@
     display: block;
   }
   .mat-name {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: var(--text-dark);
     margin: 2px 0 0 0;
     line-height: 1.25;
   }
   .mat-unit-sub {
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
   }
   .mat-pricing {
@@ -359,28 +368,105 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 4px;
+    gap: 2px;
   }
   .mat-cost {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
   }
-  .btn-add-mat {
-    background: #ffffff;
+  
+  .mat-actions-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 8px;
+  }
+  .btn-toggle-suppliers {
+    background: #f1f5f9;
     border: 1px solid var(--border);
-    color: var(--blue-accent);
-    padding: 4px 8px;
+    color: var(--text-dark);
+    padding: 4px 10px;
     border-radius: 4px;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: background 0.15s ease;
+  }
+  .btn-toggle-suppliers:hover {
+    background: #e2e8f0;
+  }
+  .btn-add-mat {
+    background: var(--blue-accent);
+    border: 1px solid var(--blue-accent);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease;
   }
   .btn-add-mat:hover {
-    background: var(--blue-accent);
-    color: #ffffff;
-    border-color: var(--blue-accent);
+    background: #0369a1;
+  }
+
+  /* EXPANDABLE SUPPLIER DRAWER */
+  .supplier-drawer {
+    display: none;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-top: 8px;
+    font-size: 0.78rem;
+  }
+  .supplier-drawer.open {
+    display: block;
+  }
+  .supplier-drawer-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .supplier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6px 0;
+  }
+  .supplier-list li {
+    padding: 3px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed var(--border-subtle);
+  }
+  .supplier-list li:last-child {
+    border-bottom: none;
+  }
+  .supplier-list a {
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .supplier-list a:hover {
+    text-decoration: underline;
+  }
+  .supplier-location-tag {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+  }
+  .supplier-scraper-note {
+    font-size: 0.68rem;
+    color: #92400e;
+    background: #fffbeb;
+    padding: 4px 6px;
+    border-radius: 4px;
+    margin-top: 6px;
   }
 
   /* 2. ACTIVE ESTIMATE BUILDER */
@@ -685,7 +771,7 @@
       </div>
 
       <div class="material-grid" id="materialDisplayGrid">
-        <!-- Populated dynamically by JavaScript -->
+        <!-- Populated dynamically by JavaScript with expandable supplier drawers -->
       </div>
     </section>
 
@@ -822,17 +908,113 @@
   </footer>
 
   <script>
-    // BASELINE WHOLESALE MATERIAL DATA (Q3 2026 COMMERCIAL BENCHMARKS)
+    // BASELINE WHOLESALE MATERIAL DATA WITH LOCAL TEXAS SUPPLIER PROFILES
     const BASE_MATERIALS = [
-      { id: "m_conc", cat: "Concrete", name: "Ready-Mix Concrete (3000 PSI)", unit: "cu yd", basePrice: 142.00 },
-      { id: "m_stud", cat: "Framing Lumber", name: "2x4x8 SPF Framing Stud", unit: "each", basePrice: 3.65 },
-      { id: "m_osb", cat: "Sheathing", name: "7/16\" OSB Sheathing (4x8)", unit: "sheet", basePrice: 13.50 },
-      { id: "m_ply", cat: "Plywood", name: "1/2\" CDX Pine Plywood (4x8)", unit: "sheet", basePrice: 22.80 },
-      { id: "m_wire", cat: "Electrical", name: "12/2 NM-B Romex Copper Wire", unit: "250 ft roll", basePrice: 112.00 },
-      { id: "m_pex", cat: "Plumbing", name: "1/2\" PEX-A Tubing Coil", unit: "100 ft roll", basePrice: 38.00 },
-      { id: "m_cop", cat: "Plumbing", name: "1/2\" Type L Copper Pipe", unit: "10 ft stick", basePrice: 21.50 },
-      { id: "m_pvc", cat: "Drainage", name: "3\" Schedule 40 PVC Pipe", unit: "10 ft stick", basePrice: 17.20 },
-      { id: "m_roof", cat: "Roofing", name: "Architectural Asphalt Shingles", unit: "bundle (1/3 sq)", basePrice: 36.50 }
+      { 
+        id: "m_conc", 
+        cat: "Concrete & Masonry", 
+        name: "Ready-Mix Concrete (3000 PSI)", 
+        unit: "cu yd", 
+        basePrice: 142.00,
+        suppliers: [
+          { name: "Ingram Readymix", location: "Burnet / Marble Falls", url: "https://www.ingramreadymix.com/" },
+          { name: "Century Materials", location: "Llano / Central TX", url: "https://www.centurymaterials.com/" },
+          { name: "Home Depot Pro Ready-Mix", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
+      },
+      { 
+        id: "m_stud", 
+        cat: "Framing Lumber", 
+        name: "2x4x8 SPF Framing Stud", 
+        unit: "each", 
+        basePrice: 3.65,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls (Hwy 281)", url: "https://www.mccoys.com/" },
+          { name: "Home Depot Pro Lumber", location: "Marble Falls", url: "https://www.homedepot.com/" },
+          { name: "Lowe's Commercial", location: "Marble Falls", url: "https://www.lowes.com/" }
+        ]
+      },
+      { 
+        id: "m_osb", 
+        cat: "Sheathing & Panels", 
+        name: "7/16\" OSB Sheathing (4x8)", 
+        unit: "sheet", 
+        basePrice: 13.50,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
+          { name: "Lowe's Pro", location: "Marble Falls", url: "https://www.lowes.com/" },
+          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
+      },
+      { 
+        id: "m_ply", 
+        cat: "Plywood & Subfloor", 
+        name: "1/2\" CDX Pine Plywood (4x8)", 
+        unit: "sheet", 
+        basePrice: 22.80,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
+          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
+      },
+      { 
+        id: "m_wire", 
+        cat: "Electrical Supply", 
+        name: "12/2 NM-B Romex Copper Wire", 
+        unit: "250 ft roll", 
+        basePrice: 112.00,
+        suppliers: [
+          { name: "Crawford Electric Supply", location: "Central TX / Austin", url: "https://www.crawfordelectricsupply.com/" },
+          { name: "CED (Consolidated Electrical)", location: "Austin / Delivery", url: "https://cedcareers.com/" },
+          { name: "Home Depot Pro Electrical", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
+      },
+      { 
+        id: "m_pex", 
+        cat: "Plumbing Supply", 
+        name: "1/2\" PEX-A Tubing Coil", 
+        unit: "100 ft roll", 
+        basePrice: 38.00,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "Moore Supply Co", location: "Austin / Hill Country", url: "https://www.mooresupply.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
+      },
+      { 
+        id: "m_cop", 
+        cat: "Plumbing Supply", 
+        name: "1/2\" Type L Copper Pipe", 
+        unit: "10 ft stick", 
+        basePrice: 21.50,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "Lowe's Pro Plumbing", location: "Marble Falls", url: "https://www.lowes.com/" }
+        ]
+      },
+      { 
+        id: "m_pvc", 
+        cat: "Drainage & Sewer", 
+        name: "3\" Schedule 40 PVC Pipe", 
+        unit: "10 ft stick", 
+        basePrice: 17.20,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
+      },
+      { 
+        id: "m_roof", 
+        cat: "Roofing & Siding", 
+        name: "Architectural Asphalt Shingles", 
+        unit: "bundle (1/3 sq)", 
+        basePrice: 36.50,
+        suppliers: [
+          { name: "ABC Supply Co", location: "Austin / Central TX Delivery", url: "https://www.abcsupply.com/" },
+          { name: "Mueller Building Systems", location: "Burnet / Llano", url: "https://www.muellerinc.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
+      }
     ];
 
     let currentMultiplier = 1.06; // Default Highland Lakes regional factor
@@ -864,7 +1046,6 @@
         const city = place['place name'];
         const state = place['state abbreviation'];
 
-        // Determine regional freight and distribution multiplier
         if (state === "TX") {
           // Highland Lakes & Rural Hill Country ZIP prefixes
           if (["78639", "78654", "78611", "78643", "78657", "78607", "78672"].includes(zip)) {
@@ -886,7 +1067,6 @@
         renderMaterialGrid();
 
       } catch (err) {
-        // Fallback keeping Highland Lakes active
         currentMultiplier = 1.06;
         currentRegionName = `ZIP ${zip} (Highland Lakes Baseline)`;
         statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; 1.06x Standard Regional Factor`;
@@ -901,21 +1081,60 @@
       BASE_MATERIALS.forEach(mat => {
         const localizedPrice = (mat.basePrice * currentMultiplier).toFixed(2);
         
+        let suppliersHtml = '<ul class="supplier-list">';
+        mat.suppliers.forEach(s => {
+          suppliersHtml += `
+            <li>
+              <a href="${s.url}" target="_blank" rel="noopener">${s.name} &rarr;</a>
+              <span class="supplier-location-tag">${s.location}</span>
+            </li>
+          `;
+        });
+        suppliersHtml += '</ul>';
+
         const card = document.createElement("div");
         card.className = "material-item-card";
         card.innerHTML = `
-          <div class="mat-info">
-            <span class="mat-category">${mat.cat}</span>
-            <div class="mat-name">${mat.name}</div>
-            <span class="mat-unit-sub">Per ${mat.unit}</span>
+          <div>
+            <div class="mat-top-row">
+              <div class="mat-info">
+                <span class="mat-category">${mat.cat}</span>
+                <div class="mat-name">${mat.name}</div>
+                <span class="mat-unit-sub">Benchmark Unit: Per ${mat.unit}</span>
+              </div>
+              <div class="mat-pricing">
+                <span class="mat-cost">$${localizedPrice}</span>
+              </div>
+            </div>
+
+            <!-- EXPANDABLE SUPPLIERS DRAWER -->
+            <div class="supplier-drawer" id="drawer_${mat.id}">
+              <span class="supplier-drawer-title">Regional Wholesale &amp; Retail Outlets</span>
+              ${suppliersHtml}
+              <div class="supplier-scraper-note">
+                Want automatic real-time prices scraped from your specific commercial account? Contact us above.
+              </div>
+            </div>
           </div>
-          <div class="mat-pricing">
-            <span class="mat-cost">$${localizedPrice}</span>
-            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${localizedPrice})">+ Add to Estimate</button>
+
+          <div class="mat-actions-row">
+            <button type="button" class="btn-toggle-suppliers" onclick="toggleSupplierDrawer('drawer_${mat.id}', this)">
+              Suppliers &darr;
+            </button>
+            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${localizedPrice})">
+              + Add to Estimate
+            </button>
           </div>
         `;
         container.appendChild(card);
       });
+    }
+
+    function toggleSupplierDrawer(drawerId, btn) {
+      const drawer = document.getElementById(drawerId);
+      const isOpen = drawer.classList.contains("open");
+      drawer.classList.toggle("open", !isOpen);
+      btn.innerHTML = !isOpen ? "Close &uarr;" : "Suppliers &darr;";
     }
 
     // 2. ACTIVE ESTIMATE TABLE MANIPULATION
@@ -980,7 +1199,6 @@
       const marginPct = parseFloat(document.getElementById("marginInput").value) || 0;
       const taxPct = parseFloat(document.getElementById("taxInput").value) || 0;
 
-      // Price before tax based on margin: Cost / (1 - Margin)
       let preTaxTotal = subtotal;
       if (marginPct < 100 && marginPct > 0) {
         preTaxTotal = subtotal / (1 - (marginPct / 100));
@@ -1019,7 +1237,6 @@
     function loadSavedEstimate() {
       const saved = localStorage.getItem("sbs_estimator_data");
       if (!saved) {
-        // Preload standard Highland Lakes demo row
         addMaterialToEstimate("Ready-Mix Concrete (3000 PSI)", (142.00 * 1.06).toFixed(2));
         return;
       }
