@@ -47,8 +47,6 @@
     --success: #16a34a;
     --warning: #ca8a04;
     --danger: #dc2626;
-    --danger-surface: #fef2f2;
-    --danger-border: #fecaca;
     --blue-accent: #0284c7;
     --blue-surface: #f0f9ff;
   }
@@ -248,6 +246,36 @@
     padding: 9px 13px;
   }
 
+  /* OFFICIAL PORTAL LINK BLOCK */
+  .official-link-bar {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .official-link-bar span {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+  }
+  .official-link-btn {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .official-link-btn:hover {
+    text-decoration: underline;
+  }
+
   /* WARNING WARNING BOX FOR PO BOX TRAP */
   .warning-banner {
     background: #fffbeb;
@@ -405,19 +433,18 @@
 
   /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER */
   .pdf-hidden-wrapper {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    position: fixed;
     top: 0;
-    left: 0;
+    left: -9999px;
+    width: 740px;
+    overflow: visible;
     z-index: -9999;
   }
   #pdfPrintStage {
     width: 740px;
     background: #ffffff;
     color: #1e293b;
-    padding: 28px;
+    padding: 32px 36px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
@@ -425,7 +452,7 @@
   .pdf-top-row {
     border-bottom: 2px solid #0d3b66;
     padding-bottom: 12px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -446,31 +473,23 @@
     font-size: 0.78rem;
     color: #64748b;
   }
-  .pdf-section-title {
-    font-size: 0.94rem;
-    font-weight: 800;
-    color: #0d3b66;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 4px;
-    margin: 16px 0 8px 0;
-  }
   .pdf-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 0.82rem;
   }
   .pdf-table th {
     background: #f1f5f9;
     color: #0d3b66;
     text-align: left;
-    padding: 6px 8px;
-    border: 1px solid #e2e8f0;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
     font-weight: 800;
   }
   .pdf-table td {
-    padding: 6px 8px;
-    border: 1px solid #e2e8f0;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
   }
   .pdf-status-tag {
     font-weight: 800;
@@ -566,6 +585,15 @@
       </div>
     </section>
 
+    <!-- OFFICIAL PORTAL LINK BAR -->
+    <div class="official-link-bar" id="officialPortalBar">
+      <span>Official Portal: <strong id="portalName">Texas Health and Human Services (HHSC)</strong></span>
+      <a href="https://www.yourtexasbenefits.com/" target="_blank" rel="noopener" class="official-link-btn" id="portalLink">
+        <span>Visit Official State/County Application Portal</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
     <!-- HILL COUNTRY PO BOX WARNING BOX -->
     <div class="warning-banner">
       <strong>Highland Lakes Address Note:</strong> State and county agencies require proof of a physical 911 residential address. A Post Office Box (PO Box) alone will cause an application rejection. If your utility bill shows a PO Box for mailing, include your lease, tax record, or a 911 address verification letter showing your actual physical home location.
@@ -600,7 +628,7 @@
 
   </main>
 
-  <!-- OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CONTAINED & INVISIBLE) -->
+  <!-- OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CORRECTED GEOMETRY & VISIBLE PADDING) -->
   <div class="pdf-hidden-wrapper">
     <div id="pdfPrintStage">
       <div class="pdf-top-row">
@@ -614,13 +642,13 @@
         </div>
       </div>
 
-      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.8rem; line-height:1.45;">
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:10px 14px; margin-bottom:16px; font-size:0.82rem; line-height:1.45;">
         <strong>Applicant Checklist Disclosure:</strong> This document inventories the items included inside this physical envelope to accelerate intake verification. All items marked as INCLUDED have been pre-checked by the applicant.
       </div>
 
       <div id="pdfTableTarget"></div>
 
-      <div style="margin-top:24px; border-top:1px solid #cbd5e1; padding-top:12px; display:flex; justify-content:space-between; align-items:flex-end; font-size:0.75rem; color:#64748b;">
+      <div style="margin-top:28px; border-top:1px solid #cbd5e1; padding-top:14px; display:flex; justify-content:space-between; align-items:flex-end; font-size:0.75rem; color:#64748b;">
         <div>
           <div>Applicant Signature Confirmation: ___________________________</div>
           <div style="margin-top:4px;">I verify that all copies enclosed represent true records.</div>
@@ -637,17 +665,23 @@
     <div class="container">
       <p style="margin: 0 0 6px 0; font-weight: 700; color: #f8fafc;">Simple Biz Systems &bull; Kingsland, TX 78639</p>
       <p style="margin: 0 0 10px 0; opacity: 0.85;">Free community tools, local systems, and public records for the Highland Lakes.</p>
-      <p style="margin: 0; opacity: 0.6;">
-        <a href="index.html">Home</a> &bull; <a href="workorders.html">Work Orders</a> &bull; <a href="dispatch.html">Dispatch Board</a> &bull; <a href="kingslandnews.html">Kingsland Wire</a> &bull; <a href="about.html">About &amp; Founder</a>
+      <p style="margin: 0; opacity: 0.65; font-size: 0.8rem;">
+        <a href="index.html">Home</a> &bull; 
+        <a href="workorders.html">Work Orders</a> &bull; 
+        <a href="dispatch.html">Dispatch Board</a> &bull; 
+        <a href="kingslandnews.html">Kingsland Wire</a> &bull; 
+        <a href="about.html">About &amp; Founder</a>
       </p>
     </div>
   </footer>
 
   <script>
-    // PRESET DOCUMENT DATA MATRIX
+    // PRESET DOCUMENT DATA MATRIX WITH OFFICIAL APPLICATION PORTALS
     const PROGRAM_PRESETS = {
       snap: {
         title: "Texas SNAP / Food Assistance (HHSC)",
+        portalName: "Your Texas Benefits (HHSC Form H1010)",
+        portalUrl: "https://www.yourtexasbenefits.com/",
         categories: [
           {
             name: "1. Identity & Household Members",
@@ -684,6 +718,8 @@
       },
       ceap: {
         title: "Comprehensive Energy Assistance (CEAP / CTEC)",
+        portalName: "Texas Department of Housing & Community Affairs (CEAP / CTEC)",
+        portalUrl: "https://www.tdhca.state.tx.us/community-affairs/ceap/",
         categories: [
           {
             name: "1. Identity & Household Roster",
@@ -711,6 +747,8 @@
       },
       county: {
         title: "County Emergency Assistance (Llano / Burnet)",
+        portalName: "Llano & Burnet County Indigent Health Care Services",
+        portalUrl: "https://www.co.llano.tx.us/page/llano.IndigentHealthCare",
         categories: [
           {
             name: "1. Residency Verification",
@@ -730,6 +768,8 @@
       },
       dps: {
         title: "Texas Driver License / REAL-ID Renewal (DPS)",
+        portalName: "Texas DPS Appointment & REAL-ID Portal",
+        portalUrl: "https://www.dps.texas.gov/section/driver-license",
         categories: [
           {
             name: "1. Primary Identity",
@@ -758,7 +798,6 @@
     let checkedState = {};
 
     document.addEventListener("DOMContentLoaded", function() {
-      // Load any stored checks
       const saved = localStorage.getItem("sbs_triage_checks");
       if (saved) {
         try { checkedState = JSON.parse(saved); } catch(e) {}
@@ -776,6 +815,11 @@
     function renderChecklist() {
       const preset = PROGRAM_PRESETS[currentPresetKey];
       document.getElementById("activePresetTitle").innerText = preset.title;
+      document.getElementById("portalName").innerText = preset.portalName;
+      
+      const portalLink = document.getElementById("portalLink");
+      portalLink.href = preset.portalUrl;
+
       const container = document.getElementById("checklistItemsContainer");
       container.innerHTML = "";
 
@@ -828,7 +872,7 @@
       renderChecklist();
     }
 
-    // BULLETPROOF 1-PAGE COVER SHEET PDF GENERATION
+    // BULLETPROOF 1-PAGE COVER SHEET PDF GENERATION WITH MARGIN ALIGNMENT
     function generateCoverSheetPDF() {
       const btn = document.getElementById("btnExportCover");
       const originalText = btn.innerHTML;
@@ -844,9 +888,9 @@
         <table class="pdf-table">
           <thead>
             <tr>
-              <th style="width: 25%;">Category</th>
-              <th style="width: 55%;">Document Description</th>
-              <th style="width: 20%; text-align: center;">Enclosed Status</th>
+              <th style="width: 32%;">Document Category</th>
+              <th style="width: 48%;">Document Description</th>
+              <th style="width: 20%; text-align: center;">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -875,7 +919,7 @@
       const element = document.getElementById("pdfPrintStage");
 
       const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [12, 12, 12, 12],
         filename: `Application_Cover_Sheet_${currentPresetKey.toUpperCase()}_${now.toISOString().slice(0, 10)}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
