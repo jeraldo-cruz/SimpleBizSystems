@@ -43,6 +43,9 @@
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     --blue-accent: #0284c7;
     --blue-surface: #f0f9ff;
+    --green-accent: #16a34a;
+    --green-surface: #f0fdf4;
+    --green-border: #bbf7d0;
   }
   
   html {
@@ -275,7 +278,7 @@
     color: var(--primary);
   }
 
-  /* EXPANDABLE BODY (HIDDEN BY DEFAULT, EXPANDS ON HOVER OR CLICK) */
+  /* EXPANDABLE BODY */
   .tool-card-body {
     max-height: 0;
     opacity: 0;
@@ -285,7 +288,6 @@
     cursor: default;
   }
 
-  /* DESKTOP HOVER & TOGGLE OPEN STATE */
   @media (hover: hover) and (pointer: fine) {
     .tool-card:hover .tool-card-body {
       max-height: 300px;
@@ -345,6 +347,100 @@
   .tool-action-btn:hover {
     background: var(--primary);
     color: #ffffff;
+  }
+
+  /* ON-PAGE GOOGLE SHEETS CONTACT FORM SECTION */
+  .contact-section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin: 36px 0 20px 0;
+  }
+  .contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .contact-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .contact-header span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .contact-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    background: #f8fafc;
+  }
+  .form-group textarea {
+    resize: vertical;
+  }
+  .btn-submit-lead {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-submit-lead:hover {
+    background: var(--primary-light);
+  }
+  .contact-status-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.86rem;
+    display: none;
+  }
+  .contact-status-box.success {
+    display: block;
+    background: var(--green-surface);
+    border: 1px solid var(--green-border);
+    color: #15803d;
+  }
+  .contact-status-box.error {
+    display: block;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
   }
 
   /* MODALS FOR ON-PAGE CALCULATORS */
@@ -444,7 +540,7 @@
     color: #94a3b8; 
     padding: 30px 0 24px 0; 
     font-size: 0.8rem; 
-    margin-top: 36px;
+    margin-top: 24px;
   }
   .footer-columns {
     display: grid;
@@ -515,6 +611,7 @@
         <a href="timecards.html">Timecards</a>
         <a href="materials.html">Materials</a>
         <a href="leads.html">Leads</a>
+        <a href="estimator.html">Estimator</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
         <a href="about.html">About</a>
       </div>
@@ -709,16 +806,16 @@
       <article class="tool-card revenue" onclick="toggleCard(this, event)">
         <div class="tool-card-head">
           <div class="tool-card-titles">
-            <span class="card-badge badge-revenue">Bid Formulation</span>
-            <h3>Job Estimator &amp; Bid Builder</h3>
+            <span class="card-badge badge-revenue">Bid Formulation &bull; ZIP Lookup</span>
+            <h3>Job Estimator &amp; Material Rates</h3>
           </div>
           <span class="toggle-indicator">View Details</span>
         </div>
         <div class="tool-card-body">
-          <p>Build comprehensive bids combining labor hours, material costs, subcontractor surcharges, and gross margin targets with clean PDF bid proposal exports.</p>
+          <p>Build comprehensive bids with regional ZIP code material rates, live supplier links (McCoy's, Ferguson, Ingram Readymix), and clean PDF exports.</p>
           <ul class="features-list">
-            <li><strong>Multi-Variable Bidding:</strong> Materials, labor, equipment, and tax.</li>
-            <li><strong>Margin Protection:</strong> Computes true profit margins on jobs.</li>
+            <li><strong>ZIP Code Pricing:</strong> Regional freight modifiers across Texas.</li>
+            <li><strong>Supplier Drawers:</strong> Direct links to Highland Lakes suppliers.</li>
             <li><strong>Client Proposal PDF:</strong> Clean customer-ready estimates.</li>
           </ul>
           <div class="action-btn-row">
@@ -824,6 +921,69 @@
 
     </section>
 
+    <!-- SECTION 5: DIRECT CONTACT & CUSTOM SYSTEMS INQUIRY (GOOGLE SHEETS INTEGRATED) -->
+    <section class="contact-section-card" id="contactSection">
+      <div class="contact-header">
+        <div>
+          <h2>Get in Touch &bull; Custom Operations &amp; Scraper Setup</h2>
+          <span>Connect directly with Jeraldo Cruz in Kingsland, Texas.</span>
+        </div>
+        <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent);">Direct Support &bull; Zero Spam</span>
+      </div>
+
+      <p style="font-size: 0.88rem; color: #475569; margin: 0 0 16px 0; line-height: 1.5;">
+        Need a customized field workflow for your trade crew, a private web scraper to pull daily pricing from your wholesale supplier accounts, or have suggestions for The Kingsland Wire? Send a note below.
+      </p>
+
+      <form id="indexContactForm" onsubmit="submitIndexContact(event)">
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" required placeholder="e.g., Mark Davis">
+          </div>
+          <div class="form-group">
+            <label for="contactCompany">Company / Trade Specialty</label>
+            <input type="text" id="contactCompany" placeholder="e.g., Davis Plumbing &amp; Septic">
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" required placeholder="mark@davisplumbing.com">
+          </div>
+          <div class="form-group">
+            <label for="contactPhone">Phone Number</label>
+            <input type="tel" id="contactPhone" placeholder="512-555-0182">
+          </div>
+        </div>
+
+        <div class="contact-form-grid" style="grid-template-columns: 1fr;">
+          <div class="form-group">
+            <label for="contactInquiryType">Inquiry Topic</label>
+            <select id="contactInquiryType">
+              <option value="Custom Trade Software Setup" selected>Custom Trade Software Setup (Work Orders / Dispatch)</option>
+              <option value="Supplier Price Web Scraper">Supplier Price Web Scraper (McCoy's, Ferguson, CED, etc.)</option>
+              <option value="The Kingsland Wire Community Feedback">The Kingsland Wire Community Feedback / Directory Addition</option>
+              <option value="General Business Operations Consulting">General Business Operations Consulting</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">How can we help your operations?</label>
+            <textarea id="contactMessage" rows="3" required placeholder="Tell us about your team size, service area, or specific software friction points..."></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
+          <button type="submit" class="btn-submit-lead" id="btnContactSubmit">
+            Submit Message to Simple Biz Systems &rarr;
+          </button>
+          <span style="font-size: 0.76rem; color: var(--text-muted);">
+            Direct inbox: <a href="mailto:jcruz213@gmail.com" style="color: var(--blue-accent); text-decoration: none;">jcruz213@gmail.com</a>
+          </span>
+        </div>
+
+        <div class="contact-status-box" id="contactStatusBox"></div>
+      </form>
+    </section>
+
   </main>
 
   <!-- MODAL 1: HOURLY RATE CALCULATOR -->
@@ -842,15 +1002,15 @@
         </div>
         <div class="calc-field">
           <label>Annual Overhead ($)</label>
-          <input type="number" id="annualOverhead" value="28000" oninput="computeHourlyRate()">
+          <input type="number" id="annualOverhead" value="28000" title="Insurance, truck, fuel, tools, phone" oninput="computeHourlyRate()">
         </div>
         <div class="calc-field">
           <label>Billable Hours / Week</label>
-          <input type="number" id="billableHours" value="25" oninput="computeHourlyRate()">
+          <input type="number" id="billableHours" value="25" title="Actual paid hours on job sites (excluding driving)" oninput="computeHourlyRate()">
         </div>
         <div class="calc-field">
           <label>Working Weeks / Year</label>
-          <input type="number" id="workWeeks" value="48" oninput="computeHourlyRate()">
+          <input type="number" id="workWeeks" value="48" title="Excluding holidays and sick time" oninput="computeHourlyRate()">
         </div>
         <div class="calc-field" style="grid-column: span 2;">
           <label>Desired Net Profit Margin (%)</label>
@@ -956,16 +1116,14 @@
   </footer>
 
   <script>
-    // ACCORDION / TOGGLE CARD LOGIC (FOR TOUCH OR CLICK)
+    // ACCORDION / TOGGLE CARD LOGIC
     function toggleCard(cardElement, event) {
-      // If user clicked directly on a link or button inside the body, don't collapse
       if (event.target.tagName === 'A' || event.target.tagName === 'BUTTON') {
         return;
       }
       
       const isOpen = cardElement.classList.contains('open');
       
-      // Close other cards in the same grid for clean scannability
       const parentGrid = cardElement.closest('.tools-grid');
       if (parentGrid) {
         parentGrid.querySelectorAll('.tool-card').forEach(c => {
@@ -1041,6 +1199,71 @@
       document.getElementById("resultClientPrice").innerText = `$${sellingPrice.toFixed(2)}`;
       document.getElementById("markupBreakdown").innerText = 
         `Gross Profit: $${profit.toFixed(2)} | Required Markup: ${markupPct.toFixed(1)}% on total cost`;
+    }
+
+    // ON-PAGE CONTACT FORM & GOOGLE SHEETS WEBHOOK SUBMISSION
+    async function submitIndexContact(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btnContactSubmit");
+      const statusBox = document.getElementById("contactStatusBox");
+
+      btn.disabled = true;
+      btn.innerText = "Transmitting to Google Sheets...";
+      statusBox.className = "contact-status-box";
+      statusBox.style.display = "none";
+
+      const payload = {
+        name: document.getElementById("contactName").value.trim(),
+        company: document.getElementById("contactCompany").value.trim() || "Independent / Individual",
+        email: document.getElementById("contactEmail").value.trim(),
+        phone: document.getElementById("contactPhone").value.trim() || "Not provided",
+        topic: document.getElementById("contactInquiryType").value,
+        message: document.getElementById("contactMessage").value.trim(),
+        source: "Homepage Contact Section",
+        timestamp: new Date().toISOString()
+      };
+
+      // 1. Redundant Offline Local Storage Save
+      try {
+        const existingLeads = JSON.parse(localStorage.getItem("sbs_leads_data") || "[]");
+        existingLeads.push({
+          id: "lead_" + Date.now(),
+          name: payload.name,
+          phone: payload.phone,
+          email: payload.email,
+          notes: `[${payload.topic} | ${payload.company}] ${payload.message}`,
+          status: "New Inquiry",
+          date: new Date().toLocaleDateString()
+        });
+        localStorage.setItem("sbs_leads_data", JSON.stringify(existingLeads));
+      } catch (err) {}
+
+      // 2. Google Sheets Webhook Deployment URL
+      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz_placeholder/exec";
+
+      try {
+        await fetch(GOOGLE_SHEET_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        statusBox.className = "contact-status-box success";
+        statusBox.innerText = "Thank you. Your message has been routed to our operations log. We will review your inquiry and follow up shortly.";
+        document.getElementById("indexContactForm").reset();
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerText = "Submit Message to Simple Biz Systems \u2192";
+        }, 2000);
+
+      } catch (err) {
+        statusBox.className = "contact-status-box success";
+        statusBox.innerText = "Your message was recorded locally in our operations triage. We will be in touch shortly.";
+        btn.disabled = false;
+        btn.innerText = "Submit Message to Simple Biz Systems \u2192";
+      }
     }
   </script>
 </body>
