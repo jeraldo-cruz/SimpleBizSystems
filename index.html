@@ -232,7 +232,7 @@
   .tool-card.revenue { border-left: 4px solid var(--blue-accent); }
   .tool-card.community { border-left: 4px solid var(--accent); }
 
-  /* HEADER BAR (ALWAYS VISIBLE) */
+  /* HEADER BAR */
   .tool-card-head {
     display: flex;
     justify-content: space-between;
@@ -921,7 +921,7 @@
 
     </section>
 
-    <!-- SECTION 5: DIRECT CONTACT & CUSTOM SYSTEMS INQUIRY (GOOGLE SHEETS INTEGRATED) -->
+    <!-- SECTION 5: DIRECT CONTACT & CUSTOM SYSTEMS INQUIRY -->
     <section class="contact-section-card" id="contactSection">
       <div class="contact-header">
         <div>
@@ -958,7 +958,7 @@
         <div class="contact-form-grid" style="grid-template-columns: 1fr;">
           <div class="form-group">
             <label for="contactInquiryType">Inquiry Topic</label>
-            <select id="contactInquiryType" name="topic">
+            <select id="contactInquiryType" name="service">
               <option value="Custom Trade Software Setup" selected>Custom Trade Software Setup (Work Orders / Dispatch)</option>
               <option value="Supplier Price Web Scraper">Supplier Price Web Scraper (McCoy's, Ferguson, CED, etc.)</option>
               <option value="The Kingsland Wire Community Feedback">The Kingsland Wire Community Feedback / Directory Addition</option>
@@ -1201,7 +1201,7 @@
         `Gross Profit: $${profit.toFixed(2)} | Required Markup: ${markupPct.toFixed(1)}% on total cost`;
     }
 
-    // ON-PAGE CONTACT FORM & GOOGLE SHEETS APPS SCRIPT WEBHOOK SUBMISSION
+    // GOOGLE APPS SCRIPT SUBMISSION WITH DIRECT QUERY PARAMETER MATCHING
     async function submitIndexContact(e) {
       e.preventDefault();
       const btn = document.getElementById("btnContactSubmit");
@@ -1216,9 +1216,8 @@
       const companyVal = document.getElementById("contactCompany").value.trim() || "Independent / Individual";
       const emailVal = document.getElementById("contactEmail").value.trim();
       const phoneVal = document.getElementById("contactPhone").value.trim() || "Not provided";
-      const topicVal = document.getElementById("contactInquiryType").value;
+      const serviceVal = document.getElementById("contactInquiryType").value;
       const messageVal = document.getElementById("contactMessage").value.trim();
-      const timestampVal = new Date().toISOString();
 
       // 1. Redundant Offline Local Storage Save
       try {
@@ -1228,35 +1227,33 @@
           name: nameVal,
           phone: phoneVal,
           email: emailVal,
-          notes: `[${topicVal} | ${companyVal}] ${messageVal}`,
+          notes: `[${serviceVal} | ${companyVal}] ${messageVal}`,
           status: "New Inquiry",
           date: new Date().toLocaleDateString()
         });
         localStorage.setItem("sbs_leads_data", JSON.stringify(existingLeads));
       } catch (err) {}
 
-      // 2. Google Apps Script Webhook Deployment URL
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
+      // 2. Google Apps Script Endpoint
+      const BASE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
-      // Build standard form-encoded parameters for e.parameter parsing
-      const formData = new URLSearchParams();
-      formData.append("name", nameVal);
-      formData.append("company", companyVal);
-      formData.append("email", emailVal);
-      formData.append("phone", phoneVal);
-      formData.append("topic", topicVal);
-      formData.append("message", messageVal);
-      formData.append("source", "Homepage Contact Section");
-      formData.append("timestamp", timestampVal);
+      // Build parameters matching the exact doGet(e) parameter names: name, company, phone, service, message, email
+      const params = new URLSearchParams();
+      params.append("name", nameVal);
+      params.append("company", companyVal);
+      params.append("email", emailVal);
+      params.append("phone", phoneVal);
+      params.append("service", serviceVal);
+      params.append("message", messageVal);
+
+      const requestUrl = `${BASE_ENDPOINT}?${params.toString()}`;
 
       try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: "POST",
+        // GET request with query parameters matching doGet(e.parameter)
+        await fetch(requestUrl, {
+          method: "GET",
           mode: "no-cors",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: formData.toString()
+          cache: "no-cache"
         });
 
         statusBox.className = "contact-status-box success";
