@@ -939,26 +939,26 @@
         <div class="contact-form-grid">
           <div class="form-group">
             <label for="contactName">Your Name</label>
-            <input type="text" id="contactName" required placeholder="e.g., Mark Davis">
+            <input type="text" id="contactName" name="name" required placeholder="e.g., Mark Davis">
           </div>
           <div class="form-group">
             <label for="contactCompany">Company / Trade Specialty</label>
-            <input type="text" id="contactCompany" placeholder="e.g., Davis Plumbing &amp; Septic">
+            <input type="text" id="contactCompany" name="company" placeholder="e.g., Davis Plumbing &amp; Septic">
           </div>
           <div class="form-group">
             <label for="contactEmail">Email Address</label>
-            <input type="email" id="contactEmail" required placeholder="mark@davisplumbing.com">
+            <input type="email" id="contactEmail" name="email" required placeholder="mark@davisplumbing.com">
           </div>
           <div class="form-group">
             <label for="contactPhone">Phone Number</label>
-            <input type="tel" id="contactPhone" placeholder="512-555-0182">
+            <input type="tel" id="contactPhone" name="phone" placeholder="512-555-0182">
           </div>
         </div>
 
         <div class="contact-form-grid" style="grid-template-columns: 1fr;">
           <div class="form-group">
             <label for="contactInquiryType">Inquiry Topic</label>
-            <select id="contactInquiryType">
+            <select id="contactInquiryType" name="topic">
               <option value="Custom Trade Software Setup" selected>Custom Trade Software Setup (Work Orders / Dispatch)</option>
               <option value="Supplier Price Web Scraper">Supplier Price Web Scraper (McCoy's, Ferguson, CED, etc.)</option>
               <option value="The Kingsland Wire Community Feedback">The Kingsland Wire Community Feedback / Directory Addition</option>
@@ -967,7 +967,7 @@
           </div>
           <div class="form-group">
             <label for="contactMessage">How can we help your operations?</label>
-            <textarea id="contactMessage" rows="3" required placeholder="Tell us about your team size, service area, or specific software friction points..."></textarea>
+            <textarea id="contactMessage" name="message" rows="3" required placeholder="Tell us about your team size, service area, or specific software friction points..."></textarea>
           </div>
         </div>
 
@@ -1201,7 +1201,7 @@
         `Gross Profit: $${profit.toFixed(2)} | Required Markup: ${markupPct.toFixed(1)}% on total cost`;
     }
 
-    // ON-PAGE CONTACT FORM & GOOGLE SHEETS WEBHOOK SUBMISSION
+    // ON-PAGE CONTACT FORM & GOOGLE SHEETS APPS SCRIPT WEBHOOK SUBMISSION
     async function submitIndexContact(e) {
       e.preventDefault();
       const btn = document.getElementById("btnContactSubmit");
@@ -1212,41 +1212,51 @@
       statusBox.className = "contact-status-box";
       statusBox.style.display = "none";
 
-      const payload = {
-        name: document.getElementById("contactName").value.trim(),
-        company: document.getElementById("contactCompany").value.trim() || "Independent / Individual",
-        email: document.getElementById("contactEmail").value.trim(),
-        phone: document.getElementById("contactPhone").value.trim() || "Not provided",
-        topic: document.getElementById("contactInquiryType").value,
-        message: document.getElementById("contactMessage").value.trim(),
-        source: "Homepage Contact Section",
-        timestamp: new Date().toISOString()
-      };
+      const nameVal = document.getElementById("contactName").value.trim();
+      const companyVal = document.getElementById("contactCompany").value.trim() || "Independent / Individual";
+      const emailVal = document.getElementById("contactEmail").value.trim();
+      const phoneVal = document.getElementById("contactPhone").value.trim() || "Not provided";
+      const topicVal = document.getElementById("contactInquiryType").value;
+      const messageVal = document.getElementById("contactMessage").value.trim();
+      const timestampVal = new Date().toISOString();
 
       // 1. Redundant Offline Local Storage Save
       try {
         const existingLeads = JSON.parse(localStorage.getItem("sbs_leads_data") || "[]");
         existingLeads.push({
           id: "lead_" + Date.now(),
-          name: payload.name,
-          phone: payload.phone,
-          email: payload.email,
-          notes: `[${payload.topic} | ${payload.company}] ${payload.message}`,
+          name: nameVal,
+          phone: phoneVal,
+          email: emailVal,
+          notes: `[${topicVal} | ${companyVal}] ${messageVal}`,
           status: "New Inquiry",
           date: new Date().toLocaleDateString()
         });
         localStorage.setItem("sbs_leads_data", JSON.stringify(existingLeads));
       } catch (err) {}
 
-      // 2. Google Sheets Webhook Deployment URL
-      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz_placeholder/exec";
+      // 2. Google Apps Script Webhook Deployment URL
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
+
+      // Build standard form-encoded parameters for e.parameter parsing
+      const formData = new URLSearchParams();
+      formData.append("name", nameVal);
+      formData.append("company", companyVal);
+      formData.append("email", emailVal);
+      formData.append("phone", phoneVal);
+      formData.append("topic", topicVal);
+      formData.append("message", messageVal);
+      formData.append("source", "Homepage Contact Section");
+      formData.append("timestamp", timestampVal);
 
       try {
-        await fetch(GOOGLE_SHEET_URL, {
+        await fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: formData.toString()
         });
 
         statusBox.className = "contact-status-box success";
@@ -1256,7 +1266,7 @@
         setTimeout(() => {
           btn.disabled = false;
           btn.innerText = "Submit Message to Simple Biz Systems \u2192";
-        }, 2000);
+        }, 2200);
 
       } catch (err) {
         statusBox.className = "contact-status-box success";
