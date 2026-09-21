@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)</title>
-<meta name="title" content="Simple Biz Systems | Operations Software & Community Utilities (Kingsland, TX)">
-<meta name="description" content="Complete suite of subscription-free trade software: field dispatch, work orders, timecards, material tracking, lead management, and free civic utilities in Kingsland, Texas.">
-<meta name="keywords" content="field dispatch software, trade contractor work orders, timecards html, materials inventory contractor, lead tracker trades, equipment maintenance tracker, job estimator html, Kingsland TX software, Highland Lakes business systems">
+<title>Free &amp; Low-Cost Business Tools for Kingsland, TX Contractors | Simple Biz Systems</title>
+<meta name="title" content="Free &amp; Low-Cost Business Tools for Kingsland, TX Contractors | Simple Biz Systems">
+<meta name="description" content="Free and low-cost field dispatch software, digital work orders, timecards, materials tracking, and community tools built for independent trade contractors in Kingsland, Marble Falls, Burnet, and Llano, Texas.">
+<meta name="keywords" content="free contractor software Kingsland TX, low cost business tools Highland Lakes, field service dispatch software Marble Falls, trade work orders Burnet TX, subcontractor timecards Llano County, construction material estimator 78639, free civic utilities Kingsland Texas, independent trades software Hill Country">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,9 +23,45 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/index.html">
-<meta property="og:title" content="Simple Biz Systems | Operations Software & Community Utilities">
-<meta property="og:description" content="Subscription-free field service tools, labor timecards, material inventory, lead management, and free public utilities across the Highland Lakes.">
+<meta property="og:title" content="Free &amp; Low-Cost Business Tools for Kingsland, TX Contractors | Simple Biz Systems">
+<meta property="og:description" content="Independent trade systems, field dispatching, invoice signoff, and free community utilities for local Hill Country businesses without software subscriptions.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- LOCAL BUSINESS & SOFTWARE SCHEMA MARKUP (EXPANDS SEO VISIBILITY) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Simple Biz Systems",
+  "image": "https://www.simplebizsystems.com/logo-icon.png",
+  "url": "https://www.simplebizsystems.com/",
+  "telephone": "325-247-5767",
+  "priceRange": "$0 - Free and Low Cost",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "RM 1431",
+    "addressLocality": "Kingsland",
+    "addressRegion": "TX",
+    "postalCode": "78639",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 30.6638,
+    "longitude": -98.4411
+  },
+  "areaServed": [
+    "Kingsland",
+    "Marble Falls",
+    "Burnet",
+    "Llano",
+    "Horseshoe Bay",
+    "Highland Lakes",
+    "Central Texas"
+  ],
+  "description": "Free and low-cost business tools, digital dispatch boards, mobile work orders, labor tracking, and civic software built for independent trade contractors."
+}
+</script>
 
 <style>
   :root { 
@@ -143,9 +179,9 @@
     color: var(--accent); 
   }
 
-  /* COMPACT HERO */
+  /* SEO-OPTIMIZED HERO */
   .hero-compact {
-    padding: 24px 0 14px 0;
+    padding: 26px 0 16px 0;
   }
   .hero-tag {
     font-size: 0.72rem;
@@ -160,189 +196,234 @@
     margin-bottom: 6px;
   }
   .hero-compact h1 {
-    font-size: clamp(1.75rem, 3.2vw, 2.3rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.45rem);
     font-weight: 800;
     color: var(--primary);
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
   .hero-compact p {
-    font-size: 0.94rem;
+    font-size: 0.96rem;
     color: var(--text-muted);
-    max-width: 860px;
-    margin: 0 0 12px 0;
-    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 0 14px 0;
+    line-height: 1.55;
   }
   .principle-banner {
     background: #ffffff;
     border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
+    border-left: 4px solid var(--accent);
     border-radius: 6px;
-    padding: 10px 14px;
-    font-size: 0.86rem;
+    padding: 12px 16px;
+    font-size: 0.88rem;
     color: #334155;
-    line-height: 1.45;
+    line-height: 1.5;
+    box-shadow: var(--card-shadow);
   }
   .principle-banner strong { color: var(--primary); }
 
-  /* SECTION LABELS */
-  .section-headline {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 24px 0 12px 0;
+  /* SEO LOCATION & LOCAL BUSINESS DISCLOSURE */
+  .seo-keyword-callout {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    background: #f1f5f9;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    line-height: 1.45;
+  }
+
+  /* CATEGORY LEVEL ACCORDION WRAPPERS */
+  .categories-stack {
+    margin-top: 24px;
     display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-headline::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+    flex-direction: column;
+    gap: 14px;
   }
 
-  /* COMPACT ACCORDION / HOVER GRID */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 12px;
-  }
-
-  /* INTERACTIVE COMPACT CARD */
-  .tool-card {
+  .category-accordion {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 16px;
+    border-radius: 10px;
     box-shadow: var(--card-shadow);
+    overflow: hidden;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    cursor: pointer;
-    position: relative;
-    user-select: none;
   }
-  .tool-card:hover,
-  .tool-card.open {
+  .category-accordion:hover,
+  .category-accordion.open {
     border-color: #cbd5e1;
     box-shadow: var(--card-shadow-lg);
   }
-  .tool-card.dispatch { border-left: 4px solid var(--primary); }
-  .tool-card.operations { border-left: 4px solid var(--primary-light); }
-  .tool-card.revenue { border-left: 4px solid var(--blue-accent); }
-  .tool-card.community { border-left: 4px solid var(--accent); }
 
-  /* HEADER BAR */
-  .tool-card-head {
+  .category-accordion.theme-dispatch { border-left: 5px solid var(--primary); }
+  .category-accordion.theme-operations { border-left: 5px solid var(--primary-light); }
+  .category-accordion.theme-revenue { border-left: 5px solid var(--blue-accent); }
+  .category-accordion.theme-community { border-left: 5px solid var(--accent); }
+
+  /* CATEGORY HEADER (ALWAYS VISIBLE & INTERACTIVE) */
+  .category-header {
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    background: #ffffff;
+    transition: background 0.15s ease;
   }
-  .tool-card-titles {
+  .category-header:hover {
+    background: #f8fafc;
+  }
+  .category-titles {
     flex: 1;
   }
-  .card-badge {
-    font-size: 0.65rem;
+  .category-super-tag {
+    font-size: 0.68rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     display: block;
     margin-bottom: 2px;
   }
-  .badge-dispatch { color: var(--primary); }
-  .badge-operations { color: var(--primary-light); }
-  .badge-revenue { color: var(--blue-accent); }
-  .badge-community { color: var(--accent); }
+  .tag-dispatch { color: var(--primary); }
+  .tag-operations { color: var(--primary-light); }
+  .tag-revenue { color: var(--blue-accent); }
+  .tag-community { color: var(--accent); }
 
-  .tool-card-head h3 {
-    margin: 0;
-    font-size: 1.02rem;
+  .category-header h2 {
+    margin: 0 0 2px 0;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
     line-height: 1.25;
   }
-  .toggle-indicator {
-    font-size: 0.72rem;
-    font-weight: 700;
+  .category-subtext {
+    font-size: 0.82rem;
     color: var(--text-muted);
-    background: #f1f5f9;
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-  .tool-card:hover .toggle-indicator,
-  .tool-card.open .toggle-indicator {
-    background: #e2e8f0;
-    color: var(--primary);
+    display: block;
   }
 
-  /* EXPANDABLE BODY */
-  .tool-card-body {
+  .category-badge-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .count-indicator {
+    font-size: 0.74rem;
+    font-weight: 800;
+    color: var(--primary);
+    background: #e0f2fe;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .expand-pill {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .category-accordion:hover .expand-pill,
+  .category-accordion.open .expand-pill {
+    background: var(--primary);
+    color: #ffffff;
+  }
+
+  /* CATEGORY TOOLS BODY (HIDDEN BY DEFAULT, EXPANDS ON HOVER OR CLICK) */
+  .category-tools-body {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.25s cubic-bezier(0, 1, 0, 1), opacity 0.2s ease-in, margin-top 0.2s ease;
-    margin-top: 0;
-    cursor: default;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.25s ease-in, padding 0.2s ease;
+    padding: 0 20px;
+    background: #f8fafc;
+    border-top: 1px dashed transparent;
   }
 
+  /* DESKTOP HOVER & TOGGLED EXPANSION */
   @media (hover: hover) and (pointer: fine) {
-    .tool-card:hover .tool-card-body {
-      max-height: 300px;
+    .category-accordion:hover .category-tools-body {
+      max-height: 800px;
       opacity: 1;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border-subtle);
+      padding: 16px 20px 20px 20px;
+      border-top-color: var(--border);
     }
   }
-  .tool-card.open .tool-card-body {
-    max-height: 300px;
+  .category-accordion.open .category-tools-body {
+    max-height: 800px;
     opacity: 1;
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--border-subtle);
+    padding: 16px 20px 20px 20px;
+    border-top-color: var(--border);
   }
 
-  .tool-card-body p {
-    font-size: 0.84rem;
+  /* INTERNAL COMPACT TOOLS GRID */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 12px;
+  }
+
+  .tool-item-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .tool-item-card:hover {
+    box-shadow: var(--card-shadow);
+    transform: translateY(-1px);
+  }
+
+  .tool-item-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.3;
+  }
+  .tool-item-card p {
+    font-size: 0.82rem;
     color: #475569;
     line-height: 1.45;
     margin: 0 0 10px 0;
   }
-  .features-list {
+  .tool-bullets {
     list-style: none;
     padding: 0;
     margin: 0 0 12px 0;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
-  .features-list li {
+  .tool-bullets li {
     padding: 2px 0;
     color: #334155;
   }
-  .features-list li strong {
+  .tool-bullets li strong {
     color: var(--primary);
   }
 
-  .action-btn-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 6px;
-  }
   .tool-action-btn {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 800;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     background: #f1f5f9;
     color: var(--primary);
     transition: background 0.15s ease, color 0.15s ease;
+    align-self: flex-start;
   }
   .tool-action-btn:hover {
     background: var(--primary);
@@ -435,12 +516,6 @@
     background: var(--green-surface);
     border: 1px solid var(--green-border);
     color: #15803d;
-  }
-  .contact-status-box.error {
-    display: block;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #b91c1c;
   }
 
   /* MODALS FOR ON-PAGE CALCULATORS */
@@ -587,6 +662,8 @@
     .tools-grid { grid-template-columns: 1fr; }
     .footer-columns { grid-template-columns: 1fr; }
     .calc-form-grid { grid-template-columns: 1fr; }
+    .category-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .category-badge-action { align-self: flex-end; }
   }
 </style>
 </head>
@@ -594,7 +671,7 @@
 
   <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
-    Simple Biz Systems &bull; Complete subscription-free operational suite built in Kingsland, TX.
+    Simple Biz Systems &bull; Free and low-cost business tools built in Kingsland, TX for Highland Lakes trades.
   </div>
 
   <!-- NAVIGATION -->
@@ -620,319 +697,294 @@
 
   <main class="container">
 
-    <!-- COMPACT HERO -->
+    <!-- SEO-OPTIMIZED HERO -->
     <header class="hero-compact">
-      <span class="hero-tag">Kingsland, Texas &bull; Highland Lakes</span>
-      <h1>Operational Systems &amp; Local Tools</h1>
+      <span class="hero-tag">Kingsland, Texas &bull; Highland Lakes Business Systems</span>
+      <h1>Free &amp; Low-Cost Business Tools for Local Trades</h1>
       <p>
-        An offline-resilient operational suite for independent trade contractors and free public utilities for the Highland Lakes. Hover or click any tool to view details and launch.
+        Simple Biz Systems builds subscription-free, offline-resilient operations software for independent trade contractors, plumbers, electricians, and mechanics in Kingsland (78639), Marble Falls (78654), Burnet (78611), and Llano (78643). Hover or click any category below to reveal the tools.
       </p>
       <div class="principle-banner">
-        <strong>Local-First Architecture:</strong> Zero monthly subscription fees, zero tracking cookies, and offline-capable storage that works even when cellular service dies in rural metal shops.
+        <strong>Stop Renting Your Business Systems:</strong> Run your field service, dispatching, and invoicing without monthly per-truck software fees. All tools save data directly to your device storage, running reliably even when cellular service drops in rural Hill Country metal buildings.
+      </div>
+
+      <div class="seo-keyword-callout">
+        <strong>Highland Lakes Service Directory:</strong> Trade Operations Software &bull; Free Public Community Wire &bull; Local Web and Google Business Setup Support &bull; Kingsland, Marble Falls, Burnet, Llano, Horseshoe Bay, Texas.
       </div>
     </header>
 
-    <!-- SECTION 1: FIELD SERVICE & DISPATCH -->
-    <h2 class="section-headline">1. Field Service &amp; Dispatch Systems</h2>
-    <section class="tools-grid">
-      
-      <!-- TOOL: WORK ORDERS -->
-      <article class="tool-card dispatch" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-dispatch">Field Billing</span>
-            <h3>Digital Work Orders &amp; Signoff</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Complete service calls, capture customer touch signatures on site, and export professional itemized PDF invoices directly from any phone without per-truck monthly fees.</p>
-          <ul class="features-list">
-            <li><strong>Touch Signature:</strong> On-screen signing without extra hardware.</li>
-            <li><strong>Offline Storage:</strong> Saves invoices locally when cell signal drops.</li>
-            <li><strong>Instant PDF:</strong> Itemized invoices with tax calculations.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="workorders.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Work Orders &rarr;</a>
-          </div>
-        </div>
-      </article>
+    <!-- ACCORDION CATEGORIES (TOOLS HIDDEN UNTIL HOVER OR CLICK) -->
+    <div class="categories-stack">
 
-      <!-- TOOL: DISPATCH BOARD -->
-      <article class="tool-card dispatch" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-dispatch">Fleet Logistics</span>
-            <h3>Field Dispatch &amp; Route Board</h3>
+      <!-- CATEGORY 1: FIELD SERVICE & DISPATCH -->
+      <section class="category-accordion theme-dispatch" onclick="toggleCategory(this, event)">
+        <div class="category-header">
+          <div class="category-titles">
+            <span class="category-super-tag tag-dispatch">Section 1 &bull; Fleet Logistics</span>
+            <h2>Field Service &amp; Dispatch Systems</h2>
+            <span class="category-subtext">Work order signoff, interactive route mapping, and mobile driver turn-by-turn consoles.</span>
           </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Visual map dispatching for trade rigs across Kingsland, Marble Falls, Burnet, and Llano. Color-code trucks, calculate arrival ETAs, and monitor corridor gas prices.</p>
-          <ul class="features-list">
-            <li><strong>Visual Map Routing:</strong> Interactive position pins via Leaflet.</li>
-            <li><strong>Truck Color Coding:</strong> Visual crew and truck differentiation.</li>
-            <li><strong>Corridor Fuel Index:</strong> Regional gas and diesel price monitor.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="dispatch.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Dispatch Board &rarr;</a>
+          <div class="category-badge-action">
+            <span class="count-indicator">3 Tools</span>
+            <span class="expand-pill">View Tools &darr;</span>
           </div>
         </div>
-      </article>
+        
+        <div class="category-tools-body">
+          <div class="tools-grid">
+            
+            <!-- TOOL: WORK ORDERS -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Digital Work Orders &amp; Signoff</h3>
+                <p>Complete service calls, capture customer touch signatures on site, and export professional itemized PDF invoices directly from any smartphone without per-truck monthly fees.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Touch Signature:</strong> Screen signing without extra hardware.</li>
+                  <li><strong>Offline Storage:</strong> Saves invoices locally when cell signal drops.</li>
+                  <li><strong>Instant PDF:</strong> Itemized invoices with tax calculations.</li>
+                </ul>
+              </div>
+              <a href="workorders.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Work Orders &rarr;</a>
+            </article>
 
-      <!-- TOOL: MOBILE TECH CONSOLE -->
-      <article class="tool-card dispatch" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-dispatch">Field Driver View</span>
-            <h3>Mobile Technician Console</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Streamlined mobile phone interface for drivers in the field. View assigned daily stops, tap for turn-by-turn navigation, and update job status in real time.</p>
-          <ul class="features-list">
-            <li><strong>One-Tap Directions:</strong> Direct GPS navigation to customer sites.</li>
-            <li><strong>Status Toggles:</strong> En Route, Working On Site, and Completed buttons.</li>
-            <li><strong>Lightweight Footprint:</strong> Fast loads over weak cellular connections.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="driver.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Tech Console &rarr;</a>
-          </div>
-        </div>
-      </article>
+            <!-- TOOL: DISPATCH BOARD -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Field Dispatch &amp; Route Board</h3>
+                <p>Visual map dispatching for trade rigs across Kingsland, Marble Falls, Burnet, and Llano. Color-code trucks, calculate arrival ETAs, and monitor corridor gas prices.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Visual Map Routing:</strong> Interactive position pins via Leaflet.</li>
+                  <li><strong>Truck Color Coding:</strong> Visual crew and truck differentiation.</li>
+                  <li><strong>Corridor Fuel Index:</strong> Regional gas and diesel price monitor.</li>
+                </ul>
+              </div>
+              <a href="dispatch.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Dispatch Board &rarr;</a>
+            </article>
 
-    </section>
+            <!-- TOOL: MOBILE TECH CONSOLE -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Mobile Technician Console</h3>
+                <p>Streamlined mobile phone interface for drivers in the field. View assigned daily stops, tap for turn-by-turn navigation, and update job status in real time.</p>
+                <ul class="tool-bullets">
+                  <li><strong>One-Tap Directions:</strong> Direct GPS navigation to customer sites.</li>
+                  <li><strong>Status Toggles:</strong> En Route, Working On Site, and Completed buttons.</li>
+                  <li><strong>Lightweight Footprint:</strong> Fast loads over weak cellular connections.</li>
+                </ul>
+              </div>
+              <a href="driver.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Tech Console &rarr;</a>
+            </article>
 
-    <!-- SECTION 2: OPERATIONS, LABOR & FLEET -->
-    <h2 class="section-headline">2. Operations, Labor &amp; Fleet Assets</h2>
-    <section class="tools-grid">
-      
-      <!-- TOOL: TIMECARDS -->
-      <article class="tool-card operations" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-operations">Payroll &amp; Crew Time</span>
-            <h3>Crew Labor &amp; Timecards</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Clock in crew members, log job travel vs on-site wrench time, and generate accurate weekly payroll breakdown sheets without per-employee tracking apps.</p>
-          <ul class="features-list">
-            <li><strong>Crew Time Punching:</strong> Start, pause, and log job travel time.</li>
-            <li><strong>Job Allocation:</strong> Assign hours directly to specific work orders.</li>
-            <li><strong>Export Ready:</strong> CSV and printable payroll review sheets.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="timecards.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Timecards &rarr;</a>
           </div>
         </div>
-      </article>
+      </section>
 
-      <!-- TOOL: MATERIALS & TRUCK STOCK -->
-      <article class="tool-card operations" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-operations">Inventory Management</span>
-            <h3>Materials &amp; Truck Stock</h3>
+      <!-- CATEGORY 2: OPERATIONS, LABOR & FLEET -->
+      <section class="category-accordion theme-operations" onclick="toggleCategory(this, event)">
+        <div class="category-header">
+          <div class="category-titles">
+            <span class="category-super-tag tag-operations">Section 2 &bull; Shop &amp; Labor</span>
+            <h2>Operations, Labor &amp; Fleet Assets</h2>
+            <span class="category-subtext">Crew time tracking, truck stock replenishment thresholds, and equipment maintenance logs.</span>
           </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Track wholesale materials, truck inventory, and commonly used trade fittings. Prevent forgotten material billings and monitor minimum truck restock alerts.</p>
-          <ul class="features-list">
-            <li><strong>Van Restock Alerts:</strong> Flags inventory when quantities run low.</li>
-            <li><strong>Wholesale Price Log:</strong> Quick reference for copper, PVC, and wire.</li>
-            <li><strong>Work Order Sync:</strong> Deduct materials used on service calls.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="materials.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Materials &rarr;</a>
+          <div class="category-badge-action">
+            <span class="count-indicator">3 Tools</span>
+            <span class="expand-pill">View Tools &darr;</span>
           </div>
         </div>
-      </article>
+        
+        <div class="category-tools-body">
+          <div class="tools-grid">
+            
+            <!-- TOOL: TIMECARDS -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Crew Labor &amp; Timecards</h3>
+                <p>Clock in crew members, log job travel vs on-site wrench time, and generate accurate weekly payroll breakdown sheets without per-employee tracking apps.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Crew Time Punching:</strong> Start, pause, and log job travel time.</li>
+                  <li><strong>Job Allocation:</strong> Assign hours directly to specific work orders.</li>
+                  <li><strong>Export Ready:</strong> CSV and printable payroll review sheets.</li>
+                </ul>
+              </div>
+              <a href="timecards.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Timecards &rarr;</a>
+            </article>
 
-      <!-- TOOL: EQUIPMENT & FLEET MAINTENANCE -->
-      <article class="tool-card operations" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-operations">Asset Health</span>
-            <h3>Equipment &amp; Asset Tracker</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Track service intervals, oil changes, generator service, and tool inspections for trailers, excavators, and trade vans across your service fleet.</p>
-          <ul class="features-list">
-            <li><strong>Service Logging:</strong> Track mileage and engine hour maintenance.</li>
-            <li><strong>Asset Assignment:</strong> Track which technician holds specialized tools.</li>
-            <li><strong>Inspection Logs:</strong> Document records for insurance audits.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="equipment.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Equipment &rarr;</a>
-          </div>
-        </div>
-      </article>
+            <!-- TOOL: MATERIALS & TRUCK STOCK -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Materials &amp; Truck Stock</h3>
+                <p>Track wholesale materials, truck inventory, and commonly used trade fittings. Prevent forgotten material billings and monitor minimum truck restock alerts.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Van Restock Alerts:</strong> Flags inventory when quantities run low.</li>
+                  <li><strong>Wholesale Price Log:</strong> Quick reference for copper, PVC, and wire.</li>
+                  <li><strong>Work Order Sync:</strong> Deduct materials used on service calls.</li>
+                </ul>
+              </div>
+              <a href="materials.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Materials &rarr;</a>
+            </article>
 
-    </section>
+            <!-- TOOL: EQUIPMENT & FLEET MAINTENANCE -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Equipment &amp; Asset Tracker</h3>
+                <p>Track service intervals, oil changes, generator service, and tool inspections for trailers, excavators, and trade vans across your service fleet.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Service Logging:</strong> Track mileage and engine hour maintenance.</li>
+                  <li><strong>Asset Assignment:</strong> Track which technician holds specialized tools.</li>
+                  <li><strong>Inspection Logs:</strong> Document records for insurance audits.</li>
+                </ul>
+              </div>
+              <a href="equipment.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Equipment &rarr;</a>
+            </article>
 
-    <!-- SECTION 3: REVENUE, LEADS & ESTIMATING -->
-    <h2 class="section-headline">3. Revenue, Leads &amp; Job Estimating</h2>
-    <section class="tools-grid">
-      
-      <!-- TOOL: LEADS TRACKER -->
-      <article class="tool-card revenue" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-revenue">Sales Pipeline</span>
-            <h3>Lead Tracker &amp; Inquiries</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Capture incoming customer calls, record job site addresses, track follow-up dates, and convert quotes into active work orders without paying for enterprise CRM licenses.</p>
-          <ul class="features-list">
-            <li><strong>Visual Stages:</strong> New Call, Estimating, Won, and Scheduled.</li>
-            <li><strong>Follow-Up Reminders:</strong> Never lose an unreturned customer voicemail.</li>
-            <li><strong>One-Click Convert:</strong> Push won leads directly into dispatch.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="leads.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Leads &rarr;</a>
           </div>
         </div>
-      </article>
+      </section>
 
-      <!-- TOOL: ESTIMATOR -->
-      <article class="tool-card revenue" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-revenue">Bid Formulation &bull; ZIP Lookup</span>
-            <h3>Job Estimator &amp; Material Rates</h3>
+      <!-- CATEGORY 3: REVENUE, LEADS & ESTIMATING -->
+      <section class="category-accordion theme-revenue" onclick="toggleCategory(this, event)">
+        <div class="category-header">
+          <div class="category-titles">
+            <span class="category-super-tag tag-revenue">Section 3 &bull; Pricing &amp; Bids</span>
+            <h2>Revenue, Leads &amp; Job Estimating</h2>
+            <span class="category-subtext">Sales pipeline boards, regional ZIP code material rates, and margin calculators.</span>
           </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Build comprehensive bids with regional ZIP code material rates, live supplier links (McCoy's, Ferguson, Ingram Readymix), and clean PDF exports.</p>
-          <ul class="features-list">
-            <li><strong>ZIP Code Pricing:</strong> Regional freight modifiers across Texas.</li>
-            <li><strong>Supplier Drawers:</strong> Direct links to Highland Lakes suppliers.</li>
-            <li><strong>Client Proposal PDF:</strong> Clean customer-ready estimates.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="estimator.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Estimator &rarr;</a>
+          <div class="category-badge-action">
+            <span class="count-indicator">3 Tools</span>
+            <span class="expand-pill">View Tools &darr;</span>
           </div>
         </div>
-      </article>
+        
+        <div class="category-tools-body">
+          <div class="tools-grid">
+            
+            <!-- TOOL: LEADS TRACKER -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Lead Tracker &amp; Inquiries</h3>
+                <p>Capture incoming customer calls, record job site addresses, track follow-up dates, and convert quotes into active work orders without paying for enterprise CRM licenses.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Visual Stages:</strong> New Call, Estimating, Won, and Scheduled.</li>
+                  <li><strong>Follow-Up Reminders:</strong> Never lose an unreturned customer voicemail.</li>
+                  <li><strong>One-Click Convert:</strong> Push won leads directly into dispatch.</li>
+                </ul>
+              </div>
+              <a href="leads.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Leads &rarr;</a>
+            </article>
 
-      <!-- TOOL: PRICING CALCULATORS -->
-      <article class="tool-card revenue" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-revenue">Financial Modeling</span>
-            <h3>Hourly Rate &amp; Markup Tools</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Interactive on-page calculators to determine your true breakeven cost per billable hour and calculate required client prices using margin vs markup formulas.</p>
-          <ul class="features-list">
-            <li><strong>Breakeven Modeling:</strong> Overhead, truck costs, and driving time.</li>
-            <li><strong>Margin vs Markup:</strong> Eliminates common contractor profit losses.</li>
-            <li><strong>Instant Calculations:</strong> Interactive popups ready anytime.</li>
-          </ul>
-          <div class="action-btn-row">
-            <button type="button" class="tool-action-btn" onclick="event.stopPropagation(); openHourlyModal()">Hourly Rate &rarr;</button>
-            <button type="button" class="tool-action-btn" onclick="event.stopPropagation(); openMarkupModal()">Markup Tool &rarr;</button>
-          </div>
-        </div>
-      </article>
+            <!-- TOOL: ESTIMATOR -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Job Estimator &amp; Material Rates</h3>
+                <p>Build comprehensive bids with regional ZIP code material rates, live supplier links (McCoy's, Ferguson, Ingram Readymix), and clean PDF exports.</p>
+                <ul class="tool-bullets">
+                  <li><strong>ZIP Code Pricing:</strong> Regional freight modifiers across Texas.</li>
+                  <li><strong>Supplier Drawers:</strong> Direct links to Highland Lakes suppliers.</li>
+                  <li><strong>Client Proposal PDF:</strong> Clean customer-ready estimates.</li>
+                </ul>
+              </div>
+              <a href="estimator.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Estimator &rarr;</a>
+            </article>
 
-    </section>
+            <!-- TOOL: PRICING CALCULATORS -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Hourly Rate &amp; Markup Tools</h3>
+                <p>Interactive on-page calculators to determine your true breakeven cost per billable hour and calculate required client prices using margin vs markup formulas.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Breakeven Modeling:</strong> Overhead, truck costs, and driving time.</li>
+                  <li><strong>Margin vs Markup:</strong> Eliminates common contractor profit losses.</li>
+                  <li><strong>Instant Calculations:</strong> Interactive popups ready anytime.</li>
+                </ul>
+              </div>
+              <div style="display: flex; gap: 8px; margin-top: auto; padding-top: 6px;">
+                <button type="button" class="tool-action-btn" onclick="event.stopPropagation(); openHourlyModal()">Hourly Rate &rarr;</button>
+                <button type="button" class="tool-action-btn" onclick="event.stopPropagation(); openMarkupModal()">Markup Tool &rarr;</button>
+              </div>
+            </article>
 
-    <!-- SECTION 4: FREE COMMUNITY & CIVIC UTILITIES -->
-    <h2 class="section-headline">4. Free Public &amp; Community Utilities</h2>
-    <section class="tools-grid">
-      
-      <!-- TOOL: KINGSLAND WIRE -->
-      <article class="tool-card community" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-community">Civic Bulletin &bull; Zero Ads</span>
-            <h3>The Kingsland Wire</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Live civic bulletin aggregating regional weather forecasts, real-time Lake Buchanan and Lake LBJ water levels, Burnet and Llano burn bans, and public lake access points.</p>
-          <ul class="features-list">
-            <li><strong>Live Hydrology:</strong> Lake Buchanan elevation via Water Data for Texas.</li>
-            <li><strong>7-Day Weather:</strong> Clean Open-Meteo temperature and condition feed.</li>
-            <li><strong>Community Directory:</strong> Filterable civic contacts, ramps, and parks.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="kingslandnews.html" class="tool-action-btn" onclick="event.stopPropagation()">Open The Wire &rarr;</a>
           </div>
         </div>
-      </article>
+      </section>
 
-      <!-- TOOL: DOCUMENT TRIAGE -->
-      <article class="tool-card community" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-community">Family Resource &bull; Private</span>
-            <h3>Critical Document Readiness Triage</h3>
+      <!-- CATEGORY 4: FREE COMMUNITY & CIVIC UTILITIES -->
+      <section class="category-accordion theme-community" onclick="toggleCategory(this, event)">
+        <div class="category-header">
+          <div class="category-titles">
+            <span class="category-super-tag tag-community">Section 4 &bull; 100% Free Public Tools</span>
+            <h2>Free Community &amp; Civic Utilities</h2>
+            <span class="category-subtext">Live Highland Lakes hydrology, document readiness triage, and student study planners.</span>
           </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Preparing paperwork for Texas SNAP, CEAP utility bill relief, or Llano/Burnet county assistance? Audit your paperwork offline and generate an itemized 1-page packet cover sheet.</p>
-          <ul class="features-list">
-            <li><strong>PO Box Check:</strong> Flags physical 911 address requirements.</li>
-            <li><strong>Program Presets:</strong> SNAP, utility relief, and DPS ID requirements.</li>
-            <li><strong>Case Worker Sheet:</strong> Exports an itemized inventory cover (PDF).</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="checklist.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Checklist &rarr;</a>
+          <div class="category-badge-action">
+            <span class="count-indicator">3 Tools</span>
+            <span class="expand-pill">View Tools &darr;</span>
           </div>
         </div>
-      </article>
+        
+        <div class="category-tools-body">
+          <div class="tools-grid">
+            
+            <!-- TOOL: KINGSLAND WIRE -->
+            <article class="tool-item-card">
+              <div>
+                <h3>The Kingsland Wire</h3>
+                <p>Live civic bulletin aggregating regional weather forecasts, real-time Lake Buchanan and Lake LBJ water levels, Burnet and Llano burn bans, and public lake access points.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Live Hydrology:</strong> Lake Buchanan elevation via Water Data for Texas.</li>
+                  <li><strong>7-Day Weather:</strong> Clean Open-Meteo temperature and condition feed.</li>
+                  <li><strong>Community Directory:</strong> Filterable civic contacts, ramps, and parks.</li>
+                </ul>
+              </div>
+              <a href="kingslandnews.html" class="tool-action-btn" onclick="event.stopPropagation()">Open The Wire &rarr;</a>
+            </article>
 
-      <!-- TOOL: STUDY PLANNER -->
-      <article class="tool-card community" onclick="toggleCard(this, event)">
-        <div class="tool-card-head">
-          <div class="tool-card-titles">
-            <span class="card-badge badge-community">Student Tool &bull; Zero Login</span>
-            <h3>Student Assignment Backwards Planner</h3>
-          </div>
-          <span class="toggle-indicator">View Details</span>
-        </div>
-        <div class="tool-card-body">
-          <p>Free deadline calculator for students. Enter an assignment due date and archetype to automatically calculate spaced research, drafting, and review milestones.</p>
-          <ul class="features-list">
-            <li><strong>Pacing Decomposition:</strong> Prevents last-minute all-nighter stress.</li>
-            <li><strong>Calendar Export:</strong> One-click sync to phone calendars (.ics file).</li>
-            <li><strong>Printable Sheet:</strong> 1-page milestone checklist for binders or desks.</li>
-          </ul>
-          <div class="action-btn-row">
-            <a href="studyplan.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Planner &rarr;</a>
-          </div>
-        </div>
-      </article>
+            <!-- TOOL: DOCUMENT TRIAGE -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Critical Document Readiness Triage</h3>
+                <p>Preparing paperwork for Texas SNAP, CEAP utility bill relief, or Llano/Burnet county assistance? Audit your paperwork offline and generate an itemized 1-page packet cover sheet.</p>
+                <ul class="tool-bullets">
+                  <li><strong>PO Box Check:</strong> Flags physical 911 address requirements.</li>
+                  <li><strong>Program Presets:</strong> SNAP, utility relief, and DPS ID requirements.</li>
+                  <li><strong>Case Worker Sheet:</strong> Exports an itemized inventory cover (PDF).</li>
+                </ul>
+              </div>
+              <a href="checklist.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Checklist &rarr;</a>
+            </article>
 
-    </section>
+            <!-- TOOL: STUDY PLANNER -->
+            <article class="tool-item-card">
+              <div>
+                <h3>Student Assignment Backwards Planner</h3>
+                <p>Free deadline calculator for students. Enter an assignment due date and archetype to automatically calculate spaced research, drafting, and review milestones.</p>
+                <ul class="tool-bullets">
+                  <li><strong>Pacing Decomposition:</strong> Prevents last-minute all-nighter stress.</li>
+                  <li><strong>Calendar Export:</strong> One-click sync to phone calendars (.ics file).</li>
+                  <li><strong>Printable Sheet:</strong> 1-page milestone checklist for binders or desks.</li>
+                </ul>
+              </div>
+              <a href="studyplan.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Planner &rarr;</a>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
 
     <!-- SECTION 5: DIRECT CONTACT & CUSTOM SYSTEMS INQUIRY -->
     <section class="contact-section-card" id="contactSection">
       <div class="contact-header">
         <div>
-          <h2>Get in Touch &bull; Custom Operations &amp; Scraper Setup</h2>
+          <h2>Get in Touch &bull; Free / Low-Cost Tools &amp; Local Web Support</h2>
           <span>Connect directly with Jeraldo Cruz in Kingsland, Texas.</span>
         </div>
         <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent);">Direct Support &bull; Zero Spam</span>
       </div>
 
       <p style="font-size: 0.88rem; color: #475569; margin: 0 0 16px 0; line-height: 1.5;">
-        Need a customized field workflow for your trade crew, a private web scraper to pull daily pricing from your wholesale supplier accounts, or have suggestions for The Kingsland Wire? Send a note below.
+        Need a hand with your business website or dispatch workflows? We offer free or low-cost support for local contractors and independent shops in Kingsland, Marble Falls, Burnet, and Llano. Whether you need a simple website tune-up, Google Business listing help, or a private web scraper for wholesale supplier pricing, send a message below.
       </p>
 
       <form id="indexContactForm" onsubmit="submitIndexContact(event)">
@@ -959,7 +1011,8 @@
           <div class="form-group">
             <label for="contactInquiryType">Inquiry Topic</label>
             <select id="contactInquiryType" name="service">
-              <option value="Custom Trade Software Setup" selected>Custom Trade Software Setup (Work Orders / Dispatch)</option>
+              <option value="Basic Software Systems / Trade Tools" selected>Basic Software Systems / Trade Tools (Work Orders / Dispatch)</option>
+              <option value="Local Website Support (Free / Low-Cost)">Local Website Support (Free / Low-Cost)</option>
               <option value="Supplier Price Web Scraper">Supplier Price Web Scraper (McCoy's, Ferguson, CED, etc.)</option>
               <option value="The Kingsland Wire Community Feedback">The Kingsland Wire Community Feedback / Directory Addition</option>
               <option value="General Business Operations Consulting">General Business Operations Consulting</option>
@@ -1116,29 +1169,27 @@
   </footer>
 
   <script>
-    // ACCORDION / TOGGLE CARD LOGIC
-    function toggleCard(cardElement, event) {
-      if (event.target.tagName === 'A' || event.target.tagName === 'BUTTON') {
+    // CATEGORY LEVEL ACCORDION TOGGLE (FOR CLICK / TOUCH)
+    function toggleCategory(accordionElement, event) {
+      if (event.target.tagName === 'A' || event.target.tagName === 'BUTTON' || event.target.closest('.tool-item-card')) {
         return;
       }
       
-      const isOpen = cardElement.classList.contains('open');
+      const isOpen = accordionElement.classList.contains('open');
       
-      const parentGrid = cardElement.closest('.tools-grid');
-      if (parentGrid) {
-        parentGrid.querySelectorAll('.tool-card').forEach(c => {
-          if (c !== cardElement) {
-            c.classList.remove('open');
-            const ind = c.querySelector('.toggle-indicator');
-            if (ind) ind.innerText = 'View Details';
-          }
-        });
-      }
+      // Close other categories in the stack
+      document.querySelectorAll('.category-accordion').forEach(c => {
+        if (c !== accordionElement) {
+          c.classList.remove('open');
+          const pill = c.querySelector('.expand-pill');
+          if (pill) pill.innerHTML = 'View Tools &darr;';
+        }
+      });
 
-      cardElement.classList.toggle('open', !isOpen);
-      const indicator = cardElement.querySelector('.toggle-indicator');
-      if (indicator) {
-        indicator.innerText = !isOpen ? 'Close' : 'View Details';
+      accordionElement.classList.toggle('open', !isOpen);
+      const pill = accordionElement.querySelector('.expand-pill');
+      if (pill) {
+        pill.innerHTML = !isOpen ? 'Close Tools &uarr;' : 'View Tools &darr;';
       }
     }
 
@@ -1237,7 +1288,7 @@
       // 2. Google Apps Script Endpoint
       const BASE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
-      // Build parameters matching the exact doGet(e) parameter names: name, company, phone, service, message, email
+      // Build parameters matching doGet(e.parameter)
       const params = new URLSearchParams();
       params.append("name", nameVal);
       params.append("company", companyVal);
@@ -1249,7 +1300,6 @@
       const requestUrl = `${BASE_ENDPOINT}?${params.toString()}`;
 
       try {
-        // GET request with query parameters matching doGet(e.parameter)
         await fetch(requestUrl, {
           method: "GET",
           mode: "no-cors",
