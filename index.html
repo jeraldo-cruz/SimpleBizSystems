@@ -128,7 +128,7 @@
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
-    padding: 10px 0; 
+    padding: 12px 0; 
     position: sticky;
     top: 0;
     z-index: 500;
@@ -161,17 +161,17 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 14px; 
+    gap: 20px; 
     flex-wrap: wrap;
     justify-content: flex-end;
   }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.86rem; 
+    font-weight: 700; 
+    font-size: 0.9rem; 
     transition: color 0.15s ease;
-    padding: 2px 2px;
+    padding: 4px 2px;
     white-space: nowrap;
   }
   .nav-links a:hover,
@@ -262,7 +262,7 @@
   .category-accordion.theme-revenue { border-left: 5px solid var(--blue-accent); }
   .category-accordion.theme-community { border-left: 5px solid var(--accent); }
 
-  /* CATEGORY HEADER (ALWAYS VISIBLE & INTERACTIVE) */
+  /* CATEGORY HEADER */
   .category-header {
     padding: 16px 20px;
     display: flex;
@@ -335,7 +335,7 @@
     color: #ffffff;
   }
 
-  /* CATEGORY TOOLS BODY (HIDDEN BY DEFAULT, EXPANDS ON HOVER OR CLICK) */
+  /* CATEGORY TOOLS BODY */
   .category-tools-body {
     max-height: 0;
     opacity: 0;
@@ -346,7 +346,6 @@
     border-top: 1px dashed transparent;
   }
 
-  /* DESKTOP HOVER & TOGGLED EXPANSION */
   @media (hover: hover) and (pointer: fine) {
     .category-accordion:hover .category-tools-body {
       max-height: 800px;
@@ -674,7 +673,7 @@
     Simple Biz Systems &bull; Free and low-cost business tools built in Kingsland, TX for Highland Lakes trades.
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (UPDATED: HOME, KINGSLAND WIRE, ABOUT) -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -683,12 +682,6 @@
       </a>
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
-        <a href="workorders.html">Work Orders</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="timecards.html">Timecards</a>
-        <a href="materials.html">Materials</a>
-        <a href="leads.html">Leads</a>
-        <a href="estimator.html">Estimator</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
         <a href="about.html">About</a>
       </div>
@@ -713,7 +706,7 @@
       </div>
     </header>
 
-    <!-- ACCORDION CATEGORIES (TOOLS HIDDEN UNTIL HOVER OR CLICK) -->
+    <!-- ACCORDION CATEGORIES -->
     <div class="categories-stack">
 
       <!-- CATEGORY 1: FIELD SERVICE & DISPATCH -->
@@ -733,7 +726,6 @@
         <div class="category-tools-body">
           <div class="tools-grid">
             
-            <!-- TOOL: WORK ORDERS -->
             <article class="tool-item-card">
               <div>
                 <h3>Digital Work Orders &amp; Signoff</h3>
@@ -747,7 +739,6 @@
               <a href="workorders.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Work Orders &rarr;</a>
             </article>
 
-            <!-- TOOL: DISPATCH BOARD -->
             <article class="tool-item-card">
               <div>
                 <h3>Field Dispatch &amp; Route Board</h3>
@@ -761,7 +752,6 @@
               <a href="dispatch.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Dispatch Board &rarr;</a>
             </article>
 
-            <!-- TOOL: MOBILE TECH CONSOLE -->
             <article class="tool-item-card">
               <div>
                 <h3>Mobile Technician Console</h3>
@@ -796,7 +786,6 @@
         <div class="category-tools-body">
           <div class="tools-grid">
             
-            <!-- TOOL: TIMECARDS -->
             <article class="tool-item-card">
               <div>
                 <h3>Crew Labor &amp; Timecards</h3>
@@ -810,7 +799,6 @@
               <a href="timecards.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Timecards &rarr;</a>
             </article>
 
-            <!-- TOOL: MATERIALS & TRUCK STOCK -->
             <article class="tool-item-card">
               <div>
                 <h3>Materials &amp; Truck Stock</h3>
@@ -824,7 +812,6 @@
               <a href="materials.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Materials &rarr;</a>
             </article>
 
-            <!-- TOOL: EQUIPMENT & FLEET MAINTENANCE -->
             <article class="tool-item-card">
               <div>
                 <h3>Equipment &amp; Asset Tracker</h3>
@@ -859,7 +846,6 @@
         <div class="category-tools-body">
           <div class="tools-grid">
             
-            <!-- TOOL: LEADS TRACKER -->
             <article class="tool-item-card">
               <div>
                 <h3>Lead Tracker &amp; Inquiries</h3>
@@ -873,7 +859,6 @@
               <a href="leads.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Leads &rarr;</a>
             </article>
 
-            <!-- TOOL: ESTIMATOR -->
             <article class="tool-item-card">
               <div>
                 <h3>Job Estimator &amp; Material Rates</h3>
@@ -887,7 +872,6 @@
               <a href="estimator.html" class="tool-action-btn" onclick="event.stopPropagation()">Launch Estimator &rarr;</a>
             </article>
 
-            <!-- TOOL: PRICING CALCULATORS -->
             <article class="tool-item-card">
               <div>
                 <h3>Hourly Rate &amp; Markup Tools</h3>
@@ -925,7 +909,6 @@
         <div class="category-tools-body">
           <div class="tools-grid">
             
-            <!-- TOOL: KINGSLAND WIRE -->
             <article class="tool-item-card">
               <div>
                 <h3>The Kingsland Wire</h3>
@@ -939,7 +922,6 @@
               <a href="kingslandnews.html" class="tool-action-btn" onclick="event.stopPropagation()">Open The Wire &rarr;</a>
             </article>
 
-            <!-- TOOL: DOCUMENT TRIAGE -->
             <article class="tool-item-card">
               <div>
                 <h3>Critical Document Readiness Triage</h3>
@@ -953,7 +935,6 @@
               <a href="checklist.html" class="tool-action-btn" onclick="event.stopPropagation()">Open Checklist &rarr;</a>
             </article>
 
-            <!-- TOOL: STUDY PLANNER -->
             <article class="tool-item-card">
               <div>
                 <h3>Student Assignment Backwards Planner</h3>
@@ -1177,7 +1158,6 @@
       
       const isOpen = accordionElement.classList.contains('open');
       
-      // Close other categories in the stack
       document.querySelectorAll('.category-accordion').forEach(c => {
         if (c !== accordionElement) {
           c.classList.remove('open');
@@ -1288,7 +1268,6 @@
       // 2. Google Apps Script Endpoint
       const BASE_ENDPOINT = "https://script.google.com/macros/s/AKfycbwElCFYmboV_HQdOfqJBbywckrO29NRULOl5yMrZWkCEkB_H-ZaecF9kaVZPgoIrWH-/exec";
 
-      // Build parameters matching doGet(e.parameter)
       const params = new URLSearchParams();
       params.append("name", nameVal);
       params.append("company", companyVal);
