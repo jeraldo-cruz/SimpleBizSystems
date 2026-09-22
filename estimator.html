@@ -791,64 +791,67 @@
     display: none;
   }
 
-  /* OFF-SCREEN BULLETPROOF PDF STAGING CONTAINER (CORRECTED GEOMETRY) */
+  /* OFF-SCREEN STAGING CONTAINER (FIXED GEOMETRY & BALANCED CENTERING) */
   .pdf-hidden-wrapper {
     position: fixed;
     top: 0;
     left: -9999px;
-    width: 740px;
+    width: 800px;
     overflow: visible;
     z-index: -9999;
   }
   #pdfPrintStage {
-    width: 740px;
+    width: 800px;
     background: #ffffff;
     color: #1e293b;
-    padding: 30px;
+    padding: 36px 40px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     display: block;
     box-sizing: border-box;
+    margin: 0 auto;
   }
   .pdf-top-row {
     border-bottom: 2px solid #0d3b66;
-    padding-bottom: 12px;
-    margin-bottom: 16px;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
   }
   .pdf-top-row h2 {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     color: #0d3b66;
     margin: 0 0 4px 0;
     font-weight: 800;
+    letter-spacing: -0.01em;
   }
   .pdf-top-row p {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: #64748b;
     margin: 0;
   }
   .pdf-meta {
     text-align: right;
-    font-size: 0.78rem;
-    color: #64748b;
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.4;
   }
   .pdf-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 14px;
-    font-size: 0.82rem;
+    margin-bottom: 16px;
+    font-size: 0.84rem;
   }
   .pdf-table th {
     background: #f1f5f9;
     color: #0d3b66;
     text-align: left;
-    padding: 8px 10px;
+    padding: 9px 12px;
     border: 1px solid #cbd5e1;
     font-weight: 800;
   }
   .pdf-table td {
-    padding: 8px 10px;
+    padding: 9px 12px;
     border: 1px solid #cbd5e1;
   }
 
@@ -1066,7 +1069,7 @@
     </div>
   </div>
 
-  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CORRECTED FIXED POSITIONING & WIDTH) -->
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX FOR ACCURATE CENTERING) -->
   <div class="pdf-hidden-wrapper">
     <div id="pdfPrintStage">
       <div class="pdf-top-row">
@@ -1080,7 +1083,7 @@
         </div>
       </div>
 
-      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:12px 14px; margin-bottom:16px; font-size:0.84rem; line-height:1.5;">
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:12px 16px; margin-bottom:18px; font-size:0.84rem; line-height:1.5;">
         <div><strong>Client:</strong> <span id="pdfCustomer"></span></div>
         <div><strong>Project Address:</strong> <span id="pdfAddress"></span></div>
         <div><strong>Scope:</strong> <span id="pdfProject"></span></div>
@@ -1089,9 +1092,9 @@
       <table class="pdf-table">
         <thead>
           <tr>
-            <th style="width: 50%;">Description</th>
-            <th style="width: 15%; text-align: right;">Unit Price</th>
-            <th style="width: 15%; text-align: center;">Qty</th>
+            <th style="width: 52%;">Description</th>
+            <th style="width: 16%; text-align: right;">Unit Price</th>
+            <th style="width: 12%; text-align: center;">Qty</th>
             <th style="width: 20%; text-align: right;">Line Total</th>
           </tr>
         </thead>
@@ -1109,7 +1112,7 @@
         </div>
       </div>
 
-      <div style="margin-top:36px; border-top:1px solid #cbd5e1; padding-top:14px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between;">
+      <div style="margin-top:38px; border-top:1px solid #cbd5e1; padding-top:14px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between;">
         <div>Client Acceptance Signature: ___________________________</div>
         <div>Date: ____________</div>
       </div>
@@ -1253,6 +1256,18 @@
     let currentRegionName = "Kingsland, TX (Highland Lakes Freight Region)";
 
     document.addEventListener("DOMContentLoaded", function() {
+      // Parse query string parameters if redirected from projects.html
+      const urlParams = new URLSearchParams(window.location.search);
+      const zipParam = urlParams.get("zip");
+      const projectParam = urlParams.get("project");
+
+      if (zipParam && zipParam.length === 5) {
+        document.getElementById("zipInput").value = zipParam;
+      }
+      if (projectParam) {
+        document.getElementById("estProject").value = decodeURIComponent(projectParam);
+      }
+
       lookupZipRates();
       loadSavedEstimate();
     });
@@ -1477,7 +1492,7 @@
         if (data.project) document.getElementById("estProject").value = data.project;
         if (data.margin) document.getElementById("marginInput").value = data.margin;
         if (data.tax) document.getElementById("taxInput").value = data.tax;
-        if (data.zip) document.getElementById("zipInput").value = data.zip;
+        if (data.zip && !document.getElementById("zipInput").value) document.getElementById("zipInput").value = data.zip;
 
         const tbody = document.getElementById("estimateTableBody");
         tbody.innerHTML = "";
@@ -1586,6 +1601,7 @@
       }
     }
 
+    // PDF GENERATION WITH STRICT CENTERING AND PROPER PAGE GEOMETRY
     function exportEstimatePDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
@@ -1637,16 +1653,19 @@
 
       const element = document.getElementById("pdfPrintStage");
 
+      // Opt settings calibrated to US Letter portrait width (215.9mm)
       const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [8, 8, 8, 8],
         filename: `Bid_Estimate_${now.toISOString().slice(0, 10)}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
           scale: 2, 
           useCORS: true,
+          x: 0,
+          y: 0,
           scrollX: 0,
           scrollY: 0,
-          windowWidth: 740
+          windowWidth: 800
         },
         jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
       };
