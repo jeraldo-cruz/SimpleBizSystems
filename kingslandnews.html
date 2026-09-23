@@ -78,11 +78,11 @@
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* TOP SUB-TICKER (STANDARDIZED) */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 12px;
+    padding: 8px 16px;
     font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
@@ -91,7 +91,7 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION */
+  /* NAVIGATION (STANDARDIZED) */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -136,7 +136,7 @@
     text-decoration: none; 
     color: var(--text-muted); 
     font-weight: 700; 
-    font-size: 0.9rem; 
+    font-size: 0.88rem; 
     transition: color 0.15s ease;
     padding: 4px 2px;
     white-space: nowrap;
@@ -146,11 +146,11 @@
     color: var(--accent); 
   }
 
-  /* WIRE HEADER & MISSION BLOCK */
-  .wire-header {
-    padding: 24px 0 16px 0;
+  /* MASTHEAD HERO (STANDARDIZED) */
+  .page-header {
+    padding: 28px 0 16px 0;
   }
-  .source-badge {
+  .header-badge {
     font-size: 0.74rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -162,12 +162,13 @@
     display: inline-block;
     margin-bottom: 8px;
   }
-  .wire-header h1 {
-    font-size: clamp(1.8rem, 3.6vw, 2.35rem);
+  .page-header h1 {
+    font-size: clamp(1.8rem, 3.4vw, 2.45rem);
     font-weight: 800;
     color: var(--primary);
     margin: 0 0 8px 0;
     line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   .mission-statement-card {
     background: #ffffff;
@@ -723,12 +724,12 @@
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
+  <!-- TOP SUB-TICKER (STANDARDIZED) -->
   <div class="sub-ticker">
     Simple Biz Systems &bull; Public Community Wire for Kingsland &amp; the Highland Lakes.
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (STANDARDIZED) -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -746,9 +747,9 @@
 
   <main class="container">
 
-    <!-- WIRE HEADER & MISSION STATEMENT -->
-    <header class="wire-header">
-      <span class="source-badge">Aggregated News from Direct Sources</span>
+    <!-- MASTHEAD HERO (STANDARDIZED) -->
+    <header class="page-header">
+      <span class="header-badge">Highland Lakes Public Bulletin &bull; Direct Sources</span>
       <h1>The Kingsland Wire</h1>
       
       <div class="mission-statement-card">
