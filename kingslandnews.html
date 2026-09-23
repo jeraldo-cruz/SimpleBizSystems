@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)">
-<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, county burn bans, commercial construction radar, and safety directory.">
-<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, new construction Kingsland TX, commercial development Marble Falls, TxDOT Kingsland roads, DriveTexas FM 2900, student assignment planner, document readiness checklist">
+<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, county burn bans, commercial construction radar, live incident map, and directory.">
+<meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, new construction Kingsland TX, commercial development Marble Falls, TxDOT Kingsland roads, DriveTexas FM 2900, student assignment planner, document readiness checklist, Highland Lakes incident map">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
 <meta property="og:title" content="The Kingsland Wire | Simple Biz Systems">
-<meta property="og:description" content="Ad-free aggregated community news, live weather with modern icons, real-time Highland Lakes capacities, burn bans, commercial construction radar, and directory.">
+<meta property="og:description" content="Ad-free aggregated community news, live weather with modern icons, real-time Highland Lakes capacities, burn bans, commercial construction radar, live map, and directory.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -128,15 +128,15 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 16px; 
+    gap: 20px; 
     flex-wrap: wrap;
     justify-content: flex-end;
   }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
-    font-weight: 600; 
-    font-size: 0.88rem; 
+    font-weight: 700; 
+    font-size: 0.9rem; 
     transition: color 0.15s ease;
     padding: 4px 2px;
     white-space: nowrap;
@@ -475,7 +475,7 @@
     background: #fee2e2;
   }
 
-  /* 4. COMMERCIAL CONSTRUCTION RADAR SPOTLIGHT SECTION */
+  /* 4. COMMERCIAL CONSTRUCTION RADAR SPOTLIGHT */
   .construction-spotlight-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -738,6 +738,7 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="kingslandnews.html" class="active">Kingsland Wire</a>
+        <a href="map.html">Live Map</a>
         <a href="about.html">About</a>
       </div>
     </div>
@@ -896,10 +897,16 @@
         <div class="construction-status-summary">
           <strong>Coverage:</strong> Kingsland (78639) &bull; Marble Falls (78654) &bull; Burnet (78611) &bull; Llano (78643) &bull; Horseshoe Bay (78657)
         </div>
-        <a href="projects.html" class="btn-launch-radar">
-          <span>Open Project Radar</span>
-          <span aria-hidden="true">&rarr;</span>
-        </a>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="map.html" class="btn-launch-radar" style="background: var(--blue-accent);">
+            <span>View on Live Map</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a href="projects.html" class="btn-launch-radar">
+            <span>Open Project Radar</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -954,7 +961,7 @@
           </div>
           <div class="dir-action-row">
             <a href="projects.html">Open Project Radar &rarr;</a>
-            <span class="dir-phone">Public Records &bull; Zero Paywall</span>
+            <a href="map.html" style="color: var(--primary);">View Map &rarr;</a>
           </div>
         </article>
 
@@ -970,7 +977,7 @@
             </ul>
           </div>
           <div class="dir-action-row">
-            <a href="https://www.drivetexas.org/" target="_blank" rel="noopener">Live DriveTexas Highway Map &rarr;</a>
+            <a href="map.html">View on Live Radar Map &rarr;</a>
             <span class="dir-phone">Austin District: 512-832-7000</span>
           </div>
         </article>
@@ -1144,6 +1151,7 @@
       <p style="margin: 0 0 10px 0; opacity: 0.85;">Ad-free, tracking-free civic bulletin and direct community resources for Kingsland, Texas 78639.</p>
       <p style="margin: 0; opacity: 0.65; font-size: 0.8rem;">
         <a href="index.html">Home</a> &bull; 
+        <a href="map.html">Live Incident Map</a> &bull; 
         <a href="projects.html">Project Radar</a> &bull; 
         <a href="kingslandnews.html">Kingsland Wire</a> &bull; 
         <a href="checklist.html">Document Triage</a> &bull; 
@@ -1154,7 +1162,6 @@
   </footer>
 
   <script>
-    // TWO-TONE SVG WEATHER ICONS (ZERO EMOJIS)
     const WEATHER_ICONS = {
       clear: `
         <svg class="forecast-icon-svg" viewBox="0 0 36 36" fill="none">
@@ -1191,7 +1198,6 @@
       return WEATHER_ICONS.partlyCloudy;
     }
 
-    // 1. OPEN-METEO 7-DAY FORECAST INTEGRATION
     async function loadWeatherForecast() {
       const container = document.getElementById("weatherForecastArea");
       const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -1232,7 +1238,6 @@
       }
     }
 
-    // 2. WATER DATA FOR TEXAS (TWDB/LCRA) LIVE FEED INTEGRATION
     async function loadLakeBuchananData() {
       const elevEl = document.getElementById("buchananElevation");
       const pctEl = document.getElementById("buchananPercent");
@@ -1266,7 +1271,6 @@
       }
     }
 
-    // 3. DIRECTORY CATEGORY FILTER
     function filterDirectory(category, btnElement) {
       const buttons = document.querySelectorAll(".btn-filter");
       buttons.forEach(b => b.classList.remove("active"));
