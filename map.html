@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO TAGS -->
+<title>Highland Lakes Live Incident & Radar Map | Simple Biz Systems</title>
+<meta name="title" content="Highland Lakes Live Incident & Radar Map | Simple Biz Systems">
+<meta name="description" content="Interactive map of Kingsland, Marble Falls, Burnet, and Llano, TX. Real-time road conditions, TxDOT bridge alerts, commercial construction radar, boat ramp statuses, and burn bans.">
+<meta name="keywords" content="Kingsland TX map, Highland Lakes road closures, FM 2900 bridge status, RM 1431 construction map, Marble Falls road alerts, Lake LBJ boat ramp map, Burnet County road work, Llano County burn ban map">
+<meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="US-TX">
+<meta name="geo.placename" content="Kingsland, Texas">
+<meta name="geo.position" content="30.6638;-98.4411">
+<meta name="ICBM" content="30.6638, -98.4411">
+
+<link rel="canonical" href="https://www.simplebizsystems.com/map.html" />
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
+
+<!-- LEAFLET.JS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+<style>
+  :root { 
+    --primary: #0d3b66; 
+    --primary-light: #1e3a5f;
+    --accent: #d97706; 
+    --accent-hover: #b45309;
+    --bg: #f8fafc; 
+    --surface: #ffffff;
+    --text-dark: #1e293b; 
+    --text-muted: #64748b;
+    --border: #e2e8f0; 
+    --border-subtle: #f1f5f9;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    
+    --blue-accent: #0284c7;
+    --blue-surface: #f0f9ff;
+    
+    --green-accent: #16a34a;
+    --green-surface: #f0fdf4;
+    
+    --danger: #dc2626;
+    --danger-surface: #fef2f2;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text-dark); 
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TOP SUB-TICKER */
+  .sub-ticker {
+    background: var(--primary);
+    color: #f1f5f9;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent);
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  .sub-ticker strong { color: #fbbf24; font-weight: 600; }
+  .sub-ticker a { color: #fbbf24; text-decoration: underline; }
+
+  /* NAVIGATION */
+  .nav { 
+    background: var(--surface); 
+    border-bottom: 1px solid var(--border); 
+    padding: 10px 20px; 
+    flex-shrink: 0;
+    z-index: 1000;
+  }
+  .nav-container { 
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px;
+  }
+  .logo { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none; 
+    font-weight: 800; 
+    color: var(--primary); 
+    font-size: 1.15rem; 
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .nav-brand-img {
+    height: 28px;
+    width: 28px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 18px; 
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-weight: 700; 
+    font-size: 0.88rem; 
+    transition: color 0.15s ease;
+    padding: 4px 2px;
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { 
+    color: var(--accent); 
+  }
+
+  /* MAP APPLICATION VIEWPORT (SPLIT LAYOUT) */
+  .app-layout {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SIDEBAR FEED */
+  .sidebar-panel {
+    width: 380px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 500;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+  }
+  .sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    background: #f8fafc;
+  }
+  .sidebar-header h1 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 4px 0;
+  }
+  .sidebar-header p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+  }
+
+  /* FILTER BAR */
+  .filter-pills {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .filter-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-pill {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .filter-pill:hover {
+    background: #f1f5f9;
+  }
+  .filter-pill.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  /* FEED LIST */
+  .feed-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feed-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    border-left: 4px solid var(--border);
+  }
+  .feed-item:hover,
+  .feed-item.active {
+    border-color: #cbd5e1;
+    box-shadow: var(--card-shadow);
+  }
+  .feed-item.type-road { border-left-color: var(--primary); }
+  .feed-item.type-construction { border-left-color: var(--accent); }
+  .feed-item.type-water { border-left-color: var(--blue-accent); }
+  .feed-item.type-safety { border-left-color: var(--danger); }
+
+  .feed-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .feed-item-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.3;
+  }
+  .feed-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .badge-road { background: #e0f2fe; color: var(--primary); }
+  .badge-construction { background: #fef3c7; color: #b45309; }
+  .badge-water { background: #e0f2fe; color: #0369a1; }
+  .badge-safety { background: #fee2e2; color: #991b1b; }
+
+  .feed-location {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .feed-desc {
+    font-size: 0.8rem;
+    color: #475569;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* MAP VIEWPORT */
+  #mapContainer {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    background: #e5e7eb;
+  }
+
+  /* CUSTOM MAP POPUPS */
+  .custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+  }
+  .popup-card {
+    padding: 4px;
+    max-width: 260px;
+    font-family: inherit;
+  }
+  .popup-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+  .popup-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 2px 0;
+    line-height: 1.25;
+  }
+  .popup-loc {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .popup-desc {
+    font-size: 0.8rem;
+    color: #334155;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+  }
+  .popup-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  .popup-btn:hover {
+    background: var(--primary-light);
+  }
+
+  /* MOBILE RESPONSIVE TWEAKS */
+  @media (max-width: 768px) {
+    .app-layout {
+      flex-direction: column-reverse;
+    }
+    .sidebar-panel {
+      width: 100%;
+      height: 48%;
+      border-right: none;
+      border-top: 1px solid var(--border);
+    }
+    #mapContainer {
+      height: 52%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP SUB-TICKER -->
+  <div class="sub-ticker">
+    Simple Biz Systems &bull; Live Spatial Wire &amp; Local Construction Radar for Kingsland &amp; the Highland Lakes.
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="logo-icon.png" alt="Simple Biz Systems" class="nav-brand-img">
+        <span>Simple Biz Systems</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SPLIT APPLICATION LAYOUT -->
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR FEED -->
+    <aside class="sidebar-panel">
+      <div class="sidebar-header">
+        <h1>Highland Lakes Incident &amp; Radar Map</h1>
+        <p>Real-time road conditions, TxDOT bridge alerts, commercial construction radar, and public lake access.</p>
+        
+        <div class="filter-pills" role="tablist">
+          <button type="button" class="filter-pill active" onclick="filterPins('all', this)">All Layers</button>
+          <button type="button" class="filter-pill" onclick="filterPins('road', this)">Roads &amp; TxDOT</button>
+          <button type="button" class="filter-pill" onclick="filterPins('construction', this)">New Construction</button>
+          <button type="button" class="filter-pill" onclick="filterPins('water', this)">Ramps &amp; Lake</button>
+          <button type="button" class="filter-pill" onclick="filterPins('safety', this)">Safety &amp; Bans</button>
+        </div>
+      </div>
+
+      <div class="feed-scroll" id="feedContainer">
+        <!-- Populated dynamically by JavaScript -->
+      </div>
+    </aside>
+
+    <!-- RIGHT/MAIN MAP VIEWPORT -->
+    <main id="mapContainer" aria-label="Interactive Map of Kingsland and Highland Lakes"></main>
+
+  </div>
+
+  <!-- LEAFLET.JS SCRIPT -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script>
+    // LOCAL DATA FEED COORDINATES & INCIDENT METADATA
+    const INCIDENT_DATA = [
+      {
+        id: "inc-01",
+        type: "road",
+        typeLabel: "Roads & Bridge",
+        badgeClass: "badge-road",
+        title: "FM 2900 Bridge Corridor Monitoring",
+        location: "FM 2900 Crossing &bull; Lake LBJ",
+        lat: 30.6508,
+        lng: -98.4419,
+        desc: "Regular traffic operating smoothly. Critical link between Kingsland and Sunrise Beach. Monitor for severe weather wash advisories.",
+        linkText: "DriveTexas Live Map",
+        linkUrl: "https://www.drivetexas.org/"
+      },
+      {
+        id: "inc-02",
+        type: "road",
+        typeLabel: "TxDOT Roadwork",
+        badgeClass: "badge-road",
+        title: "RM 1431 Shoulder Maintenance",
+        location: "RM 1431 &bull; Between Kingsland &amp; Marble Falls",
+        lat: 30.6385,
+        lng: -98.3582,
+        desc: "Daytime mobile lane closures and utility clearing along the RM 1431 corridor. Expect minor 5 to 10 minute delays during work hours.",
+        linkText: "TxDOT Austin District",
+        linkUrl: "https://www.txdot.gov/"
+      },
+      {
+        id: "inc-03",
+        type: "construction",
+        typeLabel: "Commercial Build",
+        badgeClass: "badge-construction",
+        title: "Lake LBJ Smokehouse & Marina Cantina",
+        location: "1420 RR 1431 &bull; Kingsland, TX",
+        lat: 30.6651,
+        lng: -98.4485,
+        desc: "Commercial building permit and site work for a new waterfront smokehouse restaurant, outdoor dining pavilion deck, and commercial septic installation.",
+        linkText: "View Project Radar Record",
+        linkUrl: "projects.html"
+      },
+      {
+        id: "inc-04",
+        type: "construction",
+        typeLabel: "Retail Build-Out",
+        badgeClass: "badge-construction",
+        title: "Main Street Mercantile & Bistro Finish-Out",
+        location: "704 Main St &bull; Marble Falls, TX",
+        lat: 30.5702,
+        lng: -98.2758,
+        desc: "Commercial interior finish-out for an artisan bakery, cafe bistro, and retail space in downtown Marble Falls near US-281.",
+        linkText: "View Project Radar Record",
+        linkUrl: "projects.html"
+      },
+      {
+        id: "inc-05",
+        type: "construction",
+        typeLabel: "Trade Facility",
+        badgeClass: "badge-construction",
+        title: "Highway 29 Contractor Yard & Bays",
+        location: "2400 TX-29 East &bull; Burnet, TX",
+        lat: 30.7584,
+        lng: -98.2045,
+        desc: "Commercial site work for two 8,000 sq ft pre-engineered metal buildings, equipment staging yard, and 14-foot overhead trade service bays.",
+        linkText: "Price Materials on Estimator",
+        linkUrl: "estimator.html?zip=78611"
+      },
+      {
+        id: "inc-06",
+        type: "water",
+        typeLabel: "Public Boat Ramp",
+        badgeClass: "badge-water",
+        title: "Kingsland Lions Memorial Park Ramp",
+        location: "Euel Moore Rd &bull; Lake LBJ",
+        lat: 30.6582,
+        lng: -98.4350,
+        desc: "Free public concrete boat ramp open 24/7. Paved dual-lane launching, truck and trailer parking, and public fishing pier.",
+        linkText: "Open Map Directions",
+        linkUrl: "https://maps.google.com/?q=Kingsland+Lions+Memorial+Park+TX"
+      },
+      {
+        id: "inc-07",
+        type: "water",
+        typeLabel: "River Access",
+        badgeClass: "badge-water",
+        title: "The Slab (Llano River Granite Crossing)",
+        location: "FM 3404 &bull; Llano River",
+        lat: 30.6534,
+        lng: -98.4905,
+        desc: "Natural granite riverbed shallow swimming and sunbathing access. Always inspect river velocity before parking or wading downstream.",
+        linkText: "Directions to The Slab",
+        linkUrl: "https://maps.google.com/?q=The+Slab+Kingsland+TX"
+      },
+      {
+        id: "inc-08",
+        type: "safety",
+        typeLabel: "County Burn Ban",
+        badgeClass: "badge-safety",
+        title: "Burn Ban In Effect: Llano &amp; Burnet",
+        location: "Highland Lakes Fire Districts",
+        lat: 30.6850,
+        lng: -98.4200,
+        desc: "Outdoor brush burning and campfires strictly prohibited across Llano and Burnet Counties. Welding operations require water tank and spotter.",
+        linkText: "Call Llano Dispatch: 325-247-5767",
+        linkUrl: "tel:3252475767"
+      }
+    ];
+
+    let map;
+    let markers = [];
+    let currentFilter = "all";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      initMap();
+      renderFeed();
+    });
+
+    function initMap() {
+      // Center on Kingsland, TX between Lake LBJ and Inks Lake
+      map = L.map('mapContainer', {
+        zoomControl: true
+      }).setView([30.6638, -98.4411], 12);
+
+      // Fast, lightweight, clean CartoDB Voyager tiles (Zero API token required)
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      plotMarkers();
+    }
+
+    function plotMarkers() {
+      // Clear existing markers
+      markers.forEach(m => map.removeLayer(m.leafletMarker));
+      markers = [];
+
+      INCIDENT_DATA.forEach(item => {
+        if (currentFilter !== "all" && item.type !== currentFilter) {
+          return;
+        }
+
+        // Color determination based on incident category
+        let markerColor = "#0d3b66"; // Road (primary navy)
+        if (item.type === "construction") markerColor = "#d97706"; // Amber
+        if (item.type === "water") markerColor = "#0284c7"; // Blue
+        if (item.type === "safety") markerColor = "#dc2626"; // Red
+
+        // Clean SVG circular pin
+        const customIcon = L.divIcon({
+          className: 'custom-div-icon',
+          html: `<div style="background-color:${markerColor}; width:16px; height:16px; border:3px solid #ffffff; border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.35);"></div>`,
+          iconSize: [22, 22],
+          iconAnchor: [11, 11]
+        });
+
+        const popupContent = `
+          <div class="popup-card">
+            <span class="popup-badge ${item.badgeClass}">${item.typeLabel}</span>
+            <div class="popup-title">${item.title}</div>
+            <div class="popup-loc">${item.location}</div>
+            <div class="popup-desc">${item.desc}</div>
+            <a href="${item.linkUrl}" class="popup-btn" target="_blank" rel="noopener">${item.linkText} &rarr;</a>
+          </div>
+        `;
+
+        const leafletMarker = L.marker([item.lat, item.lng], { icon: customIcon })
+          .addTo(map)
+          .bindPopup(popupContent, { className: 'custom-popup' });
+
+        markers.push({
+          id: item.id,
+          leafletMarker: leafletMarker,
+          data: item
+        });
+      });
+    }
+
+    function renderFeed() {
+      const container = document.getElementById("feedContainer");
+      container.innerHTML = "";
+
+      const filtered = INCIDENT_DATA.filter(item => {
+        return currentFilter === "all" || item.type === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="padding:24px; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+            No incidents or reports active for this layer.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const div = document.createElement("div");
+        div.className = `feed-item type-${item.type}`;
+        div.id = `feed-${item.id}`;
+        div.onclick = () => focusIncident(item.id);
+
+        div.innerHTML = `
+          <div class="feed-item-header">
+            <span class="feed-badge ${item.badgeClass}">${item.typeLabel}</span>
+          </div>
+          <div class="feed-item-title">${item.title}</div>
+          <div class="feed-location">${item.location}</div>
+          <p class="feed-desc">${item.desc}</p>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    function filterPins(type, btn) {
+      currentFilter = type;
+      document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+
+      plotMarkers();
+      renderFeed();
+    }
+
+    function focusIncident(id) {
+      const target = markers.find(m => m.id === id);
+      if (!target) return;
+
+      // Pan & zoom smoothly
+      map.flyTo([target.data.lat, target.data.lng], 14, {
+        duration: 0.8
+      });
+
+      target.leafletMarker.openPopup();
+
+      // Highlight feed card
+      document.querySelectorAll(".feed-item").forEach(card => card.classList.remove("active"));
+      const activeCard = document.getElementById(`feed-${id}`);
+      if (activeCard) {
+        activeCard.classList.add("active");
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  </script>
+</body>
+</html>
