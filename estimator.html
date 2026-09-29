@@ -7,7 +7,7 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems</title>
 <meta name="title" content="Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems">
-<meta name="description" content="Free contractor job estimate calculator with regional ZIP code material rates, trade labor presets, and client PDF proposal export. Calculate lumber, concrete, wiring, and plumbing with zero subscriptions.">
+<meta name="description" content="Free contractor job estimate calculator with regional ZIP code material rates, dynamic local supplier routing, trade labor presets, and client PDF proposal export. Calculate lumber, concrete, wiring, and plumbing with zero subscriptions.">
 <meta name="keywords" content="free job estimate calculator, job estimate calculator, contractor bid generator, construction cost calculator, labor and material estimate, zip code material rates, Kingsland TX contractor bidding, Marble Falls material cost, free estimate pdf export">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
@@ -893,7 +893,7 @@
       <div class="seo-instructions-card">
         <h2>Calculate Labor, Materials &amp; Target Margins Without Subscriptions</h2>
         <p>
-          Need to generate an accurate bid for a customer? This free job estimate calculator resolves delivery freight logistics across the Highland Lakes and Texas to price bulk lumber, concrete, wiring, and plumbing. Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
+          Need to generate an accurate bid for a customer? This free job estimate calculator resolves delivery freight logistics across the Highland Lakes, Austin, San Antonio, and Texas markets to price bulk lumber, concrete, wiring, and plumbing. Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
         </p>
         <div class="trust-bar">
           <span class="trust-pill">100% Free &bull; No Software Fees</span>
@@ -1119,125 +1119,220 @@
   </footer>
 
   <script>
+    // BASE MATERIALS WITH CATEGORY ASSIGNMENTS
     const BASE_MATERIALS = [
       { 
         id: "m_conc", 
         tradeClass: "trade-concrete",
+        categoryKey: "concrete",
         cat: "Concrete & Masonry", 
         name: "Ready-Mix Concrete (3000 PSI)", 
         unit: "cu yd", 
-        basePrice: 142.00,
-        suppliers: [
-          { name: "Ingram Readymix", location: "Burnet / Marble Falls", url: "https://www.ingramreadymix.com/" },
-          { name: "Century Materials", location: "Llano / Central TX", url: "https://www.centurymaterials.com/" },
-          { name: "Home Depot Pro Ready-Mix", location: "Marble Falls", url: "https://www.homedepot.com/" }
-        ]
+        basePrice: 142.00
       },
       { 
         id: "m_stud", 
         tradeClass: "trade-lumber",
+        categoryKey: "lumber",
         cat: "Framing Lumber", 
         name: "2x4x8 SPF Framing Stud", 
         unit: "each", 
-        basePrice: 3.65,
-        suppliers: [
-          { name: "McCoy's Building Supply", location: "Marble Falls (Hwy 281)", url: "https://www.mccoys.com/" },
-          { name: "Home Depot Pro Lumber", location: "Marble Falls", url: "https://www.homedepot.com/" },
-          { name: "Lowe's Commercial", location: "Marble Falls", url: "https://www.lowes.com/" }
-        ]
+        basePrice: 3.65
       },
       { 
         id: "m_osb", 
         tradeClass: "trade-lumber",
+        categoryKey: "sheathing",
         cat: "Sheathing & Panels", 
         name: "7/16\" OSB Sheathing (4x8)", 
         unit: "sheet", 
-        basePrice: 13.50,
-        suppliers: [
-          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
-          { name: "Lowe's Pro", location: "Marble Falls", url: "https://www.lowes.com/" },
-          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
-        ]
+        basePrice: 13.50
       },
       { 
         id: "m_ply", 
         tradeClass: "trade-lumber",
+        categoryKey: "sheathing",
         cat: "Plywood & Subfloor", 
         name: "1/2\" CDX Pine Plywood (4x8)", 
         unit: "sheet", 
-        basePrice: 22.80,
-        suppliers: [
-          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
-          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
-        ]
+        basePrice: 22.80
       },
       { 
         id: "m_wire", 
         tradeClass: "trade-electrical",
+        categoryKey: "electrical",
         cat: "Electrical Supply", 
         name: "12/2 NM-B Romex Copper Wire", 
         unit: "250 ft roll", 
-        basePrice: 112.00,
-        suppliers: [
-          { name: "Crawford Electric Supply", location: "Central TX / Austin", url: "https://www.crawfordelectricsupply.com/" },
-          { name: "CED (Consolidated Electrical)", location: "Austin / Delivery", url: "https://cedcareers.com/" },
-          { name: "Home Depot Pro Electrical", location: "Marble Falls", url: "https://www.homedepot.com/" }
-        ]
+        basePrice: 112.00
       },
       { 
         id: "m_pex", 
         tradeClass: "trade-plumbing",
+        categoryKey: "plumbing",
         cat: "Plumbing Supply", 
         name: "1/2\" PEX-A Tubing Coil", 
         unit: "100 ft roll", 
-        basePrice: 38.00,
-        suppliers: [
-          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
-          { name: "Moore Supply Co", location: "Austin / Hill Country", url: "https://www.mooresupply.com/" },
-          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
-        ]
+        basePrice: 38.00
       },
       { 
         id: "m_cop", 
         tradeClass: "trade-plumbing",
+        categoryKey: "plumbing",
         cat: "Plumbing Supply", 
         name: "1/2\" Type L Copper Pipe", 
         unit: "10 ft stick", 
-        basePrice: 21.50,
-        suppliers: [
-          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
-          { name: "Lowe's Pro Plumbing", location: "Marble Falls", url: "https://www.lowes.com/" }
-        ]
+        basePrice: 21.50
       },
       { 
         id: "m_pvc", 
         tradeClass: "trade-plumbing",
+        categoryKey: "drainage",
         cat: "Drainage & Sewer", 
         name: "3\" Schedule 40 PVC Pipe", 
         unit: "10 ft stick", 
-        basePrice: 17.20,
-        suppliers: [
-          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
-          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
-        ]
+        basePrice: 17.20
       },
       { 
         id: "m_roof", 
         tradeClass: "trade-roofing",
+        categoryKey: "roofing",
         cat: "Roofing & Siding", 
         name: "Architectural Asphalt Shingles", 
         unit: "bundle (1/3 sq)", 
-        basePrice: 36.50,
-        suppliers: [
-          { name: "ABC Supply Co", location: "Austin / Central TX Delivery", url: "https://www.abcsupply.com/" },
-          { name: "Mueller Building Systems", location: "Burnet / Llano", url: "https://www.muellerinc.com/" },
-          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
-        ]
+        basePrice: 36.50
       }
     ];
 
     let currentMultiplier = 1.06;
     let currentRegionName = "Kingsland, TX (Highland Lakes Freight Region)";
+    let currentMarketCode = "highland_lakes";
+    let currentCity = "Kingsland";
+    let currentState = "TX";
+
+    // DYNAMIC REGIONAL SUPPLIER GENERATOR
+    function getSuppliersForMaterial(categoryKey, marketCode, city, state) {
+      if (marketCode === "highland_lakes") {
+        if (categoryKey === "concrete") {
+          return [
+            { name: "Ingram Readymix", location: "Burnet / Marble Falls", url: "https://www.ingramreadymix.com/" },
+            { name: "Century Materials", location: "Llano / Central TX", url: "https://www.centurymaterials.com/" },
+            { name: "Home Depot Pro Ready-Mix", location: "Marble Falls Yard", url: "https://www.homedepot.com/" }
+          ];
+        }
+        if (categoryKey === "lumber" || categoryKey === "sheathing") {
+          return [
+            { name: "McCoy's Building Supply", location: "Marble Falls (Hwy 281)", url: "https://www.mccoys.com/" },
+            { name: "Home Depot Pro Lumber", location: "Marble Falls (Gateway)", url: "https://www.homedepot.com/" },
+            { name: "Lowe's Pro Commercial", location: "Marble Falls", url: "https://www.lowes.com/" }
+          ];
+        }
+        if (categoryKey === "electrical") {
+          return [
+            { name: "Crawford Electric Supply", location: "Hill Country Delivery / Austin", url: "https://www.crawfordelectricsupply.com/" },
+            { name: "Home Depot Pro Electrical", location: "Marble Falls", url: "https://www.homedepot.com/" },
+            { name: "CED (Consolidated Electrical)", location: "Austin / Regional Route", url: "https://cedcareers.com/" }
+          ];
+        }
+        if (categoryKey === "plumbing" || categoryKey === "drainage") {
+          return [
+            { name: "Ferguson Plumbing Supply", location: "Marble Falls (Commerce St)", url: "https://www.ferguson.com/" },
+            { name: "Moore Supply Co", location: "Austin / Hill Country Route", url: "https://www.mooresupply.com/" },
+            { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+          ];
+        }
+        if (categoryKey === "roofing") {
+          return [
+            { name: "ABC Supply Co", location: "Austin / Central TX Delivery", url: "https://www.abcsupply.com/" },
+            { name: "Mueller Building Systems", location: "Burnet Yard (TX-29)", url: "https://www.muellerinc.com/" },
+            { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+          ];
+        }
+      }
+
+      if (marketCode === "austin_metro") {
+        if (categoryKey === "concrete") {
+          return [
+            { name: "Alamo Concrete Products", location: "Austin Metro Distribution", url: "https://www.alamoconcrete.com/" },
+            { name: "Capitol Aggregates", location: "Austin / Pflugerville", url: "https://www.capitolaggregates.com/" },
+            { name: "Home Depot Pro Ready-Mix", location: "Austin Area Stores", url: "https://www.homedepot.com/" }
+          ];
+        }
+        if (categoryKey === "lumber" || categoryKey === "sheathing") {
+          return [
+            { name: "McCoy's Building Supply", location: "Austin / Buda / Manchaca", url: "https://www.mccoys.com/" },
+            { name: "Builders FirstSource (BMC)", location: "Austin Commercial Yard", url: "https://www.bldr.com/" },
+            { name: "Home Depot Pro Lumber", location: "Austin Distribution Hub", url: "https://www.homedepot.com/" }
+          ];
+        }
+        if (categoryKey === "electrical") {
+          return [
+            { name: "Crawford Electric Supply", location: "Austin Distribution Center", url: "https://www.crawfordelectricsupply.com/" },
+            { name: "CED (Consolidated Electrical)", location: "Austin Central Branch", url: "https://cedcareers.com/" },
+            { name: "Elliot Electric Supply", location: "Austin / Round Rock", url: "https://www.elliottelectric.com/" }
+          ];
+        }
+        if (categoryKey === "plumbing" || categoryKey === "drainage") {
+          return [
+            { name: "Moore Supply Co", location: "Austin Commercial Hub", url: "https://www.mooresupply.com/" },
+            { name: "Ferguson Plumbing Supply", location: "Austin Metro Branches", url: "https://www.ferguson.com/" },
+            { name: "Winsupply of Austin", location: "Austin Wholesale", url: "https://www.winsupplyinc.com/" }
+          ];
+        }
+        if (categoryKey === "roofing") {
+          return [
+            { name: "ABC Supply Co", location: "Austin Main Hub", url: "https://www.abcsupply.com/" },
+            { name: "Beacon Building Products", location: "Austin Commercial Branch", url: "https://www.becn.com/" },
+            { name: "SRS Distribution", location: "Austin Service Center", url: "https://www.srsdistribution.com/" }
+          ];
+        }
+      }
+
+      if (marketCode === "san_antonio") {
+        if (categoryKey === "concrete") {
+          return [
+            { name: "Alamo Concrete Products", location: "San Antonio Headquarters", url: "https://www.alamoconcrete.com/" },
+            { name: "Martin Marietta Central", location: "San Antonio Materials Yard", url: "https://www.martinmarietta.com/" },
+            { name: "Home Depot Pro", location: "San Antonio Locations", url: "https://www.homedepot.com/" }
+          ];
+        }
+        if (categoryKey === "lumber" || categoryKey === "sheathing") {
+          return [
+            { name: "McCoy's Building Supply", location: "San Antonio Area Branches", url: "https://www.mccoys.com/" },
+            { name: "Builders FirstSource", location: "San Antonio Yard", url: "https://www.bldr.com/" },
+            { name: "MG Building Materials", location: "San Antonio Commercial", url: "https://www.mgbuildingmaterials.com/" }
+          ];
+        }
+        if (categoryKey === "electrical") {
+          return [
+            { name: "Dealers Electrical Supply", location: "San Antonio Branch", url: "https://www.dealerselectric.com/" },
+            { name: "Crawford Electric Supply", location: "San Antonio Hub", url: "https://www.crawfordelectricsupply.com/" },
+            { name: "Summers Electric (Rexel)", location: "San Antonio Central", url: "https://www.rexelusa.com/" }
+          ];
+        }
+        if (categoryKey === "plumbing" || categoryKey === "drainage") {
+          return [
+            { name: "Morrison Supply Co", location: "San Antonio Commercial", url: "https://www.morsco.com/" },
+            { name: "Ferguson Plumbing Supply", location: "San Antonio Branch", url: "https://www.ferguson.com/" },
+            { name: "Moore Supply Co", location: "San Antonio Outlet", url: "https://www.mooresupply.com/" }
+          ];
+        }
+        if (categoryKey === "roofing") {
+          return [
+            { name: "ABC Supply Co", location: "San Antonio Branch", url: "https://www.abcsupply.com/" },
+            { name: "Beacon Roofing Supply", location: "San Antonio", url: "https://www.becn.com/" },
+            { name: "McCoy's Building Supply", location: "San Antonio", url: "https://www.mccoys.com/" }
+          ];
+        }
+      }
+
+      // GENERIC TEXAS & OUT-OF-STATE REGIONS (RESOLVES TO LOCAL CITY)
+      return [
+        { name: `Home Depot Pro (${city})`, location: `Local ${city}, ${state} Delivery`, url: `https://www.homedepot.com/l/search?q=${encodeURIComponent(city + ' ' + state)}` },
+        { name: `Lowe's Pro Services`, location: `${city} Area Store & Contractor Desk`, url: `https://www.lowes.com/store/` },
+        { name: `Ferguson Commercial Pro`, location: `${state} Regional Supply Depot`, url: "https://www.ferguson.com/" }
+      ];
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
@@ -1272,23 +1367,31 @@
 
         const data = await response.json();
         const place = data.places[0];
-        const city = place['place name'];
-        const state = place['state abbreviation'];
+        currentCity = place['place name'];
+        currentState = place['state abbreviation'];
 
-        if (state === "TX") {
+        if (currentState === "TX") {
           if (["78639", "78654", "78611", "78643", "78657", "78607", "78672"].includes(zip)) {
             currentMultiplier = 1.06;
-            currentRegionName = `${city}, ${state} (Highland Lakes Freight Region)`;
-          } else if (["787", "786", "782", "750", "752", "770"].some(p => zip.startsWith(p))) {
+            currentMarketCode = "highland_lakes";
+            currentRegionName = `${currentCity}, ${currentState} (Highland Lakes Freight Region)`;
+          } else if (["787", "78613", "78641", "78660", "78664", "78681"].some(p => zip.startsWith(p))) {
             currentMultiplier = 1.00;
-            currentRegionName = `${city}, ${state} (Metro Texas Distributor Hub)`;
+            currentMarketCode = "austin_metro";
+            currentRegionName = `${currentCity}, ${currentState} (Austin Metro Distributor Hub)`;
+          } else if (zip.startsWith("782") || zip.startsWith("781")) {
+            currentMultiplier = 1.01;
+            currentMarketCode = "san_antonio";
+            currentRegionName = `${currentCity}, ${currentState} (San Antonio Wholesale Market)`;
           } else {
             currentMultiplier = 1.04;
-            currentRegionName = `${city}, ${state} (Texas Regional Market)`;
+            currentMarketCode = "texas_general";
+            currentRegionName = `${currentCity}, ${currentState} (Texas Regional Market)`;
           }
         } else {
           currentMultiplier = 1.08;
-          currentRegionName = `${city}, ${state} (Out-of-State Supply Tier)`;
+          currentMarketCode = "out_of_state";
+          currentRegionName = `${currentCity}, ${currentState} (Out-of-State Supply Tier)`;
         }
 
         statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; ${currentMultiplier.toFixed(2)}x Regional Freight Factor`;
@@ -1297,6 +1400,9 @@
 
       } catch (err) {
         currentMultiplier = 1.06;
+        currentMarketCode = "highland_lakes";
+        currentCity = "Kingsland";
+        currentState = "TX";
         currentRegionName = `ZIP ${zip} (Highland Lakes Baseline)`;
         statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; 1.06x Standard Regional Factor`;
         renderMaterialGrid();
@@ -1310,9 +1416,10 @@
 
       BASE_MATERIALS.forEach(mat => {
         const localizedPrice = (mat.basePrice * currentMultiplier).toFixed(2);
+        const suppliers = getSuppliersForMaterial(mat.categoryKey, currentMarketCode, currentCity, currentState);
         
         let suppliersHtml = '<ul class="supplier-list">';
-        mat.suppliers.forEach(s => {
+        suppliers.forEach(s => {
           suppliersHtml += `
             <li>
               <a href="${s.url}" target="_blank" rel="noopener">${s.name} &rarr;</a>
@@ -1338,7 +1445,7 @@
             </div>
 
             <div class="supplier-drawer" id="drawer_${mat.id}">
-              <span class="supplier-drawer-title">Regional Wholesale &amp; Retail Outlets</span>
+              <span class="supplier-drawer-title">Local Supply Outlets (${currentCity}, ${currentState})</span>
               ${suppliersHtml}
             </div>
           </div>
