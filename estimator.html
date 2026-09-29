@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Job Estimator & Local Material Cost Lookup | Simple Biz Systems</title>
-<meta name="title" content="Job Estimator & Local Material Cost Lookup | Simple Biz Systems">
-<meta name="description" content="Free construction and trade bid estimator with regional ZIP code material price lookups. Estimate lumber, concrete, electrical wire, and plumbing costs across Texas and the Highland Lakes.">
-<meta name="keywords" content="construction cost estimator, zip code material costs, Kingsland TX lumber prices, Marble Falls concrete prices, ready mix cost per yard Texas, 12/2 romex price, OSB sheathing cost, contractor bid generator, Highland Lakes trade estimating">
+<title>Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems</title>
+<meta name="title" content="Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems">
+<meta name="description" content="Free contractor job estimate calculator with regional ZIP code material rates, trade labor presets, and client PDF proposal export. Calculate lumber, concrete, wiring, and plumbing with zero subscriptions.">
+<meta name="keywords" content="free job estimate calculator, job estimate calculator, contractor bid generator, construction cost calculator, labor and material estimate, zip code material rates, Kingsland TX contractor bidding, Marble Falls material cost, free estimate pdf export">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -23,9 +23,43 @@
 <!-- OPEN GRAPH / SOCIAL -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/estimator.html">
-<meta property="og:title" content="Job Estimator & Regional Material Rates | Simple Biz Systems">
-<meta property="og:description" content="Instant trade bid builder with ZIP code material lookup. Factor in lumber, concrete, wiring, and plumbing with local freight adjustments.">
+<meta property="og:title" content="Free Job Estimate Calculator &amp; Material Bid Builder | Simple Biz Systems">
+<meta property="og:description" content="Instant trade bid calculator with ZIP code material rates and client PDF export. Calculate labor, materials, and profit margins with zero login required.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
+
+<!-- JSON-LD FAQ SCHEMA FOR SEARCH ENGINE RICH SNIPPETS -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate a contractor job estimate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A comprehensive contractor job estimate is calculated by totaling Direct Material Costs, Labor Costs (hours multiplied by your hourly billing rate), and Subcontractor Fees, then applying your target Gross Profit Margin percentage to cover business overhead and net profit before adding applicable local sales tax."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much markup should a contractor charge on materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard trade contractor material markup typically ranges between 15% and 35%, depending on project scale and procurement handling. It is critical to differentiate markup from margin: a 30% markup yields approximately a 23% gross margin on total job costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download or print this estimate as a client proposal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This free job estimate calculator generates an itemized, client-ready PDF proposal complete with customer details, scope of work, material and labor breakdowns, and a legal client acceptance signature block."
+      }
+    }
+  ]
+}
+</script>
 
 <!-- HTML2PDF LIBRARY FOR CLIENT ESTIMATE PDF EXPORT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -96,11 +130,11 @@
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* TOP SUB-TICKER (STANDARDIZED) */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
-    padding: 8px 12px;
+    padding: 8px 16px;
     font-size: 0.82rem;
     text-align: center;
     border-bottom: 2px solid var(--accent);
@@ -109,7 +143,7 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION */
+  /* NAVIGATION (STANDARDIZED) */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -146,14 +180,14 @@
   .nav-links { 
     display: flex; 
     align-items: center; 
-    gap: 16px; 
+    gap: 20px; 
     flex-wrap: wrap;
     justify-content: flex-end;
   }
   .nav-links a { 
     text-decoration: none; 
     color: var(--text-muted); 
-    font-weight: 600; 
+    font-weight: 700; 
     font-size: 0.88rem; 
     transition: color 0.15s ease;
     padding: 4px 2px;
@@ -164,11 +198,11 @@
     color: var(--accent); 
   }
 
-  /* HEADER & SEO INTRO BLOCK */
+  /* MASTHEAD HERO (STANDARDIZED) */
   .page-header {
-    padding: 24px 0 16px 0;
+    padding: 28px 0 16px 0;
   }
-  .tool-badge {
+  .header-badge {
     font-size: 0.74rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -181,17 +215,18 @@
     margin-bottom: 8px;
   }
   .page-header h1 {
-    font-size: clamp(1.8rem, 3.6vw, 2.35rem);
+    font-size: clamp(1.8rem, 3.4vw, 2.45rem);
     font-weight: 800;
     color: var(--primary);
     margin: 0 0 8px 0;
     line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   
   .seo-instructions-card {
     background: #ffffff;
     border: 1px solid var(--border);
-    border-left: 5px solid var(--blue-accent);
+    border-left: 4px solid var(--blue-accent);
     border-radius: 8px;
     padding: 16px 18px;
     margin-top: 10px;
@@ -221,49 +256,22 @@
     line-height: 1.4;
   }
 
-  /* SCRAPER CALLOUT BANNER */
-  .scraper-callout {
-    background: var(--amber-surface);
-    border: 1px solid var(--amber-border);
-    border-left: 5px solid var(--accent);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 20px 0 24px 0;
+  /* TRUST VALUE BAR */
+  .trust-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
     gap: 12px;
-    box-shadow: var(--card-shadow);
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--primary);
+    font-weight: 700;
   }
-  .scraper-content h3 {
-    margin: 0 0 4px 0;
-    font-size: 1rem;
-    font-weight: 800;
-    color: #92400e;
-  }
-  .scraper-content p {
-    margin: 0;
-    font-size: 0.86rem;
-    color: #78350f;
-    line-height: 1.5;
-    max-width: 780px;
-  }
-  .btn-contact-custom {
-    background: var(--accent);
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
+  .trust-pill {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
     border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s ease, transform 0.1s ease;
-  }
-  .btn-contact-custom:hover {
-    background: var(--accent-hover);
-    transform: translateY(-1px);
   }
 
   /* SECTION LABELS */
@@ -518,28 +526,6 @@
     color: var(--text-muted);
     font-size: 0.72rem;
   }
-  .supplier-scraper-note {
-    font-size: 0.7rem;
-    color: #92400e;
-    background: #fef3c7;
-    border: 1px solid #fde68a;
-    padding: 6px 8px;
-    border-radius: 4px;
-    margin-top: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .supplier-scraper-note button {
-    background: none;
-    border: none;
-    color: #92400e;
-    font-weight: 800;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 0.7rem;
-    padding: 0;
-  }
 
   /* 2. ACTIVE ESTIMATE BUILDER */
   .estimate-builder-card {
@@ -551,6 +537,44 @@
     box-shadow: var(--card-shadow);
     margin-bottom: 28px;
   }
+
+  /* ONE-CLICK TRADE PRESETS BAR */
+  .preset-bar {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .preset-label {
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    margin-right: 4px;
+  }
+  .btn-preset {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    padding: 5px 11px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-preset:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
   .estimate-meta-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -600,7 +624,8 @@
     vertical-align: middle;
     background: #ffffff;
   }
-  .estimate-table input {
+  .estimate-table input,
+  .estimate-table select {
     width: 100%;
     padding: 6px 8px;
     border: 1px solid var(--border);
@@ -619,6 +644,12 @@
     padding: 4px;
   }
 
+  .table-actions-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
   .btn-add-custom-row {
     background: #f8fafc;
     border: 1px dashed #94a3b8;
@@ -635,7 +666,7 @@
     border-color: var(--primary);
   }
 
-  /* TOTALS & MARGIN PANEL */
+  /* TOTALS & MARGIN PANEL WITH LABOR / MATERIAL SPLIT */
   .estimate-totals-panel {
     background: var(--green-surface);
     border: 1px solid var(--green-border);
@@ -644,8 +675,8 @@
     padding: 18px 20px;
     margin-top: 18px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
   }
   .total-block span {
     display: block;
@@ -656,13 +687,13 @@
     letter-spacing: 0.02em;
   }
   .total-block strong {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: #14532d;
     line-height: 1.2;
   }
   .total-block input {
-    width: 100px;
+    width: 90px;
     padding: 6px 10px;
     border: 1px solid #86efac;
     border-radius: 4px;
@@ -675,7 +706,8 @@
 
   .estimate-actions-row {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
     margin-top: 20px;
     flex-wrap: wrap;
@@ -697,101 +729,43 @@
     transform: translateY(-1px);
   }
 
-  /* LEADS GOOGLE SHEET MODAL */
-  .lead-modal-backdrop {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(2px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  .lead-modal-backdrop.active {
-    display: flex;
-  }
-  .lead-modal {
+  /* SEO FAQ SECTION */
+  .faq-section {
     background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 12px;
-    border-top: 5px solid var(--accent);
-    max-width: 520px;
-    width: 100%;
-    padding: 24px;
-    box-shadow: var(--card-shadow-lg);
-    max-height: 90vh;
-    overflow-y: auto;
+    padding: 22px;
+    box-shadow: var(--card-shadow);
+    margin: 32px 0;
   }
-  .lead-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-subtle);
-    padding-bottom: 10px;
-    margin-bottom: 14px;
-  }
-  .lead-modal-header h3 {
-    margin: 0;
-    font-size: 1.15rem;
+  .faq-section h2 {
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--primary);
+    margin: 0 0 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 8px;
   }
-  .lead-modal-close {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
+  .faq-item {
+    margin-bottom: 14px;
+  }
+  .faq-item:last-child {
+    margin-bottom: 0;
+  }
+  .faq-item h3 {
+    font-size: 0.96rem;
     font-weight: 800;
-    color: var(--text-muted);
-    cursor: pointer;
+    color: var(--primary-light);
+    margin: 0 0 4px 0;
   }
-  .lead-field {
-    margin-bottom: 12px;
-  }
-  .lead-field label {
-    display: block;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .lead-field input, .lead-field textarea {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 0.88rem;
-    font-family: inherit;
-    background: #f8fafc;
-  }
-  .lead-submit-btn {
-    width: 100%;
-    background: var(--primary);
-    color: #ffffff;
-    border: none;
-    padding: 11px;
-    border-radius: 6px;
-    font-size: 0.92rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: background 0.15s ease;
-    margin-top: 6px;
-  }
-  .lead-submit-btn:hover {
-    background: var(--primary-light);
-  }
-  .lead-status-msg {
-    font-size: 0.82rem;
-    text-align: center;
-    margin-top: 10px;
-    display: none;
+  .faq-item p {
+    font-size: 0.86rem;
+    color: #475569;
+    margin: 0;
+    line-height: 1.55;
   }
 
-  /* OFF-SCREEN STAGING CONTAINER (FIXED GEOMETRY & BALANCED CENTERING) */
+  /* OFF-SCREEN PRINTABLE TEMPLATE (CENTERED 800PX BOX) */
   .pdf-hidden-wrapper {
     position: fixed;
     top: 0;
@@ -874,21 +848,25 @@
     .zip-input-field {
       width: 100%;
     }
-    .scraper-callout {
+    .preset-bar {
       flex-direction: column;
       align-items: flex-start;
+    }
+    .btn-preset {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER -->
+  <!-- TOP SUB-TICKER (STANDARDIZED) -->
   <div class="sub-ticker">
     Simple Biz Systems &bull; Subscription-free trade bidding and local material rates in Kingsland, TX.
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (STANDARDIZED) -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="index.html" class="logo">
@@ -897,10 +875,8 @@
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="workorders.html">Work Orders</a>
-        <a href="dispatch.html">Dispatch</a>
-        <a href="estimator.html" class="active">Estimator</a>
         <a href="kingslandnews.html">Kingsland Wire</a>
+        <a href="map.html">Live Map</a>
         <a href="about.html">About</a>
       </div>
     </div>
@@ -908,36 +884,28 @@
 
   <main class="container">
 
-    <!-- PAGE HEADER -->
+    <!-- MASTHEAD HERO (STANDARDIZED) -->
     <header class="page-header">
-      <span class="tool-badge">Regional Construction Intelligence &bull; ZIP Code Cost Engine</span>
-      <h1>Job Estimator &amp; Local Material Rates</h1>
+      <span class="header-badge">Free Contractor Tool &bull; Regional ZIP Code Pricing Engine</span>
+      <h1>Free Job Estimate Calculator &amp; Local Material Rates</h1>
       
       <!-- SEO INSTRUCTIONS & ARCHITECTURAL DISCLOSURE -->
       <div class="seo-instructions-card">
-        <h2>How This Estimating Tool Gathers Local Material Pricing</h2>
+        <h2>Calculate Labor, Materials &amp; Target Margins Without Subscriptions</h2>
         <p>
-          Construction material prices fluctuate based on fuel logistics, regional wholesale supply chain bottlenecks, and haul distances. When you enter any 5-digit United States ZIP code below, this tool resolves the geographic delivery location and applies a regional logistics multiplier to benchmark wholesale costs.
+          Need to generate an accurate bid for a customer? This free job estimate calculator resolves delivery freight logistics across the Highland Lakes and Texas to price bulk lumber, concrete, wiring, and plumbing. Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
         </p>
-        <p>
-          For example, Highland Lakes ZIP codes (Kingsland 78639, Marble Falls 78654, Burnet 78611, Llano 78643) incorporate rural distribution freight factors compared to metro distributor hubs in Austin or San Antonio. Benchmark costs are indexed from commercial ready-mix, structural lumber, electrical wire, and plumbing supply baseline figures.
-        </p>
+        <div class="trust-bar">
+          <span class="trust-pill">100% Free &bull; No Software Fees</span>
+          <span class="trust-pill">Zero Sign-Up Required</span>
+          <span class="trust-pill">Local-First Storage</span>
+          <span class="trust-pill">Client PDF Export Ready</span>
+        </div>
         <div class="seo-keywords-tagline">
-          Indexed Materials: 3000 PSI Ready-Mix Concrete, 2x4 SPF Framing Lumber, 7/16" OSB Sheathing, 1/2" CDX Plywood, 12/2 Romex Copper Wire, 1/2" Type L Copper &amp; PEX-A Tubing, Schedule 40 PVC, Architectural Roofing Shingles.
+          Wholesale Baselines: 3000 PSI Ready-Mix Concrete, SPF 2x4 Framing Lumber, 7/16" OSB Sheathing, 1/2" CDX Plywood, 12/2 Romex Copper Wire, 1/2" PEX-A Tubing, Schedule 40 PVC, Architectural Roofing Shingles.
         </div>
       </div>
     </header>
-
-    <!-- CUSTOM SCRAPER ADVISORY BANNER -->
-    <section class="scraper-callout">
-      <div class="scraper-content">
-        <h3>Need Live Pricing From Your Specific Wholesale Suppliers?</h3>
-        <p>
-          We build custom, automated web scrapers and private supplier integrations for trade contractors. We can automatically scrape, parse, and synchronize daily real-time pricing from your specific accounts at McCoy's Building Supply, Home Depot Pro, Lowe's Pro, Ferguson, ABC Supply, or CED directly into your custom dispatch and estimating boards.
-        </p>
-      </div>
-      <button type="button" class="btn-contact-custom" onclick="openLeadModal('General Supplier Scraper Setup')">Request Custom Scraper &rarr;</button>
-    </section>
 
     <!-- 1. ZIP CODE MATERIAL BENCHMARK LOOKUP -->
     <h2 class="section-headline">
@@ -966,6 +934,16 @@
     </h2>
     <section class="estimate-builder-card">
       
+      <!-- ONE-CLICK TRADE PRESETS -->
+      <div class="preset-bar">
+        <span class="preset-label">Quick Trade Presets:</span>
+        <button type="button" class="btn-preset" onclick="loadTradePreset('handyman')">Handyman / Service Call</button>
+        <button type="button" class="btn-preset" onclick="loadTradePreset('concrete')">Concrete Slab &amp; Flatwork</button>
+        <button type="button" class="btn-preset" onclick="loadTradePreset('framing')">Deck Framing &amp; Carpentry</button>
+        <button type="button" class="btn-preset" onclick="loadTradePreset('electrical')">Electrical Service Upgrade</button>
+        <button type="button" class="btn-preset" onclick="loadTradePreset('plumbing')">Plumbing Rough-In</button>
+      </div>
+
       <div class="estimate-meta-grid">
         <div class="meta-field">
           <label>Customer Name</label>
@@ -985,11 +963,12 @@
         <table class="estimate-table" id="estimateTable">
           <thead>
             <tr>
-              <th style="width: 45%;">Item Description</th>
-              <th style="width: 15%;">Unit Cost ($)</th>
-              <th style="width: 15%;">Quantity</th>
-              <th style="width: 15%;">Line Total ($)</th>
-              <th style="width: 10%; text-align: center;">Action</th>
+              <th style="width: 38%;">Item Description</th>
+              <th style="width: 14%;">Type</th>
+              <th style="width: 14%;">Unit Cost ($)</th>
+              <th style="width: 12%;">Quantity</th>
+              <th style="width: 14%;">Line Total ($)</th>
+              <th style="width: 8%; text-align: center;">Action</th>
             </tr>
           </thead>
           <tbody id="estimateTableBody">
@@ -998,12 +977,23 @@
         </table>
       </div>
 
-      <button type="button" class="btn-add-custom-row" onclick="addCustomRow()">+ Add Custom Labor or Material Line</button>
+      <div class="table-actions-row">
+        <button type="button" class="btn-add-custom-row" onclick="addCustomRow('Material')">+ Add Material Line</button>
+        <button type="button" class="btn-add-custom-row" onclick="addCustomRow('Labor')">+ Add Labor / Service Line</button>
+      </div>
 
-      <!-- FINANCIAL TOTALS -->
+      <!-- FINANCIAL TOTALS WITH LABOR / MATERIAL SEPARATION -->
       <div class="estimate-totals-panel">
         <div class="total-block">
-          <span>Direct Cost Subtotal</span>
+          <span>Materials Total</span>
+          <strong id="materialsTotalDisplay">$0.00</strong>
+        </div>
+        <div class="total-block">
+          <span>Labor Total</span>
+          <strong id="laborTotalDisplay">$0.00</strong>
+        </div>
+        <div class="total-block">
+          <span>Direct Cost</span>
           <strong id="subtotalDisplay">$0.00</strong>
         </div>
         <div class="total-block">
@@ -1021,6 +1011,9 @@
       </div>
 
       <div class="estimate-actions-row">
+        <span style="font-size: 0.78rem; color: var(--text-muted);">
+          Looking for active commercial sites to bid on? Check the <a href="projects.html" style="color: var(--blue-accent); font-weight: 700;">Project Radar &rarr;</a>
+        </span>
         <button type="button" class="btn-export-pdf" id="btnPdfExport" onclick="exportEstimatePDF()">
           Download Client Bid Proposal (PDF) &rarr;
         </button>
@@ -1028,48 +1021,35 @@
 
     </section>
 
+    <!-- 3. FREQUENTLY ASKED QUESTIONS SECTION (HIGH SEO INTENT VALUE) -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions on Job Estimates</h2>
+
+      <div class="faq-item">
+        <h3>How do you calculate a contractor job estimate?</h3>
+        <p>
+          To calculate an accurate job estimate, determine your Direct Material Costs and add your Estimated Labor (total job hours multiplied by your hourly billing rate). Combine these to establish your Direct Job Cost. Finally, divide by your gross margin factor (e.g., divide by 0.70 for a 30% gross profit margin) to ensure overhead expenses and net earnings are covered before applying local sales tax.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How much markup should a contractor charge on materials?</h3>
+        <p>
+          Contractors typically charge between 15% and 35% markup on wholesale materials to cover transport, waste, procurement time, and material handling liability. Be sure not to confuse markup with margin: a 30% markup on a $1,000 material purchase yields $300 profit, which equals only a 23% gross margin on the final invoice.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I export and print this estimate for my customer?</h3>
+        <p>
+          Yes. Tapping the "Download Client Bid Proposal" button automatically compiles your entered client details, scope of work, itemized material rows, labor hours, and margin calculations into a clean 1-page PDF proposal complete with a customer signoff line.
+        </p>
+      </div>
+    </section>
+
   </main>
 
-  <!-- GOOGLE SHEETS LEAD CAPTURE MODAL -->
-  <div class="lead-modal-backdrop" id="leadModal">
-    <div class="lead-modal">
-      <div class="lead-modal-header">
-        <h3>Request Custom Supplier Scraper</h3>
-        <button type="button" class="lead-modal-close" onclick="closeLeadModal()">&times;</button>
-      </div>
-      <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0;">
-        Tell us which wholesale distributors you purchase from. We will configure an automated data feed straight to your Simple Biz Systems dashboard.
-      </p>
-
-      <form id="leadScraperForm" onsubmit="submitLeadToGoogleSheets(event)">
-        <div class="lead-field">
-          <label>Your Name</label>
-          <input type="text" id="leadName" required placeholder="e.g., Jake Reynolds">
-        </div>
-        <div class="lead-field">
-          <label>Company / Trade Specialty</label>
-          <input type="text" id="leadCompany" required placeholder="e.g., Reynolds Electrical &amp; Mechanical">
-        </div>
-        <div class="lead-field">
-          <label>Email Address</label>
-          <input type="email" id="leadEmail" required placeholder="jake@reynoldselectric.com">
-        </div>
-        <div class="lead-field">
-          <label>Phone Number</label>
-          <input type="tel" id="leadPhone" required placeholder="512-555-0192">
-        </div>
-        <div class="lead-field">
-          <label>Suppliers You Need Scraped</label>
-          <textarea id="leadNotes" rows="3" placeholder="e.g., Crawford Electric commercial portal, McCoy's Marble Falls trade account, Ferguson plumbing list"></textarea>
-        </div>
-
-        <button type="submit" class="lead-submit-btn" id="leadSubmitBtn">Submit Request &rarr;</button>
-        <div class="lead-status-msg" id="leadStatusMsg"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX FOR ACCURATE CENTERING) -->
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX) -->
   <div class="pdf-hidden-wrapper">
     <div id="pdfPrintStage">
       <div class="pdf-top-row">
@@ -1092,18 +1072,21 @@
       <table class="pdf-table">
         <thead>
           <tr>
-            <th style="width: 52%;">Description</th>
-            <th style="width: 16%; text-align: right;">Unit Price</th>
-            <th style="width: 12%; text-align: center;">Qty</th>
-            <th style="width: 20%; text-align: right;">Line Total</th>
+            <th style="width: 44%;">Description</th>
+            <th style="width: 14%;">Type</th>
+            <th style="width: 14%; text-align: right;">Unit Price</th>
+            <th style="width: 10%; text-align: center;">Qty</th>
+            <th style="width: 18%; text-align: right;">Line Total</th>
           </tr>
         </thead>
         <tbody id="pdfTableBody"></tbody>
       </table>
 
       <div style="display:flex; justify-content:flex-end; margin-top:16px;">
-        <div style="width:280px; font-size:0.86rem; line-height:1.6;">
-          <div style="display:flex; justify-content:space-between;"><span>Direct Cost:</span> <strong id="pdfSubtotal">$0.00</strong></div>
+        <div style="width:300px; font-size:0.86rem; line-height:1.6;">
+          <div style="display:flex; justify-content:space-between;"><span>Materials Subtotal:</span> <span id="pdfMatSub">$0.00</span></div>
+          <div style="display:flex; justify-content:space-between;"><span>Labor Subtotal:</span> <span id="pdfLaborSub">$0.00</span></div>
+          <div style="display:flex; justify-content:space-between; border-top:1px dashed #cbd5e1; padding-top:4px;"><span>Direct Cost Total:</span> <strong id="pdfSubtotal">$0.00</strong></div>
           <div style="display:flex; justify-content:space-between;"><span>Margin Factor:</span> <span id="pdfMargin"></span></div>
           <div style="display:flex; justify-content:space-between;"><span>Estimated Tax:</span> <span id="pdfTax"></span></div>
           <div style="display:flex; justify-content:space-between; border-top:2px solid #0d3b66; padding-top:6px; margin-top:6px; font-size:1.1rem; color:#0d3b66;">
@@ -1128,6 +1111,7 @@
         <a href="index.html">Home</a> &bull; 
         <a href="workorders.html">Work Orders</a> &bull; 
         <a href="dispatch.html">Dispatch Board</a> &bull; 
+        <a href="projects.html">Project Radar</a> &bull; 
         <a href="kingslandnews.html">Kingsland Wire</a> &bull; 
         <a href="about.html">About &amp; Founder</a>
       </p>
@@ -1256,7 +1240,6 @@
     let currentRegionName = "Kingsland, TX (Highland Lakes Freight Region)";
 
     document.addEventListener("DOMContentLoaded", function() {
-      // Parse query string parameters if redirected from projects.html
       const urlParams = new URLSearchParams(window.location.search);
       const zipParam = urlParams.get("zip");
       const projectParam = urlParams.get("project");
@@ -1355,10 +1338,6 @@
             <div class="supplier-drawer" id="drawer_${mat.id}">
               <span class="supplier-drawer-title">Regional Wholesale &amp; Retail Outlets</span>
               ${suppliersHtml}
-              <div class="supplier-scraper-note">
-                <span>Want automatic prices scraped from your account?</span>
-                <button type="button" onclick="openLeadModal('Custom Scraper for ${mat.name}')">Request Scraper &rarr;</button>
-              </div>
             </div>
           </div>
 
@@ -1366,7 +1345,7 @@
             <button type="button" class="btn-toggle-suppliers" onclick="toggleSupplierDrawer('drawer_${mat.id}', this)">
               Suppliers &darr;
             </button>
-            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${localizedPrice})">
+            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${localizedPrice}, 'Material')">
               + Add to Estimate
             </button>
           </div>
@@ -1382,12 +1361,18 @@
       btn.innerHTML = !isOpen ? "Close &uarr;" : "Suppliers &darr;";
     }
 
-    function addMaterialToEstimate(name, price) {
+    function addMaterialToEstimate(name, price, type = "Material") {
       const tbody = document.getElementById("estimateTableBody");
       const row = document.createElement("tr");
 
       row.innerHTML = `
         <td><input type="text" class="row-desc" value="${name}"></td>
+        <td>
+          <select class="row-type" onchange="calculateEstimateTotals(); saveEstimateLocally();">
+            <option value="Material" ${type === "Material" ? "selected" : ""}>Material</option>
+            <option value="Labor" ${type === "Labor" ? "selected" : ""}>Labor</option>
+          </select>
+        </td>
         <td><input type="number" class="row-price" value="${price}" step="0.01" oninput="updateRowTotal(this)"></td>
         <td><input type="number" class="row-qty" value="1" min="1" oninput="updateRowTotal(this)"></td>
         <td class="row-total" style="font-weight:700; color:var(--primary);">$${parseFloat(price).toFixed(2)}</td>
@@ -1399,19 +1384,76 @@
       saveEstimateLocally();
     }
 
-    function addCustomRow() {
+    function addCustomRow(defaultType = "Labor") {
       const tbody = document.getElementById("estimateTableBody");
       const row = document.createElement("tr");
+      const defaultDesc = defaultType === "Labor" ? "On-Site Trade Labor" : "Miscellaneous Materials";
+      const defaultPrice = defaultType === "Labor" ? "85.00" : "50.00";
+      const defaultQty = defaultType === "Labor" ? "4" : "1";
+      const total = (parseFloat(defaultPrice) * parseFloat(defaultQty)).toFixed(2);
 
       row.innerHTML = `
-        <td><input type="text" class="row-desc" placeholder="e.g., Master Electrician On-Site Labor"></td>
-        <td><input type="number" class="row-price" value="85.00" step="0.01" oninput="updateRowTotal(this)"></td>
-        <td><input type="number" class="row-qty" value="4" min="1" oninput="updateRowTotal(this)"></td>
-        <td class="row-total" style="font-weight:700; color:var(--primary);">$340.00</td>
+        <td><input type="text" class="row-desc" value="${defaultDesc}"></td>
+        <td>
+          <select class="row-type" onchange="calculateEstimateTotals(); saveEstimateLocally();">
+            <option value="Material" ${defaultType === "Material" ? "selected" : ""}>Material</option>
+            <option value="Labor" ${defaultType === "Labor" ? "selected" : ""}>Labor</option>
+          </select>
+        </td>
+        <td><input type="number" class="row-price" value="${defaultPrice}" step="0.01" oninput="updateRowTotal(this)"></td>
+        <td><input type="number" class="row-qty" value="${defaultQty}" min="1" oninput="updateRowTotal(this)"></td>
+        <td class="row-total" style="font-weight:700; color:var(--primary);">$${total}</td>
         <td style="text-align:center;"><button type="button" class="btn-remove-row" onclick="removeRow(this)">&times;</button></td>
       `;
 
       tbody.appendChild(row);
+      calculateEstimateTotals();
+      saveEstimateLocally();
+    }
+
+    // ONE-CLICK TRADE PRESETS
+    function loadTradePreset(presetKey) {
+      const tbody = document.getElementById("estimateTableBody");
+      tbody.innerHTML = "";
+
+      if (presetKey === "handyman") {
+        document.getElementById("estProject").value = "Residential Handyman Repairs & Hardware";
+        addMaterialToEstimate("Drywall Patch & Fastener Kit", "28.50", "Material");
+        addMaterialToEstimate("Interior Trim & Moulding (8 ft)", "16.20", "Material");
+        addMaterialToEstimate("Service Diagnostic / Travel Time", "95.00", "Labor");
+        addMaterialToEstimate("On-Site Handyman Labor (3 hrs)", "75.00", "Labor");
+      } else if (presetKey === "concrete") {
+        document.getElementById("estProject").value = "Monolithic Concrete Patio Slab (12x20)";
+        const concPrice = (142.00 * currentMultiplier).toFixed(2);
+        addMaterialToEstimate("Ready-Mix Concrete (3000 PSI)", concPrice, "Material");
+        addMaterialToEstimate("Rebar & Mesh Reinforcement", "85.00", "Material");
+        addMaterialToEstimate("2x4 Forming Lumber & Stakes", "52.00", "Material");
+        addMaterialToEstimate("Excavation, Grading & Forming Labor", "85.00", "Labor");
+        addMaterialToEstimate("Pour & Trowel Finishing Crew", "110.00", "Labor");
+      } else if (presetKey === "framing") {
+        document.getElementById("estProject").value = "Exterior Deck Framing & Joists";
+        const studPrice = (3.65 * currentMultiplier).toFixed(2);
+        addMaterialToEstimate("2x4x8 SPF Framing Stud", studPrice, "Material");
+        addMaterialToEstimate("Pressure-Treated Decking Joists (2x8)", "18.50", "Material");
+        addMaterialToEstimate("Structural Simpson Ties & Screws", "65.00", "Material");
+        addMaterialToEstimate("Lead Carpenter Framing Labor", "85.00", "Labor");
+      } else if (presetKey === "electrical") {
+        document.getElementById("estProject").value = "200A Electrical Service Panel & Branch Circuit";
+        const wirePrice = (112.00 * currentMultiplier).toFixed(2);
+        addMaterialToEstimate("12/2 NM-B Romex Copper Wire", wirePrice, "Material");
+        addMaterialToEstimate("200A Outdoor Breaker Enclosure", "240.00", "Material");
+        addMaterialToEstimate("Grounding Rods & Neutral Bar", "68.00", "Material");
+        addMaterialToEstimate("Master Electrician Rough-In & Inspection", "125.00", "Labor");
+      } else if (presetKey === "plumbing") {
+        document.getElementById("estProject").value = "Bathroom Rough-In Plumbing & Waste Line";
+        const pexPrice = (38.00 * currentMultiplier).toFixed(2);
+        const pvcPrice = (17.20 * currentMultiplier).toFixed(2);
+        addMaterialToEstimate("1/2\" PEX-A Tubing Coil", pexPrice, "Material");
+        addMaterialToEstimate("3\" Schedule 40 PVC Pipe", pvcPrice, "Material");
+        addMaterialToEstimate("PEX Brass Fittings & Crimp Rings", "55.00", "Material");
+        addMaterialToEstimate("Licensed Plumber Rough-In Labor", "115.00", "Labor");
+      }
+
       calculateEstimateTotals();
       saveEstimateLocally();
     }
@@ -1433,26 +1475,42 @@
     }
 
     function calculateEstimateTotals() {
-      let subtotal = 0;
+      let materialsSubtotal = 0;
+      let laborSubtotal = 0;
+
       document.querySelectorAll("#estimateTableBody tr").forEach(row => {
+        const type = row.querySelector(".row-type").value;
         const price = parseFloat(row.querySelector(".row-price").value) || 0;
         const qty = parseFloat(row.querySelector(".row-qty").value) || 0;
-        subtotal += (price * qty);
+        const total = price * qty;
+
+        if (type === "Labor") {
+          laborSubtotal += total;
+        } else {
+          materialsSubtotal += total;
+        }
       });
 
+      const directTotal = materialsSubtotal + laborSubtotal;
       const marginPct = parseFloat(document.getElementById("marginInput").value) || 0;
       const taxPct = parseFloat(document.getElementById("taxInput").value) || 0;
 
-      let preTaxTotal = subtotal;
+      let preTaxTotal = directTotal;
       if (marginPct < 100 && marginPct > 0) {
-        preTaxTotal = subtotal / (1 - (marginPct / 100));
+        preTaxTotal = directTotal / (1 - (marginPct / 100));
       }
 
       const taxAmount = preTaxTotal * (taxPct / 100);
       const grandTotal = preTaxTotal + taxAmount;
 
-      document.getElementById("subtotalDisplay").innerText = `$${subtotal.toFixed(2)}`;
+      document.getElementById("materialsTotalDisplay").innerText = `$${materialsSubtotal.toFixed(2)}`;
+      document.getElementById("laborTotalDisplay").innerText = `$${laborTotalDisplay(laborSubtotal)}`;
+      document.getElementById("subtotalDisplay").innerText = `$${directTotal.toFixed(2)}`;
       document.getElementById("grandTotalDisplay").innerText = `$${grandTotal.toFixed(2)}`;
+    }
+
+    function laborTotalDisplay(val) {
+      return val.toFixed(2);
     }
 
     function saveEstimateLocally() {
@@ -1460,6 +1518,7 @@
       document.querySelectorAll("#estimateTableBody tr").forEach(row => {
         items.push({
           desc: row.querySelector(".row-desc").value,
+          type: row.querySelector(".row-type").value,
           price: row.querySelector(".row-price").value,
           qty: row.querySelector(".row-qty").value
         });
@@ -1481,7 +1540,7 @@
     function loadSavedEstimate() {
       const saved = localStorage.getItem("sbs_estimator_data");
       if (!saved) {
-        addMaterialToEstimate("Ready-Mix Concrete (3000 PSI)", (142.00 * 1.06).toFixed(2));
+        loadTradePreset("handyman");
         return;
       }
 
@@ -1500,8 +1559,15 @@
           data.items.forEach(it => {
             const row = document.createElement("tr");
             const total = (parseFloat(it.price) * parseFloat(it.qty)).toFixed(2);
+            const rowType = it.type || "Material";
             row.innerHTML = `
               <td><input type="text" class="row-desc" value="${it.desc}"></td>
+              <td>
+                <select class="row-type" onchange="calculateEstimateTotals(); saveEstimateLocally();">
+                  <option value="Material" ${rowType === "Material" ? "selected" : ""}>Material</option>
+                  <option value="Labor" ${rowType === "Labor" ? "selected" : ""}>Labor</option>
+                </select>
+              </td>
               <td><input type="number" class="row-price" value="${it.price}" step="0.01" oninput="updateRowTotal(this)"></td>
               <td><input type="number" class="row-qty" value="${it.qty}" min="1" oninput="updateRowTotal(this)"></td>
               <td class="row-total" style="font-weight:700; color:var(--primary);">$${total}</td>
@@ -1514,94 +1580,7 @@
       } catch (e) {}
     }
 
-    function openLeadModal(defaultNotes) {
-      const modal = document.getElementById("leadModal");
-      modal.classList.add("active");
-      const notesField = document.getElementById("leadNotes");
-      if (defaultNotes && !notesField.value) {
-        notesField.value = defaultNotes;
-      }
-      document.getElementById("leadStatusMsg").style.display = "none";
-    }
-
-    function closeLeadModal() {
-      document.getElementById("leadModal").classList.remove("active");
-    }
-
-    window.onclick = function(event) {
-      if (event.target.classList.contains("lead-modal-backdrop")) {
-        closeLeadModal();
-      }
-    };
-
-    async function submitLeadToGoogleSheets(e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById("leadSubmitBtn");
-      const statusMsg = document.getElementById("leadStatusMsg");
-
-      submitBtn.disabled = true;
-      submitBtn.innerText = "Submitting Request...";
-      statusMsg.style.display = "none";
-
-      const leadPayload = {
-        name: document.getElementById("leadName").value.trim(),
-        company: document.getElementById("leadCompany").value.trim(),
-        email: document.getElementById("leadEmail").value.trim(),
-        phone: document.getElementById("leadPhone").value.trim(),
-        notes: document.getElementById("leadNotes").value.trim(),
-        source: "Estimator Supplier Scraper Request",
-        zip: document.getElementById("zipInput").value.trim(),
-        timestamp: new Date().toISOString()
-      };
-
-      try {
-        const localLeads = JSON.parse(localStorage.getItem("sbs_leads_data") || "[]");
-        localLeads.push({
-          id: "lead_" + Date.now(),
-          name: leadPayload.name,
-          phone: leadPayload.phone,
-          email: leadPayload.email,
-          notes: `[Scraper Request: ${leadPayload.company}] ${leadPayload.notes}`,
-          status: "New Inquiry",
-          date: new Date().toLocaleDateString()
-        });
-        localStorage.setItem("sbs_leads_data", JSON.stringify(localLeads));
-      } catch (err) {}
-
-      const GOOGLE_SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz_placeholder/exec";
-
-      try {
-        await fetch(GOOGLE_SHEET_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(leadPayload)
-        });
-
-        statusMsg.style.display = "block";
-        statusMsg.style.color = "var(--green-accent)";
-        statusMsg.innerText = "Request received. We will contact you with scraper setup details shortly.";
-        document.getElementById("leadScraperForm").reset();
-
-        setTimeout(() => {
-          closeLeadModal();
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Submit Request \u2192";
-        }, 2200);
-
-      } catch (err) {
-        statusMsg.style.display = "block";
-        statusMsg.style.color = "var(--green-accent)";
-        statusMsg.innerText = "Request saved. We will review your supplier requirements and reach out.";
-        setTimeout(() => {
-          closeLeadModal();
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Submit Request \u2192";
-        }, 2200);
-      }
-    }
-
-    // PDF GENERATION WITH STRICT CENTERING AND PROPER PAGE GEOMETRY
+    // PDF GENERATION WITH EXPLICIT LABOR / MATERIAL BREAKDOWN
     function exportEstimatePDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
@@ -1618,17 +1597,26 @@
       const pdfTbody = document.getElementById("pdfTableBody");
       pdfTbody.innerHTML = "";
 
-      let subtotal = 0;
+      let materialsSub = 0;
+      let laborSub = 0;
+
       document.querySelectorAll("#estimateTableBody tr").forEach(row => {
         const desc = row.querySelector(".row-desc").value;
+        const type = row.querySelector(".row-type").value;
         const price = parseFloat(row.querySelector(".row-price").value) || 0;
         const qty = parseFloat(row.querySelector(".row-qty").value) || 0;
         const total = price * qty;
-        subtotal += total;
+
+        if (type === "Labor") {
+          laborSub += total;
+        } else {
+          materialsSub += total;
+        }
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>${desc}</td>
+          <td style="font-size: 0.76rem; color: #64748b;">${type}</td>
           <td style="text-align: right;">$${price.toFixed(2)}</td>
           <td style="text-align: center;">${qty}</td>
           <td style="text-align: right;">$${total.toFixed(2)}</td>
@@ -1636,24 +1624,26 @@
         pdfTbody.appendChild(tr);
       });
 
+      const directTotal = materialsSub + laborSub;
       const marginPct = parseFloat(document.getElementById("marginInput").value) || 0;
       const taxPct = parseFloat(document.getElementById("taxInput").value) || 0;
 
-      let preTaxTotal = subtotal;
+      let preTaxTotal = directTotal;
       if (marginPct < 100 && marginPct > 0) {
-        preTaxTotal = subtotal / (1 - (marginPct / 100));
+        preTaxTotal = directTotal / (1 - (marginPct / 100));
       }
       const taxAmount = preTaxTotal * (taxPct / 100);
       const grandTotal = preTaxTotal + taxAmount;
 
-      document.getElementById("pdfSubtotal").innerText = `$${subtotal.toFixed(2)}`;
+      document.getElementById("pdfMatSub").innerText = `$${materialsSub.toFixed(2)}`;
+      document.getElementById("pdfLaborSub").innerText = `$${laborSub.toFixed(2)}`;
+      document.getElementById("pdfSubtotal").innerText = `$${directTotal.toFixed(2)}`;
       document.getElementById("pdfMargin").innerText = `${marginPct}% Gross Target`;
       document.getElementById("pdfTax").innerText = `$${taxAmount.toFixed(2)} (${taxPct}%)`;
       document.getElementById("pdfGrandTotal").innerText = `$${grandTotal.toFixed(2)}`;
 
       const element = document.getElementById("pdfPrintStage");
 
-      // Opt settings calibrated to US Letter portrait width (215.9mm)
       const opt = {
         margin: [8, 8, 8, 8],
         filename: `Bid_Estimate_${now.toISOString().slice(0, 10)}.pdf`,
