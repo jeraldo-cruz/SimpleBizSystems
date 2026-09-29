@@ -7,8 +7,8 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems</title>
 <meta name="title" content="Free Job Estimate Calculator &amp; Local Material Bid Builder | Simple Biz Systems">
-<meta name="description" content="Free contractor job estimate calculator with regional ZIP code material rates, dynamic local supplier routing, trade labor presets, and client PDF proposal export. Calculate lumber, concrete, wiring, and plumbing with zero subscriptions.">
-<meta name="keywords" content="free job estimate calculator, job estimate calculator, contractor bid generator, construction cost calculator, labor and material estimate, zip code material rates, Kingsland TX contractor bidding, Marble Falls material cost, free estimate pdf export">
+<meta name="description" content="Free Highland Lakes contractor job estimate calculator with regional material benchmarks, trade labor presets, and client PDF proposal export for Kingsland, Marble Falls, Burnet, and Llano, TX.">
+<meta name="keywords" content="free job estimate calculator, job estimate calculator, contractor bid generator, construction cost calculator, labor and material estimate, Highland Lakes material rates, Kingsland TX contractor bidding, Marble Falls material cost, free estimate pdf export">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/estimator.html">
 <meta property="og:title" content="Free Job Estimate Calculator &amp; Material Bid Builder | Simple Biz Systems">
-<meta property="og:description" content="Instant trade bid calculator with ZIP code material rates and client PDF export. Calculate labor, materials, and profit margins with zero login required.">
+<meta property="og:description" content="Instant trade bid calculator with Highland Lakes material benchmarks and client PDF export. Calculate labor, materials, and profit margins with zero login required.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- JSON-LD FAQ SCHEMA FOR SEARCH ENGINE RICH SNIPPETS -->
@@ -79,7 +79,6 @@
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     
-    /* FUNCTIONAL ACCENT COLORS */
     --blue-accent: #0284c7;
     --blue-surface: #f0f9ff;
     --blue-border: #bae6fd;
@@ -302,8 +301,8 @@
   .sec-tag.blue { background: #e0f2fe; color: #0369a1; }
   .sec-tag.navy { background: #e2e8f0; color: #0f172a; }
 
-  /* 1. ZIP CODE MATERIAL BENCHMARK LOOKUP */
-  .zip-lookup-card {
+  /* 1. MATERIAL BENCHMARK SECTION */
+  .material-benchmark-card {
     background: var(--blue-surface);
     border: 1px solid var(--blue-border);
     border-top: 4px solid var(--blue-accent);
@@ -312,53 +311,16 @@
     box-shadow: var(--card-shadow);
     margin-bottom: 24px;
   }
-  .zip-input-bar {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+  .benchmark-region-note {
     background: #ffffff;
     padding: 12px 16px;
     border-radius: 8px;
     border: 1px solid var(--blue-border);
     margin-bottom: 16px;
-  }
-  .zip-input-bar label {
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: var(--primary);
-    text-transform: uppercase;
-  }
-  .zip-input-field {
-    width: 140px;
-    padding: 8px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--primary);
-    background: #f8fafc;
-  }
-  .btn-zip-search {
-    background: var(--blue-accent);
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.86rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-  .btn-zip-search:hover {
-    background: #0284c7;
-  }
-  .zip-location-status {
     font-size: 0.84rem;
-    color: var(--text-muted);
-    font-weight: 600;
+    color: var(--text-dark);
   }
-  .zip-location-status strong {
+  .benchmark-region-note strong {
     color: var(--primary);
   }
 
@@ -368,7 +330,7 @@
     gap: 14px;
   }
 
-  /* COLORIZED MATERIAL CARDS BY TRADE CATEGORY */
+  /* COLORIZED MATERIAL CARDS */
   .material-item-card {
     background: #ffffff;
     border: 1px solid var(--border);
@@ -503,7 +465,7 @@
   .supplier-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 8px 0;
+    margin: 0;
   }
   .supplier-list li {
     padding: 4px 0;
@@ -666,7 +628,7 @@
     border-color: var(--primary);
   }
 
-  /* TOTALS & MARGIN PANEL WITH LABOR / MATERIAL SPLIT */
+  /* TOTALS & MARGIN PANEL */
   .estimate-totals-panel {
     background: var(--green-surface);
     border: 1px solid var(--green-border);
@@ -765,7 +727,7 @@
     line-height: 1.55;
   }
 
-  /* OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX) */
+  /* OFF-SCREEN PRINTABLE TEMPLATE (800PX BOX) */
   .pdf-hidden-wrapper {
     position: fixed;
     top: 0;
@@ -841,13 +803,6 @@
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 640px) {
-    .zip-input-bar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .zip-input-field {
-      width: 100%;
-    }
     .preset-bar {
       flex-direction: column;
       align-items: flex-start;
@@ -886,14 +841,14 @@
 
     <!-- MASTHEAD HERO (STANDARDIZED) -->
     <header class="page-header">
-      <span class="header-badge">Free Contractor Tool &bull; Regional ZIP Code Pricing Engine</span>
+      <span class="header-badge">Free Contractor Tool &bull; Highland Lakes Trade Pricing</span>
       <h1>Free Job Estimate Calculator &amp; Local Material Rates</h1>
       
       <!-- SEO INSTRUCTIONS & ARCHITECTURAL DISCLOSURE -->
       <div class="seo-instructions-card">
         <h2>Calculate Labor, Materials &amp; Target Margins Without Subscriptions</h2>
         <p>
-          Need to generate an accurate bid for a customer? This free job estimate calculator resolves delivery freight logistics across the Highland Lakes, Austin, San Antonio, and Texas markets to price bulk lumber, concrete, wiring, and plumbing. Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
+          Need to generate an accurate bid for a customer? This free job estimate calculator provides benchmark wholesale and retail material rates configured specifically for the Highland Lakes trade corridor (Kingsland, Marble Falls, Burnet, and Llano). Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
         </p>
         <div class="trust-bar">
           <span class="trust-pill">100% Free &bull; No Software Fees</span>
@@ -907,23 +862,18 @@
       </div>
     </header>
 
-    <!-- 1. ZIP CODE MATERIAL BENCHMARK LOOKUP -->
+    <!-- 1. REGIONAL MATERIAL BENCHMARK SECTION -->
     <h2 class="section-headline">
-      <span class="sec-tag blue">Lookup</span>
-      <span>1. Regional Material Benchmark Rates</span>
+      <span class="sec-tag blue">Benchmarks</span>
+      <span>1. Highland Lakes Material Benchmark Rates</span>
     </h2>
-    <section class="zip-lookup-card">
-      <div class="zip-input-bar">
-        <label for="zipInput">Project Delivery ZIP Code:</label>
-        <input type="text" id="zipInput" class="zip-input-field" value="78639" maxlength="5" placeholder="78639">
-        <button type="button" class="btn-zip-search" onclick="lookupZipRates()">Update Material Rates</button>
-        <div class="zip-location-status" id="zipStatusText">
-          Active Market: <strong>Kingsland, TX</strong> (Highland Lakes Freight Region &bull; 1.06x Logistics Multiplier)
-        </div>
+    <section class="material-benchmark-card">
+      <div class="benchmark-region-note">
+        Primary Delivery Region: <strong>Highland Lakes, TX</strong> &bull; Sourced from active suppliers in Kingsland, Marble Falls, Burnet, and Llano.
       </div>
 
       <div class="material-grid" id="materialDisplayGrid">
-        <!-- Populated dynamically with trade color categories -->
+        <!-- Populated dynamically with Highland Lakes trade data -->
       </div>
     </section>
 
@@ -1049,7 +999,7 @@
 
   </main>
 
-  <!-- OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX) -->
+  <!-- OFF-SCREEN PRINTABLE TEMPLATE (800PX BOX) -->
   <div class="pdf-hidden-wrapper">
     <div id="pdfPrintStage">
       <div class="pdf-top-row">
@@ -1059,7 +1009,7 @@
         </div>
         <div class="pdf-meta">
           <div><strong>Date:</strong> <span id="pdfDate"></span></div>
-          <div><strong>Delivery ZIP:</strong> <span id="pdfZip"></span></div>
+          <div><strong>Region:</strong> <span>Highland Lakes, TX</span></div>
         </div>
       </div>
 
@@ -1119,307 +1069,143 @@
   </footer>
 
   <script>
-    // BASE MATERIALS WITH CATEGORY ASSIGNMENTS
+    // HIGHLAND LAKES REGIONAL MATERIAL BENCHMARKS
     const BASE_MATERIALS = [
       { 
         id: "m_conc", 
         tradeClass: "trade-concrete",
-        categoryKey: "concrete",
         cat: "Concrete & Masonry", 
         name: "Ready-Mix Concrete (3000 PSI)", 
         unit: "cu yd", 
-        basePrice: 142.00
+        price: 150.50,
+        suppliers: [
+          { name: "Ingram Readymix", location: "Burnet / Marble Falls", url: "https://www.ingramreadymix.com/" },
+          { name: "Century Materials", location: "Llano / Central TX", url: "https://www.centurymaterials.com/" },
+          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
       },
       { 
         id: "m_stud", 
         tradeClass: "trade-lumber",
-        categoryKey: "lumber",
         cat: "Framing Lumber", 
         name: "2x4x8 SPF Framing Stud", 
         unit: "each", 
-        basePrice: 3.65
+        price: 3.85,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls (Hwy 281)", url: "https://www.mccoys.com/" },
+          { name: "Home Depot Pro Lumber", location: "Marble Falls", url: "https://www.homedepot.com/" },
+          { name: "Lowe's Commercial", location: "Marble Falls", url: "https://www.lowes.com/" }
+        ]
       },
       { 
         id: "m_osb", 
         tradeClass: "trade-lumber",
-        categoryKey: "sheathing",
         cat: "Sheathing & Panels", 
         name: "7/16\" OSB Sheathing (4x8)", 
         unit: "sheet", 
-        basePrice: 13.50
+        price: 14.30,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
+          { name: "Lowe's Pro", location: "Marble Falls", url: "https://www.lowes.com/" },
+          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
       },
       { 
         id: "m_ply", 
         tradeClass: "trade-lumber",
-        categoryKey: "sheathing",
         cat: "Plywood & Subfloor", 
         name: "1/2\" CDX Pine Plywood (4x8)", 
         unit: "sheet", 
-        basePrice: 22.80
+        price: 24.15,
+        suppliers: [
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" },
+          { name: "Home Depot Pro", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
       },
       { 
         id: "m_wire", 
         tradeClass: "trade-electrical",
-        categoryKey: "electrical",
         cat: "Electrical Supply", 
         name: "12/2 NM-B Romex Copper Wire", 
         unit: "250 ft roll", 
-        basePrice: 112.00
+        price: 118.70,
+        suppliers: [
+          { name: "Crawford Electric Supply", location: "Central TX Delivery", url: "https://www.crawfordelectricsupply.com/" },
+          { name: "CED (Consolidated Electrical)", location: "Austin / Delivery", url: "https://cedcareers.com/" },
+          { name: "Home Depot Pro Electrical", location: "Marble Falls", url: "https://www.homedepot.com/" }
+        ]
       },
       { 
         id: "m_pex", 
         tradeClass: "trade-plumbing",
-        categoryKey: "plumbing",
         cat: "Plumbing Supply", 
         name: "1/2\" PEX-A Tubing Coil", 
         unit: "100 ft roll", 
-        basePrice: 38.00
+        price: 40.25,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "Moore Supply Co", location: "Austin / Hill Country", url: "https://www.mooresupply.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
       },
       { 
         id: "m_cop", 
         tradeClass: "trade-plumbing",
-        categoryKey: "plumbing",
         cat: "Plumbing Supply", 
         name: "1/2\" Type L Copper Pipe", 
         unit: "10 ft stick", 
-        basePrice: 21.50
+        price: 22.80,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "Lowe's Pro Plumbing", location: "Marble Falls", url: "https://www.lowes.com/" }
+        ]
       },
       { 
         id: "m_pvc", 
         tradeClass: "trade-plumbing",
-        categoryKey: "drainage",
         cat: "Drainage & Sewer", 
         name: "3\" Schedule 40 PVC Pipe", 
         unit: "10 ft stick", 
-        basePrice: 17.20
+        price: 18.25,
+        suppliers: [
+          { name: "Ferguson Plumbing Supply", location: "Marble Falls", url: "https://www.ferguson.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
       },
       { 
         id: "m_roof", 
         tradeClass: "trade-roofing",
-        categoryKey: "roofing",
         cat: "Roofing & Siding", 
         name: "Architectural Asphalt Shingles", 
         unit: "bundle (1/3 sq)", 
-        basePrice: 36.50
+        price: 38.70,
+        suppliers: [
+          { name: "ABC Supply Co", location: "Austin / Delivery", url: "https://www.abcsupply.com/" },
+          { name: "Mueller Building Systems", location: "Burnet (Hwy 29)", url: "https://www.muellerinc.com/" },
+          { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
+        ]
       }
     ];
 
-    let currentMultiplier = 1.06;
-    let currentRegionName = "Kingsland, TX (Highland Lakes Freight Region)";
-    let currentMarketCode = "highland_lakes";
-    let currentCity = "Kingsland";
-    let currentState = "TX";
-
-    // DYNAMIC REGIONAL SUPPLIER GENERATOR
-    function getSuppliersForMaterial(categoryKey, marketCode, city, state) {
-      if (marketCode === "highland_lakes") {
-        if (categoryKey === "concrete") {
-          return [
-            { name: "Ingram Readymix", location: "Burnet / Marble Falls", url: "https://www.ingramreadymix.com/" },
-            { name: "Century Materials", location: "Llano / Central TX", url: "https://www.centurymaterials.com/" },
-            { name: "Home Depot Pro Ready-Mix", location: "Marble Falls Yard", url: "https://www.homedepot.com/" }
-          ];
-        }
-        if (categoryKey === "lumber" || categoryKey === "sheathing") {
-          return [
-            { name: "McCoy's Building Supply", location: "Marble Falls (Hwy 281)", url: "https://www.mccoys.com/" },
-            { name: "Home Depot Pro Lumber", location: "Marble Falls (Gateway)", url: "https://www.homedepot.com/" },
-            { name: "Lowe's Pro Commercial", location: "Marble Falls", url: "https://www.lowes.com/" }
-          ];
-        }
-        if (categoryKey === "electrical") {
-          return [
-            { name: "Crawford Electric Supply", location: "Hill Country Delivery / Austin", url: "https://www.crawfordelectricsupply.com/" },
-            { name: "Home Depot Pro Electrical", location: "Marble Falls", url: "https://www.homedepot.com/" },
-            { name: "CED (Consolidated Electrical)", location: "Austin / Regional Route", url: "https://cedcareers.com/" }
-          ];
-        }
-        if (categoryKey === "plumbing" || categoryKey === "drainage") {
-          return [
-            { name: "Ferguson Plumbing Supply", location: "Marble Falls (Commerce St)", url: "https://www.ferguson.com/" },
-            { name: "Moore Supply Co", location: "Austin / Hill Country Route", url: "https://www.mooresupply.com/" },
-            { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
-          ];
-        }
-        if (categoryKey === "roofing") {
-          return [
-            { name: "ABC Supply Co", location: "Austin / Central TX Delivery", url: "https://www.abcsupply.com/" },
-            { name: "Mueller Building Systems", location: "Burnet Yard (TX-29)", url: "https://www.muellerinc.com/" },
-            { name: "McCoy's Building Supply", location: "Marble Falls", url: "https://www.mccoys.com/" }
-          ];
-        }
-      }
-
-      if (marketCode === "austin_metro") {
-        if (categoryKey === "concrete") {
-          return [
-            { name: "Alamo Concrete Products", location: "Austin Metro Distribution", url: "https://www.alamoconcrete.com/" },
-            { name: "Capitol Aggregates", location: "Austin / Pflugerville", url: "https://www.capitolaggregates.com/" },
-            { name: "Home Depot Pro Ready-Mix", location: "Austin Area Stores", url: "https://www.homedepot.com/" }
-          ];
-        }
-        if (categoryKey === "lumber" || categoryKey === "sheathing") {
-          return [
-            { name: "McCoy's Building Supply", location: "Austin / Buda / Manchaca", url: "https://www.mccoys.com/" },
-            { name: "Builders FirstSource (BMC)", location: "Austin Commercial Yard", url: "https://www.bldr.com/" },
-            { name: "Home Depot Pro Lumber", location: "Austin Distribution Hub", url: "https://www.homedepot.com/" }
-          ];
-        }
-        if (categoryKey === "electrical") {
-          return [
-            { name: "Crawford Electric Supply", location: "Austin Distribution Center", url: "https://www.crawfordelectricsupply.com/" },
-            { name: "CED (Consolidated Electrical)", location: "Austin Central Branch", url: "https://cedcareers.com/" },
-            { name: "Elliot Electric Supply", location: "Austin / Round Rock", url: "https://www.elliottelectric.com/" }
-          ];
-        }
-        if (categoryKey === "plumbing" || categoryKey === "drainage") {
-          return [
-            { name: "Moore Supply Co", location: "Austin Commercial Hub", url: "https://www.mooresupply.com/" },
-            { name: "Ferguson Plumbing Supply", location: "Austin Metro Branches", url: "https://www.ferguson.com/" },
-            { name: "Winsupply of Austin", location: "Austin Wholesale", url: "https://www.winsupplyinc.com/" }
-          ];
-        }
-        if (categoryKey === "roofing") {
-          return [
-            { name: "ABC Supply Co", location: "Austin Main Hub", url: "https://www.abcsupply.com/" },
-            { name: "Beacon Building Products", location: "Austin Commercial Branch", url: "https://www.becn.com/" },
-            { name: "SRS Distribution", location: "Austin Service Center", url: "https://www.srsdistribution.com/" }
-          ];
-        }
-      }
-
-      if (marketCode === "san_antonio") {
-        if (categoryKey === "concrete") {
-          return [
-            { name: "Alamo Concrete Products", location: "San Antonio Headquarters", url: "https://www.alamoconcrete.com/" },
-            { name: "Martin Marietta Central", location: "San Antonio Materials Yard", url: "https://www.martinmarietta.com/" },
-            { name: "Home Depot Pro", location: "San Antonio Locations", url: "https://www.homedepot.com/" }
-          ];
-        }
-        if (categoryKey === "lumber" || categoryKey === "sheathing") {
-          return [
-            { name: "McCoy's Building Supply", location: "San Antonio Area Branches", url: "https://www.mccoys.com/" },
-            { name: "Builders FirstSource", location: "San Antonio Yard", url: "https://www.bldr.com/" },
-            { name: "MG Building Materials", location: "San Antonio Commercial", url: "https://www.mgbuildingmaterials.com/" }
-          ];
-        }
-        if (categoryKey === "electrical") {
-          return [
-            { name: "Dealers Electrical Supply", location: "San Antonio Branch", url: "https://www.dealerselectric.com/" },
-            { name: "Crawford Electric Supply", location: "San Antonio Hub", url: "https://www.crawfordelectricsupply.com/" },
-            { name: "Summers Electric (Rexel)", location: "San Antonio Central", url: "https://www.rexelusa.com/" }
-          ];
-        }
-        if (categoryKey === "plumbing" || categoryKey === "drainage") {
-          return [
-            { name: "Morrison Supply Co", location: "San Antonio Commercial", url: "https://www.morsco.com/" },
-            { name: "Ferguson Plumbing Supply", location: "San Antonio Branch", url: "https://www.ferguson.com/" },
-            { name: "Moore Supply Co", location: "San Antonio Outlet", url: "https://www.mooresupply.com/" }
-          ];
-        }
-        if (categoryKey === "roofing") {
-          return [
-            { name: "ABC Supply Co", location: "San Antonio Branch", url: "https://www.abcsupply.com/" },
-            { name: "Beacon Roofing Supply", location: "San Antonio", url: "https://www.becn.com/" },
-            { name: "McCoy's Building Supply", location: "San Antonio", url: "https://www.mccoys.com/" }
-          ];
-        }
-      }
-
-      // GENERIC TEXAS & OUT-OF-STATE REGIONS (RESOLVES TO LOCAL CITY)
-      return [
-        { name: `Home Depot Pro (${city})`, location: `Local ${city}, ${state} Delivery`, url: `https://www.homedepot.com/l/search?q=${encodeURIComponent(city + ' ' + state)}` },
-        { name: `Lowe's Pro Services`, location: `${city} Area Store & Contractor Desk`, url: `https://www.lowes.com/store/` },
-        { name: `Ferguson Commercial Pro`, location: `${state} Regional Supply Depot`, url: "https://www.ferguson.com/" }
-      ];
-    }
-
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
-      const zipParam = urlParams.get("zip");
       const projectParam = urlParams.get("project");
 
-      if (zipParam && zipParam.length === 5) {
-        document.getElementById("zipInput").value = zipParam;
-      }
       if (projectParam) {
         document.getElementById("estProject").value = decodeURIComponent(projectParam);
       }
 
-      lookupZipRates();
+      renderMaterialGrid();
       loadSavedEstimate();
     });
-
-    async function lookupZipRates() {
-      const zip = document.getElementById("zipInput").value.trim();
-      const statusEl = document.getElementById("zipStatusText");
-
-      if (zip.length !== 5 || isNaN(zip)) {
-        statusEl.innerHTML = `<span style="color:var(--danger);">Please enter a valid 5-digit US ZIP code.</span>`;
-        return;
-      }
-
-      statusEl.innerHTML = `Resolving regional supply market for <strong>${zip}</strong>...`;
-
-      try {
-        const response = await fetch(`https://api.zippopotam.us/us/${zip}`);
-        if (!response.ok) throw new Error("ZIP not found");
-
-        const data = await response.json();
-        const place = data.places[0];
-        currentCity = place['place name'];
-        currentState = place['state abbreviation'];
-
-        if (currentState === "TX") {
-          if (["78639", "78654", "78611", "78643", "78657", "78607", "78672"].includes(zip)) {
-            currentMultiplier = 1.06;
-            currentMarketCode = "highland_lakes";
-            currentRegionName = `${currentCity}, ${currentState} (Highland Lakes Freight Region)`;
-          } else if (["787", "78613", "78641", "78660", "78664", "78681"].some(p => zip.startsWith(p))) {
-            currentMultiplier = 1.00;
-            currentMarketCode = "austin_metro";
-            currentRegionName = `${currentCity}, ${currentState} (Austin Metro Distributor Hub)`;
-          } else if (zip.startsWith("782") || zip.startsWith("781")) {
-            currentMultiplier = 1.01;
-            currentMarketCode = "san_antonio";
-            currentRegionName = `${currentCity}, ${currentState} (San Antonio Wholesale Market)`;
-          } else {
-            currentMultiplier = 1.04;
-            currentMarketCode = "texas_general";
-            currentRegionName = `${currentCity}, ${currentState} (Texas Regional Market)`;
-          }
-        } else {
-          currentMultiplier = 1.08;
-          currentMarketCode = "out_of_state";
-          currentRegionName = `${currentCity}, ${currentState} (Out-of-State Supply Tier)`;
-        }
-
-        statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; ${currentMultiplier.toFixed(2)}x Regional Freight Factor`;
-        renderMaterialGrid();
-        updateTablePricesWithMultiplier();
-
-      } catch (err) {
-        currentMultiplier = 1.06;
-        currentMarketCode = "highland_lakes";
-        currentCity = "Kingsland";
-        currentState = "TX";
-        currentRegionName = `ZIP ${zip} (Highland Lakes Baseline)`;
-        statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; 1.06x Standard Regional Factor`;
-        renderMaterialGrid();
-        updateTablePricesWithMultiplier();
-      }
-    }
 
     function renderMaterialGrid() {
       const container = document.getElementById("materialDisplayGrid");
       container.innerHTML = "";
 
       BASE_MATERIALS.forEach(mat => {
-        const localizedPrice = (mat.basePrice * currentMultiplier).toFixed(2);
-        const suppliers = getSuppliersForMaterial(mat.categoryKey, currentMarketCode, currentCity, currentState);
-        
         let suppliersHtml = '<ul class="supplier-list">';
-        suppliers.forEach(s => {
+        mat.suppliers.forEach(s => {
           suppliersHtml += `
             <li>
               <a href="${s.url}" target="_blank" rel="noopener">${s.name} &rarr;</a>
@@ -1440,12 +1226,12 @@
                 <span class="mat-unit-sub">Benchmark Unit: Per ${mat.unit}</span>
               </div>
               <div class="mat-pricing">
-                <span class="mat-cost">$${localizedPrice}</span>
+                <span class="mat-cost">$${mat.price.toFixed(2)}</span>
               </div>
             </div>
 
             <div class="supplier-drawer" id="drawer_${mat.id}">
-              <span class="supplier-drawer-title">Local Supply Outlets (${currentCity}, ${currentState})</span>
+              <span class="supplier-drawer-title">Highland Lakes Suppliers</span>
               ${suppliersHtml}
             </div>
           </div>
@@ -1454,7 +1240,7 @@
             <button type="button" class="btn-toggle-suppliers" onclick="toggleSupplierDrawer('drawer_${mat.id}', this)">
               Suppliers &darr;
             </button>
-            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${localizedPrice}, 'Material')">
+            <button type="button" class="btn-add-mat" onclick="addMaterialToEstimate('${mat.name}', ${mat.price.toFixed(2)}, 'Material')">
               + Add to Estimate
             </button>
           </div>
@@ -1468,27 +1254,6 @@
       const isOpen = drawer.classList.contains("open");
       drawer.classList.toggle("open", !isOpen);
       btn.innerHTML = !isOpen ? "Close &uarr;" : "Suppliers &darr;";
-    }
-
-    // UPDATES ALL STANDARD MATERIAL ROWS IN THE ACTIVE TABLE WHEN ZIP CHANGES
-    function updateTablePricesWithMultiplier() {
-      document.querySelectorAll("#estimateTableBody tr").forEach(row => {
-        const desc = row.querySelector(".row-desc").value.trim();
-        const type = row.querySelector(".row-type").value;
-
-        if (type === "Material") {
-          const match = BASE_MATERIALS.find(m => m.name.toLowerCase() === desc.toLowerCase());
-          if (match) {
-            const newUnitPrice = (match.basePrice * currentMultiplier).toFixed(2);
-            row.querySelector(".row-price").value = newUnitPrice;
-            const qty = parseFloat(row.querySelector(".row-qty").value) || 0;
-            row.querySelector(".row-total").innerText = `$${(newUnitPrice * qty).toFixed(2)}`;
-          }
-        }
-      });
-
-      calculateEstimateTotals();
-      saveEstimateLocally();
     }
 
     function addMaterialToEstimate(name, price, type = "Material") {
@@ -1554,32 +1319,27 @@
         addMaterialToEstimate("On-Site Handyman Labor (3 hrs)", "75.00", "Labor");
       } else if (presetKey === "concrete") {
         document.getElementById("estProject").value = "Monolithic Concrete Patio Slab (12x20)";
-        const concPrice = (142.00 * currentMultiplier).toFixed(2);
-        addMaterialToEstimate("Ready-Mix Concrete (3000 PSI)", concPrice, "Material");
+        addMaterialToEstimate("Ready-Mix Concrete (3000 PSI)", "150.50", "Material");
         addMaterialToEstimate("Rebar & Mesh Reinforcement", "85.00", "Material");
         addMaterialToEstimate("2x4 Forming Lumber & Stakes", "52.00", "Material");
         addMaterialToEstimate("Excavation, Grading & Forming Labor", "85.00", "Labor");
         addMaterialToEstimate("Pour & Trowel Finishing Crew", "110.00", "Labor");
       } else if (presetKey === "framing") {
         document.getElementById("estProject").value = "Exterior Deck Framing & Joists";
-        const studPrice = (3.65 * currentMultiplier).toFixed(2);
-        addMaterialToEstimate("2x4x8 SPF Framing Stud", studPrice, "Material");
+        addMaterialToEstimate("2x4x8 SPF Framing Stud", "3.85", "Material");
         addMaterialToEstimate("Pressure-Treated Decking Joists (2x8)", "18.50", "Material");
         addMaterialToEstimate("Structural Simpson Ties & Screws", "65.00", "Material");
         addMaterialToEstimate("Lead Carpenter Framing Labor", "85.00", "Labor");
       } else if (presetKey === "electrical") {
         document.getElementById("estProject").value = "200A Electrical Service Panel & Branch Circuit";
-        const wirePrice = (112.00 * currentMultiplier).toFixed(2);
-        addMaterialToEstimate("12/2 NM-B Romex Copper Wire", wirePrice, "Material");
+        addMaterialToEstimate("12/2 NM-B Romex Copper Wire", "118.70", "Material");
         addMaterialToEstimate("200A Outdoor Breaker Enclosure", "240.00", "Material");
         addMaterialToEstimate("Grounding Rods & Neutral Bar", "68.00", "Material");
         addMaterialToEstimate("Master Electrician Rough-In & Inspection", "125.00", "Labor");
       } else if (presetKey === "plumbing") {
         document.getElementById("estProject").value = "Bathroom Rough-In Plumbing & Waste Line";
-        const pexPrice = (38.00 * currentMultiplier).toFixed(2);
-        const pvcPrice = (17.20 * currentMultiplier).toFixed(2);
-        addMaterialToEstimate("1/2\" PEX-A Tubing Coil", pexPrice, "Material");
-        addMaterialToEstimate("3\" Schedule 40 PVC Pipe", pvcPrice, "Material");
+        addMaterialToEstimate("1/2\" PEX-A Tubing Coil", "40.25", "Material");
+        addMaterialToEstimate("3\" Schedule 40 PVC Pipe", "18.25", "Material");
         addMaterialToEstimate("PEX Brass Fittings & Crimp Rings", "55.00", "Material");
         addMaterialToEstimate("Licensed Plumber Rough-In Labor", "115.00", "Labor");
       }
@@ -1656,7 +1416,6 @@
         project: document.getElementById("estProject").value,
         margin: document.getElementById("marginInput").value,
         tax: document.getElementById("taxInput").value,
-        zip: document.getElementById("zipInput").value,
         items
       };
 
@@ -1677,7 +1436,6 @@
         if (data.project) document.getElementById("estProject").value = data.project;
         if (data.margin) document.getElementById("marginInput").value = data.margin;
         if (data.tax) document.getElementById("taxInput").value = data.tax;
-        if (data.zip && !document.getElementById("zipInput").value) document.getElementById("zipInput").value = data.zip;
 
         const tbody = document.getElementById("estimateTableBody");
         tbody.innerHTML = "";
@@ -1715,7 +1473,6 @@
 
       const now = new Date();
       document.getElementById("pdfDate").innerText = now.toLocaleDateString();
-      document.getElementById("pdfZip").innerText = document.getElementById("zipInput").value;
       document.getElementById("pdfCustomer").innerText = document.getElementById("estCustomer").value || "Valued Client";
       document.getElementById("pdfAddress").innerText = document.getElementById("estAddress").value || "Job Site Location";
       document.getElementById("pdfProject").innerText = document.getElementById("estProject").value || "Contract Work Proposal";
