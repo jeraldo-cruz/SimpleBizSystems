@@ -765,7 +765,7 @@
     line-height: 1.55;
   }
 
-  /* OFF-SCREEN PRINTABLE TEMPLATE (CENTERED 800PX BOX) */
+  /* OFF-SCREEN PRINTABLE TEMPLATE (CALIBRATED 800PX BOX) */
   .pdf-hidden-wrapper {
     position: fixed;
     top: 0;
@@ -1021,7 +1021,7 @@
 
     </section>
 
-    <!-- 3. FREQUENTLY ASKED QUESTIONS SECTION (HIGH SEO INTENT VALUE) -->
+    <!-- 3. FREQUENTLY ASKED QUESTIONS SECTION -->
     <section class="faq-section">
       <h2>Frequently Asked Questions on Job Estimates</h2>
 
@@ -1293,12 +1293,14 @@
 
         statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; ${currentMultiplier.toFixed(2)}x Regional Freight Factor`;
         renderMaterialGrid();
+        updateTablePricesWithMultiplier();
 
       } catch (err) {
         currentMultiplier = 1.06;
         currentRegionName = `ZIP ${zip} (Highland Lakes Baseline)`;
         statusEl.innerHTML = `Active Market: <strong>${currentRegionName}</strong> &bull; 1.06x Standard Regional Factor`;
         renderMaterialGrid();
+        updateTablePricesWithMultiplier();
       }
     }
 
@@ -1359,6 +1361,27 @@
       const isOpen = drawer.classList.contains("open");
       drawer.classList.toggle("open", !isOpen);
       btn.innerHTML = !isOpen ? "Close &uarr;" : "Suppliers &darr;";
+    }
+
+    // UPDATES ALL STANDARD MATERIAL ROWS IN THE ACTIVE TABLE WHEN ZIP CHANGES
+    function updateTablePricesWithMultiplier() {
+      document.querySelectorAll("#estimateTableBody tr").forEach(row => {
+        const desc = row.querySelector(".row-desc").value.trim();
+        const type = row.querySelector(".row-type").value;
+
+        if (type === "Material") {
+          const match = BASE_MATERIALS.find(m => m.name.toLowerCase() === desc.toLowerCase());
+          if (match) {
+            const newUnitPrice = (match.basePrice * currentMultiplier).toFixed(2);
+            row.querySelector(".row-price").value = newUnitPrice;
+            const qty = parseFloat(row.querySelector(".row-qty").value) || 0;
+            row.querySelector(".row-total").innerText = `$${(newUnitPrice * qty).toFixed(2)}`;
+          }
+        }
+      });
+
+      calculateEstimateTotals();
+      saveEstimateLocally();
     }
 
     function addMaterialToEstimate(name, price, type = "Material") {
@@ -1504,13 +1527,9 @@
       const grandTotal = preTaxTotal + taxAmount;
 
       document.getElementById("materialsTotalDisplay").innerText = `$${materialsSubtotal.toFixed(2)}`;
-      document.getElementById("laborTotalDisplay").innerText = `$${laborTotalDisplay(laborSubtotal)}`;
+      document.getElementById("laborTotalDisplay").innerText = `$${laborSubtotal.toFixed(2)}`;
       document.getElementById("subtotalDisplay").innerText = `$${directTotal.toFixed(2)}`;
       document.getElementById("grandTotalDisplay").innerText = `$${grandTotal.toFixed(2)}`;
-    }
-
-    function laborTotalDisplay(val) {
-      return val.toFixed(2);
     }
 
     function saveEstimateLocally() {
