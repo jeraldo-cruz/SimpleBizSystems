@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>About Simple Biz Systems | Jeraldo Cruz & Highland Lakes Operations</title>
-<meta name="title" content="About Simple Biz Systems | Jeraldo Cruz & Highland Lakes Operations">
-<meta name="description" content="The story, operational philosophy, and founder background behind Simple Biz Systems. Building subscription-free trade software, interactive incident mapping, and community utilities in Kingsland, Texas.">
-<meta name="keywords" content="Simple Biz Systems about, Jeraldo Cruz Kingsland TX, Highland Lakes contractor software, subscription free business systems, local first web engineering, trade operations tools, Highland Lakes incident map">
+<title>About Simple Biz Systems | Jeraldo Cruz &amp; Highland Lakes Operations</title>
+<meta name="title" content="About Simple Biz Systems | Jeraldo Cruz &amp; Highland Lakes Operations">
+<meta name="description" content="The story, operational philosophy, and founder background behind Simple Biz Systems. Building subscription-free trade software, local website audits, and community utilities in Kingsland, Texas.">
+<meta name="keywords" content="website audit kingsland tx, local website audit Kingsland Texas, Simple Biz Systems about, Jeraldo Cruz Kingsland TX, Highland Lakes contractor software, subscription free business systems, local first web engineering, trade operations tools, Highland Lakes incident map">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="US-TX">
@@ -24,8 +24,36 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/about.html">
 <meta property="og:title" content="About Simple Biz Systems | Jeraldo Cruz">
-<meta property="og:description" content="Why we build lean, subscription-free operational tools for working contractors and free digital utilities for the Highland Lakes community.">
+<meta property="og:description" content="Why we build lean, subscription-free operational tools for working contractors, provide local website audits, and build free digital utilities for the Highland Lakes community.">
 <meta property="og:image" content="https://www.simplebizsystems.com/founder.webp">
+
+<!-- STRUCTURED DATA: LOCAL SERVICE SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Local Website & Technical Audit",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Simple Biz Systems",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kingsland",
+      "addressRegion": "TX",
+      "postalCode": "78639",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": [
+    "Kingsland",
+    "Marble Falls",
+    "Burnet",
+    "Llano",
+    "Horseshoe Bay"
+  ],
+  "description": "Comprehensive local business website review, Google Maps / Business Profile audit, mobile speed diagnostic, and lead conversion optimization for trade contractors in Kingsland, Texas."
+}
+</script>
 
 <style>
   :root { 
@@ -42,6 +70,7 @@
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
     --blue-accent: #0284c7;
+    --green-accent: #16a34a;
   }
   
   html {
@@ -231,6 +260,78 @@
     flex: 1;
   }
 
+  /* WEBSITE AUDIT SPECIALTY CARD (TARGETS 'website audit kingsland tx') */
+  .audit-specialty-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--blue-accent);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+  }
+  .audit-specialty-card h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .audit-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: #e0f2fe;
+    color: var(--blue-accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .audit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .audit-item {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .audit-item h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .audit-item p {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.45;
+  }
+  .btn-request-audit {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.86rem;
+    font-weight: 800;
+    padding: 10px 18px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+    margin-top: 8px;
+  }
+  .btn-request-audit:hover {
+    background: var(--primary-light);
+  }
+
   /* FOUNDER PILLARS GRID */
   .pillars-grid {
     display: grid;
@@ -313,7 +414,7 @@
     .founder-photo-box {
       margin-bottom: 6px;
     }
-    .content-card {
+    .content-card, .audit-specialty-card {
       padding: 18px;
     }
   }
@@ -349,7 +450,7 @@
       <span class="header-badge">Local Systems &bull; Highland Lakes, Texas</span>
       <h1>About Simple Biz Systems</h1>
       <p>
-        Building lean, dependable digital systems for independent trade contractors and free public utilities for students and families across Llano and Burnet Counties.
+        Building lean, dependable digital systems for independent trade contractors, delivering local technical audits, and maintaining free public utilities for families across Llano and Burnet Counties.
       </p>
     </header>
 
@@ -359,7 +460,7 @@
       
       <div class="founder-layout">
         <div class="founder-photo-box">
-          <img src="founder.webp" alt="Jeraldo Cruz - Founder of Simple Biz Systems" class="founder-img" onerror="this.style.display='none'">
+          <img src="founder.webp" alt="Jeraldo Cruz - Founder of Simple Biz Systems in Kingsland, TX" class="founder-img" onerror="this.style.display='none'">
           <span class="founder-caption">Jeraldo Cruz &bull; Kingsland, TX</span>
         </div>
         
@@ -371,6 +472,37 @@
             Whether calculating deadhead windshield transit along the TX-29 and RM 1431 corridors, estimating local bulk materials, indexing commercial construction permits, or building offline paperless signoff workflows for trade rigs, our priority is practical utility that helps independent businesses protect their margins.
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION: LOCAL WEBSITE & TECHNICAL AUDITS (TARGETS 'website audit kingsland tx') -->
+    <section class="audit-specialty-card" id="auditService">
+      <h2>
+        <span>Local Website &amp; Technical Audits in Kingsland, TX</span>
+        <span class="audit-tag">Direct Service</span>
+      </h2>
+      <p style="font-size: 0.9rem; color: #475569; margin: 0; line-height: 1.55;">
+        Are customers in Kingsland, Marble Falls, Burnet, or Llano trying to reach your business but getting lost? Most small business websites suffer from broken mobile buttons, missing Google Business categories, or slow loading speeds that cost you phone calls. We provide direct, non-technical website and local search audits for local Hill Country contractors and independent shops.
+      </p>
+
+      <div class="audit-grid">
+        <div class="audit-item">
+          <h4>Google Business &amp; Map Health</h4>
+          <p>Verify primary service categories, phone links, and 911 physical address placement so you appear on local Google Map packs.</p>
+        </div>
+        <div class="audit-item">
+          <h4>Mobile Speed &amp; Offline Resilience</h4>
+          <p>Eliminate heavy plugins and bloated platforms. We test load times over rural 4G/5G cell networks along RM 1431 and TX-29.</p>
+        </div>
+        <div class="audit-item">
+          <h4>Click-to-Call &amp; Lead Flow</h4>
+          <p>Audit customer friction points: click-to-call buttons, quote requests, and estimate follow-up routing so you never miss a voicemail.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Affordable review for local trade shops &bull; Free initial assessment</span>
+        <a href="index.html#contactSection" class="btn-request-audit">Request a Local Website Audit &rarr;</a>
       </div>
     </section>
 
@@ -407,7 +539,7 @@
     <section class="contact-banner">
       <h3>Direct Local Contact</h3>
       <p>
-        Have feedback on our dispatch board, need a custom operational workflow tailored for your trade shop, or want to suggest a community data feed for The Kingsland Wire? Reach out directly.
+        Have feedback on our dispatch board, need a custom operational workflow tailored for your trade shop, or want to schedule a website audit for your Kingsland business? Reach out directly.
       </p>
       <div class="contact-links">
         <a href="mailto:jcruz213@gmail.com">Direct Email: jcruz213@gmail.com</a>
