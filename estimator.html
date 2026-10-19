@@ -678,7 +678,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: 20px;
     flex-wrap: wrap;
   }
@@ -816,6 +816,14 @@
       align-items: flex-start;
     }
     .btn-preset {
+      width: 100%;
+      text-align: center;
+    }
+    .estimate-actions-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn-export-pdf {
       width: 100%;
       text-align: center;
     }
@@ -968,10 +976,12 @@
         </div>
       </div>
 
+      <!-- CONTEXTUAL INTERNAL WORKFLOW LINKING -->
       <div class="estimate-actions-row">
-        <span style="font-size: 0.78rem; color: var(--text-muted);">
-          Looking for active commercial sites to bid on? Check the <a href="projects.html" style="color: var(--blue-accent); font-weight: 700;">Project Radar &rarr;</a>
-        </span>
+        <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+          <span>Looking for active commercial sites to bid on? Check the <a href="projects.html" style="color: var(--blue-accent); font-weight: 700;">Project Radar &rarr;</a></span>
+          <span>Bid accepted? Schedule your trade crew on our <a href="dispatch.html" style="color: var(--primary); font-weight: 700;">simple dispatch</a> and visual <a href="dispatch.html" style="color: var(--primary); font-weight: 700;">dispatching board</a>.</span>
+        </div>
         <button type="button" class="btn-export-pdf" id="btnPdfExport" onclick="exportEstimatePDF()">
           Download Client Bid Proposal (PDF) &rarr;
         </button>
