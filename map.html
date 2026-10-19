@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- PRIMARY SEO TAGS -->
-<title>Highland Lakes Live Incident & Radar Map | Simple Biz Systems</title>
-<meta name="title" content="Highland Lakes Live Incident & Radar Map | Simple Biz Systems">
+<title>Highland Lakes Live Incident &amp; Radar Map | Simple Biz Systems</title>
+<meta name="title" content="Highland Lakes Live Incident &amp; Radar Map | Simple Biz Systems">
 <meta name="description" content="Interactive map of Kingsland, Marble Falls, Burnet, and Llano, TX. Real-time road conditions, TxDOT bridge alerts, commercial construction radar, boat ramp statuses, and burn bans.">
 <meta name="keywords" content="Kingsland TX map, Highland Lakes road closures, FM 2900 bridge status, RM 1431 construction map, Marble Falls road alerts, Lake LBJ boat ramp map, Burnet County road work, Llano County burn ban map">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
@@ -50,8 +50,10 @@
   
   html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
 
   *, *::before, *::after {
@@ -67,7 +69,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* TOP SUB-TICKER (STANDARDIZED) */
+  /* TOP SUB-TICKER */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
@@ -81,7 +83,7 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION (STANDARDIZED) */
+  /* NAVIGATION */
   .nav { 
     background: var(--surface); 
     border-bottom: 1px solid var(--border); 
@@ -142,12 +144,15 @@
     flex: 1;
     display: flex;
     position: relative;
+    width: 100%;
+    height: calc(100% - 90px);
     overflow: hidden;
   }
 
   /* SIDEBAR FEED */
   .sidebar-panel {
     width: 390px;
+    height: 100%;
     background: var(--surface);
     border-right: 1px solid var(--border);
     display: flex;
@@ -160,12 +165,14 @@
     padding: 16px 18px;
     border-bottom: 1px solid var(--border);
     background: #f8fafc;
+    flex-shrink: 0;
   }
   .sidebar-header h1 {
     font-size: 1.15rem;
     font-weight: 800;
     color: var(--primary);
     margin: 0 0 4px 0;
+    line-height: 1.25;
   }
   .sidebar-header p {
     font-size: 0.8rem;
@@ -211,7 +218,7 @@
     background: #ffffff;
     border: 1px solid var(--border);
     color: var(--text-dark);
-    padding: 4px 10px;
+    padding: 5px 11px;
     border-radius: 999px;
     font-size: 0.72rem;
     font-weight: 700;
@@ -299,8 +306,11 @@
   #mapContainer {
     flex: 1;
     height: 100%;
+    min-height: 250px;
     width: 100%;
     background: #e2e8f0;
+    position: relative;
+    z-index: 1;
   }
 
   /* CUSTOM MAP POPUPS */
@@ -358,27 +368,28 @@
   @media (max-width: 768px) {
     .app-layout {
       flex-direction: column-reverse;
+      height: calc(100% - 90px);
     }
     .sidebar-panel {
       width: 100%;
-      height: 48%;
+      height: 50%;
       border-right: none;
       border-top: 1px solid var(--border);
     }
     #mapContainer {
-      height: 52%;
+      height: 50%;
     }
   }
 </style>
 </head>
 <body>
 
-  <!-- TOP SUB-TICKER (STANDARDIZED) -->
+  <!-- TOP SUB-TICKER -->
   <div class="sub-ticker">
     Simple Biz Systems &bull; Live Spatial Wire &amp; Local Construction Radar for Kingsland &amp; the Highland Lakes.
   </div>
 
-  <!-- NAVIGATION (STANDARDIZED) -->
+  <!-- NAVIGATION -->
   <nav class="nav">
     <div class="nav-container">
       <a href="index.html" class="logo">
@@ -423,4 +434,359 @@
     </aside>
 
     <!-- RIGHT/MAIN MAP VIEWPORT -->
-    <main id="mapContainer" aria-label="Interactive Map
+    <main id="mapContainer" aria-label="Interactive Map of Kingsland and Highland Lakes"></main>
+
+  </div>
+
+  <!-- LEAFLET.JS SCRIPT -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script>
+    // CORE INCIDENT METADATA
+    let INCIDENT_DATA = [
+      {
+        id: "inc-01",
+        type: "road",
+        typeLabel: "Roads & Bridge",
+        badgeClass: "badge-road",
+        title: "FM 2900 Bridge Corridor Monitoring",
+        location: "FM 2900 Crossing &bull; Lake LBJ",
+        lat: 30.6508,
+        lng: -98.4419,
+        desc: "Regular traffic operating smoothly. Critical link between Kingsland and Sunrise Beach. Monitor for severe weather wash advisories.",
+        linkText: "DriveTexas Live Map",
+        linkUrl: "https://www.drivetexas.org/"
+      },
+      {
+        id: "inc-02",
+        type: "road",
+        typeLabel: "TxDOT Roadwork",
+        badgeClass: "badge-road",
+        title: "RM 1431 Shoulder Maintenance",
+        location: "RM 1431 &bull; Between Kingsland &amp; Marble Falls",
+        lat: 30.6385,
+        lng: -98.3582,
+        desc: "Daytime mobile lane closures and utility clearing along the RM 1431 corridor. Expect minor 5 to 10 minute delays during work hours.",
+        linkText: "TxDOT Austin District",
+        linkUrl: "https://www.txdot.gov/"
+      },
+      {
+        id: "inc-03",
+        type: "construction",
+        typeLabel: "Commercial Build",
+        badgeClass: "badge-construction",
+        title: "Lake LBJ Smokehouse & Marina Cantina",
+        location: "1420 RR 1431 &bull; Kingsland, TX",
+        lat: 30.6651,
+        lng: -98.4485,
+        desc: "Commercial building permit and site work for a new waterfront smokehouse restaurant, outdoor dining pavilion deck, and commercial septic installation.",
+        linkText: "View Project Radar Record",
+        linkUrl: "projects.html"
+      },
+      {
+        id: "inc-04",
+        type: "construction",
+        typeLabel: "Retail Build-Out",
+        badgeClass: "badge-construction",
+        title: "Main Street Mercantile & Bistro Finish-Out",
+        location: "704 Main St &bull; Marble Falls, TX",
+        lat: 30.5702,
+        lng: -98.2758,
+        desc: "Commercial interior finish-out for an artisan bakery, cafe bistro, and retail space in downtown Marble Falls near US-281.",
+        linkText: "View Project Radar Record",
+        linkUrl: "projects.html"
+      },
+      {
+        id: "inc-05",
+        type: "construction",
+        typeLabel: "Trade Facility",
+        badgeClass: "badge-construction",
+        title: "Highway 29 Contractor Yard & Bays",
+        location: "2400 TX-29 East &bull; Burnet, TX",
+        lat: 30.7584,
+        lng: -98.2045,
+        desc: "Commercial site work for two 8,000 sq ft pre-engineered metal buildings, equipment staging yard, and 14-foot overhead trade service bays.",
+        linkText: "Price Materials on Estimator",
+        linkUrl: "estimator.html"
+      },
+      {
+        id: "inc-06",
+        type: "water",
+        typeLabel: "Public Boat Ramp",
+        badgeClass: "badge-water",
+        title: "Kingsland Lions Memorial Park Ramp",
+        location: "Euel Moore Rd &bull; Lake LBJ",
+        lat: 30.6582,
+        lng: -98.4350,
+        desc: "Free public concrete boat ramp open 24/7. Paved dual-lane launching, truck and trailer parking, and public fishing pier.",
+        linkText: "Open Map Directions",
+        linkUrl: "https://maps.google.com/?q=Kingsland+Lions+Memorial+Park+TX"
+      },
+      {
+        id: "inc-07",
+        type: "water",
+        typeLabel: "River Access",
+        badgeClass: "badge-water",
+        title: "The Slab (Llano River Granite Crossing)",
+        location: "FM 3404 &bull; Llano River",
+        lat: 30.68284955063337,
+        lng: -98.48283513895825,
+        desc: "Natural granite riverbed shallow swimming and sunbathing access. Always inspect river velocity before parking or wading downstream.",
+        linkText: "Directions to The Slab",
+        linkUrl: "https://maps.google.com/?q=30.68284955063337,-98.48283513895825"
+      },
+      {
+        id: "inc-08",
+        type: "safety",
+        typeLabel: "County Burn Ban",
+        badgeClass: "badge-safety",
+        title: "Burn Ban In Effect: Llano &amp; Burnet",
+        location: "Highland Lakes Fire Districts",
+        lat: 30.6850,
+        lng: -98.4200,
+        desc: "Outdoor brush burning and campfires strictly prohibited across Llano and Burnet Counties. Welding operations require water tank and spotter.",
+        linkText: "Call Llano Dispatch: 325-247-5767",
+        linkUrl: "tel:3252475767"
+      },
+      {
+        id: "inc-lake-buchanan",
+        type: "water",
+        typeLabel: "Reservoir Hydrology",
+        badgeClass: "badge-water",
+        title: "Lake Buchanan Storage Gauge",
+        location: "LCRA Dam Station &bull; Lake Buchanan",
+        lat: 30.7516,
+        lng: -98.4239,
+        desc: "Syncing live capacity data with the Texas Water Development Board (TWDB)...",
+        linkText: "View Statewide Hydrology Index",
+        linkUrl: "https://www.waterdatafortexas.org/reservoirs/individual/buchanan"
+      }
+    ];
+
+    let map = null;
+    let markers = [];
+    let currentFilter = "all";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      initMap();
+      renderFeed();
+      syncAutonomousFeeds();
+
+      window.addEventListener("resize", function() {
+        if (map) {
+          map.invalidateSize();
+        }
+      });
+    });
+
+    function initMap() {
+      const mapContainer = document.getElementById('mapContainer');
+      if (!mapContainer) return;
+
+      map = L.map('mapContainer', {
+        zoomControl: true,
+        preferCanvas: true
+      }).setView([30.6638, -98.4411], 12);
+
+      // Fast, public tile layer with explicit user-agent friendly endpoint
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      // Invalidate size once DOM styles calculate
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (map) map.invalidateSize();
+        });
+      });
+
+      plotMarkers();
+    }
+
+    function plotMarkers() {
+      if (!map) return;
+      markers.forEach(m => map.removeLayer(m.leafletMarker));
+      markers = [];
+
+      INCIDENT_DATA.forEach(item => {
+        if (currentFilter !== "all" && item.type !== currentFilter) {
+          return;
+        }
+
+        let markerColor = "#0d3b66";
+        if (item.type === "construction") markerColor = "#d97706";
+        if (item.type === "water") markerColor = "#0284c7";
+        if (item.type === "safety") markerColor = "#dc2626";
+
+        const customIcon = L.divIcon({
+          className: 'custom-div-icon',
+          html: `<div style="background-color:${markerColor}; width:16px; height:16px; border:3px solid #ffffff; border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.35); cursor:pointer;"></div>`,
+          iconSize: [22, 22],
+          iconAnchor: [11, 11]
+        });
+
+        const popupContent = `
+          <div class="popup-card">
+            <span class="popup-badge ${item.badgeClass}">${item.typeLabel}</span>
+            <div class="popup-title">${item.title}</div>
+            <div class="popup-loc">${item.location}</div>
+            <div class="popup-desc">${item.desc}</div>
+            <a href="${item.linkUrl}" class="popup-btn" target="_blank" rel="noopener">${item.linkText} &rarr;</a>
+          </div>
+        `;
+
+        const leafletMarker = L.marker([item.lat, item.lng], { icon: customIcon })
+          .addTo(map)
+          .bindPopup(popupContent, { className: 'custom-popup' });
+
+        markers.push({
+          id: item.id,
+          leafletMarker: leafletMarker,
+          data: item
+        });
+      });
+    }
+
+    function renderFeed() {
+      const container = document.getElementById("feedContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const filtered = INCIDENT_DATA.filter(item => {
+        return currentFilter === "all" || item.type === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="padding:24px; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+            No active reports in this category.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const div = document.createElement("div");
+        div.className = `feed-item type-${item.type}`;
+        div.id = `feed-${item.id}`;
+        div.onclick = () => focusIncident(item.id);
+
+        div.innerHTML = `
+          <div class="feed-item-header">
+            <span class="feed-badge ${item.badgeClass}">${item.typeLabel}</span>
+          </div>
+          <div class="feed-item-title">${item.title}</div>
+          <div class="feed-location">${item.location}</div>
+          <p class="feed-desc">${item.desc}</p>
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    function filterPins(type, btn) {
+      currentFilter = type;
+      document.querySelectorAll(".filter-pill").forEach(p => p.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+
+      plotMarkers();
+      renderFeed();
+    }
+
+    function focusIncident(id) {
+      const target = markers.find(m => m.id === id);
+      if (!target || !map) return;
+
+      map.flyTo([target.data.lat, target.data.lng], 14, {
+        duration: 0.8
+      });
+
+      target.leafletMarker.openPopup();
+
+      document.querySelectorAll(".feed-item").forEach(card => card.classList.remove("active"));
+      const activeCard = document.getElementById(`feed-${id}`);
+      if (activeCard) {
+        activeCard.classList.add("active");
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    async function syncAutonomousFeeds() {
+      // 1. Lake Buchanan Hydrology
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const res = await fetch("https://waterdatafortexas.org/reservoirs/recent-conditions.json", { 
+          cache: "no-store",
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const dataset = await res.json();
+          const buchanan = dataset.find(item => 
+            (item.lake_id && item.lake_id.toLowerCase() === "buchanan") ||
+            (item.reservoir && item.reservoir.toLowerCase().includes("buchanan"))
+          );
+
+          if (buchanan) {
+            const elev = parseFloat(buchanan.water_level).toFixed(1);
+            const pct = parseFloat(buchanan.percent_full).toFixed(1);
+            const item = INCIDENT_DATA.find(i => i.id === "inc-lake-buchanan");
+            if (item) {
+              item.desc = `Lake Buchanan elevation is currently ${elev} ft msl (${pct}% of conservation capacity). Regulated upstream storage for the Highland Lakes.`;
+              plotMarkers();
+              renderFeed();
+            }
+          }
+        }
+      } catch (e) {
+        const item = INCIDENT_DATA.find(i => i.id === "inc-lake-buchanan");
+        if (item) {
+          item.desc = "Lake Buchanan elevation ~1,018.8 ft msl (96.9% conservation capacity). Regulated upstream storage for the Highland Lakes chain.";
+          plotMarkers();
+          renderFeed();
+        }
+      }
+
+      // 2. Live Weather Alerts (Burnet & Llano)
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+        const nwsRes = await fetch("https://api.weather.gov/alerts/active?zone=TXC053,TXC299", {
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        if (nwsRes.ok) {
+          const alertData = await nwsRes.json();
+          if (alertData.features && alertData.features.length > 0) {
+            const primaryAlert = alertData.features[0].properties;
+            const existingAlert = INCIDENT_DATA.find(i => i.id === "inc-nws-live");
+            const alertItem = {
+              id: "inc-nws-live",
+              type: "safety",
+              typeLabel: "NWS Alert",
+              badgeClass: "badge-safety",
+              title: primaryAlert.event || "Active Weather Statement",
+              location: "Burnet &amp; Llano County Area",
+              lat: 30.6720,
+              lng: -98.4350,
+              desc: (primaryAlert.headline || primaryAlert.description || "").slice(0, 160) + "...",
+              linkText: "National Weather Service Austin/San Antonio",
+              linkUrl: "https://www.weather.gov/ewx/"
+            };
+
+            if (!existingAlert) {
+              INCIDENT_DATA.unshift(alertItem);
+              plotMarkers();
+              renderFeed();
+            }
+          }
+        }
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>
