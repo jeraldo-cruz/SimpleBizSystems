@@ -7,7 +7,7 @@
 <!-- PRIMARY SEO TAGS -->
 <title>Free Job Estimate Calculator &amp; Contractor Bid Generator | Simple Biz Systems</title>
 <meta name="title" content="Free Job Estimate Calculator &amp; Contractor Bid Generator | Simple Biz Systems">
-<meta name="description" content="Free contractor job estimate calculator and instant bid generator. Build accurate estimates with Highland Lakes material benchmarks, trade labor presets, and client PDF proposal export.">
+<meta name="description" content="Free contractor job estimate calculator and instant bid generator. Build accurate estimates with Highland Lakes material benchmarks, trade labor presets, on-screen touch signoff, and client PDF proposal export.">
 <meta name="keywords" content="free job estimate calculator, job bid calculator, estimate generator, contractor bid generator, job cost estimator, free estimator, construction cost calculator, labor and material estimate, Highland Lakes material rates, Kingsland TX contractor bidding, Marble Falls material cost, free estimate pdf export">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/estimator.html">
 <meta property="og:title" content="Free Job Estimate Calculator &amp; Contractor Bid Generator | Simple Biz Systems">
-<meta property="og:description" content="Instant trade bid calculator and estimate generator with Highland Lakes material benchmarks and client PDF export. Calculate labor, materials, and profit margins without login.">
+<meta property="og:description" content="Instant trade bid calculator and estimate generator with Highland Lakes material benchmarks, SMS summary, on-screen signoff, and client PDF export.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <!-- JSON-LD FAQ SCHEMA FOR SEARCH ENGINE RICH SNIPPETS -->
@@ -80,10 +80,10 @@
     --accent-hover: #b45309;
     --bg: #f8fafc; 
     --surface: #ffffff;
-    --text-dark: #1e293b; 
-    --text-muted: #64748b;
-    --border: #e2e8f0; 
-    --border-subtle: #f1f5f9;
+    --text-dark: #0f172a; 
+    --text-muted: #475569;
+    --border: #cbd5e1; 
+    --border-subtle: #e2e8f0;
     --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
     --card-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     
@@ -137,7 +137,7 @@
     width: 100%;
   }
 
-  /* TOP SUB-TICKER */
+  /* TOP SUB-TICKER (STANDARDIZED) */
   .sub-ticker {
     background: var(--primary);
     color: #f1f5f9;
@@ -150,10 +150,10 @@
   .sub-ticker strong { color: #fbbf24; font-weight: 600; }
   .sub-ticker a { color: #fbbf24; text-decoration: underline; }
 
-  /* NAVIGATION */
+  /* NAVIGATION (STANDARDIZED) */
   .nav { 
     background: var(--surface); 
-    border-bottom: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border-subtle); 
     padding: 12px 0; 
     position: sticky;
     top: 0;
@@ -295,7 +295,7 @@
     content: "";
     flex: 1;
     height: 1px;
-    background: var(--border);
+    background: var(--border-subtle);
   }
   .sec-tag {
     display: inline-block;
@@ -422,9 +422,9 @@
   }
   .btn-toggle-suppliers {
     background: #f8fafc;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border);
     color: var(--text-dark);
-    padding: 5px 11px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-size: 0.74rem;
     font-weight: 700;
@@ -438,7 +438,7 @@
     background: var(--primary);
     border: 1px solid var(--primary);
     color: #ffffff;
-    padding: 5px 11px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-size: 0.74rem;
     font-weight: 800;
@@ -453,7 +453,7 @@
   .supplier-drawer {
     display: none;
     background: #f8fafc;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border);
     border-radius: 6px;
     padding: 12px 14px;
     margin-top: 10px;
@@ -479,7 +479,7 @@
     padding: 4px 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px dashed #e2e8f0;
+    border-bottom: 1px dashed var(--border-subtle);
   }
   .supplier-list li:last-child {
     border-bottom: none;
@@ -497,7 +497,7 @@
     font-size: 0.72rem;
   }
 
-  /* 2. ACTIVE BID ESTIMATOR */
+  /* 2. ACTIVE ESTIMATE BUILDER */
   .estimate-builder-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -514,7 +514,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 12px 14px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -532,7 +532,7 @@
     background: #ffffff;
     border: 1px solid var(--border);
     color: var(--primary);
-    padding: 5px 11px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.78rem;
     font-weight: 700;
@@ -543,6 +543,33 @@
     background: var(--primary);
     color: #ffffff;
     border-color: var(--primary);
+  }
+
+  /* 1-TAP COMMON JOB SURCHARGES & OVERHEAD FEES */
+  .fee-bar {
+    background: var(--amber-surface);
+    border: 1px solid var(--amber-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-fee-chip {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    color: #92400e;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-fee-chip:hover {
+    background: #fef3c7;
   }
 
   .estimate-meta-grid {
@@ -561,7 +588,7 @@
   }
   .meta-field input {
     width: 100%;
-    padding: 8px 12px;
+    padding: 9px 12px;
     border: 1px solid var(--border);
     border-radius: 6px;
     font-size: 0.88rem;
@@ -597,7 +624,7 @@
   .estimate-table input,
   .estimate-table select {
     width: 100%;
-    padding: 6px 8px;
+    padding: 7px 8px;
     border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 0.84rem;
@@ -609,9 +636,9 @@
     color: var(--danger);
     font-weight: 800;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1;
-    padding: 4px;
+    padding: 6px;
   }
 
   .table-actions-row {
@@ -674,29 +701,98 @@
     margin-top: 4px;
   }
 
+  /* ON-SCREEN CLIENT TOUCH SIGNATURE BLOCK */
+  .signature-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 20px;
+  }
+  .signature-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .signature-header strong {
+    font-size: 0.88rem;
+    color: var(--primary);
+  }
+  .btn-clear-sig {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-weight: 700;
+    font-size: 0.76rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .signature-canvas-wrap {
+    border: 2px dashed #94a3b8;
+    border-radius: 6px;
+    background: #f8fafc;
+    position: relative;
+    touch-action: none;
+  }
+  #signatureCanvas {
+    width: 100%;
+    height: 120px;
+    display: block;
+    cursor: crosshair;
+  }
+  .signature-hint {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* BOTTOM ACTION TOOLBAR */
   .estimate-actions-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .action-buttons-group {
+    display: flex;
+    gap: 10px;
     flex-wrap: wrap;
   }
   .btn-export-pdf {
     background: var(--primary);
     color: #ffffff;
     border: none;
-    padding: 12px 22px;
+    min-height: 44px;
+    padding: 10px 20px;
     border-radius: 6px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 800;
     cursor: pointer;
     box-shadow: var(--card-shadow);
-    transition: background 0.15s ease, transform 0.1s ease;
+    transition: background 0.15s ease;
   }
   .btn-export-pdf:hover {
     background: var(--primary-light);
-    transform: translateY(-1px);
+  }
+  .btn-copy-sms {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-copy-sms:hover {
+    background: #f1f5f9;
+    border-color: var(--primary);
   }
 
   /* SEO FAQ SECTION */
@@ -798,6 +894,11 @@
     padding: 9px 12px;
     border: 1px solid #cbd5e1;
   }
+  .pdf-signature-preview {
+    max-height: 55px;
+    display: block;
+    margin-top: 6px;
+  }
 
   /* FOOTER */
   footer { 
@@ -811,11 +912,11 @@
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 640px) {
-    .preset-bar {
+    .preset-bar, .fee-bar {
       flex-direction: column;
       align-items: flex-start;
     }
-    .btn-preset {
+    .btn-preset, .btn-fee-chip {
       width: 100%;
       text-align: center;
     }
@@ -823,7 +924,11 @@
       flex-direction: column;
       align-items: stretch;
     }
-    .btn-export-pdf {
+    .action-buttons-group {
+      flex-direction: column;
+      width: 100%;
+    }
+    .btn-export-pdf, .btn-copy-sms {
       width: 100%;
       text-align: center;
     }
@@ -864,13 +969,13 @@
       <div class="seo-instructions-card">
         <h2>Instant Job Cost Estimator &amp; Bid Generator for Trade Work</h2>
         <p>
-          Need to generate an accurate bid for a customer? This free job estimate calculator and contractor bid generator provides benchmark wholesale and retail material rates configured specifically for the Highland Lakes trade corridor (Kingsland, Marble Falls, Burnet, and Llano). Add custom trade labor hours, apply gross margin targets, and export a clean, printable PDF proposal with a client signature block.
+          Need to generate an accurate bid for a customer? This free job estimate calculator and contractor bid generator provides benchmark wholesale and retail material rates configured specifically for the Highland Lakes trade corridor (Kingsland, Marble Falls, Burnet, and Llano). Add custom trade labor hours, apply gross margin targets, capture on-screen client signatures, and export a clean PDF proposal.
         </p>
         <div class="trust-bar">
           <span class="trust-pill">100% Free &bull; No Software Fees</span>
           <span class="trust-pill">Zero Sign-Up Required</span>
           <span class="trust-pill">Local-First Storage</span>
-          <span class="trust-pill">Client PDF Export Ready</span>
+          <span class="trust-pill">Client PDF &amp; SMS Export</span>
         </div>
         <div class="seo-keywords-tagline">
           Wholesale Baselines: 3000 PSI Ready-Mix Concrete, SPF 2x4 Framing Lumber, 7/16" OSB Sheathing, 1/2" CDX Plywood, 12/2 Romex Copper Wire, 1/2" PEX-A Tubing, Schedule 40 PVC, Architectural Roofing Shingles.
@@ -902,12 +1007,21 @@
       
       <!-- ONE-CLICK TRADE PRESETS -->
       <div class="preset-bar">
-        <span class="preset-label">Quick Trade Presets:</span>
+        <span class="preset-label">Trade Presets:</span>
         <button type="button" class="btn-preset" onclick="loadTradePreset('handyman')">Handyman / Service Call</button>
         <button type="button" class="btn-preset" onclick="loadTradePreset('concrete')">Concrete Slab &amp; Flatwork</button>
         <button type="button" class="btn-preset" onclick="loadTradePreset('framing')">Deck Framing &amp; Carpentry</button>
         <button type="button" class="btn-preset" onclick="loadTradePreset('electrical')">Electrical Service Upgrade</button>
         <button type="button" class="btn-preset" onclick="loadTradePreset('plumbing')">Plumbing Rough-In</button>
+      </div>
+
+      <!-- 1-TAP COMMON JOB FEES & OVERHEAD -->
+      <div class="fee-bar">
+        <span class="preset-label" style="color:#92400e;">+ Add Overhead Fees:</span>
+        <button type="button" class="btn-fee-chip" onclick="addCustomFee('Mobilization &amp; Windshield Trip Charge', 95.00, 'Labor')">+ Trip Fee ($95)</button>
+        <button type="button" class="btn-fee-chip" onclick="addCustomFee('Debris Haul-Off &amp; Disposal Surcharge', 150.00, 'Material')">+ Dumpster / Disposal ($150)</button>
+        <button type="button" class="btn-fee-chip" onclick="addCustomFee('Skid Steer / Machine Rental Allowance', 250.00, 'Material')">+ Equipment Rental ($250)</button>
+        <button type="button" class="btn-fee-chip" onclick="addCustomFee('Municipal Inspection &amp; Permit Filing Fee', 85.00, 'Material')">+ City Permit ($85)</button>
       </div>
 
       <div class="estimate-meta-grid">
@@ -976,15 +1090,33 @@
         </div>
       </div>
 
-      <!-- CONTEXTUAL INTERNAL WORKFLOW LINKING -->
+      <!-- ON-SCREEN TOUCH SIGNATURE CAPTURE -->
+      <div class="signature-card">
+        <div class="signature-header">
+          <strong>Client Acceptance Signature (Sign on Screen):</strong>
+          <button type="button" class="btn-clear-sig" onclick="clearSignature()">Clear Signature</button>
+        </div>
+        <div class="signature-canvas-wrap">
+          <canvas id="signatureCanvas" width="700" height="120"></canvas>
+        </div>
+        <span class="signature-hint">Homeowner or site manager can sign directly using a touchscreen or mouse before exporting.</span>
+      </div>
+
+      <!-- ACTIONS BAR: PDF & 1-TAP SMS TEXT SUMMARY -->
       <div class="estimate-actions-row">
         <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
           <span>Looking for active commercial sites to bid on? Check the <a href="projects.html" style="color: var(--blue-accent); font-weight: 700;">Project Radar &rarr;</a></span>
           <span>Bid accepted? Schedule your trade crew on our <a href="dispatch.html" style="color: var(--primary); font-weight: 700;">simple dispatch</a> and visual <a href="dispatch.html" style="color: var(--primary); font-weight: 700;">dispatching board</a>.</span>
         </div>
-        <button type="button" class="btn-export-pdf" id="btnPdfExport" onclick="exportEstimatePDF()">
-          Download Client Bid Proposal (PDF) &rarr;
-        </button>
+        
+        <div class="action-buttons-group">
+          <button type="button" class="btn-copy-sms" onclick="copySmsTextSummary()">
+            Copy SMS Summary &rarr;
+          </button>
+          <button type="button" class="btn-export-pdf" id="btnPdfExport" onclick="exportEstimatePDF()">
+            Download Client Bid Proposal (PDF) &rarr;
+          </button>
+        </div>
       </div>
 
     </section>
@@ -1070,8 +1202,11 @@
         </div>
       </div>
 
-      <div style="margin-top:38px; border-top:1px solid #cbd5e1; padding-top:14px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between;">
-        <div>Client Acceptance Signature: ___________________________</div>
+      <div style="margin-top:34px; border-top:1px solid #cbd5e1; padding-top:12px; font-size:0.75rem; color:#64748b; display:flex; justify-content:space-between; align-items:flex-end;">
+        <div>
+          <div>Client Acceptance Signature:</div>
+          <div id="pdfSigContainer"><span style="color:#94a3b8; font-style:italic;">No digital signature applied</span></div>
+        </div>
         <div>Date: ____________</div>
       </div>
     </div>
@@ -1094,7 +1229,6 @@
   </footer>
 
   <script>
-    // HIGHLAND LAKES REGIONAL MATERIAL BENCHMARKS
     const BASE_MATERIALS = [
       { 
         id: "m_conc", 
@@ -1212,6 +1346,8 @@
       }
     ];
 
+    let hasSignature = false;
+
     document.addEventListener("DOMContentLoaded", function() {
       const urlParams = new URLSearchParams(window.location.search);
       const projectParam = urlParams.get("project");
@@ -1222,6 +1358,7 @@
 
       renderMaterialGrid();
       loadSavedEstimate();
+      initSignaturePad();
     });
 
     function renderMaterialGrid() {
@@ -1331,7 +1468,10 @@
       saveEstimateLocally();
     }
 
-    // ONE-CLICK TRADE PRESETS
+    function addCustomFee(desc, feeAmount, type) {
+      addMaterialToEstimate(desc, feeAmount.toFixed(2), type);
+    }
+
     function loadTradePreset(presetKey) {
       const tbody = document.getElementById("estimateTableBody");
       tbody.innerHTML = "";
@@ -1419,13 +1559,9 @@
       const grandTotal = preTaxTotal + taxAmount;
 
       document.getElementById("materialsTotalDisplay").innerText = `$${materialsSubtotal.toFixed(2)}`;
-      document.getElementById("laborTotalDisplay").innerText = `$${laborTotalDisplay(laborSubtotal)}`;
+      document.getElementById("laborTotalDisplay").innerText = `$${laborSubtotal.toFixed(2)}`;
       document.getElementById("subtotalDisplay").innerText = `$${directTotal.toFixed(2)}`;
       document.getElementById("grandTotalDisplay").innerText = `$${grandTotal.toFixed(2)}`;
-    }
-
-    function laborTotalDisplay(val) {
-      return val.toFixed(2);
     }
 
     function saveEstimateLocally() {
@@ -1493,7 +1629,89 @@
       } catch (e) {}
     }
 
-    // PDF GENERATION WITH EXPLICIT LABOR / MATERIAL BREAKDOWN
+    // ON-SCREEN TOUCH SIGNATURE ENGINE
+    function initSignaturePad() {
+      const canvas = document.getElementById("signatureCanvas");
+      const ctx = canvas.getContext("2d");
+      let drawing = false;
+
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function startDraw(e) {
+        drawing = true;
+        hasSignature = true;
+        ctx.beginPath();
+        const pos = getPos(e);
+        ctx.moveTo(pos.x, pos.y);
+        ctx.strokeStyle = "#0d3b66";
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = "round";
+        e.preventDefault();
+      }
+
+      function draw(e) {
+        if (!drawing) return;
+        const pos = getPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        e.preventDefault();
+      }
+
+      function stopDraw() {
+        drawing = false;
+      }
+
+      canvas.addEventListener("mousedown", startDraw);
+      canvas.addEventListener("mousemove", draw);
+      window.addEventListener("mouseup", stopDraw);
+
+      canvas.addEventListener("touchstart", startDraw, { passive: false });
+      canvas.addEventListener("touchmove", draw, { passive: false });
+      window.addEventListener("touchend", stopDraw);
+    }
+
+    function clearSignature() {
+      const canvas = document.getElementById("signatureCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSignature = false;
+    }
+
+    // 1-TAP COPY SMS TEXT SUMMARY
+    function copySmsTextSummary() {
+      const client = document.getElementById("estCustomer").value || "Client";
+      const project = document.getElementById("estProject").value || "Contract Work";
+      const matSub = document.getElementById("materialsTotalDisplay").innerText;
+      const laborSub = document.getElementById("laborTotalDisplay").innerText;
+      const grandTotal = document.getElementById("grandTotalDisplay").innerText;
+
+      const smsText = `Estimate Proposal from Simple Biz Systems:
+Client: ${client}
+Scope: ${project}
+Materials: ${matSub}
+Labor: ${laborSub}
+Total Bid: ${grandTotal} (Tax included)
+
+Reply YES to accept and schedule trade crew.`;
+
+      navigator.clipboard.writeText(smsText).then(() => {
+        alert("Estimate summary copied to clipboard! Ready to paste into SMS or WhatsApp.");
+      }).catch(() => {
+        prompt("Copy your SMS text summary below:", smsText);
+      });
+    }
+
+    // PDF GENERATION WITH SIGNATURE EMBEDDING
     function exportEstimatePDF() {
       const btn = document.getElementById("btnPdfExport");
       const originalText = btn.innerHTML;
@@ -1553,6 +1771,16 @@
       document.getElementById("pdfMargin").innerText = `${marginPct}% Gross Target`;
       document.getElementById("pdfTax").innerText = `$${taxAmount.toFixed(2)} (${taxPct}%)`;
       document.getElementById("pdfGrandTotal").innerText = `$${grandTotal.toFixed(2)}`;
+
+      // Embed signature if drawn
+      const pdfSigContainer = document.getElementById("pdfSigContainer");
+      if (hasSignature) {
+        const canvas = document.getElementById("signatureCanvas");
+        const sigDataUrl = canvas.toDataURL("image/png");
+        pdfSigContainer.innerHTML = `<img src="${sigDataUrl}" class="pdf-signature-preview" alt="Client Signature">`;
+      } else {
+        pdfSigContainer.innerHTML = `<span style="color:#94a3b8; font-style:italic;">Accepted verbally / unsigned</span>`;
+      }
 
       const element = document.getElementById("pdfPrintStage");
 
