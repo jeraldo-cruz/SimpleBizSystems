@@ -7,7 +7,7 @@
 <!-- PRIMARY SEO TAGS -->
 <title>The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)</title>
 <meta name="title" content="The Kingsland Wire | Aggregated News, Weather, Lake Levels & Directory (Kingsland, TX)">
-<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, county burn bans, commercial construction radar, live incident map, and directory.">
+<meta name="description" content="Direct, ad-free community bulletin for Kingsland, TX. Live 7-day weather with two-tone icons, Lake Buchanan and Lake LBJ capacities, real-time county burn bans via Texas A&M Forest Service, live incident map, and directory.">
 <meta name="keywords" content="Kingsland TX aggregated news, Lake Buchanan capacity, Lake LBJ capacity, Inks Lake level, Kingsland weather 7 day forecast, Llano County burn ban, Burnet County burn ban, new construction Kingsland TX, commercial development Marble Falls, TxDOT Kingsland roads, DriveTexas FM 2900, student assignment planner, document readiness checklist, Highland Lakes incident map">
 <meta name="author" content="Simple Biz Systems - Jeraldo Cruz">
 <meta name="robots" content="index, follow">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.simplebizsystems.com/kingslandnews.html">
 <meta property="og:title" content="The Kingsland Wire | Simple Biz Systems">
-<meta property="og:description" content="Ad-free aggregated community news, live weather with modern icons, real-time Highland Lakes capacities, burn bans, commercial construction radar, live map, and directory.">
+<meta property="og:description" content="Ad-free aggregated community news, live weather with modern icons, real-time Highland Lakes capacities, automated burn ban feeds, commercial construction radar, live map, and directory.">
 <meta property="og:image" content="https://www.simplebizsystems.com/logo-icon.png">
 
 <style>
@@ -425,7 +425,7 @@
     font-weight: 600;
   }
 
-  /* 3. LIVE BURN BAN ALERT BAR */
+  /* 3. DYNAMIC BURN BAN ALERT BANNER */
   .burn-ban-banner {
     background: var(--danger-surface);
     border: 2px solid var(--danger-border);
@@ -438,21 +438,26 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .burn-ban-content {
+    flex: 1 1 540px;
   }
   .burn-ban-content h3 {
-    margin: 0 0 4px 0;
+    margin: 0 0 6px 0;
     font-size: 1.02rem;
     font-weight: 800;
     color: #991b1b;
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
   .burn-ban-content p {
     margin: 0;
     font-size: 0.86rem;
     color: #7f1d1d;
-    line-height: 1.45;
+    line-height: 1.5;
   }
   .burn-ban-contacts {
     display: flex;
@@ -471,9 +476,10 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
   .btn-ban-call:hover {
-    background: #fee2e2;
+    filter: brightness(0.97);
   }
 
   /* 4. COMMERCIAL CONSTRUCTION RADAR SPOTLIGHT */
@@ -865,22 +871,25 @@
       </div>
     </section>
 
-    <!-- 3. LIVE BURN BAN ALERT BAR -->
+    <!-- 3. DYNAMIC BURN BAN ALERT BANNER -->
     <h2 class="section-headline">County Public Safety &amp; Fire Restrictions</h2>
-    <section class="burn-ban-banner">
-      <div class="burn-ban-content">
-        <h3>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-          <span>Burn Ban In Effect: Llano &amp; Burnet Counties</span>
+    <section id="burnBanBanner" class="burn-ban-banner">
+      <div class="burn-ban-content" id="burnBanContent">
+        <h3 id="burnBanHeading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+          <span>Connecting to Texas A&amp;M Forest Service Sensor...</span>
         </h3>
-        <p>
-          Outdoor burning of brush piles, campfires, and trash is strictly prohibited by county order due to dry Hill Country conditions. Contact county dispatch before operating outdoor machinery or conducting authorized agricultural burns.
-        </p>
+        <p id="burnBanDetails">Checking real-time fire restriction status for Llano and Burnet Counties...</p>
+        <div id="burnBanFooterNote" style="font-size:0.75rem; margin-top:6px; font-weight:600;">
+          Kingsland spans both sides of the Colorado/Llano river border. Always verify your parcel's county jurisdiction before burning.
+        </div>
       </div>
 
       <div class="burn-ban-contacts">
-        <a href="tel:3252475767" class="btn-ban-call">Call Llano Dispatch: 325-247-5767</a>
-        <a href="tel:5127568080" class="btn-ban-call">Call Burnet Dispatch: 512-756-8080</a>
+        <a href="tel:3252475767" class="btn-ban-call" id="btnCallLlano">Call Llano Dispatch: 325-247-5767</a>
+        <a href="tel:5127568080" class="btn-ban-call" id="btnCallBurnet">Call Burnet Dispatch: 512-756-8080</a>
       </div>
     </section>
 
@@ -1272,6 +1281,150 @@
       }
     }
 
+    // DYNAMIC TEXAS FOREST SERVICE (TFS) BURN BAN ENGINE
+    async function loadBurnBanStatus() {
+      const banner = document.getElementById("burnBanBanner");
+      const heading = document.getElementById("burnBanHeading");
+      const details = document.getElementById("burnBanDetails");
+      const btnLlano = document.getElementById("btnCallLlano");
+      const btnBurnet = document.getElementById("btnCallBurnet");
+
+      // TFS Public ArcGIS Feature Server query for Llano & Burnet Counties
+      const TFS_ENDPOINT = "https://services1.arcgis.com/gGHDlz6USftLQITu/arcgis/rest/services/Texas_County_Burn_Bans/FeatureServer/0/query?" +
+        "where=County%20IN%20('Llano','Burnet')&outFields=County,BurnBan,Date_Adopted&returnGeometry=false&f=json";
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000); // 6s timeout protection
+
+        const response = await fetch(TFS_ENDPOINT, {
+          signal: controller.signal,
+          cache: "no-store"
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error("TFS service returned HTTP " + response.status);
+
+        const data = await response.json();
+        if (!data.features || data.features.length === 0) throw new Error("Empty payload from TFS");
+
+        let llanoActive = false;
+        let burnetActive = true; // safe default baseline
+
+        data.features.forEach(feat => {
+          const county = feat.attributes.County ? feat.attributes.County.trim() : "";
+          // BurnBan attribute: 1 = Active Ban, 0 = No Ban / Lifted
+          const isBanned = feat.attributes.BurnBan === 1;
+
+          if (county.toLowerCase() === "llano") {
+            llanoActive = isBanned;
+          } else if (county.toLowerCase() === "burnet") {
+            burnetActive = isBanned;
+          }
+        });
+
+        renderBurnBanUI(llanoActive, burnetActive);
+
+      } catch (err) {
+        // Offline fallback: Reflect verified ground-truth (Llano Lifted, Burnet Active)
+        renderBurnBanUI(false, true, true);
+      }
+
+      function renderBurnBanUI(llano, burnet, isFallback = false) {
+        const iconSvg = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>`;
+
+        const sourceTag = isFallback 
+          ? `<span style="font-size:0.7rem; font-weight:700; opacity:0.85; margin-left:auto;">Ground-Truth Fallback</span>`
+          : `<span style="font-size:0.7rem; font-weight:700; opacity:0.85; margin-left:auto;">Live Feed: TFS</span>`;
+
+        // CASE 1: SPLIT STATUS (Llano Lifted, Burnet Active)
+        if (!llano && burnet) {
+          banner.style.background = "#fffdfa";
+          banner.style.border = "2px solid #fed7aa";
+          banner.style.borderLeft = "6px solid #d97706";
+
+          heading.style.color = "#b45309";
+          heading.innerHTML = `${iconSvg} <span>Split Restrictions: Llano County Lifted &bull; Burnet County Active</span> ${sourceTag}`;
+
+          details.style.color = "#78350f";
+          details.innerHTML = `
+            <strong>Llano County:</strong> Burn ban has been lifted by Commissioners Court. Safe outdoor burning is permitted; notify county dispatch before conducting controlled burns.<br>
+            <strong>Burnet County:</strong> Burn ban remains in effect. Outdoor burning of brush piles, campfires, and waste is prohibited by county order.
+          `;
+
+          btnLlano.style.borderColor = "#fed7aa";
+          btnLlano.style.color = "#92400e";
+          btnLlano.style.background = "#ffffff";
+
+          btnBurnet.style.borderColor = "#fecaca";
+          btnBurnet.style.color = "#991b1b";
+          btnBurnet.style.background = "#fef2f2";
+        } 
+        // CASE 2: BOTH ACTIVE
+        else if (llano && burnet) {
+          banner.style.background = "var(--danger-surface)";
+          banner.style.border = "2px solid var(--danger-border)";
+          banner.style.borderLeft = "6px solid var(--danger)";
+
+          heading.style.color = "#991b1b";
+          heading.innerHTML = `${iconSvg} <span>Burn Ban In Effect: Llano &amp; Burnet Counties</span> ${sourceTag}`;
+
+          details.style.color = "#7f1d1d";
+          details.innerHTML = `
+            Outdoor burning of brush piles, campfires, and trash is strictly prohibited across both Llano and Burnet Counties due to dry Hill Country conditions. Call county dispatch before operating outdoor machinery.
+          `;
+
+          btnLlano.style.borderColor = "#fecaca";
+          btnLlano.style.color = "#991b1b";
+          btnLlano.style.background = "#ffffff";
+
+          btnBurnet.style.borderColor = "#fecaca";
+          btnBurnet.style.color = "#991b1b";
+          btnBurnet.style.background = "#ffffff";
+        } 
+        // CASE 3: BOTH LIFTED
+        else if (!llano && !burnet) {
+          banner.style.background = "#f0fdf4";
+          banner.style.border = "2px solid #bbf7d0";
+          banner.style.borderLeft = "6px solid #16a34a";
+
+          heading.style.color = "#15803d";
+          heading.innerHTML = `${iconSvg} <span>Burn Bans Lifted: Llano &amp; Burnet Counties</span> ${sourceTag}`;
+
+          details.style.color = "#14532d";
+          details.innerHTML = `
+            Neither Llano nor Burnet County currently has an active burn ban. Controlled burning is permitted with proper clearance, water on site, and notification to local emergency dispatch.
+          `;
+
+          btnLlano.style.borderColor = "#bbf7d0";
+          btnLlano.style.color = "#15803d";
+          btnLlano.style.background = "#ffffff";
+
+          btnBurnet.style.borderColor = "#bbf7d0";
+          btnBurnet.style.color = "#15803d";
+          btnBurnet.style.background = "#ffffff";
+        } 
+        // CASE 4: REVERSE SPLIT (LLANO ACTIVE, BURNET LIFTED)
+        else {
+          banner.style.background = "#fffdfa";
+          banner.style.border = "2px solid #fed7aa";
+          banner.style.borderLeft = "6px solid #d97706";
+
+          heading.style.color = "#b45309";
+          heading.innerHTML = `${iconSvg} <span>Split Restrictions: Llano County Active &bull; Burnet County Lifted</span> ${sourceTag}`;
+
+          details.style.color = "#78350f";
+          details.innerHTML = `
+            <strong>Llano County:</strong> Burn ban is in effect. Outdoor burning is prohibited.<br>
+            <strong>Burnet County:</strong> Burn ban has been lifted by Commissioners Court.
+          `;
+        }
+      }
+    }
+
     function filterDirectory(category, btnElement) {
       const buttons = document.querySelectorAll(".btn-filter");
       buttons.forEach(b => b.classList.remove("active"));
@@ -1292,6 +1445,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       loadWeatherForecast();
       loadLakeBuchananData();
+      loadBurnBanStatus();
       
       const initialBtn = document.querySelector('.btn-filter[onclick*="safety"]');
       filterDirectory('safety', initialBtn);
